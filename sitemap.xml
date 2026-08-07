@@ -24,11 +24,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-marketplace.ru/blog/kakoj-tarif-cdek-vybrat/</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://cdek-marketplace.ru/faq/</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -42,6 +37,23 @@
     <loc>https://cdek-marketplace.ru/policy/</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+  </url>
+
+  <!-- Блог -->
+  <url>
+    <loc>https://cdek-marketplace.ru/blog/fbs-vs-fbo-cdek/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/blog/kakoj-tarif-cdek-vybrat/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/blog/obemnyj-ves-cdek/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <!-- Маркетплейсы -->
