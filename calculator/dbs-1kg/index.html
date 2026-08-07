@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- SEO Оптимизация -->
+  <title>Калькулятор СДЭК: тариф DBS до 1 кг для маркетплейсов</title>
+  <meta name="description" content="Точный калькулятор доставки СДЭК по тарифу DBS для мелких отправлений (до 0.5 и 1 кг). Специальные условия для Ozon, Яндекс.Маркет, Авито и Wildberries." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { cdek: '#8de21a', dark: { 900: '#0b101d' } } } }
+    }
+  </script>
+  
+  <!-- Подключаем сгенерированную базу тарифов -->
+  <script src="rates.js"></script>
+</head>
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
+
+  <!-- Nginx: Подключение шапки -->
+  <!--#include virtual="/src/components/header.html" -->
+
+  <main class="flex-grow">
+    
+    <!-- СЕКЦИЯ 1: ЗАГОЛОВОК И КАЛЬКУЛЯТОР (Первый экран) -->
+    <section class="pt-12 sm:pt-20 pb-12 bg-dark-900 relative overflow-hidden" id="calcSection">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-10">
+          <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-6">
+            Калькулятор тарифа DBS <br/> для товаров <span class="text-cdek">до 1 кг</span>
+          </h1>
+          <p class="text-lg text-slate-300 max-w-2xl mx-auto">
+            Моментальный расчет стоимости логистики для мелких отправлений. Идеально подходит для селлеров Ozon, WB, Я.Маркет и Авито.
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto bg-[#131b2c] border border-slate-700/50 p-6 md:p-10 rounded-3xl shadow-2xl">
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <!-- Откуда -->
+            <div>
+              <label class="block text-sm font-medium text-slate-400 mb-2">Откуда отправляем (Склад)</label>
+              <select id="calc-from" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cdek transition-colors">
+                <option value="">Загрузка городов...</option>
+              </select>
+            </div>
+            <!-- Куда -->
+            <div>
+              <label class="block text-sm font-medium text-slate-400 mb-2">Куда доставляем (Покупатель)</label>
+              <select id="calc-to" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cdek transition-colors">
+                <option value="">Загрузка городов...</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6 mb-8">
+            <!-- Выбор веса -->
+            <div>
+              <label class="block text-sm font-medium text-slate-400 mb-2">Вес отправления</label>
+              <div class="flex bg-slate-900 rounded-xl p-1 border border-slate-700">
+                <button onclick="setWeight('0.5')" id="btn-w-05" class="flex-1 py-2 rounded-lg bg-slate-700 text-white font-medium text-sm transition-all">До 0.5 кг</button>
+                <button onclick="setWeight('1.0')" id="btn-w-10" class="flex-1 py-2 rounded-lg text-slate-400 hover:text-white font-medium text-sm transition-all">До 1 кг</button>
+              </div>
+            </div>
+            <!-- Выбор режима -->
+            <div>
+              <label class="block text-sm font-medium text-slate-400 mb-2">Способ вручения</label>
+              <div class="flex bg-slate-900 rounded-xl p-1 border border-slate-700">
+                <button onclick="setMode('склад-склад')" id="btn-m-pvz" class="flex-1 py-2 rounded-lg bg-slate-700 text-white font-medium text-sm transition-all">В ПВЗ</button>
+                <button onclick="setMode('склад-дверь')" id="btn-m-door" class="flex-1 py-2 rounded-lg text-slate-400 hover:text-white font-medium text-sm transition-all">Курьером</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Результат -->
+          <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 text-center relative">
+            <div class="text-slate-400 text-sm mb-1">Итоговая стоимость доставки:</div>
+            <div class="flex items-end justify-center gap-2 mb-2">
+              <span id="calc-price" class="text-5xl font-black text-cdek">0.00</span>
+              <span class="text-2xl text-white font-bold pb-1">₽</span>
+            </div>
+            <div class="text-sm text-slate-300">
+              Срок доставки: <span id="calc-time" class="font-bold text-white">...</span> дн.
+            </div>
+            <a href="#leadForm" class="mt-6 inline-flex items-center justify-center py-3 px-8 bg-cdek text-dark-900 hover:bg-cdek/90 font-extrabold text-sm rounded-xl transition-all shadow-lg shadow-cdek/20">
+              Заключить договор
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЕКЦИЯ 2: СПЕЦПРЕДЛОЖЕНИЕ И МАРКЕТПЛЕЙСЫ -->
+    <section class="py-12 bg-dark-900 border-t border-slate-800">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-10">
+          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Детали спецпредложения</h2>
+          <p class="text-slate-400">Выберите маркетплейс, на котором вы торгуете, чтобы увидеть доступные опции отгрузки.</p>
+        </div>
+
+        <div class="bg-[#131b2c]/80 backdrop-blur-sm border border-slate-700/50 p-6 md:p-10 rounded-3xl shadow-xl">
+          
+          <div class="flex flex-wrap gap-4 mb-10 justify-center">
+            <button id="btn-universal" onclick="setMarketplace('universal')" class="mp-btn px-6 py-3 rounded-xl border-2 border-cdek bg-cdek/10 text-cdek font-bold transition-all">
+              Ozon / Я.Маркет / Авито
+            </button>
+            <button id="btn-wb" onclick="setMarketplace('wb')" class="mp-btn px-6 py-3 rounded-xl border-2 border-slate-700 bg-transparent text-slate-400 hover:border-slate-500 transition-all">
+              Wildberries
+            </button>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <!-- До ПВЗ -->
+            <div id="pvzCard" class="bg-slate-800/60 p-8 rounded-2xl border border-slate-700 transition-all duration-300">
+              <div class="text-sm text-slate-400 mb-2 uppercase tracking-wide font-bold">Выдача в ПВЗ СДЭК</div>
+              <div class="flex items-baseline gap-2 mb-6">
+                <span class="text-sm text-slate-400">от</span>
+                <span class="text-4xl font-black text-white">136.50</span>
+                <span class="text-xl text-cdek font-bold">₽</span>
+              </div>
+              <ul class="text-sm text-slate-300 space-y-3">
+                <li class="flex items-center gap-2"><span class="text-cdek">✓</span> Вес до 0.5 кг (до 1 кг — 157.50 ₽)</li>
+                <li class="flex items-center gap-2"><span class="text-cdek">✓</span> Широкая сеть пунктов выдачи</li>
+              </ul>
+            </div>
+
+            <!-- Курьером -->
+            <div class="bg-slate-800/60 p-8 rounded-2xl border border-slate-700">
+              <div class="text-sm text-slate-400 mb-2 uppercase tracking-wide font-bold">Курьером до двери</div>
+              <div class="flex items-baseline gap-2 mb-6">
+                <span class="text-sm text-slate-400">от</span>
+                <span class="text-4xl font-black text-white">309.28</span>
+                <span class="text-xl text-cdek font-bold">₽</span>
+              </div>
+              <ul class="text-sm text-slate-300 space-y-3">
+                <li class="flex items-center gap-2"><span class="text-cdek">✓</span> Вес до 0.5 кг (до 1 кг — 345.66 ₽)</li>
+                <li class="flex items-center gap-2"><span class="text-cdek">✓</span> Вручение в руки покупателю</li>
+              </ul>
+            </div>
+          </div>
+
+          <div id="wbWarning" class="hidden mt-8 bg-red-900/20 border border-red-500/30 p-5 rounded-xl flex items-start gap-4">
+            <div class="text-red-500 text-xl mt-0.5">⚠️</div>
+            <div>
+              <h4 class="text-red-400 font-bold mb-1">Ограничение Wildberries</h4>
+              <p class="text-red-200/70 text-sm leading-relaxed">
+                По правилам Wildberries, отгрузка заказов DBS в ПВЗ запрещена. Доставка возможна только курьером до двери покупателя.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- СЕКЦИЯ 3: ФОРМА -->
+    <section class="py-12 bg-[#0b101d]" id="leadForm">
+      <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl md:text-3xl font-bold text-center text-white mb-8">Оставить заявку на подключение</h2>
+        <!-- Nginx: Подключение формы -->
+        <!--#include virtual="/src/components/leadform.html" -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Nginx: Подключение подвала -->
+  <!--#include virtual="/src/components/footer.html" -->
+  <!--#include virtual="/src/components/mobile-cta.html" -->
+
+  <script>
+    // Логика маркетплейсов
+    function setMarketplace(type) {
+      const btnUniversal = document.getElementById('btn-universal');
+      const btnWb = document.getElementById('btn-wb');
+      const pvzCard = document.getElementById('pvzCard');
+      const wbWarning = document.getElementById('wbWarning');
+
+      [btnUniversal, btnWb].forEach(btn => {
+        btn.className = 'mp-btn px-6 py-3 rounded-xl border-2 border-slate-700 bg-transparent text-slate-400 hover:border-slate-500 transition-all cursor-pointer';
+      });
+
+      if (type === 'wb') {
+        btnWb.className = 'mp-btn px-6 py-3 rounded-xl border-2 border-cdek bg-cdek/10 text-cdek font-bold transition-all cursor-pointer';
+        pvzCard.style.opacity = '0.4';
+        pvzCard.style.pointerEvents = 'none';
+        pvzCard.style.filter = 'grayscale(100%)';
+        wbWarning.classList.remove('hidden');
+        setMode('склад-дверь'); 
+      } else {
+        btnUniversal.className = 'mp-btn px-6 py-3 rounded-xl border-2 border-cdek bg-cdek/10 text-cdek font-bold transition-all cursor-pointer';
+        pvzCard.style.opacity = '1';
+        pvzCard.style.pointerEvents = 'auto';
+        pvzCard.style.filter = 'none';
+        wbWarning.classList.add('hidden');
+      }
+    }
+
+    // Логика калькулятора
+    let currentWeight = '0.5';
+    let currentMode = 'склад-склад';
+
+    function setWeight(w) {
+      currentWeight = w;
+      document.getElementById('btn-w-05').className = w === '0.5' ? 'flex-1 py-2 rounded-lg bg-slate-700 text-white font-medium text-sm transition-all' : 'flex-1 py-2 rounded-lg text-slate-400 hover:text-white font-medium text-sm transition-all';
+      document.getElementById('btn-w-10').className = w === '1.0' ? 'flex-1 py-2 rounded-lg bg-slate-700 text-white font-medium text-sm transition-all' : 'flex-1 py-2 rounded-lg text-slate-400 hover:text-white font-medium text-sm transition-all';
+      calculatePrice();
+    }
+
+    function setMode(m) {
+      currentMode = m;
+      document.getElementById('btn-m-pvz').className = m === 'склад-склад' ? 'flex-1 py-2 rounded-lg bg-slate-700 text-white font-medium text-sm transition-all' : 'flex-1 py-2 rounded-lg text-slate-400 hover:text-white font-medium text-sm transition-all';
+      document.getElementById('btn-m-door').className = m === 'склад-дверь' ? 'flex-1 py-2 rounded-lg bg-slate-700 text-white font-medium text-sm transition-all' : 'flex-1 py-2 rounded-lg text-slate-400 hover:text-white font-medium text-sm transition-all';
+      calculatePrice();
+    }
+
+    function calculatePrice() {
+      const cityFrom = document.getElementById('calc-from').value;
+      const cityTo = document.getElementById('calc-to').value;
+      const priceEl = document.getElementById('calc-price');
+      const timeEl = document.getElementById('calc-time');
+
+      if (!cityFrom || !cityTo || typeof ratesDB === 'undefined') return;
+
+      const key = `${cityFrom}|${cityTo}|${currentMode}`;
+      const rate = ratesDB[key];
+
+      if (rate && rate[currentWeight] > 0) {
+        priceEl.textContent = rate[currentWeight].toFixed(2);
+        timeEl.textContent = rate.time;
+        priceEl.classList.remove('text-red-500', 'text-2xl');
+        priceEl.classList.add('text-cdek', 'text-5xl');
+      } else {
+        priceEl.textContent = "Недоступно";
+        timeEl.textContent = "—";
+        priceEl.classList.remove('text-cdek', 'text-5xl');
+        priceEl.classList.add('text-red-500', 'text-2xl');
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      if (typeof ratesDB !== 'undefined') {
+        const citiesFrom = new Set();
+        const citiesTo = new Set();
+
+        Object.keys(ratesDB).forEach(key => {
+          const parts = key.split('|');
+          if(parts.length === 3) { citiesFrom.add(parts[0]); citiesTo.add(parts[1]); }
+        });
+
+        const fromSelect = document.getElementById('calc-from');
+        const toSelect = document.getElementById('calc-to');
+        fromSelect.innerHTML = ''; toSelect.innerHTML = '';
+
+        Array.from(citiesFrom).sort().forEach(c => fromSelect.add(new Option(c, c)));
+        Array.from(citiesTo).sort().forEach(c => toSelect.add(new Option(c, c)));
+
+        if(citiesFrom.has('Москва')) fromSelect.value = 'Москва';
+        if(citiesTo.has('Санкт-Петербург')) toSelect.value = 'Санкт-Петербург';
+
+        calculatePrice();
+      }
+    });
+
+    document.getElementById('calc-from').addEventListener('change', calculatePrice);
+    document.getElementById('calc-to').addEventListener('change', calculatePrice);
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) target.scrollIntoView({ behavior: 'smooth' });
+      });
+    });
+  </script>
+</body>
+</html>
