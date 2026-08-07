@@ -37,8 +37,11 @@
           <label class="block text-[11px] font-semibold text-slate-400 mb-1 uppercase tracking-wider">Режим доставки</label>
           <div class="relative flex items-center">
             <select id="cdek-mode" class="w-full pl-3.5 pr-10 py-2.5 bg-[#0f172a] border border-slate-700 rounded-xl text-white focus:outline-none focus:border-cdek text-sm cursor-pointer appearance-none">
-              <option value="warehouse">Склад — Склад</option>
-              <option value="door">Склад — Дверь</option>
+              <!-- Значения (value) теперь равны точным кодам тарифов СДЭК -->
+              <option value="136">Склад — Склад</option>
+              <option value="137">Склад — Дверь</option>
+              <option value="138">Дверь — Склад</option>
+              <option value="139">Дверь — Дверь</option>
             </select>
             <div class="absolute right-3 flex items-center justify-center pointer-events-none text-slate-400 text-xs">▼</div>
           </div>
@@ -150,15 +153,14 @@
         const cityFrom = document.getElementById('cdek-from').value.trim();
         const cityTo = document.getElementById('cdek-to').value.trim();
         const weightKg = parseFloat(weightInput.value) || 1;
-        const mode = document.getElementById('cdek-mode').value; // 'warehouse' или 'door'
+        
+        // Получаем готовый код тарифа прямо из выпадающего списка
+        const tariffCode = parseInt(document.getElementById('cdek-mode').value);
 
         if (!cityFrom || !cityTo) {
           alert('Пожалуйста, заполните город отправления и назначения');
           return;
         }
-
-        // Стабильные тарифы СДЭК для посылок до 50 кг: 136 (склад-склад) и 137 (склад-дверь)
-        const tariffCode = (mode === 'door') ? 137 : 136;
 
         btn.disabled = true;
         btn.innerText = 'Запрос к API СДЭК...';
