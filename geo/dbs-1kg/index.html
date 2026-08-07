@@ -1,0 +1,122 @@
+<section class="py-16 bg-dark-900 relative overflow-hidden">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    
+    <!-- Заголовок -->
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-800/50 border border-cdek/30 text-cdek text-sm font-bold uppercase tracking-wider mb-6">
+        Спецпредложение
+      </div>
+      <h2 class="text-4xl md:text-5xl font-extrabold text-white mb-6">
+        Тариф DBS для товаров <span class="text-cdek">до 1 кг</span>
+      </h2>
+      <p class="text-lg text-slate-300 max-w-2xl mx-auto">
+        Оптимальная логистика для косметики, аксессуаров и электроники. Выберите ваш маркетплейс, чтобы увидеть актуальные условия.
+      </p>
+    </div>
+
+    <!-- Интерактивный блок -->
+    <div class="bg-[#131b2c]/80 backdrop-blur-sm border border-slate-700/50 p-6 md:p-10 rounded-3xl shadow-2xl">
+      
+      <!-- Переключатель Маркетплейсов -->
+      <div class="flex flex-wrap gap-4 mb-10 justify-center">
+        <button id="btn-universal" onclick="setMarketplace('universal')" class="mp-btn px-6 py-3 rounded-xl border-2 border-cdek bg-cdek/10 text-cdek font-bold transition-all">
+          Ozon / Я.Маркет / Авито
+        </button>
+        <button id="btn-wb" onclick="setMarketplace('wb')" class="mp-btn px-6 py-3 rounded-xl border-2 border-slate-700 bg-transparent text-slate-400 hover:border-slate-500 transition-all">
+          Wildberries
+        </button>
+      </div>
+
+      <!-- Карточки с ценами -->
+      <div class="grid md:grid-cols-2 gap-6">
+        
+        <!-- Карточка: До ПВЗ -->
+        <div id="pvzCard" class="bg-slate-800/60 p-8 rounded-2xl border border-slate-700 transition-all duration-300">
+          <div class="text-sm text-slate-400 mb-2 uppercase tracking-wide font-bold">Выдача в ПВЗ СДЭК</div>
+          <div class="flex items-baseline gap-2 mb-6">
+            <span class="text-sm text-slate-400">от</span>
+            <span class="text-5xl font-black text-white">136.50</span>
+            <span class="text-2xl text-cdek font-bold">₽</span>
+          </div>
+          <ul class="text-sm text-slate-300 space-y-3 mb-8">
+            <li class="flex items-center gap-2"><span class="text-cdek">✓</span> Вес до 0.5 кг (до 1 кг — 157.50 ₽)</li>
+            <li class="flex items-center gap-2"><span class="text-cdek">✓</span> Широкая сеть пунктов выдачи</li>
+            <li class="flex items-center gap-2"><span class="text-cdek">✓</span> Идеально для недорогих товаров</li>
+          </ul>
+          <a href="#leadForm" class="block w-full py-3 text-center bg-transparent border border-cdek text-cdek hover:bg-cdek hover:text-dark-900 font-bold rounded-xl transition-colors">
+            Подключить тариф
+          </a>
+        </div>
+
+        <!-- Карточка: Курьером -->
+        <div class="bg-slate-800/60 p-8 rounded-2xl border border-slate-700">
+          <div class="text-sm text-slate-400 mb-2 uppercase tracking-wide font-bold">Курьером до двери</div>
+          <div class="flex items-baseline gap-2 mb-6">
+            <span class="text-sm text-slate-400">от</span>
+            <span class="text-5xl font-black text-white">309.28</span>
+            <span class="text-2xl text-cdek font-bold">₽</span>
+          </div>
+          <ul class="text-sm text-slate-300 space-y-3 mb-8">
+            <li class="flex items-center gap-2"><span class="text-cdek">✓</span> Вес до 0.5 кг (до 1 кг — 345.66 ₽)</li>
+            <li class="flex items-center gap-2"><span class="text-cdek">✓</span> Вручение лично в руки покупателю</li>
+            <li class="flex items-center gap-2"><span class="text-cdek">✓</span> Обязательно для алгоритмов WB</li>
+          </ul>
+          <a href="#leadForm" class="block w-full py-3 text-center bg-cdek text-dark-900 hover:bg-cdek/90 font-bold rounded-xl transition-colors shadow-lg shadow-cdek/20">
+            Подключить тариф
+          </a>
+        </div>
+
+      </div>
+
+      <!-- Предупреждение для WB -->
+      <div id="wbWarning" class="hidden mt-8 bg-red-900/20 border border-red-500/30 p-5 rounded-xl flex items-start gap-4">
+        <div class="text-red-500 text-xl mt-0.5">⚠️</div>
+        <div>
+          <h4 class="text-red-400 font-bold mb-1">Ограничение Wildberries</h4>
+          <p class="text-red-200/70 text-sm leading-relaxed">
+            По актуальным правилам площадки Wildberries, отгрузка заказов по модели DBS в пункты выдачи заказов (ПВЗ) запрещена. Доставка возможна исключительно силами курьера напрямую до двери покупателя.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<script>
+  function setMarketplace(type) {
+    const btnUniversal = document.getElementById('btn-universal');
+    const btnWb = document.getElementById('btn-wb');
+    const pvzCard = document.getElementById('pvzCard');
+    const wbWarning = document.getElementById('wbWarning');
+
+    // Сброс стилей
+    [btnUniversal, btnWb].forEach(btn => {
+      btn.className = 'mp-btn px-6 py-3 rounded-xl border-2 border-slate-700 bg-transparent text-slate-400 hover:border-slate-500 transition-all cursor-pointer';
+    });
+
+    if (type === 'wb') {
+      // Стили активной кнопки WB
+      btnWb.className = 'mp-btn px-6 py-3 rounded-xl border-2 border-cdek bg-cdek/10 text-cdek font-bold transition-all cursor-pointer';
+      
+      // Блокируем ПВЗ
+      pvzCard.style.opacity = '0.4';
+      pvzCard.style.pointerEvents = 'none';
+      pvzCard.style.filter = 'grayscale(100%)';
+      
+      // Показываем предупреждение
+      wbWarning.classList.remove('hidden');
+    } else {
+      // Стили активной универсальной кнопки
+      btnUniversal.className = 'mp-btn px-6 py-3 rounded-xl border-2 border-cdek bg-cdek/10 text-cdek font-bold transition-all cursor-pointer';
+      
+      // Возвращаем ПВЗ
+      pvzCard.style.opacity = '1';
+      pvzCard.style.pointerEvents = 'auto';
+      pvzCard.style.filter = 'none';
+      
+      // Скрываем предупреждение
+      wbWarning.classList.add('hidden');
+    }
+  }
+</script>
