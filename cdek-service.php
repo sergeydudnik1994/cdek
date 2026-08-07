@@ -24,8 +24,8 @@ if (empty($cityTo)) {
 // ==========================================
 
 // 1. ТЕСТОВЫЙ РЕЖИМ (ПЕСОЧНИЦА СДЭК):
-$clientId     = 'EMQ2R2L22iB224q22222222222222222';
-$clientSecret = 'z9a6def738202277d351cb2852e6c702';
+$clientId     = 'wqGwiQx0gg8mLtiEKsUinjVSICCjtTEP';
+$clientSecret = 'RmAmgvSgSl1yirlz9QupbzOJVqhCxcP5';
 $apiDomain    = 'api.edu.cdek.ru';
 
 // 2. БОЕВОЙ РЕЖИМ (раскомментируйте, когда получите ключи):
