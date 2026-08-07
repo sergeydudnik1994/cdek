@@ -16,51 +16,100 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@cdek-it/widget@3" async></script>
 </head>
-<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#8d05ff] selection:text-white pb-16 md:pb-0">
 
+  <!-- Nginx: Подключение шапки -->
   <!--#include virtual="/src/components/header.html" -->
 
   <main class="flex-grow">
-    <div class="max-w-7xl mx-auto px-4 py-12 sm:py-16">
-      <div class="grid lg:grid-cols-2 gap-12 items-center mb-12">
-        <div>
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase border bg-[#8d05ff]/15 text-[#a855f7] border-[#8d05ff]/30 shadow-[0_0_15px_rgba(141,5,255,0.2)]">
-            <span class="w-2 h-2 rounded-full bg-[#8d05ff]"></span>
-            <span>Wildberries FBS / DBS</span>
-          </div>
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight tracking-tight">
-            Доставка СДЭК для селлеров <span class="text-[#a855f7] drop-shadow-[0_0_20px_rgba(168,85,247,0.4)]">Wildberries</span>
-          </h1>
-          <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-8">
-            Оптимизируйте логистику по схемам <b class="text-white">FBS и DBS</b>. Избегайте штрафов за просрочку отгрузок и отправляйте товары через тысячи ПВЗ СДЭК.
-          </p>
-          <div class="grid grid-cols-2 gap-4 pt-6 border-t border-slate-800">
-            <div class="glass p-4 rounded-2xl border-slate-800">
-              <p class="text-xl sm:text-2xl font-bold text-[#a855f7]">Без очередей</p>
-              <p class="text-xs text-slate-400 mt-1">Быстрая сдача заказов</p>
+    
+    <!-- HERO СЕКЦИЯ -->
+    <section class="pt-12 sm:pt-20 pb-12 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Левая колонка -->
+          <div class="lg:col-span-7 space-y-8">
+            <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#8d05ff]/15 border border-[#8d05ff]/30 backdrop-blur-sm">
+              <div class="w-2.5 h-2.5 rounded-full bg-[#8d05ff] shadow-[0_0_10px_#8d05ff] animate-pulse"></div>
+              <span class="text-xs font-bold text-[#a855f7] uppercase tracking-wider">Wildberries FBS / DBS</span>
             </div>
-            <div class="glass p-4 rounded-2xl border-slate-800">
-              <p class="text-xl sm:text-2xl font-bold text-white">Скидки до 50%</p>
-              <p class="text-xs text-slate-400 mt-1">По корпоративному тарифу</p>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
+              Доставка СДЭК <br class="hidden sm:block" />
+              для селлеров <span class="text-[#a855f7] drop-shadow-[0_0_20px_rgba(168,85,247,0.4)]">Wildberries</span>
+            </h1>
+
+            <p class="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl">
+              Оптимизируйте логистику по схемам <b class="text-white">FBS и DBS</b>. Избегайте штрафов за просрочку отгрузок и отправляйте товары через тысячи ПВЗ СДЭК.
+            </p>
+
+            <!-- Важное примечание по DBS -->
+            <div class="bg-[#a855f7]/10 border border-[#a855f7]/20 p-4 rounded-xl text-sm text-[#d8b4fe]">
+              <span class="font-bold text-white">Примечание по DBS:</span> работа осуществляется в режиме доставки «до двери» или до ПВЗ Wildberries. Цена доставки до ПВЗ WB приравнивается к тарифу «до двери».
+            </div>
+
+            <div class="grid grid-cols-2 gap-6 pt-6 border-t border-slate-800/80 max-w-2xl">
+              <div>
+                <div class="text-2xl sm:text-3xl font-bold text-[#a855f7] mb-1">Без очередей</div>
+                <div class="text-sm text-slate-400">Быстрая сдача заказов</div>
+              </div>
+              <div>
+                <div class="text-2xl sm:text-3xl font-bold text-white mb-1">до 50%</div>
+                <div class="text-sm text-slate-400">Скидка по договору</div>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div id="leadForm" class="max-w-xl mx-auto w-full">
-          <!--#include virtual="/src/components/leadform.html" -->
+
+          <!-- Правая колонка: Форма -->
+          <div class="lg:col-span-5" id="mainLeadForm">
+            <div class="sticky top-28">
+              <!--#include virtual="/src/components/leadform.html" -->
+            </div>
+          </div>
+
         </div>
       </div>
+    </section>
 
-      <!--#include virtual="/src/components/platforms.html" -->
+    <!-- БЛОК МАРКЕТПЛЕЙСОВ -->
+    <section class="py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!--#include virtual="/src/components/platforms.html" -->
+      </div>
+    </section>
 
-      <section class="mt-12">
+    <!-- КАЛЬКУЛЯТОР -->
+    <section id="widget-section" class="py-12">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <!--#include virtual="/src/components/calculator-widget.html" -->
-      </section>
-    </div>
+      </div>
+    </section>
+
+    <!-- Nginx: Подключение превью блога -->
+    <!--#include virtual="/src/components/blog-preview.html" -->
+
   </main>
 
+  <!-- Nginx: Подключение подвала -->
   <!--#include virtual="/src/components/footer.html" -->
   <!--#include virtual="/src/components/mobile-cta.html" -->
+
+  <!-- Скрипт прокрутки -->
+  <script>
+    document.addEventListener('click', function(e) {
+      const target = e.target.closest('a[href*="#leadForm"], a[href*="leadForm"]');
+      if (target) {
+        e.preventDefault();
+        const formElement = document.getElementById('mainLeadForm');
+        if (formElement) {
+          formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          const firstInput = formElement.querySelector('input');
+          if (firstInput) setTimeout(() => firstInput.focus(), 400);
+        }
+      }
+    });
+  </script>
 
 </body>
 </html>
