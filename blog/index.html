@@ -20,37 +20,18 @@
   <!--#include virtual="/src/components/header.html" -->
 
   <main class="flex-grow py-12 sm:py-16">
-    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6">
       
-      <div class="mb-10">
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
+      <div class="mb-12 text-center">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight mb-4">
           Блог — <span class="text-cdek">Полезное для селлеров</span>
         </h1>
-        <p class="text-slate-400 mt-3 text-base sm:text-lg">Инструкции по логистике, разбор тарифов и советы по экономии.</p>
+        <p class="text-slate-400 text-lg max-w-2xl mx-auto">Инструкции по логистике, разбор тарифов и советы по экономии.</p>
       </div>
 
-      <!-- Сетка статей -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <!-- Карточка 1 -->
-        <a href="/blog/kakoj-tarif-cdek-vybrat/" class="glass p-6 rounded-2xl border border-slate-800 hover:border-cdek/50 transition-all group flex flex-col h-full" style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px);">
-          <div>
-            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-3">
-            <h3 class="text-lg font-bold text-white group-hover:text-cdek transition-colors mb-3 leading-snug">
-              Какой тариф CDEK выбрать? Гид для селлеров маркетплейсов
-            </h3>
-            <p class="text-sm text-slate-400 line-clamp-3 leading-relaxed mb-6">
-              Разбор тарифов CDEK (DBS, Магистральный экспресс, Сборный груз) для селлеров Wildberries, Ozon, Яндекс Маркета и Авито.
-            </p>
-          </div>
-          <span class="text-xs font-bold text-cdek flex items-center gap-1 mt-auto group-hover:translate-x-1 transition-transform">
-            Читать статью &rarr;
-          </span>
-        </a>
+      <!-- Сетка всех статей из общего компонента -->
+      <!--#include virtual="/src/components/blog-grid.html" -->
 
-        <!-- Место для будущих карточек -->
-
-      </div>
     </div>
   </main>
 
