@@ -86,10 +86,24 @@
       });
     }
 
-    const topCities = [
-      "Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург", "Казань", "Нижний Новгород", "Красноярск", "Челябинск", 
-      "Самара", "Уфа", "Ростов-на-Дону", "Омск", "Краснодар", "Воронеж", "Пермь", "Волгоград", "Саратов", "Тюмень"
+    // 1. Оставляем небольшой резервный список на случай, если у клиента пропадет интернет
+    let topCities = [
+      "Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург", "Казань", "Нижний Новгород", 
+      "Красноярск", "Челябинск", "Самара", "Уфа", "Ростов-на-Дону", "Омск", "Краснодар", 
+      "Воронеж", "Пермь", "Волгоград", "Саратов", "Тюмень", "Хабаровск", "Владивосток"
     ];
+
+    // 2. АВТОМАТИЧЕСКАЯ ЗАГРУЗКА 1100+ ГОРОДОВ РОССИИ
+    fetch('https://raw.githubusercontent.com/pensnarik/russian-cities/master/russian-cities.json')
+      .then(response => response.json())
+      .then(data => {
+        const allCities = data.map(city => city.name);
+        topCities = [...new Set(allCities)];
+        console.log('✅ Успешно загружена база:', topCities.length, 'городов');
+      })
+      .catch(error => {
+        console.error('Ошибка загрузки городов, используем резервный список', error);
+      });
 
     function setupAutocomplete(inputId, listId) {
       const input = document.getElementById(inputId);
@@ -103,7 +117,10 @@
         const filtered = topCities.filter(city => city.toLowerCase().includes(val));
         if (filtered.length === 0) { list.classList.add('hidden'); return; }
 
-        filtered.forEach(city => {
+        // Ограничиваем вывод до 20 городов для высокой производительности браузера
+        const limited = filtered.slice(0, 20);
+
+        limited.forEach(city => {
           const li = document.createElement('li');
           li.className = 'px-3.5 py-2.5 cursor-pointer hover:bg-cdek hover:text-[#0f172a] text-white border-b border-slate-700/50 last:border-0 transition-colors';
           const regex = new RegExp(`(${val})`, 'gi');
