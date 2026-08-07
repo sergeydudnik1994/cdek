@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - master
 
 jobs:
   google-index:
@@ -28,11 +29,15 @@ jobs:
         run: |
           HOST="cdek-marketplace.ru"
           
+          # Записываем секрет в полноценный JSON-файл на лету (решает проблему с \n)
+          echo "$GCP_CREDENTIALS" > gcp-key.json
+          
           # Ищем измененные HTML файлы
           CHANGED_FILES=$(git diff --name-only --diff-filter=ACMR HEAD~1 HEAD | grep '\.html$' || true)
           
           if [ -z "$CHANGED_FILES" ]; then
             echo "Нет измененных HTML файлов в этом коммите. Отправка в Google пропущена."
+            rm -f gcp-key.json
             exit 0
           fi
           
@@ -53,27 +58,21 @@ jobs:
           JSON_URLS=$(IFS=,; echo "${URL_LIST[*]}")
           echo "[$JSON_URLS]" > urls.json
           
-          # Создаем исполняемый JS-скрипт для отправки в Google
+          # Создаем JS-скрипт, использующий keyFile вместо чтения переменных окружения
           cat << 'EOF' > index_google.js
           const { google } = require('googleapis');
           const fs = require('fs');
 
           async function run() {
-            // Читаем ключ из секретов GitHub
-            const keys = JSON.parse(process.env.GCP_CREDENTIALS);
             const urls = JSON.parse(fs.readFileSync('urls.json', 'utf8'));
 
-            // Авторизуемся в Google
-            const jwtClient = new google.auth.JWT(
-              keys.client_email,
-              null,
-              keys.private_key,
-              ['https://www.googleapis.com/auth/indexing'],
-              null
-            );
+            // Авторизуемся через файл ключа — самый стабильный метод
+            const auth = new google.auth.GoogleAuth({
+              keyFile: 'gcp-key.json',
+              scopes: ['https://www.googleapis.com/auth/indexing'],
+            });
 
-            await jwtClient.authorize();
-            const indexing = google.indexing({ version: 'v3', auth: jwtClient });
+            const indexing = google.indexing({ version: 'v3', auth });
 
             // Отправляем каждый URL по очереди
             for (const url of urls) {
@@ -96,3 +95,6 @@ jobs:
 
           # Запускаем скрипт
           node index_google.js
+          
+          # Удаляем временный файл с ключом в целях безопасности
+          rm -f gcp-key.json
