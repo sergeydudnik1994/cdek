@@ -16,51 +16,120 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@cdek-it/widget@3" async></script>
 </head>
-<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#3b82f6] selection:text-white pb-16 md:pb-0">
 
+  <!-- Nginx: Подключение шапки -->
   <!--#include virtual="/src/components/header.html" -->
 
   <main class="flex-grow">
-    <div class="max-w-7xl mx-auto px-4 py-12 sm:py-16">
-      <div class="grid lg:grid-cols-2 gap-12 items-center mb-12">
-        <div>
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase border bg-[#005BFF]/15 text-[#3b82f6] border-[#005BFF]/30 shadow-[0_0_15px_rgba(0,91,255,0.2)]">
-            <span class="w-2 h-2 rounded-full bg-[#005BFF]"></span>
-            <span>Ozon FBS / rFBS</span>
-          </div>
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight tracking-tight">
-            Доставка СДЭК для селлеров <span class="text-[#3b82f6] drop-shadow-[0_0_20px_rgba(0,91,255,0.4)]">Ozon</span>
-          </h1>
-          <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-8">
-            Работайте по моделям <b class="text-white">FBS и rFBS</b> без привязки к центральным складам Ozon, долгих поставок и очередей при сдаче груза в ближайшем ПВЗ СДЭК.
-          </p>
-          <div class="grid grid-cols-2 gap-4 pt-6 border-t border-slate-800">
-            <div class="glass p-4 rounded-2xl border-slate-800">
-              <p class="text-xl sm:text-2xl font-bold text-[#3b82f6]">15 минут</p>
-              <p class="text-xs text-slate-400 mt-1">Подключение договора</p>
+    
+    <!-- HERO СЕКЦИЯ -->
+    <section class="pt-12 sm:pt-20 pb-12 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Левая колонка -->
+          <div class="lg:col-span-7 space-y-8">
+            <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#005BFF]/15 border border-[#005BFF]/30 backdrop-blur-sm">
+              <div class="w-2.5 h-2.5 rounded-full bg-[#005BFF] shadow-[0_0_10px_#005BFF] animate-pulse"></div>
+              <span class="text-xs font-bold text-[#3b82f6] uppercase tracking-wider">Ozon FBS / rFBS</span>
             </div>
-            <div class="glass p-4 rounded-2xl border-slate-800">
-              <p class="text-xl sm:text-2xl font-bold text-white">4000+ ПВЗ</p>
-              <p class="text-xs text-slate-400 mt-1">Удобная приемка заказов</p>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
+              Доставка СДЭК <br class="hidden sm:block" />
+              для селлеров <span class="text-[#3b82f6] drop-shadow-[0_0_20px_rgba(59,130,246,0.4)]">Ozon</span>
+            </h1>
+
+            <p class="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl">
+              Работайте по моделям <b class="text-white">FBS и rFBS</b> без привязки к центральным складам Ozon, долгих поставок и очередей при сдаче груза в ближайшем ПВЗ СДЭК.
+            </p>
+
+            <div class="grid grid-cols-2 gap-6 pt-6 border-t border-slate-800/80 max-w-2xl">
+              <div>
+                <div class="text-2xl sm:text-3xl font-bold text-[#3b82f6] mb-1">15 минут</div>
+                <div class="text-sm text-slate-400">Подключение договора</div>
+              </div>
+              <div>
+                <div class="text-2xl sm:text-3xl font-bold text-white mb-1">4000+</div>
+                <div class="text-sm text-slate-400">ПВЗ для приемки</div>
+              </div>
             </div>
           </div>
+
+          <!-- Правая колонка: Форма -->
+          <div class="lg:col-span-5" id="mainLeadForm">
+            <div class="sticky top-28">
+              <!--#include virtual="/src/components/leadform.html" -->
+            </div>
+          </div>
+
         </div>
-        
-        <div id="leadForm" class="max-w-xl mx-auto w-full">
-          <!--#include virtual="/src/components/leadform.html" -->
+      </div>
+    </section>
+
+    <!-- БЛОК МАРКЕТПЛЕЙСОВ -->
+    <section class="py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!--#include virtual="/src/components/platforms.html" -->
+      </div>
+    </section>
+
+    <!-- ПРЕИМУЩЕСТВА И КАЛЬКУЛЯТОР -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-10 text-center">
+        Преимущества работы со СДЭК <span class="text-[#3b82f6]">на Ozon</span>
+      </h2>
+      
+      <div class="grid md:grid-cols-3 gap-6 mb-16">
+        <div class="bg-slate-900/80 border border-slate-800 hover:border-[#3b82f6]/50 p-8 rounded-2xl transition-all backdrop-blur-sm shadow-lg">
+          <div class="text-[#3b82f6] mb-5 text-3xl">🚀</div>
+          <h3 class="text-xl font-bold text-white mb-3">Скорость отгрузки</h3>
+          <p class="text-slate-400 leading-relaxed text-sm">Сдавайте заказы в ближайший ПВЗ рядом с офисом или домом — забудьте про поездки на удаленные сортировочные центры.</p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 hover:border-[#3b82f6]/50 p-8 rounded-2xl transition-all backdrop-blur-sm shadow-lg">
+          <div class="text-[#3b82f6] mb-5 text-3xl">⚙️</div>
+          <h3 class="text-xl font-bold text-white mb-3">Автоматизация</h3>
+          <p class="text-slate-400 leading-relaxed text-sm">Полная интеграция с личным кабинетом продавца Ozon: автоматическая выгрузка заказов, трекинг и обновление статусов.</p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 hover:border-[#3b82f6]/50 p-8 rounded-2xl transition-all backdrop-blur-sm shadow-lg">
+          <div class="text-[#3b82f6] mb-5 text-3xl">💰</div>
+          <h3 class="text-xl font-bold text-white mb-3">Экономия бюджета</h3>
+          <p class="text-slate-400 leading-relaxed text-sm">Оптимизируйте логистику с помощью наших B2B-тарифов. Стоимость доставки ниже рыночной с первой посылки.</p>
         </div>
       </div>
 
-      <!--#include virtual="/src/components/platforms.html" -->
-
-      <section class="mt-12">
+      <!-- КАЛЬКУЛЯТОР ТАРИФОВ -->
+      <div class="mb-16 max-w-5xl mx-auto">
         <!--#include virtual="/src/components/calculator-widget.html" -->
-      </section>
-    </div>
+      </div>
+    </section>
+
+    <!-- БЛОК БЛОГА -->
+    <!--#include virtual="/src/components/blog-preview.html" -->
+
   </main>
 
+  <!-- Nginx: Подключение подвала -->
   <!--#include virtual="/src/components/footer.html" -->
   <!--#include virtual="/src/components/mobile-cta.html" -->
+
+  <!-- Скрипт прокрутки -->
+  <script>
+    document.addEventListener('click', function(e) {
+      const target = e.target.closest('a[href*="#leadForm"], a[href*="leadForm"]');
+      if (target) {
+        e.preventDefault();
+        const formElement = document.getElementById('mainLeadForm');
+        if (formElement) {
+          formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          const firstInput = formElement.querySelector('input');
+          if (firstInput) setTimeout(() => firstInput.focus(), 400);
+        }
+      }
+    });
+  </script>
 
 </body>
 </html>
