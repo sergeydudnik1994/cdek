@@ -63,7 +63,7 @@ if (!$accessToken || $tokenHttpCode !== 200) {
 }
 
 // ==========================================
-// ВПОМОГАТЕЛЬНАЯ ФУНКЦИЯ ПОИСКА КОДА ГОРОДА
+// ВСПОМОГАТЕЛЬНАЯ ФУНКЦИЯ ПОИСКА КОДА ГОРОДА
 // ==========================================
 function getCdekCityCode($cityName, $apiDomain, $accessToken) {
     $url = "https://{$apiDomain}/v2/location/cities?city=" . urlencode($cityName) . "&country_codes=RU&size=1";
@@ -128,8 +128,17 @@ curl_close($ch);
 if ($httpCode === 200) {
     $data = json_decode($response, true);
 
-    $minPeriod = isset($data['period_min']) && $data['period_min'] > 0 ? $data['period_min'] : 2;
-    $maxPeriod = isset($data['period_max']) && $data['period_max'] > 0 ? $data['period_max'] : $minPeriod + 2;
+    // Получаем сроки, если они есть
+    $minPeriod = (isset($data['period_min']) && $data['period_min'] > 0) ? (int)$data['period_min'] : 2;
+    $maxPeriod = (isset($data['period_max']) && $data['period_max'] > 0) ? (int)$data['period_max'] : $minPeriod + 2;
+
+    // Жесткая защита от ошибки "2-1 дней" (если сервер вернул некорректный ответ)
+    if ($maxPeriod < $minPeriod) {
+        $maxPeriod = $minPeriod + 1;
+    }
+    if ($minPeriod === $maxPeriod) {
+        $maxPeriod = $minPeriod + 1; // Чтобы всегда был диапазон, например "2-3"
+    }
 
     echo json_encode([
         'result' => [
