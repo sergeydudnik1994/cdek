@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Калькулятор тарифов СДЭК — расчет стоимости доставки</title>
+  <meta name="description" content="Точный расчет стоимости и сроков доставки СДЭК для интернет-магазинов, а также по схемам DBS и FBS." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { cdek: '#8de21a', dark: { 900: '#0b101d' } } } }
+    }
+  </script>
+</head>
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
+
+  <!--#include virtual="/src/components/header.html" -->
+
+  <main class="py-10 min-h-screen flex-grow">
+    <div class="container mx-auto px-4">
+      
+      <!-- 1. Наш реальный калькулятор -->
+      <!--#include virtual="/src/components/calculator-widget.html" -->
+
+      <!-- 2. Наш реальный модуль платформ -->
+      <div class="mt-12">
+        <!--#include virtual="/src/components/platforms.html" -->
+      </div>
+
+      <!-- 3. Наш реальный компонент Блога -->
+      <div class="max-w-4xl mx-auto mt-16 mb-12">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-end mb-6 gap-4">
+          <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+            Блог — <span class="text-cdek">Полезное для селлеров</span>
+          </h2>
+          <a href="/blog/" class="text-cdek hover:underline text-sm font-medium transition-colors">Все статьи →</a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <a href="/blog/kakoj-tarif-cdek-vybrat/" class="glass rounded-2xl border border-slate-800 p-6 flex flex-col hover:border-cdek transition-all duration-300 bg-[#1e293b]/40 shadow-lg group">
+            <span class="text-[11px] font-bold tracking-wider text-slate-400 uppercase mb-3 block">1 августа 2026 г.</span>
+            <h4 class="text-white font-bold text-lg leading-tight mb-3 group-hover:text-cdek transition-colors">Какой тариф CDEK выбрать?<br/>Гид для селлеров...</h4>
+            <p class="text-xs text-slate-400 leading-relaxed mb-6 flex-grow">Разбор тарифов CDEK (DBS, Магистральный экспресс, Сборный груз) для селлеров Wildberries, Ozon, Яндекс Маркета и Авито.</p>
+            <span class="text-cdek text-[11px] font-bold mt-auto inline-flex items-center group-hover:underline">Читать статью →</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 4. Форма заявки -->
+      <div id="leadForm" class="max-w-4xl mx-auto mt-12">
+        <!--#include virtual="/src/components/leadform.html" -->
+      </div>
+
+    </div>
+  </main>
+
+  <!--#include virtual="/src/components/footer.html" -->
+  <!--#include virtual="/src/components/mobile-cta.html" -->
+
+</body>
+</html>

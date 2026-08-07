@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>СДЭК для Яндекс Маркета (DBS / FBS) — Подключение</title>
+  <meta name="description" content="Официальная логистика СДЭК для селлеров Яндекс Маркета. Прямой договор и выгодные тарифы." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { cdek: '#8de21a', dark: { 900: '#0b101d' } } } }
+    }
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/@cdek-it/widget@3" async></script>
+</head>
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
+
+  <!--#include virtual="/src/components/header.html" -->
+
+  <main class="flex-grow">
+    <div class="max-w-7xl mx-auto px-4 py-12 sm:py-16">
+      <div class="grid lg:grid-cols-2 gap-12 items-center mb-12">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase border bg-[#fc3f1d]/15 text-[#ff5722] border-[#fc3f1d]/30 shadow-[0_0_15px_rgba(252,63,29,0.2)]">
+            <span class="w-2 h-2 rounded-full bg-[#fc3f1d]"></span>
+            <span>Яндекс Маркет DBS / FBS</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight tracking-tight">
+            Доставка СДЭК для селлеров <span class="text-[#ff5722] drop-shadow-[0_0_20px_rgba(255,87,34,0.4)]">Яндекс Маркета</span>
+          </h1>
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-8">
+            Надежная доставка заказов покупателям по моделям <b class="text-white">DBS и FBS</b> с интеграцией всех статусов и быстрой отгрузкой.
+          </p>
+          <div class="grid grid-cols-2 gap-4 pt-6 border-t border-slate-800">
+            <div class="glass p-4 rounded-2xl border-slate-800">
+              <p class="text-xl sm:text-2xl font-bold text-[#ff5722]">Интеграция 0 ₽</p>
+              <p class="text-xs text-slate-400 mt-1">Помощь в настройке</p>
+            </div>
+            <div class="glass p-4 rounded-2xl border-slate-800">
+              <p class="text-xl sm:text-2xl font-bold text-white">Постоплата</p>
+              <p class="text-xs text-slate-400 mt-1">Удобные расчеты</p>
+            </div>
+          </div>
+        </div>
+        
+        <div id="leadForm" class="max-w-xl mx-auto w-full">
+          <!--#include virtual="/src/components/leadform.html" -->
+        </div>
+      </div>
+
+      <!--#include virtual="/src/components/platforms.html" -->
+
+      <section class="mt-12">
+        <!--#include virtual="/src/components/calculator-widget.html" -->
+      </section>
+    </div>
+  </main>
+
+  <!--#include virtual="/src/components/footer.html" -->
+  <!--#include virtual="/src/components/mobile-cta.html" -->
+
+</body>
+</html>

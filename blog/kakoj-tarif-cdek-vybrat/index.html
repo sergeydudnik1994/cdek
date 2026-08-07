@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Какой тариф CDEK выбрать? Гид для селлеров маркетплейсов</title>
+  <meta name="description" content="Разбор тарифов CDEK (DBS, Магистральный экспресс, Сборный груз) для селлеров Wildberries, Ozon, Яндекс Маркета и Авито." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { cdek: '#8de21a', dark: { 900: '#0b101d' } } } }
+    }
+  </script>
+</head>
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
+
+  <!--#include virtual="/src/components/header.html" -->
+
+  <main class="flex-grow py-12 sm:py-16">
+    <article class="max-w-3xl mx-auto px-4 sm:px-6">
+      
+      <!-- Шапка статьи -->
+      <header class="mb-10 sm:mb-14 text-center">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase border bg-cdek/10 text-cdek border-cdek/30">
+          <span>Блог для селлеров</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight tracking-tight">
+          Какой тариф CDEK выбрать? <br/><span class="text-cdek">Гид для селлеров маркетплейсов</span>
+        </h1>
+      </header>
+
+      <!-- Тело статьи -->
+      <div class="glass p-6 sm:p-10 rounded-3xl border border-slate-800 text-slate-300 text-base sm:text-lg leading-relaxed space-y-6">
+        
+        <p>Доставка — это фундамент юнит-экономики любого селлера. Неправильно подобранный тариф может «съесть» всю прибыль, даже если вы нашли товар с хорошей маржой. В этой статье разбираемся, какой тариф CDEK подходит именно вам — исходя из того, что вы продаете и в каких объемах.</p>
+
+        <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6 pb-2 border-b border-slate-800">Проблема: когда маркетплейс берет больше, чем доставка</h2>
+        <p>Вы часто видите парадокс: товар стоит 300 рублей, маркетплейс берет 100 рублей комиссии, а доставка — еще 100. В итоге вам остается почти ничего.</p>
+        <p>Но есть решение. Если товар стоит 3000 рублей, те же 300 рублей за доставку — это уже только 10% от выручки. А маркетплейсовская комиссия остается той же. Выигрыш очевидный.</p>
+        <div class="bg-cdek/10 border-l-4 border-cdek p-4 rounded-r-xl text-white">
+          <strong>Вывод:</strong> начните с анализа своего ассортимента. Какой средний чек? Какие габариты товаров? Ответ на эти вопросы подскажет правильный тариф.
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6 pb-2 border-b border-slate-800">Портрет 1: Продавец нестандартных и длинных товаров</h2>
+        <p class="text-cdek font-bold uppercase tracking-wide text-sm">Тариф: DBS (Доставка по селам)</p>
+        <p><strong>Вы сюда, если продаете:</strong></p>
+        <ul class="list-disc list-inside space-y-1 ml-2">
+          <li>Удочки, спортивные шесты</li>
+          <li>Лыжи, сноуборды</li>
+          <li>Рулонные шторы и карнизы</li>
+          <li>Ковры и гобелены</li>
+          <li>Саженцы и длинномеры</li>
+          <li>Вообще всё, что длиннее стандартной коробки, но весит от 1 до 50 кг</li>
+        </ul>
+        <p><strong>Главная фишка DBS:</strong> никаких ограничений на длину сторон. Двухметровую удочку? Пожалуйста. Четырёхметровый карниз? Без проблем. Главное условие — физический или объемный вес от 1 до 50 кг.</p>
+        <p><strong>Проблема без CDEK:</strong> Маркетплейсы штрафуют за длину упаковки. На Wildberries и Ozon длинные товары могут быть отклонены или облагаются дополнительными комиссиями.</p>
+
+        <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6 pb-2 border-b border-slate-800">Портрет 2: Продавец средних и тяжелых товаров</h2>
+        <p class="text-cdek font-bold uppercase tracking-wide text-sm">Тарифы: Магистральный экспресс и Экспресс</p>
+        <p><strong>Вы сюда, если продаете:</strong></p>
+        <ul class="list-disc list-inside space-y-1 ml-2">
+          <li>Разобранную мебель (столы, стулья, полки)</li>
+          <li>Микроволновки и бытовую технику</li>
+          <li>Автозапчасти (бамперы, двери, капоты)</li>
+          <li>Инструменты и станки</li>
+        </ul>
+        <p><strong>Главная фишка Магистрального экспресса:</strong> фиксированная цена для товаров до 30 кг. Не нужно гадать — вы точно знаете, во сколько вам обойдется доставка каждого товара.</p>
+        
+        <!-- Красивая таблица -->
+        <div class="overflow-x-auto my-6">
+          <table class="w-full text-left text-sm sm:text-base">
+            <thead>
+              <tr class="bg-slate-800 text-white">
+                <th class="p-4 rounded-tl-xl font-bold">Статья расходов</th>
+                <th class="p-4 rounded-tr-xl font-bold">Сумма</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800 bg-slate-900/50">
+              <tr><td class="p-4">Цена товара</td><td class="p-4 text-white font-medium">2500 ₽</td></tr>
+              <tr><td class="p-4">Комиссия маркетплейса (16%)</td><td class="p-4 text-white font-medium">400 ₽</td></tr>
+              <tr><td class="p-4">Доставка CDEK</td><td class="p-4 text-white font-medium">250 ₽</td></tr>
+              <tr><td class="p-4">Себестоимость</td><td class="p-4 text-white font-medium">1200 ₽</td></tr>
+              <tr class="bg-cdek/10 text-cdek"><td class="p-4 font-black rounded-bl-xl">Ваша чистая прибыль</td><td class="p-4 font-black rounded-br-xl">650 ₽</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6 pb-2 border-b border-slate-800">Портрет 3: B2B-поставщик и крупный оптовик</h2>
+        <p class="text-cdek font-bold uppercase tracking-wide text-sm">Тариф: Сборный груз</p>
+        <p><strong>Вы сюда, если:</strong> отгружаете товары паллетами, работаете с розничными сетями, фулфилмент-центрами маркетплейсов или продаете партии от 60 кг до 1 тонны.</p>
+
+        <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6 pb-2 border-b border-slate-800">Главный вывод</h2>
+        <p>Правильно подобранный тариф доставки — это не просто экономия на логистике. Это инструмент для увеличения маржи и конкурентоспособности на маркетплейсе.</p>
+        <p><strong>Хотите узнать точную стоимость доставки для вашего товара?</strong> Оставьте заявку ниже — мы рассчитаем оптимальный тариф и покажем, сколько вы сэкономите.</p>
+
+      </div>
+    </article>
+
+    <!-- Блок с формой внизу статьи -->
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 mt-12" id="leadForm">
+      <!--#include virtual="/src/components/leadform.html" -->
+    </div>
+  </main>
+
+  <!--#include virtual="/src/components/footer.html" -->
+  <!--#include virtual="/src/components/mobile-cta.html" -->
+
+</body>
+</html>

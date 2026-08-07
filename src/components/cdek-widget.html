@@ -1,0 +1,28 @@
+<div class="max-w-4xl mx-auto glass p-5 sm:p-6 rounded-3xl border border-slate-800 shadow-xl my-6">
+  <div class="mb-4">
+    <h3 class="text-xl sm:text-2xl font-black text-white tracking-tight">Калькулятор и выбор ПВЗ СДЭК</h3>
+    <p class="text-xs sm:text-sm text-slate-400 mt-0.5">
+      Официальный расчет тарифов и выбор пунктов выдачи заказов
+    </p>
+  </div>
+
+  <!-- Контейнер, в котором официальный виджет отрисует всю логику, поля и карту -->
+  <div id="cdek-map-container" class="w-full h-[600px] rounded-xl overflow-hidden bg-white shadow-inner"></div>
+</div>
+
+<!-- Подключаем официальный скрипт виджета СДЭК -->
+<script src="https://widget.cdek.ru/widget/widjet.js" charset="utf-8"></script>
+
+<!-- Инициализация виджета с привязкой к нашему серверному API -->
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+      var cdekWidget = new ISDKWidget({
+          defaultCity: 'Москва',       // Город по умолчанию
+          cityFrom: 'Москва',          // Город вашего склада отправления
+          link: 'cdek-map-container',  // ID контейнера выше
+          path: 'https://widget.cdek.ru/widget/scripts/',
+          choose: true,                // Разрешить выбор ПВЗ
+          servicepath: '/api/cdek-service' // Путь к нашему бэкенд-обработчику с ключами
+      });
+  });
+</script>

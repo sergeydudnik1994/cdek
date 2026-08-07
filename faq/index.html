@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Вопросы и ответы (FAQ) — Подключение СДЭК для селлеров</title>
+  <meta name="description" content="Ответы на популярные вопросы о заключении договора со СДЭК, скидках до 50% и отгрузке заказов для Ozon, WB, Яндекс Маркета и Авито." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <!-- Микроразметка для FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Сколько стоит заключение договора со СДЭК?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Заключение корпоративного договора бесплатно. Отсутствуют скрытые платежи и обязательные ежемесячные минимальные объемы отгрузок."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Как отправлять заказы по схемам FBS и DBS для маркетплейсов?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Вы сможете сдавать промаркированные заказы в ближайшем ПВЗ СДЭК или вызывать курьера на свой склад. Статусы доставки автоматически передаются в личный кабинет Ozon, Wildberries, Яндекс Маркета или Авито."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Как работает скидка на логистику до 50%?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "После заключения договора для вашего аккаунта активируются специальные корпоративные тарифы «Посылка», «DBS» и «Магистральный экспресс», которые значительно дешевле базовых розничных цен СДЭК."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Можно ли получить персональный расчет под УСН 5%?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Да, наши менеджеры бесплатно рассчитают юнит-экономику с учетом вашей системы налогообложения (УСН 5%) и подскажут наиболее выгодный тариф под ваши габариты и вес товаров."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Какие документы нужны для заключения договора?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Для ИП понадобится ИНН и Паспорт, для ООО — ИНН, ОГРН и уставные документы. Оформление договора занимает около 15 минут в онлайн-режиме."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { cdek: '#8de21a', dark: { 900: '#0b101d' } } } }
+    }
+  </script>
+</head>
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
+
+  <!--#include virtual="/src/components/header.html" -->
+
+  <main class="flex-grow">
+    <div class="max-w-4xl mx-auto px-4 py-12 sm:py-16 space-y-12">
+      <!-- Заголовок страницы -->
+      <div class="text-center space-y-3">
+        <h1 class="text-3xl sm:text-4xl font-black tracking-tight text-white">
+          Часто задаваемые вопросы (FAQ)
+        </h1>
+        <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
+          Всё, что нужно знать о подключении корпоративного договора СДЭК, тарифах и схемах отгрузки.
+        </p>
+      </div>
+
+      <!-- Список вопросов и ответов -->
+      <div class="space-y-4">
+        
+        <details class="group bg-slate-900/80 border border-slate-800 rounded-2xl p-6 transition-all duration-200 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white group-open:text-cdek transition-colors">
+            <span>Сколько стоит заключение договора со СДЭК?</span>
+            <span class="ml-4 flex-shrink-0 transition-transform duration-200 group-open:rotate-180 text-cdek">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </span>
+          </summary>
+          <p class="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed border-t border-slate-800/80 pt-4">
+            Заключение корпоративного договора бесплатно. Отсутствуют скрытые платежи и обязательные ежемесячные минимальные объемы отгрузок.
+          </p>
+        </details>
+
+        <details class="group bg-slate-900/80 border border-slate-800 rounded-2xl p-6 transition-all duration-200 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white group-open:text-cdek transition-colors">
+            <span>Как отправлять заказы по схемам FBS и DBS для маркетплейсов?</span>
+            <span class="ml-4 flex-shrink-0 transition-transform duration-200 group-open:rotate-180 text-cdek">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </span>
+          </summary>
+          <p class="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed border-t border-slate-800/80 pt-4">
+            Вы сможете сдавать промаркированные заказы в ближайшем ПВЗ СДЭК или вызывать курьера на свой склад. Статусы доставки автоматически передаются в личный кабинет Ozon, Wildberries, Яндекс Маркета или Авито.
+          </p>
+        </details>
+
+        <details class="group bg-slate-900/80 border border-slate-800 rounded-2xl p-6 transition-all duration-200 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white group-open:text-cdek transition-colors">
+            <span>Как работает скидка на логистику до 50%?</span>
+            <span class="ml-4 flex-shrink-0 transition-transform duration-200 group-open:rotate-180 text-cdek">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </span>
+          </summary>
+          <p class="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed border-t border-slate-800/80 pt-4">
+            После заключения договора для вашего аккаунта активируются специальные корпоративные тарифы «Посылка», «DBS» и «Магистральный экспресс», которые значительно дешевле базовых розничных цен СДЭК.
+          </p>
+        </details>
+
+        <details class="group bg-slate-900/80 border border-slate-800 rounded-2xl p-6 transition-all duration-200 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white group-open:text-cdek transition-colors">
+            <span>Можно ли получить персональный расчет под УСН 5%?</span>
+            <span class="ml-4 flex-shrink-0 transition-transform duration-200 group-open:rotate-180 text-cdek">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </span>
+          </summary>
+          <p class="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed border-t border-slate-800/80 pt-4">
+            Да, наши менеджеры бесплатно рассчитают юнит-экономику с учетом вашей системы налогообложения (УСН 5%) и подскажут наиболее выгодный тариф под ваши габариты и вес товаров.
+          </p>
+        </details>
+
+        <details class="group bg-slate-900/80 border border-slate-800 rounded-2xl p-6 transition-all duration-200 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex items-center justify-between cursor-pointer font-bold text-base sm:text-lg text-white group-open:text-cdek transition-colors">
+            <span>Какие документы нужны для заключения договора?</span>
+            <span class="ml-4 flex-shrink-0 transition-transform duration-200 group-open:rotate-180 text-cdek">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+            </span>
+          </summary>
+          <p class="mt-4 text-sm sm:text-base text-slate-300 leading-relaxed border-t border-slate-800/80 pt-4">
+            Для ИП понадобится ИНН и Паспорт, для ООО — ИНН, ОГРН и уставные документы. Оформление договора занимает около 15 минут в онлайн-режиме.
+          </p>
+        </details>
+
+      </div>
+
+      <!-- Блок формы внизу FAQ -->
+      <div id="leadForm" class="max-w-xl mx-auto pt-6">
+        <!--#include virtual="/src/components/leadform.html" -->
+      </div>
+    </div>
+  </main>
+
+  <!--#include virtual="/src/components/footer.html" -->
+  <!--#include virtual="/src/components/mobile-cta.html" -->
+
+</body>
+</html>

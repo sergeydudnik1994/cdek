@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>СДЭК для селлеров в Москве: логистика FBS/DBS</title>
+  <meta name="description" content="Официальный договор со СДЭК для селлеров из Москвы и МО. Интеграция с маркетплейсами, персональные тарифы для ИП и ООО." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { cdek: '#8de21a', dark: { 900: '#0b101d' } } } }
+    }
+  </script>
+</head>
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
+
+  <!-- Nginx: Подключение шапки -->
+  <!--#include virtual="/src/components/header.html" -->
+
+  <main class="flex-grow">
+    
+    <!-- HERO СЕКЦИЯ -->
+    <section class="pt-12 sm:pt-20 pb-8 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        <div class="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-slate-800/50 border border-slate-700/50 mb-6 sm:mb-8 backdrop-blur-sm">
+          <div class="w-2 h-2 rounded-full bg-cdek"></div>
+          <span class="text-xs sm:text-sm font-medium text-cdek uppercase tracking-wider">Официальное подключение для бизнеса</span>
+        </div>
+
+        <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tight mb-6 leading-[1.1]">
+          Логистика СДЭК <br class="hidden sm:block" />
+          для селлеров <span class="text-cdek">в Москве</span>
+        </h1>
+
+        <p class="text-slate-300 text-lg sm:text-xl max-w-2xl leading-relaxed mb-10">
+          Отгружайте товары через любой ПВЗ СДЭК в Москве и МО без складов маркетплейсов и очередей. Подключение по моделям <strong class="text-white">FBS и DBS</strong> за 15 минут с выгодой до 50% на доставку.
+        </p>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 gap-6 pt-8 border-t border-slate-800/80 max-w-3xl">
+          <div>
+            <div class="text-2xl sm:text-3xl font-bold text-cdek mb-1">0 ₽</div>
+            <div class="text-sm text-slate-400">Договор бесплатно</div>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-bold text-white mb-1">до 50%</div>
+            <div class="text-sm text-slate-400">Экономия на тарифах</div>
+          </div>
+          <div class="hidden md:block">
+            <div class="text-2xl sm:text-3xl font-bold text-white mb-1">4 000+</div>
+            <div class="text-sm text-slate-400">ПВЗ для отгрузки</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- БЛОК МАРКЕТПЛЕЙСОВ -->
+    <!--#include virtual="/src/components/platforms.html" -->
+
+    <!-- ПРЕИМУЩЕСТВА В СТИЛЕ САЙТА -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-10 text-center">
+        Преимущества для <span class="text-cdek">московских селлеров</span>
+      </h2>
+      
+      <div class="grid md:grid-cols-3 gap-6 mb-16">
+        <!-- Карточка 1 -->
+        <div class="bg-[#131b2c]/80 border border-slate-700/50 p-8 rounded-2xl hover:border-[#8de21a]/50 transition-colors backdrop-blur-sm shadow-lg">
+          <div class="text-cdek mb-5 text-3xl">📉</div>
+          <h3 class="text-xl font-bold text-white mb-3">Экономия на логистике</h3>
+          <p class="text-slate-400 leading-relaxed text-sm sm:text-base">B2B-тарифы позволяют снизить стоимость отправки до 50%. Специальные условия действуют с первой посылки, без скрытых платежей и абонентской платы.</p>
+        </div>
+
+        <!-- Карточка 2 -->
+        <div class="bg-[#131b2c]/80 border border-slate-700/50 p-8 rounded-2xl hover:border-[#8de21a]/50 transition-colors backdrop-blur-sm shadow-lg">
+          <div class="text-cdek mb-5 text-3xl">⚡</div>
+          <h3 class="text-xl font-bold text-white mb-3">Отгрузка без очередей</h3>
+          <p class="text-slate-400 leading-relaxed text-sm sm:text-base">Благодаря готовым интеграциям (Ozon, WB, Yandex, Avito, 1С) вы формируете накладные за секунды и сдаете заказы в любой ПВЗ СДЭК Москвы и МО.</p>
+        </div>
+
+        <!-- Карточка 3 -->
+        <div class="bg-[#131b2c]/80 border border-slate-700/50 p-8 rounded-2xl hover:border-[#8de21a]/50 transition-colors backdrop-blur-sm shadow-lg">
+          <div class="text-cdek mb-5 text-3xl">🔄</div>
+          <h3 class="text-xl font-bold text-white mb-3">Прозрачные возвраты</h3>
+          <p class="text-slate-400 leading-relaxed text-sm sm:text-base">Невыкупленные товары не теряются на складах. Они автоматически направляются в ваш ПВЗ СДЭК или доставляются курьером прямо на ваш склад.</p>
+        </div>
+      </div>
+
+      <!-- КАЛЬКУЛЯТОР -->
+      <div class="mb-16 max-w-5xl mx-auto">
+        <!--#include virtual="/src/components/calculator-widget.html" -->
+      </div>
+
+      <!-- ФОРМА ЗАЯВКИ -->
+      <div class="max-w-4xl mx-auto" id="leadForm">
+        <h2 class="text-3xl font-bold mb-8 text-white text-center">Оставить заявку на подключение</h2>
+        <!--#include virtual="/src/components/leadform.html" -->
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Nginx: Подключение подвала -->
+  <!--#include virtual="/src/components/footer.html" -->
+  <!--#include virtual="/src/components/mobile-cta.html" -->
+
+</body>
+</html>

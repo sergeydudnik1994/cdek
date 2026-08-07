@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /policy
+
+Sitemap: https://cdek-marketplace.ru/sitemap.xml
