@@ -15,88 +15,96 @@
     }
   </script>
 </head>
-<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#8B3FFD] selection:text-white pb-16 md:pb-0">
 
+  <!-- Nginx: Подключение шапки -->
   <!--#include virtual="/src/components/header.html" -->
 
-  <main class="flex-grow pt-20 sm:pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start mb-16">
-      
-      <!-- Левая колонка: Оффер в стиле Мегамаркета -->
-      <div class="lg:col-span-7 space-y-8">
-        
-        <!-- Фирменный бейдж Мегамаркета -->
-        <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#8B3FFD]/15 border border-[#8B3FFD]/30 backdrop-blur-sm">
-          <div class="w-2.5 h-2.5 rounded-full bg-[#8B3FFD] shadow-[0_0_10px_#8B3FFD] animate-pulse"></div>
-          <span class="text-xs font-bold text-[#A872FF] uppercase tracking-wider">
-            Мегамаркет × СДЭК Логистика
-          </span>
-        </div>
-        
-        <!-- Заголовок с неоновым фиолетовым свечением -->
-        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
-          Логистика СДЭК <br />
-          для селлеров <span class="text-[#8B3FFD] drop-shadow-[0_0_25px_rgba(139,63,253,0.4)]">Мегамаркета</span>
-        </h1>
-        
-        <p class="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl font-normal">
-          Сократите расходы на доставку заказов по схемам <strong class="text-white font-semibold">FBS и DBS</strong>. Отгружайте товары через удобные ПВЗ СДЭК со скидкой до 50% и готовой автоинтеграцией.
-        </p>
-
-        <!-- Плитки ключевых преимуществ -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+  <main class="flex-grow">
+    
+    <!-- HERO СЕКЦИЯ С ФОРМОЙ СПРАВА -->
+    <section class="pt-12 sm:pt-20 pb-12 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-12 gap-12 items-start">
           
-          <div class="bg-slate-900/80 border border-slate-800 hover:border-[#8B3FFD]/40 rounded-2xl p-6 transition-all duration-300 group">
-            <div class="w-10 h-10 rounded-xl bg-[#8B3FFD]/15 flex items-center justify-center text-[#A872FF] font-black mb-3 group-hover:scale-110 transition-transform">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <!-- Левая колонка: Текст -->
+          <div class="lg:col-span-7 space-y-8">
+            <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#8B3FFD]/15 border border-[#8B3FFD]/30 backdrop-blur-sm">
+              <div class="w-2.5 h-2.5 rounded-full bg-[#8B3FFD] shadow-[0_0_10px_#8B3FFD] animate-pulse"></div>
+              <span class="text-xs font-bold text-[#A872FF] uppercase tracking-wider">Мегамаркет × СДЭК Логистика</span>
             </div>
-            <div class="text-white font-bold text-lg mb-1">FBS и DBS схемы</div>
-            <div class="text-slate-400 text-sm leading-relaxed">Быстрая передача реестров, печать накладных и отгрузка в ПВЗ без очередей.</div>
+            
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
+              Логистика СДЭК <br />
+              для селлеров <span class="text-[#8B3FFD] drop-shadow-[0_0_25px_rgba(139,63,253,0.4)]">Мегамаркета</span>
+            </h1>
+            
+            <p class="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl font-normal">
+              Сократите расходы на доставку заказов по схемам <strong class="text-white font-semibold">FBS и DBS</strong>. Отгружайте товары через удобные ПВЗ СДЭК со скидкой до 50% и готовой автоинтеграцией.
+            </p>
+
+            <!-- Плитки преимуществ -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="bg-slate-900/80 border border-slate-800 hover:border-[#8B3FFD]/40 rounded-2xl p-6 transition-all duration-300">
+                <div class="text-[#A872FF] font-black mb-2 text-xl">FBS и DBS</div>
+                <div class="text-slate-400 text-sm">Быстрая передача реестров и печать накладных.</div>
+              </div>
+              <div class="bg-slate-900/80 border border-slate-800 hover:border-[#8B3FFD]/40 rounded-2xl p-6 transition-all duration-300">
+                <div class="text-[#A872FF] font-black mb-2 text-xl">Скидки до 50%</div>
+                <div class="text-slate-400 text-sm">Корпоративный тариф сразу после договора.</div>
+              </div>
+            </div>
           </div>
 
-          <div class="bg-slate-900/80 border border-slate-800 hover:border-[#8B3FFD]/40 rounded-2xl p-6 transition-all duration-300 group">
-            <div class="w-10 h-10 rounded-xl bg-[#8B3FFD]/15 flex items-center justify-center text-[#A872FF] font-black mb-3 group-hover:scale-110 transition-transform">
-              <span class="text-lg font-black">%</span>
+          <!-- Правая колонка: Форма -->
+          <div class="lg:col-span-5" id="mainLeadForm">
+            <div class="sticky top-28">
+              <!--#include virtual="/src/components/leadform.html" -->
             </div>
-            <div class="text-white font-bold text-lg mb-1">Скидки до 50%</div>
-            <div class="text-slate-400 text-sm leading-relaxed">Корпоративный B2B-тариф СДЭК сразу после подписания договора без минимума отправок.</div>
-          </div>
-
-          <div class="bg-slate-900/80 border border-slate-800 hover:border-[#8B3FFD]/40 rounded-2xl p-6 transition-all duration-300 group">
-            <div class="w-10 h-10 rounded-xl bg-[#8B3FFD]/15 flex items-center justify-center text-[#A872FF] font-black mb-3 group-hover:scale-110 transition-transform">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            </div>
-            <div class="text-white font-bold text-lg mb-1">Договор за 15 минут</div>
-            <div class="text-slate-400 text-sm leading-relaxed">Быстрое удаленное подключение ИП, СМЗ и ООО. Без абонентской платы.</div>
-          </div>
-
-          <div class="bg-slate-900/80 border border-slate-800 hover:border-[#8B3FFD]/40 rounded-2xl p-6 transition-all duration-300 group">
-            <div class="w-10 h-10 rounded-xl bg-[#8B3FFD]/15 flex items-center justify-center text-[#A872FF] font-black mb-3 group-hover:scale-110 transition-transform">
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-            </div>
-            <div class="text-white font-bold text-lg mb-1">Контроль возвратов</div>
-            <div class="text-slate-400 text-sm leading-relaxed">Прозрачное отслеживание невыкупов с автоматическим возвратом на ваш ПВЗ или склад.</div>
           </div>
 
         </div>
-
       </div>
+    </section>
 
-      <!-- Правая колонка: Форма заявки -->
-      <div class="lg:col-span-5">
-        <div class="sticky top-28">
-          <!--#include virtual="/src/components/leadform.html" -->
-        </div>
+    <!-- БЛОК МАРКЕТПЛЕЙСОВ -->
+    <section class="py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!--#include virtual="/src/components/platforms.html" -->
       </div>
+    </section>
 
-    </div>
+    <!-- КАЛЬКУЛЯТОР -->
+    <section id="widget-section" class="py-12">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!--#include virtual="/src/components/calculator-widget.html" -->
+      </div>
+    </section>
 
-    <!--#include virtual="/src/components/platforms.html" -->
+    <!-- БЛОК БЛОГА -->
+    <!--#include virtual="/src/components/blog-preview.html" -->
 
   </main>
 
+  <!-- Nginx: Подключение подвала -->
   <!--#include virtual="/src/components/footer.html" -->
   <!--#include virtual="/src/components/mobile-cta.html" -->
+
+  <!-- Скрипт прокрутки -->
+  <script>
+    document.addEventListener('click', function(e) {
+      const target = e.target.closest('a[href*="#leadForm"], a[href*="leadForm"]');
+      if (target) {
+        e.preventDefault();
+        const formElement = document.getElementById('mainLeadForm');
+        if (formElement) {
+          formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          const firstInput = formElement.querySelector('input');
+          if (firstInput) setTimeout(() => firstInput.focus(), 400);
+        }
+      }
+    });
+  </script>
 
 </body>
 </html>
