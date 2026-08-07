@@ -18,6 +18,33 @@
   
   <!-- Подключаем сгенерированную базу тарифов -->
   <script src="rates.js"></script>
+
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Главная",
+            "item": "https://cdek-marketplace.ru/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Калькулятор",
+            "item": "https://cdek-marketplace.ru/calculator/"
+        },
+        {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Расчет DBS 1 кг",
+            "item": "https://cdek-marketplace.ru/calculator/dbs-1kg/"
+        }
+    ]
+}
+    </script>
 </head>
 <body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
 
