@@ -62,6 +62,7 @@
           <!-- Правая колонка: Форма заявки -->
           <div class="lg:col-span-5" id="mainLeadForm">
             <div class="sticky top-24">
+              <!-- Исправлено: теперь подключается правильный файл leadform.html -->
               <!--#include virtual="/src/components/leadform.html" -->
             </div>
           </div>
@@ -141,6 +142,22 @@
   <!-- Nginx: Подключение подвала -->
   <!--#include virtual="/src/components/footer.html" -->
   <!--#include virtual="/src/components/mobile-cta.html" -->
+
+  <!-- Скрипт для плавной прокрутки к форме из калькулятора -->
+  <script>
+    document.addEventListener('click', function(e) {
+      const target = e.target.closest('a[href*="#leadForm"], a[href*="leadForm"]');
+      if (target) {
+        e.preventDefault();
+        const formElement = document.getElementById('mainLeadForm');
+        if (formElement) {
+          formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          const firstInput = formElement.querySelector('input');
+          if (firstInput) setTimeout(() => firstInput.focus(), 400);
+        }
+      }
+    });
+  </script>
 
 </body>
 </html>
