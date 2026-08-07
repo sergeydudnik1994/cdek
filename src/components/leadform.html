@@ -38,14 +38,19 @@
 
     <!-- Новое поле: Комментарий -->
     <div>
-  <label class="block text-xs font-semibold uppercase text-slate-400 mb-1.5">Комментарий</label>
-  <textarea name="comment" rows="2" placeholder="Ссылка на магазин, объём отправок или реквизиты..." class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-cdek placeholder-slate-500 transition-colors resize-none"></textarea>
-  <p class="text-[11px] text-slate-400 mt-1.5">Менеджер уточнит детали, когда свяжется с вами.</p>
-</div>
+      <label class="block text-xs font-semibold uppercase text-slate-400 mb-1.5">Комментарий</label>
+      <textarea name="comment" rows="2" placeholder="Ссылка на магазин, объём отправок или реквизиты..." class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-cdek placeholder-slate-500 transition-colors resize-none"></textarea>
+      <p class="text-[11px] text-slate-400 mt-1.5">Менеджер уточнит детали, когда свяжется с вами.</p>
+    </div>
 
     <button type="submit" class="submit-btn w-full py-4 px-6 bg-cdek hover:bg-cdek/90 text-[#0b101d] font-extrabold text-sm uppercase tracking-wider rounded-xl transition-all shadow-lg shadow-cdek/20 cursor-pointer disabled:opacity-50">
       Получить договор
     </button>
+
+    <!-- Юридическая сноска с политикой конфиденциальности -->
+    <p class="text-[11px] text-slate-500 text-center leading-relaxed">
+      Нажимая кнопку, вы соглашаетесь с условиями <a href="/policy" target="_blank" class="underline hover:text-slate-400">политики конфиденциальности</a>
+    </p>
 
     <div class="form-status text-xs text-center text-red-400 hidden"></div>
 
@@ -160,7 +165,6 @@
       const formData = new FormData(form);
 
       try {
-        // Отправляем данные на наш сервер, а не напрямую в Telegram
         const response = await fetch('/send-lead.php', {
           method: 'POST',
           body: formData
