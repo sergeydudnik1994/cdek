@@ -120,8 +120,16 @@
         <!--#include virtual="/src/components/calculator-widget.html" -->
       </section>
 
-      <!-- Nginx: Подключение превью блога -->
-      <!--#include virtual="/src/components/blog-preview.html" -->
+      <!-- Секция блога на главной -->
+      <section class="py-16 mt-10">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 mb-10 text-center sm:text-left">
+          <h2 class="text-3xl font-black text-white mb-2">Блог — Полезное для селлеров</h2>
+          <p class="text-slate-400">Инструкции по логистике, разбор тарифов и советы по экономии.</p>
+        </div>
+
+        <!-- Nginx: Подключение сетки всех статей -->
+        <!--#include virtual="/src/components/blog-grid.html" -->
+      </section>
 
     </div>
   </main>
