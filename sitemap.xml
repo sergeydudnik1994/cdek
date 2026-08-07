@@ -14,29 +14,29 @@
         <priority>0.9</priority>
     </url>
     <url>
+        <loc>https://cdek-marketplace.ru/faq/</loc>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
         <loc>https://cdek-marketplace.ru/blog/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
     <url>
-        <loc>https://cdek-marketplace.ru/faq/</loc>
+        <loc>https://cdek-marketplace.ru/blog/kakoj-tarif-cdek-vybrat/</loc>
         <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
+        <priority>0.6</priority>
     </url>
 
-    <!-- Страницы маркетплейсов и платформ -->
-    <url>
-        <loc>https://cdek-marketplace.ru/ozon/</loc>
-        <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
-    </url>
+    <!-- Направления по маркетплейсам -->
     <url>
         <loc>https://cdek-marketplace.ru/wildberries/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://cdek-marketplace.ru/yandex-market/</loc>
+        <loc>https://cdek-marketplace.ru/ozon/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -46,24 +46,29 @@
         <priority>0.9</priority>
     </url>
     <url>
-        <loc>https://cdek-marketplace.ru/avito/</loc>
+        <loc>https://cdek-marketplace.ru/yandex-market/</loc>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://cdek-marketplace.ru/internet-magazin/</loc>
         <changefreq>weekly</changefreq>
-        <priority>0.9</priority>
+        <priority>0.8</priority>
     </url>
 
-    <!-- Статьи блога -->
+    <!-- Дополнительные посадочные и гео -->
     <url>
-        <loc>https://cdek-marketplace.ru/blog/kakoj-tarif-cdek-vybrat/</loc>
+        <loc>https://cdek-marketplace.ru/avito/</loc>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+    <url>
+        <loc>https://cdek-marketplace.ru/geo/moscow/</loc>
         <changefreq>monthly</changefreq>
-        <priority>0.6</priority>
+        <priority>0.7</priority>
     </url>
 
-    <!-- Дополнительные страницы -->
+    <!-- Служебные страницы -->
     <url>
         <loc>https://cdek-marketplace.ru/policy/</loc>
         <changefreq>yearly</changefreq>
