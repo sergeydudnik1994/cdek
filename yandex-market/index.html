@@ -14,53 +14,96 @@
       theme: { extend: { colors: { cdek: '#8de21a', dark: { 900: '#0b101d' } } } }
     }
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/@cdek-it/widget@3" async></script>
 </head>
-<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#ff5722] selection:text-white pb-16 md:pb-0">
 
+  <!-- Nginx: Подключение шапки -->
   <!--#include virtual="/src/components/header.html" -->
 
   <main class="flex-grow">
-    <div class="max-w-7xl mx-auto px-4 py-12 sm:py-16">
-      <div class="grid lg:grid-cols-2 gap-12 items-center mb-12">
-        <div>
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase border bg-[#fc3f1d]/15 text-[#ff5722] border-[#fc3f1d]/30 shadow-[0_0_15px_rgba(252,63,29,0.2)]">
-            <span class="w-2 h-2 rounded-full bg-[#fc3f1d]"></span>
-            <span>Яндекс Маркет DBS / FBS</span>
-          </div>
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight tracking-tight">
-            Доставка СДЭК для селлеров <span class="text-[#ff5722] drop-shadow-[0_0_20px_rgba(255,87,34,0.4)]">Яндекс Маркета</span>
-          </h1>
-          <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-8">
-            Надежная доставка заказов покупателям по моделям <b class="text-white">DBS и FBS</b> с интеграцией всех статусов и быстрой отгрузкой.
-          </p>
-          <div class="grid grid-cols-2 gap-4 pt-6 border-t border-slate-800">
-            <div class="glass p-4 rounded-2xl border-slate-800">
-              <p class="text-xl sm:text-2xl font-bold text-[#ff5722]">Интеграция 0 ₽</p>
-              <p class="text-xs text-slate-400 mt-1">Помощь в настройке</p>
+    
+    <!-- HERO СЕКЦИЯ С ФОРМОЙ СПРАВА -->
+    <section class="pt-12 sm:pt-20 pb-12 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Левая колонка: Текст -->
+          <div class="lg:col-span-7 space-y-8">
+            <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#fc3f1d]/15 border border-[#fc3f1d]/30 backdrop-blur-sm">
+              <div class="w-2.5 h-2.5 rounded-full bg-[#fc3f1d] shadow-[0_0_10px_#fc3f1d] animate-pulse"></div>
+              <span class="text-xs font-bold text-[#ff5722] uppercase tracking-wider">Яндекс Маркет DBS / FBS</span>
             </div>
-            <div class="glass p-4 rounded-2xl border-slate-800">
-              <p class="text-xl sm:text-2xl font-bold text-white">Постоплата</p>
-              <p class="text-xs text-slate-400 mt-1">Удобные расчеты</p>
+            
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
+              Доставка СДЭК <br class="hidden sm:block" />
+              для селлеров <span class="text-[#ff5722] drop-shadow-[0_0_20px_rgba(255,87,34,0.4)]">Яндекс Маркета</span>
+            </h1>
+            
+            <p class="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl">
+              Надежная доставка заказов покупателям по моделям <b class="text-white">DBS и FBS</b> с интеграцией всех статусов и быстрой отгрузкой.
+            </p>
+
+            <div class="grid grid-cols-2 gap-6 pt-6 border-t border-slate-800/80 max-w-2xl">
+              <div>
+                <div class="text-2xl sm:text-3xl font-bold text-[#ff5722] mb-1">Интеграция 0 ₽</div>
+                <div class="text-sm text-slate-400">Помощь в настройке</div>
+              </div>
+              <div>
+                <div class="text-2xl sm:text-3xl font-bold text-white mb-1">Постоплата</div>
+                <div class="text-sm text-slate-400">Удобные расчеты</div>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div id="leadForm" class="max-w-xl mx-auto w-full">
-          <!--#include virtual="/src/components/leadform.html" -->
+
+          <!-- Правая колонка: Форма заявки -->
+          <div class="lg:col-span-5" id="mainLeadForm">
+            <div class="sticky top-28">
+              <!--#include virtual="/src/components/leadform.html" -->
+            </div>
+          </div>
+
         </div>
       </div>
+    </section>
 
-      <!--#include virtual="/src/components/platforms.html" -->
+    <!-- БЛОК МАРКЕТПЛЕЙСОВ -->
+    <section class="py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!--#include virtual="/src/components/platforms.html" -->
+      </div>
+    </section>
 
-      <section class="mt-12">
+    <!-- КАЛЬКУЛЯТОР -->
+    <section id="widget-section" class="py-12">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <!--#include virtual="/src/components/calculator-widget.html" -->
-      </section>
-    </div>
+      </div>
+    </section>
+
+    <!-- Nginx: Подключение превью блога -->
+    <!--#include virtual="/src/components/blog-preview.html" -->
+
   </main>
 
+  <!-- Nginx: Подключение подвала -->
   <!--#include virtual="/src/components/footer.html" -->
   <!--#include virtual="/src/components/mobile-cta.html" -->
+
+  <!-- Скрипт прокрутки -->
+  <script>
+    document.addEventListener('click', function(e) {
+      const target = e.target.closest('a[href*="#leadForm"], a[href*="leadForm"]');
+      if (target) {
+        e.preventDefault();
+        const formElement = document.getElementById('mainLeadForm');
+        if (formElement) {
+          formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          const firstInput = formElement.querySelector('input');
+          if (firstInput) setTimeout(() => firstInput.focus(), 400);
+        }
+      }
+    });
+  </script>
 
 </body>
 </html>
