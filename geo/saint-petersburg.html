@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Договор со СДЭК для селлеров FBS/DBS | СДЭК для маркетплейсов</title>
+  <meta name="description" content="СДЭК для маркетплейсов — официальная логистика для продавцов Wildberries, Ozon, Яндекс Маркета и Авито. Бесплатный договор со скидкой до 50%." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { cdek: '#8de21a', dark: { 900: '#0b101d' } } } }
+    }
+  </script>
+</head>
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900">
+
+  <!--#include virtual="/src/components/header.html" -->
+
+  <main class="flex-grow">
+    <!-- Hero-блок -->
+    <section class="pt-12 sm:pt-20 pb-12 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-12 gap-12 items-start">
+          <div class="lg:col-span-7 space-y-6">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
+              Логистика СДЭК для селлеров <br class="hidden sm:block" />
+              <span class="text-cdek">Wildberries, Ozon, Яндекс и Авито</span>
+            </h1>
+            <p class="text-slate-300 text-lg sm:text-xl max-w-2xl leading-relaxed">
+              Отгружайте товары через любой ПВЗ СДЭК без складов маркетплейсов. Подключение по моделям <b class="text-white">FBS и DBS</b> за 15 минут.
+            </p>
+          </div>
+          <div class="lg:col-span-5" id="mainLeadForm">
+            <div class="sticky top-24">
+              <!--#include virtual="/src/components/leadform.html" -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--#include virtual="/src/components/platforms.html" -->
+    <!--#include virtual="/src/components/calculator-widget.html" -->
+    <!--#include virtual="/src/components/blog-preview.html" -->
+  </main>
+
+  <!--#include virtual="/src/components/footer.html" -->
+  <!--#include virtual="/src/components/mobile-cta.html" -->
+
+  <script>
+    document.addEventListener('click', function(e) {
+      const target = e.target.closest('a[href*="#leadForm"], a[href*="leadForm"]');
+      if (target) {
+        e.preventDefault();
+        const formElement = document.getElementById('mainLeadForm');
+        if (formElement) formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  </script>
+</body>
+</html>
