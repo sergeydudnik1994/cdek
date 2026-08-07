@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>СДЭК для селлеров в Уфе: логистика FBS/DBS</title>
+  <meta name="description" content="Официальный договор со СДЭК для селлеров из Уфы и Республики Башкортостан. Интеграция с маркетплейсами, персональные тарифы для ИП и ООО." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { cdek: '#8de21a', dark: { 900: '#0b101d' } } } }
+    }
+  </script>
+</head>
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
+
+  <!-- Nginx: Подключение шапки -->
+  <!--#include virtual="/src/components/header.html" -->
+
+  <main class="flex-grow">
+    
+    <!-- HERO СЕКЦИЯ С ФОРМОЙ СПРАВА -->
+    <section class="pt-12 sm:pt-20 pb-12 relative overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-12 gap-12 items-start">
+          
+          <!-- Левая колонка: Текст и цифры -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-slate-800/50 border border-slate-700/50 backdrop-blur-sm">
+              <div class="w-2 h-2 rounded-full bg-cdek"></div>
+              <span class="text-xs sm:text-sm font-medium text-cdek uppercase tracking-wider">Логистика для Уфы и Башкортостана</span>
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
+              Логистика СДЭК <br class="hidden sm:block" />
+              для селлеров <span class="text-cdek">в Уфе</span>
+            </h1>
+
+            <p class="text-slate-300 text-lg sm:text-xl max-w-2xl leading-relaxed">
+              Отгружайте заказы через любой ПВЗ СДЭК в Уфе и Республике Башкортостан без складов маркетплейсов и очередей. Подключение по моделям <strong class="text-white">FBS и DBS</strong> за 15 минут с выгодой до 50% на доставку.
+            </p>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 pt-6 border-t border-slate-800/80 max-w-2xl">
+              <div>
+                <div class="text-2xl sm:text-3xl font-bold text-cdek mb-1">0 ₽</div>
+                <div class="text-sm text-slate-400">Договор бесплатно</div>
+              </div>
+              <div>
+                <div class="text-2xl sm:text-3xl font-bold text-white mb-1">до 50%</div>
+                <div class="text-sm text-slate-400">Экономия на тарифах</div>
+              </div>
+              <div class="hidden md:block">
+                <div class="text-2xl sm:text-3xl font-bold text-white mb-1">Урал / Поволжье</div>
+                <div class="text-sm text-slate-400">Быстрая доставка по региону</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Правая колонка: Форма заявки -->
+          <div class="lg:col-span-5" id="mainLeadForm">
+            <div class="sticky top-24">
+              <!--#include virtual="/src/components/leadform.html" -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- БЛОК МАРКЕТПЛЕЙСОВ -->
+    <section class="py-8">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!--#include virtual="/src/components/platforms.html" -->
+      </div>
+    </section>
+
+    <!-- ПРЕИМУЩЕСТВА И КАЛЬКУЛЯТОР -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-10 text-center">
+        Преимущества для <span class="text-cdek">уфимских селлеров</span>
+      </h2>
+      
+      <div class="grid md:grid-cols-3 gap-6 mb-16">
+        <!-- Карточка 1 -->
+        <div class="bg-[#131b2c]/80 border border-slate-700/50 p-8 rounded-2xl hover:border-cdek/50 transition-colors backdrop-blur-sm shadow-lg">
+          <div class="text-cdek mb-5 text-3xl">📈</div>
+          <h3 class="text-xl font-bold text-white mb-3">Охват региона</h3>
+          <p class="text-slate-400 leading-relaxed text-sm sm:text-base">Эффективная отправка заказов по Республике Башкортостан и соседним регионам через развитую сеть местных пунктов выдачи.</p>
+        </div>
+
+        <!-- Карточка 2 -->
+        <div class="bg-[#131b2c]/80 border border-slate-700/50 p-8 rounded-2xl hover:border-cdek/50 transition-colors backdrop-blur-sm shadow-lg">
+          <div class="text-cdek mb-5 text-3xl">⚡</div>
+          <h3 class="text-xl font-bold text-white mb-3">Сдача без очередей</h3>
+          <p class="text-slate-400 leading-relaxed text-sm sm:text-base">Забудьте про поездки на удаленные распределительные центры маркетплейсов — сдавайте готовые заказы в ближайшем ПВЗ СДЭК.</p>
+        </div>
+
+        <!-- Карточка 3 -->
+        <div class="bg-[#131b2c]/80 border border-slate-700/50 p-8 rounded-2xl hover:border-cdek/50 transition-colors backdrop-blur-sm shadow-lg">
+          <div class="text-cdek mb-5 text-3xl">💼</div>
+          <h3 class="text-xl font-bold text-white mb-3">Прямой B2B-договор</h3>
+          <p class="text-slate-400 leading-relaxed text-sm sm:text-base">Официальные условия для ИП, ООО и самозанятых с персональной скидкой на доставку и полным комплектом закрывающих документов.</p>
+        </div>
+      </div>
+
+      <!-- КАЛЬКУЛЯТОР ТАРИФОВ -->
+      <div class="mb-16 max-w-5xl mx-auto">
+        <!--#include virtual="/src/components/calculator-widget.html" -->
+      </div>
+    </section>
+
+    <!-- Nginx: Подключение превью блога -->
+    <!--#include virtual="/src/components/blog-preview.html" -->
+
+  </main>
+
+  <!-- Nginx: Подключение подвала -->
+  <!--#include virtual="/src/components/footer.html" -->
+  <!--#include virtual="/src/components/mobile-cta.html" -->
+
+  <!-- Скрипт для плавной прокрутки к форме из калькулятора -->
+  <script>
+    document.addEventListener('click', function(e) {
+      const target = e.target.closest('a[href*="#leadForm"], a[href*="leadForm"]');
+      if (target) {
+        e.preventDefault();
+        const formElement = document.getElementById('mainLeadForm');
+        if (formElement) {
+          formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          const firstInput = formElement.querySelector('input');
+          if (firstInput) setTimeout(() => firstInput.focus(), 400);
+        }
+      }
+    });
+  </script>
+
+</body>
+</html>
