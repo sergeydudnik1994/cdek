@@ -1,0 +1,98 @@
+name: Google Indexing API
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  google-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Google APIs
+        run: npm install googleapis
+
+      - name: Detect changes and ping Google
+        env:
+          GCP_CREDENTIALS: ${{ secrets.GCP_CREDENTIALS }}
+        run: |
+          HOST="cdek-marketplace.ru"
+          
+          # Ищем измененные HTML файлы
+          CHANGED_FILES=$(git diff --name-only --diff-filter=ACMR HEAD~1 HEAD | grep '\.html$' || true)
+          
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "Нет измененных HTML файлов в этом коммите. Отправка в Google пропущена."
+            exit 0
+          fi
+          
+          echo "Найдены измененные страницы:"
+          echo "$CHANGED_FILES"
+          
+          # Формируем JSON-массив ссылок
+          URL_LIST=()
+          for file in $CHANGED_FILES; do
+            if [ "$file" = "index.html" ]; then
+              URL_LIST+=("\"https://$HOST/\"")
+            else
+              CLEAN_FILE=$(echo "$file" | sed 's/\/index\.html$/\//')
+              URL_LIST+=("\"https://$HOST/$CLEAN_FILE\"")
+            fi
+          done
+          
+          JSON_URLS=$(IFS=,; echo "${URL_LIST[*]}")
+          echo "[$JSON_URLS]" > urls.json
+          
+          # Создаем исполняемый JS-скрипт для отправки в Google
+          cat << 'EOF' > index_google.js
+          const { google } = require('googleapis');
+          const fs = require('fs');
+
+          async function run() {
+            // Читаем ключ из секретов GitHub
+            const keys = JSON.parse(process.env.GCP_CREDENTIALS);
+            const urls = JSON.parse(fs.readFileSync('urls.json', 'utf8'));
+
+            // Авторизуемся в Google
+            const jwtClient = new google.auth.JWT(
+              keys.client_email,
+              null,
+              keys.private_key,
+              ['https://www.googleapis.com/auth/indexing'],
+              null
+            );
+
+            await jwtClient.authorize();
+            const indexing = google.indexing({ version: 'v3', auth: jwtClient });
+
+            // Отправляем каждый URL по очереди
+            for (const url of urls) {
+              console.log(`Отправляем в Google: ${url}`);
+              try {
+                const response = await indexing.urlNotifications.publish({
+                  requestBody: {
+                    url: url,
+                    type: 'URL_UPDATED'
+                  }
+                });
+                console.log(`Успех! Статус ответа:`, response.status);
+              } catch (e) {
+                console.error(`Ошибка отправки ${url}:`, e.message);
+              }
+            }
+          }
+          run();
+          EOF
+
+          # Запускаем скрипт
+          node index_google.js
