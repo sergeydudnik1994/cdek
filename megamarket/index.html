@@ -4,8 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Договор СДЭК для Мегамаркет — Тарифы и доставка по FBS/DBS</title>
-  <meta name="description" content="Специальные корпоративные условия СДЭК для продавцов Мегамаркета. Снижение расходов на логистику до 50%, автоинтеграция и быстрая отгрузка." />
+  <title>СДЭК для Мегамаркет (FBS / DBS) — Подключение</title>
+  <meta name="description" content="Официальная логистика СДЭК для селлеров Мегамаркет. Доставка по схеме FBS и DBS с B2B тарифами." />
   <link rel="icon" type="image/png" href="/favicon.png" />
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -14,29 +14,9 @@
       theme: { extend: { colors: { cdek: '#8de21a', dark: { 900: '#0b101d' } } } }
     }
   </script>
-
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Главная",
-            "item": "https://cdek-marketplace.ru/"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Мегамаркет",
-            "item": "https://cdek-marketplace.ru/megamarket/"
-        }
-    ]
-}
-    </script>
+  <script src="https://cdn.jsdelivr.net/npm/@cdek-it/widget@3" async></script>
 </head>
-<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#8B3FFD] selection:text-white pb-16 md:pb-0">
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#722080] selection:text-white pb-16 md:pb-0">
 
   <!-- Nginx: Подключение шапки -->
   <!--#include virtual="/src/components/header.html" -->
@@ -50,34 +30,33 @@
           
           <!-- Левая колонка: Текст -->
           <div class="lg:col-span-7 space-y-8">
-            <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#8B3FFD]/15 border border-[#8B3FFD]/30 backdrop-blur-sm">
-              <div class="w-2.5 h-2.5 rounded-full bg-[#8B3FFD] shadow-[0_0_10px_#8B3FFD] animate-pulse"></div>
-              <span class="text-xs font-bold text-[#A872FF] uppercase tracking-wider">Мегамаркет × СДЭК Логистика</span>
+            <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#722080]/15 border border-[#722080]/30 backdrop-blur-sm">
+              <div class="w-2.5 h-2.5 rounded-full bg-[#722080] shadow-[0_0_10px_#722080] animate-pulse"></div>
+              <span class="text-xs font-bold text-[#b74ac9] uppercase tracking-wider">Мегамаркет DBS / FBS</span>
             </div>
             
             <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
-              Логистика СДЭК <br />
-              для селлеров <span class="text-[#8B3FFD] drop-shadow-[0_0_25px_rgba(139,63,253,0.4)]">Мегамаркета</span>
+              Доставка СДЭК <br class="hidden sm:block" />
+              для селлеров <span class="text-[#b74ac9] drop-shadow-[0_0_20px_rgba(114,32,128,0.4)]">Мегамаркета</span>
             </h1>
             
-            <p class="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl font-normal">
-              Сократите расходы на доставку заказов по схемам <strong class="text-white font-semibold">FBS и DBS</strong>. Отгружайте товары через удобные ПВЗ СДЭК со скидкой до 50% и готовой автоинтеграцией.
+            <p class="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl">
+              Оптимизируйте отгрузки на площадке Мегамаркет. Доставляйте заказы быстрее по схеме <b class="text-white">FBS и DBS</b> с гарантией сроков.
             </p>
 
-            <!-- Плитки преимуществ -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div class="bg-slate-900/80 border border-slate-800 hover:border-[#8B3FFD]/40 rounded-2xl p-6 transition-all duration-300">
-                <div class="text-[#A872FF] font-black mb-2 text-xl">FBS и DBS</div>
-                <div class="text-slate-400 text-sm">Быстрая передача реестров и печать накладных.</div>
+            <div class="grid grid-cols-2 gap-6 pt-6 border-t border-slate-800/80 max-w-2xl">
+              <div>
+                <div class="text-2xl sm:text-3xl font-bold text-[#b74ac9] mb-1">до 50%</div>
+                <div class="text-sm text-slate-400">Скидка от розницы</div>
               </div>
-              <div class="bg-slate-900/80 border border-slate-800 hover:border-[#8B3FFD]/40 rounded-2xl p-6 transition-all duration-300">
-                <div class="text-[#A872FF] font-black mb-2 text-xl">Скидки до 50%</div>
-                <div class="text-slate-400 text-sm">Корпоративный тариф сразу после договора.</div>
+              <div>
+                <div class="text-2xl sm:text-3xl font-bold text-white mb-1">Ежедневно</div>
+                <div class="text-sm text-slate-400">Отправки в ПВЗ</div>
               </div>
             </div>
           </div>
 
-          <!-- Правая колонка: Форма -->
+          <!-- Правая колонка: Форма заявки -->
           <div class="lg:col-span-5" id="mainLeadForm">
             <div class="sticky top-28">
               <!--#include virtual="/src/components/leadform.html" -->
@@ -88,13 +67,6 @@
       </div>
     </section>
 
-    <!-- БЛОК МАРКЕТПЛЕЙСОВ -->
-    <section class="py-8">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!--#include virtual="/src/components/platforms.html" -->
-      </div>
-    </section>
-
     <!-- КАЛЬКУЛЯТОР -->
     <section id="widget-section" class="py-12">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -102,8 +74,10 @@
       </div>
     </section>
 
-    <!-- БЛОК БЛОГА -->
-    <!--#include virtual="/src/components/blog-preview.html" -->
+    <!-- Блог (новости логистики) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!--#include virtual="/src/components/blog-latest.html" -->
+    </section>
 
   </main>
 
@@ -111,11 +85,11 @@
   <!--#include virtual="/src/components/footer.html" -->
   <!--#include virtual="/src/components/mobile-cta.html" -->
 
-  <!-- Скрипт прокрутки -->
+  <!-- Скрипт прокрутки до формы -->
   <script>
     document.addEventListener('click', function(e) {
-      const target = e.target.closest('a[href*="#leadForm"], a[href*="leadForm"]');
-      if (target) {
+      const btn = e.target.closest('.scroll-to-form');
+      if (btn) {
         e.preventDefault();
         const formElement = document.getElementById('mainLeadForm');
         if (formElement) {
