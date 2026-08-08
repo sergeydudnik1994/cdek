@@ -131,12 +131,11 @@
         topCities = [...new Set(allCities)];
         console.log('✅ Успешно загружена база:', topCities.length, 'городов');
 
-        // --- АВТОПОДСТАНОВКА ГОРОДА ИЗ URL ДЛЯ ГЕО-СТРАНИЦ ---
+        // --- АВТОПОДСТАНОВКА ГОРОДА В ОТПРАВИТЕЛЯ ИЗ URL ---
         const pathParts = window.location.pathname.split('/').filter(Boolean);
         if (pathParts[0] === 'geo' && pathParts[1]) {
             const currentSlug = pathParts[1];
             
-            // Исключения для сложных городов
             const exactRuNames = {
               "rostov-na-donu": "Ростов-на-Дону",
               "sankt-peterburg": "Санкт-Петербург",
@@ -153,7 +152,6 @@
 
             let cityName = exactRuNames[currentSlug];
 
-            // Если города нет в исключениях, находим его в скачанном JSON
             if (!cityName) {
                 const slugify = (text) => {
                     const letters = {"а":"a","б":"b","в":"v","г":"g","д":"d","е":"e","ё":"e","ж":"zh","з":"z","и":"i","й":"y","к":"k","л":"l","м":"m","н":"n","о":"o","п":"p","р":"r","с":"s","т":"t","у":"u","ф":"f","х":"h","ц":"ts","ч":"ch","ш":"sh","щ":"sch","ъ":"","ы":"y","ь":"","э":"e","ю":"yu","я":"ya"};
@@ -164,11 +162,17 @@
                 if (matchedCity) cityName = matchedCity.name;
             }
 
-            // Вставляем город в поле "Город назначения"
+            // Вставляем текущий город только в поле ОТПРАВЛЕНИЯ
             if (cityName) {
+                const fromInput = document.getElementById('cdek-from');
                 const toInput = document.getElementById('cdek-to');
+                
+                if (fromInput) {
+                    fromInput.value = cityName;
+                }
+                
                 if (toInput) {
-                    toInput.value = cityName;
+                    toInput.value = ''; // Строго оставляем поле "Куда" пустым
                 }
             }
         }
@@ -297,4 +301,4 @@
       });
     }
   });
-</script>
+          </script>
