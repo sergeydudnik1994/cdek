@@ -44,15 +44,16 @@ https.get(url, (res) => {
     res.on("data", (chunk) => { body += chunk; });
     res.on("end", () => {
         const cities = JSON.parse(body);
+        
+        // Берем топ-500 городов
         cities.sort((a, b) => b.population - a.population);
         const topCities = cities.slice(0, 500);
 
         const templatePath = path.join(__dirname, 'city-template.html');
         const template = fs.readFileSync(templatePath, 'utf8');
 
+        // 1. ПЕРЕСОЗДАЕМ ПАПКИ ГОРОДОВ
         const geoDir = path.join(__dirname, 'geo');
-        
-        // ВАЖНО: Удаляем старую папку geo целиком, чтобы убить ручные страницы
         if (fs.existsSync(geoDir)) {
             fs.rmSync(geoDir, { recursive: true, force: true });
         }
@@ -74,6 +75,27 @@ https.get(url, (res) => {
             fs.writeFileSync(path.join(cityDir, 'index.html'), cityHtml);
         });
 
-        console.log(`Успешно пересоздано 500 городов!`);
+        // 2. АВТОМАТИЧЕСКИ ОБНОВЛЯЕМ HEADER.HTML
+        const headerPath = path.join(__dirname, 'src', 'components', 'header.html');
+        if (fs.existsSync(headerPath)) {
+            let headerContent = fs.readFileSync(headerPath, 'utf8');
+            
+            // Сортируем список по алфавиту, чтобы было удобно искать
+            const sortedCities = [...topCities].sort((a, b) => a.name.localeCompare(b.name, 'ru'));
+            
+            let linksHtml = '';
+            sortedCities.forEach(c => {
+                const slug = slugify(c.name);
+                linksHtml += `          <a href="/geo/${slug}/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">${c.name}</a>\n`;
+            });
+
+            // Находим старый список городов и вставляем новый
+            const regex = /(<div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Все города<\/div>\s*<div class="grid grid-cols-2 sm:grid-cols-3 gap-2\.5">\n)[\s\S]*?(\n\s*<\/div>\s*<\/div>\s*<\/div>\s*<\/div>)/;
+            
+            headerContent = headerContent.replace(regex, `$1${linksHtml}$2`);
+            fs.writeFileSync(headerPath, headerContent);
+        }
+
+        console.log(`Успешно пересоздано 500 городов и обновлен список в шапке!`);
     });
 });
