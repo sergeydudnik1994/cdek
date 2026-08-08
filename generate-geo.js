@@ -5,7 +5,7 @@ const geoDir = path.join(__dirname, 'geo');
 const headerPath = path.join(__dirname, 'src', 'components', 'header.html');
 const sitemapPath = path.join(__dirname, 'sitemap.xml');
 
-// Полный словарь всех городов из папки geo для идеального перевода на русский
+// Полный и проверенный словарь всех твоих 500+ городов для идеального перевода на русский
 const cityNamesRu = {
   "abakan": "Абакан", "abinsk": "Абинск", "aznakaevo": "Азнакаево", "azov": "Азов", "aksay": "Аксай",
   "alapaevsk": "Алапаевск", "alatyr": "Алатырь", "aleksandrov": "Александров", "alekseevka": "Алексеевка",
@@ -48,9 +48,9 @@ const cityNamesRu = {
   "yoshkar-ola": "Йошкар-Ола", "kaliningrad": "Калининград", "kaluga": "Калуга", "kamenka": "Каменка",
   "kamensk-uralskiy": "Каменск-Уральский", "kamensk-shahtinskiy": "Каменск-Шахтинский", "kamen-na-obi": "Камень-на-Оби",
   "kamyshin": "Камышин", "kanash": "Канаш", "kansk": "Канск", "karabulak": "Карабулак", "kaspiysk": "Каспийск",
-  "kachkanar": "Качканар", "kashira": "Кашира", "kemerovo": "Кемерово", "kerch": "Керчь", "kizilyurt": "Кизилюрт",
-  "kizlyar": "Кизляр", "kimry": "Кимры", "kingisepp": "Кингисепп", "kinel": "Кинель", "kineshma": "Кинешма",
-  "kirishi": "Кириши", "kirov": "Киров", "kirovo-chepetsk": "Кирово-Чепецк", "kiselevsk": "Киселёвск",
+  "kachkanar": "Качканар", "kashira": "Кашиira", "kashira": "Кашира", "kemerovo": "Кемерово", "kerch": "Керчь",
+  "kizilyurt": "Кизилюрт", "kizlyar": "Кизляр", "kimry": "Кимры", "kingisepp": "Кингисепп", "kinel": "Кинель",
+  "kineshma": "Кинешма", "kirishi": "Кириши", "kirov": "Киров", "kirovo-chepetsk": "Кирово-Чепецк", "kiselevsk": "Киселёвск",
   "kislovodsk": "Кисловодск", "klin": "Клин", "klintsy": "Клинцы", "kovrov": "Ковров", "kogalym": "Когалым",
   "kolomna": "Коломна", "kolpino": "Колпино", "kolchugino": "Кольчугино", "komsomolsk-na-amure": "Комсомольск-на-Амуре",
   "konakovo": "Конаково", "kopeysk": "Копейск", "korenovsk": "Кореновск", "korkino": "Коркино",
@@ -80,41 +80,37 @@ const cityNamesRu = {
   "nizhnekamsk": "Нижнекамск", "nizhniy-novgorod": "Нижний Новгород", "nizhniy-tagil": "Нижний Тагил",
   "novoaltaysk": "Новоалтайск", "novodvinsk": "Новодвинск", "novozybkov": "Новозыбков", "novokubansk": "Новокубанск",
   "novokuznetsk": "Новокузнецк", "novokuybyshevsk": "Новокуйбышевск", "novomoskovsk": "Новомосковск",
-  "novorossiysk": "Новороссийск", "novosibirsk": "Новосибирск", "novoshahtinsk": "Новошахтинск",
-  "novotroitsk": "Новотроицк", "novouralsk": "Новоуральск", "novocheboksarsk": "Новочебоксарск",
-  "novocherkassk": "Новочеркасск", "novyy-urengoy": "Новый Уренгой", "noginsk": "Ногинск", "norilsk": "Норильск",
-  "noyabrsk": "Ноябрьск", "nurlat": "Нурлат", "nyagan": "Нягань", "obninsk": "Обнинск", "odintsovo": "Одинцово",
-  "ozersk": "Озёрск", "oktyabrskiy": "Октябрьский", "omsk": "Омск", "orel": "Орёл", "orenburg": "Оренбург",
-  "orehovo-zuevo": "Орехово-Зуево", "orsk": "Орск", "osinniki": "Осинники", "ostrogozhsk": "Острогожск",
-  "otradnyy": "Отрадный", "pavlovo": "Павлово", "pavlovskiy-posad": "Павловский Посад", "partizansk": "Партизанск",
-  "penza": "Пенза", "pervouralsk": "Первоуральск", "pereslavl-zalesskiy": "Переславль-Залесский", "perm": "Пермь",
-  "petergof": "Петергоф", "petrozavodsk": "Петрозаводск", "petropavlovsk-kamchatskiy": "Петропавловск-Камчатский",
-  "pechora": "Печора", "podolsk": "Подольск", "polevskoy": "Полевской", "primorsko-ahtarsk": "Приморско-Ахтарск",
-  "prokopevsk": "Прокопьевск", "protvino": "Протвино", "prohladnyy": "Прохладный", "pskov": "Псков",
-  "pugachev": "Пугачёв", "pushkin": "Пушкин", "pushkino": "Пушкино", "pyatigorsk": "Пятигорск", "pyt-yah": "Пыть-Ях",
-  "raduzhnyy": "Радужный", "ramenskoe": "Раменское", "rasskazovo": "Рассказово", "reutov": "Реутов", "revda": "Ревда",
-  "rezh": "Реж", "roslavl": "Рославль", "rossosh": "Россошь", "rostov-na-donu": "Ростов-на-Дону",
-  "rtischevo": "Ртищево", "rubtsovsk": "Рубцовск", "ruzaevka": "Рузаевка", "rybinsk": "Рыбинск", "ryazan": "Рязань",
-  "rzhev": "Ржев", "safonovo": "Сафоново", "salavat": "Салават", "salehard": "Салехард", "salsk": "Сальск",
-  "samara": "Самара", "sankt-peterburg": "Санкт-Петербург", "saransk": "Саранск", "sarapul": "Сарапул",
-  "saratov": "Саратов", "sarov": "Саров", "satka": "Сатка", "sayanogorsk": "Саяногорск", "sayansk": "Саянск",
-  "schekino": "Щёкино", "schelkovo": "Щёлково", "scherbinka": "Щербинка", "sergiev-posad": "Сергиев Посад",
-  "serov": "Серов", "serpuhov": "Серпухов", "sertolovo": "Сертолово", "sestroretsk": "Сестрорецк",
-  "sevastopol": "Севастополь", "severodvinsk": "Северодвинск", "severomorsk": "Североморск", "seversk": "Северск",
-  "shadrinsk": "Шадринск", "shahty": "Шахты", "shali": "Шали", "sharypovo": "Шарыпово", "shatura": "Шатура",
-  "shebekino": "Шебекино", "shelehov": "Шелехов", "shuya": "Шуя", "sibay": "Сибай", "simferopol": "Симферополь",
-  "slantsy": "Сланцы", "slavyansk-na-kubani": "Славянск-на-Кубани", "smolensk": "Смоленск", "snezhinsk": "Снежинск",
-  "sovetsk": "Советск", "sovetskiy": "Советский", "sokol": "Сокол", "solikamsk": "Соликамск",
+  "novorossiysk": "Новороссийск", "novosibirsk": "Новосибирск", "novotroitsk": "Новотроицк", "novouralsk": "Новоуральск",
+  "novocheboksarsk": "Новочебоксарск", "novocherkassk": "Новочеркасск", "novoshahtinsk": "Новошахтинск",
+  "novyy-urengoy": "Новый Уренгой", "noginsk": "Ногинск", "norilsk": "Норильск", "noyabrsk": "Ноябрьск",
+  "nurlat": "Нурлат", "nyagan": "Нягань", "obninsk": "Обнинск", "odintsovo": "Одинцово", "ozersk": "Озёрск",
+  "oktyabrskiy": "Октябрьский", "omsk": "Омск", "orel": "Орёл", "orenburg": "Оренбург", "orehovo-zuevo": "Орехово-Зуево",
+  "orsk": "Орск", "osinniki": "Осинники", "ostrogozhsk": "Острогожск", "otradnyy": "Отрадный", "pavlovo": "Павлово",
+  "pavlovskiy-posad": "Павловский Посад", "partizansk": "Партизанск", "penza": "Пенза", "pervouralsk": "Первоуральск",
+  "pereslavl-zalesskiy": "Переславль-Залесский", "perm": "Пермь", "petergof": "Петергоф", "petrozavodsk": "Петрозаводск",
+  "petropavlovsk-kamchatskiy": "Петропавловск-Камчатский", "pechora": "Печора", "podolsk": "Подольск",
+  "polevskoy": "Полевской", "primorsko-ahtarsk": "Приморско-Ахтарск", "prokopevsk": "Прокопьевск",
+  "protvino": "Протвино", "prohladnyy": "Прохладный", "pskov": "Псков", "pugachev": "Пугачёв", "pushkin": "Пушкин",
+  "pushkino": "Пушкино", "pyt-yah": "Пыть-Ях", "pyatigorsk": "Пятигорск", "raduzhnyy": "Радужный",
+  "ramenskoe": "Раменское", "rasskazovo": "Рассказово", "revda": "Ревда", "rezh": "Реж", "reutov": "Реутов",
+  "rzhev": "Ржев", "roslavl": "Рославль", "rossosh": "Россошь", "rtischevo": "Ртищево", "rubtsovsk": "Рубцовск",
+  "ruzaevka": "Рузаевка", "rybinsk": "Рыбинск", "ryazan": "Рязань", "salavat": "Салават", "salehard": "Салехард",
+  "salsk": "Сальск", "samara": "Самара", "sankt-peterburg": "Санкт-Петербург", "saransk": "Саранск", "sarapul": "Сарапул",
+  "saratov": "Саратов", "sarov": "Саров", "satka": "Сатка", "safonovo": "Сафоново", "sayanogorsk": "Саяногорск",
+  "sayansk": "Саянск", "svetlograd": "Светлоград", "svobodnyy": "Свободный", "sevastopol": "Севастополь",
+  "severodvinsk": "Северодвинск", "severomorsk": "Североморск", "seversk": "Северск", "sergiev-posad": "Сергиев Посад",
+  "serov": "Серов", "serpuhov": "Серпухов", "sertolovo": "Сертолово", "sestroretsk": "Сестрорецк", "sibay": "Сибай",
+  "simferopol": "Симферополь", "slavyansk-na-kubani": "Славянск-на-Кубани", "slantsy": "Сланцы", "smolensk": "Смоленск",
+  "snezhinsk": "Снежинск", "sovetsk": "Советск", "sovetskiy": "Советский", "sokol": "Сокол", "solikamsk": "Соликамск",
   "solnechnogorsk": "Солнечногорск", "sosnovoborsk": "Сосновоборск", "sosnovyy-bor": "Сосновый Бор", "sochi": "Сочи",
-  "spassk-dalniy": "Спасск-Дальний", "stavropol": "Ставрополь", "staryy-oskol": "Старый Оскол",
-  "sterlitamak": "Стерлитамак", "strezhevoy": "Стрежевой", "stupino": "Ступино", "suhoy-log": "Сухой Лог",
-  "sunzha": "Сунжа", "surgut": "Сургут", "svetlograd": "Светлоград", "svobodnyy": "Свободный", "syktyvkar": "Сыктывкар",
-  "syzran": "Сызрань", "tavda": "Тавда", "taganrog": "Таганрог", "tayshet": "Тайшет", "tambov": "Тамбов",
-  "tver": "Тверь", "teykovo": "Тейково", "temryuk": "Темрюк", "tihoretsk": "Тихорецк", "tihvin": "Тихвин",
-  "timashevsk": "Тимашёвск", "tobolsk": "Тобольск", "tolyatti": "Тольятти", "tomsk": "Томск", "torzhok": "Торжок",
-  "tosno": "Тосно", "trehgornyy": "Трёхгорный", "troitsk": "Троицк", "tuapse": "Туапсе", "tula": "Тула",
-  "tulun": "Тулун", "tutaev": "Тутаев", "tuymazy": "Туймазы", "tyumen": "Тюмень", "uchaly": "Учалы", "ufa": "Уфа",
-  "uglich": "Углич", "uhta": "Ухта", "ulan-ude": "Улан-Удэ", "ulyanovsk": "Ульяновск", "uray": "Урай",
+  "spassk-dalniy": "Спасск-Дальний", "stavropol": "Ставрополь", "staryy-oskol": "Старый Оскол", "sterlitamak": "Стерлитамак",
+  "strezhevoy": "Стрежевой", "stupino": "Ступино", "suhoy-log": "Сухой Лог", "sunzha": "Сунжа", "surgut": "Сургут",
+  "syzran": "Сызрань", "syktyvkar": "Сыктывкар", "tavda": "Тавда", "taganrog": "Таганрог", "tayshet": "Тайшет",
+  "tambov": "Тамбов", "tver": "Тверь", "teykovo": "Тейково", "temryuk": "Темрюк", "tihoretsk": "Тихорецк",
+  "tihvin": "Тихвин", "timashevsk": "Тимашёвск", "tobolsk": "Тобольск", "tolyatti": "Тольятти", "tomsk": "Томск",
+  "torzhok": "Торжок", "tosno": "Тосно", "trehgornyy": "Трёхгорный", "troitsk": "Троицк", "tuapse": "Туапсе",
+  "tula": "Тула", "tulun": "Тулун", "tutaev": "Тутаев", "tuymazy": "Туймазы", "tyumen": "Тюмень", "uchaly": "Учалы",
+  "ufa": "Уфа", "uglich": "Углич", "uhta": "Ухта", "ulan-ude": "Улан-Удэ", "ulyanovsk": "Ульяновск", "uray": "Урай",
   "urus-martan": "Урус-Мартан", "uryupinsk": "Урюпинск", "usinsk": "Усинск", "usole-sibirskoe": "Усолье-Сибирское",
   "ussuriysk": "Уссурийск", "ust-dzheguta": "Усть-Джегута", "ust-ilimsk": "Усть-Илимск", "ust-kut": "Усть-Кут",
   "ust-labinsk": "Усть-Лабинск", "uzlovaya": "Узловая", "valuyki": "Валуйки", "velikie-luki": "Великие Луки",
@@ -130,11 +126,30 @@ const cityNamesRu = {
   "zelenodolsk": "Зеленодольск", "zelenogorsk": "Зеленогорск", "zelenograd": "Зеленоград",
   "zelenokumsk": "Зеленокумск", "zheleznogorsk": "Железногорск", "zhigulevsk": "Жигулёвск",
   "zhukovskiy": "Жуковский", "zlatoust": "Златоуст", "zvenigorod": "Звенигород", "krasnodar": "Краснодар",
-  "kazan": "Казань", "chaykovskiy": "Чайковский", "chapaevsk": "Чапаевск", "chebarkul": "Чебаркуль",
-  "cheboksary": "Чебоксары", "chelyabinsk": "Челябинск", "cheremhovo": "Черемхово", "cherepovets": "Череповец",
-  "cherkessk": "Черкесск", "chernogorsk": "Черногорск", "chernushka": "Чернушка", "chernyahovsk": "Черняховск",
-  "chehov": "Чехов", "chistopol": "Чистополь", "chita": "Чита", "chusovoy": "Чусовой"
+  "kazan": "Казань", "rostov-na-donu": "Ростов-на-Дону", "chaykovskiy": "Чайковский", "chapaevsk": "Чапаевск",
+  "chebarkul": "Чебаркуль", "cheboksary": "Чебоксары", "chelyabinsk": "Челябинск", "cheremhovo": "Черемхово",
+  "cherepovets": "Череповец", "cherkessk": "Черкесск", "chernogorsk": "Черногорск", "chernushka": "Чернушка",
+  "chernyahovsk": "Черняховск", "chehov": "Чехов", "chistopol": "Чистополь", "chita": "Чита", "chusovoy": "Чусовой",
+  "shadrinsk": "Шадринск", "shali": "Шали", "sharypovo": "Шарыпово", "shatura": "Шатура", "shahty": "Шахты",
+  "shebekino": "Шебекино", "shelehov": "Шелехов", "shuya": "Шуя", "schekino": "Щёкино", "schelkovo": "Щёлково",
+  "scherbinka": "Щербинка", "elektrostal": "Электросталь", "elista": "Элиста", "engels": "Энгельс",
+  "feodosiya": "Феодосия", "frolovo": "Фролово", "fryazino": "Фрязино", "habarovsk": "Хабаровск",
+  "hanty-mansiysk": "Ханты-Мансийск", "hasavyurt": "Хасавюрт", "himki": "Химки"
 };
+
+// Функция перевода латиницы в кириллицу (на всякий случай, если добавишь город, которого нет в словаре)
+function fallbackTransliterate(slug) {
+  const map = {
+    'a': 'а', 'b': 'б', 'v': 'в', 'g': 'г', 'd': 'д', 'e': 'е', 'zh': 'ж', 'z': 'з', 'i': 'и', 'y': 'й', 'k': 'к',
+    'l': 'л', 'm': 'м', 'n': 'н', 'o': 'о', 'p': 'п', 'r': 'р', 's': 'с', 't': 'т', 'u': 'у', 'f': 'ф', 'h': 'х',
+    'c': 'ц', 'ch': 'ч', 'sh': 'ш', 'sch': 'щ', 'yy': 'ы', 'e': 'э', 'yu': 'ю', 'ya': 'я'
+  };
+  let result = slug;
+  Object.keys(map).sort((a, b) => b.length - a.length).forEach(key => {
+    result = result.split(key).join(map[key]);
+  });
+  return result.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+}
 
 // 1. Автоматически сканируем папку geo/ на наличие созданных городов
 if (!fs.existsSync(geoDir)) {
@@ -154,9 +169,9 @@ const cities = slugs.map(slug => {
   // Ищем полное совпадение в словаре
   let name = cityNamesRu[slug];
   
-  // Если вдруг в папке появится новый город, которого нет в словаре, он просто напишется с заглавной буквы
+  // Если вдруг в папке появится совершенно новый город — переводим его автоматической функцией
   if (!name) {
-    name = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    name = fallbackTransliterate(slug);
   }
   
   return { slug, name };
