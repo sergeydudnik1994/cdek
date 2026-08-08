@@ -67,7 +67,6 @@
           <label class="block text-[11px] font-semibold text-slate-400 mb-1 uppercase tracking-wider">Режим доставки</label>
           <div class="relative flex items-center">
             <select id="cdek-mode" class="w-full pl-3.5 pr-10 py-2.5 bg-[#0f172a] border border-slate-700 rounded-xl text-white focus:outline-none focus:border-cdek text-sm cursor-pointer appearance-none">
-              <!-- Заменили "Склад" на "ПВЗ" для удобства пользователей -->
               <option value="136">ПВЗ — ПВЗ</option>
               <option value="137">ПВЗ — Дверь</option>
               <option value="138">Дверь — ПВЗ</option>
@@ -119,20 +118,61 @@
       });
     }
 
-    // 1. Оставляем небольшой резервный список на случай, если у клиента пропадет интернет
     let topCities = [
       "Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург", "Казань", "Нижний Новгород", 
       "Красноярск", "Челябинск", "Самара", "Уфа", "Ростов-на-Дону", "Омск", "Краснодар", 
       "Воронеж", "Пермь", "Волгоград", "Саратов", "Тюмень", "Хабаровск", "Владивосток"
     ];
 
-    // 2. АВТОМАТИЧЕСКАЯ ЗАГРУЗКА 1100+ ГОРОДОВ РОССИИ
     fetch('https://raw.githubusercontent.com/pensnarik/russian-cities/master/russian-cities.json')
       .then(response => response.json())
       .then(data => {
         const allCities = data.map(city => city.name);
         topCities = [...new Set(allCities)];
         console.log('✅ Успешно загружена база:', topCities.length, 'городов');
+
+        // --- АВТОПОДСТАНОВКА ГОРОДА ИЗ URL ДЛЯ ГЕО-СТРАНИЦ ---
+        const pathParts = window.location.pathname.split('/').filter(Boolean);
+        if (pathParts[0] === 'geo' && pathParts[1]) {
+            const currentSlug = pathParts[1];
+            
+            // Исключения для сложных городов
+            const exactRuNames = {
+              "rostov-na-donu": "Ростов-на-Дону",
+              "sankt-peterburg": "Санкт-Петербург",
+              "nizhniy-novgorod": "Нижний Новгород",
+              "nizhniy-tagil": "Нижний Тагил",
+              "staryy-oskol": "Старый Оскол",
+              "velikiy-novgorod": "Великий Новгород",
+              "kamen-na-obi": "Камень-на-Оби",
+              "goryachiy-klyuch": "Горячий Ключ",
+              "gus-hrustalnyy": "Гусь-Хрустальный",
+              "velikie-luki": "Великие Луки",
+              "mineralnye-vody": "Минеральные Воды"
+            };
+
+            let cityName = exactRuNames[currentSlug];
+
+            // Если города нет в исключениях, находим его в скачанном JSON
+            if (!cityName) {
+                const slugify = (text) => {
+                    const letters = {"а":"a","б":"b","в":"v","г":"g","д":"d","е":"e","ё":"e","ж":"zh","з":"z","и":"i","й":"y","к":"k","л":"l","м":"m","н":"n","о":"o","п":"p","р":"r","с":"s","т":"t","у":"u","ф":"f","х":"h","ц":"ts","ч":"ch","ш":"sh","щ":"sch","ъ":"","ы":"y","ь":"","э":"e","ю":"yu","я":"ya"};
+                    return text.toLowerCase().split('').map(c => letters[c]||c).join('').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                };
+                
+                const matchedCity = data.find(c => slugify(c.name) === currentSlug);
+                if (matchedCity) cityName = matchedCity.name;
+            }
+
+            // Вставляем город в поле "Город назначения"
+            if (cityName) {
+                const toInput = document.getElementById('cdek-to');
+                if (toInput) {
+                    toInput.value = cityName;
+                }
+            }
+        }
+        // --- КОНЕЦ АВТОПОДСТАНОВКИ ---
       })
       .catch(error => {
         console.error('Ошибка загрузки городов, используем резервный список', error);
@@ -150,7 +190,6 @@
         const filtered = topCities.filter(city => city.toLowerCase().includes(val));
         if (filtered.length === 0) { list.classList.add('hidden'); return; }
 
-        // Ограничиваем вывод до 20 городов для высокой производительности браузера
         const limited = filtered.slice(0, 20);
 
         limited.forEach(city => {
@@ -184,7 +223,6 @@
         const cityTo = document.getElementById('cdek-to').value.trim();
         const weightKg = parseFloat(weightInput.value) || 1;
         
-        // Получаем готовый код тарифа прямо из выпадающего списка
         const tariffCode = parseInt(document.getElementById('cdek-mode').value);
 
         if (!cityFrom || !cityTo) {
