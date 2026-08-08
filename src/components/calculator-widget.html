@@ -51,16 +51,20 @@
   <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
     <!-- Поля ввода -->
     <div class="space-y-3.5">
+      <!-- Поле: Город отправления -->
       <div class="relative">
         <label class="block text-[11px] font-semibold text-slate-400 mb-1 uppercase tracking-wider">Город отправления</label>
-        <input type="text" id="cdek-from" value="Москва" autocomplete="off" class="w-full px-3.5 py-2.5 bg-[#0f172a] border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cdek text-sm" />
-        <ul id="list-from" class="absolute z-50 w-full bg-[#1e293b] border border-slate-700 rounded-xl mt-1 hidden max-h-48 overflow-y-auto shadow-2xl text-sm overflow-hidden"></ul>
+        <input type="text" id="cdek-from" value="Москва" autocomplete="off" placeholder="Введите город..." class="w-full px-3.5 py-2.5 bg-[#0f172a] border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cdek text-sm transition-colors" />
+        <p id="error-from" class="text-red-400 text-[11px] mt-1 hidden">Пожалуйста, выберите город из списка подсказок</p>
+        <ul id="list-from" class="absolute z-50 w-full bg-[#1e293b] border border-slate-700 rounded-xl mt-1 hidden max-h-56 overflow-y-auto shadow-2xl text-sm overflow-hidden touch-pan-y"></ul>
       </div>
 
+      <!-- Поле: Город назначения -->
       <div class="relative">
         <label class="block text-[11px] font-semibold text-slate-400 mb-1 uppercase tracking-wider">Город назначения</label>
-        <input type="text" id="cdek-to" placeholder="Ростов-на-Дону" autocomplete="off" class="w-full px-3.5 py-2.5 bg-[#0f172a] border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cdek text-sm" />
-        <ul id="list-to" class="absolute z-50 w-full bg-[#1e293b] border border-slate-700 rounded-xl mt-1 hidden max-h-48 overflow-y-auto shadow-2xl text-sm overflow-hidden"></ul>
+        <input type="text" id="cdek-to" placeholder="Ростов-на-Дону" autocomplete="off" class="w-full px-3.5 py-2.5 bg-[#0f172a] border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cdek text-sm transition-colors" />
+        <p id="error-to" class="text-red-400 text-[11px] mt-1 hidden">Пожалуйста, выберите город из списка подсказок</p>
+        <ul id="list-to" class="absolute z-50 w-full bg-[#1e293b] border border-slate-700 rounded-xl mt-1 hidden max-h-56 overflow-y-auto shadow-2xl text-sm overflow-hidden touch-pan-y"></ul>
       </div>
 
       <div class="grid grid-cols-2 gap-3">
@@ -141,7 +145,6 @@
       .then(data => {
         const allCities = data.map(city => city.name);
         topCities = [...new Set(allCities)];
-        console.log('✅ Успешно загружена база:', topCities.length, 'городов');
 
         // --- АВТОПОДСТАНОВКА ГОРОДА В ОТПРАВИТЕЛЯ ИЗ URL ---
         const pathParts = window.location.pathname.split('/').filter(Boolean);
@@ -177,14 +180,8 @@
             if (cityName) {
                 const fromInput = document.getElementById('cdek-from');
                 const toInput = document.getElementById('cdek-to');
-                
-                if (fromInput) {
-                    fromInput.value = cityName;
-                }
-                
-                if (toInput) {
-                    toInput.value = '';
-                }
+                if (fromInput) fromInput.value = cityName;
+                if (toInput) toInput.value = '';
             }
         }
       })
@@ -192,11 +189,32 @@
         console.error('Ошибка загрузки городов, используем резервный список', error);
       });
 
-    function setupAutocomplete(inputId, listId) {
+    // Функция сбрасывает ошибки валидации при вводе
+    function clearError(inputId, errorId) {
+      const input = document.getElementById(inputId);
+      const error = document.getElementById(errorId);
+      input.classList.remove('border-red-500');
+      input.classList.add('border-slate-700');
+      error.classList.add('hidden');
+    }
+
+    // Функция показывает ошибку валидации
+    function showError(inputId, errorId) {
+      const input = document.getElementById(inputId);
+      const error = document.getElementById(errorId);
+      input.classList.remove('border-slate-700');
+      input.classList.add('border-red-500');
+      error.classList.remove('hidden');
+    }
+
+    // Настройка мобильного автокомплита
+    function setupAutocomplete(inputId, listId, errorId) {
       const input = document.getElementById(inputId);
       const list = document.getElementById(listId);
 
+      // При вводе сбрасываем красную рамку
       input.addEventListener('input', function() {
+        clearError(inputId, errorId);
         const val = this.value.trim().toLowerCase();
         list.innerHTML = '';
         if (!val) { list.classList.add('hidden'); return; }
@@ -208,25 +226,36 @@
 
         limited.forEach(city => {
           const li = document.createElement('li');
-          li.className = 'px-3.5 py-2.5 cursor-pointer hover:bg-cdek hover:text-[#0f172a] text-white border-b border-slate-700/50 last:border-0 transition-colors';
+          // py-3 обеспечивает удобную зону клика на мобильных
+          li.className = 'px-3.5 py-3 sm:py-2.5 cursor-pointer hover:bg-cdek hover:text-[#0f172a] text-white border-b border-slate-700/50 last:border-0 transition-colors text-sm';
           const regex = new RegExp(`(${val})`, 'gi');
           li.innerHTML = city.replace(regex, '<span class="font-bold text-cdek group-hover:text-[#0f172a]">$1</span>');
+          
           li.addEventListener('click', () => {
             input.value = city;
             list.classList.add('hidden');
+            clearError(inputId, errorId);
           });
           list.appendChild(li);
         });
         list.classList.remove('hidden');
+
+        // Мобильный фикс: скроллим инпут в центр экрана при появлении экранной клавиатуры
+        if (window.innerWidth < 768) {
+          setTimeout(() => {
+            input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 200);
+        }
       });
 
+      // Закрываем список при клике снаружи
       document.addEventListener('click', (e) => {
         if (e.target !== input && e.target !== list) list.classList.add('hidden');
       });
     }
 
-    setupAutocomplete('cdek-from', 'list-from');
-    setupAutocomplete('cdek-to', 'list-to');
+    setupAutocomplete('cdek-from', 'list-from', 'error-from');
+    setupAutocomplete('cdek-to', 'list-to', 'error-to');
 
     const btn = document.getElementById('calc-btn');
     const resultsContainer = document.getElementById('calc-results');
@@ -246,18 +275,37 @@
       });
     }
 
+    // ВАЛИДАЦИЯ И РАСЧЕТ
     if (btn) {
       btn.addEventListener('click', async () => {
-        const cityFrom = document.getElementById('cdek-from').value.trim();
-        const cityTo = document.getElementById('cdek-to').value.trim();
+        const fromInput = document.getElementById('cdek-from');
+        const toInput = document.getElementById('cdek-to');
+        const cityFrom = fromInput.value.trim();
+        const cityTo = toInput.value.trim();
         const weightKg = parseFloat(weightInput.value) || 1;
-        
         const tariffCode = parseInt(document.getElementById('cdek-mode').value);
 
-        if (!cityFrom || !cityTo) {
-          alert('Пожалуйста, заполните город отправления и назначения');
-          return;
+        let isValid = true;
+
+        // Проверяем заполненность и корректность города отправителя
+        const isFromValid = topCities.some(c => c.toLowerCase() === cityFrom.toLowerCase());
+        if (!cityFrom || !isFromValid) {
+          showError('cdek-from', 'error-from');
+          isValid = false;
+        } else {
+          clearError('cdek-from', 'error-from');
         }
+
+        // Проверяем заполненность и корректность города получателя
+        const isToValid = topCities.some(c => c.toLowerCase() === cityTo.toLowerCase());
+        if (!cityTo || !isToValid) {
+          showError('cdek-to', 'error-to');
+          isValid = false;
+        } else {
+          clearError('cdek-to', 'error-to');
+        }
+
+        if (!isValid) return;
 
         btn.disabled = true;
         btn.innerText = 'Запрос к API СДЭК...';
@@ -281,7 +329,6 @@
             const res = data.result;
             const finalPrice = Math.round(res.price);
             
-            // ВЫВОДИМ ВЫСОКОКОНВЕРСИОННЫЙ БЛОК С КНОПКОЙ
             resultsContainer.innerHTML = `
               <div class="flex justify-between items-center py-1.5 border-b border-slate-800 text-xs sm:text-sm">
                 <span class="text-slate-400">Направление:</span>
