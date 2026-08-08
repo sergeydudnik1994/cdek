@@ -146,17 +146,47 @@ async function buildGeo() {
     console.log('✅ Шапка сайта успешно обновлена!');
   }
 
-  // --- 3. ОБНОВЛЕНИЕ SITEMAP.XML С ДАТОЙ LASTMOD ---
+  // --- 3. ОБНОВЛЕНИЕ SITEMAP.XML С LASTMOD И ИЕРАРХИЕЙ ПРИОРИТЕТОВ ---
   const baseUrl = "https://cdek-marketplace.ru";
   const today = new Date().toISOString().split('T')[0];
-  let sitemapUrls = [`${baseUrl}/`, `${baseUrl}/calculator/`, `${baseUrl}/blog/`];
-  
-  cities.forEach(city => sitemapUrls.push(`${baseUrl}/geo/${city.slug}/`));
 
-  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${sitemapUrls.map(url => `  <url>\n    <loc>${url}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>${url === baseUrl + '/' ? '1.0' : '0.8'}</priority>\n  </url>`).join('\n')}\n</urlset>`;
-  
+  // Основные важные страницы (идут ПЕРВЫМИ в sitemap)
+  const mainPages = [
+    { url: `${baseUrl}/`, priority: '1.0', changefreq: 'daily' },
+    { url: `${baseUrl}/calculator/`, priority: '0.9', changefreq: 'weekly' },
+    { url: `${baseUrl}/calculator/dbs-1kg/`, priority: '0.9', changefreq: 'weekly' },
+    { url: `${baseUrl}/ozon/`, priority: '0.8', changefreq: 'weekly' },
+    { url: `${baseUrl}/wildberries/`, priority: '0.8', changefreq: 'weekly' },
+    { url: `${baseUrl}/yandex-market/`, priority: '0.8', changefreq: 'weekly' },
+    { url: `${baseUrl}/megamarket/`, priority: '0.8', changefreq: 'weekly' },
+    { url: `${baseUrl}/avito/`, priority: '0.8', changefreq: 'weekly' },
+    { url: `${baseUrl}/internet-magazin/`, priority: '0.8', changefreq: 'weekly' },
+    { url: `${baseUrl}/blog/`, priority: '0.8', changefreq: 'weekly' },
+    { url: `${baseUrl}/faq/`, priority: '0.7', changefreq: 'monthly' },
+    { url: `${baseUrl}/policy/`, priority: '0.3', changefreq: 'yearly' }
+  ];
+
+  // Гео-страницы (идут ВТОРОЙ пачкой)
+  const geoPages = cities.map(city => ({
+    url: `${baseUrl}/geo/${city.slug}/`,
+    priority: '0.6',
+    changefreq: 'weekly'
+  }));
+
+  const allSitemapEntries = [...mainPages, ...geoPages];
+
+  const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${allSitemapEntries.map(entry => `  <url>
+    <loc>${entry.url}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>${entry.changefreq}</changefreq>
+    <priority>${entry.priority}</priority>
+  </url>`).join('\n')}
+</urlset>`;
+
   fs.writeFileSync(sitemapPath, sitemapXml);
-  console.log('✅ Файл sitemap.xml успешно обновлен!');
+  console.log(`✅ Файл sitemap.xml успешно обновлен! Всего ссылок: ${allSitemapEntries.length} (Основные: ${mainPages.length}, Гео: ${geoPages.length})`);
 }
 
 buildGeo();
