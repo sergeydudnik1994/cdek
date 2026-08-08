@@ -1781,6 +1781,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://cdek-marketplace.ru/geo/rzhev/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://cdek-marketplace.ru/geo/roslavl/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1871,6 +1876,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://cdek-marketplace.ru/geo/safonovo/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://cdek-marketplace.ru/geo/sayanogorsk/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -1911,241 +1921,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-marketplace.ru/geo/shadrinsk/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/shali/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/sharypovo/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/shatura/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/shahty/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/shebekino/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/shelehov/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/shuya/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/schekino/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/schelkovo/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/scherbinka/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/elektrostal/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/elista/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/engels/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/yugorsk/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/yuzhno-sahalinsk/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/yuzhnouralsk/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/yurga/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/yakutsk/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/yalta/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/yalutorovsk/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/yaroslavl/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/yartsevo/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/chapaevsk/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/chaykovskiy/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/chebarkul/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/cheboksary/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/chehov/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/chelyabinsk/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/cheremhovo/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/cherepovets/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/cherkessk/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/chernogorsk/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/chernushka/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/chernyahovsk/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/chistopol/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/chita/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/chusovoy/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/feodosiya/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/frolovo/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/fryazino/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/habarovsk/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/hanty-mansiysk/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/hasavyurt/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/himki/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/rzhev/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/safonovo/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://cdek-marketplace.ru/geo/sergiev-posad/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -2181,12 +1956,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-marketplace.ru/geo/slantsy/</loc>
+    <loc>https://cdek-marketplace.ru/geo/slavyansk-na-kubani/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-marketplace.ru/geo/slavyansk-na-kubani/</loc>
+    <loc>https://cdek-marketplace.ru/geo/slantsy/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2201,7 +1976,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-marketplace.ru/geo/sochi/</loc>
+    <loc>https://cdek-marketplace.ru/geo/sovetsk/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/sovetskiy/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2231,12 +2011,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-marketplace.ru/geo/sovetsk/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/sovetskiy/</loc>
+    <loc>https://cdek-marketplace.ru/geo/sochi/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2246,12 +2021,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-marketplace.ru/geo/staryy-oskol/</loc>
+    <loc>https://cdek-marketplace.ru/geo/stavropol/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-marketplace.ru/geo/stavropol/</loc>
+    <loc>https://cdek-marketplace.ru/geo/staryy-oskol/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2271,11 +2046,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-marketplace.ru/geo/suhoy-log/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://cdek-marketplace.ru/geo/sunzha/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -2286,7 +2056,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-marketplace.ru/geo/syktyvkar/</loc>
+    <loc>https://cdek-marketplace.ru/geo/suhoy-log/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2296,12 +2066,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-marketplace.ru/geo/taganrog/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/tambov/</loc>
+    <loc>https://cdek-marketplace.ru/geo/syktyvkar/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2311,12 +2076,22 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://cdek-marketplace.ru/geo/taganrog/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://cdek-marketplace.ru/geo/tayshet/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-marketplace.ru/geo/temryuk/</loc>
+    <loc>https://cdek-marketplace.ru/geo/tambov/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/tver/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2326,7 +2101,12 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-marketplace.ru/geo/tihoretsk/</loc>
+    <loc>https://cdek-marketplace.ru/geo/temryuk/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/timashevsk/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2336,7 +2116,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-marketplace.ru/geo/timashevsk/</loc>
+    <loc>https://cdek-marketplace.ru/geo/tihoretsk/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2381,6 +2161,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://cdek-marketplace.ru/geo/tuymazy/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://cdek-marketplace.ru/geo/tula/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -2396,27 +2181,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-marketplace.ru/geo/tuymazy/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/tver/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://cdek-marketplace.ru/geo/tyumen/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/uchaly/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://cdek-marketplace.ru/geo/ufa/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2426,7 +2191,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-marketplace.ru/geo/uhta/</loc>
+    <loc>https://cdek-marketplace.ru/geo/uzlovaya/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -2491,7 +2256,242 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://cdek-marketplace.ru/geo/uzlovaya/</loc>
+    <loc>https://cdek-marketplace.ru/geo/ufa/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/uhta/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/uchaly/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/chaykovskiy/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/chapaevsk/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/chebarkul/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/cheboksary/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/chelyabinsk/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/cheremhovo/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/cherepovets/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/cherkessk/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/chernogorsk/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/chernushka/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/chernyahovsk/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/chehov/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/chistopol/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/chita/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/chusovoy/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/shadrinsk/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/shali/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/sharypovo/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/shatura/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/shahty/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/shebekino/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/shelehov/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/shuya/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/schekino/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/schelkovo/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/scherbinka/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/yugorsk/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/yuzhno-sahalinsk/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/yuzhnouralsk/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/yurga/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/yakutsk/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/yalta/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/yalutorovsk/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/yaroslavl/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/yartsevo/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/elektrostal/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/elista/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/engels/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/feodosiya/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/frolovo/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/fryazino/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/habarovsk/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/hanty-mansiysk/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/hasavyurt/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/geo/himki/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
