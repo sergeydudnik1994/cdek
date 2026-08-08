@@ -25,6 +25,6 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add geo/
+          git add .
           git commit -m "Сгенерировано 500 SEO городов" || echo "Нет новых городов"
           git push
