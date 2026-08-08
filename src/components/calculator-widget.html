@@ -42,7 +42,6 @@
 <!-- ОСНОВНОЙ КАЛЬКУЛЯТОР -->
 <div class="max-w-4xl mx-auto glass p-5 sm:p-6 rounded-3xl border border-slate-800 shadow-xl mb-6">
   <div class="mb-4">
-    <!-- Уточнили заголовок и описание под реальную логику -->
     <h3 class="text-xl sm:text-2xl font-black text-white tracking-tight">Калькулятор тарифа «Посылка»</h3>
     <p class="text-xs sm:text-sm text-slate-400 mt-0.5">
       Для интернет-магазинов (FBS) и отправлений DBS весом от 1 до 50 кг
@@ -104,10 +103,10 @@
         </div>
       </div>
 
-      <div class="mt-4 pt-3 border-t border-slate-800/80">
+      <div class="mt-4 pt-3 border-t border-slate-800/80" id="calc-footer-cta">
         <p class="text-[11px] text-slate-400 leading-relaxed">
-          Нужен <span class="text-white font-semibold">точный расчет</span> с учетом персональной скидки? 
-          <a href="#leadForm" id="lead-scroll-link" class="text-cdek hover:underline font-medium cursor-pointer">Оставьте заявку на точный расчёт тарифов.</a>
+          Готовы <span class="text-white font-semibold">зафиксировать выгодную ставку</span>? 
+          <a href="#leadForm" id="lead-scroll-link" class="text-cdek hover:underline font-bold cursor-pointer">Получить персональный тариф</a>
         </p>
       </div>
     </div>
@@ -175,7 +174,6 @@
                 if (matchedCity) cityName = matchedCity.name;
             }
 
-            // Вставляем текущий город только в поле ОТПРАВЛЕНИЯ
             if (cityName) {
                 const fromInput = document.getElementById('cdek-from');
                 const toInput = document.getElementById('cdek-to');
@@ -185,11 +183,10 @@
                 }
                 
                 if (toInput) {
-                    toInput.value = ''; // Строго оставляем поле "Куда" пустым
+                    toInput.value = '';
                 }
             }
         }
-        // --- КОНЕЦ АВТОПОДСТАНОВКИ ---
       })
       .catch(error => {
         console.error('Ошибка загрузки городов, используем резервный список', error);
@@ -234,6 +231,21 @@
     const btn = document.getElementById('calc-btn');
     const resultsContainer = document.getElementById('calc-results');
 
+    function attachScrollEvent() {
+      const scrollLinks = document.querySelectorAll('#lead-scroll-link-action, #lead-scroll-link');
+      scrollLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          const target = document.getElementById('leadForm');
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            window.location.hash = '#leadForm';
+          }
+        });
+      });
+    }
+
     if (btn) {
       btn.addEventListener('click', async () => {
         const cityFrom = document.getElementById('cdek-from').value.trim();
@@ -268,6 +280,8 @@
           if (response.ok && data.result) {
             const res = data.result;
             const finalPrice = Math.round(res.price);
+            
+            // ВЫВОДИМ ВЫСОКОКОНВЕРСИОННЫЙ БЛОК С КНОПКОЙ
             resultsContainer.innerHTML = `
               <div class="flex justify-between items-center py-1.5 border-b border-slate-800 text-xs sm:text-sm">
                 <span class="text-slate-400">Направление:</span>
@@ -277,11 +291,15 @@
                 <span class="text-slate-400">Срок доставки:</span>
                 <span class="text-white font-bold">${res.deliveryPeriodMin}–${res.deliveryPeriodMax} раб. дней</span>
               </div>
-              <div class="flex justify-between items-center py-1.5 text-xs sm:text-sm">
+              <div class="flex justify-between items-center py-1.5 text-xs sm:text-sm mb-2">
                 <span class="text-slate-400">Стоимость:</span>
                 <span class="text-cdek font-black text-lg sm:text-xl">${finalPrice} ₽</span>
               </div>
+              <a href="#leadForm" id="lead-scroll-link-action" class="block w-full py-2.5 px-4 bg-cdek hover:bg-white text-[#0f172a] font-black text-center text-xs uppercase tracking-wider rounded-xl transition-all shadow-[0_0_15px_rgba(141,226,26,0.3)] mt-2 cursor-pointer">
+                Получить персональный тариф
+              </a>
             `;
+            attachScrollEvent();
           } else {
             const errorMsg = data.error || 'Ошибка бэкенда';
             const detailsMsg = data.details ? JSON.stringify(data.details) : '';
@@ -301,17 +319,6 @@
       });
     }
 
-    const leadLink = document.getElementById('lead-scroll-link');
-    if (leadLink) {
-      leadLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        const target = document.getElementById('leadForm');
-        if (target) {
-          target.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        } else {
-          window.location.hash = '#leadForm';
-        }
-      });
-    }
+    attachScrollEvent();
   });
 </script>
