@@ -15,27 +15,6 @@
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@cdek-it/widget@3" async></script>
-
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Главная",
-            "item": "https://cdek-marketplace.ru/"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Авито",
-            "item": "https://cdek-marketplace.ru/avito/"
-        }
-    ]
-}
-    </script>
 </head>
 <body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
 
@@ -49,41 +28,37 @@
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid lg:grid-cols-12 gap-12 items-start">
           
-          <!-- Левая колонка: Текст и цифры (с фирменным синим Авито) -->
-          <div class="lg:col-span-7 space-y-6">
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#009bff]/15 border border-[#009bff]/30 backdrop-blur-sm shadow-[0_0_15px_rgba(0,155,255,0.2)]">
-              <div class="w-2 h-2 rounded-full bg-[#009bff]"></div>
-              <span class="text-xs sm:text-sm font-semibold text-[#009bff] uppercase tracking-wider">Авито Доставка</span>
+          <!-- Левая колонка: Текст -->
+          <div class="lg:col-span-7 space-y-8">
+            <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-cdek/10 border border-cdek/30 backdrop-blur-sm">
+              <div class="w-2.5 h-2.5 rounded-full bg-cdek shadow-[0_0_10px_#8de21a] animate-pulse"></div>
+              <span class="text-xs font-bold text-cdek uppercase tracking-wider">Отправка заказов с Авито</span>
             </div>
-
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-[1.1]">
+            
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
               Доставка СДЭК <br class="hidden sm:block" />
-              для продавцов на <span class="text-[#009bff] drop-shadow-[0_0_20px_rgba(0,155,255,0.4)]">Авито</span>
+              для продавцов <span class="text-cdek drop-shadow-[0_0_20px_rgba(141,226,26,0.3)]">на Авито</span>
             </h1>
-
-            <p class="text-slate-300 text-lg sm:text-xl max-w-2xl leading-relaxed">
-              Масштабируйте продажи на Авито с помощью надежной логистики СДЭК. Отправляйте товары по всей стране по специальным корпоративным тарифам.
+            
+            <p class="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl">
+              Специальные тарифы для бизнеса (ИП/ООО) и самозанятых, которые регулярно отправляют товары клиентам с площадки Авито.
             </p>
 
-            <div class="grid grid-cols-2 md:grid-cols-3 gap-6 pt-6 border-t border-slate-800/80 max-w-2xl">
+            <div class="grid grid-cols-2 gap-6 pt-6 border-t border-slate-800/80 max-w-2xl">
               <div>
-                <div class="text-2xl sm:text-3xl font-bold text-[#009bff] mb-1">Вся Россия</div>
-                <div class="text-sm text-slate-400">Широкая география точек</div>
+                <div class="text-2xl sm:text-3xl font-bold text-cdek mb-1">Без очередей</div>
+                <div class="text-sm text-slate-400">Сдача по реестру</div>
               </div>
               <div>
-                <div class="text-2xl sm:text-3xl font-bold text-white mb-1">Быстро</div>
-                <div class="text-sm text-slate-400">Оформление за 15 минут</div>
-              </div>
-              <div class="hidden md:block">
-                <div class="text-2xl sm:text-3xl font-bold text-white mb-1">4 000+</div>
-                <div class="text-sm text-slate-400">ПВЗ для отгрузки</div>
+                <div class="text-2xl sm:text-3xl font-bold text-white mb-1">Кросс-доставка</div>
+                <div class="text-sm text-slate-400">Во все регионы РФ</div>
               </div>
             </div>
           </div>
 
           <!-- Правая колонка: Форма заявки -->
           <div class="lg:col-span-5" id="mainLeadForm">
-            <div class="sticky top-24">
+            <div class="sticky top-28">
               <!--#include virtual="/src/components/leadform.html" -->
             </div>
           </div>
@@ -92,47 +67,50 @@
       </div>
     </section>
 
-    <!-- БЛОК МАРКЕТПЛЕЙСОВ -->
-    <section class="py-8">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!--#include virtual="/src/components/platforms.html" -->
+    <!-- ПРЕИМУЩЕСТВА СДЭК ДЛЯ АВИТО ПРОДАВЦОВ -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-10 text-center">
+        СДЭК для профессиональных продавцов <span class="text-cdek">Авито</span>
+      </h2>
+      
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+        <div class="bg-slate-900/80 border border-slate-800 hover:border-cdek/50 p-6 rounded-2xl transition-all shadow-lg">
+          <div class="text-cdek mb-4 text-3xl">📦</div>
+          <h3 class="text-lg font-bold text-white mb-2">Отгрузка без очередей</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">По договору вы сдаете товары в любой ПВЗ СДЭК приоритетно по реестру.</p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 hover:border-cdek/50 p-6 rounded-2xl transition-all shadow-lg">
+          <div class="text-cdek mb-4 text-3xl">💸</div>
+          <h3 class="text-lg font-bold text-white mb-2">B2B Тарифы</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Экономия до 50% по сравнению с тарифами для физических лиц.</p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 hover:border-cdek/50 p-6 rounded-2xl transition-all shadow-lg">
+          <div class="text-cdek mb-4 text-3xl">📱</div>
+          <h3 class="text-lg font-bold text-white mb-2">Единый трекинг</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Вся аналитика, статусы и чеки доступны в удобном Личном Кабинете.</p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 hover:border-cdek/50 p-6 rounded-2xl transition-all shadow-lg">
+          <div class="text-cdek mb-4 text-3xl">🤝</div>
+          <h3 class="text-lg font-bold text-white mb-2">Для ИП и Самозанятых</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Заключаем официальный договор за 15 минут даже с самозанятыми.</p>
+        </div>
       </div>
     </section>
 
-    <!-- ПРЕИМУЩЕСТВА И КАЛЬКУЛЯТОР -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-10 text-center">
-        Преимущества работы со СДЭК <span class="text-[#009bff]">на Авито</span>
-      </h2>
-      
-      <div class="grid md:grid-cols-3 gap-6 mb-16">
-        <div class="bg-[#131b2c]/80 border border-slate-700/50 p-8 rounded-2xl hover:border-[#009bff]/50 transition-colors backdrop-blur-sm shadow-lg">
-          <div class="text-[#009bff] mb-5 text-3xl">📉</div>
-          <h3 class="text-xl font-bold text-white mb-3">Специальные тарифы</h3>
-          <p class="text-slate-400 leading-relaxed text-sm sm:text-base">Отправляйте заказы Авито Доставки по выгодным B2B-ценам без скрытых переплат и абонентской платы.</p>
-        </div>
-
-        <div class="bg-[#131b2c]/80 border border-slate-700/50 p-8 rounded-2xl hover:border-[#009bff]/50 transition-colors backdrop-blur-sm shadow-lg">
-          <div class="text-[#009bff] mb-5 text-3xl">⚡</div>
-          <h3 class="text-xl font-bold text-white mb-3">Удобная отправка</h3>
-          <p class="text-slate-400 leading-relaxed text-sm sm:text-base">Сдавайте оформленные отправления в любом удобном пункте выдачи СДЭК без очередей и долгого ожидания.</p>
-        </div>
-
-        <div class="bg-[#131b2c]/80 border border-slate-700/50 p-8 rounded-2xl hover:border-[#009bff]/50 transition-colors backdrop-blur-sm shadow-lg">
-          <div class="text-[#009bff] mb-5 text-3xl">🛡️</div>
-          <h3 class="text-xl font-bold text-white mb-3">Надежная доставка</h3>
-          <p class="text-slate-400 leading-relaxed text-sm sm:text-base">Безопасная транспортировка ваших товаров по всей России с трекингом на каждом этапе пути.</p>
-        </div>
-      </div>
-
-      <!-- КАЛЬКУЛЯТОР ТАРИФОВ -->
-      <div class="mb-16 max-w-5xl mx-auto">
+    <!-- КАЛЬКУЛЯТОР -->
+    <section id="widget-section" class="py-12">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <!--#include virtual="/src/components/calculator-widget.html" -->
       </div>
     </section>
 
-    <!-- Nginx: Подключение превью блога -->
-    <!--#include virtual="/src/components/blog-preview.html" -->
+    <!-- Блог (новости логистики) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!--#include virtual="/src/components/blog-latest.html" -->
+    </section>
 
   </main>
 
@@ -140,11 +118,11 @@
   <!--#include virtual="/src/components/footer.html" -->
   <!--#include virtual="/src/components/mobile-cta.html" -->
 
-  <!-- Скрипт для плавной прокрутки к форме из калькулятора -->
+  <!-- Скрипт прокрутки до формы -->
   <script>
     document.addEventListener('click', function(e) {
-      const target = e.target.closest('a[href*="#leadForm"], a[href*="leadForm"]');
-      if (target) {
+      const btn = e.target.closest('.scroll-to-form');
+      if (btn) {
         e.preventDefault();
         const formElement = document.getElementById('mainLeadForm');
         if (formElement) {
