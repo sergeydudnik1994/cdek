@@ -2,7 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 
-// Таблица транслитерации для чистых URL (ЧПУ)
 const cyrillicToLatin = {
     'а':'a', 'б':'b', 'в':'v', 'г':'g', 'д':'d', 'е':'e', 'ё':'e', 'ж':'zh', 'з':'z', 'и':'i',
     'й':'y', 'к':'k', 'л':'l', 'м':'m', 'н':'n', 'о':'o', 'п':'p', 'р':'r', 'с':'s', 'т':'t',
@@ -14,7 +13,6 @@ function slugify(text) {
     return text.toLowerCase().split('').map(char => cyrillicToLatin[char] || char).join('').replace(/[^a-z0-9-]/g, '').replace(/-+/g, '-');
 }
 
-// Умное склонение: "в ком/чем?" (Предложный падеж)
 function getPrep(name) {
     if (name.includes(' ') || name.includes('-')) return 'г. ' + name;
     if (name.endsWith('а') || name.endsWith('я')) return name.slice(0, -1) + 'е';
@@ -25,7 +23,6 @@ function getPrep(name) {
     return 'г. ' + name;
 }
 
-// Умное склонение: "из кого/чего?" (Родительный падеж)
 function getGen(name) {
     if (name.includes(' ') || name.includes('-')) return 'г. ' + name;
     if (name.endsWith('а')) {
@@ -47,22 +44,24 @@ https.get(url, (res) => {
     res.on("data", (chunk) => { body += chunk; });
     res.on("end", () => {
         const cities = JSON.parse(body);
-        
-        // Сортируем по населению и берем топ-500 самых крупных городов
         cities.sort((a, b) => b.population - a.population);
         const topCities = cities.slice(0, 500);
 
         const templatePath = path.join(__dirname, 'city-template.html');
         const template = fs.readFileSync(templatePath, 'utf8');
 
-        // Создаем главную папку geo, если её вдруг нет
         const geoDir = path.join(__dirname, 'geo');
-        if (!fs.existsSync(geoDir)) fs.mkdirSync(geoDir);
+        
+        // ВАЖНО: Удаляем старую папку geo целиком, чтобы убить ручные страницы
+        if (fs.existsSync(geoDir)) {
+            fs.rmSync(geoDir, { recursive: true, force: true });
+        }
+        fs.mkdirSync(geoDir);
 
         topCities.forEach(c => {
             const slug = slugify(c.name);
-            const prep = getPrep(c.name); // например, "Самаре"
-            const gen = getGen(c.name);   // например, "Самары"
+            const prep = getPrep(c.name);
+            const gen = getGen(c.name);
 
             const cityHtml = template
                 .replace(/{{CITY}}/g, c.name)
@@ -71,13 +70,10 @@ https.get(url, (res) => {
                 .replace(/{{SLUG}}/g, slug);
 
             const cityDir = path.join(geoDir, slug);
-            if (!fs.existsSync(cityDir)) fs.mkdirSync(cityDir, { recursive: true });
-
+            fs.mkdirSync(cityDir, { recursive: true });
             fs.writeFileSync(path.join(cityDir, 'index.html'), cityHtml);
         });
 
-        console.log(`Успешно сгенерировано ${topCities.length} городов! Проверьте папку geo.`);
+        console.log(`Успешно пересоздано 500 городов!`);
     });
-}).on("error", (err) => {
-    console.error("Ошибка при скачивании списка городов:", err.message);
 });
