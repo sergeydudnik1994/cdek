@@ -15,26 +15,7 @@
     }
   </script>
 
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Главная",
-            "item": "https://cdek-marketplace.ru/"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Яндекс Маркет",
-            "item": "https://cdek-marketplace.ru/yandex-market/"
-        }
-    ]
-}
-    </script>
+  <script src="https://cdn.jsdelivr.net/npm/@cdek-it/widget@3" async></script>
 </head>
 <body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#ff5722] selection:text-white pb-16 md:pb-0">
 
@@ -87,13 +68,6 @@
       </div>
     </section>
 
-    <!-- БЛОК МАРКЕТПЛЕЙСОВ -->
-    <section class="py-8">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!--#include virtual="/src/components/platforms.html" -->
-      </div>
-    </section>
-
     <!-- КАЛЬКУЛЯТОР -->
     <section id="widget-section" class="py-12">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -101,8 +75,10 @@
       </div>
     </section>
 
-    <!-- Nginx: Подключение превью блога -->
-    <!--#include virtual="/src/components/blog-preview.html" -->
+    <!-- Блог (новости логистики) -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <!--#include virtual="/src/components/blog-latest.html" -->
+    </section>
 
   </main>
 
@@ -110,11 +86,11 @@
   <!--#include virtual="/src/components/footer.html" -->
   <!--#include virtual="/src/components/mobile-cta.html" -->
 
-  <!-- Скрипт прокрутки -->
+  <!-- Скрипт прокрутки до формы -->
   <script>
     document.addEventListener('click', function(e) {
-      const target = e.target.closest('a[href*="#leadForm"], a[href*="leadForm"]');
-      if (target) {
+      const btn = e.target.closest('.scroll-to-form');
+      if (btn) {
         e.preventDefault();
         const formElement = document.getElementById('mainLeadForm');
         if (formElement) {
