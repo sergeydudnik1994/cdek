@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>СДЭК для селлеров в г. Горно-Алтайск: логистика FBS/DBS | Маркетплейсы</title>
+  <meta name="description" content="Официальный договор со СДЭК для селлеров из г. Горно-Алтайск. Интеграция с Wildberries, Ozon, Яндекс Маркетом и Авито. Скидки на логистику." />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { cdek: '#8de21a', dark: { 900: '#0b101d' } } } }
+    }
+  </script>
+
+  <!-- Микроразметка "Хлебные крошки" -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-marketplace.ru/" },
+      { "@type": "ListItem", "position": 2, "name": "Селлерам в г. Горно-Алтайск", "item": "https://cdek-marketplace.ru/geo/gorno-altaysk/" }
+    ]
+  }
+  </script>
+</head>
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
+
+  <!--#include virtual="/src/components/header.html" -->
+
+  <main class="flex-grow pt-10 pb-20">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Заголовок Города -->
+      <div class="text-center mb-12">
+        <h1 class="text-3xl sm:text-4xl font-extrabold text-white mb-4">
+          Подключение селлеров к СДЭК в <span class="text-cdek">г. Горно-Алтайск</span>
+        </h1>
+        <p class="text-lg text-slate-400">
+          Специальные условия логистики для бизнеса из г. Горно-Алтайск при отгрузках на маркетплейсы. Бесплатный договор и скидки до 50%.
+        </p>
+      </div>
+
+      <!-- Калькулятор -->
+      <div class="mt-8">
+        <!--#include virtual="/src/components/calculator-widget.html" -->
+      </div>
+
+      <!-- Блок маркетплейсов -->
+      <div class="mt-16">
+        <!--#include virtual="/src/components/platforms.html" -->
+      </div>
+
+      <!-- Форма заявки -->
+      <div id="leadForm" class="mt-16 max-w-2xl mx-auto">
+        <h2 class="text-2xl font-bold text-center text-white mb-8">Оставить заявку на договор (Горно-Алтайск)</h2>
+        <!--#include virtual="/src/components/leadform.html" -->
+      </div>
+
+    </div>
+  </main>
+
+  <!--#include virtual="/src/components/footer.html" -->
+  <!--#include virtual="/src/components/mobile-cta.html" -->
+
+</body>
+</html>
