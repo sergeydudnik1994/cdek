@@ -151,7 +151,7 @@
         if (rawDigits.length !== 11) {
           if (statusDiv) {
             statusDiv.classList.remove('hidden');
-            statusDiv.innerText = 'Введите корректный номер: 10 цифр после +7';
+            statusDiv.innerText = 'Введите корректный номер: 10 fixed цифр после +7';
           }
           return;
         }
@@ -177,6 +177,11 @@
           if (headerBlock) headerBlock.classList.add('hidden');
           if (successScreen) successScreen.classList.remove('hidden');
           form.reset();
+          
+          // Отправка цели в Метрику!
+          if (typeof ym !== 'undefined') {
+            ym(111090265, 'reachGoal', 'lead_form_success');
+          }
         } else {
           throw new Error(resData.message || 'Ошибка при отправке');
         }
