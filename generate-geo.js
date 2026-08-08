@@ -45,14 +45,12 @@ https.get(url, (res) => {
     res.on("end", () => {
         const cities = JSON.parse(body);
         
-        // Берем топ-500 городов
         cities.sort((a, b) => b.population - a.population);
         const topCities = cities.slice(0, 500);
 
         const templatePath = path.join(__dirname, 'city-template.html');
         const template = fs.readFileSync(templatePath, 'utf8');
 
-        // 1. ПЕРЕСОЗДАЕМ ПАПКИ ГОРОДОВ
         const geoDir = path.join(__dirname, 'geo');
         if (fs.existsSync(geoDir)) {
             fs.rmSync(geoDir, { recursive: true, force: true });
@@ -60,12 +58,19 @@ https.get(url, (res) => {
         fs.mkdirSync(geoDir);
 
         topCities.forEach(c => {
-            const slug = slugify(c.name);
-            const prep = getPrep(c.name);
-            const gen = getGen(c.name);
+            let cityName = c.name;
+            // Фикс сломанной кодировки в исходном JSON-файле
+            if (cityName.includes('ест') && cityName.includes('Ас')) cityName = 'Асбест';
+            if (cityName.includes('стра') && !cityName.includes('Истра') && cityName.length < 7) cityName = 'Истра';
+
+            c.name = cityName; // сохраняем исправленное имя обратно
+
+            const slug = slugify(cityName);
+            const prep = getPrep(cityName);
+            const gen = getGen(cityName);
 
             const cityHtml = template
-                .replace(/{{CITY}}/g, c.name)
+                .replace(/{{CITY}}/g, cityName)
                 .replace(/{{CITY_PREP}}/g, prep)
                 .replace(/{{CITY_GEN}}/g, gen)
                 .replace(/{{SLUG}}/g, slug);
@@ -75,7 +80,6 @@ https.get(url, (res) => {
             fs.writeFileSync(path.join(cityDir, 'index.html'), cityHtml);
         });
 
-        // 2. АВТОМАТИЧЕСКИ ОБНОВЛЯЕМ HEADER.HTML
         const headerPath = path.join(__dirname, 'src', 'components', 'header.html');
         if (fs.existsSync(headerPath)) {
             let headerContent = fs.readFileSync(headerPath, 'utf8');
@@ -87,7 +91,6 @@ https.get(url, (res) => {
                 linksHtml += `          <a href="/geo/${slug}/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">${c.name}</a>\n`;
             });
 
-            // Умный поиск нужного блока без регулярных выражений
             const marker = 'Все города</div>';
             const markerIndex = headerContent.indexOf(marker);
             
@@ -97,7 +100,6 @@ https.get(url, (res) => {
                     const gridInnerStart = headerContent.indexOf('>', gridStartIndex) + 1;
                     const gridInnerEnd = headerContent.indexOf('</div>', gridInnerStart);
                     
-                    // Заменяем внутренности сетки на наш сгенерированный список
                     headerContent = headerContent.substring(0, gridInnerStart) + linksHtml + '        ' + headerContent.substring(gridInnerEnd);
                     fs.writeFileSync(headerPath, headerContent);
                 }
