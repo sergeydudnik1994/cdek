@@ -1,0 +1,30 @@
+name: Generate SEO Cities
+
+on:
+  workflow_dispatch: # Эта команда создает кнопку ручного запуска
+
+permissions:
+  contents: write # Разрешаем скрипту сохранять папки в проект
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Скачиваем код репозитория
+        uses: actions/checkout@v3
+
+      - name: Устанавливаем Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Запускаем генерацию 500 городов
+        run: node generate-geo.js
+
+      - name: Сохраняем новые города в GitHub
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add geo/
+          git commit -m "Сгенерировано 500 SEO городов" || echo "Нет новых городов"
+          git push
