@@ -1,29 +1,38 @@
 <!-- ВИДЖЕТ: Отдельный калькулятор DBS до 1 кг -->
-<a href="/calculator/dbs-1kg/" class="block mb-4 max-w-4xl mx-auto group cursor-pointer">
-  <div class="relative overflow-hidden bg-gradient-to-r from-slate-800 to-[#0f172a] border border-cdek/50 rounded-2xl p-4 sm:p-5 transition-all duration-300 hover:border-cdek hover:shadow-[0_0_20px_rgba(141,226,26,0.2)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<a href="/calculator/dbs-1kg/" class="block mb-6 max-w-4xl mx-auto group cursor-pointer">
+  <div class="glass relative overflow-hidden bg-[#0f172a]/80 backdrop-blur-md border border-cdek/40 rounded-3xl p-5 sm:p-6 transition-all duration-300 hover:border-cdek hover:shadow-[0_0_25px_rgba(141,226,26,0.15)] flex flex-col sm:flex-row sm:items-center justify-between gap-5">
     
     <!-- Декоративный фон -->
-    <div class="absolute -right-10 -top-10 w-32 h-32 bg-cdek/10 rounded-full blur-2xl group-hover:bg-cdek/20 transition-all"></div>
+    <div class="absolute -right-10 -top-10 w-40 h-40 bg-cdek/10 rounded-full blur-3xl group-hover:bg-cdek/20 transition-all duration-500"></div>
     
-    <div class="flex items-start sm:items-center gap-4 relative z-10">
-      <div class="hidden sm:flex shrink-0 items-center justify-center w-12 h-12 rounded-full bg-slate-700/50 text-cdek group-hover:bg-cdek/20 transition-colors">
-        <!-- Иконка калькулятора вместо абстрактной коробки -->
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+    <div class="flex items-start sm:items-center gap-5 relative z-10">
+      
+      <!-- Иконка интеграции -->
+      <div class="hidden sm:flex shrink-0 items-center justify-center w-14 h-14 rounded-2xl bg-slate-800/80 border border-slate-700 text-cdek group-hover:bg-cdek/10 group-hover:border-cdek/30 transition-colors">
+        <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
       </div>
+      
       <div>
-        <div class="flex items-center gap-2 mb-1.5">
-          <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-cdek text-[#0f172a]">Спецтариф</span>
-          <h4 class="text-white font-bold text-sm sm:text-base group-hover:text-cdek transition-colors">Калькулятор DBS до 1 кг</h4>
+        <div class="flex flex-wrap items-center gap-2 mb-2.5">
+          <span class="px-2.5 py-1 rounded-md text-[10px] font-extrabold uppercase tracking-widest bg-cdek text-[#0f172a] shadow-sm shadow-cdek/20">Только интеграция</span>
+          <!-- Плашки маркетплейсов -->
+          <span class="text-[11px] font-semibold text-slate-300 bg-slate-800/80 border border-slate-700 px-2 py-0.5 rounded-md">Ozon</span>
+          <span class="text-[11px] font-semibold text-slate-300 bg-slate-800/80 border border-slate-700 px-2 py-0.5 rounded-md">WB</span>
+          <span class="text-[11px] font-semibold text-slate-300 bg-slate-800/80 border border-slate-700 px-2 py-0.5 rounded-md">Я.Маркет</span>
+          <span class="text-[11px] font-semibold text-slate-300 bg-slate-800/80 border border-slate-700 px-2 py-0.5 rounded-md">Авито</span>
         </div>
-        <p class="text-slate-400 text-xs sm:text-sm">Сверхвыгодные ставки для мелких товаров — от <strong class="text-white">136.50 ₽</strong></p>
+        <h4 class="text-white font-black text-lg sm:text-xl group-hover:text-cdek transition-colors mb-1.5">Спецтариф DBS до 1 кг</h4>
+        <p class="text-slate-400 text-xs sm:text-sm leading-relaxed max-w-md">
+          Особые условия (от <strong class="text-white">136.50 ₽</strong>) действуют исключительно при настроенной API-интеграции витрины со СДЭК.
+        </p>
       </div>
     </div>
     
-    <!-- Явная кнопка вместо круглой стрелочки -->
-    <div class="relative z-10 shrink-0 w-full sm:w-auto mt-1 sm:mt-0">
-      <div class="flex items-center justify-center w-full sm:w-auto px-4 py-2.5 text-xs font-bold text-white bg-slate-700 rounded-xl group-hover:bg-cdek group-hover:text-[#0f172a] transition-colors">
-        Перейти к расчету
-        <svg class="w-4 h-4 ml-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+    <!-- Явная кнопка действия -->
+    <div class="relative z-10 shrink-0 w-full sm:w-auto mt-2 sm:mt-0">
+      <div class="flex items-center justify-center w-full sm:w-auto px-6 py-3 text-sm font-bold text-[#0f172a] bg-cdek rounded-xl hover:bg-white transition-all shadow-[0_0_15px_rgba(141,226,26,0.3)]">
+        Узнать подробнее
+        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
       </div>
     </div>
   </div>
