@@ -55,7 +55,7 @@
       <div class="relative">
         <label class="block text-[11px] font-semibold text-slate-400 mb-1 uppercase tracking-wider">Город отправления</label>
         <input type="text" id="cdek-from" value="Москва" autocomplete="off" placeholder="Введите город..." class="w-full px-3.5 py-2.5 bg-[#0f172a] border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cdek text-sm transition-colors" />
-        <p id="error-from" class="text-red-400 text-[11px] mt-1 hidden">Пожалуйста, выберите город из списка подсказок</p>
+        <p id="error-from" class="text-red-400 text-[11px] mt-1 hidden">Выберите город из списка подсказок</p>
         <ul id="list-from" class="absolute z-50 w-full bg-[#1e293b] border border-slate-700 rounded-xl mt-1 hidden max-h-56 overflow-y-auto shadow-2xl text-sm overflow-hidden touch-pan-y"></ul>
       </div>
 
@@ -63,7 +63,7 @@
       <div class="relative">
         <label class="block text-[11px] font-semibold text-slate-400 mb-1 uppercase tracking-wider">Город назначения</label>
         <input type="text" id="cdek-to" placeholder="Ростов-на-Дону" autocomplete="off" class="w-full px-3.5 py-2.5 bg-[#0f172a] border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cdek text-sm transition-colors" />
-        <p id="error-to" class="text-red-400 text-[11px] mt-1 hidden">Пожалуйста, выберите город из списка подсказок</p>
+        <p id="error-to" class="text-red-400 text-[11px] mt-1 hidden">Выберите город из списка подсказок</p>
         <ul id="list-to" class="absolute z-50 w-full bg-[#1e293b] border border-slate-700 rounded-xl mt-1 hidden max-h-56 overflow-y-auto shadow-2xl text-sm overflow-hidden touch-pan-y"></ul>
       </div>
 
@@ -102,16 +102,9 @@
     <div class="bg-[#0f172a]/80 border border-slate-800 rounded-2xl p-5 flex flex-col justify-between relative z-0">
       <div>
         <h4 class="text-white font-bold text-sm mb-3 border-b border-slate-800 pb-2">Результаты расчета</h4>
-        <div id="calc-results" class="space-y-2.5 text-sm text-slate-300">
+        <div id="calc-results" class="space-y-3 text-sm text-slate-300">
           <p class="text-slate-500 italic text-xs">Заполните города и нажмите «Рассчитать стоимость»</p>
         </div>
-      </div>
-
-      <div class="mt-4 pt-3 border-t border-slate-800/80" id="calc-footer-cta">
-        <p class="text-[11px] text-slate-400 leading-relaxed">
-          Готовы <span class="text-white font-semibold">зафиксировать выгодную ставку</span>? 
-          <a href="#leadForm" id="lead-scroll-link" class="text-cdek hover:underline font-bold cursor-pointer">Получить персональный тариф</a>
-        </p>
       </div>
     </div>
   </div>
@@ -189,7 +182,6 @@
         console.error('Ошибка загрузки городов, используем резервный список', error);
       });
 
-    // Функция сбрасывает ошибки валидации при вводе
     function clearError(inputId, errorId) {
       const input = document.getElementById(inputId);
       const error = document.getElementById(errorId);
@@ -198,7 +190,6 @@
       error.classList.add('hidden');
     }
 
-    // Функция показывает ошибку валидации
     function showError(inputId, errorId) {
       const input = document.getElementById(inputId);
       const error = document.getElementById(errorId);
@@ -207,12 +198,10 @@
       error.classList.remove('hidden');
     }
 
-    // Настройка мобильного автокомплита
     function setupAutocomplete(inputId, listId, errorId) {
       const input = document.getElementById(inputId);
       const list = document.getElementById(listId);
 
-      // При вводе сбрасываем красную рамку
       input.addEventListener('input', function() {
         clearError(inputId, errorId);
         const val = this.value.trim().toLowerCase();
@@ -226,7 +215,6 @@
 
         limited.forEach(city => {
           const li = document.createElement('li');
-          // py-3 обеспечивает удобную зону клика на мобильных
           li.className = 'px-3.5 py-3 sm:py-2.5 cursor-pointer hover:bg-cdek hover:text-[#0f172a] text-white border-b border-slate-700/50 last:border-0 transition-colors text-sm';
           const regex = new RegExp(`(${val})`, 'gi');
           li.innerHTML = city.replace(regex, '<span class="font-bold text-cdek group-hover:text-[#0f172a]">$1</span>');
@@ -240,7 +228,6 @@
         });
         list.classList.remove('hidden');
 
-        // Мобильный фикс: скроллим инпут в центр экрана при появлении экранной клавиатуры
         if (window.innerWidth < 768) {
           setTimeout(() => {
             input.scrollIntoView({ behavior: 'smooth', block: 'center' });
@@ -248,7 +235,6 @@
         }
       });
 
-      // Закрываем список при клике снаружи
       document.addEventListener('click', (e) => {
         if (e.target !== input && e.target !== list) list.classList.add('hidden');
       });
@@ -261,7 +247,7 @@
     const resultsContainer = document.getElementById('calc-results');
 
     function attachScrollEvent() {
-      const scrollLinks = document.querySelectorAll('#lead-scroll-link-action, #lead-scroll-link');
+      const scrollLinks = document.querySelectorAll('#lead-scroll-link-action');
       scrollLinks.forEach(link => {
         link.addEventListener('click', (e) => {
           e.preventDefault();
@@ -275,7 +261,6 @@
       });
     }
 
-    // ВАЛИДАЦИЯ И РАСЧЕТ
     if (btn) {
       btn.addEventListener('click', async () => {
         const fromInput = document.getElementById('cdek-from');
@@ -287,7 +272,6 @@
 
         let isValid = true;
 
-        // Проверяем заполненность и корректность города отправителя
         const isFromValid = topCities.some(c => c.toLowerCase() === cityFrom.toLowerCase());
         if (!cityFrom || !isFromValid) {
           showError('cdek-from', 'error-from');
@@ -296,7 +280,6 @@
           clearError('cdek-from', 'error-from');
         }
 
-        // Проверяем заполненность и корректность города получателя
         const isToValid = topCities.some(c => c.toLowerCase() === cityTo.toLowerCase());
         if (!cityTo || !isToValid) {
           showError('cdek-to', 'error-to');
@@ -329,20 +312,21 @@
             const res = data.result;
             const finalPrice = Math.round(res.price);
             
+            // АДАПТИВНАЯ ВЕРСТКА НАПРАВЛЕНИЯ + ОДНА ЕДИНСТВЕННАЯ ЯРКАЯ КНОПКА
             resultsContainer.innerHTML = `
-              <div class="flex justify-between items-center py-1.5 border-b border-slate-800 text-xs sm:text-sm">
-                <span class="text-slate-400">Направление:</span>
-                <span class="text-white font-bold">${cityFrom} → ${cityTo}</span>
+              <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 border-b border-slate-800 text-xs sm:text-sm gap-1">
+                <span class="text-slate-400 shrink-0">Направление:</span>
+                <span class="text-white font-bold sm:text-right break-words">${cityFrom} → ${cityTo}</span>
               </div>
-              <div class="flex justify-between items-center py-1.5 border-b border-slate-800 text-xs sm:text-sm">
+              <div class="flex justify-between items-center py-2 border-b border-slate-800 text-xs sm:text-sm">
                 <span class="text-slate-400">Срок доставки:</span>
                 <span class="text-white font-bold">${res.deliveryPeriodMin}–${res.deliveryPeriodMax} раб. дней</span>
               </div>
-              <div class="flex justify-between items-center py-1.5 text-xs sm:text-sm mb-2">
+              <div class="flex justify-between items-center py-2 text-xs sm:text-sm">
                 <span class="text-slate-400">Стоимость:</span>
-                <span class="text-cdek font-black text-lg sm:text-xl">${finalPrice} ₽</span>
+                <span class="text-cdek font-black text-xl sm:text-2xl">${finalPrice} ₽</span>
               </div>
-              <a href="#leadForm" id="lead-scroll-link-action" class="block w-full py-2.5 px-4 bg-cdek hover:bg-white text-[#0f172a] font-black text-center text-xs uppercase tracking-wider rounded-xl transition-all shadow-[0_0_15px_rgba(141,226,26,0.3)] mt-2 cursor-pointer">
+              <a href="#leadForm" id="lead-scroll-link-action" class="block w-full py-3 px-4 bg-cdek hover:bg-white text-[#0f172a] font-black text-center text-xs sm:text-sm uppercase tracking-wider rounded-xl transition-all shadow-[0_0_15px_rgba(141,226,26,0.3)] mt-2 cursor-pointer">
                 Получить персональный тариф
               </a>
             `;
