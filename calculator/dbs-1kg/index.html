@@ -68,19 +68,17 @@
 
         <div class="max-w-4xl mx-auto bg-[#131b2c] border border-slate-700/50 p-6 md:p-10 rounded-3xl shadow-2xl">
           <div class="grid md:grid-cols-2 gap-6 mb-8">
-            <!-- Откуда -->
-            <div>
+            <!-- Откуда (Заменено на умный поиск) -->
+            <div class="relative">
               <label class="block text-sm font-medium text-slate-400 mb-2">Откуда отправляем (Склад)</label>
-              <select id="calc-from" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cdek transition-colors">
-                <option value="">Загрузка городов...</option>
-              </select>
+              <input type="text" id="calc-from" value="Москва" autocomplete="off" placeholder="Введите город..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cdek transition-colors" />
+              <ul id="list-from" class="absolute z-50 w-full bg-[#1e293b] border border-slate-700 rounded-xl mt-1 hidden max-h-48 overflow-y-auto shadow-2xl text-sm overflow-hidden"></ul>
             </div>
-            <!-- Куда -->
-            <div>
+            <!-- Куда (Заменено на умный поиск) -->
+            <div class="relative">
               <label class="block text-sm font-medium text-slate-400 mb-2">Куда доставляем (Покупатель)</label>
-              <select id="calc-to" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cdek transition-colors">
-                <option value="">Загрузка городов...</option>
-              </select>
+              <input type="text" id="calc-to" value="Санкт-Петербург" autocomplete="off" placeholder="Введите город..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-cdek transition-colors" />
+              <ul id="list-to" class="absolute z-50 w-full bg-[#1e293b] border border-slate-700 rounded-xl mt-1 hidden max-h-48 overflow-y-auto shadow-2xl text-sm overflow-hidden"></ul>
             </div>
           </div>
 
@@ -89,16 +87,16 @@
             <div>
               <label class="block text-sm font-medium text-slate-400 mb-2">Вес отправления</label>
               <div class="flex bg-slate-900 rounded-xl p-1 border border-slate-700">
-                <button onclick="setWeight('0.5')" id="btn-w-05" class="flex-1 py-2 rounded-lg bg-slate-700 text-white font-medium text-sm transition-all">До 0.5 кг</button>
-                <button onclick="setWeight('1.0')" id="btn-w-10" class="flex-1 py-2 rounded-lg text-slate-400 hover:text-white font-medium text-sm transition-all">До 1 кг</button>
+                <button onclick="setWeight('0.5')" id="btn-w-05" class="flex-1 py-2 rounded-lg bg-slate-700 text-white font-medium text-sm transition-all cursor-pointer">До 0.5 кг</button>
+                <button onclick="setWeight('1.0')" id="btn-w-10" class="flex-1 py-2 rounded-lg text-slate-400 hover:text-white font-medium text-sm transition-all cursor-pointer">До 1 кг</button>
               </div>
             </div>
             <!-- Выбор режима -->
             <div>
               <label class="block text-sm font-medium text-slate-400 mb-2">Способ вручения</label>
               <div class="flex bg-slate-900 rounded-xl p-1 border border-slate-700">
-                <button onclick="setMode('склад-склад')" id="btn-m-pvz" class="flex-1 py-2 rounded-lg bg-slate-700 text-white font-medium text-sm transition-all">В ПВЗ</button>
-                <button onclick="setMode('склад-дверь')" id="btn-m-door" class="flex-1 py-2 rounded-lg text-slate-400 hover:text-white font-medium text-sm transition-all">Курьером</button>
+                <button onclick="setMode('склад-склад')" id="btn-m-pvz" class="flex-1 py-2 rounded-lg bg-slate-700 text-white font-medium text-sm transition-all cursor-pointer">В ПВЗ</button>
+                <button onclick="setMode('склад-дверь')" id="btn-m-door" class="flex-1 py-2 rounded-lg text-slate-400 hover:text-white font-medium text-sm transition-all cursor-pointer">Курьером</button>
               </div>
             </div>
           </div>
@@ -108,12 +106,12 @@
             <div class="text-slate-400 text-sm mb-1">Итоговая стоимость доставки:</div>
             <div class="flex items-end justify-center gap-2 mb-2">
               <span id="calc-price" class="text-5xl font-black text-cdek">0.00</span>
-              <span class="text-2xl text-white font-bold pb-1">₽</span>
+              <span id="calc-currency" class="text-2xl text-white font-bold pb-1">₽</span>
             </div>
             <div class="text-sm text-slate-300">
               Срок доставки: <span id="calc-time" class="font-bold text-white">...</span> дн.
             </div>
-            <a href="#leadForm" class="mt-6 inline-flex items-center justify-center py-3 px-8 bg-cdek text-dark-900 hover:bg-cdek/90 font-extrabold text-sm rounded-xl transition-all shadow-lg shadow-cdek/20">
+            <a href="#leadForm" class="mt-6 inline-flex items-center justify-center py-3 px-8 bg-cdek text-dark-900 hover:bg-cdek/90 font-extrabold text-sm rounded-xl transition-all shadow-lg shadow-cdek/20 cursor-pointer">
               Заключить договор
             </a>
           </div>
@@ -133,10 +131,10 @@
         <div class="bg-[#131b2c]/80 backdrop-blur-sm border border-slate-700/50 p-6 md:p-10 rounded-3xl shadow-xl">
           
           <div class="flex flex-wrap gap-4 mb-10 justify-center">
-            <button id="btn-universal" onclick="setMarketplace('universal')" class="mp-btn px-6 py-3 rounded-xl border-2 border-cdek bg-cdek/10 text-cdek font-bold transition-all">
+            <button id="btn-universal" onclick="setMarketplace('universal')" class="mp-btn px-6 py-3 rounded-xl border-2 border-cdek bg-cdek/10 text-cdek font-bold transition-all cursor-pointer">
               Ozon / Я.Маркет / Авито
             </button>
-            <button id="btn-wb" onclick="setMarketplace('wb')" class="mp-btn px-6 py-3 rounded-xl border-2 border-slate-700 bg-transparent text-slate-400 hover:border-slate-500 transition-all">
+            <button id="btn-wb" onclick="setMarketplace('wb')" class="mp-btn px-6 py-3 rounded-xl border-2 border-slate-700 bg-transparent text-slate-400 hover:border-slate-500 transition-all cursor-pointer">
               Wildberries
             </button>
           </div>
@@ -208,6 +206,54 @@
   <!--#include virtual="/src/components/mobile-cta.html" -->
 
   <script>
+    // Инициализация умного поиска городов
+    let topCities = ["Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург", "Казань"];
+
+    fetch('https://raw.githubusercontent.com/pensnarik/russian-cities/master/russian-cities.json')
+      .then(response => response.json())
+      .then(data => {
+        topCities = [...new Set(data.map(city => city.name))];
+      })
+      .catch(error => console.error('Ошибка загрузки городов:', error));
+
+    function setupAutocomplete(inputId, listId) {
+      const input = document.getElementById(inputId);
+      const list = document.getElementById(listId);
+
+      input.addEventListener('input', function() {
+        const val = this.value.trim().toLowerCase();
+        list.innerHTML = '';
+        if (!val) { list.classList.add('hidden'); return; }
+
+        const filtered = topCities.filter(city => city.toLowerCase().includes(val));
+        if (filtered.length === 0) { list.classList.add('hidden'); return; }
+
+        const limited = filtered.slice(0, 20);
+
+        limited.forEach(city => {
+          const li = document.createElement('li');
+          li.className = 'px-4 py-2.5 cursor-pointer hover:bg-cdek hover:text-[#0f172a] text-white border-b border-slate-700/50 last:border-0 transition-colors';
+          const regex = new RegExp(`(${val})`, 'gi');
+          li.innerHTML = city.replace(regex, '<span class="font-bold text-cdek group-hover:text-[#0f172a]">$1</span>');
+          li.addEventListener('click', () => {
+            input.value = city;
+            list.classList.add('hidden');
+            calculatePrice(); // Запускаем пересчет цены при выборе города
+          });
+          list.appendChild(li);
+        });
+        list.classList.remove('hidden');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (e.target !== input && e.target !== list) list.classList.add('hidden');
+      });
+    }
+
+    // Привязываем умный поиск к новым инпутам
+    setupAutocomplete('calc-from', 'list-from');
+    setupAutocomplete('calc-to', 'list-to');
+
     // Логика маркетплейсов
     function setMarketplace(type) {
       const btnUniversal = document.getElementById('btn-universal');
@@ -235,28 +281,30 @@
       }
     }
 
-    // Логика калькулятора
+    // Логика калькулятора (расчет по rates.js)
     let currentWeight = '0.5';
     let currentMode = 'склад-склад';
 
     function setWeight(w) {
       currentWeight = w;
-      document.getElementById('btn-w-05').className = w === '0.5' ? 'flex-1 py-2 rounded-lg bg-slate-700 text-white font-medium text-sm transition-all' : 'flex-1 py-2 rounded-lg text-slate-400 hover:text-white font-medium text-sm transition-all';
-      document.getElementById('btn-w-10').className = w === '1.0' ? 'flex-1 py-2 rounded-lg bg-slate-700 text-white font-medium text-sm transition-all' : 'flex-1 py-2 rounded-lg text-slate-400 hover:text-white font-medium text-sm transition-all';
+      document.getElementById('btn-w-05').className = w === '0.5' ? 'flex-1 py-2 rounded-lg bg-slate-700 text-white font-medium text-sm transition-all cursor-pointer' : 'flex-1 py-2 rounded-lg text-slate-400 hover:text-white font-medium text-sm transition-all cursor-pointer';
+      document.getElementById('btn-w-10').className = w === '1.0' ? 'flex-1 py-2 rounded-lg bg-slate-700 text-white font-medium text-sm transition-all cursor-pointer' : 'flex-1 py-2 rounded-lg text-slate-400 hover:text-white font-medium text-sm transition-all cursor-pointer';
       calculatePrice();
     }
 
     function setMode(m) {
       currentMode = m;
-      document.getElementById('btn-m-pvz').className = m === 'склад-склад' ? 'flex-1 py-2 rounded-lg bg-slate-700 text-white font-medium text-sm transition-all' : 'flex-1 py-2 rounded-lg text-slate-400 hover:text-white font-medium text-sm transition-all';
-      document.getElementById('btn-m-door').className = m === 'склад-дверь' ? 'flex-1 py-2 rounded-lg bg-slate-700 text-white font-medium text-sm transition-all' : 'flex-1 py-2 rounded-lg text-slate-400 hover:text-white font-medium text-sm transition-all';
+      document.getElementById('btn-m-pvz').className = m === 'склад-склад' ? 'flex-1 py-2 rounded-lg bg-slate-700 text-white font-medium text-sm transition-all cursor-pointer' : 'flex-1 py-2 rounded-lg text-slate-400 hover:text-white font-medium text-sm transition-all cursor-pointer';
+      document.getElementById('btn-m-door').className = m === 'склад-дверь' ? 'flex-1 py-2 rounded-lg bg-slate-700 text-white font-medium text-sm transition-all cursor-pointer' : 'flex-1 py-2 rounded-lg text-slate-400 hover:text-white font-medium text-sm transition-all cursor-pointer';
       calculatePrice();
     }
 
     function calculatePrice() {
-      const cityFrom = document.getElementById('calc-from').value;
-      const cityTo = document.getElementById('calc-to').value;
+      // Берем значение из текстовых полей
+      const cityFrom = document.getElementById('calc-from').value.trim();
+      const cityTo = document.getElementById('calc-to').value.trim();
       const priceEl = document.getElementById('calc-price');
+      const currencyEl = document.getElementById('calc-currency');
       const timeEl = document.getElementById('calc-time');
 
       if (!cityFrom || !cityTo || typeof ratesDB === 'undefined') return;
@@ -267,40 +315,26 @@
       if (rate && rate[currentWeight] > 0) {
         priceEl.textContent = rate[currentWeight].toFixed(2);
         timeEl.textContent = rate.time;
+        currencyEl.style.display = 'inline';
+        
         priceEl.classList.remove('text-red-500', 'text-2xl');
         priceEl.classList.add('text-cdek', 'text-5xl');
       } else {
-        priceEl.textContent = "Недоступно";
+        // Если выбранного города нет в файле rates.js, показываем уведомление
+        priceEl.textContent = "Уточняйте у менеджера";
         timeEl.textContent = "—";
+        currencyEl.style.display = 'none';
+        
         priceEl.classList.remove('text-cdek', 'text-5xl');
-        priceEl.classList.add('text-red-500', 'text-2xl');
+        priceEl.classList.add('text-slate-400', 'text-2xl');
       }
     }
 
     document.addEventListener("DOMContentLoaded", () => {
-      if (typeof ratesDB !== 'undefined') {
-        const citiesFrom = new Set();
-        const citiesTo = new Set();
-
-        Object.keys(ratesDB).forEach(key => {
-          const parts = key.split('|');
-          if(parts.length === 3) { citiesFrom.add(parts[0]); citiesTo.add(parts[1]); }
-        });
-
-        const fromSelect = document.getElementById('calc-from');
-        const toSelect = document.getElementById('calc-to');
-        fromSelect.innerHTML = ''; toSelect.innerHTML = '';
-
-        Array.from(citiesFrom).sort().forEach(c => fromSelect.add(new Option(c, c)));
-        Array.from(citiesTo).sort().forEach(c => toSelect.add(new Option(c, c)));
-
-        if(citiesFrom.has('Москва')) fromSelect.value = 'Москва';
-        if(citiesTo.has('Санкт-Петербург')) toSelect.value = 'Санкт-Петербург';
-
-        calculatePrice();
-      }
+      calculatePrice();
     });
 
+    // Расчет при ручном вводе (помимо клика по списку)
     document.getElementById('calc-from').addEventListener('change', calculatePrice);
     document.getElementById('calc-to').addEventListener('change', calculatePrice);
 
