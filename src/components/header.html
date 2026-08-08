@@ -1,240 +1,53 @@
 <header class="sticky top-0 z-50 bg-[#0b101d]/95 backdrop-blur-md border-b border-slate-800 shadow-sm shadow-[#0b101d]/50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     
-    <!-- Левая часть: Логотип, Выбор города и Режим работы -->
+    <!-- Левая часть: Логотип -->
     <div class="flex items-center gap-4 sm:gap-6">
       <a href="/" class="flex items-center gap-2 group transition-transform hover:scale-105">
         <span class="text-xl sm:text-2xl font-black text-white tracking-tight">СДЭК <span class="text-cdek">Маркетплейсы</span></span>
       </a>
-
-      <!-- Кнопка выбора города -->
-      <button id="openCityModal" type="button" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800/60 border border-slate-700/60 text-xs font-medium text-slate-200 hover:border-cdek/50 hover:text-white transition-all cursor-pointer">
-        <svg class="w-3.5 h-3.5 text-cdek shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-        </svg>
-        <span>Выбрать город</span>
-        <svg class="w-3 h-3 text-slate-400 ml-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-      </button>
-      
-      <!-- Часы работы (десктоп) -->
-      <div class="hidden lg:flex flex-col border-l border-slate-700/50 pl-6">
-        <span class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider mb-0.5">Отдел подключений</span>
-        <div class="flex items-center gap-1.5 text-xs font-bold text-slate-200">
-          <span class="w-1.5 h-1.5 rounded-full bg-cdek animate-pulse"></span>
-          Пн-Пт: 09:00 — 18:00 (МСК)
-        </div>
-      </div>
     </div>
 
-    <!-- Правая часть: Навигация и кнопки -->
+    <!-- Правая часть: Навигация и Кнопка -->
     <div class="flex items-center gap-6">
-      
-      <!-- Навигация (десктоп) -->
       <nav class="hidden md:flex items-center gap-6">
-        <a href="/calculator/" class="text-sm font-semibold transition-colors text-slate-300 hover:text-cdek">Калькулятор</a>
-        <a href="/#platforms" class="text-sm font-semibold transition-colors text-slate-300 hover:text-cdek">Маркетплейсы</a>
-        <a href="/blog/" class="text-sm font-semibold transition-colors text-slate-300 hover:text-cdek">Блог</a>
-        <a href="/faq/" class="text-sm font-semibold transition-colors text-slate-300 hover:text-cdek">FAQ</a>
+        <a href="/calculator/" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Калькулятор</a>
+        <a href="/#platforms" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Маркетплейсы</a>
+        <a href="/blog/" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Блог</a>
+        <a href="/faq/" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">ФАК</a>
       </nav>
 
-      <!-- Кнопка подключения (десктоп) -->
-      <div class="hidden md:flex items-center">
-        <a href="/#leadForm" class="inline-flex items-center justify-center py-2 px-5 bg-transparent border border-cdek text-cdek hover:bg-cdek hover:text-[#0b101d] font-bold text-sm rounded-lg transition-all shadow-[0_0_10px_rgba(141,226,26,0.1)] hover:shadow-[0_0_15px_rgba(141,226,26,0.3)]">
-          Подключиться
-        </a>
-      </div>
+      <a href="/#leadForm" class="hidden sm:inline-flex items-center justify-center px-5 py-2 text-sm font-extrabold text-[#0b101d] bg-cdek rounded-lg hover:bg-cdek/90 transition-all shadow-lg shadow-cdek/20">
+        Подключиться
+      </a>
 
-      <!-- Кнопка мобильного меню (бургер) -->
-      <button id="menuToggle" type="button" class="md:hidden flex items-center justify-center p-2 rounded-md border border-slate-700 text-slate-300 hover:text-cdek hover:border-cdek focus:outline-none transition-colors cursor-pointer" aria-label="Открыть меню">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      <!-- Кнопка мобильного меню (Гамбургер) -->
+      <button id="mobileMenuBtn" type="button" class="md:hidden p-2 -mr-2 text-slate-400 hover:text-white transition-colors focus:outline-none cursor-pointer">
+        <svg id="mobileMenuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </button>
-
     </div>
   </div>
 
-  <!-- Выпадающее мобильное меню -->
-  <div id="mobileMenu" class="hidden md:hidden bg-[#0b101d]/95 backdrop-blur-lg border-b border-slate-800 px-6 pt-4 pb-6 shadow-xl">
-    <div class="mb-4 pb-4 border-b border-slate-800/60">
-      <button id="openCityModalMobile" type="button" class="w-full flex items-center justify-between py-2.5 px-4 rounded-lg bg-slate-800/50 border border-slate-700/60 text-sm font-medium text-slate-200">
-        <span class="flex items-center gap-2">
-          <svg class="w-4 h-4 text-cdek" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path></svg>
-          <span>Выбрать город</span>
-        </span>
-        <span class="text-xs text-cdek font-bold">Изменить</span>
-      </button>
-    </div>
+  <!-- Мобильное меню (полноэкранное) -->
+  <div id="mobileMenu" class="fixed inset-0 bg-[#0b101d] z-40 hidden flex-col pt-20 px-6 pb-6 overflow-y-auto">
+    <div class="flex flex-col gap-6">
+      <nav class="flex flex-col gap-4">
+        <a href="/calculator/" class="text-lg font-bold text-slate-200 hover:text-cdek transition-colors">Калькулятор тарифов</a>
+        <a href="/#platforms" class="text-lg font-bold text-slate-200 hover:text-cdek transition-colors">Схемы работы (FBS/DBS)</a>
+        <a href="/blog/" class="text-lg font-bold text-slate-200 hover:text-cdek transition-colors">Блог селлера</a>
+        <a href="/faq/" class="text-lg font-bold text-slate-200 hover:text-cdek transition-colors">Вопросы и ответы</a>
+      </nav>
 
-    <div class="flex flex-col items-start mb-6 pb-4 border-b border-slate-800/60">
-      <span class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider mb-1">Отдел подключений</span>
-      <div class="flex items-center gap-1.5 text-xs font-bold text-slate-200">
-        <span class="w-1.5 h-1.5 rounded-full bg-cdek animate-pulse"></span>
-        Пн-Пт: 09:00 — 18:00 (МСК)
-      </div>
-    </div>
+      <div class="h-px bg-slate-800 w-full"></div>
 
-    <nav class="space-y-2 mb-6">
-      <a href="/calculator/" class="block py-3 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Калькулятор</a>
-      <a href="/#platforms" class="block py-3 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Маркетплейсы</a>
-      <a href="/blog/" class="block py-3 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Блог</a>
-      <a href="/faq/" class="block py-3 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">FAQ</a>
-    </nav>
-    
-    <div>
-      <a href="/#leadForm" class="flex items-center justify-center w-full py-3.5 bg-cdek hover:bg-cdek/90 text-[#0b101d] font-extrabold text-sm rounded-xl transition-all shadow-lg shadow-cdek/20">
+      <a href="/#leadForm" class="flex items-center justify-center w-full px-6 py-4 text-base font-extrabold text-[#0b101d] bg-cdek rounded-xl hover:bg-cdek/90 transition-all shadow-lg shadow-cdek/20">
         Заключить договор
       </a>
     </div>
   </div>
 </header>
-
-<!-- МОДАЛЬНОЕ ОКНО ВЫБОРА ГОРОДА -->
-<div id="cityModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden p-4">
-  <div class="bg-[#131b2c] border border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
-    
-    <!-- Шапка модалки -->
-    <div class="p-5 border-b border-slate-800 flex items-center justify-between">
-      <h3 class="text-lg font-bold text-white">Выберите ваш город</h3>
-      <button id="closeCityModal" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-colors">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-      </button>
-    </div>
-
-    <!-- Поиск по городам -->
-    <div class="p-4 border-b border-slate-800 bg-[#0b101d]/50">
-      <input type="text" id="citySearchInput" placeholder="Введите название города..." class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cdek transition-colors text-sm">
-    </div>
-
-    <!-- Список городов (Сетка) -->
-    <div class="p-6 overflow-y-auto space-y-6" id="cityListContainer">
-      <div>
-        <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Популярные города</div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-          <a href="/geo/moscow/" class="city-item p-2.5 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:border-cdek text-sm text-slate-200 hover:text-white transition-all text-center font-medium">Москва</a>
-          <a href="/geo/saint-petersburg/" class="city-item p-2.5 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:border-cdek text-sm text-slate-200 hover:text-white transition-all text-center font-medium">Санкт-Петербург</a>
-          <a href="/geo/krasnodar/" class="city-item p-2.5 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:border-cdek text-sm text-slate-200 hover:text-white transition-all text-center font-medium">Краснодар</a>
-          <a href="/geo/kazan/" class="city-item p-2.5 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:border-cdek text-sm text-slate-200 hover:text-white transition-all text-center font-medium">Казань</a>
-          <a href="/geo/yekaterinburg/" class="city-item p-2.5 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:border-cdek text-sm text-slate-200 hover:text-white transition-all text-center font-medium">Екатеринбург</a>
-          <a href="/geo/rostov-na-donu/" class="city-item p-2.5 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:border-cdek text-sm text-slate-200 hover:text-white transition-all text-center font-medium">Ростов-на-Дону</a>
-        </div>
-      </div>
-
-      <div>
-        <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Все города</div>
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
-          <a href="/geo/aksay/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Аксай</a>
-          <a href="/geo/armavir/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Армавир</a>
-          <a href="/geo/blagoveshchensk/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Благовещенск</a>
-          <a href="/geo/bryansk/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Брянск</a>
-          <a href="/geo/chelyabinsk/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Челябинск</a>
-          <a href="/geo/cherkessk/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Черкесск</a>
-          <a href="/geo/derbent/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Дербент</a>
-          <a href="/geo/irkutsk/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Иркутск</a>
-          <a href="/geo/izhevsk/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-ctek transition-colors">Ижевск</a>
-          <a href="/geo/kamensk-shakhtinsky/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Каменск-Шахтинский</a>
-          <a href="/geo/kanash/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Канаш</a>
-          <a href="/geo/khabarovsk/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Хабаровск</a>
-          <a href="/geo/khasavyurt/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Хасавюрт</a>
-          <a href="/geo/komsomolsk-na-amure/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Комсомольск-на-Амуре</a>
-          <a href="/geo/krasnoyarsk/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Красноярск</a>
-          <a href="/geo/kursk/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Курск</a>
-          <a href="/geo/makhachkala/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Махачкала</a>
-          <a href="/geo/nalchik/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Нальчик</a>
-          <a href="/geo/nizhny-novgorod/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Нижний Новгород</a>
-          <a href="/geo/novocheboksarsk/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Новочебоксарск</a>
-          <a href="/geo/novorossiysk/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Новороссийск</a>
-          <a href="/geo/novosibirsk/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Новосибирск</a>
-          <a href="/geo/omsk/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Омск</a>
-          <a href="/geo/perm/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Пермь</a>
-          <a href="/geo/salavat/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Салават</a>
-          <a href="/geo/samara/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Самара</a>
-          <a href="/geo/smolensk/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Смоленск</a>
-          <a href="/geo/sochi/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Сочи</a>
-          <a href="/geo/stavropol/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Ставрополь</a>
-          <a href="/geo/sterlitamak/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Стерлитамак</a>
-          <a href="/geo/taganrog/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Таганрог</a>
-          <a href="/geo/tuapse/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Туапсе</a>
-          <a href="/geo/tyumen/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Тюмень</a>
-          <a href="/geo/ufa/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Уфа</a>
-          <a href="/geo/ulan-ude/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Улан-Удэ</a>
-          <a href="/geo/ulyanovsk/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Ульяновск</a>
-          <a href="/geo/vladikavkaz/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Владикавказ</a>
-          <a href="/geo/vladivostok/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Владивосток</a>
-          <a href="/geo/volgodonsk/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Волгодонск</a>
-          <a href="/geo/volgograd/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Волгоград</a>
-          <a href="/geo/voronezh/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">Воронеж</a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<script>
-  // Логика мобильного меню
-  const menuToggle = document.getElementById('menuToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
-
-  if (menuToggle && mobileMenu) {
-    menuToggle.addEventListener('click', () => {
-      mobileMenu.classList.toggle('hidden');
-    });
-
-    mobileMenu.querySelectorAll('nav a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenu.classList.add('hidden');
-      });
-    });
-  }
-
-  // Логика модального окна выбора города
-  const cityModal = document.getElementById('cityModal');
-  const openCityModalBtn = document.getElementById('openCityModal');
-  const openCityModalMobileBtn = document.getElementById('openCityModalMobile');
-  const closeCityModalBtn = document.getElementById('closeCityModal');
-  const citySearchInput = document.getElementById('citySearchInput');
-
-  function toggleModal(show) {
-    if (cityModal) {
-      if (show) {
-        cityModal.classList.remove('hidden');
-        document.body.style.overflow = 'hidden';
-        setTimeout(() => citySearchInput?.focus(), 100);
-      } else {
-        cityModal.classList.add('hidden');
-        document.body.style.overflow = '';
-      }
-    }
-  }
-
-  openCityModalBtn?.addEventListener('click', () => toggleModal(true));
-  openCityModalMobileBtn?.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden');
-    toggleModal(true);
-  });
-  closeCityModalBtn?.addEventListener('click', () => toggleModal(false));
-  
-  // Закрытие по клику вне окна
-  cityModal?.addEventListener('click', (e) => {
-    if (e.target === cityModal) toggleModal(false);
-  });
-
-  // Живой поиск по городам в модалке
-  citySearchInput?.addEventListener('input', (e) => {
-    const val = e.target.value.toLowerCase().trim();
-    const items = document.querySelectorAll('.city-item');
-    
-    items.forEach(item => {
-      const text = item.textContent.toLowerCase();
-      if (text.includes(val)) {
-        item.style.display = '';
-      } else {
-        item.style.display = 'none';
-      }
-    });
-  });
-</script>
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
@@ -253,3 +66,47 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/111090265" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+
+<script>
+  const header = document.querySelector('header');
+  const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+
+  // Легкая тень для шапки при скролле
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 10) {
+      header.classList.add('shadow-md');
+    } else {
+      header.classList.remove('shadow-md');
+    }
+  });
+
+  // Открытие/закрытие мобильного меню
+  mobileMenuBtn?.addEventListener('click', () => {
+    const isHidden = mobileMenu.classList.contains('hidden');
+    
+    if (isHidden) {
+      mobileMenu.classList.remove('hidden');
+      mobileMenu.classList.add('flex');
+      document.body.style.overflow = 'hidden'; // Блокируем скролл сайта
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />'; // Крестик
+    } else {
+      mobileMenu.classList.add('hidden');
+      mobileMenu.classList.remove('flex');
+      document.body.style.overflow = '';
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />'; // Гамбургер
+    }
+  });
+
+  // Закрытие мобильного меню при клике на любую ссылку внутри
+  const mobileLinks = mobileMenu.querySelectorAll('a');
+  mobileLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      mobileMenu.classList.remove('flex');
+      document.body.style.overflow = '';
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
+    });
+  });
+</script>
