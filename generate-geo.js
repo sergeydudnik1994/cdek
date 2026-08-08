@@ -51,19 +51,29 @@ https.get(url, (res) => {
         const templatePath = path.join(__dirname, 'city-template.html');
         const template = fs.readFileSync(templatePath, 'utf8');
 
+        // 1. Создаем посадочные страницы городов
         const geoDir = path.join(__dirname, 'geo');
         if (fs.existsSync(geoDir)) {
             fs.rmSync(geoDir, { recursive: true, force: true });
         }
         fs.mkdirSync(geoDir);
 
-        topCities.forEach(c => {
+        let linksHtml = '';
+
+        // Сортируем для вывода в меню по алфавиту и чиним кодировку Истры/Асбеста
+        const sortedCities = [...topCities].sort((a, b) => {
+            let nameA = a.name; let nameB = b.name;
+            if (nameA.includes('ест') && nameA.includes('Ас')) nameA = 'Асбест';
+            if (nameA.includes('стра') && !nameA.includes('Истра') && nameA.length < 7) nameA = 'Истра';
+            if (nameB.includes('ест') && nameB.includes('Ас')) nameB = 'Асбест';
+            if (nameB.includes('стра') && !nameB.includes('Истра') && nameB.length < 7) nameB = 'Истра';
+            return nameA.localeCompare(nameB, 'ru');
+        });
+
+        sortedCities.forEach(c => {
             let cityName = c.name;
-            // Фикс сломанной кодировки в исходном JSON-файле
             if (cityName.includes('ест') && cityName.includes('Ас')) cityName = 'Асбест';
             if (cityName.includes('стра') && !cityName.includes('Истра') && cityName.length < 7) cityName = 'Истра';
-
-            c.name = cityName; // сохраняем исправленное имя обратно
 
             const slug = slugify(cityName);
             const prep = getPrep(cityName);
@@ -78,34 +88,18 @@ https.get(url, (res) => {
             const cityDir = path.join(geoDir, slug);
             fs.mkdirSync(cityDir, { recursive: true });
             fs.writeFileSync(path.join(cityDir, 'index.html'), cityHtml);
+
+            // Собираем HTML ссылки для компонента
+            linksHtml += `<a href="/geo/${slug}/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">${cityName}</a>\n`;
         });
 
-        const headerPath = path.join(__dirname, 'src', 'components', 'header.html');
-        if (fs.existsSync(headerPath)) {
-            let headerContent = fs.readFileSync(headerPath, 'utf8');
-            const sortedCities = [...topCities].sort((a, b) => a.name.localeCompare(b.name, 'ru'));
-            
-            let linksHtml = '\n';
-            sortedCities.forEach(c => {
-                const slug = slugify(c.name);
-                linksHtml += `          <a href="/geo/${slug}/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">${c.name}</a>\n`;
-            });
+        // 2. Создаем компонент списка городов для Nginx
+        const componentsDir = path.join(__dirname, 'src', 'components');
+        if (!fs.existsSync(componentsDir)) fs.mkdirSync(componentsDir, { recursive: true });
+        
+        const cityListPath = path.join(componentsDir, 'city-list.html');
+        fs.writeFileSync(cityListPath, linksHtml);
 
-            const marker = 'Все города</div>';
-            const markerIndex = headerContent.indexOf(marker);
-            
-            if (markerIndex !== -1) {
-                const gridStartIndex = headerContent.indexOf('<div class="grid', markerIndex);
-                if (gridStartIndex !== -1) {
-                    const gridInnerStart = headerContent.indexOf('>', gridStartIndex) + 1;
-                    const gridInnerEnd = headerContent.indexOf('</div>', gridInnerStart);
-                    
-                    headerContent = headerContent.substring(0, gridInnerStart) + linksHtml + '        ' + headerContent.substring(gridInnerEnd);
-                    fs.writeFileSync(headerPath, headerContent);
-                }
-            }
-        }
-
-        console.log(`Успешно пересоздано 500 городов и обновлен список в шапке!`);
+        console.log(`Успешно пересоздано 500 городов и сгенерирован компонент city-list.html!`);
     });
 });
