@@ -1,27 +1,37 @@
 <header class="sticky top-0 z-50 bg-[#0b101d]/95 backdrop-blur-md border-b border-slate-800 shadow-sm shadow-[#0b101d]/50">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     
-    <!-- Левая часть: Логотип -->
+    <!-- Левая часть: Логотип, Выбор города -->
     <div class="flex items-center gap-4 sm:gap-6">
       <a href="/" class="flex items-center gap-2 group transition-transform hover:scale-105">
         <span class="text-xl sm:text-2xl font-black text-white tracking-tight">СДЭК <span class="text-cdek">Маркетплейсы</span></span>
       </a>
+
+      <!-- Кнопка выбора города -->
+      <button id="openCityModal" type="button" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-800/60 border border-slate-700/60 text-xs font-medium text-slate-200 hover:border-cdek/50 hover:text-white transition-all cursor-pointer">
+        <svg class="w-3.5 h-3.5 text-cdek shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+        </svg>
+        <span class="tracking-wide">Выберите город</span>
+        <svg class="w-3.5 h-3.5 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" /></svg>
+      </button>
     </div>
 
-    <!-- Правая часть: Навигация и Кнопка -->
+    <!-- Правая часть: Навигация -->
     <div class="flex items-center gap-6">
       <nav class="hidden md:flex items-center gap-6">
         <a href="/calculator/" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Калькулятор</a>
         <a href="/#platforms" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Маркетплейсы</a>
         <a href="/blog/" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Блог</a>
-        <a href="/faq/" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">ФАК</a>
+        <a href="/faq/" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">FAQ</a>
       </nav>
 
       <a href="/#leadForm" class="hidden sm:inline-flex items-center justify-center px-5 py-2 text-sm font-extrabold text-[#0b101d] bg-cdek rounded-lg hover:bg-cdek/90 transition-all shadow-lg shadow-cdek/20">
         Подключиться
       </a>
 
-      <!-- Кнопка мобильного меню (Гамбургер) -->
+      <!-- Кнопка мобильного меню -->
       <button id="mobileMenuBtn" type="button" class="md:hidden p-2 -mr-2 text-slate-400 hover:text-white transition-colors focus:outline-none cursor-pointer">
         <svg id="mobileMenuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
@@ -30,14 +40,25 @@
     </div>
   </div>
 
-  <!-- Мобильное меню (полноэкранное) -->
+  <!-- Мобильное меню -->
   <div id="mobileMenu" class="fixed inset-0 bg-[#0b101d] z-40 hidden flex-col pt-20 px-6 pb-6 overflow-y-auto">
     <div class="flex flex-col gap-6">
+      <button id="openCityModalMobile" type="button" class="w-full flex items-center justify-between px-3 py-3 rounded-lg bg-slate-800 border border-slate-700 text-slate-300 hover:text-white transition-colors text-sm font-medium">
+        <span class="flex items-center gap-2">
+          <svg class="w-4 h-4 text-cdek" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          Ваш город
+        </span>
+        <span class="text-xs text-slate-500 bg-slate-900 px-2 py-1 rounded-md">Выбрать</span>
+      </button>
+
       <nav class="flex flex-col gap-4">
         <a href="/calculator/" class="text-lg font-bold text-slate-200 hover:text-cdek transition-colors">Калькулятор тарифов</a>
         <a href="/#platforms" class="text-lg font-bold text-slate-200 hover:text-cdek transition-colors">Схемы работы (FBS/DBS)</a>
         <a href="/blog/" class="text-lg font-bold text-slate-200 hover:text-cdek transition-colors">Блог селлера</a>
-        <a href="/faq/" class="text-lg font-bold text-slate-200 hover:text-cdek transition-colors">Вопросы и ответы</a>
+        <a href="/faq/" class="text-lg font-bold text-slate-200 hover:text-cdek transition-colors">FAQ</a>
       </nav>
 
       <div class="h-px bg-slate-800 w-full"></div>
@@ -48,6 +69,48 @@
     </div>
   </div>
 </header>
+
+<!-- Модальное окно выбора города -->
+<div id="cityModal" class="fixed inset-0 bg-[#0b101d]/80 backdrop-blur-sm z-[100] hidden items-center justify-center p-4 opacity-0 transition-opacity duration-300">
+  <div class="bg-[#131b2c] border border-slate-700 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden transform scale-95 transition-transform duration-300">
+    <div class="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-900/50">
+      <h3 class="text-xl font-bold text-white">Выберите ваш город</h3>
+      <button id="closeCityModal" class="text-slate-400 hover:text-white transition-colors p-1 cursor-pointer">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+
+    <div class="p-5 border-b border-slate-800">
+      <div class="relative">
+        <svg class="w-5 h-5 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+        <input type="text" id="citySearchInput" placeholder="Введите название города..." class="w-full bg-slate-900 border border-slate-700 rounded-xl pl-11 pr-4 py-3 text-white text-sm focus:outline-none focus:border-cdek transition-all placeholder-slate-500" />
+      </div>
+    </div>
+
+    <div class="p-5 max-h-[60vh] overflow-y-auto custom-scrollbar">
+      <!-- Популярные города -->
+      <div class="mb-8">
+        <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Популярные города</div>
+        <div class="grid grid-cols-2 sm:grid-cols-2 gap-3">
+          <a href="/geo/moscow/" class="city-item p-3 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:border-cdek text-sm text-slate-200 hover:text-white transition-all text-center font-medium">Москва</a>
+          <a href="/geo/saint-petersburg/" class="city-item p-3 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:border-cdek text-sm text-slate-200 hover:text-white transition-all text-center font-medium">Санкт-Петербург</a>
+          <a href="/geo/krasnodar/" class="city-item p-3 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:border-cdek text-sm text-slate-200 hover:text-white transition-all text-center font-medium">Краснодар</a>
+          <a href="/geo/kazan/" class="city-item p-3 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:border-cdek text-sm text-slate-200 hover:text-white transition-all text-center font-medium">Казань</a>
+          <a href="/geo/yekaterinburg/" class="city-item p-3 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:border-cdek text-sm text-slate-200 hover:text-white transition-all text-center font-medium">Екатеринбург</a>
+          <a href="/geo/rostov-na-donu/" class="city-item p-3 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:border-cdek text-sm text-slate-200 hover:text-white transition-all text-center font-medium">Ростов-на-Дону</a>
+        </div>
+      </div>
+
+      <!-- Все города (Для GitHub Actions) -->
+      <div>
+        <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Все города</div>
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+          <!-- Сюда скрипт вставит 500 городов -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
@@ -68,38 +131,27 @@
 <!-- /Yandex.Metrika counter -->
 
 <script>
-  const header = document.querySelector('header');
+  // Логика мобильного меню
   const mobileMenuBtn = document.getElementById('mobileMenuBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   const mobileMenuIcon = document.getElementById('mobileMenuIcon');
 
-  // Легкая тень для шапки при скролле
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 10) {
-      header.classList.add('shadow-md');
-    } else {
-      header.classList.remove('shadow-md');
-    }
-  });
-
-  // Открытие/закрытие мобильного меню
   mobileMenuBtn?.addEventListener('click', () => {
     const isHidden = mobileMenu.classList.contains('hidden');
-    
     if (isHidden) {
       mobileMenu.classList.remove('hidden');
       mobileMenu.classList.add('flex');
-      document.body.style.overflow = 'hidden'; // Блокируем скролл сайта
-      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />'; // Крестик
+      document.body.style.overflow = 'hidden';
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />';
     } else {
       mobileMenu.classList.add('hidden');
       mobileMenu.classList.remove('flex');
       document.body.style.overflow = '';
-      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />'; // Гамбургер
+      mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
     }
   });
 
-  // Закрытие мобильного меню при клике на любую ссылку внутри
+  // Закрытие при клике по ссылкам
   const mobileLinks = mobileMenu.querySelectorAll('a');
   mobileLinks.forEach(link => {
     link.addEventListener('click', () => {
@@ -107,6 +159,62 @@
       mobileMenu.classList.remove('flex');
       document.body.style.overflow = '';
       mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
+    });
+  });
+
+  // Логика окна городов
+  const openCityModalBtn = document.getElementById('openCityModal');
+  const openCityModalMobileBtn = document.getElementById('openCityModalMobile');
+  const closeCityModalBtn = document.getElementById('closeCityModal');
+  const cityModal = document.getElementById('cityModal');
+  const citySearchInput = document.getElementById('citySearchInput');
+
+  function toggleModal(show) {
+    if (!cityModal) return;
+    const inner = cityModal.querySelector('div');
+    if (show) {
+      cityModal.classList.remove('hidden');
+      cityModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+      setTimeout(() => {
+        cityModal.classList.remove('opacity-0');
+        inner.classList.remove('scale-95');
+        citySearchInput?.focus();
+      }, 10);
+    } else {
+      cityModal.classList.add('opacity-0');
+      inner.classList.add('scale-95');
+      setTimeout(() => {
+        cityModal.classList.add('hidden');
+        cityModal.classList.remove('flex');
+        document.body.style.overflow = '';
+      }, 300);
+    }
+  }
+
+  openCityModalBtn?.addEventListener('click', () => toggleModal(true));
+  openCityModalMobileBtn?.addEventListener('click', () => {
+    mobileMenu.classList.add('hidden');
+    mobileMenu.classList.remove('flex');
+    document.body.style.overflow = '';
+    mobileMenuIcon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />';
+    toggleModal(true);
+  });
+  closeCityModalBtn?.addEventListener('click', () => toggleModal(false));
+
+  cityModal?.addEventListener('click', (e) => {
+    if (e.target === cityModal) toggleModal(false);
+  });
+
+  citySearchInput?.addEventListener('input', (e) => {
+    const val = e.target.value.toLowerCase().trim();
+    const items = document.querySelectorAll('.city-item');
+    items.forEach(item => {
+      if (item.textContent.toLowerCase().includes(val)) {
+        item.style.display = '';
+      } else {
+        item.style.display = 'none';
+      }
     });
   });
 </script>
