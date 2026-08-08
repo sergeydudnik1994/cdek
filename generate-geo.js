@@ -90,7 +90,7 @@ https.get(url, (res) => {
             fs.writeFileSync(path.join(cityDir, 'index.html'), cityHtml);
 
             // Собираем HTML ссылки для компонента
-            linksHtml += `<a href="/geo/${slug}/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">${cityName}</a>\n`;
+            linksHtml += `          <a href="/geo/${slug}/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">${cityName}</a>\n`;
         });
 
         // 2. Создаем компонент списка городов для Nginx
@@ -100,6 +100,84 @@ https.get(url, (res) => {
         const cityListPath = path.join(componentsDir, 'city-list.html');
         fs.writeFileSync(cityListPath, linksHtml);
 
-        console.log(`Успешно пересоздано 500 городов и сгенерирован компонент city-list.html!`);
+        // 3. Автоматическое обновление sitemap.xml
+        const sitemapPath = path.join(__dirname, 'sitemap.xml');
+        let sitemapContent = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Главная страница -->
+  <url>
+    <loc>https://cdek-marketplace.ru/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- Основные разделы -->
+  <url>
+    <loc>https://cdek-marketplace.ru/calculator/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/calculator/dbs-1kg/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/ozon/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/wildberries/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/yandex-market/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/avito/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/megamarket/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/internet-magazin/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/blog/</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://cdek-marketplace.ru/faq/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>\n`;
+
+        sortedCities.forEach(c => {
+            let cityName = c.name;
+            if (cityName.includes('ест') && cityName.includes('Ас')) cityName = 'Асбест';
+            if (cityName.includes('стра') && !cityName.includes('Истра') && cityName.length < 7) cityName = 'Истра';
+            const slug = slugify(cityName);
+            sitemapContent += `  <url>
+    <loc>https://cdek-marketplace.ru/geo/${slug}/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>\n`;
+        });
+
+        sitemapContent += `</urlset>`;
+        fs.writeFileSync(sitemapPath, sitemapContent);
+
+        console.log(`Успешно пересоздано 500 городов, сгенерирован city-list.html и обновлен sitemap.xml!`);
     });
 });
