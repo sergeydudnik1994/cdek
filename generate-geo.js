@@ -1,56 +1,67 @@
 const fs = require('fs');
-const path = formatPath => path.join(__dirname, formatPath);
+const path = require('path');
 
-// Пути к директориям
-const geoDir = path('geo');
-const headerPath = path('src/components/header.html');
-const sitemapPath = path('sitemap.xml');
+// Базовый массив городов для генерации и наполнения шапки
+const cities = [
+  { name: "Москва", slug: "moskva", city_prep: "Москве", city_gen: "Москвы" },
+  { name: "Санкт-Петербург", slug: "sankt-peterburg", city_prep: "Санкт-Петербурге", city_gen: "Санкт-Петербурга" },
+  { name: "Краснодар", slug: "krasnodar", city_prep: "Краснодаре", city_gen: "Краснодара" },
+  { name: "Екатеринбург", slug: "ekaterinburg", city_prep: "Екатеринбурге", city_gen: "Екатеринбурга" },
+  { name: "Новосибирск", slug: "novosibirsk", city_prep: "Новосибирске", city_gen: "Новосибирска" },
+  { name: "Казань", slug: "kazan", city_prep: "Казани", city_gen: "Казани" },
+  { name: "Нижний Новгород", slug: "nizhniy-novgorod", city_prep: "Нижнем Новгороде", city_gen: "Нижнего Новгорода" },
+  { name: "Челябинск", slug: "chelyabinsk", city_prep: "Челябинске", city_gen: "Челябинска" },
+  { name: "Самара", slug: "samara", city_prep: "Самаре", city_gen: "Самары" },
+  { name: "Омск", slug: "omsk", city_prep: "Омске", city_gen: "Омска" },
+  { name: "Ростов-на-Дону", slug: "rostov-na-donu", city_prep: "Ростове-на-Дону", city_gen: "Ростова-на-Дону" },
+  { name: "Уфа", slug: "ufa", city_prep: "Уфе", city_gen: "Уфы" },
+  { name: "Красноярск", slug: "krasnoyarsk", city_prep: "Красноярске", city_gen: "Красноярска" },
+  { name: "Воронеж", slug: "voronezh", city_prep: "Воронеже", city_gen: "Воронежа" },
+  { name: "Пермь", slug: "perm", city_prep: "Перми", city_gen: "Перми" },
+  { name: "Волгоград", slug: "volgograd", city_prep: "Волгограде", city_gen: "Волгограда" }
+];
 
-// 1. Автоматически читаем все папки из директории geo/ (все 500+ городов)
-if (!fs.existsSync(geoDir)) {
-  console.error('Папка geo/ не найдена!');
-  process.exit(1);
+// Убедимся, что директория geo существует
+const geoOutputDir = path.join(__dirname, 'geo');
+if (!fs.existsSync(geoOutputDir)) {
+  fs.mkdirSync(geoOutputDir, { recursive: true });
 }
 
-const slugs = fs.readdirSync(geoDir).filter(file => {
-  return fs.statSync(path(`geo/${file}`)).isDirectory();
+// Читаем шаблон страницы города
+const cityTemplatePath = path.join(__dirname, 'city-template.html');
+const cityTemplate = fs.existsSync(cityTemplatePath) ? fs.readFileSync(cityTemplatePath, 'utf-8') : '';
+
+// 1. Генерируем папки и файлы страниц для каждого города
+cities.forEach(city => {
+  if (cityTemplate) {
+    let pageContent = cityTemplate
+      .replace(/\{\{CITY\}\}/g, city.name)
+      .replace(/\{\{CITY_PREP\}\}/g, city.city_prep)
+      .replace(/\{\{CITY_GEN\}\}/g, city.city_gen)
+      .replace(/\{\{SLUG\}\}/g, city.slug);
+
+    const cityDir = path.join(geoOutputDir, city.slug);
+    if (!fs.existsSync(cityDir)) {
+      fs.mkdirSync(cityDir, { recursive: true });
+    }
+    fs.writeFileSync(path.join(cityDir, 'index.html'), pageContent);
+  }
 });
 
-// Превращаем слаги в красивый массив объектов для шапки и карты сайта
-const cities = slugs.map(slug => {
-  // Превращаем слаг (например, "rostov-na-donu" или "sankt-peterburg") в читаемое имя
-  const formattedName = slug
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join('-'); // Сохраняем дефисы для составных названий
-
-  return {
-    slug: slug,
-    name: formattedName
-  };
-});
-
-// Сортируем города по алфавиту для удобства в модальном окне
-cities.sort((a, b) => a.name.localeCompare(b.name, 'ru'));
-
-console.log(`Обнаружено гео-папок: ${cities.length}`);
-
-// 2. Генерируем HTML-сетку со всеми городами для шапки сайта
+// 2. Формируем сетку элементов для модального окна шапки
 const citiesGridHtml = cities.map(city => 
   `<a href="/geo/${city.slug}/" class="city-item p-2 rounded-lg bg-slate-800/40 border border-slate-700/50 hover:border-cdek text-sm text-slate-300 hover:text-cdek transition-all text-center font-medium">${city.name}</a>`
 ).join('\n');
 
-// 3. Внедряем полный список в файл шапки header.html вместо метки {{CITIES_GRID}}
+// 3. Интегрируем список в header.html
+const headerPath = path.join(__dirname, 'src', 'components', 'header.html');
 if (fs.existsSync(headerPath)) {
   let headerHtml = fs.readFileSync(headerPath, 'utf-8');
   headerHtml = headerHtml.replace('{{CITIES_GRID}}', citiesGridHtml);
   fs.writeFileSync(headerPath, headerHtml);
-  console.log('Шапка сайта успешно обновлена полным списком городов.');
-} else {
-  console.warn('Файл header.html не найден по пути src/components/header.html');
 }
 
-// 4. Автоматическое обновление sitemap.xml для всех страниц и городов
+// 4. Обновляем sitemap.xml
 const baseUrl = "https://cdek-marketplace.ru";
 let sitemapUrls = [
   `${baseUrl}/`,
@@ -71,5 +82,6 @@ ${sitemapUrls.map(url => `  <url>
   </url>`).join('\n')}
 </urlset>`;
 
-fs.writeFileSync(sitemapPath, sitemapXml);
-console.log('Файл sitemap.xml успешно обновлен.');
+fs.writeFileSync(path.join(__dirname, 'sitemap.xml'), sitemapXml);
+
+console.log(`Успешно обработано городов: ${cities.length}, sitemap.xml и шапка обновлены.`);
