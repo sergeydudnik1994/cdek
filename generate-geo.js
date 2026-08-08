@@ -79,21 +79,29 @@ https.get(url, (res) => {
         const headerPath = path.join(__dirname, 'src', 'components', 'header.html');
         if (fs.existsSync(headerPath)) {
             let headerContent = fs.readFileSync(headerPath, 'utf8');
-            
-            // Сортируем список по алфавиту, чтобы было удобно искать
             const sortedCities = [...topCities].sort((a, b) => a.name.localeCompare(b.name, 'ru'));
             
-            let linksHtml = '';
+            let linksHtml = '\n';
             sortedCities.forEach(c => {
                 const slug = slugify(c.name);
                 linksHtml += `          <a href="/geo/${slug}/" class="city-item p-2 rounded-lg hover:bg-slate-800/60 text-sm text-slate-300 hover:text-cdek transition-colors">${c.name}</a>\n`;
             });
 
-            // Находим старый список городов и вставляем новый
-            const regex = /(<div class="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-3">Все города<\/div>\s*<div class="grid grid-cols-2 sm:grid-cols-3 gap-2\.5">\n)[\s\S]*?(\n\s*<\/div>\s*<\/div>\s*<\/div>\s*<\/div>)/;
+            // Умный поиск нужного блока без регулярных выражений
+            const marker = 'Все города</div>';
+            const markerIndex = headerContent.indexOf(marker);
             
-            headerContent = headerContent.replace(regex, `$1${linksHtml}$2`);
-            fs.writeFileSync(headerPath, headerContent);
+            if (markerIndex !== -1) {
+                const gridStartIndex = headerContent.indexOf('<div class="grid', markerIndex);
+                if (gridStartIndex !== -1) {
+                    const gridInnerStart = headerContent.indexOf('>', gridStartIndex) + 1;
+                    const gridInnerEnd = headerContent.indexOf('</div>', gridInnerStart);
+                    
+                    // Заменяем внутренности сетки на наш сгенерированный список
+                    headerContent = headerContent.substring(0, gridInnerStart) + linksHtml + '        ' + headerContent.substring(gridInnerEnd);
+                    fs.writeFileSync(headerPath, headerContent);
+                }
+            }
         }
 
         console.log(`Успешно пересоздано 500 городов и обновлен список в шапке!`);
