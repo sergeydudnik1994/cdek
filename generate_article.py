@@ -74,7 +74,7 @@ def get_next_unique_keyword():
         writer.writerow(selected_row + [datetime.now().strftime("%Y-%m-%d %H:%M")])
 
     keyword = selected_row[0].strip()
-    category = selected_row[1].strip() if len(selected_row) > 1 else "Блог"
+    category = selected_row[1].strip() if len(selected_row) > 1 else "Блог для селлеров"
     return keyword, category, selected_slug
 
 def generate_article_content(keyword, category):
@@ -96,14 +96,27 @@ def generate_article_content(keyword, category):
        - Для <p>: оставляй просто <p> без классов.
        - Для <ul>: class="list-disc list-inside space-y-1 ml-2"
        - Если делаешь таблицу, используй структуру:
-         <div class="overflow-x-auto my-6"><table class="w-full text-left text-sm sm:text-base"><thead><tr class="bg-slate-800 text-white"><th class="p-4 rounded-tl-xl font-bold">...</th>...</tr></thead><tbody class="divide-y divide-slate-800 bg-slate-900/50"><tr><td class="p-4">...</td>...</tr></tbody></table></div>
-    3. Добавь блок с акцентом через:
+         <div class="overflow-x-auto my-6"><table class="w-full text-left text-sm sm:text-base"><thead><tr class="bg-slate-800 text-white"><th class="p-4 rounded-tl-xl font-bold">...</th></tr></thead><tbody class="divide-y divide-slate-800 bg-slate-900/50"><tr><td class="p-4">...</td></tr></tbody></table></div>
+    3. Добавь плашку с акцентом:
        <div class="bg-cdek/10 border-l-4 border-cdek p-4 rounded-r-xl text-white"><strong>Важно:</strong> Текст...</div>
-    4. Статья должна быть подробной, с примерами, сравнениями FBS/FBO или тарифов.
+    4. В САМОМ КОНЦЕ html_body ОБЯЗАТЕЛЬНО добавь блок FAQ из 2 вопросов:
+       <div class="mt-12 pt-8 border-t border-slate-800">
+         <h2 class="text-2xl sm:text-3xl font-bold text-white mb-6">Часто задаваемые вопросы</h2>
+         <div class="space-y-4">
+           <details class="group bg-slate-900/50 p-5 rounded-2xl border border-slate-800">
+             <summary class="font-bold text-white cursor-pointer list-none flex justify-between items-center">
+               <span>Вопрос по теме статьи?</span>
+               <span class="text-cdek transition-transform group-open:rotate-180">&darr;</span>
+             </summary>
+             <p class="mt-3 text-slate-400 text-sm sm:text-base">Ответ на вопрос...</p>
+           </details>
+         </div>
+       </div>
+    5. Статья должна быть подробной, с примерами, сравнениями FBS/FBO или тарифов СДЭК.
     """
     
     max_retries = 3
-    retry_delay = 60
+    retry_delay = 45  # Пауза для сброса лимита токенов в минуту (Free Tier)
 
     for attempt in range(1, max_retries + 1):
         try:
@@ -135,7 +148,7 @@ def generate_article_content(keyword, category):
                 print("Превышено максимальное число попыток.")
                 raise e
 
-def build_full_html_page(title, description, content, slug, category):
+def build_full_html_page(title, description, content, slug, category, date_str):
     canonical_url = f"{DOMAIN}/blog/{slug}/"
     
     return f"""<!DOCTYPE html>
@@ -155,32 +168,60 @@ def build_full_html_page(title, description, content, slug, category):
     }}
   </script>
 
-    <script type="application/ld+json">
-    {{
+  <!-- Объединенная микроразметка: Хлебные крошки + BlogPosting -->
+  <script type="application/ld+json">
+  {{
     "@context": "[https://schema.org](https://schema.org)",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {{
+    "@graph": [
+      {{
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {{
             "@type": "ListItem",
             "position": 1,
             "name": "Главная",
             "item": "{DOMAIN}/"
-        }},
-        {{
+          }},
+          {{
             "@type": "ListItem",
             "position": 2,
             "name": "Блог",
             "item": "{DOMAIN}/blog/"
-        }},
-        {{
+          }},
+          {{
             "@type": "ListItem",
             "position": 3,
             "name": "{title}",
             "item": "{canonical_url}"
+          }}
+        ]
+      }},
+      {{
+        "@type": "BlogPosting",
+        "headline": "{title}",
+        "description": "{description}",
+        "datePublished": "{date_str}",
+        "dateModified": "{date_str}",
+        "author": {{
+          "@type": "Organization",
+          "name": "CDEK Marketplace"
+        }},
+        "publisher": {{
+          "@type": "Organization",
+          "name": "CDEK Marketplace",
+          "logo": {{
+            "@type": "ImageObject",
+            "url": "{DOMAIN}/favicon.png"
+          }}
+        }},
+        "mainEntityOfPage": {{
+          "@type": "WebPage",
+          "@id": "{canonical_url}"
         }}
+      }}
     ]
-}}
-    </script>
+  }}
+  </script>
 </head>
 <body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
 
@@ -219,14 +260,15 @@ def build_full_html_page(title, description, content, slug, category):
 def update_sitemap(slug, date_str):
     sitemap_path = 'sitemap.xml'
     url_node = f"{DOMAIN}/blog/{slug}/"
+    ns = "[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)"
     
     try:
-        ET.register_namespace('', "[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)")
+        ET.register_namespace('', ns)
         tree = ET.parse(sitemap_path)
         root = tree.getroot()
 
-        for url in root.findall('{[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)}url'):
-            loc = url.find('{[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)}loc')
+        for url in root.findall(f'{{{ns}}}url'):
+            loc = url.find(f'{{{ns}}}loc')
             if loc is not None and loc.text == url_node:
                 return
 
@@ -243,7 +285,7 @@ def update_sitemap(slug, date_str):
         priority = ET.SubElement(new_url, 'priority')
         priority.text = "0.8"
 
-        root.insert(1, new_url)
+        root.insert(2, new_url)
 
         tree.write(sitemap_path, encoding='utf-8', xml_declaration=True)
         print(f"Ссылка добавлена в {sitemap_path}")
@@ -297,7 +339,7 @@ def main():
     description = ai_data.get('description', f"Статья на тему {keyword}")
     html_body = ai_data.get('html_body', '<p>Контент готовится...</p>')
 
-    full_html = build_full_html_page(title, description, html_body, slug, category)
+    full_html = build_full_html_page(title, description, html_body, slug, category, date_str)
 
     folder_path = os.path.join('blog', slug)
     os.makedirs(folder_path, exist_ok=True)
