@@ -105,5 +105,6 @@ def generate_article_content(keyword, category):
         model='gemini-2.5-flash',
         contents=prompt,
     )
-    
-    text_response = response.text.replace("
+
+        text_response = response.text.replace("```json", "").replace("```", "").strip()
+
