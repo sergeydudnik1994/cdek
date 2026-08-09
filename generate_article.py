@@ -106,4 +106,201 @@ def generate_article_content(keyword, category):
         contents=prompt,
     )
 
-    text_response = response.text.replace("
+    text_response = response.text.replace("```json", "").replace("```", "").strip()
+    
+    try:
+        data = json.loads(text_response)
+        return data
+    except json.JSONDecodeError:
+        print("Ошибка парсинга JSON от Gemini. Получен текст:", text_response)
+        return {
+            "title": keyword.capitalize(),
+            "description": f"Полезная статья о том, как использовать логистику СДЭК для запроса: {keyword}.",
+            "html_body": f"<p>{text_response}</p>"
+        }
+
+def build_full_html_page(title, description, content, slug, category):
+    canonical_url = f"{DOMAIN}/blog/{slug}/"
+    
+    return f"""<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>{title} — СДЭК для маркетплейсов</title>
+  <meta name="description" content="{description}" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+  <script>
+    tailwind.config = {{
+      theme: {{ extend: {{ colors: {{ cdek: '#8de21a', dark: {{ 900: '#0b101d' }} }} }} }}
+    }}
+  </script>
+
+    <script type="application/ld+json">
+    {{
+    "@context": "[https://schema.org](https://schema.org)",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+        {{
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Главная",
+            "item": "{DOMAIN}/"
+        }},
+        {{
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Блог",
+            "item": "{DOMAIN}/blog/"
+        }},
+        {{
+            "@type": "ListItem",
+            "position": 3,
+            "name": "{title}",
+            "item": "{canonical_url}"
+        }}
+    ]
+}}
+    </script>
+</head>
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
+
+  <!--#include virtual="/src/components/header.html" -->
+
+  <main class="flex-grow py-12 sm:py-16">
+    <article class="max-w-3xl mx-auto px-4 sm:px-6">
+      
+      <header class="mb-10 sm:mb-14 text-center">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase border bg-cdek/10 text-cdek border-cdek/30">
+          <span>{category}</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight tracking-tight">
+          {title}
+        </h1>
+      </header>
+
+      <div class="glass p-6 sm:p-10 rounded-3xl border border-slate-800 text-slate-300 text-base sm:text-lg leading-relaxed space-y-6">
+        {content}
+      </div>
+    </article>
+
+    <!--#include virtual="/src/components/related-articles.html" -->
+
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 mt-12" id="leadForm">
+      <!--#include virtual="/src/components/leadform.html" -->
+    </div>
+  </main>
+
+  <!--#include virtual="/src/components/footer.html" -->
+  <!--#include virtual="/src/components/mobile-cta.html" -->
+
+</body>
+</html>"""
+
+def update_sitemap(slug, date_str):
+    sitemap_path = 'sitemap.xml'
+    url_node = f"{DOMAIN}/blog/{slug}/"
+    
+    try:
+        ET.register_namespace('', "[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)")
+        tree = ET.parse(sitemap_path)
+        root = tree.getroot()
+
+        # Проверка на существование URL
+        for url in root.findall('{[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)}url'):
+            loc = url.find('{[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)}loc')
+            if loc is not None and loc.text == url_node:
+                return
+
+        new_url = ET.Element('url')
+        loc = ET.SubElement(new_url, 'loc')
+        loc.text = url_node
+        
+        lastmod = ET.SubElement(new_url, 'lastmod')
+        lastmod.text = date_str
+        
+        changefreq = ET.SubElement(new_url, 'changefreq')
+        changefreq.text = "weekly"
+        
+        priority = ET.SubElement(new_url, 'priority')
+        priority.text = "0.8"
+
+        # Вставляем новую ссылку сразу после корневой страницы (или просто в начало)
+        root.insert(1, new_url)
+
+        tree.write(sitemap_path, encoding='utf-8', xml_declaration=True)
+        print(f"Ссылка добавлена в {sitemap_path}")
+    except Exception as e:
+        print(f"Ошибка обновления sitemap.xml: {e}")
+
+def update_blog_index(title, description, slug, category):
+    blog_path = 'src/components/blog-grid.html'
+    
+    new_card = f"""
+  <a href="/blog/{slug}/" class="group block p-6 rounded-3xl bg-slate-900/50 border border-slate-800 hover:border-cdek/50 transition-colors duration-300 flex flex-col justify-between">
+    <div>
+      <div class="text-cdek text-xs font-bold uppercase tracking-wide mb-3">{category}</div>
+      <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cdek transition-colors">{title}</h3>
+      <p class="text-sm text-slate-400 mb-6 line-clamp-3">{description}</p>
+    </div>
+    <span class="text-cdek text-sm font-semibold inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+      Читать статью &rarr;
+    </span>
+  </a>"""
+    
+    if os.path.exists(blog_path):
+        with open(blog_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+        
+        # Точка вставки: конец открывающего тега сетки
+        insert_marker = '<div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 sm:px-6">'
+        
+        if insert_marker in content:
+            content = content.replace(insert_marker, insert_marker + "\n" + new_card, 1)
+            with open(blog_path, 'w', encoding='utf-8') as f:
+                f.write(content)
+            print("Сетка блога (blog-grid.html) обновлена.")
+        else:
+            print("Внимание: Не найден тег сетки в blog-grid.html. Вставка в начало файла...")
+            with open(blog_path, 'w', encoding='utf-8') as f:
+                f.write(new_card + "\n" + content)
+    else:
+        print(f"Файл {blog_path} не найден! Убедитесь, что запускаете скрипт из корня репозитория.")
+
+def main():
+    keyword, category, slug = get_next_unique_keyword()
+    if not keyword:
+        return
+
+    print(f"Генерируем статью: {keyword} -> /blog/{slug}/")
+    date_str = datetime.now().strftime("%Y-%m-%d")
+    
+    # 1. Запрашиваем JSON контент от ИИ
+    ai_data = generate_article_content(keyword, category)
+    
+    title = ai_data.get('title', keyword.capitalize())
+    description = ai_data.get('description', f"Статья на тему {keyword}")
+    html_body = ai_data.get('html_body', '<p>Контент готовится...</p>')
+
+    # 2. Собираем HTML страницу
+    full_html = build_full_html_page(title, description, html_body, slug, category)
+
+    # 3. Сохраняем файл
+    folder_path = os.path.join('blog', slug)
+    os.makedirs(folder_path, exist_ok=True)
+    
+    file_path = os.path.join(folder_path, 'index.html')
+    with open(file_path, 'w', encoding='utf-8') as f:
+        f.write(full_html)
+    print(f"Файл создан: {file_path}")
+
+    # 4. Обновляем карту сайта и компонент ленты
+    update_sitemap(slug, date_str)
+    update_blog_index(title, description, slug, category)
+    print("Процесс успешно завершен!")
+
+if __name__ == "__main__":
+    main()
