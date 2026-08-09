@@ -6,6 +6,8 @@ on:
   schedule:
     # Запуск каждую ночь в 03:00 по UTC
     - cron: '0 3 * * *'
+  # Позволяет запускать генерацию страниц вручную из интерфейса GitHub
+  workflow_dispatch: 
 
 jobs:
   seo-linter:
@@ -23,31 +25,42 @@ jobs:
       - name: Запуск Линтера
         run: python scripts/seo_linter.py
 
-  daily-seo-tasks:
-    name: 🤖 Ежедневное обновление и Пинг поисковиков
+  generate-and-update:
+    name: 🤖 Генерация Matrix SEO и Sitemap
     runs-on: ubuntu-latest
     needs: seo-linter # Запустится только если линтер прошел без ошибок
-    if: github.event_name == 'schedule' # Выполнять только по ночному расписанию
     
     steps:
       - name: Checkout кода
         uses: actions/checkout@v3
         with:
+          # Важно для возможности делать git push из бота
           token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Настройка Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Сборка матричных SEO-страниц
+        run: python scripts/generate_matrix.py
 
       - name: Обновление sitemap.xml
         run: python scripts/update_sitemap.py
         
-      - name: Сохранение новой даты в репозиторий
+      - name: Сохранение сгенерированных страниц в репозиторий
         run: |
           git config --global user.name 'SEO-Bot'
           git config --global user.email 'bot@cdek-marketplace.ru'
-          git add sitemap.xml
-          # Коммит выполнится только если есть изменения
-          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update sitemap lastmod"
+          # Добавляем все сгенерированные файлы из папки geo и карту сайта
+          git add geo/ sitemap.xml
+          # Делаем коммит только если есть реальные изменения, чтобы скрипт не падал с ошибкой
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-generate Matrix SEO pages and update sitemap"
           git push
 
       - name: Пинг поисковиков (Bing и Yandex)
+        # Отправляем пинг только по ночному расписанию, чтобы не спамить поисковики при каждом мелком коммите
+        if: github.event_name == 'schedule'
         run: |
           curl -s "http://www.bing.com/ping?sitemap=https://cdek-marketplace.ru/sitemap.xml"
           echo "Пинг в Bing отправлен"
