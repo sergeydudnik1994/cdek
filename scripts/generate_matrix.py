@@ -13,31 +13,31 @@ def load_template():
     with open(TEMPLATE_FILE, 'r', encoding='utf-8') as f:
         return f.read()
 
-# Словарь для городов с особенностями склонения
-CITY_EXCEPTIONS = {
+# Четкий словарь русских названий и падежей для папок
+CITY_DICTIONARY = {
+    "krasnodar": {"name": "Краснодар", "prep": "Краснодаре", "gen": "Краснодара"},
     "moskva": {"name": "Москва", "prep": "Москве", "gen": "Москвы"},
+    "ekaterinburg": {"name": "Екатеринбург", "prep": "Екатеринбурге", "gen": "Екатеринбурга"},
     "sankt-peterburg": {"name": "Санкт-Петербург", "prep": "Санкт-Петербурге", "gen": "Санкт-Петербурга"},
+    "novosibirsk": {"name": "Новосибирск", "prep": "Новосибирске", "gen": "Новосибирска"},
+    "kazan": {"name": "Казань", "prep": "Казани", "gen": "Казани"},
     "nizhniy-novgorod": {"name": "Нижний Новгород", "prep": "Нижнем Новгороде", "gen": "Нижнего Новгорода"},
-    "rostov-na-donu": {"name": "Ростов-на-Дону", "prep": "Ростове-на-Дону", "gen": "Ростов-на-Дону"}
+    "chelyabinsk": {"name": "Челябинск", "prep": "Челябинске", "gen": "Челябинска"},
+    "samara": {"name": "Самара", "prep": "Самаре", "gen": "Самары"},
+    "rostov-na-donu": {"name": "Ростов-на-Дону", "prep": "Ростове-на-Дону", "gen": "Ростова-на-Дону"}
 }
 
 def get_city_forms(slug):
-    if slug in CITY_EXCEPTIONS:
-        return CITY_EXCEPTIONS[slug]
-    
-    # Автоматическое форматирование для остальных папок (например, krasnodar -> Краснодар)
+    if slug in CITY_DICTIONARY:
+        return CITY_DICTIONARY[slug]
+    # Запасной вариант для других папок
     name = slug.replace('-', ' ').title()
-    return {
-        "name": name,
-        "prep": name + "е",
-        "gen": name + "а"
-    }
+    return {"name": name, "prep": name + "е", "gen": name + "а"}
 
 def generate_pages():
     data = load_data()
     template = load_template()
     
-    # АВТОМАТИЧЕСКИ сканируем все папки в директории geo/
     if os.path.exists(BASE_OUTPUT_DIR):
         city_slugs = [d for d in os.listdir(BASE_OUTPUT_DIR) if os.path.isdir(os.path.join(BASE_OUTPUT_DIR, d))]
     else:
@@ -52,13 +52,12 @@ def generate_pages():
             dir_path = os.path.join(BASE_OUTPUT_DIR, slug, service['slug'])
             os.makedirs(dir_path, exist_ok=True)
             
-            # Генерация хлебных крошек
+            # Аккуратные хлебные крошки с русским названием города
             breadcrumbs = f"""
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 text-sm text-slate-500">
                 <a href="/" class="hover:text-cdek">Главная</a> / 
-                <a href="/geo/" class="hover:text-cdek">Гео</a> / 
-                <a href="/geo/{slug}/" class="hover:text-cdek">{city_info['name']}</a> / 
-                <span class="text-white">{service['h1_main'].split(' ')[0]}</span>
+                <a href="/geo/" class="hover:text-cdek">Логистика</a> / 
+                <span class="text-slate-300">{city_info['name']}</span>
             </div>
             """
             
@@ -79,7 +78,7 @@ def generate_pages():
                 f.write(html_content)
             generated_count += 1
             
-    print(f"🚀 Успешно сгенерировано {generated_count} страниц для {len(city_slugs)} городов из папки geo!")
+    print(f"🚀 Сгенерировано {generated_count} страниц!")
 
 if __name__ == "__main__":
     generate_pages()
