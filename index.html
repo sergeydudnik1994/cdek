@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <!-- Yandex.Metrika counter -->
-<script type="text/javascript">
+  <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
         m[i].l=1*new Date();
@@ -11,25 +11,25 @@
     })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111090265', 'ym');
 
     ym(111090265, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
-</script>
-<noscript><div><img src="https://mc.yandex.ru/watch/111090265" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-<!-- /Yandex.Metrika counter -->
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/111090265" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- SEO: Заголовки и описания (Глобальный охват селлеров и интернет-магазинов) -->
+  <!-- SEO: Заголовки и описания -->
   <title>Логистика и доставка для интернет-магазинов и селлеров | Настройка FBS и DBS</title>
   <meta name="description" content="Надежная служба доставки для маркетплейсов, бизнеса, ИП и самозанятых. Снизим расходы на логистику до 50%. Интеграция с Ozon, WB, Яндекс Маркет, Авито. Расчет тарифов онлайн." />
 
-  <!-- SEO: Верификация и OG теги -->
+  <!-- SEO: Верификация и мета-теги -->
   <meta name="yandex-verification" content="f077a22013388718" />
   <meta name="yandex-verification" content="feb8f4adaa02427e" />
   <meta name="google-site-verification" content="b4CjmaWn0KRmnHjAm7abquUe5bkx0Colk-B61Fw698Y" />
   <meta name="theme-color" content="#8DE21A" />
   <link rel="canonical" href="https://cdek-marketplace.ru/" />
   
-  <!-- OG теги для красивых ссылок в Telegram, WhatsApp и VK -->
+  <!-- Open Graph теги -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Доставка для интернет-магазинов и селлеров" />
   <meta property="og:locale" content="ru_RU" />
@@ -39,64 +39,103 @@
   <meta property="og:url" content="https://cdek-marketplace.ru/" />
   <link rel="icon" type="image/png" href="/favicon.png" />
 
-  <!-- 1. МИКРОРАЗМЕТКА КОМПАНИИ, КОНТАКТОВ И УСЛУГ -->
+  <!-- ЕДИНАЯ СВЯЗАННАЯ МИКРОРАЗМЕТКА (Organization + Service + FAQPage) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "СДЭК для маркетплейсов",
-    "url": "https://cdek-marketplace.ru/",
-    "logo": "https://cdek-marketplace.ru/logo.png",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+7-993-322-15-20",
-      "contactType": "customer service",
-      "email": "sv.dudnik@cdek.ru",
-      "availableLanguage": "Russian"
-    },
-    "sameAs": [
-      "https://t.me/cdek_marketplace",
-      "https://wa.me/79933221520",
-      "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
-    ],
-    "makesOffer": {
-      "@type": "Offer",
-      "itemOffered": {
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://cdek-marketplace.ru/#organization",
+        "name": "СДЭК для маркетплейсов",
+        "url": "https://cdek-marketplace.ru/",
+        "logo": "https://cdek-marketplace.ru/logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+7-993-322-15-20",
+          "contactType": "customer service",
+          "email": "sv.dudnik@cdek.ru",
+          "availableLanguage": "Russian"
+        },
+        "sameAs": [
+          "https://t.me/cdek_marketplace",
+          "https://wa.me/79933221520"
+        ]
+      },
+      {
         "@type": "Service",
-        "name": "Подключение селлеров к логистике СДЭК (FBS/DBS)",
-        "description": "Официальная логистика для продавцов Wildberries, Ozon, Яндекс Маркета и Авито со скидкой до 50%."
+        "@id": "https://cdek-marketplace.ru/#service",
+        "name": "Подключение селлеров маркетплейсов к СДЭК",
+        "provider": {
+          "@id": "https://cdek-marketplace.ru/#organization"
+        },
+        "areaServed": "RU",
+        "description": "Бесплатное заключение корпоративного договора СДЭК со скидками до 50% на логистику FBS и DBS для Ozon, WB, Яндекс Маркета и Авито.",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Тарифы СДЭК для бизнеса",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Корпоративный договор СДЭК"
+              },
+              "price": "0",
+              "priceCurrency": "RUB",
+              "availability": "https://schema.org/InStock"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Спецтариф DBS до 1 кг"
+              },
+              "price": "136.50",
+              "priceCurrency": "RUB",
+              "availability": "https://schema.org/InStock"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Сколько времени занимает подключение к СДЭК для селлеров?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Подписание договора и настройка личного кабинета занимает от 15 минут. Вы сможете начать отгрузки в тот же день."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "С какими маркетплейсами вы работаете?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Мы доставляем заказы до складов Wildberries, Ozon, Яндекс Маркет, Мегамаркет и AliExpress по схемам FBS и DBS."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Нужно ли платить за заключение договора?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Нет, заключение договора абсолютно бесплатно. Кроме того, селлеры получают скидку до 50% на логистику."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Какая минимальная стоимость по спецтарифу DBS до 1 кг?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Стоимость отправки начинается от 136.50 ₽ при настройке API-интеграции витрины со СДЭК."
+            }
+          }
+        ]
       }
-    }
-  }
-  </script>
-
-  <!-- 2. МИКРОРАЗМЕТКА FAQ (ДЛЯ БОЛЬШИХ СНИППЕТОВ В ПОИСКЕ) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [{
-      "@type": "Question",
-      "name": "Сколько времени занимает подключение к СДЭК для селлеров?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Подписание договора и настройка личного кабинета занимает от 15 минут. Вы сможете начать отгрузки в тот же день."
-      }
-    }, {
-      "@type": "Question",
-      "name": "С какими маркетплейсами вы работаете?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Мы доставляем заказы до складов Wildberries, Ozon, Яндекс Маркет, Мегамаркет и AliExpress по схемам FBS и DBS."
-      }
-    }, {
-      "@type": "Question",
-      "name": "Нужно ли платить за заключение договора?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Нет, заключение договора абсолютно бесплатно. Кроме того, селлеры получают скидку до 50% на логистику."
-      }
-    }]
+    ]
   }
   </script>
 
@@ -117,73 +156,6 @@
 
   <!-- Виджет СДЭК -->
   <script src="https://cdn.jsdelivr.net/npm/@cdek-it/widget@3" async></script>
-<!-- Микроразметка Услуг и Тарифов для Google и Bing (Schema.org) -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Service",
-      "@id": "https://cdek-marketplace.ru/#service",
-      "name": "Подключение селлеров маркетплейсов к СДЭК",
-      "provider": {
-        "@type": "Organization",
-        "name": "СДЭК Маркетплейсы",
-        "url": "https://cdek-marketplace.ru/"
-      },
-      "areaServed": "RU",
-      "description": "Бесплатное заключение корпоративного договора СДЭК со скидками до 50% на логистику FBS и DBS для Ozon, WB, Яндекс Маркета и Авито.",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Тарифы СДЭК для бизнеса",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Корпоративный договор СДЭК"
-            },
-            "price": "0",
-            "priceCurrency": "RUB",
-            "availability": "https://schema.org/InStock"
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Спецтариф DBS до 1 кг"
-            },
-            "price": "136.50",
-            "priceCurrency": "RUB",
-            "availability": "https://schema.org/InStock"
-          }
-        ]
-      }
-    },
-    {
-      "@type": "FAQPage",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "Сколько стоит заключение договора СДЭК для селлеров?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Договор заключается бесплатно. Отсутствуют скрытые платежи и обязательные ежемесячные минимальные объемы."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Какая минимальная стоимость по спецтарифу DBS до 1 кг?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Стоимость отправки начинается от 136.50 ₽ при настройке API-интеграции витрины со СДЭК."
-          }
-        }
-      ]
-    }
-  ]
-}
-</script>
 </head>
 <body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
 
