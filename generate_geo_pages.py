@@ -287,7 +287,7 @@ def build_city_html(slug, city_name, pvz_count):
     "mainEntity": [{{
       "@type": "Question",
       "name": "Сколько времени занимает подключение к СДЭК для селлеров {prep_v}?",
-      "@acceptedAnswer": {{
+      "acceptedAnswer": {{
         "@type": "Answer",
         "text": "Подписание договора и настройка личного кабинета занимает от 15 минут. Вы сможете начать отгрузки {prep_v} в тот же день."
       }}
