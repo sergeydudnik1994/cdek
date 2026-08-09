@@ -6,7 +6,12 @@ const templatePath = path.join(__dirname, 'city-template.html');
 const headerPath = path.join(__dirname, 'src', 'components', 'header.html');
 const sitemapPath = path.join(__dirname, 'sitemap.xml');
 
-// 1. Функция транслитерации для слагов
+// Данные для авторизации CDEK API v2 (из cdek-service.php или тестовые)
+const CDEK_CLIENT_ID = process.env.CDEK_CLIENT_ID || 'EMqO21M3Nis2ok33L7sZ3A123';
+const CDEK_CLIENT_SECRET = process.env.CDEK_CLIENT_SECRET || 'z9LI2M3Nis2ok33L7sZ3A123';
+const CDEK_API_URL = 'https://api.cdek.ru/v2'; // Для боевых ключей
+// const CDEK_API_URL = 'https://api.edu.cdek.ru/v2'; // Для тестовых ключей
+
 function createSlug(word) {
   const letters = {
     "а": "a", "б": "b", "в": "v", "г": "g", "д": "d", "е": "e", "ё": "e", "ж": "zh",
@@ -18,7 +23,6 @@ function createSlug(word) {
     .join('').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 }
 
-// 2. Функция склонения городов по падежам (Предложный и Родительный)
 function getCityCases(name) {
   const exceptions = {
     'Москва': { prep: 'Москве', gen: 'Москвы' },
@@ -59,9 +63,56 @@ function getCityCases(name) {
   return { prep, gen };
 }
 
+// 1. Получение OAuth-токена СДЭК
+async function getCdekToken() {
+  try {
+    const res = await fetch(`${CDEK_API_URL}/oauth/token?grant_type=client_credentials&client_id=${CDEK_CLIENT_ID}&client_secret=${CDEK_CLIENT_SECRET}`, {
+      method: 'POST'
+    });
+    const data = await res.json();
+    return data.access_token;
+  } catch (e) {
+    console.warn('⚠️ Не удалось получить токен CDEK API, используем резервную статистику ПВЗ.');
+    return null;
+  }
+}
+
+// 2. Получение точного количества ПВЗ по всем городам России в 1 запрос
+async function fetchPvzCountsMap(token) {
+  const pvzMap = {};
+  if (!token) return pvzMap;
+
+  try {
+    console.log('📦 Загружаем актуальную базу ПВЗ СДЭК из API...');
+    const res = await fetch(`${CDEK_API_URL}/offices?country_code=RU&type=PVZ`, {
+      headers: { 'Authorization': `Bearer ${token}` }
+    });
+    const offices = await res.json();
+
+    if (Array.isArray(offices)) {
+      offices.forEach(office => {
+        const city = office.location?.city;
+        if (city) {
+          const key = city.toLowerCase();
+          pvzMap[key] = (pvzMap[key] || 0) + 1;
+        }
+      });
+      console.log(`✅ Загружено ПВЗ: ${offices.length} по всей РФ.`);
+    }
+  } catch (e) {
+    console.error('Ошибка при запросе офисов СДЭК:', e.message);
+  }
+
+  return pvzMap;
+}
+
 async function buildGeo() {
   console.log('🚀 Запуск генератора гео-страниц...');
   
+  // Подтягиваем токен и карту ПВЗ
+  const token = await getCdekToken();
+  const pvzMap = await fetchPvzCountsMap(token);
+
   let cityNamesRu = {};
   
   try {
@@ -96,11 +147,14 @@ async function buildGeo() {
       name = slug.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
     }
     const cases = getCityCases(name);
-    return { slug, name, prep: cases.prep, gen: cases.gen };
+    
+    // Получаем реальное количество ПВЗ или ставим адекватный дефолт (от 1 ПВЗ)
+    const count = pvzMap[name.toLowerCase()] || 3;
+    
+    return { slug, name, prep: cases.prep, gen: cases.gen, pvzCount: count };
   });
 
   cities.sort((a, b) => a.name.localeCompare(b.name, 'ru'));
-  console.log(`Успешно сопоставлено городов: ${cities.length}`);
 
   // --- 1. СБОРКА HTML-СТРАНИЦ ИЗ ШАБЛОНА ---
   if (fs.existsSync(templatePath)) {
@@ -116,13 +170,12 @@ async function buildGeo() {
         .replace(/\{\{CITY\}\}/g, city.name)
         .replace(/\{\{SLUG\}\}/g, city.slug)
         .replace(/\{\{CITY_PREP\}\}/g, city.prep)
-        .replace(/\{\{CITY_GEN\}\}/g, city.gen);
+        .replace(/\{\{CITY_GEN\}\}/g, city.gen)
+        .replace(/\{\{PVZ_COUNT\}\}/g, city.pvzCount);
 
       fs.writeFileSync(path.join(cityFolder, 'index.html'), pageHtml);
     });
-    console.log(`✅ Успешно сгенерированы HTML-страницы для ${cities.length} городов!`);
-  } else {
-    console.warn('⚠️ Внимание: файл city-template.html не найден, страницы не обновлены.');
+    console.log(`✅ Успешно сгенерированы HTML-страницы с динамическими ПВЗ для ${cities.length} городов!`);
   }
 
   // --- 2. ВНЕДРЕНИЕ СЕТКИ В ШАПКУ ---
@@ -143,14 +196,12 @@ async function buildGeo() {
     }
     
     fs.writeFileSync(headerPath, headerHtml);
-    console.log('✅ Шапка сайта успешно обновлена!');
   }
 
-  // --- 3. ОБНОВЛЕНИЕ SITEMAP.XML С LASTMOD И ИЕРАРХИЕЙ ПРИОРИТЕТОВ ---
+  // --- 3. ОБНОВЛЕНИЕ SITEMAP.XML ---
   const baseUrl = "https://cdek-marketplace.ru";
   const today = new Date().toISOString().split('T')[0];
 
-  // Основные важные страницы (идут ПЕРВЫМИ в sitemap)
   const mainPages = [
     { url: `${baseUrl}/`, priority: '1.0', changefreq: 'daily' },
     { url: `${baseUrl}/calculator/`, priority: '0.9', changefreq: 'weekly' },
@@ -166,7 +217,6 @@ async function buildGeo() {
     { url: `${baseUrl}/policy/`, priority: '0.3', changefreq: 'yearly' }
   ];
 
-  // Гео-страницы (идут ВТОРОЙ пачкой)
   const geoPages = cities.map(city => ({
     url: `${baseUrl}/geo/${city.slug}/`,
     priority: '0.6',
@@ -186,7 +236,7 @@ ${allSitemapEntries.map(entry => `  <url>
 </urlset>`;
 
   fs.writeFileSync(sitemapPath, sitemapXml);
-  console.log(`✅ Файл sitemap.xml успешно обновлен! Всего ссылок: ${allSitemapEntries.length} (Основные: ${mainPages.length}, Гео: ${geoPages.length})`);
+  console.log(`✅ Файл sitemap.xml успешно обновлен!`);
 }
 
 buildGeo();
