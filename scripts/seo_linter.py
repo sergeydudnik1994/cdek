@@ -1,6 +1,14 @@
 import os
 import sys
 
+# СПИСОК ИСКЛЮЧЕНИЙ: файлы и папки, которым не нужны строгие SEO-теги
+IGNORE_LIST = [
+    'src/components',
+    'ping.html',
+    'calculator',
+    'policy'
+]
+
 def check_seo_tags(filepath):
     with open(filepath, 'r', encoding='utf-8') as file:
         content = file.read().lower()
@@ -15,14 +23,18 @@ def check_seo_tags(filepath):
             
         return errors
 
-# Проверяем только index.html и главные страницы (чтобы не трогать компоненты)
-files_to_check = ['index.html'] 
 has_errors = False
 
 for root, dirs, files in os.walk('.'):
     for filename in files:
-        if filename.endswith('.html') and 'src/components' not in root:
-            filepath = os.path.join(root, filename)
+        if filename.endswith('.html'):
+            # Приводим путь к единому формату
+            filepath = os.path.join(root, filename).replace('\\', '/')
+            
+            # Если файл или папка есть в списке исключений — пропускаем проверку
+            if any(ignore_item in filepath for ignore_item in IGNORE_LIST):
+                continue
+                
             errors = check_seo_tags(filepath)
             
             if errors:
