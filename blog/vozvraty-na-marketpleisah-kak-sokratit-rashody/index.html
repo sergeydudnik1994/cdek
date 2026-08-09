@@ -15,31 +15,80 @@
     }
   </script>
 
+  <!-- Полная микроразметка SEO: Хлебные крошки + BlogPosting + FAQPage -->
   <script type="application/ld+json">
-    {
+  {
     "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
             "@type": "ListItem",
             "position": 1,
             "name": "Главная",
             "item": "https://cdek-marketplace.ru/"
-        },
-        {
+          },
+          {
             "@type": "ListItem",
             "position": 2,
             "name": "Блог",
             "item": "https://cdek-marketplace.ru/blog/"
-        },
-        {
+          },
+          {
             "@type": "ListItem",
             "position": 3,
             "name": "Возвраты на маркетплейсах: как сократить расходы",
             "item": "https://cdek-marketplace.ru/blog/vozvraty-na-marketpleisah-kak-sokratit-rashody/"
+          }
+        ]
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Возвраты на маркетплейсах: как сократить расходы с помощью СДЭК",
+        "description": "Почему возвраты съедают до 30% прибыли селлера на Wildberries и Ozon, и как логистика СДЭК помогает снизить процент возвратов и стоимость обратной доставки.",
+        "datePublished": "2026-08-09",
+        "dateModified": "2026-08-09",
+        "author": {
+          "@type": "Organization",
+          "name": "CDEK Marketplace"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "CDEK Marketplace",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://cdek-marketplace.ru/favicon.png"
+          }
+        },
+        "mainEntityOfPage": {
+          "@type": "WebPage",
+          "@id": "https://cdek-marketplace.ru/blog/vozvraty-na-marketpleisah-kak-sokratit-rashody/"
         }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Как снизить расходы на возвраты товаров на маркетплейсах?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Использовать схему FBS/DBS с фиксированными тарифами СДЭК, ускорять оборот невыкупленного товара (1–3 дня вместо недель на складах площадок) и правильно учитывать процент возвратов в юнит-экономике."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Почему возвраты по FBS через СДЭК обрабатываются быстрее, чем по FBO?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Возвращенный товар не застревает на сортировочных центрах и складах маркетплейса, а оперативно поступает селлеру за 1–3 дня, что позволяет быстро проверить его состояние и снова вернуть в продажу."
+            }
+          }
+        ]
+      }
     ]
-}
+  }
   </script>
 </head>
 <body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
@@ -119,6 +168,27 @@
         <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6 pb-2 border-b border-slate-800">Главный вывод</h2>
         <p>Возвраты — это не аномалия, а встроенная часть модели e-commerce. Задача селлера — не бороться с самим фактом возвратов, а выстроить логистику так, чтобы каждый обратный рейс стоил предсказуемо и обрабатывался быстро.</p>
         <p><strong>Хотите рассчитать реальную стоимость возвратной логистики для вашей категории товаров?</strong> Оставьте заявку ниже — подберем тариф и покажем, сколько вы теряете на возвратах сейчас.</p>
+
+        <!-- Блок FAQ для расширенного сниппета -->
+        <div class="mt-12 pt-8 border-t border-slate-800">
+          <h2 class="text-2xl sm:text-3xl font-bold text-white mb-6">Часто задаваемые вопросы</h2>
+          <div class="space-y-4">
+            <details class="group bg-slate-900/50 p-5 rounded-2xl border border-slate-800">
+              <summary class="font-bold text-white cursor-pointer list-none flex justify-between items-center">
+                <span>Как снизить расходы на возвраты товаров на маркетплейсах?</span>
+                <span class="text-cdek transition-transform group-open:rotate-180">&darr;</span>
+              </summary>
+              <p class="mt-3 text-slate-400 text-sm sm:text-base">Использовать схему FBS/DBS с фиксированными тарифами СДЭК, ускорять оборот невыкупленного товара (1–3 дня вместо недель на складах площадок) и правильно учитывать процент возвратов в юнит-экономике.</p>
+            </details>
+            <details class="group bg-slate-900/50 p-5 rounded-2xl border border-slate-800">
+              <summary class="font-bold text-white cursor-pointer list-none flex justify-between items-center">
+                <span>Почему возвраты по FBS через СДЭК обрабатываются быстрее, чем по FBO?</span>
+                <span class="text-cdek transition-transform group-open:rotate-180">&darr;</span>
+              </summary>
+              <p class="mt-3 text-slate-400 text-sm sm:text-base">Возвращенный товар не застревает на сортировочных центрах и складах маркетплейса, а оперативно поступает селлеру за 1–3 дня, что позволяет быстро проверить его состояние и снова вернуть в продажу.</p>
+            </details>
+          </div>
+        </div>
 
       </div>
     </article>
