@@ -102,7 +102,7 @@ def generate_article_content(keyword, category):
     """
     
     response = client.models.generate_content(
-        model='gemini-2.5-flash',
+        model='gemini-1.5-flash',
         contents=prompt,
     )
 
@@ -209,7 +209,6 @@ def update_sitemap(slug, date_str):
         tree = ET.parse(sitemap_path)
         root = tree.getroot()
 
-        # Проверка на существование URL
         for url in root.findall('{[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)}url'):
             loc = url.find('{[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)}loc')
             if loc is not None and loc.text == url_node:
@@ -228,7 +227,6 @@ def update_sitemap(slug, date_str):
         priority = ET.SubElement(new_url, 'priority')
         priority.text = "0.8"
 
-        # Вставляем новую ссылку сразу после корневой страницы (или просто в начало)
         root.insert(1, new_url)
 
         tree.write(sitemap_path, encoding='utf-8', xml_declaration=True)
@@ -255,7 +253,6 @@ def update_blog_index(title, description, slug, category):
         with open(blog_path, 'r', encoding='utf-8') as f:
             content = f.read()
         
-        # Точка вставки: конец открывающего тега сетки
         insert_marker = '<div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto px-4 sm:px-6">'
         
         if insert_marker in content:
@@ -278,17 +275,14 @@ def main():
     print(f"Генерируем статью: {keyword} -> /blog/{slug}/")
     date_str = datetime.now().strftime("%Y-%m-%d")
     
-    # 1. Запрашиваем JSON контент от ИИ
     ai_data = generate_article_content(keyword, category)
     
     title = ai_data.get('title', keyword.capitalize())
     description = ai_data.get('description', f"Статья на тему {keyword}")
     html_body = ai_data.get('html_body', '<p>Контент готовится...</p>')
 
-    # 2. Собираем HTML страницу
     full_html = build_full_html_page(title, description, html_body, slug, category)
 
-    # 3. Сохраняем файл
     folder_path = os.path.join('blog', slug)
     os.makedirs(folder_path, exist_ok=True)
     
@@ -297,7 +291,6 @@ def main():
         f.write(full_html)
     print(f"Файл создан: {file_path}")
 
-    # 4. Обновляем карту сайта и компонент ленты
     update_sitemap(slug, date_str)
     update_blog_index(title, description, slug, category)
     print("Процесс успешно завершен!")
