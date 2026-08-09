@@ -106,5 +106,4 @@ def generate_article_content(keyword, category):
         contents=prompt,
     )
 
-        text_response = response.text.replace("```json", "").replace("```", "").strip()
-
+    text_response = response.text.replace("
