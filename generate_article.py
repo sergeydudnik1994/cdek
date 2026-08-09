@@ -2,6 +2,7 @@ import os
 import re
 import csv
 import json
+import time
 from datetime import datetime
 import xml.etree.ElementTree as ET
 from google import genai
@@ -101,23 +102,38 @@ def generate_article_content(keyword, category):
     4. Статья должна быть подробной, с примерами, сравнениями FBS/FBO или тарифов.
     """
     
-    response = client.models.generate_content(
-        model='gemini-2.0-flash',
-        contents=prompt,
-    )
+    max_retries = 3
+    retry_delay = 60  # пауза 60 секунд при ошибке лимитов API
 
-    text_response = response.text.replace("```json", "").replace("```", "").strip()
-    
-    try:
-        data = json.loads(text_response)
-        return data
-    except json.JSONDecodeError:
-        print("Ошибка парсинга JSON от Gemini. Получен текст:", text_response)
-        return {
-            "title": keyword.capitalize(),
-            "description": f"Полезная статья о том, как использовать логистику CDEK для запроса: {keyword}.",
-            "html_body": f"<p>{text_response}</p>"
-        }
+    for attempt in range(1, max_retries + 1):
+        try:
+            print(f"Запрос к Gemini API (попытка {attempt}/{max_retries})...")
+            response = client.models.generate_content(
+                model='gemini-2.0-flash',
+                contents=prompt,
+            )
+
+            text_response = response.text.replace("```json", "").replace("```", "").strip()
+            
+            try:
+                data = json.loads(text_response)
+                return data
+            except json.JSONDecodeError:
+                print("Ошибка парсинга JSON от Gemini. Получен текст:", text_response)
+                return {
+                    "title": keyword.capitalize(),
+                    "description": f"Полезная статья о том, как использовать логистику CDEK для запроса: {keyword}.",
+                    "html_body": f"<p>{text_response}</p>"
+                }
+
+        except Exception as e:
+            print(f"Предупреждение: ошибка обращения к API (попытка {attempt}): {e}")
+            if attempt < max_retries:
+                print(f"Ждем {retry_delay} секунд для сброса лимита запросов...")
+                time.sleep(retry_delay)
+            else:
+                print("Превышено максимальное число попыток.")
+                raise e
 
 def build_full_html_page(title, description, content, slug, category):
     canonical_url = f"{DOMAIN}/blog/{slug}/"
