@@ -4,14 +4,123 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>СДЭК для Ozon (FBS / rFBS) — Договор и отправка</title>
-  <meta name="description" content="Официальная логистика СДЭК для продавцов Ozon. Быстрая отгрузка со скидкой по договору." />
+  <!-- SEO: Заголовки и описания -->
+  <title>СДЭК для Ozon (FBS / rFBS) — Договор и тарифы со скидкой до 50%</title>
+  <meta name="description" content="Официальное подключение продавцов Ozon к логистике СДЭК. Спецтарифы FBS и rFBS (realFBS) для ИП, ООО и самозанятых. Отгрузка без очередей в 4000+ ПВЗ по всей России." />
+
+  <!-- SEO: Мета-теги и Canonical -->
+  <meta name="theme-color" content="#3B82F6" />
+  <link rel="canonical" href="https://cdek-marketplace.ru/ozon/" />
   <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <!-- Open Graph теги (для Telegram, WhatsApp, VK) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="СДЭК Маркетплейсы" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:title" content="СДЭК для Ozon (FBS / rFBS) — Спецтарифы и подключение" />
+  <meta property="og:description" content="Официальная логистика СДЭК для продавцов Ozon. Доставка по схемам FBS и rFBS с B2B-тарифами и скидками до 50%." />
+  <meta property="og:image" content="https://cdek-marketplace.ru/logo.png" />
+  <meta property="og:url" content="https://cdek-marketplace.ru/ozon/" />
+
+  <!-- ЕДИНАЯ СВЯЗАННАЯ МИКРОРАЗМЕТКА (Breadcrumbs + Organization + Service + FAQPage) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Главная",
+            "item": "https://cdek-marketplace.ru/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "СДЭК для Ozon",
+            "item": "https://cdek-marketplace.ru/ozon/"
+          }
+        ]
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://cdek-marketplace.ru/#organization",
+        "name": "СДЭК для маркетплейсов",
+        "url": "https://cdek-marketplace.ru/",
+        "logo": "https://cdek-marketplace.ru/logo.png",
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+7-993-322-15-20",
+          "contactType": "customer service",
+          "email": "sv.dudnik@cdek.ru",
+          "availableLanguage": "Russian"
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://cdek-marketplace.ru/ozon/#service",
+        "name": "Доставка СДЭК для селлеров Ozon",
+        "provider": {
+          "@id": "https://cdek-marketplace.ru/#organization"
+        },
+        "areaServed": "RU",
+        "description": "Официальная логистика СДЭК для продавцов Ozon по схемам FBS и rFBS (realFBS) со скидками до 50% и сдачей заказов через 4000+ ПВЗ.",
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "Услуги доставки для Ozon",
+          "itemListElement": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Корпоративный договор СДЭК для Ozon (FBS / rFBS)"
+              },
+              "price": "0",
+              "priceCurrency": "RUB",
+              "availability": "https://schema.org/InStock"
+            }
+          ]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Как работает схема rFBS (realFBS) на Ozon через СДЭК?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Вы храните товар на своем складе, при получении заказа на Ozon создаете накладную СДЭК и сдаете посылку в ближайший ПВЗ. Трек-номер и статусы доставки автоматически интегрируются в личный кабинет Ozon."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Где сдавать заказы Ozon по договору СДЭК?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Вы можете сдавать готовые посылки по единому реестру без очередей в любом из 4000+ пунктов выдачи СДЭК по всей России или заказать забор курьером с вашего склада."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Какую скидку получают селлеры Ozon по договору СДЭК?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Специальные B2B-тарифы «Посылка» и «DBS» позволяют экономить до 50% от стандартной стоимости отправок для физических лиц."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme: { extend: { colors: { cdek: '#8de21a', dark: { 900: '#0b101d' } } } }
+      theme: { extend: { colors: { cdek: '#8de21a', ozon: '#3b82f6', dark: { 900: '#0b101d' } } } }
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@cdek-it/widget@3" async></script>
