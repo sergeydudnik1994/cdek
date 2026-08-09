@@ -29,6 +29,7 @@ def generate_pages():
             html_content = template
             html_content = html_content.replace('{{CITY_NAME}}', city['name'])
             html_content = html_content.replace('{{CITY_PREP}}', city['prep'])
+            html_content = html_content.replace('{{CITY_GEN}}', city.get('gen', city['name']))
             html_content = html_content.replace('{{CITY_SLUG}}', city['slug'])
             
             html_content = html_content.replace('{{SERVICE_SLUG}}', service['slug'])
