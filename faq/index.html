@@ -3,9 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111090265', 'ym');
+
+      ym(111090265, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/111090265" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
   
   <title>Вопросы и ответы (FAQ) — Подключение СДЭК для селлеров</title>
   <meta name="description" content="Ответы на популярные вопросы о заключении договора со СДЭК, скидках до 50% и отгрузке заказов для Ozon, WB, Яндекс Маркета и Авито." />
+  <link rel="canonical" href="https://cdek-marketplace.ru/faq/" />
   <link rel="icon" type="image/png" href="/favicon.png" />
 
   <!-- Микроразметка для FAQ -->
@@ -58,47 +73,56 @@
   }
   </script>
 
+  <!-- Микроразметка Хлебных крошек -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://cdek-marketplace.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Частые вопросы",
+        "item": "https://cdek-marketplace.ru/faq/"
+      }
+    ]
+  }
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: { extend: { colors: { cdek: '#8de21a', dark: { 900: '#0b101d' } } } }
     }
   </script>
-
-    <script type="application/ld+json">
-    {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-        {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Главная",
-            "item": "https://cdek-marketplace.ru/"
-        },
-        {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Частые вопросы",
-            "item": "https://cdek-marketplace.ru/faq/"
-        }
-    ]
-}
-    </script>
 </head>
 <body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
 
   <!--#include virtual="/src/components/header.html" -->
 
-  <main class="flex-grow">
-    <div class="max-w-4xl mx-auto px-4 py-12 sm:py-16 space-y-12">
+  <main class="flex-grow pt-8 pb-16">
+    <div class="max-w-4xl mx-auto px-4 space-y-10">
+      
+      <!-- ВИЗУАЛЬНЫЕ ХЛЕБНЫЕ КРОШКИ -->
+      <nav class="text-sm text-slate-400">
+        <a href="/" class="hover:text-cdek transition-colors">Главная</a>
+        <span class="mx-2">/</span>
+        <span class="text-white">Частые вопросы</span>
+      </nav>
+
       <!-- Заголовок страницы -->
       <div class="text-center space-y-3">
         <h1 class="text-3xl sm:text-4xl font-black tracking-tight text-white">
           Часто задаваемые вопросы (FAQ)
         </h1>
         <p class="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">
-          Всё, что нужно знать о подключении корпоративного договора СДЭК, тарифах и схемах отгрузки.
+          Всё, что нужно знать о подключении корпоративного договора СДЭК, тарифах и схемам отгрузки.
         </p>
       </div>
 
