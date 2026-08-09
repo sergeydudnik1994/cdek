@@ -102,7 +102,7 @@ def generate_article_content(keyword, category):
     """
     
     response = client.models.generate_content(
-        model='gemini-1.5-flash',
+        model='gemini-2.0-flash',
         contents=prompt,
     )
 
@@ -115,7 +115,7 @@ def generate_article_content(keyword, category):
         print("Ошибка парсинга JSON от Gemini. Получен текст:", text_response)
         return {
             "title": keyword.capitalize(),
-            "description": f"Полезная статья о том, как использовать логистику СДЭК для запроса: {keyword}.",
+            "description": f"Полезная статья о том, как использовать логистику CDEK для запроса: {keyword}.",
             "html_body": f"<p>{text_response}</p>"
         }
 
@@ -128,7 +128,7 @@ def build_full_html_page(title, description, content, slug, category):
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>{title} — СДЭК для маркетплейсов</title>
+  <title>{title} — CDEK для маркетплейсов</title>
   <meta name="description" content="{description}" />
   <link rel="icon" type="image/png" href="/favicon.png" />
 
