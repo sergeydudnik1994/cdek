@@ -1,0 +1,55 @@
+name: SEO Automation Workflow
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  schedule:
+    # Запуск каждую ночь в 03:00 по UTC
+    - cron: '0 3 * * *'
+
+jobs:
+  seo-linter:
+    name: 🛡️ Проверка SEO-ошибок
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout кода
+        uses: actions/checkout@v3
+      
+      - name: Настройка Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+          
+      - name: Запуск Линтера
+        run: python scripts/seo_linter.py
+
+  daily-seo-tasks:
+    name: 🤖 Ежедневное обновление и Пинг поисковиков
+    runs-on: ubuntu-latest
+    needs: seo-linter # Запустится только если линтер прошел без ошибок
+    if: github.event_name == 'schedule' # Выполнять только по ночному расписанию
+    
+    steps:
+      - name: Checkout кода
+        uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Обновление sitemap.xml
+        run: python scripts/update_sitemap.py
+        
+      - name: Сохранение новой даты в репозиторий
+        run: |
+          git config --global user.name 'SEO-Bot'
+          git config --global user.email 'bot@cdek-marketplace.ru'
+          git add sitemap.xml
+          # Коммит выполнится только если есть изменения
+          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-update sitemap lastmod"
+          git push
+
+      - name: Пинг поисковиков (Bing и Yandex)
+        run: |
+          curl -s "http://www.bing.com/ping?sitemap=https://cdek-marketplace.ru/sitemap.xml"
+          echo "Пинг в Bing отправлен"
+          curl -s "https://webmaster.yandex.ru/ping?sitemap=https://cdek-marketplace.ru/sitemap.xml"
+          echo "Пинг в Яндекс отправлен"
