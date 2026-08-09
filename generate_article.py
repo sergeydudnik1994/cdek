@@ -103,13 +103,13 @@ def generate_article_content(keyword, category):
     """
     
     max_retries = 3
-    retry_delay = 60  # пауза 60 секунд при ошибке лимитов API
+    retry_delay = 60
 
     for attempt in range(1, max_retries + 1):
         try:
             print(f"Запрос к Gemini API (попытка {attempt}/{max_retries})...")
             response = client.models.generate_content(
-                model='gemini-2.0-flash',
+                model='gemini-2.0-flash-lite',
                 contents=prompt,
             )
 
