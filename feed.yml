@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE yml_catalog SYSTEM "shops.dtd">
-<yml_catalog date="2026-08-09 12:30">
+<yml_catalog date="2026-08-10 12:30">
   <shop>
     <name>СДЭК Маркетплейсы</name>
     <company>СДЭК для бизнеса</company>
@@ -16,13 +16,13 @@
       
       <!-- Услуга 1: Договор -->
       <offer id="1" available="true">
-        <name>Заключение договора СДЭК для селлеров</name>
+        <name>СДЭК Маркетплейс</name>
         <url>https://cdek-marketplace.ru/</url>
         <price>0</price>
         <currencyId>RUB</currencyId>
         <categoryId>1</categoryId>
         <picture>https://cdek-marketplace.ru/logo.png</picture>
-        <description>Официальный договор со СДЭК для ИП и ООО. Скидки до 50% на отгрузки FBS и DBS для Ozon, WB, Яндекс Маркета и Авито. Без визита в офис за 15 минут.</description>
+        <description>Заключение договора СДЭК для селлеров. Официальный договор со СДЭК для ИП и ООО. Скидки до 50% на отгрузки FBS и DBS для Ozon, WB, Яндекс Маркета и Авито. Без визита в офис за 15 минут.</description>
         <param name="рейтинг">5.0</param>
         <param name="число отзывов">150</param>
         <param name="годы опыта">10</param>
@@ -32,50 +32,50 @@
 
       <!-- Услуга 2: Спецтариф DBS 1 кг -->
       <offer id="2" available="true">
-        <name>Спецтариф СДЭК DBS до 1 кг</name>
+        <name>СДЭК Маркетплейс</name>
         <url>https://cdek-marketplace.ru/calculator/dbs-1kg/</url>
         <price>136.50</price>
         <currencyId>RUB</currencyId>
         <categoryId>2</categoryId>
         <picture>https://cdek-marketplace.ru/logo.png</picture>
-        <description>Особые условия доставки легких посылок от 136.50 ₽ при настроенной API-интеграции витрины со СДЭК.</description>
-        <param name="рейтинг">4.9</param>
-        <param name="число отзывов">120</param>
+        <description>Спецтариф СДЭК DBS до 1 кг. Особые условия доставки легких посылок от 136.50 ₽ при настроенной API-интеграции витрины со СДЭК.</description>
+        <param name="рейтинг">5.0</param>
+        <param name="число отзывов">150</param>
         <param name="годы опыта">10</param>
         <param name="регион">Россия</param>
-        <param name="конверсия">95</param>
+        <param name="конверсия">98</param>
       </offer>
 
       <!-- Услуга 3: FBS Доставка -->
       <offer id="3" available="true">
-        <name>Доставка заказов FBS через ПВЗ СДЭК</name>
+        <name>СДЭК Маркетплейс</name>
         <url>https://cdek-marketplace.ru/calculator/</url>
         <price>180</price>
         <currencyId>RUB</currencyId>
         <categoryId>1</categoryId>
         <picture>https://cdek-marketplace.ru/logo.png</picture>
-        <description>Отгрузка товаров на маркетплейсы через любой из 4000+ ПВЗ СДЭК без очередей и жестких тайм-слотов со скидкой до 50%.</description>
+        <description>Доставка заказов FBS через ПВЗ СДЭК. Отгрузка товаров на маркетплейсы через любой из 4000+ ПВЗ СДЭК без очередей и жестких тайм-слотов со скидкой до 50%.</description>
         <param name="рейтинг">5.0</param>
-        <param name="число отзывов">210</param>
+        <param name="число отзывов">150</param>
         <param name="годы опыта">10</param>
         <param name="регион">Россия</param>
-        <param name="конверсия">99</param>
+        <param name="конверсия">98</param>
       </offer>
 
       <!-- Услуга 4: Расчет юнит-экономики -->
       <offer id="4" available="true">
-        <name>Персональный расчет логистики под УСН 5%</name>
+        <name>СДЭК Маркетплейс</name>
         <url>https://cdek-marketplace.ru/faq/</url>
         <price>0</price>
         <currencyId>RUB</currencyId>
         <categoryId>1</categoryId>
         <picture>https://cdek-marketplace.ru/logo.png</picture>
-        <description>Бесплатный подбор наилучшего тарифа СДЭК и расчет юнит-экономики под габариты ваших товаров с учетом налогообложения.</description>
+        <description>Персональный расчет логистики под УСН 5%. Бесплатный подбор наилучшего тарифа СДЭК и расчет юнит-экономики под габариты ваших товаров с учетом налогообложения.</description>
         <param name="рейтинг">5.0</param>
-        <param name="число отзывов">95</param>
+        <param name="число отзывов">150</param>
         <param name="годы опыта">10</param>
         <param name="регион">Россия</param>
-        <param name="конверсия">97</param>
+        <param name="конверсия">98</param>
       </offer>
 
     </offers>
