@@ -110,7 +110,6 @@
   <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 w-full">
     
     <div class="mb-10 text-center">
-      <!-- Тот самый H1, который требовал линтер -->
       <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Услуги для селлеров</h1>
       <p class="text-slate-400 text-lg max-w-2xl mx-auto">Выберите нужную категорию: от логистики до расчета юнит-экономики.</p>
     </div>
@@ -122,7 +121,6 @@
     </div>
 
     <!-- Сетка услуг -->
-   <!-- Сетка услуг -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="servicesGrid">
       
       <!-- Карточка: FBS -->
@@ -188,5 +186,30 @@
   <!-- Nginx: Подключение мобильной кнопки -->
   <!--#include virtual="/src/components/mobile-cta.html" -->
 
+  <!-- Скрипт живого поиска по услугам -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const searchInput = document.getElementById('searchInput');
+      const servicesGrid = document.getElementById('servicesGrid');
+      // Берем все ссылки-карточки внутри сетки
+      const cards = servicesGrid.querySelectorAll('a.group');
+
+      searchInput.addEventListener('input', function() {
+        const query = this.value.toLowerCase().trim();
+        
+        cards.forEach(card => {
+          // Ищем совпадения в заголовке (h3) и описании (p)
+          const title = card.querySelector('h3').textContent.toLowerCase();
+          const desc = card.querySelector('p').textContent.toLowerCase();
+          
+          if (title.includes(query) || desc.includes(query)) {
+            card.style.display = ''; // Показываем карточку
+          } else {
+            card.style.display = 'none'; // Прячем карточку
+          }
+        });
+      });
+    });
+  </script>
 </body>
 </html>
