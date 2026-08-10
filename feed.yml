@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE yml_catalog SYSTEM "shops.dtd">
-<yml_catalog date="2026-08-10 12:30">
+<yml_catalog date="2026-08-10 15:54">
   <shop>
     <name>СДЭК Маркетплейсы</name>
     <company>СДЭК для бизнеса</company>
@@ -28,6 +28,7 @@
         <param name="годы опыта">10</param>
         <param name="регион">Россия</param>
         <param name="конверсия">98</param>
+        <param name="режим работы">Пн-Вс 09:00–18:00</param>
       </offer>
 
       <!-- Услуга 2: Спецтариф DBS 1 кг -->
@@ -44,6 +45,7 @@
         <param name="годы опыта">10</param>
         <param name="регион">Россия</param>
         <param name="конверсия">98</param>
+        <param name="режим работы">Пн-Вс 09:00–18:00</param>
       </offer>
 
       <!-- Услуга 3: FBS Доставка -->
@@ -60,6 +62,7 @@
         <param name="годы опыта">10</param>
         <param name="регион">Россия</param>
         <param name="конверсия">98</param>
+        <param name="режим работы">Пн-Вс 09:00–18:00</param>
       </offer>
 
       <!-- Услуга 4: Расчет юнит-экономики -->
@@ -76,6 +79,7 @@
         <param name="годы опыта">10</param>
         <param name="регион">Россия</param>
         <param name="конверсия">98</param>
+        <param name="режим работы">Пн-Вс 09:00–18:00</param>
       </offer>
 
     </offers>
