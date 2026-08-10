@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from google import genai
 
 # Настройки
-DOMAIN = "https://cdek-marketplace.ru"
+DOMAIN = "[https://cdek-marketplace.ru](https://cdek-marketplace.ru)"
 API_KEY = os.environ.get("GEMINI_API_KEY")
 
 if not API_KEY:
@@ -148,7 +148,7 @@ def generate_article_content(keyword, category):
        - Для <p>: оставляй просто <p> без классов.
        - Для <ul>: class="list-disc list-inside space-y-1 ml-2"
        - Если делаешь таблицу, используй структуру:
-         <div class="overflow-x-auto my-6"><table class="w-full text-left text-sm sm:text-base"><thead><tr class="bg-slate-800 text-white"><th class="p-4 rounded-tl-xl font-bold">...</th></tr></thead><tbody class="divide-y divide-slate-800 bg-slate-900/50"><tr><td class="p-4">...</td></tr></tbody></table></div>
+          <div class="overflow-x-auto my-6"><table class="w-full text-left text-sm sm:text-base"><thead><tr class="bg-slate-800 text-white"><th class="p-4 rounded-tl-xl font-bold">...</th></tr></thead><tbody class="divide-y divide-slate-800 bg-slate-900/50"><tr><td class="p-4">...</td></tr></tbody></table></div>
     3. Добавь акцентный блок:
        <div class="bg-cdek/10 border-l-4 border-cdek p-4 rounded-r-xl text-white"><strong>Важно:</strong> Текст...</div>
     4. НЕ вставляй блок FAQ в html_body — передай вопросы и ответы строго в массиве "faq".
@@ -265,7 +265,7 @@ def build_full_html_page(
       })
 
   schema_json = json.dumps(
-      {"@context": "[https://schema.org](https://schema.org)", "@graph": schema_graph},
+      {"@context": "https://schema.org", "@graph": schema_graph},
       ensure_ascii=False,
       indent=2,
   )
@@ -287,12 +287,14 @@ def build_full_html_page(
             </details>""")
 
     if details_items:
+      # ИСПРАВЛЕНИЕ: Вынесли join за пределы f-строки
+      joined_items = "\n".join(details_items)
       faq_html = f"""
         <!-- Блок FAQ для расширенного сниппета -->
         <div class="mt-12 pt-8 border-t border-slate-800">
           <h2 class="text-2xl sm:text-3xl font-bold text-white mb-6">Часто задаваемые вопросы</h2>
           <div class="space-y-4">
-{'\n'.join(details_items)}
+{joined_items}
           </div>
         </div>"""
 
@@ -307,7 +309,7 @@ def build_full_html_page(
   <meta name="description" content="{description}" />
   <link rel="icon" type="image/png" href="/favicon.png" />
 
-  <script src="[https://cdn.tailwindcss.com](https://cdn.tailwindcss.com)"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {{
       theme: {{ extend: {{ colors: {{ cdek: '#8de21a', dark: {{ 900: '#0b101d' }} }} }} }}
@@ -358,7 +360,7 @@ def build_full_html_page(
 def update_sitemap(slug, date_str):
   sitemap_path = "sitemap.xml"
   url_node = f"{DOMAIN}/blog/{slug}/"
-  ns = "[http://www.sitemaps.org/schemas/sitemap/0.9](http://www.sitemaps.org/schemas/sitemap/0.9)"
+  ns = "http://www.sitemaps.org/schemas/sitemap/0.9"
 
   try:
     ET.register_namespace("", ns)
