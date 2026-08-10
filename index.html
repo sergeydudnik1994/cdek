@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" class="dark">
+<html lang="ru">
 <head>
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
@@ -26,9 +26,7 @@
   <meta name="yandex-verification" content="f077a22013388718" />
   <meta name="yandex-verification" content="feb8f4adaa02427e" />
   <meta name="google-site-verification" content="b4CjmaWn0KRmnHjAm7abquUe5bkx0Colk-B61Fw698Y" />
-  
-  <!-- Обновлен цвет для мобильных браузеров -->
-  <meta name="theme-color" content="#00C95F" />
+  <meta name="theme-color" content="#8DE21A" />
   <link rel="canonical" href="https://cdek-marketplace.ru/" />
   
   <!-- Open Graph теги -->
@@ -41,15 +39,6 @@
   <meta property="og:url" content="https://cdek-marketplace.ru/" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-
-  <!-- Скрипт защиты от моргания темы при загрузке -->
-  <script>
-    if (localStorage.getItem('theme') === 'light') {
-      document.documentElement.classList.remove('dark');
-    } else {
-      document.documentElement.classList.add('dark');
-    }
-  </script>
 
   <!-- ЕДИНАЯ СВЯЗАННАЯ МИКРОРАЗМЕТКА (Organization + Service + FAQPage) -->
   <script type="application/ld+json">
@@ -155,11 +144,10 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      darkMode: 'class', // Включаем поддержку переключения тем
       theme: {
         extend: {
           colors: {
-            cdek: '#00C95F', // Новый официальный зеленый цвет
+            cdek: '#8de21a',
             dark: { 900: '#0b101d' }
           }
         }
@@ -167,34 +155,10 @@
     }
   </script>
 
-  <style>
-    /* Стили для кнопки переключения темы */
-    .theme-toggle-btn {
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      color: inherit;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      padding: 8px;
-      margin: 0 15px; 
-      border-radius: 50%;
-      transition: background-color 0.2s ease, color 0.2s ease;
-      vertical-align: middle;
-    }
-    .theme-toggle-btn:hover {
-      background-color: rgba(156, 163, 175, 0.2);
-    }
-    .theme-toggle-btn:focus {
-      outline: none;
-    }
-  </style>
-
   <!-- Виджет СДЭК -->
   <script src="https://cdn.jsdelivr.net/npm/@cdek-it/widget@3" async></script>
 </head>
-<body class="bg-slate-50 text-slate-900 dark:bg-dark-900 dark:text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0 transition-colors duration-300">
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
 
   <!-- Nginx: Подключение шапки -->
   <!--#include virtual="/src/components/header.html" -->
@@ -209,31 +173,31 @@
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase transition-all border bg-cdek/10 text-cdek border-cdek/30">
             <span class="relative flex h-2 w-2">
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cdek opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-cdek shadow-[0_0_8px_#00C95F]"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-cdek shadow-[0_0_8px_#8DE21A]"></span>
             </span>
             <span>Официальное подключение для бизнеса</span>
           </div>
 
-          <h1 class="text-3xl sm:text-4xl lg:text-[2.7rem] font-bold text-slate-900 dark:text-white leading-[1.2] tracking-normal mb-5">
-            Комплексная доставка для селлеров <span class="text-slate-500 dark:text-slate-300">и интернет-магазинов</span>
-            <span class="block text-2xl sm:text-3xl lg:text-[2.35rem] font-extrabold mt-2 lg:mt-3 transition-all text-cdek drop-shadow-[0_0_15px_rgba(0,201,95,0.3)]">Wildberries, Ozon, Яндекс Маркет и Авито</span>
+          <h1 class="text-3xl sm:text-4xl lg:text-[2.7rem] font-bold text-white leading-[1.2] tracking-normal mb-5">
+            Комплексная доставка для селлеров <span class="text-slate-300">и интернет-магазинов</span>
+            <span class="block text-2xl sm:text-3xl lg:text-[2.35rem] font-extrabold mt-2 lg:mt-3 transition-all text-cdek drop-shadow-[0_0_15px_rgba(141,226,26,0.3)]">Wildberries, Ozon, Яндекс Маркет и Авито</span>
           </h1>
 
-          <p class="text-slate-600 dark:text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl mb-8">
-            Оптимизируйте <b class="text-slate-900 dark:text-white">юнит-экономику</b> и снизьте расходы на логистику до 50%. Надежный партнер для интернет-магазинов и продавцов: отгрузка товаров по моделям <b class="text-slate-900 dark:text-white">FBS и DBS</b> через 4 000+ ПВЗ без очередей и жестких тайм-слотов.
+          <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl mb-8">
+            Оптимизируйте <b class="text-white">юнит-экономику</b> и снизьте расходы на логистику до 50%. Надежный партнер для интернет-магазинов и продавцов: отгрузка товаров по моделям <b class="text-white">FBS и DBS</b> через 4 000+ ПВЗ без очередей и жестких тайм-слотов.
           </p>
 
-          <div class="grid grid-cols-3 gap-6 w-full mb-8 pt-4 border-t border-slate-300 dark:border-slate-800">
+          <div class="grid grid-cols-3 gap-6 w-full mb-8 pt-4 border-t border-slate-800">
             <div>
-              <p class="text-2xl sm:text-3xl font-bold text-cdek drop-shadow-[0_0_8px_rgba(0,201,95,0.3)]">0 ₽</p>
+              <p class="text-2xl sm:text-3xl font-bold text-cdek drop-shadow-[0_0_8px_rgba(141,226,26,0.3)]">0 ₽</p>
               <p class="text-xs text-slate-500 font-medium mt-0.5">Договор бесплатно</p>
             </div>
             <div>
-              <p class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">до 50%</p>
+              <p class="text-2xl sm:text-3xl font-bold text-white">до 50%</p>
               <p class="text-xs text-slate-500 font-medium mt-0.5">Экономия на тарифах</p>
             </div>
             <div>
-              <p class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">4 000+</p>
+              <p class="text-2xl sm:text-3xl font-bold text-white">4 000+</p>
               <p class="text-xs text-slate-500 font-medium mt-0.5">ПВЗ для отгрузки</p>
             </div>
           </div>
@@ -270,34 +234,5 @@
   <!-- Nginx: Подключение мобильной кнопки -->
   <!--#include virtual="/src/components/mobile-cta.html" -->
 
-  <!-- Скрипт переключения тем -->
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const themeToggleBtn = document.getElementById('theme-toggle');
-      const themeIcon = document.getElementById('theme-icon');
-      const html = document.documentElement;
-
-      const sunPath = '<circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>';
-      const moonPath = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
-
-      // Устанавливаем правильную иконку при загрузке
-      if (themeIcon) {
-          const isDark = html.classList.contains('dark');
-          themeIcon.innerHTML = isDark ? sunPath : moonPath;
-      }
-
-      if (themeToggleBtn) {
-          themeToggleBtn.addEventListener('click', () => {
-              html.classList.toggle('dark');
-              const isDark = html.classList.contains('dark');
-              localStorage.setItem('theme', isDark ? 'dark' : 'light');
-              
-              if (themeIcon) {
-                  themeIcon.innerHTML = isDark ? sunPath : moonPath;
-              }
-          });
-      }
-    });
-  </script>
 </body>
 </html>
