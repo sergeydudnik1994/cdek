@@ -1,8 +1,36 @@
-<title>Интеграция API СДЭК для интернет-магазина | Настройка обмена</title>
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111090265', 'ym');
+    ym(111090265, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/111090265" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Интеграция API СДЭК для интернет-магазина | Настройка обмена</title>
   <meta name="description" content="Свяжите ваш интернет-магазин с базой СДЭК. Готовые плагины для CMS и документация по API для самописных сайтов." />
   <link rel="canonical" href="https://cdek-marketplace.ru/services/api-integration/" />
+  
+  <meta property="og:title" content="Интеграция API СДЭК для интернет-магазина" />
+  <meta property="og:description" content="Свяжите ваш интернет-магазин с базой СДЭК. Готовые плагины для CMS и документация по API." />
+  <meta property="og:url" content="https://cdek-marketplace.ru/services/api-integration/" />
+  <meta property="og:type" content="article" />
 
-  <article class="lg:col-span-7 xl:col-span-8">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { colors: { cdek: '#8de21a', dark: { 900: '#0b101d' } } } } }</script>
+</head>
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
+
+  <!-- Nginx: Подключение шапки -->
+  <!--#include virtual="/src/components/header.html" -->
+
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 w-full grid grid-cols-1 lg:grid-cols-12 gap-10">
+    
+    <article class="lg:col-span-7 xl:col-span-8">
       <nav class="flex text-sm text-slate-400 mb-6">
         <a href="/" class="hover:text-cdek transition-colors">Главная</a><span class="mx-2">/</span>
         <a href="/services/" class="hover:text-cdek transition-colors">Услуги</a><span class="mx-2">/</span>
@@ -30,3 +58,24 @@
         </li>
       </ul>
     </article>
+
+    <!-- Правая колонка: Прилипающая форма -->
+    <aside class="lg:col-span-5 xl:col-span-4 relative">
+      <div class="sticky top-24 bg-slate-800/30 border border-slate-700/50 rounded-2xl p-6 shadow-xl shadow-[#0b101d]/50">
+        <h3 class="text-xl font-bold text-white mb-4 text-center">Оставить заявку на подключение</h3>
+        <p class="text-sm text-slate-400 mb-6 text-center">Перезвоним в течение 15 минут в рабочее время</p>
+        
+        <!-- Nginx: Подключение формы заявки -->
+        <!--#include virtual="/src/components/leadform.html" -->
+        
+      </div>
+    </aside>
+
+  </main>
+
+  <section class="mb-20"><!--#include virtual="/src/components/calculator-widget.html" --></section>
+  <!--#include virtual="/src/components/footer.html" -->
+  <!--#include virtual="/src/components/mobile-cta.html" -->
+
+</body>
+</html>
