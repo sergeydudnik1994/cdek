@@ -22,7 +22,7 @@
         <currencyId>RUB</currencyId>
         <categoryId>1</categoryId>
         <picture>https://cdek-marketplace.ru/logo.png</picture>
-        <description>Заключение договора СДЭК для селлеров. Официальный договор со СДЭК для ИП и ООО. Скидки до 50% на отгрузки FBS и DBS для Ozon, WB, Яндекс Маркета и Авито. Без визита в офис за 15 минут.</description>
+        <description>Официальный договор со СДЭК для ИП и ООО. Скидки до 50% на отгрузки FBS и DBS для Ozon, WB, Яндекс Маркета и Авито. Без визита в офис за 15 минут.</description>
         <param name="рейтинг">5.0</param>
         <param name="число отзывов">1150</param>
         <param name="годы опыта">10</param>
@@ -38,7 +38,7 @@
         <currencyId>RUB</currencyId>
         <categoryId>2</categoryId>
         <picture>https://cdek-marketplace.ru/logo.png</picture>
-        <description>Спецтариф СДЭК DBS до 1 кг. Особые условия доставки легких посылок от 136.50 ₽ при настроенной API-интеграции витрины со СДЭК.</description>
+        <description>Особые условия доставки легких посылок от 136.50 ₽ при настроенной API-интеграции витрины со СДЭК.</description>
         <param name="рейтинг">5.0</param>
         <param name="число отзывов">1150</param>
         <param name="годы опыта">10</param>
@@ -54,7 +54,7 @@
         <currencyId>RUB</currencyId>
         <categoryId>1</categoryId>
         <picture>https://cdek-marketplace.ru/logo.png</picture>
-        <description>Доставка заказов FBS через ПВЗ СДЭК. Отгрузка товаров на маркетплейсы через любой из 4000+ ПВЗ СДЭК без очередей и жестких тайм-слотов со скидкой до 50%.</description>
+        <description>Отгрузка товаров на маркетплейсы через любой из 4000+ ПВЗ СДЭК без очередей и жестких тайм-слотов со скидкой до 50%.</description>
         <param name="рейтинг">5.0</param>
         <param name="число отзывов">1150</param>
         <param name="годы опыта">10</param>
@@ -70,7 +70,7 @@
         <currencyId>RUB</currencyId>
         <categoryId>1</categoryId>
         <picture>https://cdek-marketplace.ru/logo.png</picture>
-        <description>Персональный расчет логистики под УСН 5%. Бесплатный подбор наилучшего тарифа СДЭК и расчет юнит-экономики под габариты ваших товаров с учетом налогообложения.</description>
+        <description>Бесплатный подбор наилучшего тарифа СДЭК и расчет юнит-экономики под габариты ваших товаров с учетом налогообложения.</description>
         <param name="рейтинг">5.0</param>
         <param name="число отзывов">1150</param>
         <param name="годы опыта">10</param>
