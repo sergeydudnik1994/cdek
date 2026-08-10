@@ -224,6 +224,8 @@ def build_city_html(slug, city_name, pvz_count):
     "url": "https://cdek-marketplace.ru/geo/{slug}/",
     "logo": "https://cdek-marketplace.ru/logo.png",
     "telephone": "+7-993-322-15-20",
+    "priceRange": "₽₽",
+    "openingHours": "Mo-Su 09:00-20:00",
     "contactPoint": {{
       "@type": "ContactPoint",
       "telephone": "+7-993-322-15-20",
