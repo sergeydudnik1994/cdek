@@ -6,15 +6,14 @@
   
   <!-- SEO: Заголовки и описания -->
   <title>СДЭК для Интернет-магазинов — Тарифы, CMS-модули и логистика e-commerce</title>
-  <meta name="description" content="Официальное подключение интернет-магазинов к доставке СДЭК. Готовые CMS-модули (Bitrix, Tilda, WP), наложенный платеж, примерка и тарифы со скидкой 50%." />
+  <meta name="description" content="Официальное подключение интернет-магазинов к доставке СДЭК. Готовые CMS-модули (Bitrix, Tilda, WP, InSales), наложенный платеж, интеграция по API и тарифы со скидкой 50%." />
 
   <!-- SEO: Мета-теги и Canonical -->
-  <!-- Изменен theme-color под синий градиент -->
   <meta name="theme-color" content="#0EA5E9" />
   <link rel="canonical" href="https://cdek-marketplace.ru/internet-magazin/" />
   <link rel="icon" type="image/png" href="/favicon.png" />
 
-  <!-- Open Graph теги (для Telegram, WhatsApp, VK) -->
+  <!-- Open Graph теги -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="СДЭК Маркетплейсы" />
   <meta property="og:locale" content="ru_RU" />
@@ -23,7 +22,7 @@
   <meta property="og:image" content="https://cdek-marketplace.ru/logo.png" />
   <meta property="og:url" content="https://cdek-marketplace.ru/internet-magazin/" />
 
-  <!-- ЕДИНАЯ СВЯЗАННАЯ МИКРОРАЗМЕТКА (Breadcrumbs + Organization + Service + FAQPage) -->
+  <!-- ЕДИНАЯ СВЯЗАННАЯ МИКРОРАЗМЕТКА -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -67,7 +66,7 @@
           "@id": "https://cdek-marketplace.ru/#organization"
         },
         "areaServed": "RU",
-        "description": "Комплексное логистическое обслуживание интернет-магазинов: готовые модули интеграции с CMS, кассовое обслуживание, примерка и курьерская доставка.",
+        "description": "Комплексное логистическое обслуживание: API интеграция, готовые модули CMS (InSales, Tilda, Bitrix), кассовое обслуживание и доставка.",
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "E-commerce решения СДЭК",
@@ -84,40 +83,12 @@
             }
           ]
         }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Какие CMS-платформы поддерживаются модулями СДЭК?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Существуют готовые официальные плагины и виджеты для 1С-Битрикс, Tilda, WordPress (WooCommerce), InSales, OpenCart, CS-Cart и других популярных платформ."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Как работает прием наложенных платежей через СДЭК?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "СДЭК выступает агентом по приему платежей: покупатель оплачивает заказ при получении наличными или картой, после чего средства автоматически перечисляются на ваш расчетный счет."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Предоставляется ли услуга примерки перед покупкой?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Да, при отправке одежды и обуви доступна услуга примерки. Покупатель оплачивает только подошедшие вещи, а невыкупленные товары возвращаются вам."
-            }
-          }
-        ]
       }
     ]
   }
   </script>
 
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -126,7 +97,7 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@cdek-it/widget@3" async></script>
 </head>
-<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#0EA5E9] selection:text-[#0b101d] pb-16 md:pb-0">
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#0EA5E9] selection:text-white pb-16 md:pb-0">
 
   <!-- Nginx: Подключение шапки -->
   <!--#include virtual="/src/components/header.html" -->
@@ -151,17 +122,17 @@
             </h1>
             
             <p class="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl">
-              Готовые модули для всех популярных CMS, расчет доставки в корзине, прием наложенных платежей и примерка перед покупкой.
+              Бесшовная интеграция логистики в бизнес-процессы: открытое API, готовые модули для CMS, наложенный платеж и синхронизация остатков в едином окне.
             </p>
 
             <div class="grid grid-cols-2 gap-6 pt-6 border-t border-slate-800/80 max-w-2xl">
               <div>
-                <div class="text-2xl sm:text-3xl font-bold text-sky-400 mb-1">Готовые API</div>
-                <div class="text-sm text-slate-400">Интеграция с CMS</div>
+                <div class="text-2xl sm:text-3xl font-bold text-sky-400 mb-1">Open API</div>
+                <div class="text-sm text-slate-400">Прямая интеграция</div>
               </div>
               <div>
                 <div class="text-2xl sm:text-3xl font-bold text-white mb-1">Наложка</div>
-                <div class="text-sm text-slate-400">Прием оплаты</div>
+                <div class="text-sm text-slate-400">Прием оплаты и чеки</div>
               </div>
             </div>
           </div>
@@ -177,41 +148,98 @@
       </div>
     </section>
 
-    <!-- ВОЗМОЖНОСТИ ДЛЯ ИНТЕРНЕТ-МАГАЗИНОВ -->
-    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-10 text-center">
-        Готовые инструменты для <span class="text-sky-400">вашего сайта</span>
-      </h2>
+    <!-- ВОЗМОЖНОСТИ API И ИНСТРУМЕНТЫ -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-slate-800/50">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+          Официальное <span class="text-sky-400">API СДЭК</span>
+        </h2>
+        <p class="text-slate-400 text-lg">Управляйте логистикой из своей учетной системы без ручного переноса данных. Доступно для всех корпоративных клиентов бесплатно.</p>
+      </div>
       
-      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-        <div class="bg-slate-900/80 border border-slate-800 hover:border-sky-500/50 p-6 rounded-2xl transition-all shadow-lg">
-          <div class="text-sky-400 mb-4 text-3xl">🔌</div>
-          <h3 class="text-lg font-bold text-white mb-2">CMS Модули</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">1С-Битрикс, InSales, WordPress, Tilda и другие популярные платформы.</p>
-        </div>
-
-        <div class="bg-slate-900/80 border border-slate-800 hover:border-sky-500/50 p-6 rounded-2xl transition-all shadow-lg">
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="bg-slate-800/40 border border-slate-700/50 hover:border-sky-500/50 p-6 rounded-2xl transition-all shadow-sm">
           <div class="text-sky-400 mb-4 text-3xl">🧮</div>
-          <h3 class="text-lg font-bold text-white mb-2">Расчет в корзине</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Покупатель сразу видит цену доставки и выбирает удобный ПВЗ на карте.</p>
+          <h3 class="text-lg font-bold text-white mb-2">Расчет тарифов</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Точный калькулятор в корзине: покупатель видит сроки, цены и выбирает удобный ПВЗ на интерактивной карте.</p>
         </div>
 
-        <div class="bg-slate-900/80 border border-slate-800 hover:border-sky-500/50 p-6 rounded-2xl transition-all shadow-lg">
-          <div class="text-sky-400 mb-4 text-3xl">👗</div>
-          <h3 class="text-lg font-bold text-white mb-2">Примерка</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Отправляйте одежду и обувь — клиент оплачивает только то, что подошло.</p>
+        <div class="bg-slate-800/40 border border-slate-700/50 hover:border-sky-500/50 p-6 rounded-2xl transition-all shadow-sm">
+          <div class="text-sky-400 mb-4 text-3xl">📄</div>
+          <h3 class="text-lg font-bold text-white mb-2">Генерация накладных</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Автоматическое создание заказов в системе СДЭК и массовая печать штрихкодов и квитанций из вашей CRM.</p>
         </div>
 
-        <div class="bg-slate-900/80 border border-slate-800 hover:border-sky-500/50 p-6 rounded-2xl transition-all shadow-lg">
-          <div class="text-sky-400 mb-4 text-3xl">💰</div>
-          <h3 class="text-lg font-bold text-white mb-2">Кассовое обслуживание</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">СДЭК выступает агентом по приему платежей (карты и наличные).</p>
+        <div class="bg-slate-800/40 border border-slate-700/50 hover:border-sky-500/50 p-6 rounded-2xl transition-all shadow-sm">
+          <div class="text-sky-400 mb-4 text-3xl">🔄</div>
+          <h3 class="text-lg font-bold text-white mb-2">Трекинг и Webhooks</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Мгновенное получение статусов доставки. Автоматические уведомления клиентов о прибытии заказа в ПВЗ.</p>
+        </div>
+
+        <div class="bg-slate-800/40 border border-slate-700/50 hover:border-sky-500/50 p-6 rounded-2xl transition-all shadow-sm">
+          <div class="text-sky-400 mb-4 text-3xl">🚚</div>
+          <h3 class="text-lg font-bold text-white mb-2">Вызов курьера</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Формирование заявок на забор груза курьером с вашего склада по API в нужное окно времени.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ИНТЕГРАЦИИ С СИСТЕМАМИ И МАРКЕТПЛЕЙСАМИ -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-slate-800/50 bg-slate-900/30">
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <h2 class="text-3xl sm:text-4xl font-bold text-white mb-4">
+          Интеграции с <span class="text-white">маркетплейсами</span> и системами
+        </h2>
+        <p class="text-slate-400 text-lg">Готовые официальные модули для автоматизации продаж, обработки заказов и управления остатками в едином окне.</p>
+      </div>
+
+      <!-- Сетка платформ -->
+      <div class="flex flex-wrap justify-center items-center gap-4 sm:gap-6">
+        <!-- Ozon -->
+        <div class="px-6 py-4 bg-slate-800/60 border border-slate-700/80 rounded-xl hover:border-blue-500/80 hover:bg-slate-800 transition-all cursor-default select-none shadow-sm flex items-center justify-center min-w-[140px]">
+          <span class="text-lg font-bold text-white tracking-wide">Ozon</span>
+        </div>
+        <!-- Wildberries -->
+        <div class="px-6 py-4 bg-slate-800/60 border border-slate-700/80 rounded-xl hover:border-fuchsia-500/80 hover:bg-slate-800 transition-all cursor-default select-none shadow-sm flex items-center justify-center min-w-[140px]">
+          <span class="text-lg font-bold text-white tracking-wide">Wildberries</span>
+        </div>
+        <!-- Яндекс Маркет -->
+        <div class="px-6 py-4 bg-slate-800/60 border border-slate-700/80 rounded-xl hover:border-yellow-500/80 hover:bg-slate-800 transition-all cursor-default select-none shadow-sm flex items-center justify-center min-w-[140px]">
+          <span class="text-lg font-bold text-white tracking-wide">Яндекс Маркет</span>
+        </div>
+        <!-- inSales -->
+        <div class="px-6 py-4 bg-slate-800/60 border border-slate-700/80 rounded-xl hover:border-sky-400/80 hover:bg-slate-800 transition-all cursor-default select-none shadow-sm flex items-center justify-center min-w-[140px]">
+          <span class="text-lg font-bold text-white tracking-wide">inSales</span>
+        </div>
+        <!-- Kaspi -->
+        <div class="px-6 py-4 bg-slate-800/60 border border-slate-700/80 rounded-xl hover:border-red-500/80 hover:bg-slate-800 transition-all cursor-default select-none shadow-sm flex items-center justify-center min-w-[140px]">
+          <span class="text-lg font-bold text-white tracking-wide">Kaspi</span>
+        </div>
+        <!-- Яндекс KIT -->
+        <div class="px-6 py-4 bg-slate-800/60 border border-slate-700/80 rounded-xl hover:border-orange-500/80 hover:bg-slate-800 transition-all cursor-default select-none shadow-sm flex items-center justify-center min-w-[140px]">
+          <span class="text-lg font-bold text-white tracking-wide">Яндекс KIT</span>
+        </div>
+        <!-- re:Kassa -->
+        <div class="px-6 py-4 bg-slate-800/60 border border-slate-700/80 rounded-xl hover:border-emerald-500/80 hover:bg-slate-800 transition-all cursor-default select-none shadow-sm flex items-center justify-center min-w-[140px]">
+          <span class="text-lg font-bold text-white tracking-wide">re:Kassa</span>
+        </div>
+        <!-- Lamoda -->
+        <div class="px-6 py-4 bg-slate-800/60 border border-slate-700/80 rounded-xl hover:border-slate-400/80 hover:bg-slate-800 transition-all cursor-default select-none shadow-sm flex items-center justify-center min-w-[140px]">
+          <span class="text-lg font-bold text-white tracking-wide">lamoda</span>
+        </div>
+        <!-- Tilda -->
+        <div class="px-6 py-4 bg-slate-800/60 border border-slate-700/80 rounded-xl hover:border-slate-300/80 hover:bg-slate-800 transition-all cursor-default select-none shadow-sm flex items-center justify-center min-w-[140px]">
+          <span class="text-lg font-bold text-white tracking-wide">Tilda</span>
+        </div>
+        <!-- 1C-Bitrix -->
+        <div class="px-6 py-4 bg-slate-800/60 border border-slate-700/80 rounded-xl hover:border-red-600/80 hover:bg-slate-800 transition-all cursor-default select-none shadow-sm flex items-center justify-center min-w-[140px]">
+          <span class="text-lg font-bold text-white tracking-wide">1C-Битрикс</span>
         </div>
       </div>
     </section>
 
     <!-- КАЛЬКУЛЯТОР -->
-    <section id="widget-section" class="py-12">
+    <section id="widget-section" class="py-12 border-t border-slate-800/50">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <!--#include virtual="/src/components/calculator-widget.html" -->
       </div>
