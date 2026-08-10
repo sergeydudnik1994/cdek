@@ -19,7 +19,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <!-- SEO: УНИКАЛЬНЫЕ Заголовки и описания для страницы услуг -->
-  <title>Все услуги СДЭК для селлеров | Каталог: логистика FBS/DBS, аналитика, договоры</title>
+  <title>Услуги СДЭК для селлеров | Каталог: логистика FBS/DBS, аналитика, договоры</title>
   <meta name="description" content="Полный каталог услуг СДЭК Маркетплейс: подключение по FBS и DBS, заключение договоров для ИП и ООО, расчет юнит-экономики и доставка до складов." />
 
   <!-- SEO: Верификация и мета-теги -->
@@ -35,7 +35,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Доставка для интернет-магазинов и селлеров" />
   <meta property="og:locale" content="ru_RU" />
-  <meta property="og:title" content="Все услуги СДЭК для селлеров | Каталог" />
+  <meta property="og:title" content="Услуги СДЭК для селлеров | Каталог" />
   <meta property="og:description" content="Полный каталог услуг: логистика FBS и DBS, договоры для бизнеса и расчет юнит-экономики." />
   <meta property="og:image" content="https://cdek-marketplace.ru/logo.png" />
   <meta property="og:url" content="https://cdek-marketplace.ru/services/" />
@@ -102,3 +102,54 @@
     }
   </script>
 </head>
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
+
+  <!-- Nginx: Подключение шапки -->
+  <!--#include virtual="/src/components/header.html" -->
+
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 w-full">
+    
+    <div class="mb-10 text-center">
+      <!-- Тот самый H1, который требовал линтер -->
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Услуги для селлеров</h1>
+      <p class="text-slate-400 text-lg max-w-2xl mx-auto">Выберите нужную категорию: от логистики до расчета юнит-экономики.</p>
+    </div>
+
+    <!-- Поисковая строка -->
+    <div class="mb-10 max-w-xl mx-auto">
+      <input type="text" id="searchInput" placeholder="Поиск по услугам..." 
+             class="w-full bg-slate-800 border border-slate-700 rounded-lg px-5 py-3 text-white focus:outline-none focus:border-cdek transition-colors" />
+    </div>
+
+    <!-- Сетка услуг -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="servicesGrid">
+      
+      <!-- Карточка 1 -->
+      <a href="/fbs.html" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
+        <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Подключение по FBS</h3>
+        <p class="text-slate-400 text-sm">Отгрузка со своего склада до ПВЗ. Скидки до 50% на логистику.</p>
+      </a>
+
+      <!-- Карточка 2 -->
+      <a href="/geo/aksay/unit-economy/index.html" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
+        <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Расчет юнит-экономики</h3>
+        <p class="text-slate-400 text-sm">Точные расчеты рентабельности и тарифов для вашего города.</p>
+      </a>
+
+    </div>
+  </main>
+
+  <!-- Nginx: Подключение подвала -->
+  <!--#include virtual="/src/components/footer.html" -->
+
+  <!-- Nginx: Подключение мобильной кнопки -->
+  <!--#include virtual="/src/components/mobile-cta.html" -->
+
+</body>
+</html>
