@@ -83,23 +83,15 @@ curl_setopt_array($ch_mail, [
     CURLOPT_USE_SSL        => CURLUSESSL_ALL,
     CURLOPT_UPLOAD         => true,
     CURLOPT_READDATA       => $stream,
-    CURLOPT_TIMEOUT        => 10, // Таймаут 10 секунд
+    CURLOPT_TIMEOUT        => 10,
     CURLOPT_SSL_VERIFYPEER => false,
     CURLOPT_SSL_VERIFYHOST => 0
 ]);
 
-// Выполняем отправку и захватываем ошибки
+// Выполняем отправку почты
 curl_exec($ch_mail);
-$mail_error = curl_error($ch_mail);
-$mail_http = curl_getinfo($ch_mail, CURLINFO_HTTP_CODE);
 curl_close($ch_mail);
 fclose($stream);
-
-// Добавляем отладочную информацию прямо в сообщение MAX!
-$text .= "\n\n🛠 Дебаг почты: HTTP $mail_http";
-if ($mail_error) {
-    $text .= " | Ошибка: $mail_error";
-}
 
 
 // ==========================================
