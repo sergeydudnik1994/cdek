@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // --- НАСТРОЙКИ ПОЧТЫ YANDEX ---
 $smtp_user = 'cdek-marketplace.ru@yandex.ru';
-$smtp_pass = 'wpqknugvsmytuizk';
+$smtp_pass = 'wpqknugvsmytuizk'; 
 $to_email  = 'sv.dudnik@cdek.ru';
 
 // --- НАСТРОЙКИ MAX ---
@@ -83,24 +83,24 @@ curl_setopt_array($ch_mail, [
     CURLOPT_USE_SSL        => CURLUSESSL_ALL,
     CURLOPT_UPLOAD         => true,
     CURLOPT_READDATA       => $stream,
-    CURLOPT_TIMEOUT        => 10,
+    CURLOPT_TIMEOUT        => 10, // Таймаут 10 секунд
     CURLOPT_SSL_VERIFYPEER => false,
     CURLOPT_SSL_VERIFYHOST => 0
 ]);
 
 // Выполняем отправку и захватываем ошибки
-$mail_result = curl_exec($ch_mail);
+curl_exec($ch_mail);
 $mail_error = curl_error($ch_mail);
 $mail_http = curl_getinfo($ch_mail, CURLINFO_HTTP_CODE);
 curl_close($ch_mail);
 fclose($stream);
 
-// Записываем результат в лог-файл
-$log_data = "[" . date('Y-m-d H:i:s') . "] Отправка на: $to_email\n";
-$log_data .= "Код ответа: $mail_http\n";
-$log_data .= "Ошибка cURL: " . ($mail_error ? $mail_error : 'Нет') . "\n";
-$log_data .= "-------------------------\n";
-file_put_contents(__DIR__ . '/mail_debug.log', $log_data, FILE_APPEND);
+// Добавляем отладочную информацию прямо в сообщение MAX!
+$text .= "\n\n🛠 Дебаг почты: HTTP $mail_http";
+if ($mail_error) {
+    $text .= " | Ошибка: $mail_error";
+}
+
 
 // ==========================================
 // 2. ОТПРАВКА В MAX BOT API
