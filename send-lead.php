@@ -8,9 +8,15 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
     exit;
 }
 
-// Конфигурация вашего бота и личного user_id в Max
+// --- НАСТРОЙКИ ПОЧТЫ YANDEX ---
+$smtp_user = 'cdek-marketplace.ru@yandex.ru';
+$smtp_pass = 'wpqknugvsmytuizk';
+$to_email  = 'sv.dudnik@cdek.ru';
+
+// --- НАСТРОЙКИ MAX ---
 $botToken = 'f9LHodD0cOIh0czuiBUxkVLlSvsx7WpGcnRcDQEc3VCNqNJ5CtFyQLbxrLdir1CsXtxnayTCWnTB52NxS_-U';
-$userId   = '175449457'; // Ваш личный user_id
+$userId   = '175449457';
+
 
 // Получаем данные из формы
 $company       = isset($_POST['company']) ? trim($_POST['company']) : 'Не указано';
@@ -48,25 +54,56 @@ if (!empty($comment)) {
 
 $text .= "🌐 Источник: " . htmlspecialchars($platform);
 
-// --- ДУБЛИРОВАНИЕ НА ПОЧТУ ---
-$to = 'sv.dudnik@cdek.ru';
+
+// ==========================================
+// 1. ОТПРАВКА НА ПОЧТУ ЧЕРЕЗ SMTP YANDEX
+// ==========================================
 $subject = 'Новая заявка СДЭК: ' . htmlspecialchars($company);
-$headers = "MIME-Version: 1.0\r\n";
-$headers .= "Content-type: text/plain; charset=utf-8\r\n";
-$headers .= "From: noreply@cdek-marketplace.ru\r\n";
 
-// Отправляем письмо (ошибки отправки не блокируют дальнейшую работу)
-@mail($to, $subject, $text, $headers);
-// -----------------------------
+// Формируем правильные заголовки для SMTP
+$mail_body  = "To: <$to_email>\r\n";
+$mail_body .= "From: <$smtp_user>\r\n";
+$mail_body .= "Subject: =?utf-8?B?" . base64_encode($subject) . "?=\r\n";
+$mail_body .= "Date: " . date("r") . "\r\n";
+$mail_body .= "Content-Type: text/plain; charset=utf-8\r\n\r\n";
+$mail_body .= $text;
 
-// Официальный эндпоинт MAX Bot API с вашим user_id
+// Записываем тело письма в память для cURL
+$stream = fopen('php://memory', 'r+');
+fwrite($stream, $mail_body);
+rewind($stream);
+
+$ch_mail = curl_init();
+curl_setopt_array($ch_mail, [
+    CURLOPT_URL            => 'smtps://smtp.yandex.ru:465',
+    CURLOPT_MAIL_FROM      => "<$smtp_user>",
+    CURLOPT_MAIL_RCPT      => ["<$to_email>"],
+    CURLOPT_USERNAME       => $smtp_user,
+    CURLOPT_PASSWORD       => $smtp_pass,
+    CURLOPT_USE_SSL        => CURLUSESSL_ALL,
+    CURLOPT_UPLOAD         => true,
+    CURLOPT_READDATA       => $stream,
+    CURLOPT_TIMEOUT        => 5, // Таймаут 5 секунд, чтобы не вешать форму
+    CURLOPT_SSL_VERIFYPEER => false,
+    CURLOPT_SSL_VERIFYHOST => 0
+]);
+
+// Отправляем почту (ошибки подавляем, чтобы заявка всё равно ушла в MAX)
+@curl_exec($ch_mail);
+@curl_close($ch_mail);
+fclose($stream);
+
+
+// ==========================================
+// 2. ОТПРАВКА В MAX BOT API
+// ==========================================
 $url = "https://platform-api2.max.ru/messages?user_id=" . $userId;
 $postData = json_encode([
     'text' => $text
 ]);
 
-$ch = curl_init();
-curl_setopt_array($ch, [
+$ch_max = curl_init();
+curl_setopt_array($ch_max, [
     CURLOPT_URL            => $url,
     CURLOPT_POST           => true,
     CURLOPT_POSTFIELDS     => $postData,
@@ -80,10 +117,10 @@ curl_setopt_array($ch, [
     CURLOPT_SSL_VERIFYHOST => 0
 ]);
 
-$response = curl_exec($ch);
-$curlError = curl_error($ch);
-$httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-curl_close($ch);
+$response = curl_exec($ch_max);
+$curlError = curl_error($ch_max);
+$httpCode = curl_getinfo($ch_max, CURLINFO_HTTP_CODE);
+curl_close($ch_max);
 
 if ($curlError) {
     echo json_encode(['success' => false, 'message' => 'Ошибка сети при отправке: ' . $curlError]);
