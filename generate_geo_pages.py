@@ -213,7 +213,11 @@ def build_city_html(slug, city_name, pvz_count):
   <meta property="og:description" content="Официальный договор со СДЭК для селлеров из {city_genitive}. Отгрузка через {pvz_count} ПВЗ {prep_v}. Скидки до 50%." />
   <meta property="og:image" content="https://cdek-marketplace.ru/logo.png" />
   <meta property="og:url" content="https://cdek-marketplace.ru/geo/{slug}/" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
 
   <!-- 1. МИКРОРАЗМЕТКА ОРГАНИЗАЦИИ / ЛОКАЛЬНОГО БИЗНЕСА -->
   <script type="application/ld+json">
