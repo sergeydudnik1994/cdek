@@ -13,26 +13,51 @@ $botToken = 'f9LHodD0cOIh0czuiBUxkVLlSvsx7WpGcnRcDQEc3VCNqNJ5CtFyQLbxrLdir1CsXtx
 $userId   = '175449457'; // Ваш личный user_id
 
 // Получаем данные из формы
-$company   = isset($_POST['company']) ? trim($_POST['company']) : 'Не указано';
-$phone     = isset($_POST['phone']) ? trim($_POST['phone']) : '';
-$messenger = isset($_POST['messenger']) ? trim($_POST['messenger']) : 'Не указан';
-$platform  = isset($_POST['platform']) ? trim($_POST['platform']) : 'Главная';
-$comment   = isset($_POST['comment']) ? trim($_POST['comment']) : '';
+$company       = isset($_POST['company']) ? trim($_POST['company']) : 'Не указано';
+$phone         = isset($_POST['phone']) ? trim($_POST['phone']) : '';
+$messenger     = isset($_POST['messenger']) ? trim($_POST['messenger']) : 'Не указан';
+$platform      = isset($_POST['platform']) ? trim($_POST['platform']) : 'Главная';
+$comment       = isset($_POST['comment']) ? trim($_POST['comment']) : '';
+$contract_raw  = isset($_POST['contract_status']) ? trim($_POST['contract_status']) : '';
 
 if (empty($phone)) {
     echo json_encode(['success' => false, 'message' => 'Заполните номер телефона']);
     exit;
 }
 
+// Расшифровываем статус договора
+$contract_text = "Не указано";
+if ($contract_raw === 'new') {
+    $contract_text = "Нет договора";
+} elseif ($contract_raw === 'inactive') {
+    $contract_text = "Есть, но не отправлял 6+ месяцев";
+} elseif ($contract_raw === 'active') {
+    $contract_text = "Есть действующий (попытка обхода)";
+}
+
 // Формируем текст сообщения
-$text  = "🔥 Новая заявка с сайта СДЭК!\n\n";
+$text  = "🔥 Новая заявка с лендинга СДЭК!\n\n";
 $text .= "🏢 ИНН / Компания: " . htmlspecialchars($company) . "\n";
 $text .= "📞 Телефон: " . htmlspecialchars($phone) . "\n";
 $text .= "💬 Способ связи: " . htmlspecialchars($messenger) . "\n";
+$text .= "📝 Наличие договора: " . $contract_text . "\n";
+
 if (!empty($comment)) {
-    $text .= "📝 Комментарий: " . htmlspecialchars($comment) . "\n";
+    $text .= "✏️ Комментарий: " . htmlspecialchars($comment) . "\n";
 }
+
 $text .= "🌐 Источник: " . htmlspecialchars($platform);
+
+// --- ДУБЛИРОВАНИЕ НА ПОЧТУ ---
+$to = 'sv.dudnik@cdek.ru';
+$subject = 'Новая заявка СДЭК: ' . htmlspecialchars($company);
+$headers = "MIME-Version: 1.0\r\n";
+$headers .= "Content-type: text/plain; charset=utf-8\r\n";
+$headers .= "From: noreply@cdek-marketplace.ru\r\n";
+
+// Отправляем письмо (ошибки отправки не блокируют дальнейшую работу)
+@mail($to, $subject, $text, $headers);
+// -----------------------------
 
 // Официальный эндпоинт MAX Bot API с вашим user_id
 $url = "https://platform-api2.max.ru/messages?user_id=" . $userId;
