@@ -36,7 +36,23 @@
       </select>
     </div>
 
-    <!-- Новое поле: Комментарий -->
+    <!-- Квалифицирующий вопрос -->
+    <div>
+      <label class="block text-xs font-semibold uppercase text-slate-400 mb-1.5">
+        Наличие договора <span class="text-cdek">*</span>
+      </label>
+      <select name="contract_status" required class="js-contract-select w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-cdek cursor-pointer">
+        <option value="" disabled selected>Выберите статус...</option>
+        <option value="new">Нет договора</option>
+        <option value="inactive">Есть, но не отправлял 6+ месяцев</option>
+        <option value="active">Есть действующий, отправляю</option>
+      </select>
+      <p class="js-contract-warning text-[11px] text-rose-400 mt-1.5 hidden">
+        Мы подключаем только новых клиентов. Обратитесь к закрепленному за вами менеджеру.
+      </p>
+    </div>
+
+    <!-- Поле: Комментарий -->
     <div>
       <label class="block text-xs font-semibold uppercase text-slate-400 mb-1.5">Комментарий</label>
       <textarea name="comment" rows="2" placeholder="Ссылка на магазин, объём отправок или реквизиты..." class="w-full bg-slate-800 border border-slate-700 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-cdek placeholder-slate-500 transition-colors resize-none"></textarea>
@@ -142,6 +158,24 @@
     const phoneInput = form.querySelector('.js-phone-input');
     const resetBtn = container.querySelector('.js-reset-form-btn');
     const originalText = btn ? btn.innerText : 'Получить договор';
+
+    // Логика блокировки действующего договора
+    const contractSelect = form.querySelector('.js-contract-select');
+    const contractWarning = form.querySelector('.js-contract-warning');
+
+    if (contractSelect) {
+      contractSelect.addEventListener('change', (e) => {
+        if (e.target.value === 'active') {
+          btn.disabled = true;
+          btn.classList.add('opacity-50', 'cursor-not-allowed');
+          if (contractWarning) contractWarning.classList.remove('hidden');
+        } else {
+          btn.disabled = false;
+          btn.classList.remove('opacity-50', 'cursor-not-allowed');
+          if (contractWarning) contractWarning.classList.add('hidden');
+        }
+      });
+    }
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
