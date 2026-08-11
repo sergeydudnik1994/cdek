@@ -83,16 +83,24 @@ curl_setopt_array($ch_mail, [
     CURLOPT_USE_SSL        => CURLUSESSL_ALL,
     CURLOPT_UPLOAD         => true,
     CURLOPT_READDATA       => $stream,
-    CURLOPT_TIMEOUT        => 5, // Таймаут 5 секунд, чтобы не вешать форму
+    CURLOPT_TIMEOUT        => 10,
     CURLOPT_SSL_VERIFYPEER => false,
     CURLOPT_SSL_VERIFYHOST => 0
 ]);
 
-// Отправляем почту (ошибки подавляем, чтобы заявка всё равно ушла в MAX)
-@curl_exec($ch_mail);
-@curl_close($ch_mail);
+// Выполняем отправку и захватываем ошибки
+$mail_result = curl_exec($ch_mail);
+$mail_error = curl_error($ch_mail);
+$mail_http = curl_getinfo($ch_mail, CURLINFO_HTTP_CODE);
+curl_close($ch_mail);
 fclose($stream);
 
+// Записываем результат в лог-файл
+$log_data = "[" . date('Y-m-d H:i:s') . "] Отправка на: $to_email\n";
+$log_data .= "Код ответа: $mail_http\n";
+$log_data .= "Ошибка cURL: " . ($mail_error ? $mail_error : 'Нет') . "\n";
+$log_data .= "-------------------------\n";
+file_put_contents(__DIR__ . '/mail_debug.log', $log_data, FILE_APPEND);
 
 // ==========================================
 // 2. ОТПРАВКА В MAX BOT API
