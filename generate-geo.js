@@ -176,7 +176,11 @@ async function buildGeo() {
   <meta name="description" content="Выберите ваш город для официального подключения к логистике СДЭК. Специальные тарифы и скидки до 50% для селлеров Wildberries, Ozon, Яндекс Маркета и Авито." />
   <link rel="canonical" href="https://cdek-marketplace.ru/geo/" />
   <meta name="theme-color" content="#8DE21A" />
-  <link rel="icon" type="image/png" href="/favicon.png" />
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
