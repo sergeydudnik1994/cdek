@@ -1,0 +1,56 @@
+name: IndexNow FULL Submit
+
+on:
+  workflow_dispatch: # Запуск только вручную по кнопке!
+
+jobs:
+  submit-all-indexnow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Parse Sitemap and ping Yandex IndexNow
+        run: |
+          HOST="cdek-marketplace.ru"
+          KEY="Aa1234567" # Используем ваш реальный ключ
+
+          echo "Читаем sitemap.xml..."
+          # Вытаскиваем все URL из sitemap
+          URLS=$(grep -oP '(?<=<loc>).*?(?=</loc>)' sitemap.xml)
+          
+          if [ -z "$URLS" ]; then
+            echo "Sitemap пуст или не найден!"
+            exit 1
+          fi
+
+          URL_LIST=()
+          for url in $URLS; do
+            URL_LIST+=("\"$url\"")
+          done
+
+          JSON_URLS=$(IFS=,; echo "${URL_LIST[*]}")
+
+          PAYLOAD=$(cat <<EOF
+          {
+            "host": "$HOST",
+            "key": "$KEY",
+            "keyLocation": "https://$HOST/$KEY.txt",
+            "urlList": [$JSON_URLS]
+          }
+          EOF
+          )
+
+          echo "Отправляем ВСЕ страницы напрямую в Яндекс..."
+          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST https://yandex.com/indexnow \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "$PAYLOAD")
+
+          echo "Ответ от API Яндекса: HTTP $RESPONSE"
+
+          if [ "$RESPONSE" -eq 200 ] || [ "$RESPONSE" -eq 202 ]; then
+            echo "Успешно отправлено!"
+          else
+            echo "Ошибка отправки (код $RESPONSE)"
+            exit 1
+          fi
