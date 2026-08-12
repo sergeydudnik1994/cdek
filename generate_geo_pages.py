@@ -384,6 +384,14 @@ def build_city_html(slug, city_name, pvz_count):
         </div>
       </div>
 
+      <!-- БЛОК КАРТЫ ПВЗ ДЛЯ КОНКРЕТНОГО ГОРОДА -->
+      <section class="mt-16">
+        <h2 class="text-2xl font-bold text-white mb-6">Ближайшие ПВЗ для отгрузки {prep_v}</h2>
+        <div class="rounded-xl overflow-hidden border border-slate-800 shadow-lg">
+          <iframe src="https://yandex.ru/map-widget/v1/?text=СДЭК+ПВЗ+{city_name}" width="100%" height="400" frameborder="0" allowfullscreen="true"></iframe>
+        </div>
+      </section>
+
       <!-- Калькулятор -->
       <section id="widget-section" class="mt-10">
         <!--#include virtual="/src/components/calculator-widget.html" -->
@@ -453,11 +461,11 @@ def main():
       f.write(html_content)
 
     count += 1
-    print(f"[{count}/{len(matches)}] Страница создана: {file_path}")
+    print(f"[{count}/{len(matches)}] Страница создана с картой: {file_path}")
 
   print(
-      f"\n ГОТОВО! Все {count} страниц городов успешно обновлены по новому"
-      " шаблону!"
+      f"\n ГОТОВО! Все {count} страниц городов успешно обновлены, карты ПВЗ"
+      " добавлены!"
   )
 
 
