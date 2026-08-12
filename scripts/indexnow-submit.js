@@ -18,7 +18,7 @@ const payload = JSON.stringify({
 });
 
 const options = {
-  hostname: 'yandex.com',
+  hostname: 'api.indexnow.org', // Центральный хаб для Яндекса и Bing
   path: '/indexnow',
   method: 'POST',
   headers: {
@@ -28,7 +28,7 @@ const options = {
 };
 
 const req = https.request(options, (res) => {
-  console.log(`Статус ответа Yandex IndexNow: ${res.statusCode}`);
+  console.log(`Статус ответа IndexNow (Yandex + Bing): ${res.statusCode}`);
   res.on('data', (d) => process.stdout.write(d));
 });
 
@@ -36,4 +36,4 @@ req.on('error', (e) => console.error(e));
 req.write(payload);
 req.end();
 
-console.log(`🚀 Отправлено ${urls.length} URL в Яндекс на срочную индексацию`);
+console.log(`🚀 Отправлено ${urls.length} URL в хаб IndexNow на срочную индексацию (Яндекс и Bing)`);
