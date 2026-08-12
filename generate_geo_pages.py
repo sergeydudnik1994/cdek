@@ -384,14 +384,6 @@ def build_city_html(slug, city_name, pvz_count):
         </div>
       </div>
 
-      <!-- БЛОК КАРТЫ ПВЗ ДЛЯ КОНКРЕТНОГО ГОРОДА -->
-      <section class="mt-16">
-        <h2 class="text-2xl font-bold text-white mb-6">Ближайшие ПВЗ для отгрузки {prep_v}</h2>
-        <div class="rounded-xl overflow-hidden border border-slate-800 shadow-lg">
-          <iframe src="https://yandex.ru/map-widget/v1/?text=СДЭК+ПВЗ+{city_name}" width="100%" height="400" frameborder="0" allowfullscreen="true"></iframe>
-        </div>
-      </section>
-
       <!-- Калькулятор -->
       <section id="widget-section" class="mt-10">
         <!--#include virtual="/src/components/calculator-widget.html" -->
@@ -401,6 +393,14 @@ def build_city_html(slug, city_name, pvz_count):
       <div class="mt-16">
         <!--#include virtual="/src/components/platforms.html" -->
       </div>
+
+      <!-- БЛОК КАРТЫ ПВЗ ТЕПЕРЬ ПОСЛЕ КАЛЬКУЛЯТОРА И МАРКЕТПЛЕЙСОВ -->
+      <section class="mt-16">
+        <h2 class="text-2xl font-bold text-white mb-6">Ближайшие ПВЗ для отгрузки {prep_v}</h2>
+        <div class="rounded-xl overflow-hidden border border-slate-800 shadow-lg">
+          <iframe src="https://yandex.ru/map-widget/v1/?text=СДЭК+ПВЗ+{city_name}" width="100%" height="400" frameborder="0" allowfullscreen="true"></iframe>
+        </div>
+      </section>
 
       <!-- Форма заявки -->
       <section id="leadForm" class="mt-16 max-w-xl mx-auto">
@@ -461,11 +461,10 @@ def main():
       f.write(html_content)
 
     count += 1
-    print(f"[{count}/{len(matches)}] Страница создана с картой: {file_path}")
+    print(f"[{count}/{len(matches)}] Страница обновлена: {file_path}")
 
   print(
-      f"\n ГОТОВО! Все {count} страниц городов успешно обновлены, карты ПВЗ"
-      " добавлены!"
+      f"\n ГОТОВО! Все {count} страниц городов пересобраны, карты смещены вниз!"
   )
 
 
