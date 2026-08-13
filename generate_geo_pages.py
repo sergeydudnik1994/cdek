@@ -1,7 +1,6 @@
 import os
 import re
 
-# Словарь для городов с особыми/сложными формами склонения
 SPECIAL_CITIES = {
     "Сочи": ("Сочи", "Сочи", "в Сочи"),
     "Тольятти": ("Тольятти", "Тольятти", "в Тольятти"),
@@ -75,8 +74,16 @@ SPECIAL_CITIES = {
     "Камень-на-Оби": ("Камня-на-Оби", "Камне-на-Оби", "в Камне-на-Оби"),
     "Новый Уренгой": ("Нового Уренгоя", "Новом Уренгое", "в Новом Уренгое"),
     "Великие Луки": ("Великих Лук", "Великих Луках", "в Великих Луках"),
+    # Множественные названия (добавлено)
+    "Химки": ("Химок", "Химках", "в Химках"),
+    "Мытищи": ("Мытищ", "Мытищах", "в Мытищах"),
+    "Чебоксары": ("Чебоксар", "Чебоксарах", "в Чебоксарах"),
+    "Люберцы": ("Люберец", "Люберцах", "в Люберцах"),
+    "Березники": ("Березников", "Березниках", "в Березниках"),
+    "Шахты": ("Шахт", "Шахтах", "в Шахтах"),
 }
 
+# Исправлено: удалены Ярославль и Рославль (они мужского рода)
 FEMININE_SOFT_CITIES = {
     "Казань",
     "Пермь",
@@ -85,9 +92,7 @@ FEMININE_SOFT_CITIES = {
     "Тверь",
     "Астрахань",
     "Керчь",
-    "Ярославль",
     "Сызрань",
-    "Рославль",
 }
 
 
@@ -96,27 +101,36 @@ def get_city_cases(city_name):
   if city_name in SPECIAL_CITIES:
     return SPECIAL_CITIES[city_name]
 
-  prep = "во" if city_name.startswith(("Владимир", "Владивосток")) else "в"
+  prep = (
+      "во"
+      if city_name.startswith(
+          ("Владимир", "Владивосток", "Владикавказ", "Всеволожск")
+      )
+      else "в"
+  )
   words = city_name.split()
 
   def process_word(w):
     parts = w.split("-")
     gen_parts, prep_parts = [], []
 
-    for part in parts:
+    for idx, part in enumerate(parts):
+      # Если это первая часть составного слова на -о (Анжеро-Судженск), не склоняем её
+      if len(parts) > 1 and idx == 0 and part.endswith("о"):
+        gen_parts.append(part)
+        prep_parts.append(part)
+        continue
+
       if part in FEMININE_SOFT_CITIES:
         gen_parts.append(part[:-1] + "и")
         prep_parts.append(part[:-1] + "и")
       elif part.endswith("ий"):
+        # Исправлено: "Великий" дает "Великого/Великом"
         gen_parts.append(
-            part[:-2] + "его"
-            if part in ["Нижний", "Великий"]
-            else part[:-2] + "ого"
+            part[:-2] + "его" if part == "Нижний" else part[:-2] + "ого"
         )
         prep_parts.append(
-            part[:-2] + "ем"
-            if part in ["Нижний", "Великий"]
-            else part[:-2] + "ом"
+            part[:-2] + "ем" if part == "Нижний" else part[:-2] + "ом"
         )
       elif part.endswith("ый") or part.endswith("ой"):
         gen_parts.append(part[:-2] + "ого")
@@ -257,7 +271,7 @@ def build_city_html(slug, city_name, pvz_count):
   }}
   </script>
 
-  <!-- 2. МИКРОРАЗМЕТКА ХЛЕБНЫЕ КРОШКИ (3 уровня) -->
+  <!-- 2. МИКРОРАЗМЕТКА ХЛЕБНЫЕ КРОШКИ (Исправлено на Именительный падеж) -->
   <script type="application/ld+json">
   {{
     "@context": "https://schema.org",
@@ -278,7 +292,7 @@ def build_city_html(slug, city_name, pvz_count):
       {{
         "@type": "ListItem",
         "position": 3,
-        "name": "{city_prepositional}",
+        "name": "{city_name}",
         "item": "https://cdek-marketplace.ru/geo/{slug}/"
       }}
     ]
@@ -341,13 +355,13 @@ def build_city_html(slug, city_name, pvz_count):
   <main class="flex-grow pt-8 pb-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <!-- ВИЗУАЛЬНЫЕ ХЛЕБНЫЕ КРОШКИ -->
+      <!-- ВИЗУАЛЬНЫЕ ХЛЕБНЫЕ КРОШКИ (Исправлено на Именительный падеж) -->
       <nav class="text-sm text-slate-400 mb-6">
         <a href="/" class="hover:text-cdek transition-colors">Главная</a>
         <span class="mx-2">/</span>
         <a href="/geo/" class="hover:text-cdek transition-colors">Логистика для селлеров</a>
         <span class="mx-2">/</span>
-        <span class="text-white">{city_prepositional}</span>
+        <span class="text-white">{city_name}</span>
       </nav>
 
       <!-- УНИКАЛЬНЫЙ ГЕО-ЗАГОЛОВОК И СТАТИСТИКА -->
@@ -394,7 +408,7 @@ def build_city_html(slug, city_name, pvz_count):
         <!--#include virtual="/src/components/platforms.html" -->
       </div>
 
-      <!-- БЛОК КАРТЫ ПВЗ ТЕПЕРЬ ПОСЛЕ КАЛЬКУЛЯТОРА И МАРКЕТПЛЕЙСОВ -->
+      <!-- БЛОК КАРТЫ ПВЗ -->
       <section class="mt-16">
         <h2 class="text-2xl font-bold text-white mb-6">Ближайшие ПВЗ для отгрузки {prep_v}</h2>
         <div class="rounded-xl overflow-hidden border border-slate-800 shadow-lg">
@@ -449,7 +463,9 @@ def main():
 
   count = 0
   for slug, city_name, pvz_str in matches:
-    pvz_count = pvz_str.replace(" ПВЗ СДЭК", "").replace(" ПВЗ", "").strip()
+    # Надежное извлечение количества ПВЗ (только цифры)
+    pvz_match = re.search(r"\d+", pvz_str)
+    pvz_count = pvz_match.group() if pvz_match else pvz_str.strip()
 
     folder_path = os.path.join("geo", slug)
     os.makedirs(folder_path, exist_ok=True)
@@ -463,9 +479,7 @@ def main():
     count += 1
     print(f"[{count}/{len(matches)}] Страница обновлена: {file_path}")
 
-  print(
-      f"\n ГОТОВО! Все {count} страниц городов пересобраны, карты смещены вниз!"
-  )
+  print(f"\nГОТОВО! Все {count} страниц городов пересобраны!")
 
 
 if __name__ == "__main__":
