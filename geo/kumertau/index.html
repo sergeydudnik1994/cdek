@@ -9,7 +9,7 @@
       (function(m,e,t,r,i,k,a){
           m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
           m[i].l=1*new Date();
-          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; } }
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
           k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
       })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111090265', 'ym');
 
@@ -53,7 +53,7 @@
     "logo": "https://cdek-marketplace.ru/logo.png",
     "telephone": "+7-993-322-15-20",
     "priceRange": "₽₽",
-    "openingHours": "Mo-Su 09:00-20:00",
+    "openingHours": "Mo-Su 09:00-18:00",
     "contactPoint": {
       "@type": "ContactPoint",
       "telephone": "+7-993-322-15-20",
@@ -81,7 +81,7 @@
   }
   </script>
 
-  <!-- 2. МИКРОРАЗМЕТКА ХЛЕБНЫЕ КРОШКИ -->
+  <!-- 2. МИКРОРАЗМЕТКА ХЛЕБНЫЕ КРОШКИ (3 уровня) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -208,29 +208,6 @@
         </div>
       </div>
 
-      <!-- СЕКЦИЯ СТРАТЕГИИ А: ССЫЛКИ НА УСЛУГИ ПО ГОРОДУ (ПЕРЕЛИКОВКА) -->
-      <section class="mt-12 mb-16">
-        <h2 class="text-2xl font-bold text-white mb-6">Условия логистики СДЭК в Кумертау</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <a href="/geo/kumertau/fbs/" class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cdek/50 transition-all group">
-            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">FBS доставка</h3>
-            <p class="text-xs text-slate-400">Отгрузка со своего склада в Кумертау по спецтарифам.</p>
-          </a>
-          <a href="/geo/kumertau/dbs/" class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cdek/50 transition-all group">
-            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Спецтариф DBS</h3>
-            <p class="text-xs text-slate-400">Прямая доставка до двери клиента в Кумертау.</p>
-          </a>
-          <a href="/geo/kumertau/dogovor-ip/" class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cdek/50 transition-all group">
-            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Договор для ИП</h3>
-            <p class="text-xs text-slate-400">Официальное подключение селлеров и ИП в Кумертау.</p>
-          </a>
-          <a href="/geo/kumertau/unit-economy/" class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cdek/50 transition-all group">
-            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Юнит-экономика</h3>
-            <p class="text-xs text-slate-400">Расчет логистики и экономия для интернет-магазинов.</p>
-          </a>
-        </div>
-      </section>
-
       <!-- Калькулятор -->
       <section id="widget-section" class="mt-10">
         <!--#include virtual="/src/components/calculator-widget.html" -->
@@ -240,14 +217,6 @@
       <div class="mt-16">
         <!--#include virtual="/src/components/platforms.html" -->
       </div>
-
-      <!-- БЛОК КАРТЫ ПВЗ -->
-      <section class="mt-16">
-        <h2 class="text-2xl font-bold text-white mb-6">Ближайшие ПВЗ для отгрузки в Кумертау</h2>
-        <div class="rounded-xl overflow-hidden border border-slate-800 shadow-lg">
-          <iframe src="https://yandex.ru/map-widget/v1/?text=СДЭК+ПВЗ+Кумертау" width="100%" height="400" frameborder="0" allowfullscreen="true"></iframe>
-        </div>
-      </section>
 
       <!-- Форма заявки -->
       <section id="leadForm" class="mt-16 max-w-xl mx-auto">
