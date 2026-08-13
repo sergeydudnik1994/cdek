@@ -54,7 +54,7 @@
     </div>
   </div>
 
-  <!-- Выпадающее мобильное меню -->
+  <!-- Выпадающее мобильное меню (полностью синхронизировано с десктопом) -->
   <div id="mobileMenu" class="hidden md:hidden bg-[#0b101d]/95 backdrop-blur-lg border-b border-slate-800 px-6 pt-4 pb-6 shadow-xl">
     <div class="mb-4 pb-4 border-b border-slate-800/60">
       <button id="openCityModalMobile" type="button" class="w-full flex items-center justify-between py-2.5 px-4 rounded-lg bg-slate-800/50 border border-slate-700/60 text-sm font-medium text-slate-200">
@@ -67,14 +67,14 @@
     </div>
 
     <nav class="space-y-2 mb-6">
-      <a href="/calculator/" class="block py-3 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Калькулятор тарифов</a>
-      <a href="/#platforms" class="block py-3 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Схемы работы (FBS/DBS)</a>
-      <a href="/services/" class="block py-3 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Услуги</a>
-      <a href="/blog/" class="block py-3 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Блог селлера</a>
+      <a href="/calculator/" class="mobile-link block py-3 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Калькулятор</a>
+      <a href="/#platforms" class="mobile-link block py-3 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Маркетплейсы</a>
+      <a href="/services/" class="mobile-link block py-3 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Услуги</a>
+      <a href="/blog/" class="mobile-link block py-3 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Блог</a>
     </nav>
     
     <div>
-      <a href="/#leadForm" class="flex items-center justify-center w-full py-3.5 bg-cdek hover:bg-cdek/90 text-[#0b101d] font-extrabold text-sm rounded-xl transition-all shadow-lg shadow-cdek/20">
+      <a href="/#leadForm" id="mobileLeadBtn" class="flex items-center justify-center w-full py-3.5 bg-cdek hover:bg-cdek/90 text-[#0b101d] font-extrabold text-sm rounded-xl transition-all shadow-lg shadow-cdek/20">
         Оставить заявку на договор
       </a>
     </div>
@@ -107,11 +107,26 @@
 <script>
   const menuToggle = document.getElementById('menuToggle');
   const mobileMenu = document.getElementById('mobileMenu');
+  const mobileLinks = document.querySelectorAll('.mobile-link');
+  const mobileLeadBtn = document.getElementById('mobileLeadBtn');
 
   if (menuToggle && mobileMenu) {
     menuToggle.addEventListener('click', () => {
       mobileMenu.classList.toggle('hidden');
     });
+
+    // Автоматически закрывать мобильное меню при клике по ссылкам
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+
+    if (mobileLeadBtn) {
+      mobileLeadBtn.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+      });
+    }
   }
 
   const cityModal = document.getElementById('cityModal');
