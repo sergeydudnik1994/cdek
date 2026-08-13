@@ -32,7 +32,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: seo-linter
     permissions:
-      contents: write # <--- КРИТИЧЕСКИ ВАЖНО: дает боту права на сохранение файлов
+      contents: write
     
     steps:
       - name: Checkout кода
@@ -48,6 +48,9 @@ jobs:
 
       - name: Сборка матричных SEO-страниц
         run: python scripts/generate_matrix.py
+
+      - name: Сборка глобальных страниц услуг
+        run: python scripts/generate_global_services.py
 
       - name: Обновление sitemap.xml
         run: python scripts/update_sitemap.py
