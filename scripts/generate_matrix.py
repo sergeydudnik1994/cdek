@@ -12,7 +12,7 @@ CITIES_JSON_FILE = "cities.json"
 def get_city_cases(city_name):
   city_name = city_name.strip()
 
-  # Словарь точных падежей для сложных городов
+  # Точный словарь падежей для сложных, дефисных и множественных городов
   special = {
       "Анжеро-Судженск": (
           "Анжеро-Судженска",
@@ -20,6 +20,7 @@ def get_city_cases(city_name):
           "в Анжеро-Судженске",
           "Анжеро-Судженск",
       ),
+      "Аргун": ("Аргуна", "Аргуне", "в Аргуне", "Аргун"),
       "Москва": ("Москвы", "Москве", "в Москве", "Москва"),
       "Санкт-Петербург": (
           "Санкт-Петербурга",
@@ -200,7 +201,7 @@ def generate_pages():
   generated_count = 0
 
   for slug in city_slugs:
-    # Берем настоящее русское имя из cities.json
+    # Берём настоящее русское имя из cities.json
     raw_name = cities_map.get(slug, slug.replace("-", " ").title())
     city_info = get_city_cases(raw_name)
 
@@ -225,7 +226,7 @@ def generate_pages():
 
       html_content = html_content.replace("{{SERVICE_SLUG}}", service["slug"])
       html_content = html_content.replace("{{H1_MAIN}}", service["h1_main"])
-      html_content = html_content.replace("{{H1_SUB}}", service["h1_sub"])
+      html_content = html_content.replace("{{H1_SUB}}", service["H1_SUB"])
       html_content = html_content.replace("{{DESC}}", service["desc"])
 
       file_path = os.path.join(dir_path, "index.html")
