@@ -9,6 +9,7 @@
         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
     })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111090265', 'ym');
+
     ym(111090265, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/111090265" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
@@ -16,8 +17,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Услуги СДЭК для селлеров | Каталог: логистика FBS/DBS, аналитика, договоры</title>
-  <meta name="description" content="Полный каталог услуг СДЭК Маркетплейс: подключение по FBS и DBS, заключение договоров для ИП и ООО, расчет юнит-экономики и доставка до складов." />
+  <title>Все услуги СДЭК для селлеров | Каталог логистики FBS/DBS, фулфилмента и договоров</title>
+  <meta name="description" content="Полный каталог услуг СДЭК Маркетплейс: подключение по FBS/DBS, фулфилмент, кросс-докинг, маркировка Честный ЗНАК, договоры для бизнеса и расчет юнит-экономики." />
 
   <meta name="yandex-verification" content="f077a22013388718" />
   <meta name="yandex-verification" content="feb8f4adaa02427e" />
@@ -28,8 +29,8 @@
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Доставка для интернет-магазинов и селлеров" />
   <meta property="og:locale" content="ru_RU" />
-  <meta property="og:title" content="Услуги СДЭК для селлеров | Каталог" />
-  <meta property="og:description" content="Полный каталог услуг: логистика FBS и DBS, договоры для бизнеса и расчет юнит-экономики." />
+  <meta property="og:title" content="Услуги СДЭК для селлеров | Полный каталог" />
+  <meta property="og:description" content="Полный каталог услуг: логистика, фулфилмент, маркировка и договоры для бизнеса." />
   <meta property="og:image" content="https://cdek-marketplace.ru/logo.png" />
   <meta property="og:url" content="https://cdek-marketplace.ru/services/" />
   <link rel="icon" type="image/png" href="/favicon.png" />
@@ -44,23 +45,16 @@
         "@id": "https://cdek-marketplace.ru/#organization",
         "name": "СДЭК Маркетплейс",
         "url": "https://cdek-marketplace.ru/",
-        "logo": "https://cdek-marketplace.ru/logo.png",
-        "contactPoint": {
-          "@type": "ContactPoint",
-          "telephone": "+7-993-322-15-20",
-          "contactType": "customer service",
-          "email": "sv.dudnik@cdek.ru",
-          "availableLanguage": "Russian"
-        }
+        "logo": "https://cdek-marketplace.ru/logo.png"
       },
       {
         "@type": "ItemList",
         "name": "Каталог услуг СДЭК для селлеров",
-        "description": "Перечень услуг для продавцов на маркетплейсах: логистика, расчеты, договоры.",
+        "description": "Перечень услуг для продавцов на маркетплейсах.",
         "itemListElement": [
           { "@type": "ListItem", "position": 1, "name": "Подключение логистики по FBS и DBS" },
-          { "@type": "ListItem", "position": 2, "name": "Расчет юнит-экономики" },
-          { "@type": "ListItem", "position": 3, "name": "Оформление договоров для ИП, ООО и самозанятых" }
+          { "@type": "ListItem", "position": 2, "name": "Фулфилмент для маркетплейсов" },
+          { "@type": "ListItem", "position": 3, "name": "Маркировка Честный ЗНАК" }
         ]
       }
     ]
@@ -82,12 +76,12 @@
     
     <div class="mb-10 text-center">
       <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Услуги для селлеров</h1>
-      <p class="text-slate-400 text-lg max-w-2xl mx-auto">Выберите нужную категорию: от логистики до расчета юнит-экономики.</p>
+      <p class="text-slate-400 text-lg max-w-2xl mx-auto">Выберите нужную категорию: от экспресс-доставки и фулфилмента до API-интеграции.</p>
     </div>
 
     <div class="mb-10 max-w-xl mx-auto">
       <input type="text" id="searchInput" placeholder="Поиск по услугам..." 
-             class="w-full bg-slate-800 border border-slate-700 rounded-lg px-5 py-3 text-white focus:outline-none focus:border-cdek transition-colors" />
+             class="w-full bg-slate-800 border border-slate-700 rounded-xl px-5 py-3.5 text-white focus:outline-none focus:border-cdek transition-colors shadow-lg" />
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="servicesGrid">
@@ -128,6 +122,42 @@
         <p class="text-slate-400 text-sm">Официальное партнерство со СДЭК для плательщиков НПД без лишней бюрократии.</p>
       </a>
 
+      <!-- Карточка: Фулфилмент -->
+      <a href="/geo/moskva/fulfillment/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
+        <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Фулфилмент под ключ</h3>
+        <p class="text-slate-400 text-sm">Хранение, бережная упаковка и доставка заказов селлеров до маркетплейсов.</p>
+      </a>
+
+      <!-- Карточка: Кросс-докинг -->
+      <a href="/geo/moskva/cross-docking/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
+        <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Кросс-докинг</h3>
+        <p class="text-slate-400 text-sm">Транзитная перевалка коробов и паллет на склады маркетплейсов без хранения.</p>
+      </a>
+
+      <!-- Карточка: Маркировка Честный ЗНАК -->
+      <a href="/geo/moskva/labeling-chestny-znak/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
+        <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012-2m-6 9l2 2 4-4"></path></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Маркировка «Честный ЗНАК»</h3>
+        <p class="text-slate-400 text-sm">Печать и нанесение кодов Data Matrix по требованиям законодательства.</p>
+      </a>
+
+      <!-- Карточка: Забор груза -->
+      <a href="/geo/moskva/zabor-gruza/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
+        <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Забор груза от склада</h3>
+        <p class="text-slate-400 text-sm">Ежедневный выезд курьера за вашими отправлениями для экономии времени.</p>
+      </a>
+
       <!-- Карточка: Юнит-экономика -->
       <a href="/services/unit-economy/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
         <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center mb-4">
@@ -137,13 +167,31 @@
         <p class="text-slate-400 text-sm">Инструменты для просчета рентабельности и тарифов для разных габаритов.</p>
       </a>
 
-      <!-- Карточка: Интеграция API -->
+      <!-- Карточка: API Интеграция -->
       <a href="/services/api-integration/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
         <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center mb-4">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
         </div>
         <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">API Интеграция</h3>
         <p class="text-slate-400 text-sm">Связь вашего магазина на CMS или самописном движке с базой СДЭК.</p>
+      </a>
+
+      <!-- Карточка: Доставка КГТ -->
+      <a href="/geo/moskva/kgt-delivery/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
+        <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Доставка КГТ (Мебель/Техника)</h3>
+        <p class="text-slate-400 text-sm">Специальные тарифы и условия на перевозку крупногабаритных товаров.</p>
+      </a>
+
+      <!-- Карточка: Страхование -->
+      <a href="/geo/moskva/cargo-insurance/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
+        <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center mb-4">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+        </div>
+        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Страхование грузов</h3>
+        <p class="text-slate-400 text-sm">Полная материальная ответственность и защита ваших отправлений.</p>
       </a>
 
     </div>
