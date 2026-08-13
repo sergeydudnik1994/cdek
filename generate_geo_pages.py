@@ -74,7 +74,13 @@ SPECIAL_CITIES = {
     "Камень-на-Оби": ("Камня-на-Оби", "Камне-на-Оби", "в Камне-на-Оби"),
     "Новый Уренгой": ("Нового Уренгоя", "Новом Уренгое", "в Новом Уренгое"),
     "Великие Луки": ("Великих Лук", "Великих Луках", "в Великих Луках"),
-    # Множественные названия (добавлено)
+    # Точные формы для проблемных городов
+    "Анжеро-Судженск": (
+        "Анжеро-Судженска",
+        "Анжеро-Судженске",
+        "в Анжеро-Судженске",
+    ),
+    "Аргун": ("Аргуна", "Аргуне", "в Аргуне"),
     "Химки": ("Химок", "Химках", "в Химках"),
     "Мытищи": ("Мытищ", "Мытищах", "в Мытищах"),
     "Чебоксары": ("Чебоксар", "Чебоксарах", "в Чебоксарах"),
@@ -83,7 +89,6 @@ SPECIAL_CITIES = {
     "Шахты": ("Шахт", "Шахтах", "в Шахтах"),
 }
 
-# Исправлено: удалены Ярославль и Рославль (они мужского рода)
 FEMININE_SOFT_CITIES = {
     "Казань",
     "Пермь",
@@ -115,7 +120,6 @@ def get_city_cases(city_name):
     gen_parts, prep_parts = [], []
 
     for idx, part in enumerate(parts):
-      # Если это первая часть составного слова на -о (Анжеро-Судженск), не склоняем её
       if len(parts) > 1 and idx == 0 and part.endswith("о"):
         gen_parts.append(part)
         prep_parts.append(part)
@@ -125,7 +129,6 @@ def get_city_cases(city_name):
         gen_parts.append(part[:-1] + "и")
         prep_parts.append(part[:-1] + "и")
       elif part.endswith("ий"):
-        # Исправлено: "Великий" дает "Великого/Великом"
         gen_parts.append(
             part[:-2] + "его" if part == "Нижний" else part[:-2] + "ого"
         )
@@ -271,7 +274,7 @@ def build_city_html(slug, city_name, pvz_count):
   }}
   </script>
 
-  <!-- 2. МИКРОРАЗМЕТКА ХЛЕБНЫЕ КРОШКИ (Исправлено на Именительный падеж) -->
+  <!-- 2. МИКРОРАЗМЕТКА ХЛЕБНЫЕ КРОШКИ -->
   <script type="application/ld+json">
   {{
     "@context": "https://schema.org",
@@ -355,7 +358,7 @@ def build_city_html(slug, city_name, pvz_count):
   <main class="flex-grow pt-8 pb-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
-      <!-- ВИЗУАЛЬНЫЕ ХЛЕБНЫЕ КРОШКИ (Исправлено на Именительный падеж) -->
+      <!-- ВИЗУАЛЬНЫЕ ХЛЕБНЫЕ КРОШКИ -->
       <nav class="text-sm text-slate-400 mb-6">
         <a href="/" class="hover:text-cdek transition-colors">Главная</a>
         <span class="mx-2">/</span>
@@ -397,6 +400,29 @@ def build_city_html(slug, city_name, pvz_count):
           </div>
         </div>
       </div>
+
+      <!-- СЕКЦИЯ СТРАТЕГИИ А: ССЫЛКИ НА УСЛУГИ ПО ГОРОДУ (ПЕРЕЛИКОВКА) -->
+      <section class="mt-12 mb-16">
+        <h2 class="text-2xl font-bold text-white mb-6">Условия логистики СДЭК {prep_v}</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <a href="/geo/{slug}/fbs/" class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cdek/50 transition-all group">
+            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">FBS доставка</h3>
+            <p class="text-xs text-slate-400">Отгрузка со своего склада {prep_v} по спецтарифам.</p>
+          </a>
+          <a href="/geo/{slug}/dbs/" class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cdek/50 transition-all group">
+            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Спецтариф DBS</h3>
+            <p class="text-xs text-slate-400">Прямая доставка до двери клиента {prep_v}.</p>
+          </a>
+          <a href="/geo/{slug}/dogovor-ip/" class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cdek/50 transition-all group">
+            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Договор для ИП</h3>
+            <p class="text-xs text-slate-400">Официальное подключение селлеров и ИП {prep_v}.</p>
+          </a>
+          <a href="/geo/{slug}/unit-economy/" class="p-5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cdek/50 transition-all group">
+            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Юнит-экономика</h3>
+            <p class="text-xs text-slate-400">Расчет логистики и экономия для интернет-магазинов.</p>
+          </a>
+        </div>
+      </section>
 
       <!-- Калькулятор -->
       <section id="widget-section" class="mt-10">
@@ -463,7 +489,6 @@ def main():
 
   count = 0
   for slug, city_name, pvz_str in matches:
-    # Надежное извлечение количества ПВЗ (только цифры)
     pvz_match = re.search(r"\d+", pvz_str)
     pvz_count = pvz_match.group() if pvz_match else pvz_str.strip()
 
@@ -479,7 +504,7 @@ def main():
     count += 1
     print(f"[{count}/{len(matches)}] Страница обновлена: {file_path}")
 
-  print(f"\nГОТОВО! Все {count} страниц городов пересобраны!")
+  print(f"\nГОТОВО! Все {count} страниц городов пересобраны с блоками услуг!")
 
 
 if __name__ == "__main__":
