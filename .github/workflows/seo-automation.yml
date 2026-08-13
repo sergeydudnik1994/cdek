@@ -9,6 +9,11 @@ on:
   # Позволяет запускать генерацию страниц вручную из интерфейса GitHub
   workflow_dispatch: 
 
+# Защита от одновременного запуска нескольких воркфлоу, чтобы избежать конфликтов при git push
+concurrency:
+  group: git-push-sync
+  cancel-in-progress: false
+
 jobs:
   seo-linter:
     name: 🛡️ Проверка SEO-ошибок
@@ -36,6 +41,8 @@ jobs:
         with:
           # Важно для возможности делать git push из бота
           token: ${{ secrets.GITHUB_TOKEN }}
+          # Скачиваем всю историю коммитов, чтобы rebase прошел успешно
+          fetch-depth: 0 
 
       - name: Настройка Python
         uses: actions/setup-python@v4
@@ -54,9 +61,15 @@ jobs:
           git config --global user.email 'bot@cdek-marketplace.ru'
           # Добавляем все сгенерированные файлы из папки geo и карту сайта
           git add geo/ sitemap.xml
-          # Делаем коммит только если есть реальные изменения, чтобы скрипт не падал с ошибкой
-          git diff --quiet && git diff --staged --quiet || git commit -m "Auto-generate Matrix SEO pages and update sitemap"
-          git push
+          # Делаем коммит только если есть реальные изменения
+          if ! git diff --quiet || ! git diff --staged --quiet; then
+            git commit -m "Auto-generate Matrix SEO pages and update sitemap"
+            # Синхронизируем локальную копию с сервером перед пушем, чтобы избежать конфликта (rejected)
+            git pull --rebase origin main
+            git push origin main
+          else
+            echo "Нет изменений для сохранения."
+          fi
 
       - name: Пинг поисковиков (Bing и Yandex)
         # Отправляем пинг только по ночному расписанию, чтобы не спамить поисковики при каждом мелком коммите
