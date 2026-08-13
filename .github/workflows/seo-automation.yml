@@ -4,12 +4,9 @@ on:
   push:
     branches: [ "main", "master" ]
   schedule:
-    # Запуск каждую ночь в 03:00 по UTC
     - cron: '0 3 * * *'
-  # Позволяет запускать генерацию страниц вручную из интерфейса GitHub
   workflow_dispatch: 
 
-# Защита от одновременного запуска нескольких воркфлоу, чтобы избежать конфликтов при git push
 concurrency:
   group: git-push-sync
   cancel-in-progress: false
@@ -33,15 +30,15 @@ jobs:
   generate-and-update:
     name: 🤖 Генерация Matrix SEO и Sitemap
     runs-on: ubuntu-latest
-    needs: seo-linter # Запустится только если линтер прошел без ошибок
+    needs: seo-linter
+    permissions:
+      contents: write # <--- КРИТИЧЕСКИ ВАЖНО: дает боту права на сохранение файлов
     
     steps:
       - name: Checkout кода
         uses: actions/checkout@v3
         with:
-          # Важно для возможности делать git push из бота
           token: ${{ secrets.GITHUB_TOKEN }}
-          # Скачиваем всю историю коммитов, чтобы rebase прошел успешно
           fetch-depth: 0 
 
       - name: Настройка Python
@@ -59,20 +56,20 @@ jobs:
         run: |
           git config --global user.name 'SEO-Bot'
           git config --global user.email 'bot@cdek-marketplace.ru'
-          # Добавляем все сгенерированные файлы из папки geo и карту сайта
-          git add geo/ sitemap.xml
-          # Делаем коммит только если есть реальные изменения
-          if ! git diff --quiet || ! git diff --staged --quiet; then
+          
+          # Добавляем все сгенерированные файлы и карту сайта
+          git add -A
+          
+          # Проверяем, есть ли изменения для коммита
+          if git status --porcelain | grep -q .; then
             git commit -m "Auto-generate Matrix SEO pages and update sitemap"
-            # Синхронизируем локальную копию с сервером перед пушем, чтобы избежать конфликта (rejected)
-            git pull --rebase origin main
-            git push origin main
+            git pull --rebase origin main || git pull --rebase origin master
+            git push origin HEAD
           else
             echo "Нет изменений для сохранения."
           fi
 
-      - name: Пинг поисковиков (Bing и Yandex)
-        # Отправляем пинг только по ночному расписанию, чтобы не спамить поисковики при каждом мелком коммите
+      - name: Пинг поисковиков (Bing и Яндекс)
         if: github.event_name == 'schedule'
         run: |
           curl -s "http://www.bing.com/ping?sitemap=https://cdek-marketplace.ru/sitemap.xml"
