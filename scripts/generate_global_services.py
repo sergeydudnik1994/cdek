@@ -26,6 +26,7 @@ def generate_services():
     h1_sub = service.get("h1_sub", "Для селлеров")
     desc = service.get("desc", "Официальные условия и подключение со скидкой.")
 
+    # HTML с исправленной, красивой формой заявки и блоком мессенджеров
     html_content = f"""<!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -133,6 +134,7 @@ def generate_services():
           </div>
         </section>
 
+        <!-- Исправленный контейнер формы заявки без обрезки -->
         <section class="relative w-full max-w-xl mx-auto lg:ml-auto lg:mr-0" id="leadForm">
           <!--#include virtual="/src/components/leadform.html" -->
         </section>
