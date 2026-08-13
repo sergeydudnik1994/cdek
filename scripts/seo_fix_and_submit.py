@@ -4,7 +4,7 @@ import json
 import xml.etree.ElementTree as ET
 
 HOST = "cdek-marketplace.ru"
-KEY = "cdek-index-key" # Имя вашего ключа из файла cdek-index-key.txt
+KEY = "cdek-index-key"
 KEY_LOCATION = f"https://{HOST}/{KEY}.txt"
 
 def fix_blog_canonicals():
@@ -15,13 +15,11 @@ def fix_blog_canonicals():
         print("  [-] Папка 'blog' не найдена. Пропуск.")
         return
 
-    # Обходим все HTML файлы в папке blog
     for root, _, files in os.walk('blog'):
         for file in files:
             if file == 'index.html':
                 file_path = os.path.join(root, file)
                 
-                # Формируем правильный URL (например: https://cdek-marketplace.ru/blog/post-name/)
                 relative_path = root.replace('\\', '/')
                 correct_url = f"https://{HOST}/{relative_path}/"
                 
@@ -58,7 +56,7 @@ def submit_to_indexnow():
         print(f"  [-] Ошибка чтения sitemap.xml: {e}")
         return
         
-    print(f"  [i] Собрано ссылок для принудительной индексации: {len(urls)}")
+    print(f"  [i] Собрано ссылок: {len(urls)}")
     
     data = {
         "host": HOST,
@@ -76,11 +74,11 @@ def submit_to_indexnow():
     try:
         with urllib.request.urlopen(req) as response:
             if response.getcode() in [200, 202]:
-                print(f"✅ УСПЕШНО! {len(urls)} страниц отправлено на переобход в Яндекс.")
+                print(f"✅ УСПЕШНО! {len(urls)} страниц отправлено на переобход.")
             else:
                 print(f"⚠️ Ответ Яндекса: {response.getcode()}")
     except Exception as e:
-        print(f"❌ Ошибка отправки запроса в Яндекс: {e}")
+        print(f"❌ Ошибка отправки запроса: {e}")
 
 if __name__ == "__main__":
     fix_blog_canonicals()
