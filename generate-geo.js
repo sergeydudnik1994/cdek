@@ -182,6 +182,27 @@ async function buildGeo() {
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/favicon.png" />
 
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://cdek-marketplace.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Логистика для селлеров",
+        "item": "https://cdek-marketplace.ru/geo/"
+      }
+    ]
+  }
+  </script>
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
