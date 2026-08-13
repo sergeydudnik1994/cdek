@@ -1,5 +1,12 @@
 User-agent: *
 Allow: /
 Disallow: /cdek-service.php
+Disallow: /src/components/
+Disallow: /scripts/
+Disallow: /city-template.html
+Disallow: /*{{CITY_SLUG}}*
+Disallow: /*{{SERVICE_SLUG}}*
+Disallow: /generate_geo_pages.py
+Disallow: /README.md
 
 Sitemap: https://cdek-marketplace.ru/sitemap.xml
