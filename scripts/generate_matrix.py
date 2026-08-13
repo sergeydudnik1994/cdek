@@ -12,7 +12,6 @@ CITIES_JSON_FILE = "cities.json"
 def get_city_cases(city_name):
   city_name = city_name.strip()
 
-  # Точный словарь падежей для сложных, дефисных и множественных городов
   special = {
       "Анжеро-Судженск": (
           "Анжеро-Судженска",
@@ -68,7 +67,6 @@ def get_city_cases(city_name):
     gen, prep, _, name = special[city_name]
     return {"name": name, "prep": prep, "gen": gen}
 
-  # Общая морфологическая обработка для остальных городов
   if city_name.endswith("а"):
     gen = city_name[:-1] + "ы"
     prep = city_name[:-1] + "е"
@@ -105,7 +103,6 @@ def load_template():
 
 
 def load_cities_map():
-  """Загружает реальные русские названия из cities.json по слагу"""
   if os.path.exists(CITIES_JSON_FILE):
     with open(CITIES_JSON_FILE, "r", encoding="utf-8") as f:
       return {item["slug"]: item["name"] for item in json.load(f)}
@@ -201,7 +198,6 @@ def generate_pages():
   generated_count = 0
 
   for slug in city_slugs:
-    # Берём настоящее русское имя из cities.json
     raw_name = cities_map.get(slug, slug.replace("-", " ").title())
     city_info = get_city_cases(raw_name)
 
@@ -212,8 +208,8 @@ def generate_pages():
       breadcrumbs = f"""
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 text-sm text-slate-500">
                 <a href="/" class="hover:text-cdek">Главная</a> / 
-                <a href="/geo/" class="hover:text-cdek">Логистика</a> / 
-                <span class="text-slate-300">{city_info['name']}</span>
+                <a href="/geo/{slug}/" class="hover:text-cdek">{city_info['name']}</a> / 
+                <span class="text-slate-300">{service.get('h1_main', 'Услуга')}</span>
             </div>
             """
 
@@ -225,9 +221,13 @@ def generate_pages():
       html_content = html_content.replace("{{CITY_SLUG}}", slug)
 
       html_content = html_content.replace("{{SERVICE_SLUG}}", service["slug"])
-      html_content = html_content.replace("{{H1_MAIN}}", service["h1_main"])
-      html_content = html_content.replace("{{H1_SUB}}", service["H1_SUB"])
-      html_content = html_content.replace("{{DESC}}", service["desc"])
+      html_content = html_content.replace(
+          "{{H1_MAIN}}", service.get("h1_main", "")
+      )
+      html_content = html_content.replace(
+          "{{H1_SUB}}", service.get("h1_sub", "")
+      )
+      html_content = html_content.replace("{{DESC}}", service.get("desc", ""))
 
       file_path = os.path.join(dir_path, "index.html")
       with open(file_path, "w", encoding="utf-8") as f:
