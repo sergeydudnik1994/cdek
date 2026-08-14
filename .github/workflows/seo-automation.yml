@@ -60,12 +60,12 @@ jobs:
           # 1. Принудительно очищаем состояние от старых конфликтов
           git checkout sitemap.xml || true
           
-          # 2. Добавляем ТОЛЬКО карту сайта (это 1 файл вместо 71 000)
-          git add sitemap.xml
+          # 2. Добавляем индекс, все части карты сайта и текстовый список URL
+          git add sitemap.xml sitemap_main.xml sitemap_geo_*.xml all_urls.txt
           
           # 3. Фиксируем и отправляем
-          if git status --porcelain sitemap.xml | grep -q .; then
-            git commit -m "Auto-update sitemap.xml [skip ci]"
+          if git status --porcelain | grep -q .; then
+            git commit -m "Auto-update Sitemap Index and parts [skip ci]"
             git pull --rebase origin main || git pull --rebase origin master
             git push origin HEAD
           else
