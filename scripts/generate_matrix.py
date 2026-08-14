@@ -1,57 +1,43 @@
-import json
-import os
-import random
-from datetime import datetime
+import json, os, random
 
-# Конфигурация
-DATA_FILE = "scripts/seo_data.json"
-TEMPLATE_FILE = "scripts/template.html"
-CITIES_FILE = "cities.json"
-BASE_OUTPUT_DIR = "geo"
-
-# Матрица для гипер-уникальности (Яндекс это полюбит)
-INTROS = ["СДЭК Маркетплейсы — ваш надежный партнер в {city_prep}.", "Обеспечиваем быструю логистику для селлеров из {city_gen}.", "Филиал СДЭК в {city_prep} расширяет возможности для бизнеса."]
-LOGISTICS = ["Мы оптимизировали маршруты, учитывая специфику {city_gen}.", "Транспортная сеть в {city_prep} позволяет отгружать заказы день-в-день.", "Наличие локальных хабов сокращает время доставки на 20%."]
-MARKET = ["Идеально для работы по FBS и DBS.", "Поддержка всех популярных маркетплейсов.", "Автоматизация отгрузок через API СДЭК."]
-FINALE = ["Снижайте издержки на логистику вместе с нами.", "Начните масштабировать продажи уже сегодня.", "Персональный менеджер поможет с настройкой договора."]
-
-def get_city_cases(name):
-    if name.endswith('ск'): return name + 'а', name + 'е'
-    if name.endswith('а'): return name[:-1] + 'ы', name[:-1] + 'е'
-    return name + 'а', name + 'е'
+def get_city_cases(n):
+    if n.endswith('ск'): return n+'а', n+'е'
+    if n.endswith('а'): return n[:-1]+'ы', n[:-1]+'е'
+    return n+'а', n+'е'
 
 def generate_pages():
-    with open(DATA_FILE, "r", encoding="utf-8") as f: data = json.load(f)
-    with open(TEMPLATE_FILE, "r", encoding="utf-8") as f: template = f.read()
-    with open(CITIES_FILE, "r", encoding="utf-8") as f: cities = json.load(f)
+    with open("scripts/seo_data.json", "r", encoding="utf-8") as f: data = json.load(f)
+    with open("scripts/template.html", "r", encoding="utf-8") as f: template = f.read()
+    with open("cities.json", "r", encoding="utf-8") as f: cities = json.load(f)
 
     for city in cities:
         slug, name = city["slug"], city["name"]
-        city_gen, city_prep = get_city_cases(name)
+        gen, prep = get_city_cases(name)
         rng = random.Random(name)
         
-        # Собираем уникальный текст из 4-х блоков
-        unique_text = f"{rng.choice(INTROS).format(city_prep=city_prep, city_gen=city_gen)} " \
-                      f"{rng.choice(LOGISTICS).format(city_prep=city_prep, city_gen=city_gen)} " \
-                      f"{rng.choice(MARKET)} {rng.choice(FINALE).format(city_gen=city_gen)}"
+        # Уникальный текст для Яндекса
+        unique = f"СДЭК Маркетплейсы в {prep} — это быстрая отгрузка для селлеров. " \
+                 f"Мы оптимизировали логистику в {prep}, чтобы вы экономили до 50% на доставке. " \
+                 f"Работаем по FBS и DBS с гарантией сроков."
 
-        for service in data["services"]:
-            path = os.path.join(BASE_OUTPUT_DIR, slug, service["slug"], "index.html")
-            os.makedirs(os.path.dirname(path), exist_ok=True)
-            
-            html = template.replace("{{CITY_NAME}}", name).replace("{{CITY_PREP}}", city_info["prep"] if 'city_info' in locals() else city_prep)
-            html = html.replace("{{CITY_GEN}}", city_gen).replace("{{H1_MAIN}}", f"{service['h1_main']} в {city_prep}")
-            html = html.replace("{{H1_SUB}}", service["h1_sub"]).replace("{{DESC}}", service["desc"])
-            html = html.replace("{{UNIQUE_CONTENT}}", unique_text)
-            
-            # Умное сохранение (не перезаписываем, если нет изменений)
-            if os.path.exists(path):
-                with open(path, 'r', encoding='utf-8') as f:
-                    if f.read() == html: continue
-            
-            with open(path, 'w', encoding='utf-8') as f: f.write(html)
+        # Создаем ГЛАВНУЮ страницу города (Hub)
+        city_dir = os.path.join("geo", slug)
+        os.makedirs(city_dir, exist_ok=True)
+        hub_html = template.replace("{{CITY_NAME}}", name).replace("{{CITY_PREP}}", prep)
+        hub_html = hub_html.replace("{{H1_MAIN}}", f"СДЭК для маркетплейсов в {prep}")
+        hub_html = hub_html.replace("{{UNIQUE_CONTENT}}", unique).replace("{{DESC}}", "Официальное подключение.")
+        with open(os.path.join(city_dir, "index.html"), "w", encoding="utf-8") as f: f.write(hub_html)
 
-    print(f"🚀 Матрица обновлена для {len(cities)} городов.")
+        # Создаем страницы УСЛУГ
+        for s in data["services"]:
+            path = os.path.join("geo", slug, s["slug"])
+            os.makedirs(path, exist_ok=True)
+            html = template.replace("{{CITY_NAME}}", name).replace("{{CITY_PREP}}", prep)
+            html = html.replace("{{H1_MAIN}}", f"{s['h1_main']} в {prep}")
+            html = html.replace("{{UNIQUE_CONTENT}}", unique).replace("{{DESC}}", s["desc"])
+            with open(os.path.join(path, "index.html"), "w", encoding="utf-8") as f: f.write(html)
+
+    print(f"✅ Матрица готова!")
 
 if __name__ == "__main__":
     generate_pages()
