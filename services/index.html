@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <!--#include virtual="/src/components/metrika.html" -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
@@ -36,9 +35,7 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="servicesGrid">
-      
-      <!-- Сюда скрипт ниже подставит все 24 карточки -->
-
+      <!-- Карточки генерируются скриптом ниже для идеальной чистоты кода -->
     </div>
   </main>
 
@@ -46,7 +43,7 @@
   <!--#include virtual="/src/components/mobile-cta.html" -->
 
   <script>
-    const allServices = [
+    const services = [
       { slug: "fbs", title: "Подключение по FBS", desc: "Отгрузка со своего склада до ПВЗ. Быстрая доставка до маркетплейсов со скидкой." },
       { slug: "dbs", title: "Спецтариф DBS", desc: "Доставка напрямую до двери покупателя. Специальные тарифы для посылок до 1 кг." },
       { slug: "dogovor-ip", title: "Договор для ИП", desc: "Бесплатное заключение корпоративного договора для селлеров за 15 минут." },
@@ -74,27 +71,23 @@
       { slug: "cash-on-delivery", title: "Наложенный платеж", desc: "Принимайте оплату при получении. Кассовое обслуживание и перевод денег." }
     ];
 
-    function renderCards(filter = '') {
+    function render(filter = '') {
       const grid = document.getElementById('servicesGrid');
-      grid.innerHTML = allServices
+      grid.innerHTML = services
         .filter(s => s.title.toLowerCase().includes(filter.toLowerCase()) || s.desc.toLowerCase().includes(filter.toLowerCase()))
         .map(s => `
-          <a href="/services/${s.slug}/" class="group flex flex-col h-full bg-slate-800/40 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800/70 hover:border-cdek/50 transition-all duration-300 shadow-lg">
+          <a href="/services/${s.slug}/" class="group flex flex-col h-full bg-slate-800/40 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800/70 hover:border-cdek/50 transition-all duration-300">
             <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cdek transition-colors">${s.title}</h3>
             <p class="text-slate-400 text-sm leading-relaxed flex-grow">${s.desc}</p>
-            <div class="mt-6 flex items-center text-cdek text-xs font-semibold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
-              Подробнее 
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
           </a>
         `).join('');
     }
 
-    document.getElementById('searchInput').addEventListener('input', (e) => renderCards(e.target.value));
-    renderCards();
+    document.getElementById('searchInput').addEventListener('input', (e) => render(e.target.value));
+    render();
   </script>
 </body>
 </html>
