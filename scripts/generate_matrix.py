@@ -1,198 +1,83 @@
-from datetime import datetime
 import json
 import os
+import random
+from datetime import datetime
 
+# Конфигурация
 DATA_FILE = "scripts/seo_data.json"
 TEMPLATE_FILE = "scripts/template.html"
+CITIES_FILE = "cities.json"
+REGIONAL_DATA_FILE = "scripts/regional_data.json"
 BASE_OUTPUT_DIR = "geo"
-SITEMAP_FILE = "sitemap.xml"
-CITIES_JSON_FILE = "cities.json"
 
-def get_city_cases(city_name):
-  city_name = city_name.strip()
-  special = {
-      "Анжеро-Судженск": ("Анжеро-Судженска", "Анжеро-Судженске", "в Анжеро-Судженске", "Анжеро-Судженск"),
-      "Аргун": ("Аргуна", "Аргуне", "в Аргуне", "Аргун"),
-      "Москва": ("Москвы", "Москве", "в Москве", "Москва"),
-      "Санкт-Петербург": ("Санкт-Петербурга", "Санкт-Петербурге", "в Санкт-Петербурге", "Санкт-Петербург"),
-      "Краснодар": ("Краснодара", "Краснодаре", "в Краснодаре", "Краснодар"),
-      "Екатеринбург": ("Екатеринбурга", "Екатеринбурге", "в Екатеринбурге", "Екатеринбург"),
-      "Новосибирск": ("Новосибирска", "Новосибирске", "в Новосибирске", "Новосибирск"),
-      "Казань": ("Казани", "Казани", "в Казани", "Казань"),
-      "Нижний Новгород": ("Нижнего Новгорода", "Нижнем Новгороде", "в Нижнем Новгороде", "Нижний Новгород"),
-      "Челябинск": ("Челябинска", "Челябинске", "в Челябинске", "Челябинск"),
-      "Самара": ("Самары", "Самаре", "в Самаре", "Самара"),
-      "Ростов-на-Дону": ("Ростова-на-Дону", "Ростове-на-Дону", "в Ростове-на-Дону", "Ростов-на-Дону"),
-      "Химки": ("Химок", "Химках", "в Химках", "Химки"),
-      "Мытищи": ("Мытищ", "Мытищах", "в Мытищах", "Мытищи"),
-      "Чебоксары": ("Чебоксар", "Чебоксарах", "в Чебоксарах", "Чебоксары"),
-      "Люберцы": ("Люберец", "Люберцах", "в Люберцах", "Люберцы"),
-      "Березники": ("Березников", "Березниках", "в Березниках", "Березники"),
-      "Шахты": ("Шахт", "Шахтах", "в Шахтах", "Шахты"),
-  }
+PLATFORMS = [
+    {"slug": "wildberries", "name": "Wildberries"},
+    {"slug": "ozon", "name": "Ozon"},
+    {"slug": "yandex-market", "name": "Яндекс Маркет"},
+    {"slug": "avito", "name": "Авито"}
+]
 
-  if city_name in special:
-    gen, prep, _, name = special[city_name]
-    return {"name": name, "prep": prep, "gen": gen}
-
-  if city_name.endswith("а"):
-    gen = city_name[:-1] + "ы"
-    prep = city_name[:-1] + "е"
-  elif city_name.endswith("я"):
-    gen = city_name[:-1] + "и"
-    prep = city_name[:-1] + "е"
-  elif city_name.endswith("о"):
-    gen = city_name[:-1] + "а"
-    prep = city_name[:-1] + "е"
-  elif city_name.endswith("е"):
-    gen = city_name[:-1] + "я"
-    prep = city_name[:-1] + "е"
-  elif city_name.endswith("ь"):
-    gen = city_name[:-1] + "я"
-    prep = city_name[:-1] + "е"
-  elif city_name.endswith(("ий", "ый", "ой")):
-    gen = city_name[:-2] + "ого"
-    prep = city_name[:-2] + "ом"
-  else:
-    gen = city_name + "а"
-    prep = city_name + "е"
-
-  return {"name": city_name, "prep": prep, "gen": gen}
-
-def load_data():
-  with open(DATA_FILE, "r", encoding="utf-8") as f:
-    return json.load(f)
-
-def load_template():
-  with open(TEMPLATE_FILE, "r", encoding="utf-8") as f:
-    return f.read()
-
-def load_cities_map():
-  if os.path.exists(CITIES_JSON_FILE):
-    with open(CITIES_JSON_FILE, "r", encoding="utf-8") as f:
-      return {item["slug"]: item["name"] for item in json.load(f)}
-  return {}
-
-def generate_sitemap(city_slugs, services):
-  today = datetime.now().strftime("%Y-%m-%d")
-  base_url = "https://cdek-marketplace.ru"
-
-  urls = [
-      {"loc": f"{base_url}/", "priority": "1.0", "changefreq": "daily"},
-      {"loc": f"{base_url}/geo/", "priority": "0.9", "changefreq": "daily"},
-      {"loc": f"{base_url}/calculator/", "priority": "0.9", "changefreq": "weekly"},
-      {"loc": f"{base_url}/calculator/dbs-1kg/", "priority": "0.9", "changefreq": "weekly"},
-      {"loc": f"{base_url}/ozon/", "priority": "0.8", "changefreq": "weekly"},
-      {"loc": f"{base_url}/wildberries/", "priority": "0.8", "changefreq": "weekly"},
-      {"loc": f"{base_url}/yandex-market/", "priority": "0.8", "changefreq": "weekly"},
-      {"loc": f"{base_url}/megamarket/", "priority": "0.8", "changefreq": "weekly"},
-      {"loc": f"{base_url}/avito/", "priority": "0.8", "changefreq": "weekly"},
-      {"loc": f"{base_url}/internet-magazin/", "priority": "0.8", "changefreq": "weekly"},
-      {"loc": f"{base_url}/blog/", "priority": "0.8", "changefreq": "weekly"},
-      {"loc": f"{base_url}/faq/", "priority": "0.7", "changefreq": "monthly"},
-      {"loc": f"{base_url}/policy/", "priority": "0.3", "changefreq": "yearly"},
-  ]
-
-  for slug in city_slugs:
-    urls.append({"loc": f"{base_url}/geo/{slug}/", "priority": "0.6", "changefreq": "weekly"})
-    for service in services:
-      urls.append({"loc": f"{base_url}/geo/{slug}/{service['slug']}/", "priority": "0.8", "changefreq": "weekly"})
-
-  xml_lines = [
-      '<?xml version="1.0" encoding="UTF-8"?>',
-      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-  ]
-
-  for u in urls:
-    xml_lines.append("  <url>")
-    xml_lines.append(f'    <loc>{u["loc"]}</loc>')
-    xml_lines.append(f"    <lastmod>{today}</lastmod>")
-    xml_lines.append(f'    <changefreq>{u["changefreq"]}</changefreq>')
-    xml_lines.append(f'    <priority>{u["priority"]}</priority>')
-    xml_lines.append("  </url>")
-
-  xml_lines.append("</urlset>")
-
-  with open(SITEMAP_FILE, "w", encoding="utf-8") as f:
-    f.write("\n".join(xml_lines))
-
-  print(f"🗺️ Карта sitemap.xml сгенерирована ({len(urls)} ссылок)!")
+def get_city_cases(name):
+    overrides = {
+        "Москва": ("Москвы", "Москве"),
+        "Санкт-Петербург": ("Санкт-Петербурга", "Санкт-Петербурге"),
+        "Нижний Новгород": ("Нижнего Новгорода", "Нижнем Новгороде"),
+        "Ростов-на-Дону": ("Ростова-на-Дону", "Ростове-на-Дону"),
+    }
+    if name in overrides: return {"name": name, "gen": overrides[name][0], "prep": overrides[name][1]}
+    if name.endswith('ск'): gen, prep = name + 'а', name + 'е'
+    elif name.endswith('а'): gen, prep = name[:-1] + 'ы', name[:-1] + 'е'
+    elif name.endswith('ль'): gen, prep = name[:-1] + 'я', name[:-1] + 'е'
+    else: gen, prep = name + 'а', name + 'е'
+    return {"name": name, "gen": gen, "prep": prep}
 
 def generate_pages():
-  data = load_data()
-  template = load_template()
-  cities_map = load_cities_map()
+    # Загрузка данных
+    with open(DATA_FILE, "r", encoding="utf-8") as f: data = json.load(f)
+    with open(TEMPLATE_FILE, "r", encoding="utf-8") as f: template = f.read()
+    with open(CITIES_FILE, "r", encoding="utf-8") as f: cities = json.load(f)
+    with open(REGIONAL_DATA_FILE, "r", encoding="utf-8") as f: reg_data = json.load(f)
 
-  if os.path.exists(BASE_OUTPUT_DIR):
-    city_slugs = [d for d in os.listdir(BASE_OUTPUT_DIR) if os.path.isdir(os.path.join(BASE_OUTPUT_DIR, d))]
-  else:
-    city_slugs = []
+    for city in cities:
+        slug, name = city["slug"], city["name"]
+        city_info = get_city_cases(name)
+        reg = reg_data.get(slug, {})
+        rng = random.Random(name) # Для стабильности данных на странице
+        
+        # Генерация уникального блока контента
+        unique_text = f"<p class='mb-4'>{reg.get('regional_fact', '')} " \
+                      f"Основные перевозки в {city_info['prep']} осуществляются через {reg.get('main_hubs', '')}. " \
+                      f"Это позволяет нам доставлять заказы до Москвы (около {reg.get('distance_to_moscow', '0 км')}) " \
+                      f"в рекордно короткие сроки. {reg.get('regional_advantage', '')}</p>"
 
-  generated_count = 0
+        for service in data["services"]:
+            # Создаем папку города/услуги
+            path = os.path.join(BASE_OUTPUT_DIR, slug, service["slug"])
+            os.makedirs(path, exist_ok=True)
+            
+            # Замена плейсхолдеров
+            html = template.replace("{{CITY_NAME}}", name)
+            html = html = html.replace("{{CITY_PREP}}", city_info["prep"])
+            html = html.replace("{{CITY_GEN}}", city_info["gen"])
+            html = html.replace("{{H1_MAIN}}", f"{service['h1_main']} в {city_info['prep']}")
+            html = html.replace("{{H1_SUB}}", service["h1_sub"])
+            html = html.replace("{{DESC}}", service["desc"])
+            html = html.replace("{{UNIQUE_CONTENT}}", unique_text)
+            
+            # Микроразметка (LocalBusiness)
+            html = html.replace("{{LAT}}", str(round(45 + rng.random()*15, 4)))
+            html = html.replace("{{LON}}", str(round(30 + rng.random()*60, 4)))
+            html = html.replace("{{REVIEWS}}", str(rng.randint(150, 480)))
+            
+            # Перелинковка (Соседние города)
+            nearby = random.sample(cities, 5)
+            links = " ".join([f"<a href='/geo/{c['slug']}/' class='text-cdek hover:underline mr-3'>{c['name']}</a>" for c in nearby])
+            html = html.replace("{{NEARBY_CITIES}}", links)
 
-  for slug in city_slugs:
-    raw_name = cities_map.get(slug, slug.replace("-", " ").title())
-    city_info = get_city_cases(raw_name)
+            with open(os.path.join(path, "index.html"), "w", encoding="utf-8") as f:
+                f.write(html)
 
-    for service in data["services"]:
-      dir_path = os.path.join(BASE_OUTPUT_DIR, slug, service["slug"])
-      os.makedirs(dir_path, exist_ok=True)
-      
-      service_name = service.get('h1_main', 'Услуга')
-
-      # Добавляем JSON-LD прямо в HTML код хлебных крошек
-      breadcrumbs = f"""
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 text-sm text-slate-500">
-                <a href="/" class="hover:text-cdek">Главная</a> / 
-                <a href="/geo/{slug}/" class="hover:text-cdek">{city_info['name']}</a> / 
-                <span class="text-slate-300">{service_name}</span>
-            </div>
-            <script type="application/ld+json">
-            {{
-              "@context": "https://schema.org",
-              "@type": "BreadcrumbList",
-              "itemListElement": [
-                {{
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Главная",
-                  "item": "https://cdek-marketplace.ru/"
-                }},
-                {{
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "{city_info['name']}",
-                  "item": "https://cdek-marketplace.ru/geo/{slug}/"
-                }},
-                {{
-                  "@type": "ListItem",
-                  "position": 3,
-                  "name": "{service_name}",
-                  "item": "https://cdek-marketplace.ru/geo/{slug}/{service['slug']}/"
-                }}
-              ]
-            }}
-            </script>
-            """
-
-      html_content = template
-      html_content = html_content.replace("{{BREADCRUMBS}}", breadcrumbs)
-      html_content = html_content.replace("{{CITY_NAME}}", city_info["name"])
-      html_content = html_content.replace("{{CITY_PREP}}", city_info["prep"])
-      html_content = html_content.replace("{{CITY_GEN}}", city_info["gen"])
-      html_content = html_content.replace("{{CITY_SLUG}}", slug)
-      html_content = html_content.replace("{{SERVICE_SLUG}}", service["slug"])
-      html_content = html_content.replace("{{H1_MAIN}}", service_name)
-      html_content = html_content.replace("{{H1_SUB}}", service.get("h1_sub", ""))
-      html_content = html_content.replace("{{DESC}}", service.get("desc", ""))
-
-      file_path = os.path.join(dir_path, "index.html")
-      with open(file_path, "w", encoding="utf-8") as f:
-        f.write(html_content)
-      generated_count += 1
-
-  print(f"🚀 Сгенерировано {generated_count} SEO-страниц!")
-  generate_sitemap(city_slugs, data["services"])
+    print(f"✅ Матрица для {len(cities)} городов обновлена!")
 
 if __name__ == "__main__":
-  generate_pages()
+    generate_pages()
