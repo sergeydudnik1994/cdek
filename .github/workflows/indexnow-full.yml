@@ -10,47 +10,14 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Parse Sitemap and ping Yandex IndexNow
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Parse Sitemap and Submit to IndexNow
         run: |
-          HOST="cdek-marketplace.ru"
-          KEY="Aa1234567" # Используем ваш реальный ключ
-
-          echo "Читаем sitemap.xml..."
-          # Вытаскиваем все URL из sitemap
-          URLS=$(grep -oP '(?<=<loc>).*?(?=</loc>)' sitemap.xml)
-          
-          if [ -z "$URLS" ]; then
-            echo "Sitemap пуст или не найден!"
-            exit 1
-          fi
-
-          URL_LIST=()
-          for url in $URLS; do
-            URL_LIST+=("\"$url\"")
-          done
-
-          JSON_URLS=$(IFS=,; echo "${URL_LIST[*]}")
-
-          PAYLOAD=$(cat <<EOF
-          {
-            "host": "$HOST",
-            "key": "$KEY",
-            "keyLocation": "https://$HOST/$KEY.txt",
-            "urlList": [$JSON_URLS]
-          }
-          EOF
-          )
-
-          echo "Отправляем ВСЕ страницы напрямую в Яндекс..."
-          RESPONSE=$(curl -s -o /dev/null -w "%{http_code}" -X POST https://yandex.com/indexnow \
-            -H "Content-Type: application/json; charset=utf-8" \
-            -d "$PAYLOAD")
-
-          echo "Ответ от API Яндекса: HTTP $RESPONSE"
-
-          if [ "$RESPONSE" -eq 200 ] || [ "$RESPONSE" -eq 202 ]; then
-            echo "Успешно отправлено!"
-          else
-            echo "Ошибка отправки (код $RESPONSE)"
-            exit 1
-          fi
+          echo "🚀 Запуск профессионального скрипта индексации..."
+          # Мы просто запускаем наш отлаженный JS-файл, 
+          # который умеет бить 71 000 ссылок на безопасные пачки.
+          node scripts/indexnow-submit.js
