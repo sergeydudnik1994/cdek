@@ -18,7 +18,7 @@ jobs:
     steps:
       - name: Checkout кода
         uses: actions/checkout@v3
-      
+
       - name: Настройка Python
         uses: actions/setup-python@v4
         with:
@@ -33,7 +33,7 @@ jobs:
     needs: seo-linter
     permissions:
       contents: write
-    
+
     steps:
       - name: Checkout кода
         uses: actions/checkout@v3
@@ -49,33 +49,27 @@ jobs:
       - name: Сборка матричных SEO-страниц
         run: python scripts/generate_matrix.py
 
-      - name: Сборка глобальных страниц услуг
-        run: python scripts/generate_global_services.py
-
       - name: Обновление sitemap.xml
         run: python scripts/update_sitemap.py
         
-      - name: Сохранение сгенерированных страниц в репозиторий
+      - name: Сохранение обновленной карты сайта
         run: |
           git config --global user.name 'SEO-Bot'
           git config --global user.email 'bot@cdek-marketplace.ru'
           
-          # Добавляем все сгенерированные файлы и карту сайта
-          git add -A
+          # Сохраняем ТОЛЬКО sitemap.xml, чтобы не раздувать репозиторий
+          git add sitemap.xml
           
-          # Проверяем, есть ли изменения для коммита
-          if git status --porcelain | grep -q .; then
-            git commit -m "Auto-generate Matrix SEO pages and update sitemap"
+          if git status --porcelain sitemap.xml | grep -q .; then
+            git commit -m "Auto-update sitemap.xml"
             git pull --rebase origin main || git pull --rebase origin master
             git push origin HEAD
           else
-            echo "Нет изменений для сохранения."
+            echo "Изменений в карте сайта нет."
           fi
 
       - name: Пинг поисковиков (Bing и Яндекс)
         if: github.event_name == 'schedule'
         run: |
           curl -s "http://www.bing.com/ping?sitemap=https://cdek-marketplace.ru/sitemap.xml"
-          echo "Пинг в Bing отправлен"
           curl -s "https://webmaster.yandex.ru/ping?sitemap=https://cdek-marketplace.ru/sitemap.xml"
-          echo "Пинг в Яндекс отправлен"
