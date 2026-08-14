@@ -17,10 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout кода
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Настройка Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
           
@@ -36,13 +36,13 @@ jobs:
 
     steps:
       - name: Checkout кода
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0 
 
       - name: Настройка Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
@@ -52,21 +52,24 @@ jobs:
       - name: Обновление sitemap.xml
         run: python scripts/update_sitemap.py
         
-      - name: Сохранение изменений в репозиторий
+      - name: Сохранение обновленной карты сайта
         run: |
           git config --global user.name 'SEO-Bot'
           git config --global user.email 'bot@cdek-marketplace.ru'
           
-          # Добавляем карту сайта и папку geo, чтобы теги {{SEO_TITLE}} заменились на сайте
-          git add sitemap.xml geo/
+          # 1. Принудительно очищаем состояние от старых конфликтов
+          git checkout sitemap.xml || true
           
-          # Проверяем наличие изменений перед коммитом
-          if ! git diff --cached --quiet; then
-            git commit -m "Auto-update SEO tags and sitemap"
+          # 2. Добавляем ТОЛЬКО карту сайта (это 1 файл вместо 71 000)
+          git add sitemap.xml
+          
+          # 3. Фиксируем и отправляем
+          if git status --porcelain sitemap.xml | grep -q .; then
+            git commit -m "Auto-update sitemap.xml [skip ci]"
             git pull --rebase origin main || git pull --rebase origin master
             git push origin HEAD
           else
-            echo "Изменений для сохранения не обнаружено."
+            echo "Изменений в карте сайта нет."
           fi
 
       - name: Пинг поисковиков (Bing и Яндекс)
