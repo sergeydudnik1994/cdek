@@ -52,20 +52,21 @@ jobs:
       - name: Обновление sitemap.xml
         run: python scripts/update_sitemap.py
         
-      - name: Сохранение обновленной карты сайта
+      - name: Сохранение изменений в репозиторий
         run: |
           git config --global user.name 'SEO-Bot'
           git config --global user.email 'bot@cdek-marketplace.ru'
           
-          # Сохраняем ТОЛЬКО sitemap.xml, чтобы не раздувать репозиторий
-          git add sitemap.xml
+          # Добавляем карту сайта и папку geo, чтобы теги {{SEO_TITLE}} заменились на сайте
+          git add sitemap.xml geo/
           
-          if git status --porcelain sitemap.xml | grep -q .; then
-            git commit -m "Auto-update sitemap.xml"
+          # Проверяем наличие изменений перед коммитом
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto-update SEO tags and sitemap"
             git pull --rebase origin main || git pull --rebase origin master
             git push origin HEAD
           else
-            echo "Изменений в карте сайта нет."
+            echo "Изменений для сохранения не обнаружено."
           fi
 
       - name: Пинг поисковиков (Bing и Яндекс)
