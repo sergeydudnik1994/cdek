@@ -1,23 +1,12 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript">
-    (function(m,e,t,r,i,k,a){
-        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-        m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111090265', 'ym' );
-    ym(111090265, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true});
-  </script>
-  <noscript><div><img src="https://mc.yandex.ru/watch/111090265" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-
+  <!--#include virtual="/src/components/metrika.html" -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Все услуги СДЭК для селлеров | Каталог логистики FBS/DBS, фулфилмента и договоров</title>
-  <meta name="description" content="Полный каталог B2B услуг СДЭК: подключение маркетплейсов, спецтарифы на доставку, маркировка, страхование и аналитика для вашего бизнеса." />
+  <title>Все услуги СДЭК для селлеров | Полный каталог логистики</title>
+  <meta name="description" content="Каталог B2B услуг СДЭК: FBS, DBS, фулфилмент, КГТ, страхование и аналитика. Все решения для маркетплейсов в одном месте." />
 
   <meta name="theme-color" content="#8DE21A" />
   <link rel="canonical" href="https://cdek-marketplace.ru/services/" />
@@ -36,305 +25,19 @@
 
   <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 w-full">
     
-    <div class="mb-10 text-center">
+    <div class="mb-12 text-center">
       <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Услуги для селлеров</h1>
-      <p class="text-slate-400 text-lg max-w-2xl mx-auto">Полный спектр логистических решений для масштабирования вашего бизнеса на маркетплейсах.</p>
+      <p class="text-slate-400 text-lg max-w-2xl mx-auto">Полный спектр логистических решений СДЭК для вашего бизнеса на маркетплейсах.</p>
     </div>
 
-    <div class="mb-10 max-w-xl mx-auto">
-      <input type="text" id="searchInput" placeholder="Поиск по услугам..." 
-             class="w-full bg-slate-800 border border-slate-700 rounded-lg px-5 py-3 text-white focus:outline-none focus:border-cdek transition-colors" />
+    <div class="mb-12 max-w-xl mx-auto">
+      <input type="text" id="searchInput" placeholder="Поиск по названию или описанию..." 
+             class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-cdek transition-all shadow-lg" />
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="servicesGrid">
       
-      <!-- 1. FBS -->
-      <a href="/services/fbs/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">0 ₽</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Подключение по FBS</h3>
-        <p class="text-slate-400 text-sm">Отгрузка со своего склада до ПВЗ. Быстрая доставка до маркетплейсов со скидкой.</p>
-      </a>
-
-      <!-- 2. DBS -->
-      <a href="/services/dbs/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">0 ₽</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Спецтариф DBS</h3>
-        <p class="text-slate-400 text-sm">Доставка напрямую до двери покупателя. Специальные тарифы для посылок до 1 кг.</p>
-      </a>
-
-      <!-- 3. Договор ИП -->
-      <a href="/services/dogovor-ip/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">0 ₽</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Договор для ИП</h3>
-        <p class="text-slate-400 text-sm">Бесплатное заключение корпоративного договора для селлеров.</p>
-      </a>
-
-      <!-- 4. Юнит-экономика -->
-      <a href="/services/unit-economy/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">0 ₽</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Юнит-экономика</h3>
-        <p class="text-slate-400 text-sm">Подбор наилучшего тарифа для селлеров. Расчет маржинальности.</p>
-      </a>
-
-      <!-- 5. Фулфилмент -->
-      <a href="/services/fulfillment/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">от 15 ₽</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Фулфилмент</h3>
-        <p class="text-slate-400 text-sm">Комплексные услуги: от приемки товара до последней мили. Снижение издержек на склад.</p>
-      </a>
-
-      <!-- 6. Кросс-докинг -->
-      <a href="/services/cross-docking/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">от 50 ₽</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Кросс-докинг</h3>
-        <p class="text-slate-400 text-sm">Быстрая перевалка грузов и отправка на склады маркетплейсов без хранения.</p>
-      </a>
-
-      <!-- 7. Забор груза -->
-      <a href="/services/zabor-gruza/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">от 150 ₽</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Забор груза</h3>
-        <p class="text-slate-400 text-sm">Автоматизируйте отгрузку: мы сами приедем и заберем ваши посылки со склада.</p>
-      </a>
-
-      <!-- 8. LTL Доставка -->
-      <a href="/services/ltl-shipping/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 011 1v2.5a.5.5 0 01-.5.5H13m-1-4h1m4-10h2a1 1 0 011 1v10a1 1 0 01-1 1h-1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">от 300 ₽</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">LTL (Сборные грузы )</h3>
-        <p class="text-slate-400 text-sm">Экономичная доставка крупных партий товаров паллетами и коробами по всей РФ.</p>
-      </a>
-
-      <!-- 9. КГТ Доставка -->
-      <a href="/services/kgt-delivery/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">от 500 ₽</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Доставка КГТ</h3>
-        <p class="text-slate-400 text-sm">Перевозка мебели, техники и тяжелых грузов по специальным тарифам для селлеров.</p>
-      </a>
-
-      <!-- 10. СНГ Доставка -->
-      <a href="/services/cis-delivery/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 002 2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">от 250 ₽</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Доставка в СНГ</h3>
-        <p class="text-slate-400 text-sm">Масштабируйте продажи в Казахстан и Беларусь по упрощенной схеме для бизнеса.</p>
-      </a>
-
-      <!-- 11. Экспресс-доставка -->
-      <a href="/services/express-delivery/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">от 180 ₽</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Экспресс-доставка</h3>
-        <p class="text-slate-400 text-sm">Срочная отправка заказов день-в-день. Повышайте лояльность клиентов за счет сроков.</p>
-      </a>
-
-      <!-- 12. Возвраты -->
-      <a href="/services/returns-management/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">от 40 ₽</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Управление возвратами</h3>
-        <p class="text-slate-400 text-sm">Минимизируйте убытки. Быстрый возврат товара селлеру для повторной продажи.</p>
-      </a>
-
-      <!-- 13. Упаковка -->
-      <a href="/services/packaging-services/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">от 10 ₽</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Упаковка по стандартам</h3>
-        <p class="text-slate-400 text-sm">Профессиональная подготовка товаров к отгрузке на Ozon, WB и Яндекс Маркет.</p>
-      </a>
-
-      <!-- 14. API Интеграция -->
-      <a href="/services/api-integration/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">бесплатно</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">API Интеграция</h3>
-        <p class="text-slate-400 text-sm">Автоматический расчет стоимости, создание накладных и печать этикеток из вашей CMS.</p>
-      </a>
-
-      <!-- 15. Страхование -->
-      <a href="/services/cargo-insurance/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">0.75%</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Страхование грузов</h3>
-        <p class="text-slate-400 text-sm">Защитите свой капитал. Полная материальная ответственность за товар на всех этапах.</p>
-      </a>
-
-      <!-- 16. Аналитика -->
-      <a href="/services/logistics-analytics/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v16m-6 0h6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">бесплатно</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Аналитика логистики</h3>
-        <p class="text-slate-400 text-sm">Детальная статистика по географии, срокам и стоимости доставки для контроля расходов.</p>
-      </a>
-
-      <!-- 17. Хранение -->
-      <a href="/services/storage-services/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">от 5 ₽/дн</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Ответхранение</h3>
-        <p class="text-slate-400 text-sm">Храните товары на профессиональных складах СДЭК с круглосуточной охраной.</p>
-      </a>
-
-      <!-- 18. Честный ЗНАК -->
-      <a href="/services/labeling-chestny-znak/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M7 7h.01M7 11h.01M7 15h.01M10 7h.01M10 11h.01M10 15h.01M13 7h.01M13 11h.01M13 15h.01M17 7h.01M17 11h.01M17 15h.01" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">от 5 ₽</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Честный ЗНАК</h3>
-        <p class="text-slate-400 text-sm">Помощь в работе с обязательной маркировкой. Подготовка товаров по закону.</p>
-      </a>
-
-      <!-- 19. Курьер для магазинов -->
-      <a href="/services/courier-for-shops/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">от 190 ₽</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Курьерская доставка</h3>
-        <p class="text-slate-400 text-sm">Премиальный сервис для ваших покупателей. Доставка в руки в любом городе РФ.</p>
-      </a>
-
-      <!-- 20. Доставка в ПВЗ -->
-      <a href="/services/pudo-delivery/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">от 136 ₽</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Доставка в ПВЗ</h3>
-        <p class="text-slate-400 text-sm">Самая широкая сеть в России. Клиенты заберут заказ там, где им удобно.</p>
-      </a>
-
-      <!-- 21. Последняя миля -->
-      <a href="/services/last-mile/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">от 120 ₽</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Последняя миля</h3>
-        <p class="text-slate-400 text-sm">Безупречное завершение цепочки поставок. Гарантия сроков на финальном этапе.</p>
-      </a>
-
-      <!-- 22. Магистраль -->
-      <a href="/services/magistral-delivery/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 12h18M3 6h18M3 18h18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">от 15 ₽/кг</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Магистраль</h3>
-        <p class="text-slate-400 text-sm">Перевозка больших объемов товаров между регионами фурами и авиацией.</p>
-      </a>
-
-      <!-- 23. Доставка в СЦ -->
-      <a href="/services/sorting-center/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">от 100 ₽</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Доставка в СЦ</h3>
-        <p class="text-slate-400 text-sm">Отгрузка на склады Wildberries, Ozon или Яндекс Маркета по расписанию.</p>
-      </a>
-
-      <!-- 24. Наложенный платеж -->
-      <a href="/services/cash-on-delivery/" class="group block bg-slate-800/50 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800 hover:border-cdek/50 transition-all">
-        <div class="flex items-center justify-between mb-4">
-          <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          </div>
-          <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-cdek/20 text-cdek">от 1.5%</span>
-        </div>
-        <h3 class="text-xl font-semibold text-white mb-2 group-hover:text-cdek transition-colors">Наложенный платеж</h3>
-        <p class="text-slate-400 text-sm">Принимайте оплату при получении. Кассовое обслуживание и отчетность.</p>
-      </a>
+      <!-- Сюда скрипт ниже подставит все 24 карточки -->
 
     </div>
   </main>
@@ -343,24 +46,55 @@
   <!--#include virtual="/src/components/mobile-cta.html" -->
 
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const searchInput = document.getElementById('searchInput');
-      const servicesGrid = document.getElementById('servicesGrid');
-      const cards = servicesGrid.querySelectorAll('a.group');
+    const allServices = [
+      { slug: "fbs", title: "Подключение по FBS", desc: "Отгрузка со своего склада до ПВЗ. Быстрая доставка до маркетплейсов со скидкой." },
+      { slug: "dbs", title: "Спецтариф DBS", desc: "Доставка напрямую до двери покупателя. Специальные тарифы для посылок до 1 кг." },
+      { slug: "dogovor-ip", title: "Договор для ИП", desc: "Бесплатное заключение корпоративного договора для селлеров за 15 минут." },
+      { slug: "samozanyatye", title: "Договор для самозанятых", desc: "Официальное партнерство со СДЭК для плательщиков НПД без бюрократии." },
+      { slug: "unit-economy", title: "Юнит-экономика", desc: "Инструменты для просчета рентабельности и тарифов для разных габаритов." },
+      { slug: "fulfillment", title: "Фулфилмент под ключ", desc: "Хранение, бережная упаковка и доставка заказов селлеров до маркетплейсов." },
+      { slug: "cross-docking", title: "Кросс-докинг", desc: "Транзитная перевалка коробов и паллет на склады маркетплейсов без хранения." },
+      { slug: "zabor-gruza", title: "Забор груза от склада", desc: "Ежедневный выезд курьера за вашими отправлениями для экономии времени." },
+      { slug: "ltl-shipping", title: "LTL (Сборные грузы )", desc: "Экономичная доставка крупных партий товаров паллетами и коробами по всей РФ." },
+      { slug: "kgt-delivery", title: "Доставка КГТ", desc: "Специальные тарифы и условия на перевозку крупногабаритных товаров." },
+      { slug: "cis-delivery", title: "Доставка в СНГ", desc: "Масштабируйте продажи в Казахстан и Беларусь по упрощенной схеме." },
+      { slug: "express-delivery", title: "Экспресс-доставка", desc: "Срочная отправка заказов день-в-день для ваших покупателей." },
+      { slug: "returns-management", title: "Управление возвратами", desc: "Минимизируйте убытки. Быстрый возврат товара селлеру для повторной продажи." },
+      { slug: "packaging-services", title: "Упаковка по стандартам", desc: "Профессиональная подготовка товаров к отгрузке на Ozon, WB и Яндекс Маркет." },
+      { slug: "api-integration", title: "API Интеграция", desc: "Связь вашего магазина на CMS или самописном движке с базой СДЭК." },
+      { slug: "cargo-insurance", title: "Страхование грузов", desc: "Полная материальная ответственность и защита ваших отправлений." },
+      { slug: "logistics-analytics", title: "Аналитика логистики", desc: "Детальная статистика по географии, срокам и стоимости доставки." },
+      { slug: "storage-services", title: "Ответхранение", desc: "Храните товары на профессиональных складах СДЭК с круглосуточной охраной." },
+      { slug: "labeling-chestny-znak", title: "Маркировка «Честный ЗНАК»", desc: "Помощь в работе с обязательной маркировкой. Подготовка товаров по закону." },
+      { slug: "courier-for-shops", title: "Курьерская доставка", desc: "Премиальный сервис для ваших покупателей. Доставка в руки в любом городе." },
+      { slug: "pudo-delivery", title: "Доставка в ПВЗ", desc: "Самая широкая сеть в России. Клиенты заберут заказ там, где им удобно." },
+      { slug: "last-mile", title: "Последняя миля", desc: "Безупречное завершение цепочки поставок. Гарантия сохранности на финальном этапе." },
+      { slug: "magistral-delivery", title: "Магистраль", desc: "Перевозка больших объемов товаров между регионами фурами и авиацией." },
+      { slug: "sorting-center", title: "Доставка в СЦ", desc: "Отгрузка на склады Wildberries, Ozon или Яндекс Маркета по расписанию." },
+      { slug: "cash-on-delivery", title: "Наложенный платеж", desc: "Принимайте оплату при получении. Кассовое обслуживание и перевод денег." }
+    ];
 
-      searchInput.addEventListener('input', function() {
-        const query = this.value.toLowerCase().trim();
-        cards.forEach(card => {
-          const title = card.querySelector('h3').textContent.toLowerCase();
-          const desc = card.querySelector('p').textContent.toLowerCase();
-          if (title.includes(query) || desc.includes(query)) {
-            card.style.display = '';
-          } else {
-            card.style.display = 'none';
-          }
-        });
-      });
-    });
+    function renderCards(filter = '') {
+      const grid = document.getElementById('servicesGrid');
+      grid.innerHTML = allServices
+        .filter(s => s.title.toLowerCase().includes(filter.toLowerCase()) || s.desc.toLowerCase().includes(filter.toLowerCase()))
+        .map(s => `
+          <a href="/services/${s.slug}/" class="group flex flex-col h-full bg-slate-800/40 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800/70 hover:border-cdek/50 transition-all duration-300 shadow-lg">
+            <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cdek transition-colors">${s.title}</h3>
+            <p class="text-slate-400 text-sm leading-relaxed flex-grow">${s.desc}</p>
+            <div class="mt-6 flex items-center text-cdek text-xs font-semibold uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity">
+              Подробнее 
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+          </a>
+        `).join('');
+    }
+
+    document.getElementById('searchInput').addEventListener('input', (e) => renderCards(e.target.value));
+    renderCards();
   </script>
 </body>
 </html>
