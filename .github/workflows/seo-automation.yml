@@ -49,27 +49,29 @@ jobs:
       - name: Сборка матричных SEO-страниц
         run: python scripts/generate_matrix.py
 
+      - name: Сборка глобальных страниц услуг
+        run: python scripts/generate_global_services.py
+
       - name: Обновление sitemap.xml
         run: python scripts/update_sitemap.py
         
-      - name: Сохранение обновленной карты сайта
+      - name: Сохранение изменений в репозиторий
         run: |
           git config --global user.name 'SEO-Bot'
           git config --global user.email 'bot@cdek-marketplace.ru'
           
-          # 1. Принудительно очищаем состояние от старых конфликтов
-          git checkout sitemap.xml || true
+          # 1. Добавляем все нужные файлы (включая индекс и части карты сайта)
+          # Мы добавляем geo/, чтобы изменения тегов реально попали на сайт
+          git add sitemap.xml sitemap_main.xml sitemap_geo_*.xml all_urls.txt geo/
           
-          # 2. Добавляем индекс, все части карты сайта и текстовый список URL
-          git add sitemap.xml sitemap_main.xml sitemap_geo_*.xml all_urls.txt
-          
-          # 3. Фиксируем и отправляем
-          if git status --porcelain | grep -q .; then
-            git commit -m "Auto-update Sitemap Index and parts [skip ci]"
-            git pull --rebase origin main || git pull --rebase origin master
-            git push origin HEAD
+          # 2. Проверяем наличие изменений
+          if ! git diff --cached --quiet; then
+            git commit -m "Auto-update Matrix SEO, Tags and Sitemap Index [skip ci]"
+            
+            # 3. Принудительно проталкиваем изменения, игнорируя конфликты
+            git push origin HEAD --force
           else
-            echo "Изменений в карте сайта нет."
+            echo "Изменений для сохранения не обнаружено."
           fi
 
       - name: Пинг поисковиков (Bing и Яндекс)
