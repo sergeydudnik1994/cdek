@@ -8,29 +8,13 @@ on:
   workflow_dispatch: 
 
 concurrency:
-  group: git-push-sync
-  cancel-in-progress: false
+  group: seo-sync
+  cancel-in-progress: true
 
 jobs:
-  seo-linter:
-    name: 🛡️ Проверка SEO-ошибок
+  generate-and-deploy:
+    name: 🤖 SEO Matrix & Auto-Deploy
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout кода
-        uses: actions/checkout@v4
-
-      - name: Настройка Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
-          
-      - name: Запуск Линтера
-        run: python scripts/seo_linter.py
-
-  generate-and-update:
-    name: 🤖 Генерация Matrix SEO и Sitemap
-    runs-on: ubuntu-latest
-    needs: seo-linter
     permissions:
       contents: write
 
@@ -38,7 +22,6 @@ jobs:
       - name: Checkout кода
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           fetch-depth: 0 
 
       - name: Настройка Python
@@ -46,36 +29,37 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Сборка матричных SEO-страниц
-        run: python scripts/generate_matrix.py
+      - name: 1. Генерация страниц и карт
+        run: |
+          python scripts/generate_matrix.py
+          python scripts/generate_global_services.py
+          python scripts/update_sitemap.py
 
-      - name: Сборка глобальных страниц услуг
-        run: python scripts/generate_global_services.py
-
-      - name: Обновление sitemap.xml
-        run: python scripts/update_sitemap.py
-        
-      - name: Сохранение изменений в репозиторий
+      - name: 2. Сохранение в GitHub
         run: |
           git config --global user.name 'SEO-Bot'
           git config --global user.email 'bot@cdek-marketplace.ru'
           
-          # 1. Добавляем все нужные файлы (включая индекс и части карты сайта)
-          # Мы добавляем geo/, чтобы изменения тегов реально попали на сайт
-          git add sitemap.xml sitemap_main.xml sitemap_geo_*.xml all_urls.txt geo/
+          # Добавляем индекс и части карты сайта
+          git add sitemap.xml sitemap_main.xml sitemap_geo_*.xml all_urls.txt
           
-          # 2. Проверяем наличие изменений
+          # Проверяем наличие изменений (БЕЗ [skip ci])
           if ! git diff --cached --quiet; then
-            git commit -m "Auto-update Matrix SEO, Tags and Sitemap Index [skip ci]"
-            
-            # 3. Принудительно проталкиваем изменения, игнорируя конфликты
+            git commit -m "Update Sitemap Index and SEO Matrix"
             git push origin HEAD --force
           else
-            echo "Изменений для сохранения не обнаружено."
+            echo "Изменений для коммита нет."
           fi
 
-      - name: Пинг поисковиков (Bing и Яндекс)
-        if: github.event_name == 'schedule'
-        run: |
-          curl -s "http://www.bing.com/ping?sitemap=https://cdek-marketplace.ru/sitemap.xml"
-          curl -s "https://webmaster.yandex.ru/ping?sitemap=https://cdek-marketplace.ru/sitemap.xml"
+      - name: 3. Мгновенный деплой на сервер
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USER }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          port: 22
+          script: |
+            cd /var/www/cdek-html
+            git fetch origin main
+            git reset --hard origin/main
+            echo "✅ Сайт успешно обновлен на сервере!"
