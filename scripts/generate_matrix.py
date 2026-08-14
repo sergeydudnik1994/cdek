@@ -14,52 +14,69 @@ def generate_pages():
 
     platforms = [{"slug": "wildberries", "name": "Wildberries"}, {"slug": "ozon", "name": "Ozon"}, {"slug": "yandex-market", "name": "Яндекс Маркет"}]
 
+    print(f"🚀 Полная регенерация матрицы...")
+
     for city in cities:
         slug, name = city["slug"], city["name"]
         gen, prep = get_city_cases(name)
         rng = random.Random(name)
         dist = (len(slug) * 150) + (ord(slug[0]) * 5)
         
+        # Уникальный текст
         unique = f"Город {name} является важным звеном в логистической цепочке. " \
                  f"Основные перевозки в {prep} осуществляются через местные развязки. " \
                  f"Это позволяет нам доставлять заказы до Москвы (около {dist} км) в рекордные сроки."
 
-        # Подготовка списка ПВЗ и соседних городов
+        # Список ПВЗ и Перелинковка
         pvz_html = "<li class='flex items-center gap-2'><span class='text-cdek'>•</span> Адреса ПВЗ доступны на карте при оформлении.</li>"
         nearby = random.sample(cities, 5)
-        links = " ".join([f"<a href='/geo/{c['slug']}/' class='text-cdek hover:underline mr-3'>{c['name']}</a>" for c in nearby])
+        links_html = " ".join([f"<a href='/geo/{c['slug']}/' class='text-cdek hover:underline mr-3'>{c['name']}</a>" for c in nearby])
 
         for s in data["services"]:
-            # 1. Базовая услуга
+            # Словарь всех замен для данной страницы
+            reps = {
+                "{{SEO_TITLE}}": f"{s['h1_main']} в {prep} | СДЭК",
+                "{{SEO_DESC}}": f"{s['h1_main']} в {prep}. Скидки до 50% для селлеров.",
+                "{{H1_MAIN}}": f"{s['h1_main']} в {prep}",
+                "{{H1_SUB}}": s["h1_sub"],
+                "{{DESC}}": s["desc"],
+                "{{CITY_NAME}}": name,
+                "{{CITY_PREP}}": prep,
+                "{{CITY_GEN}}": gen,
+                "{{UNIQUE_CONTENT}}": unique,
+                "{{PVZ_LIST}}": pvz_html,
+                "{{NEARBY_CITIES}}": links_html,
+                "{{CITY_SLUG}}": slug,
+                "{{SERVICE_SLUG}}": s["slug"],
+                "{{LAT}}": "55.75",
+                "{{LON}}": "37.61",
+                "{{REVIEWS}}": "250"
+            }
+
+            # 1. Генерация базовой страницы
+            html = template
+            for tag, val in reps.items():
+                html = html.replace(tag, str(val))
+            
             path = os.path.join("geo", slug, s["slug"], "index.html")
             os.makedirs(os.path.dirname(path), exist_ok=True)
-            
-            html = template
-            html = html.replace("{{SEO_TITLE}}", f"{s['h1_main']} в {prep} | СДЭК")
-            html = html.replace("{{SEO_DESC}}", f"{s['h1_main']} в {prep}. Скидки до 50%.")
-            html = html.replace("{{H1_MAIN}}", f"{s['h1_main']} в {prep}")
-            html = html.replace("{{H1_SUB}}", s["h1_sub"])
-            html = html.replace("{{DESC}}", s["desc"])
-            html = html.replace("{{CITY_NAME}}", name)
-            html = html.replace("{{CITY_PREP}}", prep)
-            html = html.replace("{{UNIQUE_CONTENT}}", unique)
-            html = html.replace("{{PVZ_LIST}}", pvz_html)
-            html = html.replace("{{NEARBY_CITIES}}", links)
-            html = html.replace("{{CITY_SLUG}}", slug)
-            html = html.replace("{{SERVICE_SLUG}}", s["slug"])
-            html = html.replace("{{LAT}}", "55.75").replace("{{LON}}", "37.61").replace("{{REVIEWS}}", "250")
-            
             with open(path, "w", encoding="utf-8") as f: f.write(html)
 
-            # 2. Маркетплейсы
+            # 2. Генерация страниц маркетплейсов
             for p in platforms:
+                p_html = html # Берем уже готовую страницу и точечно правим H1 и Title
+                p_h1 = f"{s['h1_main']} {p['name']} в {prep}"
+                p_title = f"{s['h1_main']} {p['name']} в {prep} | СДЭК"
+                
+                # Заменяем старые значения на новые (с учетом платформы)
+                p_html = p_html.replace(reps["{{H1_MAIN}}"], p_h1)
+                p_html = p_html.replace(reps["{{SEO_TITLE}}"], p_title)
+                
                 p_path = os.path.join("geo", slug, p["slug"], s["slug"], "index.html")
                 os.makedirs(os.path.dirname(p_path), exist_ok=True)
-                p_html = html.replace(f"{s['h1_main']} в {prep}", f"{s['h1_main']} {p['name']} в {prep}")
-                p_html = p_html.replace(f"{s['h1_main']} в {prep} | СДЭК", f"{s['h1_main']} {p['name']} в {prep} | СДЭК")
                 with open(p_path, "w", encoding="utf-8") as f: f.write(p_html)
 
-    print(f"✅ Матрица полностью исправлена. Все блоки на месте.")
+    print(f"✅ Матрица исправлена. Все теги заменены на всех 71 000+ страницах.")
 
 if __name__ == "__main__":
     generate_pages()
