@@ -1,87 +1,277 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE yml_catalog SYSTEM "shops.dtd">
-<yml_catalog date="2026-08-10 15:54">
+<yml_catalog date="2026-08-16 06:15">
   <shop>
     <name>СДЭК Маркетплейсы</name>
     <company>СДЭК для бизнеса</company>
     <url>https://cdek-marketplace.ru/</url>
-    <currencies>
-      <currency id="RUB" rate="1"/>
-    </currencies>
-    <categories>
-      <category id="1">Логистика для маркетплейсов</category>
-      <category id="2">Специальные тарифы СДЭК</category>
-    </categories>
+    <currencies><currency id="RUB" rate="1"/></currencies>
+    <categories><category id="1">Логистика для маркетплейсов</category></categories>
     <offers>
-      
-      <!-- Услуга 1: Договор -->
       <offer id="1" available="true">
-        <name>СДЭК Маркетплейс</name>
-        <url>https://cdek-marketplace.ru/</url>
+        <name>Доставка по модели FBS для селлеров</name>
+        <url>https://cdek-marketplace.ru/services/fbs/</url>
         <price>0</price>
         <currencyId>RUB</currencyId>
         <categoryId>1</categoryId>
-        <picture>https://cdek-marketplace.ru/logo.png</picture>
-        <description>Официальный договор со СДЭК для ИП и ООО. Скидки до 50% на отгрузки FBS и DBS для Ozon, WB, Яндекс Маркета и Авито. Без визита в офис за 15 минут.</description>
-        <param name="рейтинг">5.0</param>
-        <param name="число отзывов">1150</param>
-        <param name="годы опыта">10</param>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Оптимизация логистики FBS. Надежная служба доставки со скидками до 50%.</description>
+        <param name="рейтинг">4.9</param>
         <param name="регион">Россия</param>
-        <param name="конверсия">98</param>
-        <param name="режим работы">Пн-Вс 09:00–18:00</param>
       </offer>
-
-      <!-- Услуга 2: Спецтариф DBS 1 кг -->
       <offer id="2" available="true">
-        <name>СДЭК Маркетплейс</name>
-        <url>https://cdek-marketplace.ru/calculator/dbs-1kg/</url>
-        <price>136.50</price>
+        <name>Спецтариф DBS для интернет-магазинов</name>
+        <url>https://cdek-marketplace.ru/services/dbs/</url>
+        <price>0</price>
         <currencyId>RUB</currencyId>
-        <categoryId>2</categoryId>
-        <picture>https://cdek-marketplace.ru/logo.png</picture>
-        <description>Особые условия доставки легких посылок от 136.50 ₽ при настроенной API-интеграции витрины со СДЭК.</description>
-        <param name="рейтинг">5.0</param>
-        <param name="число отзывов">1150</param>
-        <param name="годы опыта">10</param>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Настройка DBS (Delivery by Seller). Доставка товаров от продавца к покупателю по спецтарифам.</description>
+        <param name="рейтинг">4.9</param>
         <param name="регион">Россия</param>
-        <param name="конверсия">98</param>
-        <param name="режим работы">Пн-Вс 09:00–18:00</param>
       </offer>
-
-      <!-- Услуга 3: FBS Доставка -->
       <offer id="3" available="true">
-        <name>СДЭК Маркетплейс</name>
-        <url>https://cdek-marketplace.ru/calculator/</url>
+        <name>Договор со СДЭК для ИП</name>
+        <url>https://cdek-marketplace.ru/services/dogovor-ip/</url>
+        <price>0</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Бесплатное заключение корпоративного договора для селлеров.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
+      <offer id="4" available="true">
+        <name>Расчет юнит-экономики и логистики</name>
+        <url>https://cdek-marketplace.ru/services/unit-economy/</url>
+        <price>0</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Подбор наилучшего тарифа для селлеров. Расчет маржинальности.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
+      <offer id="5" available="true">
+        <name>Фулфилмент для маркетплейсов</name>
+        <url>https://cdek-marketplace.ru/services/fulfillment/</url>
+        <price>15</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Комплексные услуги фулфилмента: от приемки товара до последней мили. Снижение издержек на склад.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
+      <offer id="6" available="true">
+        <name>Кросс-докинг для селлеров</name>
+        <url>https://cdek-marketplace.ru/services/cross-docking/</url>
+        <price>50</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Быстрая перевалка грузов и отправка на склады маркетплейсов. Минимальные сроки и стоимость.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
+      <offer id="7" available="true">
+        <name>Забор груза со склада селлера</name>
+        <url>https://cdek-marketplace.ru/services/zabor-gruza/</url>
+        <price>150</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Автоматизируйте отгрузку: мы сами приедем и заберем ваши посылки для доставки клиентам.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
+      <offer id="8" available="true">
+        <name>Доставка сборных грузов (LTL)</name>
+        <url>https://cdek-marketplace.ru/services/ltl-shipping/</url>
+        <price>300</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Экономичная доставка крупных партий товаров для интернет-магазинов и оптовиков.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
+      <offer id="9" available="true">
+        <name>Доставка крупногабаритных товаров (КГТ)</name>
+        <url>https://cdek-marketplace.ru/services/kgt-delivery/</url>
+        <price>500</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Специальные тарифы на доставку КГТ для селлеров. Честные замеры и бережная транспортировка.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
+      <offer id="10" available="true">
+        <name>Доставка в страны СНГ (Казахстан, Беларусь)</name>
+        <url>https://cdek-marketplace.ru/services/cis-delivery/</url>
+        <price>250</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Масштабируйте продажи за пределы РФ. Доставка в СНГ по упрощенной схеме для бизнеса.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
+      <offer id="11" available="true">
+        <name>Экспресс-доставка для интернет-магазинов</name>
+        <url>https://cdek-marketplace.ru/services/express-delivery/</url>
         <price>180</price>
         <currencyId>RUB</currencyId>
         <categoryId>1</categoryId>
-        <picture>https://cdek-marketplace.ru/logo.png</picture>
-        <description>Отгрузка товаров на маркетплейсы через любой из 4000+ ПВЗ СДЭК без очередей и жестких тайм-слотов со скидкой до 50%.</description>
-        <param name="рейтинг">5.0</param>
-        <param name="число отзывов">1150</param>
-        <param name="годы опыта">10</param>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Повышайте лояльность клиентов за счет рекордных сроков доставки. Приоритетная обработка грузов.</description>
+        <param name="рейтинг">4.9</param>
         <param name="регион">Россия</param>
-        <param name="конверсия">98</param>
-        <param name="режим работы">Пн-Вс 09:00–18:00</param>
       </offer>
-
-      <!-- Услуга 4: Расчет юнит-экономики -->
-      <offer id="4" available="true">
-        <name>СДЭК Маркетплейс</name>
-        <url>https://cdek-marketplace.ru/faq/</url>
+      <offer id="12" available="true">
+        <name>Управление возвратами (Reverse Logistics)</name>
+        <url>https://cdek-marketplace.ru/services/returns-management/</url>
+        <price>40</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Минимизируйте убытки на возвратах. Быстрый возврат товара селлеру для повторной продажи.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
+      <offer id="13" available="true">
+        <name>Упаковка товаров по стандартам МП</name>
+        <url>https://cdek-marketplace.ru/services/packaging-services/</url>
+        <price>10</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Профессиональная подготовка товаров к отгрузке на Ozon, WB и Яндекс Маркет.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
+      <offer id="14" available="true">
+        <name>Интеграция СДЭК по API</name>
+        <url>https://cdek-marketplace.ru/services/api-integration/</url>
         <price>0</price>
         <currencyId>RUB</currencyId>
         <categoryId>1</categoryId>
-        <picture>https://cdek-marketplace.ru/logo.png</picture>
-        <description>Бесплатный подбор наилучшего тарифа СДЭК и расчет юнит-экономики под габариты ваших товаров с учетом налогообложения.</description>
-        <param name="рейтинг">5.0</param>
-        <param name="число отзывов">1150</param>
-        <param name="годы опыта">10</param>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Подключите свой магазин к логистике СДЭК. Автоматический расчет стоимости и печать этикеток.</description>
+        <param name="рейтинг">4.9</param>
         <param name="регион">Россия</param>
-        <param name="конверсия">98</param>
-        <param name="режим работы">Пн-Вс 09:00–18:00</param>
       </offer>
-
+      <offer id="15" available="true">
+        <name>Страхование грузов для селлеров</name>
+        <url>https://cdek-marketplace.ru/services/cargo-insurance/</url>
+        <price>075</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Защитите свой капитал. Страхование посылок от повреждения, утери или подмены на всех этапах.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
+      <offer id="16" available="true">
+        <name>Аналитика логистики и продаж</name>
+        <url>https://cdek-marketplace.ru/services/logistics-analytics/</url>
+        <price>0</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Контролируйте свои расходы. Детальная статистика по географии, срокам и стоимости доставки.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
+      <offer id="17" available="true">
+        <name>Ответственное хранение товаров</name>
+        <url>https://cdek-marketplace.ru/services/storage-services/</url>
+        <price>5</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Освободите место в офисе. Храните товары на профессиональных складах с круглосуточной охраной.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
+      <offer id="18" available="true">
+        <name>Маркировка 'Честный ЗНАК'</name>
+        <url>https://cdek-marketplace.ru/services/labeling-chestny-znak/</url>
+        <price>5</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Помощь в работе с обязательной маркировкой. Подготовка товаров к продаже по закону.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
+      <offer id="19" available="true">
+        <name>Курьерская доставка для магазинов</name>
+        <url>https://cdek-marketplace.ru/services/courier-for-shops/</url>
+        <price>190</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Премиальный сервис для ваших покупателей. Курьерская доставка в руки в любом городе РФ.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
+      <offer id="20" available="true">
+        <name>Доставка в пункты выдачи (ПВЗ)</name>
+        <url>https://cdek-marketplace.ru/services/pudo-delivery/</url>
+        <price>136</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Клиенты заберут заказ там, где им удобно. 4000+ точек выдачи СДЭК по всей стране.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
+      <offer id="21" available="true">
+        <name>Доставка 'Последняя миля'</name>
+        <url>https://cdek-marketplace.ru/services/last-mile/</url>
+        <price>120</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Безупречное завершение цепочки поставок. Гарантия сроков и сохранности на финальном этапе.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
+      <offer id="22" available="true">
+        <name>Магистральные перевозки грузов</name>
+        <url>https://cdek-marketplace.ru/services/magistral-delivery/</url>
+        <price>15</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Перевозка больших объемов товаров между регионами. Оптимальные маршруты и сроки.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
+      <offer id="23" available="true">
+        <name>Доставка до сортировочных центров</name>
+        <url>https://cdek-marketplace.ru/services/sorting-center/</url>
+        <price>100</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Мы сами отвезем ваши товары в СЦ Wildberries, Ozon или Яндекс Маркета по расписанию.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
+      <offer id="24" available="true">
+        <name>Наложенный платеж (Прием оплаты)</name>
+        <url>https://cdek-marketplace.ru/services/cash-on-delivery/</url>
+        <price>15</price>
+        <currencyId>RUB</currencyId>
+        <categoryId>1</categoryId>
+        <picture>https://cdek-marketplace.ru/favicon.png</picture>
+        <description>Принимайте оплату при получении. Мы берем на себя все кассовые операции и отчетность.</description>
+        <param name="рейтинг">4.9</param>
+        <param name="регион">Россия</param>
+      </offer>
     </offers>
   </shop>
 </yml_catalog>
