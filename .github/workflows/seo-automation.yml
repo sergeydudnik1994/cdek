@@ -31,28 +31,19 @@ jobs:
 
       - name: 1. Генерация страниц, карт и фидов
         run: |
-          # Генерация базовой матрицы
           python scripts/generate_matrix.py
           python scripts/generate_global_services.py
-          
-          # Генерация страниц городов (иконки + рейтинг)
           python generate_geo_pages.py
-          
-          # Обновление карты сайта (включая блог и маркетплейсы)
           python scripts/update_sitemap.py
-          
-          # Генерация фида для Яндекса (26 услуг)
           python scripts/generate_yandex_feed.py
 
-       Maryland-2. Сохранение в GitHub
+      - name: 2. Сохранение в GitHub
         run: |
           git config --global user.name 'SEO-Bot'
           git config --global user.email 'bot@cdek-marketplace.ru'
           
-          # Добавляем все части карты сайта и фид для Яндекса
           git add sitemap.xml sitemap_main.xml sitemap_geo_*.xml all_urls.txt feed.yml
           
-          # Фиксируем изменения, чтобы они сохранились в репозитории
           if ! git diff --cached --quiet; then
             git commit -m "Update SEO Matrix, Sitemap and Yandex Feed [skip ci]"
             git push origin HEAD --force
@@ -71,8 +62,5 @@ jobs:
             cd /var/www/cdek-html
             git fetch origin main
             git reset --hard origin/main
-            
-            # Принудительно обновляем страницы городов на сервере
             python3 generate_geo_pages.py
-            
             echo "✅ Сайт, карта сайта и фиды успешно обновлены!"
