@@ -3,6 +3,7 @@ import os
 from datetime import datetime
 
 def generate_feed():
+    # Загружаем данные об услугах (их у нас 26)
     try:
         with open('scripts/seo_data.json', 'r', encoding='utf-8') as f:
             data = json.load(f)
@@ -14,6 +15,7 @@ def generate_feed():
     today = datetime.now().strftime('%Y-%m-%d %H:%M')
     host = "https://cdek-marketplace.ru"
     
+    # Заголовок YML-фида
     yml = f"""<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE yml_catalog SYSTEM "shops.dtd">
 <yml_catalog date="{today}">
@@ -25,34 +27,35 @@ def generate_feed():
     <categories><category id="1">Логистика для маркетплейсов</category></categories>
     <offers>
 """
+    # Генерируем карточку для каждой услуги
     for idx, s in enumerate(services ):
+        # Очищаем цену (оставляем только цифры)
         price = ''.join(filter(str.isdigit, s.get('price', '0')))
         if not price: price = "0"
         
-        # Используем favicon.png (PNG - самый надежный формат для фида)
+        # Используем favicon.png, так как он точно есть в корне
         picture = f"{host}/favicon.png"
         
-        # Объединяем подзаголовок и описание для максимума пользы
-        full_desc = f"{s.get('h1_sub', '')}. {s.get('desc', '')}".strip()
+        # Описание из JSON
+        desc = s.get('desc', 'Профессиональная логистика для селлеров маркетплейсов.')
         
         yml += f"""      <offer id="{idx+1}" available="true">
         <name>{s['h1_main']}</name>
-        <vendor>СДЭК</vendor>
         <url>{host}/services/{s['slug']}/</url>
         <price>{price}</price>
         <currencyId>RUB</currencyId>
         <categoryId>1</categoryId>
         <picture>{picture}</picture>
-        <description>{full_desc}</description>
+        <description>{desc}</description>
         <param name="рейтинг">4.9</param>
-        <param name="срок подключения">15 минут</param>
+        <param name="регион">Россия</param>
       </offer>
 """
     yml += "    </offers>\n  </shop>\n</yml_catalog>"
 
     with open('feed.yml', 'w', encoding='utf-8') as f:
         f.write(yml)
-    print(f"✅ Фид обновлен: {len(services)} услуг добавлено в feed.yml")
+    print(f"✅ Фид успешно сгенерирован: {len(services)} услуг добавлено в feed.yml")
 
 if __name__ == "__main__":
     generate_feed()
