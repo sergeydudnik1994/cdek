@@ -1,42 +1,29 @@
-import json, os, random, re
+import os
+import json
+import random
+import re
 
+# Специальные правила для склонения городов
 SPECIAL_CITIES = {
     "Сочи": ("Сочи", "Сочи", "в Сочи"),
     "Тольятти": ("Тольятти", "Тольятти", "в Тольятти"),
     "Улан-Удэ": ("Улан-Удэ", "Улан-Удэ", "в Улан-Удэ"),
-    "Надым": ("Надыма", "Надыме", "в Надыме"),
     "Санкт-Петербург": ("Санкт-Петербурга", "Санкт-Петербурге", "в Санкт-Петербурге"),
     "Москва": ("Москвы", "Москве", "в Москве"),
-    "Нижний Новгород": ("Нижнего Новгорода", "Нижнем Новгороде", "в Нижнем Новгороде"),
-    "Великий Новгород": ("Великого Новгорода", "Великом Новгороде", "в Великом Новгороде"),
-    "Старый Оскол": ("Старого Оскола", "Старом Осколе", "в Старом Осколе"),
-    "Красное Село": ("Красного Села", "Красном Селе", "в Красном Селе"),
-    "Набережные Челны": ("Набережных Челнов", "Набережных Челнах", "в Набережных Челнах"),
-    "Минеральные Воды": ("Минеральных Вод", "Минеральных Водах", "в Минеральных Водах"),
-    "Гусь-Хрустальный": ("Гусь-Хрустального", "Гусь-Хрустальном", "в Гусь-Хрустальном"),
-    "Ростов-на-Дону": ("Ростова-на-Дону", "Ростове-на-Дону", "в Ростове-на-Дону"),
-    "Комсомольск-на-Амуре": ("Комсомольска-на-Амуре", "Комсомольске-на-Амуре", "в Комсомольске-на-Амуре"),
-    "Славянск-на-Кубани": ("Славянска-на-Кубани", "Славянске-на-Кубани", "в Славянск-на-Кубани"),
-    "Горячий Ключ": ("Горячего Ключа", "Горячем Ключе", "в Горячем Ключе"),
-    "Сергиев Посад": ("Сергиева Посада", "Сергиевом Посаде", "в Сергиевом Посаде"),
-    "Орехово-Зуево": ("Орехово-Зуева", "Орехово-Зуеве", "в Орехово-Зуеве"),
-    "Переславль-Залесский": ("Переславля-Залесского", "Переславле-Залесском", "в Переславле-Залесском"),
-    "Каменск-Уральский": ("Каменска-Уральского", "Каменске-Уральском", "в Каменске-Уральском"),
-    "Каменск-Шахтинский": ("Каменска-Шахтинского", "Каменске-Шахтинском", "в Каменске-Шахтинском"),
-    "Камень-на-Оби": ("Камня-на-Оби", "Камне-на-Оби", "в Камне-на-Оби"),
-    "Новый Уренгой": ("Нового Уренгоя", "Новом Уренгое", "в Новом Уренгое"),
-    "Великие Луки": ("Великих Лук", "Великих Луках", "в Великих Луках"),
-    "Анжеро-Судженск": ("Анжеро-Судженска", "Анжеро-Судженске", "в Анжеро-Судженске"),
-    "Аргун": ("Аргуна", "Аргуне", "в Аргуне"),
-    "Химки": ("Химок", "Химках", "в Химках"),
-    "Мытищи": ("Мытищ", "Мытищах", "в Мытищах"),
-    "Чебоксары": ("Чебоксар", "Чебоксарах", "в Чебоксарах"),
-    "Люберцы": ("Люберец", "Люберцах", "в Люберцах"),
-    "Березники": ("Березников", "Березниках", "в Березниках"),
-    "Шахты": ("Шахт", "Шахтах", "в Шахтах"),
 }
 
 FEMININE_SOFT_CITIES = {"Казань", "Пермь", "Тюмень", "Рязань", "Тверь", "Астрахань", "Керчь", "Сызрань"}
+
+# Те самые "залетные" запросы из Яндекса для LSI-оптимизации
+LSI_QUERIES = [
+    "сдэк поставки на маркетплейсы",
+    "доставка на маркетплейсы через сдэк",
+    "отгрузка на маркетплейс через сдэк",
+    "сдэк отправка на маркетплейсы",
+    "маркетплейсы сдэк тарифы",
+    "доставка на маркетплейсы сдэк стоимость",
+    "сдэк отгрузка на маркетплейс правила"
+]
 
 def get_city_cases(city_name):
     city_name = city_name.strip()
@@ -86,77 +73,65 @@ def generate_pages():
     with open("scripts/seo_data.json", "r", encoding="utf-8") as f: data = json.load(f)
     with open("scripts/template.html", "r", encoding="utf-8") as f: template = f.read()
     with open("cities.json", "r", encoding="utf-8") as f: cities = json.load(f)
+    
+    platforms = [
+        {"slug": "wildberries", "name": "Wildberries"}, 
+        {"slug": "ozon", "name": "Ozon"}, 
+        {"slug": "yandex-market", "name": "Яндекс Маркет"}
+    ]
 
-    platforms = [{"slug": "wildberries", "name": "Wildberries"}, {"slug": "ozon", "name": "Ozon"}, {"slug": "yandex-market", "name": "Яндекс Маркет"}]
-
-    print(f"🚀 Полная регенерация матрицы с выверенной канонизацией...")
+    print(f"🚀 Генерация расширенной SEO-матрицы...")
 
     for city in cities:
         slug, name = city["slug"], city["name"]
         gen, prep, prep_v = get_city_cases(name)
-        rng = random.Random(name)
-        dist = (len(slug) * 150) + (ord(slug[0]) * 5)
         
-        unique = f"Город {name} является важным звеном в логистической цепочке. " \
-                 f"Основные перевозки {prep_v} осуществляются через местные развязки. " \
-                 f"Это позволяет нам доставлять заказы до Москвы (около {dist} км) в рекордные сроки."
+        # Генерируем блок LSI-запросов (случайный порядок для уникальности)
+        shuffled_lsi = LSI_QUERIES.copy()
+        random.shuffle(shuffled_lsi)
+        lsi_html = f"<div class='mt-8 pt-6 border-t border-slate-800 text-xs text-slate-600'><p>Популярные запросы: {', '.join(shuffled_lsi)}</p></div>"
 
-        pvz_html = "<li class='flex items-center gap-2'><span class='text-cdek'>•</span> Адреса ПВЗ доступны на карте при оформлении.</li>"
-        nearby = random.sample(cities, min(5, len(cities)))
-        links_html = " ".join([f"<a href='/geo/{c['slug']}/' class='text-cdek hover:underline mr-3'>{c['name']}</a>" for c in nearby])
+        unique_text = f"Официальное подключение селлеров {prep_v} к логистике СДЭК. " \
+                      f"Мы обеспечиваем быструю отгрузку на маркетплейсы, соблюдая все регламенты и тайм-слоты. " \
+                      f"Ваш бизнес в городе {name} получит доступ к 4000+ ПВЗ по всей стране."
 
         for s in data["services"]:
             canonical_base = f"https://cdek-marketplace.ru/geo/{slug}/{s['slug']}/"
             
             reps = {
-                "{{SEO_TITLE}}": f"{s['h1_main']} {prep_v} | СДЭК",
-                "{{SEO_DESC}}": f"{s['h1_main']} {prep_v}. Скидки до 50% для селлеров.",
+                "{{SEO_TITLE}}": f"{s['h1_main']} {prep_v} | СДЭК для маркетплейсов",
+                "{{SEO_DESC}}": f"{s['h1_main']} {prep_v}. Профессиональная логистика для селлеров, скидки до 50% и автоматизация отгрузок.",
                 "{{H1_MAIN}}": f"{s['h1_main']} {prep_v}",
                 "{{H1_SUB}}": s["h1_sub"],
                 "{{DESC}}": s["desc"],
                 "{{CITY_NAME}}": name,
-                "{{CITY_PREP}}": prep,
-                "{{CITY_GEN}}": gen,
-                "{{UNIQUE_CONTENT}}": unique,
-                "{{PVZ_LIST}}": pvz_html,
-                "{{NEARBY_CITIES}}": links_html,
-                "{{CITY_SLUG}}": slug,
-                "{{SERVICE_SLUG}}": s["slug"],
+                "{{UNIQUE_CONTENT}}": unique_text + lsi_html,
                 "{{CANONICAL_URL}}": canonical_base,
-                "{{LAT}}": "55.75",
-                "{{LON}}": "37.61",
-                "{{REVIEWS}}": "250"
+                "{{CITY_SLUG}}": slug,
+                "{{SERVICE_SLUG}}": s["slug"]
             }
 
-            # 1. Генерация базовой страницы
             html = template
-            for tag, val in reps.items():
+            for tag, val in reps.items( ):
                 html = html.replace(tag, str(val))
-            
-            # Гарантия наличия тега canonical в <head>
-            if '<link rel="canonical"' not in html:
-                html = html.replace('</head>', f'  <link rel="canonical" href="{canonical_base}" />\n</head>')
 
+            # Сохранение
             path = os.path.join("geo", slug, s["slug"], "index.html")
             os.makedirs(os.path.dirname(path), exist_ok=True)
             with open(path, "w", encoding="utf-8") as f: f.write(html)
 
-            # 2. Генерация страниц маркетплейсов с уникальным canonical
+            # Страницы маркетплейсов
             for p in platforms:
                 p_canonical = f"https://cdek-marketplace.ru/geo/{slug}/{p['slug']}/{s['slug']}/"
-                p_h1 = f"{s['h1_main']} {p['name']} {prep_v}"
-                p_title = f"{s['h1_main']} {p['name']} {prep_v} | СДЭК"
-                
-                p_html = html
-                p_html = p_html.replace(reps["{{H1_MAIN}}"], p_h1)
-                p_html = p_html.replace(reps["{{SEO_TITLE}}"], p_title)
+                p_html = html.replace(reps["{{H1_MAIN}}"], f"{s['h1_main']} {p['name']} {prep_v}" )
+                p_html = p_html.replace(reps["{{SEO_TITLE}}"], f"{s['h1_main']} {p['name']} {prep_v} | СДЭК")
                 p_html = p_html.replace(canonical_base, p_canonical)
                 
                 p_path = os.path.join("geo", slug, p["slug"], s["slug"], "index.html")
                 os.makedirs(os.path.dirname(p_path), exist_ok=True)
                 with open(p_path, "w", encoding="utf-8") as f: f.write(p_html)
 
-    print(f"✅ Матрица обновлена: грамматика выверена, канонические теги синхронизированы.")
+    print(f"✅ Матрица ГЕО-страниц успешно обновлена и оптимизирована под запросы Яндекса.")
 
 if __name__ == "__main__":
     generate_pages()
