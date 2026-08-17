@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE yml_catalog SYSTEM "shops.dtd">
-<yml_catalog date="2026-08-17 10:15">
+<yml_catalog date="2026-08-17 11:21">
   <shop>
     <name>СДЭК Маркетплейс</name>
     <company>СДЭК Маркетплейс</company>
@@ -155,7 +155,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_2" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -170,7 +170,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_3" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -185,7 +185,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_4" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -200,7 +200,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_5" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -215,7 +215,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_6" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -230,7 +230,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_7" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -245,7 +245,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_8" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -260,7 +260,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_9" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -275,7 +275,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_10" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -290,7 +290,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_11" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -305,7 +305,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_12" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -320,7 +320,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_13" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -335,7 +335,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_14" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -350,7 +350,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_15" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -365,7 +365,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_16" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -380,7 +380,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_17" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -395,7 +395,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_18" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -410,7 +410,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_19" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -425,7 +425,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_20" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -440,7 +440,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_21" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -455,7 +455,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_22" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -470,7 +470,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_23" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -485,7 +485,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_24" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -500,7 +500,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_25" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -515,7 +515,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_26" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -530,7 +530,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_27" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -545,7 +545,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_28" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -560,7 +560,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_29" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -575,7 +575,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_30" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -590,7 +590,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_31" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -605,7 +605,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
       <offer id="offer_32" available="true">
         <name>СДЭК Маркетплейс</name>
@@ -620,7 +620,7 @@
         <param name="Число отзывов">120</param>
         <param name="Годы опыта">15</param>
         <param name="Регион">Россия</param>
-        <param name="Конверсия">95%</param>
+        <param name="Конверсия">98</param>
       </offer>
     </offers>
   </shop>
