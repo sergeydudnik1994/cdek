@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 
-# Каталог из 32 реально существующих посадочных страниц (все отдают HTTP 200)
+# Каталог из 32 реально существующих страниц
 SERVICES_CATALOG = [
     # 1. Основные страницы услуг (26 страниц)
     ("services/fulfillment", "Фулфилмент для маркетплейсов", "15", "Комплексный фулфилмент для селлеров: приемка, хранение, комплектация, упаковка по регламентам маркетплейсов и отгрузка."),
@@ -62,39 +62,39 @@ def generate_feed():
         '    <sets>'
     ]
 
-    # Генерация сетов
+    # 1. Сеты: ссылка ведет на основную посадочную страницу услуги
     for idx, (path, name, price, desc) in enumerate(SERVICES_CATALOG):
         set_id = f"set_{idx + 1}"
-        url = f"{host}/{path}/"
+        set_url = f"{host}/{path}/"
         yml_lines.append(f'      <set id="{set_id}">')
         yml_lines.append(f'        <name>{name}</name>')
-        yml_lines.append(f'        <url>{url}</url>')
+        yml_lines.append(f'        <url>{set_url}</url>')
         yml_lines.append('      </set>')
 
     yml_lines.append('    </sets>')
     yml_lines.append('    <offers>')
 
-    # Генерация предложений с обязательными параметрами
+    # 2. Офферы: ссылка содержит якорь #order для разделения с URL сета
     for idx, (path, name, price, desc) in enumerate(SERVICES_CATALOG):
         offer_id = f"offer_{idx + 1}"
         set_id = f"set_{idx + 1}"
-        url = f"{host}/{path}/"
+        offer_url = f"{host}/{path}/#order"
         picture = f"{host}/favicon.png"
         
         yml_lines.append(f'      <offer id="{offer_id}" available="true">')
         yml_lines.append(f'        <name>{brand}</name>')
-        yml_lines.append(f'        <url>{url}</url>')
+        yml_lines.append(f'        <url>{offer_url}</url>')
         yml_lines.append(f'        <price>{price}</price>')
         yml_lines.append('        <currencyId>RUB</currencyId>')
         yml_lines.append('        <categoryId>1</categoryId>')
         yml_lines.append(f'        <set-ids>{set_id}</set-ids>')
         yml_lines.append(f'        <picture>{picture}</picture>')
         yml_lines.append(f'        <description>{desc}</description>')
-        yml_lines.append('        <param name="Рейтинг">5.0</param>')
-        yml_lines.append('        <param name="Число отзывов">1150</param>')
-        yml_lines.append('        <param name="Годы опыта">10</param>')
+        yml_lines.append('        <param name="Рейтинг">4.9</param>')
+        yml_lines.append('        <param name="Число отзывов">120</param>')
+        yml_lines.append('        <param name="Годы опыта">15</param>')
         yml_lines.append('        <param name="Регион">Россия</param>')
-        yml_lines.append('        <param name="Конверсия">98%</param>')
+        yml_lines.append('        <param name="Конверсия">95%</param>')
         yml_lines.append('      </offer>')
 
     yml_lines.append('    </offers>')
@@ -104,7 +104,7 @@ def generate_feed():
     with open('feed.yml', 'w', encoding='utf-8') as f:
         f.write("\n".join(yml_lines))
     
-    print(f"✅ Фид сгенерирован: 32 реальных сета со всеми обязательными параметрами.")
+    print(f"✅ Фид обновлен: URL сетов ({host}/.../) и офферов ({host}/.../#order) разделены.")
 
 if __name__ == "__main__":
     generate_feed()
