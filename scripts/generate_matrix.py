@@ -1,11 +1,86 @@
-import json, os, random
+import json, os, random, re
 
-def get_city_cases(n):
-    overrides = {"Москва": ("Москвы", "Москве"), "Санкт-Петербург": ("Санкт-Петербурга", "Санкт-Петербурге")}
-    if n in overrides: return overrides[n]
-    if n.endswith('ск'): return n+'а', n+'е'
-    if n.endswith('а'): return n[:-1]+'ы', n[:-1]+'е'
-    return n+'а', n+'е'
+SPECIAL_CITIES = {
+    "Сочи": ("Сочи", "Сочи", "в Сочи"),
+    "Тольятти": ("Тольятти", "Тольятти", "в Тольятти"),
+    "Улан-Удэ": ("Улан-Удэ", "Улан-Удэ", "в Улан-Удэ"),
+    "Надым": ("Надыма", "Надыме", "в Надыме"),
+    "Санкт-Петербург": ("Санкт-Петербурга", "Санкт-Петербурге", "в Санкт-Петербурге"),
+    "Москва": ("Москвы", "Москве", "в Москве"),
+    "Нижний Новгород": ("Нижнего Новгорода", "Нижнем Новгороде", "в Нижнем Новгороде"),
+    "Великий Новгород": ("Великого Новгорода", "Великом Новгороде", "в Великом Новгороде"),
+    "Старый Оскол": ("Старого Оскола", "Старом Осколе", "в Старом Осколе"),
+    "Красное Село": ("Красного Села", "Красном Селе", "в Красном Селе"),
+    "Набережные Челны": ("Набережных Челнов", "Набережных Челнах", "в Набережных Челнах"),
+    "Минеральные Воды": ("Минеральных Вод", "Минеральных Водах", "в Минеральных Водах"),
+    "Гусь-Хрустальный": ("Гусь-Хрустального", "Гусь-Хрустальном", "в Гусь-Хрустальном"),
+    "Ростов-на-Дону": ("Ростова-на-Дону", "Ростове-на-Дону", "в Ростове-на-Дону"),
+    "Комсомольск-на-Амуре": ("Комсомольска-на-Амуре", "Комсомольске-на-Амуре", "в Комсомольске-на-Амуре"),
+    "Славянск-на-Кубани": ("Славянска-на-Кубани", "Славянске-на-Кубани", "в Славянск-на-Кубани"),
+    "Горячий Ключ": ("Горячего Ключа", "Горячем Ключе", "в Горячем Ключе"),
+    "Сергиев Посад": ("Сергиева Посада", "Сергиевом Посаде", "в Сергиевом Посаде"),
+    "Орехово-Зуево": ("Орехово-Зуева", "Орехово-Зуеве", "в Орехово-Зуеве"),
+    "Переславль-Залесский": ("Переславля-Залесского", "Переславле-Залесском", "в Переславле-Залесском"),
+    "Каменск-Уральский": ("Каменска-Уральского", "Каменске-Уральском", "в Каменске-Уральском"),
+    "Каменск-Шахтинский": ("Каменска-Шахтинского", "Каменске-Шахтинском", "в Каменске-Шахтинском"),
+    "Камень-на-Оби": ("Камня-на-Оби", "Камне-на-Оби", "в Камне-на-Оби"),
+    "Новый Уренгой": ("Нового Уренгоя", "Новом Уренгое", "в Новом Уренгое"),
+    "Великие Луки": ("Великих Лук", "Великих Луках", "в Великих Луках"),
+    "Анжеро-Судженск": ("Анжеро-Судженска", "Анжеро-Судженске", "в Анжеро-Судженске"),
+    "Аргун": ("Аргуна", "Аргуне", "в Аргуне"),
+    "Химки": ("Химок", "Химках", "в Химках"),
+    "Мытищи": ("Мытищ", "Мытищах", "в Мытищах"),
+    "Чебоксары": ("Чебоксар", "Чебоксарах", "в Чебоксарах"),
+    "Люберцы": ("Люберец", "Люберцах", "в Люберцах"),
+    "Березники": ("Березников", "Березниках", "в Березниках"),
+    "Шахты": ("Шахт", "Шахтах", "в Шахтах"),
+}
+
+FEMININE_SOFT_CITIES = {"Казань", "Пермь", "Тюмень", "Рязань", "Тверь", "Астрахань", "Керчь", "Сызрань"}
+
+def get_city_cases(city_name):
+    city_name = city_name.strip()
+    if city_name in SPECIAL_CITIES: return SPECIAL_CITIES[city_name]
+    prep = "во" if city_name.startswith(("Владимир", "Владивосток", "Владикавказ", "Всеволожск")) else "в"
+    words = city_name.split()
+    def process_word(w):
+        parts = w.split("-")
+        gen_parts, prep_parts = [], []
+        for idx, part in enumerate(parts):
+            if len(parts) > 1 and idx == 0 and part.endswith("о"):
+                gen_parts.append(part); prep_parts.append(part); continue
+            if part in FEMININE_SOFT_CITIES:
+                gen_parts.append(part[:-1] + "и"); prep_parts.append(part[:-1] + "и")
+            elif part.endswith("ий"):
+                gen_parts.append(part[:-2] + "его" if part == "Нижний" else part[:-2] + "ого")
+                prep_parts.append(part[:-2] + "ем" if part == "Нижний" else part[:-2] + "ом")
+            elif part.endswith("ый") or part.endswith("ой"):
+                gen_parts.append(part[:-2] + "ого"); prep_parts.append(part[:-2] + "ом")
+            elif part.endswith("ая"):
+                gen_parts.append(part[:-2] + "ой"); prep_parts.append(part[:-2] + "ой")
+            elif part.endswith("ое") or part.endswith("ее"):
+                gen_parts.append(part[:-2] + "ого"); prep_parts.append(part[:-2] + "ом")
+            elif part.endswith("а"):
+                gen_parts.append(part[:-1] + "и" if len(part) > 2 and part[-2] in "гкхжчшщ" else part[:-1] + "ы")
+                prep_parts.append(part[:-1] + "е")
+            elif part.endswith("я"):
+                gen_parts.append(part[:-1] + "и"); prep_parts.append(part[:-1] + "и" if part.endswith("ия") else part[:-1] + "е")
+            elif part.endswith("о"):
+                gen_parts.append(part[:-1] + "а"); prep_parts.append(part[:-1] + "е")
+            elif part.endswith("е"):
+                gen_parts.append(part[:-1] + "я"); prep_parts.append(part[:-1] + "е")
+            elif part.endswith("ь"):
+                gen_parts.append(part[:-1] + "я"); prep_parts.append(part[:-1] + "е")
+            elif re.search(r"[бвгджзклмнпрстфхцчшщ]$", part, re.I):
+                gen_parts.append(part + "а"); prep_parts.append(part + "е")
+            else:
+                gen_parts.append(part); prep_parts.append(part)
+        return "-".join(gen_parts), "-".join(prep_parts)
+    gen_words, prep_words = [], []
+    for word in words:
+        gw, pw = process_word(word)
+        gen_words.append(gw); prep_words.append(pw)
+    return " ".join(gen_words), " ".join(prep_words), f"{prep} {' '.join(prep_words)}"
 
 def generate_pages():
     with open("scripts/seo_data.json", "r", encoding="utf-8") as f: data = json.load(f)
@@ -14,30 +89,29 @@ def generate_pages():
 
     platforms = [{"slug": "wildberries", "name": "Wildberries"}, {"slug": "ozon", "name": "Ozon"}, {"slug": "yandex-market", "name": "Яндекс Маркет"}]
 
-    print(f"🚀 Полная регенерация матрицы...")
+    print(f"🚀 Полная регенерация матрицы с выверенной канонизацией...")
 
     for city in cities:
         slug, name = city["slug"], city["name"]
-        gen, prep = get_city_cases(name)
+        gen, prep, prep_v = get_city_cases(name)
         rng = random.Random(name)
         dist = (len(slug) * 150) + (ord(slug[0]) * 5)
         
-        # Уникальный текст
         unique = f"Город {name} является важным звеном в логистической цепочке. " \
-                 f"Основные перевозки в {prep} осуществляются через местные развязки. " \
+                 f"Основные перевозки {prep_v} осуществляются через местные развязки. " \
                  f"Это позволяет нам доставлять заказы до Москвы (около {dist} км) в рекордные сроки."
 
-        # Список ПВЗ и Перелинковка
         pvz_html = "<li class='flex items-center gap-2'><span class='text-cdek'>•</span> Адреса ПВЗ доступны на карте при оформлении.</li>"
-        nearby = random.sample(cities, 5)
+        nearby = random.sample(cities, min(5, len(cities)))
         links_html = " ".join([f"<a href='/geo/{c['slug']}/' class='text-cdek hover:underline mr-3'>{c['name']}</a>" for c in nearby])
 
         for s in data["services"]:
-            # Словарь всех замен для данной страницы
+            canonical_base = f"https://cdek-marketplace.ru/geo/{slug}/{s['slug']}/"
+            
             reps = {
-                "{{SEO_TITLE}}": f"{s['h1_main']} в {prep} | СДЭК",
-                "{{SEO_DESC}}": f"{s['h1_main']} в {prep}. Скидки до 50% для селлеров.",
-                "{{H1_MAIN}}": f"{s['h1_main']} в {prep}",
+                "{{SEO_TITLE}}": f"{s['h1_main']} {prep_v} | СДЭК",
+                "{{SEO_DESC}}": f"{s['h1_main']} {prep_v}. Скидки до 50% для селлеров.",
+                "{{H1_MAIN}}": f"{s['h1_main']} {prep_v}",
                 "{{H1_SUB}}": s["h1_sub"],
                 "{{DESC}}": s["desc"],
                 "{{CITY_NAME}}": name,
@@ -48,6 +122,7 @@ def generate_pages():
                 "{{NEARBY_CITIES}}": links_html,
                 "{{CITY_SLUG}}": slug,
                 "{{SERVICE_SLUG}}": s["slug"],
+                "{{CANONICAL_URL}}": canonical_base,
                 "{{LAT}}": "55.75",
                 "{{LON}}": "37.61",
                 "{{REVIEWS}}": "250"
@@ -58,25 +133,30 @@ def generate_pages():
             for tag, val in reps.items():
                 html = html.replace(tag, str(val))
             
+            # Гарантия наличия тега canonical в <head>
+            if '<link rel="canonical"' not in html:
+                html = html.replace('</head>', f'  <link rel="canonical" href="{canonical_base}" />\n</head>')
+
             path = os.path.join("geo", slug, s["slug"], "index.html")
             os.makedirs(os.path.dirname(path), exist_ok=True)
             with open(path, "w", encoding="utf-8") as f: f.write(html)
 
-            # 2. Генерация страниц маркетплейсов
+            # 2. Генерация страниц маркетплейсов с уникальным canonical
             for p in platforms:
-                p_html = html # Берем уже готовую страницу и точечно правим H1 и Title
-                p_h1 = f"{s['h1_main']} {p['name']} в {prep}"
-                p_title = f"{s['h1_main']} {p['name']} в {prep} | СДЭК"
+                p_canonical = f"https://cdek-marketplace.ru/geo/{slug}/{p['slug']}/{s['slug']}/"
+                p_h1 = f"{s['h1_main']} {p['name']} {prep_v}"
+                p_title = f"{s['h1_main']} {p['name']} {prep_v} | СДЭК"
                 
-                # Заменяем старые значения на новые (с учетом платформы)
+                p_html = html
                 p_html = p_html.replace(reps["{{H1_MAIN}}"], p_h1)
                 p_html = p_html.replace(reps["{{SEO_TITLE}}"], p_title)
+                p_html = p_html.replace(canonical_base, p_canonical)
                 
                 p_path = os.path.join("geo", slug, p["slug"], s["slug"], "index.html")
                 os.makedirs(os.path.dirname(p_path), exist_ok=True)
                 with open(p_path, "w", encoding="utf-8") as f: f.write(p_html)
 
-    print(f"✅ Матрица исправлена. Все теги заменены на всех 71 000+ страницах.")
+    print(f"✅ Матрица обновлена: грамматика выверена, канонические теги синхронизированы.")
 
 if __name__ == "__main__":
     generate_pages()
