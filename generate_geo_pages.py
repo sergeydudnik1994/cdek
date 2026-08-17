@@ -9,6 +9,7 @@ SPECIAL_CITIES = {
     "Улан-Удэ": ("Улан-Удэ", "Улан-Удэ", "в Улан-Удэ"),
     "Надым": ("Надыма", "Надыме", "в Надыме"),
     "Санкт-Петербург": ("Санкт-Петербурга", "Санкт-Петербурге", "в Санкт-Петербурге"),
+    "Москва": ("Москвы", "Москве", "в Москве"),
     "Нижний Новгород": ("Нижнего Новгорода", "Нижнем Новгороде", "в Нижнем Новгороде"),
     "Великий Новгород": ("Великого Новгорода", "Великом Новгороде", "в Великом Новгороде"),
     "Старый Оскол": ("Старого Оскола", "Старом Осколе", "в Старом Осколе"),
@@ -40,7 +41,6 @@ SPECIAL_CITIES = {
 
 FEMININE_SOFT_CITIES = {"Казань", "Пермь", "Тюмень", "Рязань", "Тверь", "Астрахань", "Керчь", "Сызрань"}
 
-# Уникальные иконки для каждой из 24 услуг
 SERVICE_ICONS = {
     "fbs": '<path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
     "dbs": '<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
@@ -138,6 +138,13 @@ def build_city_html(slug, city_name, pvz_count):
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>СДЭК для селлеров {prep_v}: логистика FBS/DBS | Маркетплейсы</title>
   <meta name="description" content="Официальный договор со СДЭК для селлеров из {city_genitive}. Отгрузка через {pvz_count} ПВЗ {prep_v}. Интеграция с Wildberries, Ozon, Яндекс Маркетом и Авито. Скидки на логистику до 50%." />
+  <link rel="canonical" href="https://cdek-marketplace.ru/geo/{slug}/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="СДЭК для селлеров {prep_v}: логистика FBS/DBS" />
+  <meta property="og:description" content="Официальный договор со СДЭК для селлеров из {city_genitive}. Отгрузка через {pvz_count} ПВЗ {prep_v}." />
+  <meta property="og:url" content="https://cdek-marketplace.ru/geo/{slug}/" />
+  <meta property="og:image" content="https://cdek-marketplace.ru/logo.png" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
   <script type="application/ld+json">
   {{
     "@context": "https://schema.org",
@@ -199,7 +206,7 @@ def build_city_html(slug, city_name, pvz_count):
 </body>
 </html>"""
 
-def main( ):
+def main():
     geo_index = os.path.join("geo", "index.html")
     if not os.path.exists(geo_index): return
     with open(geo_index, "r", encoding="utf-8") as f: content = f.read()
