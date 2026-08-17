@@ -5,10 +5,9 @@ def generate_sitemap():
     today = datetime.now().strftime('%Y-%m-%d')
     host = "https://cdek-marketplace.ru"
     
-    # 1. Собираем БАЗОВЫЕ ссылки и РАЗДЕЛЫ (включая все маркетплейсы и статьи блога )
+    # 1. Сбор базовых разделов и корневого каталога geo/
     main_urls = [f"{host}/"]
-    
-    root_dirs = ['services', 'blog', 'ozon', 'wildberries', 'yandex-market', 'megamarket', 'avito', 'internet-magazin', 'faq', 'calculator', 'policy']
+    root_dirs = ['geo', 'services', 'blog', 'ozon', 'wildberries', 'yandex-market', 'megamarket', 'avito', 'internet-magazin', 'faq', 'calculator', 'policy']
     
     for d in root_dirs:
         if os.path.exists(d):
@@ -18,7 +17,7 @@ def generate_sitemap():
                 if os.path.isdir(sub_path) and os.path.exists(os.path.join(sub_path, "index.html")):
                     main_urls.append(f"{host}/{d}/{sub}/")
 
-    # 2. Собираем все ГЕО ссылки из папки geo/
+    # 2. Сбор всех вложенных ГЕО-ссылок
     geo_urls = []
     if os.path.exists("geo"):
         for root_dir, dirs, files in os.walk("geo"):
@@ -27,23 +26,31 @@ def generate_sitemap():
                 if rel != ".": 
                     geo_urls.append(f"{host}/geo/{rel}/")
 
-    # Функция записи XML
+    # Устранение дубликатов
+    main_urls = sorted(list(set(main_urls)))
+    geo_urls = sorted(list(set(geo_urls)))
+
     def write_xml(filename, urls, is_index=False):
         with open(filename, "w", encoding="utf-8") as f:
             f.write('<?xml version="1.0" encoding="UTF-8"?>\n')
             if is_index:
-                f.write('<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' )
+                f.write('<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
                 for u in urls:
                     f.write(f'  <sitemap><loc>{u}</loc><lastmod>{today}</lastmod></sitemap>\n')
                 f.write('</sitemapindex>')
             else:
-                f.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' )
+                f.write('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n')
                 for u in urls:
-                    priority = "0.9" if any(x in u for x in ["services", "blog", "ozon", "wildberries"]) else "0.7"
+                    if u == f"{host}/":
+                        priority = "1.0"
+                    elif any(x in u for x in ["/ozon/", "/wildberries/", "/services/", "/calculator/", "/blog/"]):
+                        priority = "0.9"
+                    else:
+                        priority = "0.7"
                     f.write(f'  <url><loc>{u}</loc><lastmod>{today}</lastmod><changefreq>weekly</changefreq><priority>{priority}</priority></url>\n')
                 f.write('</urlset>')
 
-    # 3. Генерируем сплит-карты
+    # 3. Генерация сплит-карт
     write_xml("sitemap_main.xml", main_urls)
     
     chunk_size = 40000
@@ -54,15 +61,15 @@ def generate_sitemap():
         write_xml(fname, chunk)
         geo_files.append(f"{host}/{fname}")
 
-    # 4. Главный индекс
+    # 4. Главный индекс карты сайта
     index_urls = [f"{host}/sitemap_main.xml"] + geo_files
     write_xml("sitemap.xml", index_urls, is_index=True)
     
-    # 5. Сохраняем полный список для IndexNow
+    # 5. Экспорт списка для IndexNow
     with open("all_urls.txt", "w", encoding="utf-8") as f:
         f.write("\n".join(main_urls + geo_urls))
 
-    print(f"✅ Sitemap сгенерирован! В sitemap_main.xml: {len(main_urls)} URL, гео-страниц: {len(geo_urls)}.")
+    print(f"✅ Sitemap сгенерирован: sitemap_main.xml ({len(main_urls)} URL), sitemap_geo ({len(geo_urls)} URL).")
 
 if __name__ == "__main__":
     generate_sitemap()
