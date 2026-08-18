@@ -16,9 +16,9 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
     
     <!-- Левая часть: Логотип, Выбор города -->
-    <div class="flex items-center gap-4 sm:gap-6">
+    <div class="flex items-center gap-3 sm:gap-6">
       <a href="/" class="flex items-center gap-2 group transition-transform hover:scale-105">
-        <span class="text-xl sm:text-2xl font-black text-white tracking-tight">СДЭК <span class="text-cdek">Маркетплейсы</span></span>
+        <span class="text-lg sm:text-2xl font-black text-white tracking-tight">СДЭК <span class="text-cdek">Маркетплейсы</span></span>
       </a>
 
       <!-- Кнопка выбора города -->
@@ -33,26 +33,28 @@
     </div>
 
     <!-- Правая часть: Навигация -->
-    <div class="flex items-center gap-6">
-      <nav class="hidden md:flex items-center gap-6">
-        <a href="/calculator/" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Калькулятор</a>
-        <a href="/wildberries/" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Wildberries</a>
-        <a href="/ozon/" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Ozon</a>
-        <a href="/services/" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Услуги</a>
-        <a href="/blog/" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Блог</a>
+    <div class="flex items-center gap-4 lg:gap-6">
+      <nav class="hidden md:flex items-center gap-3.5 lg:gap-5 text-xs lg:text-sm">
+        <a href="/calculator/" class="font-medium text-slate-300 hover:text-white transition-colors">Калькулятор</a>
+        <a href="/wildberries/" class="font-medium text-slate-300 hover:text-white transition-colors">Wildberries</a>
+        <a href="/ozon/" class="font-medium text-slate-300 hover:text-white transition-colors">Ozon</a>
+        <a href="/services/" class="font-medium text-slate-300 hover:text-white transition-colors">Услуги</a>
+        <a href="/solutions/" class="font-medium text-slate-300 hover:text-white transition-colors">Решения</a>
+        <a href="/blog/" class="font-medium text-slate-300 hover:text-white transition-colors">Блог</a>
       </nav>
 
-      <a href="/#leadForm" class="hidden sm:inline-flex items-center justify-center px-5 py-2 text-sm font-extrabold text-[#0b101d] bg-cdek rounded-lg hover:bg-cdek/90 transition-all shadow-lg shadow-cdek/20">
-        Оставить заявку на договор
+      <a href="/#leadForm" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs lg:text-sm font-extrabold text-[#0b101d] bg-cdek rounded-lg hover:bg-cdek/90 transition-all shadow-lg shadow-cdek/20">
+        Оставить заявку
       </a>
 
-      <!-- Мобильный бургер -->
+      <!-- Кнопка мобильного меню -->
       <button id="menuToggle" type="button" class="md:hidden flex items-center justify-center p-2 rounded-md border border-slate-700 text-slate-300 hover:text-cdek hover:border-cdek focus:outline-none transition-colors cursor-pointer" aria-label="Открыть меню">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
     </div>
+  </div>
 
   <!-- Выпадающее мобильное меню -->
   <div id="mobileMenu" class="hidden md:hidden bg-[#0b101d]/95 backdrop-blur-lg border-b border-slate-800 px-6 pt-4 pb-6 shadow-xl">
@@ -67,15 +69,16 @@
     </div>
 
     <nav class="space-y-2 mb-6">
-      <a href="/calculator/" class="mobile-link block py-3 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Калькулятор</a>
-      <a href="/wildberries/" class="mobile-link block py-3 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Wildberries</a>
-      <a href="/ozon/" class="mobile-link block py-3 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Ozon</a>
-      <a href="/services/" class="mobile-link block py-3 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Услуги</a>
-      <a href="/blog/" class="mobile-link block py-3 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Блог</a>
+      <a href="/calculator/" class="mobile-link block py-2.5 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Калькулятор</a>
+      <a href="/wildberries/" class="mobile-link block py-2.5 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Wildberries</a>
+      <a href="/ozon/" class="mobile-link block py-2.5 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Ozon</a>
+      <a href="/services/" class="mobile-link block py-2.5 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Услуги</a>
+      <a href="/solutions/" class="mobile-link block py-2.5 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Решения</a>
+      <a href="/blog/" class="mobile-link block py-2.5 px-4 rounded-lg text-base font-medium transition-colors text-slate-200 hover:bg-slate-800/30 hover:text-cdek">Блог</a>
     </nav>
     
     <div>
-      <a href="/#leadForm" id="mobileLeadBtn" class="flex items-center justify-center w-full py-3.5 bg-cdek hover:bg-cdek/90 text-[#0b101d] font-extrabold text-sm rounded-xl transition-all shadow-lg shadow-cdek/20">
+      <a href="/#leadForm" id="mobileLeadBtn" class="flex items-center justify-center w-full py-3 bg-cdek hover:bg-cdek/90 text-[#0b101d] font-extrabold text-sm rounded-xl transition-all shadow-lg shadow-cdek/20">
         Оставить заявку на договор
       </a>
     </div>
