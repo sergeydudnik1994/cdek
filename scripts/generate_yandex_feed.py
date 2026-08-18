@@ -10,30 +10,9 @@ SERVICES_CATALOG = [
     ("services/labeling-chestny-znak", "Маркировка товаров в системе «Честный ЗНАК»", "5", "Нанесение кодов DataMatrix, ввод в оборот и полное сопровождение товаров, подлежащих обязательной маркировке."),
     ("services/fbs", "Доставка заказов по модели FBS", "136", "Логистика FBS для поставщиков маркетплейсов: ежедневный забор отправлений со склада продавца и передача в сортировочные центры."),
     ("services/dbs", "Доставка по схеме DBS и RealFBS", "150", "Доставка товаров покупателям от продавца напрямую через курьерскую службу и широкую сеть пунктов выдачи СДЭК."),
-    ("services/courier-for-shops", "Курьерская доставка для интернет-магазинов", "190", "Быстрая доставка заказов до двери покупателя с возможностью примерки, частичного выкупа и согласования интервалов."),
-    ("services/pudo-delivery", "Доставка заказов в пункты выдачи (ПВЗ)", "136", "Выдача отправлений через разветвленную сеть отделений СДЭК по всей России с высоким клиентским рейтингом."),
-    ("services/express-delivery", "Срочная экспресс-доставка для e-commerce", "180", "Приоритетная доставка отправлений в минимальные сроки между городами и внутри регионов."),
-    ("services/last-mile", "Доставка «Последняя миля»", "120", "Финальный этап доставки посылок до двери покупателя или постамата с соблюдением временных слотов."),
-    ("services/zabor-gruza", "Забор груза со склада поставщика", "150", "Регулярный выезд курьера на склад селлера для забора партий посылок и доставки в распределительный центр."),
-    ("services/cash-on-delivery", "Прием наложенного платежа и кассовое обслуживание", "15", "Прием оплаты картами и наличными при вручении заказа с перечислением средств на расчетный счет продавца."),
-    ("services/samozanyatye", "Логистика для самозанятых селлеров", "136", "Специальные условия и тарифы доставки товаров для самозанятых предпринимателей на маркетплейсах."),
-    ("services/magistral-delivery", "Магистральные перевозки грузов", "15", "Межрегиональная транспортировка сборных и генеральных грузов автопарком по всей стране."),
-    ("services/ltl-shipping", "Доставка сборных грузов (LTL)", "300", "Перевозка сборных партий грузов в составе сборных машин с оплатой за фактически занимаемый объем."),
-    ("services/kgt-delivery", "Доставка крупногабаритных товаров (КГТ)", "500", "Транспортировка тяжелых и объемных товаров для маркетплейсов и интернет-магазинов со специальными тарифами."),
-    ("services/avia-shipping", "Авиадоставка грузов по России", "120", "Сверхсрочная отправка коммерческих грузов регулярными авиарейсами в удаленные и труднодоступные регионы."),
-    ("services/sorting-center", "Доставка до сортировочных центров маркетплейсов", "100", "Прямая транспортировка партий товаров в распределительные хабы Wildberries, Ozon, Яндекс Маркет и Мегамаркет."),
-    ("services/cis-delivery", "Международная доставка в страны СНГ", "250", "Трансграничная логистика в Казахстан, Беларусь, Армению, Кыргызстан с полным таможенным сопровождением."),
-    ("services/dogovor-ip", "Заключение договора со СДЭК для ИП и ООО", "500", "Оформление корпоративного договора со СДЭК для юридических лиц со скидками на логистику до 50%."),
-    ("services/api-integration", "Интеграция со СДЭК по API и модулям", "500", "Подключение CMS интернет-магазинов и учетных систем к логистическому шлюзу для автоматического создания накладных."),
-    ("services/cargo-insurance", "Страхование грузов при доставке", "75", "Комплексная финансовая защита отправлений от повреждений и утери с быстрым возмещением ущерба."),
-    ("services/unit-economy", "Расчет стоимости доставки и юнит-экономики", "500", "Экспертный аудит логистических затрат селлера и подбор оптимальных тарифов для повышения маржинальности."),
-    ("services/logistics-analytics", "Логистический аудит и консалтинг для селлеров", "500", "Анализ цепочек поставок, сроков выкупа и оптимизация расходов на хранение и транспортировку товаров."),
     ("wildberries", "Доставка СДЭК для селлеров Wildberries (FBS/DBS)", "136", "Логистика для продавцов Wildberries: спецтарифы от 136.5 ₽, отгрузка без очередей по реестру через ПВЗ СДЭК."),
     ("ozon", "Доставка СДЭК для продавцов Ozon (FBS/rFBS)", "136", "Официальная доставка для селлеров Ozon по моделям FBS и realFBS со скидками до 50% и сдачей в 4000+ ПВЗ."),
-    ("yandex-market", "Доставка для продавцов Яндекс Маркета", "136", "Интеграция и доставка отправлений селлеров Яндекс Маркета по тарифам FBS и DBS по всей России."),
-    ("megamarket", "Логистика СДЭК для селлеров Мегамаркета", "136", "Надежная доставка заказов Мегамаркета с забором со склада селлера и выдачей в отделениях СДЭК."),
-    ("avito", "Доставка СДЭК для магазинов на Авито", "136", "Организация регулярных доставок для интернет-магазинов на Авито с наложенным платежом и забором посылок."),
-    ("internet-magazin", "Комплексная доставка для интернет-магазинов", "136", "Курьерская доставка и самовывоз из ПВЗ для онлайн-магазинов с подключением B2B-тарифов со скидками до 50%.")
+    ("yandex-market", "Доставка для продавцов Яндекс Маркета", "136", "Интеграция и доставка отправлений селлеров Яндекс Маркета по тарифам FBS и DBS по всей России.")
 ]
 
 def generate_feed():
@@ -49,58 +28,36 @@ def generate_feed():
         f'    <name>{brand}</name>',
         f'    <company>{brand}</company>',
         f'    <url>{host}/</url>',
-        '    <currencies>',
-        '      <currency id="RUB" rate="1"/>',
-        '    </currencies>',
-        '    <categories>',
-        '      <category id="1">Исполнители</category>',
-        '    </categories>',
+        '    <currencies><currency id="RUB" rate="1"/></currencies>',
+        '    <categories><category id="1">Исполнители</category></categories>',
         '    <sets>'
     ]
 
-    # Сеты: основной URL страницы
-    for idx, (path, name, price, desc) in enumerate(SERVICES_CATALOG):
-        set_id = f"set_{idx + 1}"
-        set_url = f"{host}/{path}/"
-        yml_lines.append(f'      <set id="{set_id}">')
-        yml_lines.append(f'        <name>{name}</name>')
-        yml_lines.append(f'        <url>{set_url}</url>')
-        yml_lines.append('      </set>')
+    for idx, (path, name, price, desc ) in enumerate(SERVICES_CATALOG):
+        yml_lines.append(f'      <set id="set_{idx+1}"><name>{name}</name><url>{host}/{path}/</url></set>')
 
-    yml_lines.append('    </sets>')
-    yml_lines.append('    <offers>')
+    yml_lines.append('    </sets><offers>')
 
-    # Офферы: разделенный URL с якорем #order и строго числовой конверсией
     for idx, (path, name, price, desc) in enumerate(SERVICES_CATALOG):
-        offer_id = f"offer_{idx + 1}"
-        set_id = f"set_{idx + 1}"
-        offer_url = f"{host}/{path}/#order"
-        picture = f"{host}/favicon.png"
-        
-        yml_lines.append(f'      <offer id="{offer_id}" available="true">')
+        yml_lines.append(f'      <offer id="offer_{idx+1}" available="true">')
         yml_lines.append(f'        <name>{brand}</name>')
-        yml_lines.append(f'        <url>{offer_url}</url>')
+        yml_lines.append(f'        <url>{host}/{path}/#executor</url>')
         yml_lines.append(f'        <price>{price}</price>')
-        yml_lines.append('        <currencyId>RUB</currencyId>')
-        yml_lines.append('        <categoryId>1</categoryId>')
-        yml_lines.append(f'        <set-ids>{set_id}</set-ids>')
-        yml_lines.append(f'        <picture>{picture}</picture>')
+        yml_lines.append('        <currencyId>RUB</currencyId><categoryId>1</categoryId>')
+        yml_lines.append(f'        <set-ids>set_{idx+1}</set-ids>')
+        yml_lines.append(f'        <picture>{host}/favicon.png</picture>')
         yml_lines.append(f'        <description>{desc}</description>')
-        yml_lines.append('        <param name="Рейтинг">4.9</param>')
-        yml_lines.append('        <param name="Число отзывов">120</param>')
+        yml_lines.append('        <param name="Рейтинг">5.0</param>')
+        yml_lines.append('        <param name="Число отзывов">150</param>')
         yml_lines.append('        <param name="Годы опыта">15</param>')
         yml_lines.append('        <param name="Регион">Россия</param>')
-        yml_lines.append('        <param name="Конверсия">98</param>')
         yml_lines.append('      </offer>')
 
-    yml_lines.append('    </offers>')
-    yml_lines.append('  </shop>')
-    yml_lines.append('</yml_catalog>')
+    yml_lines.append('    </offers></shop></yml_catalog>')
 
     with open('feed.yml', 'w', encoding='utf-8') as f:
         f.write("\n".join(yml_lines))
-    
-    print("✅ feed.yml успешно сгенерирован со строгими типами параметров.")
+    print("✅ feed.yml обновлен: рейтинг 5.0 установлен.")
 
 if __name__ == "__main__":
     generate_feed()
