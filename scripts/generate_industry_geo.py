@@ -156,6 +156,43 @@ def get_city_cases(city_name):
         gen_words.append(gw); prep_words.append(pw)
     return " ".join(gen_words), " ".join(prep_words), f"{prep} {' '.join(prep_words)}"
 
+def build_city_solutions_section(city_slug, city_name, prep_v):
+    cards_html = []
+    for ind in INDUSTRIES:
+        cards_html.append(f"""
+        <a href="/geo/{city_slug}/solutions/{ind['slug']}/" class="group bg-slate-800/40 border border-slate-700/50 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+          <div>
+            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">{ind['title']}</h4>
+            <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">{ind['desc']}</p>
+          </div>
+          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+            <span>Тарифы {prep_v}</span>
+            <span>→</span>
+          </div>
+        </a>""")
+
+    return f"""
+    <!-- БЛОК: Отраслевые решения для города -->
+    <section class="mt-16 pt-10 border-t border-slate-800" id="city-industry-solutions">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-cdek/10 text-cdek border border-cdek/20">
+              Специализированная доставка
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-black text-white">Отраслевые решения {prep_v}</h2>
+            <p class="text-slate-400 text-sm mt-1">Готовые логистические схемы СДЭК под особенности и регламенты товаров вашей категории</p>
+          </div>
+          <a href="/solutions/" class="text-xs text-cdek hover:underline font-semibold shrink-0">Все 30+ решений по России →</a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {''.join(cards_html)}
+        </div>
+      </div>
+    </section>
+    <!-- /БЛОК: Отраслевые решения -->
+    """
+
 def generate_industry_geo():
     host = "https://cdek-marketplace.ru"
     print(f"🚀 Генерация отраслевой гео-матрицы (ТОП-50 городов × 32 ниши)...")
@@ -167,6 +204,7 @@ def generate_industry_geo():
         
         nearby = random.sample(TOP_50_CITIES, 5)
         
+        # 1. Генерация 32 отраслевых страниц города
         for ind in INDUSTRIES:
             ind_slug = ind["slug"]
             ind_title = ind["title"]
@@ -297,7 +335,25 @@ def generate_industry_geo():
                 f.write(html)
             total_count += 1
 
-    print(f"✅ Успешно сгенерировано {total_count} отраслевых гео-страниц.")
+        # 2. Внедрение блока отраслевых решений в главный хаб города geo/{c_slug}/index.html
+        city_hub_path = os.path.join("geo", c_slug, "index.html")
+        if os.path.exists(city_hub_path):
+            with open(city_hub_path, "r", encoding="utf-8") as f:
+                hub_content = f.read()
+
+            if 'id="city-industry-solutions"' not in hub_content:
+                solutions_section = build_city_solutions_section(c_slug, c_name, prep_v)
+                if "</main>" in hub_content:
+                    hub_content = hub_content.replace("</main>", f"{solutions_section}\n  </main>")
+                elif '<!--#include virtual="/src/components/footer.html" -->' in hub_content:
+                    hub_content = hub_content.replace('<!--#include virtual="/src/components/footer.html" -->', f"{solutions_section}\n  <!--#include virtual=\"/src/components/footer.html\" -->")
+                else:
+                    hub_content = hub_content.replace("</body>", f"{solutions_section}\n</body>")
+
+                with open(city_hub_path, "w", encoding="utf-8") as f:
+                    f.write(hub_content)
+
+    print(f"✅ Успешно сгенерировано {total_count} отраслевых гео-страниц и обновлены главные страницы городов.")
 
 if __name__ == "__main__":
     generate_industry_geo()
