@@ -56,16 +56,11 @@
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "СДЭК Маркетплейсы {{CITY_NAME}}",
-    "telephone": "+7 993 322 1520",
+    "telephone": "+7-993-322-15-20",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "{{CITY_NAME}}",
       "addressCountry": "RU"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": "{{LAT}}",
-      "longitude": "{{LON}}"
     },
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -97,11 +92,11 @@
 
           <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
             {{H1_MAIN}}
-            <span class="block text-2xl sm:text-3xl mt-2 text-cdek">{{H1_SUB}}</span>
+            {{H1_SUB_BLOCK}}
           </h1>
 
           <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl mb-8">
-            {{DESC}} Отгружайте товары через пункты СДЭК в г. {{CITY_NAME}} без очередей и жестких тайм-слотов.
+            {{DESC}} Отгружайте товары через пункты СДЭК {{PREP_V}} без очередей и жестких тайм-слотов.
           </p>
 
           <div class="prose prose-invert prose-sm max-w-none text-slate-400 bg-slate-800/30 p-6 rounded-xl border border-slate-700/50 mb-8 w-full">
@@ -117,8 +112,8 @@
       <!-- Блок ПВЗ -->
       <section class="mt-16 grid lg:grid-cols-2 gap-10 items-center">
         <div>
-          <h2 class="text-2xl font-bold text-white mb-6">Пункты отгрузки в г. {{CITY_NAME}}</h2>
-          <p class="text-slate-400 mb-6">Для вашего удобства мы подобрали ключевые точки приема заказов для маркетплейсов в {{CITY_PREP}}:</p>
+          <h2 class="text-2xl font-bold text-white mb-6">Пункты отгрузки {{PREP_V}}</h2>
+          <p class="text-slate-400 mb-6">Для вашего удобства мы подобрали ключевые точки приема заказов для маркетплейсов {{PREP_V}}:</p>
           <ul class="space-y-3 text-slate-300">
             <li class="flex items-center gap-2"><span class="text-cdek">•</span> Адреса ПВЗ доступны на карте при оформлении накладной.</li>
             <li class="flex items-center gap-2"><span class="text-cdek">•</span> Выбирайте ближайший пункт для быстрой отгрузки.</li>
