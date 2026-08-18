@@ -34,6 +34,7 @@ jobs:
           python scripts/generate_matrix.py
           python scripts/generate_global_services.py
           python scripts/generate_industries.py
+          python scripts/generate_industry_geo.py
           python scripts/update_sitemap.py
 
       - name: 2. Сохранение в GitHub
