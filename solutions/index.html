@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Отраслевые решения для селлеров | Полный каталог логистики</title>
+  <meta name="description" content="Каталог B2B услуг СДЭК: FBS, DBS, фулфилмент, КГТ, страхование и аналитика. Все решения для маркетплейсов в одном месте." />
+  <meta name="theme-color" content="#8DE21A" />
+  <link rel="canonical" href="https://cdek-marketplace.ru/solutions/" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { cdek: '#8de21a', dark: { 900: '#0b101d' } } } } }
+  </script>
+</head>
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased pb-16 md:pb-0">
+  <!--#include virtual="/src/components/header.html" -->
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 w-full">
+    <div class="mb-12 text-center">
+      <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Услуги для селлеров</h1>
+      <p class="text-slate-400 text-lg max-w-2xl mx-auto">Полный спектр логистических решений СДЭК для вашего бизнеса на маркетплейсах.</p>
+    </div>
+    <div class="mb-12 max-w-xl mx-auto">
+      <input type="text" id="searchInput" placeholder="Поиск по названию или описанию..." 
+             class="w-full bg-slate-800/50 border border-slate-700 rounded-xl px-6 py-4 text-white focus:outline-none focus:border-cdek transition-all shadow-lg" />
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="servicesGrid"></div>
+  </main>
+  <!--#include virtual="/src/components/footer.html" -->
+  <!--#include virtual="/src/components/mobile-cta.html" -->
+
+  <script>
+    const services = [{"slug": "odezhda-i-obuv", "title": "Логистика для магазинов одежды и обуви", "desc": "Специализированное решение для fashion-селлеров. Доставка с примеркой и частичным выкупом.", "icon": "..."}, {"slug": "mebel-i-interer", "title": "Доставка мебели и товаров для дома", "desc": "Надежная доставка крупногабаритных товаров на склады маркетплейсов и до двери покупателя.", "icon": "..."}, {"slug": "elektronika-i-tehnika", "title": "Логистика электроники и бытовой техники", "desc": "Особые условия для перевозки техники. Полная материальная ответственность и усиленная упаковка.", "icon": "..."}, {"slug": "detskie-tovary", "title": "Доставка детских товаров и игрушек", "desc": "Своевременная доставка товаров для детей. Работаем по схемам FBS и DBS.", "icon": "..."}, {"slug": "kosmetika-i-parfyumeriya", "title": "Логистика для магазинов косметики", "desc": "Доставка косметических средств и парфюмерии с соблюдением всех правил хранения.", "icon": "..."}, {"slug": "avtotovary-i-zapchasti", "title": "Доставка автотоваров и запчастей", "desc": "Перевозка запчастей любого веса. Доставка до СЦ маркетплейсов и покупателей.", "icon": "..."}, {"slug": "tovary-dlya-zhivotnyh", "title": "Логистика для зоомагазинов", "desc": "Регулярные поставки зоотоваров по всей России. Работаем со всеми маркетплейсами.", "icon": "..."}, {"slug": "sporttovary", "title": "Доставка спортивных товаров", "desc": "Перевозка спортивного оборудования любой сложности. Спецтарифы на КГТ.", "icon": "..."}, {"slug": "stroitelstvo-i-remont", "title": "Логистика товаров для ремонта", "desc": "Надежное решение для DIY-селлеров. Доставка КГТ и фулфилмент.", "icon": "..."}, {"slug": "produkty-pitaniya", "title": "Доставка продуктов питания (Dry Food)", "desc": "Работа с продуктовыми категориями на маркетплейсах. Быстрая отгрузка.", "icon": "..."}, {"slug": "bad-i-vitaminy", "title": "Доставка БАДов и витаминов", "desc": "Соблюдение правил перевозки добавок. Быстрая доставка в ПВЗ и до двери.", "icon": "..."}, {"slug": "bytovaya-himiya", "title": "Доставка бытовой химии", "desc": "Безопасная перевозка химии в надежной упаковке. Отгрузка на склады маркетплейсов.", "icon": "..."}, {"slug": "kantstovary-i-ofis", "title": "Доставка канцтоваров и офисных принадлежностей", "desc": "Массовые отгрузки офисных товаров. Скидки на объемные поставки.", "icon": "..."}, {"slug": "aksessuary-i-bizhuteriya", "title": "Доставка аксессуаров и бижутерии", "desc": "Бережная доставка украшений. Высокая скорость и низкая стоимость отправления.", "icon": "..."}, {"slug": "tovary-dlya-dachi", "title": "Доставка товаров для сада и дачи", "desc": "Перевозка садовой техники и инструментов. Спецтарифы в высокий сезон.", "icon": "..."}, {"slug": "elektrosamokaty-i-transport", "title": "Доставка электросамокатов и гироскутеров", "desc": "Специальные условия на перевозку литиевых аккумуляторов и КГТ.", "icon": "..."}, {"slug": "sumki-i-chemodany", "title": "Доставка сумок и чемоданов", "desc": "Профессиональная упаковка и доставка аксессуаров для путешествий.", "icon": "..."}, {"slug": "tekstil-dlya-doma", "title": "Доставка домашнего текстиля", "desc": "Работа с текстильными категориями. Быстрая отгрузка на склады WB и Ozon.", "icon": "..."}, {"slug": "knigi-i-poligrafiya", "title": "Доставка книг и печатной продукции", "desc": "Бережная перевозка книг. Минимальные тарифы на легкие отправления.", "icon": "..."}, {"slug": "tovary-dlya-tvorchestva", "title": "Доставка товаров для хобби и творчества", "desc": "Отправка наборов для творчества. Работаем по схемам FBS и DBS.", "icon": "..."}, {"slug": "osveschenie-i-lampy", "title": "Доставка люстр и осветительных приборов", "desc": "Усиленная упаковка для светильников. Гарантия сохранности при доставке.", "icon": "..."}, {"slug": "posuda-i-kuhnya", "title": "Доставка посуды и кухонной утвари", "desc": "Безопасная перевозка стекла и керамики. Отгрузка на маркетплейсы.", "icon": "..."}, {"slug": "podarki-i-suveniry", "title": "Доставка подарков и сувениров", "desc": "Быстрая доставка в пиковые периоды. Упаковка и хранение на фулфилменте.", "icon": "..."}, {"slug": "muzykalnye-instrumenty", "title": "Доставка музыкальных инструментов", "desc": "Особые условия для инструментов. Страхование и контроль на всех этапах.", "icon": "..."}, {"slug": "tovary-dlya-rybalki", "title": "Доставка товаров для охоты и рыбалки", "desc": "Перевозка удочек, палаток и оборудования. Доставка в любую точку РФ.", "icon": "..."}, {"slug": "santekhnika", "title": "Доставка сантехники и оборудования", "desc": "Перевозка ванн, раковин и смесителей. Спецтарифы на тяжелые грузы.", "icon": "..."}, {"slug": "zootovary-optom", "title": "Оптовая доставка зоотоваров", "desc": "Магистральные перевозки зоотоваров для дистрибьюторов и селлеров.", "icon": "..."}, {"slug": "meditsinskaya-tekhnika", "title": "Доставка медицинской техники", "desc": "Перевозка тонометров, ингаляторов и другого оборудования. Бережная доставка.", "icon": "..."}, {"slug": "shini-i-diski", "title": "Доставка автомобильных шин и дисков", "desc": "Спецтарифы на перевозку резины и дисков. Доставка до ПВЗ и СЦ.", "icon": "..."}, {"slug": "vse-dlya-prazdnika", "title": "Доставка товаров для праздников", "desc": "Быстрая отгрузка праздничного ассортимента. Работаем со всеми МП.", "icon": "..."}];
+
+    function render(filter = '') {
+      const grid = document.getElementById('servicesGrid');
+      grid.innerHTML = services
+        .filter(s => s.title.toLowerCase().includes(filter.toLowerCase()) || s.desc.toLowerCase().includes(filter.toLowerCase()))
+        .map(s => `
+          <a href="/solutions/${s.slug}/" class="group flex flex-col h-full bg-slate-800/40 border border-slate-700/50 rounded-2xl p-6 hover:bg-slate-800/70 hover:border-cdek/50 transition-all duration-300">
+            <div class="h-12 w-12 bg-cdek/10 text-cdek rounded-xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">${s.icon}</svg>
+            </div>
+            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-cdek transition-colors">${s.title}</h3>
+            <p class="text-slate-400 text-sm leading-relaxed flex-grow">${s.desc}</p>
+          </a>
+        `).join('');
+    }
+
+    document.getElementById('searchInput').addEventListener('input', (e) => render(e.target.value));
+    render();
+  </script>
+</body>
+</html>

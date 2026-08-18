@@ -17,16 +17,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Интеграция СДЭК по API в Ноябрьске | СДЭК</title>
-  <meta name="description" content="Интеграция СДЭК по API в Ноябрьске. Скидки до 50% для селлеров." />
+  <title>Интеграция СДЭК по API в Ноябрьск | СДЭК</title>
+  <meta name="description" content="{{SEO_DESC}}" />
   
   <meta name="theme-color" content="#8DE21A" />
-  <link rel="canonical" href="https://cdek-marketplace.ru/geo/noyabrsk/api-integration/" />
+  <link rel="canonical" href="https://cdek-marketplace.ru/geo/{{CITY_SLUG}}/{{SERVICE_SLUG}}/" />
   
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="СДЭК Маркетплейсы" />
-  <meta property="og:title" content="Интеграция СДЭК по API в Ноябрьске | СДЭК" />
-  <meta property="og:description" content="Интеграция СДЭК по API в Ноябрьске. Скидки до 50% для селлеров." />
+  <meta property="og:title" content="Интеграция СДЭК по API в Ноябрьск | СДЭК" />
+  <meta property="og:description" content="{{SEO_DESC}}" />
   <meta property="og:image" content="https://cdek-marketplace.ru/logo.png" />
   <link rel="icon" type="image/png" href="/favicon.png" />
 
@@ -35,7 +35,7 @@
   {
     "@context": "https://schema.org",
     "@type": "Service",
-    "name": "Интеграция СДЭК по API в Ноябрьске",
+    "name": "Интеграция СДЭК по API в Ноябрьск",
     "provider": {
       "@type": "Organization",
       "name": "СДЭК для маркетплейсов",
@@ -45,7 +45,7 @@
       "@type": "City",
       "name": "Ноябрьск"
     },
-    "description": "Интеграция СДЭК по API в Ноябрьске. Скидки до 50% для селлеров."
+    "description": "{{SEO_DESC}}"
   }
   </script>
 
@@ -63,13 +63,13 @@
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": "55.75",
-      "longitude": "37.61"
+      "latitude": "{{LAT}}",
+      "longitude": "{{LON}}"
     },
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "4.9",
-      "reviewCount": "250"
+      "reviewCount": "{{REVIEWS}}"
     }
   }
   </script>
@@ -95,8 +95,8 @@
           </div>
 
           <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
-            Интеграция СДЭК по API в Ноябрьске
-            <span class="block text-2xl sm:text-3xl mt-2 text-cdek">Автоматизация создания накладных и трекинга</span>
+            Интеграция СДЭК по API в Ноябрьск
+            <span class="block text-2xl sm:text-3xl mt-2 text-cdek">{{H1_SUB}}</span>
           </h1>
 
           <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl mb-8">
@@ -104,7 +104,7 @@
           </p>
 
           <div class="prose prose-invert prose-sm max-w-none text-slate-400 bg-slate-800/30 p-6 rounded-xl border border-slate-700/50 mb-8 w-full">
-            Город Ноябрьск является важным звеном в логистической цепочке. Основные перевозки в Ноябрьске осуществляются через местные развязки. Это позволяет нам доставлять заказы до Москвы (около 1750 км) в рекордные сроки.
+            <p>Профессиональная отгрузка и логистика в Ноябрьск. доставка на маркетплейсы сдэк стоимость, правила отгрузки сдэк маркетплейс, доставка на маркетплейсы через сдэк.</p>
           </div>
         </section>
 
@@ -117,7 +117,7 @@
       <section class="mt-16 grid lg:grid-cols-2 gap-10 items-center">
         <div>
           <h2 class="text-2xl font-bold text-white mb-6">Пункты отгрузки в г. Ноябрьск</h2>
-          <p class="text-slate-400 mb-6">Для вашего удобства мы подобрали ключевые точки приема заказов для маркетплейсов в Ноябрьске:</p>
+          <p class="text-slate-400 mb-6">Для вашего удобства мы подобрали ключевые точки приема заказов для маркетплейсов в {{CITY_PREP}}:</p>
           <ul class="space-y-3 text-slate-300">
             <li class="flex items-center gap-2"><span class="text-cdek">•</span> Адреса ПВЗ доступны на карте при оформлении накладной.</li>
             <li class="flex items-center gap-2"><span class="text-cdek">•</span> Выбирайте ближайший пункт для быстрой отгрузки.</li>
@@ -133,7 +133,7 @@
       <section class="mt-16 pt-8 border-t border-slate-800">
         <h3 class="text-lg font-semibold text-white mb-4">Другие города обслуживания:</h3>
         <div class="flex flex-wrap gap-4">
-          <a href='/geo/novodvinsk/' class='text-cdek hover:underline mr-3'>Новодвинск</a> <a href='/geo/nalchik/' class='text-cdek hover:underline mr-3'>Нальчик</a> <a href='/geo/zvenigorod/' class='text-cdek hover:underline mr-3'>Звенигород</a> <a href='/geo/kulebaki/' class='text-cdek hover:underline mr-3'>Кулебаки</a> <a href='/geo/schelkovo/' class='text-cdek hover:underline mr-3'>Щёлково</a>
+          {{NEARBY_CITIES}}
         </div>
       </section>
 
