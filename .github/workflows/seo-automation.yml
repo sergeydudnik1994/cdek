@@ -33,19 +33,22 @@ jobs:
         run: |
           python scripts/generate_matrix.py
           python scripts/generate_global_services.py
-          python generate_geo_pages.py
+          python scripts/generate_industries.py
+          python scripts/update_yandex_feed.py
           python scripts/update_sitemap.py
-          python scripts/generate_yandex_feed.py
 
       - name: 2. Сохранение в GitHub
         run: |
           git config --global user.name 'SEO-Bot'
           git config --global user.email 'bot@cdek-marketplace.ru'
           
-          git add sitemap.xml sitemap_main.xml sitemap_geo_*.xml all_urls.txt feed.yml
+          # Добавляем всё: карты, фиды и сгенерированные страницы
+          # ВАЖНО: Добавляем geo/ и solutions/, чтобы они попали на сервер
+          git add sitemap.xml sitemap_main.xml sitemap_geo_*.xml all_urls.txt feed.yml geo/ solutions/ services/ blog/
           
+          # Проверяем наличие изменений перед коммитом
           if ! git diff --cached --quiet; then
-            git commit -m "Update SEO Matrix, Sitemap and Yandex Feed [skip ci]"
+            git commit -m "Update SEO Matrix, Solutions and Sitemap [skip ci]"
             git push origin HEAD --force
           else
             echo "Изменений для коммита нет."
@@ -62,5 +65,4 @@ jobs:
             cd /var/www/cdek-html
             git fetch origin main
             git reset --hard origin/main
-            python3 generate_geo_pages.py
-            echo "✅ Сайт, карта сайта и фиды успешно обновлены!"
+            echo "✅ Сайт успешно обновлен на сервере!"
