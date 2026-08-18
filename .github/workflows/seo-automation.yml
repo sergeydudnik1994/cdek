@@ -35,6 +35,7 @@ jobs:
           python scripts/generate_global_services.py
           python scripts/generate_industries.py
           python scripts/generate_industry_geo.py
+          python scripts/generate_integrations.py
           python scripts/update_sitemap.py
 
       - name: 2. Сохранение в GitHub
@@ -42,12 +43,12 @@ jobs:
           git config --global user.name 'SEO-Bot'
           git config --global user.email 'bot@cdek-marketplace.ru'
           
-          # Добавляем карты сайта и все сгенерированные директории
-          git add sitemap.xml sitemap_main.xml sitemap_geo_*.xml all_urls.txt geo/ solutions/ services/ blog/
+          # Добавляем карты сайта и все директории, включая integrations/
+          git add sitemap*.xml all_urls.txt geo/ solutions/ services/ blog/ integrations/
           
           # Проверяем наличие изменений перед коммитом
           if ! git diff --cached --quiet; then
-            git commit -m "Update SEO Matrix, Solutions and Sitemap [skip ci]"
+            git commit -m "Update SEO Matrix, Solutions, Integrations and Sitemap [skip ci]"
             git push origin HEAD --force
           else
             echo "Изменений для коммита нет."
