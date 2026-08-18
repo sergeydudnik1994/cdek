@@ -1,23 +1,42 @@
-import os
-import json
-import random
-import re
+import json, os, random, re
 
 SPECIAL_CITIES = {
     "Сочи": ("Сочи", "Сочи", "в Сочи"),
     "Тольятти": ("Тольятти", "Тольятти", "в Тольятти"),
     "Улан-Удэ": ("Улан-Удэ", "Улан-Удэ", "в Улан-Удэ"),
+    "Надым": ("Надыма", "Надыме", "в Надыме"),
     "Санкт-Петербург": ("Санкт-Петербурга", "Санкт-Петербурге", "в Санкт-Петербурге"),
     "Москва": ("Москвы", "Москве", "в Москве"),
+    "Нижний Новгород": ("Нижнего Новгорода", "Нижнем Новгороде", "в Нижнем Новгороде"),
+    "Великий Новгород": ("Великого Новгорода", "Великом Новгороде", "в Великом Новгороде"),
+    "Старый Оскол": ("Старого Оскола", "Старом Осколе", "в Старом Осколе"),
+    "Красное Село": ("Красного Села", "Красном Селе", "в Красном Селе"),
+    "Набережные Челны": ("Набережных Челнов", "Набережных Челнах", "в Набережных Челнах"),
+    "Минеральные Воды": ("Минеральных Вод", "Минеральных Водах", "в Минеральных Водах"),
+    "Гусь-Хрустальный": ("Гусь-Хрустального", "Гусь-Хрустальном", "в Гусь-Хрустальном"),
+    "Ростов-на-Дону": ("Ростова-на-Дону", "Ростове-на-Дону", "в Ростове-на-Дону"),
+    "Комсомольск-на-Амуре": ("Комсомольска-на-Амуре", "Комсомольске-на-Амуре", "в Комсомольске-на-Амуре"),
+    "Славянск-на-Кубани": ("Славянска-на-Кубани", "Славянске-на-Кубани", "в Славянск-на-Кубани"),
+    "Горячий Ключ": ("Горячего Ключа", "Горячем Ключе", "в Горячем Ключе"),
+    "Сергиев Посад": ("Сергиева Посада", "Сергиевом Посаде", "в Сергиевом Посаде"),
+    "Орехово-Зуево": ("Орехово-Зуева", "Орехово-Зуеве", "в Орехово-Зуеве"),
+    "Переславль-Залесский": ("Переславля-Залесского", "Переславле-Залесском", "в Переславле-Залесском"),
+    "Каменск-Уральский": ("Каменска-Уральского", "Каменске-Уральском", "в Каменске-Уральском"),
+    "Каменск-Шахтинский": ("Каменска-Шахтинского", "Каменске-Шахтинском", "в Каменске-Шахтинском"),
+    "Камень-на-Оби": ("Камня-на-Оби", "Камне-на-Оби", "в Камне-на-Оби"),
+    "Новый Уренгой": ("Нового Уренгоя", "Новом Уренгое", "в Новом Уренгое"),
+    "Великие Луки": ("Великих Лук", "Великих Луках", "в Великих Луках"),
+    "Анжеро-Судженск": ("Анжеро-Судженска", "Анжеро-Судженске", "в Анжеро-Судженске"),
+    "Аргун": ("Аргуна", "Аргуне", "в Аргуне"),
+    "Химки": ("Химок", "Химках", "в Химках"),
+    "Мытищи": ("Мытищ", "Мытищах", "в Мытищах"),
+    "Чебоксары": ("Чебоксар", "Чебоксарах", "в Чебоксарах"),
+    "Люберцы": ("Люберец", "Люберцах", "в Люберцах"),
+    "Березники": ("Березников", "Березниках", "в Березниках"),
+    "Шахты": ("Шахт", "Шахтах", "в Шахтах"),
 }
-FEMININE_SOFT_CITIES = {"Казань", "Пермь", "Тюмень", "Рязань", "Тверь", "Астрахань", "Керчь", "Сызрань"}
 
-LSI_QUERIES = [
-    "сдэк поставки на маркетплейсы", "доставка на маркетплейсы через сдэк",
-    "отгрузка на маркетплейс через сдэк", "сдэк отправка на маркетплейсы",
-    "маркетплейсы сдэк тарифы", "доставка на маркетплейсы сдэк стоимость",
-    "правила отгрузки сдэк маркетплейс"
-]
+FEMININE_SOFT_CITIES = {"Казань", "Пермь", "Тюмень", "Рязань", "Тверь", "Астрахань", "Керчь", "Сызрань"}
 
 def get_city_cases(city_name):
     city_name = city_name.strip()
@@ -39,6 +58,8 @@ def get_city_cases(city_name):
                 gen_parts.append(part[:-2] + "ого"); prep_parts.append(part[:-2] + "ом")
             elif part.endswith("ая"):
                 gen_parts.append(part[:-2] + "ой"); prep_parts.append(part[:-2] + "ой")
+            elif part.endswith("ое") or part.endswith("ее"):
+                gen_parts.append(part[:-2] + "ого"); prep_parts.append(part[:-2] + "ом")
             elif part.endswith("а"):
                 gen_parts.append(part[:-1] + "и" if len(part) > 2 and part[-2] in "гкхжчшщ" else part[:-1] + "ы")
                 prep_parts.append(part[:-1] + "е")
@@ -46,8 +67,12 @@ def get_city_cases(city_name):
                 gen_parts.append(part[:-1] + "и"); prep_parts.append(part[:-1] + "и" if part.endswith("ия") else part[:-1] + "е")
             elif part.endswith("о"):
                 gen_parts.append(part[:-1] + "а"); prep_parts.append(part[:-1] + "е")
+            elif part.endswith("е"):
+                gen_parts.append(part[:-1] + "я"); prep_parts.append(part[:-1] + "е")
             elif part.endswith("ь"):
                 gen_parts.append(part[:-1] + "я"); prep_parts.append(part[:-1] + "е")
+            elif re.search(r"[бвгджзклмнпрстфхцчшщ]$", part, re.I):
+                gen_parts.append(part + "а"); prep_parts.append(part + "е")
             else:
                 gen_parts.append(part); prep_parts.append(part)
         return "-".join(gen_parts), "-".join(prep_parts)
@@ -59,49 +84,82 @@ def get_city_cases(city_name):
 
 def generate_pages():
     with open("scripts/seo_data.json", "r", encoding="utf-8") as f: data = json.load(f)
-    with open("scripts/industry_data.json", "r", encoding="utf-8") as f: ind_data = json.load(f)
     with open("scripts/template.html", "r", encoding="utf-8") as f: template = f.read()
     with open("cities.json", "r", encoding="utf-8") as f: cities = json.load(f)
-    
-    print(f"🚀 Старт МЕГА-генерации: {len(cities)} городов × ({len(data['services'])} услуг + {len(ind_data['industries'])} отраслей)...")
+
+    platforms = [{"slug": "wildberries", "name": "Wildberries"}, {"slug": "ozon", "name": "Ozon"}, {"slug": "yandex-market", "name": "Яндекс Маркет"}]
+
+    print(f"🚀 Полная регенерация гео-матрицы...")
 
     for city in cities:
         slug, name = city["slug"], city["name"]
-        _, _, prep_v = get_city_cases(name)
+        gen, prep, prep_v = get_city_cases(name)
+        rng = random.Random(name)
+        dist = (len(slug) * 150) + (ord(slug[0]) * 5)
         
-        # 1. УСЛУГИ
+        unique = f"Город {name} является важным звеном в логистической цепочке. " \
+                 f"Основные перевозки {prep_v} осуществляются через местные развязки. " \
+                 f"Это позволяет нам доставлять заказы до Москвы (около {dist} км) в рекордные сроки."
+
+        pvz_html = "<li class='flex items-center gap-2'><span class='text-cdek'>•</span> Адреса ПВЗ доступны на карте при оформлении.</li>"
+        nearby = random.sample(cities, min(5, len(cities)))
+        links_html = " ".join([f"<a href='/geo/{c['slug']}/' class='text-cdek hover:underline mr-3'>{c['name']}</a>" for c in nearby])
+
         for s in data["services"]:
-            canonical = f"https://cdek-marketplace.ru/geo/{slug}/{s['slug']}/"
-            lsi = random.sample(LSI_QUERIES, 3 )
-            html = template.replace("{{SEO_TITLE}}", f"{s['h1_main']} {prep_v} | СДЭК")
-            html = html.replace("{{H1_MAIN}}", f"{s['h1_main']} {prep_v}")
-            html = html.replace("{{CANONICAL_URL}}", canonical)
-            html = html.replace("{{CITY_NAME}}", name)
-            html = html.replace("{{DESC}}", s["desc"])
-            html = html.replace("{{UNIQUE_CONTENT}}", f"<p>Профессиональная отгрузка и логистика {prep_v}. {', '.join(lsi)}.</p>")
+            canonical_base = f"https://cdek-marketplace.ru/geo/{slug}/{s['slug']}/"
+            
+            # Формирование чистого подзаголовка без сырых тегов
+            sub_title = s.get("h1_sub", "")
+            sub_block = f'<span class="block text-2xl sm:text-3xl mt-2 text-cdek">{sub_title}</span>' if sub_title else ""
+
+            # Исключаем дублирование предлога "в"
+            raw_h1 = s['h1_main'].split(' в ')[0].strip()
+            h1_main_geo = f"{raw_h1} {prep_v}"
+
+            reps = {
+                "{{SEO_TITLE}}": f"{h1_main_geo} | СДЭК",
+                "{{SEO_DESC}}": f"{h1_main_geo}. Скидки до 50% для селлеров на маркетплейсах.",
+                "{{H1_MAIN}}": h1_main_geo,
+                "{{H1_SUB_BLOCK}}": sub_block,
+                "{{DESC}}": s.get("desc", ""),
+                "{{CITY_NAME}}": name,
+                "{{CITY_PREP}}": prep,
+                "{{CITY_GEN}}": gen,
+                "{{PREP_V}}": prep_v,
+                "{{UNIQUE_CONTENT}}": unique,
+                "{{PVZ_LIST}}": pvz_html,
+                "{{NEARBY_CITIES}}": links_html,
+                "{{CITY_SLUG}}": slug,
+                "{{SERVICE_SLUG}}": s["slug"],
+                "{{CANONICAL_URL}}": canonical_base,
+                "{{REVIEWS}}": str(random.randint(120, 350))
+            }
+
+            # 1. Базовая страница услуги
+            html = template
+            for tag, val in reps.items():
+                html = html.replace(tag, str(val))
             
             path = os.path.join("geo", slug, s["slug"], "index.html")
             os.makedirs(os.path.dirname(path), exist_ok=True)
             with open(path, "w", encoding="utf-8") as f: f.write(html)
 
-        # 2. ОТРАСЛИ
-        for ind in ind_data["industries"]:
-            canonical = f"https://cdek-marketplace.ru/geo/{slug}/{ind['slug']}/"
-            faq = f"<div class='mt-10 p-6 bg-slate-800/50 rounded-xl'><h3>Частый вопрос по теме {ind['h1_main']}:</h3><p class='text-slate-400 mt-2'>Как осуществляется доставка {ind['h1_main']} {prep_v}? Ответ: Мы используем специализированную упаковку и соблюдаем регламенты маркетплейсов для этой категории товаров.</p></div>"
-            
-            html = template.replace("{{SEO_TITLE}}", f"{ind['h1_main']} {prep_v} | СДЭК Маркетплейс" )
-            html = html.replace("{{H1_MAIN}}", f"{ind['h1_main']} {prep_v}")
-            html = html.replace("{{H1_SUB}}", ind["h1_sub"])
-            html = html.replace("{{DESC}}", ind["desc"])
-            html = html.replace("{{CANONICAL_URL}}", canonical)
-            html = html.replace("{{CITY_NAME}}", name)
-            html = html.replace("{{UNIQUE_CONTENT}}", f"<p>{ind['desc']}</p>{faq}")
-            
-            path = os.path.join("geo", slug, ind["slug"], "index.html")
-            os.makedirs(os.path.dirname(path), exist_ok=True)
-            with open(path, "w", encoding="utf-8") as f: f.write(html)
+            # 2. Страницы маркетплейсов
+            for p in platforms:
+                p_canonical = f"https://cdek-marketplace.ru/geo/{slug}/{p['slug']}/{s['slug']}/"
+                p_h1 = f"{raw_h1} {p['name']} {prep_v}"
+                p_title = f"{p_h1} | СДЭК"
+                
+                p_html = html
+                p_html = p_html.replace(reps["{{H1_MAIN}}"], p_h1)
+                p_html = p_html.replace(reps["{{SEO_TITLE}}"], p_title)
+                p_html = p_html.replace(canonical_base, p_canonical)
+                
+                p_path = os.path.join("geo", slug, p["slug"], s["slug"], "index.html")
+                os.makedirs(os.path.dirname(p_path), exist_ok=True)
+                with open(p_path, "w", encoding="utf-8") as f: f.write(p_html)
 
-    print(f"✅ Генерация завершена. Ваш сайт готов к доминированию в поиске!")
+    print(f"✅ Гео-матрица перегенерирована: падежи исправлены, лишние теги удалены.")
 
 if __name__ == "__main__":
     generate_pages()
