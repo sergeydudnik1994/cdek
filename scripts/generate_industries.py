@@ -1,45 +1,42 @@
 import os
 import json
+import re
 
 def generate_industries():
     with open("scripts/industry_data.json", "r", encoding="utf-8") as f:
         data = json.load(f)
+
+    with open("scripts/generate_global_services.py", "r", encoding="utf-8") as f:
+        content = f.read()
     
-    # Используем ваш основной шаблон
-    with open("scripts/template.html", "r", encoding="utf-8") as f:
-        template = f.read()
-    
+    html_match = re.search(r'html_content = f"""(.*?)"""', content, re.DOTALL)
+    if not html_match: return
+    page_template = html_match.group(1)
+
+    with open("services/index.html", "r", encoding="utf-8") as f:
+        hub_template = f.read()
+
     os.makedirs("solutions", exist_ok=True)
-    count = 0
     
+    count = 0
     for ind in data["industries"]:
         slug = ind["slug"]
-        canonical = f"https://cdek-marketplace.ru/solutions/{slug}/"
-        
-        reps = {
-            "{{SEO_TITLE}}": f"{ind['h1_main']} | СДЭК для бизнеса",
-            "{{SEO_DESC}}": f"{ind['h1_main']}. {ind['desc']} Официальное подключение со скидкой до 50%.",
-            "{{H1_MAIN}}": ind["h1_main"],
-            "{{H1_SUB}}": ind["h1_sub"],
-            "{{DESC}}": ind["desc"],
-            "{{CITY_NAME}}": "России", # Глобальная страница
-            "{{UNIQUE_CONTENT}}": f"<p class='mt-4'>{ind['desc']}</p><p class='mt-2'>Мы предлагаем специализированные тарифы и условия для категории {ind['h1_main']}. Работайте по FBS и DBS с надежным партнером.</p>",
-            "{{CANONICAL_URL}}": canonical,
-            "{{CITY_SLUG}}": "russia",
-            "{{SERVICE_SLUG}}": slug
-        }
-        
-        html = template
-        for tag, val in reps.items( ):
-            html = html.replace(tag, str(val))
+        current_html = page_template.replace('<a href="/services/" class="hover:text-cdek">Услуги</a>', '<a href="/solutions/" class="hover:text-cdek">Решения</a>')
+        formatted_html = current_html.format(slug=slug, h1_main=ind["h1_main"], h1_sub=ind["h1_sub"], desc=ind["desc"])
+        formatted_html = formatted_html.replace(f'https://cdek-marketplace.ru/services/{slug}/', f'https://cdek-marketplace.ru/solutions/{slug}/' )
         
         dir_path = os.path.join("solutions", slug)
         os.makedirs(dir_path, exist_ok=True)
-        with open(os.path.join(dir_path, "index.html"), "w", encoding="utf-8") as f:
-            f.write(html)
+        with open(os.path.join(dir_path, "index.html"), "w", encoding="utf-8") as f: f.write(formatted_html)
         count += 1
-        
-    print(f"🚀 Сгенерировано отраслевых решений: {count}")
+
+    # Генерация Хаб-страницы
+    hub_html = hub_template.replace("Все услуги СДЭК", "Отраслевые решения").replace("/services/", "/solutions/")
+    industry_list_js = [{"slug": i["slug"], "title": i["h1_main"], "desc": i["desc"], "icon": "..."} for i in data["industries"]]
+    hub_html = re.sub(r'const services = \[.*?\];', f'const services = {json.dumps(industry_list_js, ensure_ascii=False)};', hub_html, flags=re.DOTALL)
+    
+    with open("solutions/index.html", "w", encoding="utf-8") as f: f.write(hub_html)
+    print(f"🚀 Сгенерировано: {count} решений + хаб.")
 
 if __name__ == "__main__":
     generate_industries()
