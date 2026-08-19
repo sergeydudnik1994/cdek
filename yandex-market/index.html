@@ -4,25 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- SEO: Заголовки и описания -->
-  <title>СДЭК для Яндекс Маркета (DBS / FBS) — Договор и тарифы со скидкой до 50%</title>
-  <meta name="description" content="Официальное подключение продавцов Яндекс Маркета к логистике СДЭК. Спецтарифы FBS и DBS для ИП, ООО и самозанятых. Быстрая интеграция и отгрузка в ПВЗ." />
+  <!-- SEO: Оптимизированные метатеги под высокий CTR -->
+  <title>СДЭК для Яндекс Маркета (FBS и DBS) — Доставка и спецтарифы</title>
+  <meta name="description" content="Официальный B2B договор со СДЭК для продавцов Яндекс Маркета. Доставка по схемам FBS и DBS через 4 000+ ПВЗ и курьером. Скидки до 50%, подключение за 15 минут." />
 
-  <!-- SEO: Мета-теги и Canonical -->
+  <!-- SEO: Canonical и верификация -->
   <meta name="theme-color" content="#FF5722" />
   <link rel="canonical" href="https://cdek-marketplace.ru/yandex-market/" />
   <link rel="icon" type="image/png" href="/favicon.png" />
 
-  <!-- Open Graph теги (для Telegram, WhatsApp, VK) -->
+  <!-- Open Graph теги -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="СДЭК Маркетплейсы" />
   <meta property="og:locale" content="ru_RU" />
-  <meta property="og:title" content="СДЭК для Яндекс Маркета (DBS / FBS) — Спецтарифы и подключение" />
+  <meta property="og:title" content="СДЭК для Яндекс Маркета (FBS и DBS) — Доставка и спецтарифы" />
   <meta property="og:description" content="Официальная логистика СДЭК для продавцов Яндекс Маркета. Доставка по схемам FBS и DBS с B2B-тарифами и скидками до 50%." />
   <meta property="og:image" content="https://cdek-marketplace.ru/logo.png" />
   <meta property="og:url" content="https://cdek-marketplace.ru/yandex-market/" />
 
-  <!-- ЕДИНАЯ СВЯЗАННАЯ МИКРОРАЗМЕТКА (Breadcrumbs + Organization + Service + FAQPage) -->
+  <!-- ЕДИНАЯ СВЯЗАННАЯ МИКРОРАЗМЕТКА (Breadcrumbs + Service + FAQPage) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -47,7 +47,7 @@
       {
         "@type": "Organization",
         "@id": "https://cdek-marketplace.ru/#organization",
-        "name": "СДЭК для маркетплейсов",
+        "name": "СДЭК Маркетплейсы",
         "url": "https://cdek-marketplace.ru/",
         "logo": "https://cdek-marketplace.ru/logo.png",
         "contactPoint": {
@@ -75,9 +75,19 @@
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Корпоративный договор СДЭК для Яндекс Маркета (FBS / DBS)"
+                "name": "Корпоративный B2B договор СДЭК для Яндекс Маркета"
               },
               "price": "0",
+              "priceCurrency": "RUB",
+              "availability": "https://schema.org/InStock"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Спецтариф DBS для Яндекс Маркета до 1 кг"
+              },
+              "price": "136.50",
               "priceCurrency": "RUB",
               "availability": "https://schema.org/InStock"
             }
@@ -100,7 +110,7 @@
             "name": "Как отгружать заказы по схеме FBS для Яндекс Маркета?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Вы формируете накладные в Личном Кабинете СДЭК и сдаете заказы в ближайший ПВЗ СДЭК по единому реестру без очередей либо заказываете курьерский забор со своего склада."
+              "text": "Вы формируете накладные в личном кабинете СДЭК и сдаете заказы в ближайший ПВЗ СДЭК по единому реестру без очередей либо заказываете курьерский забор со своего склада."
             }
           },
           {
@@ -108,7 +118,7 @@
             "name": "Какая скидка предоставляется селлерам Яндекс Маркета?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "При заключении B2B-договора СДЭК вы получаете корпоративный тариф со скидкой до 50% от базовых розничных цен."
+              "text": "При заключении официального B2B-договора СДЭК вы получаете доступ к корпоративным тарифам со скидкой до 50% от базовых розничных цен."
             }
           }
         ]
@@ -123,50 +133,63 @@
       theme: { extend: { colors: { cdek: '#8de21a', yamarket: '#ff5722', dark: { 900: '#0b101d' } } } }
     }
   </script>
-
   <script src="https://cdn.jsdelivr.net/npm/@cdek-it/widget@3" async></script>
 </head>
 <body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#ff5722] selection:text-white pb-16 md:pb-0">
 
-  <!-- Nginx: Подключение шапки -->
   <!--#include virtual="/src/components/header.html" -->
 
   <main class="flex-grow">
     
-    <!-- HERO СЕКЦИЯ С ФОРМОЙ СПРАВА -->
-    <section class="pt-12 sm:pt-20 pb-12 relative overflow-hidden">
+    <!-- HERO СЕКЦИЯ -->
+    <section class="pt-8 sm:pt-14 pb-12 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-[#ff5722]/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-[#ff5722]/5 rounded-full blur-[80px] pointer-events-none"></div>
+
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Хлебные крошки -->
+        <nav class="text-xs sm:text-sm text-slate-400 mb-6 flex flex-wrap items-center gap-1.5">
+          <a href="/" class="hover:text-cdek transition-colors">Главная</a> <span>/</span>
+          <span class="text-white">СДЭК для Яндекс Маркета</span>
+        </nav>
+
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           
-          <!-- Левая колонка: Текст -->
-          <div class="lg:col-span-7 space-y-8">
-            <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-[#fc3f1d]/15 border border-[#fc3f1d]/30 backdrop-blur-sm">
-              <div class="w-2.5 h-2.5 rounded-full bg-[#fc3f1d] shadow-[0_0_10px_#fc3f1d] animate-pulse"></div>
+          <!-- Левая колонка -->
+          <div class="lg:col-span-7 flex flex-col items-start pt-2">
+            
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full text-xs font-semibold border border-[#ff5722]/30 bg-[#ff5722]/10 text-[#ff5722]">
+              <div class="w-2 h-2 rounded-full bg-[#ff5722] shadow-[0_0_10px_#ff5722] animate-pulse"></div>
               <span class="text-xs font-bold text-[#ff5722] uppercase tracking-wider">Яндекс Маркет DBS / FBS</span>
             </div>
-            
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1] mb-6">
               Доставка СДЭК <br class="hidden sm:block" />
               для селлеров <span class="text-[#ff5722] drop-shadow-[0_0_20px_rgba(255,87,34,0.4)]">Яндекс Маркета</span>
             </h1>
-            
-            <p class="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl">
-              Надежная доставка заказов покупателям по моделям <b class="text-white">DBS и FBS</b> с интеграцией всех статусов и быстрой отгрузкой.
+
+            <p class="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl mb-8">
+              Надежная доставка заказов покупателям по моделям <b class="text-white">DBS и FBS</b>. Автоматическая интеграция статусов, спецтарифы от 136.5 ₽ и отгрузка через 4 000+ ПВЗ без очередей.
             </p>
 
-            <div class="grid grid-cols-2 gap-6 pt-6 border-t border-slate-800/80 max-w-2xl">
+            <div class="grid grid-cols-3 gap-4 pt-6 border-y border-slate-800/80 max-w-2xl w-full">
               <div>
-                <div class="text-2xl sm:text-3xl font-bold text-[#ff5722] mb-1">Интеграция 0 ₽</div>
-                <div class="text-sm text-slate-400">Помощь в настройке</div>
+                <div class="text-2xl sm:text-3xl font-bold text-[#ff5722] mb-1">от 136.5 ₽</div>
+                <div class="text-xs text-slate-400">Спецтариф DBS</div>
               </div>
               <div>
-                <div class="text-2xl sm:text-3xl font-bold text-white mb-1">Постоплата</div>
-                <div class="text-sm text-slate-400">Удобные расчеты</div>
+                <div class="text-2xl sm:text-3xl font-bold text-white mb-1">15 мин</div>
+                <div class="text-xs text-slate-400">Подключение договора</div>
+              </div>
+              <div>
+                <div class="text-2xl sm:text-3xl font-bold text-cdek mb-1">до 50%</div>
+                <div class="text-xs text-slate-400">Скидка B2B</div>
               </div>
             </div>
           </div>
 
-          <!-- Правая колонка: Форма заявки -->
+          <!-- Правая колонка: Форма -->
           <div class="lg:col-span-5" id="mainLeadForm">
             <div class="sticky top-28">
               <!--#include virtual="/src/components/leadform.html" -->
@@ -177,39 +200,47 @@
       </div>
     </section>
 
-    <!-- КАЛЬКУЛЯТОР -->
-    <section id="widget-section" class="py-12">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- ПРЕИМУЩЕСТВА -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <h2 class="text-3xl sm:text-4xl font-bold text-white mb-10 text-center">
+        Преимущества работы со СДЭК <span class="text-[#ff5722]">на Яндекс Маркете</span>
+      </h2>
+      
+      <div class="grid md:grid-cols-3 gap-6 mb-16">
+        <div class="bg-slate-900/80 border border-slate-800 hover:border-[#ff5722]/50 p-8 rounded-2xl transition-all backdrop-blur-sm shadow-lg">
+          <div class="text-[#ff5722] mb-5 text-3xl">🔄</div>
+          <h3 class="text-xl font-bold text-white mb-3">Синхронизация API</h3>
+          <p class="text-slate-400 leading-relaxed text-sm">Автоматическая выгрузка трек-номеров и смена статусов доставки в кабинете продавца Яндекс Маркета.</p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 hover:border-[#ff5722]/50 p-8 rounded-2xl transition-all backdrop-blur-sm shadow-lg">
+          <div class="text-[#ff5722] mb-5 text-3xl">📦</div>
+          <h3 class="text-xl font-bold text-white mb-3">Модели FBS и DBS</h3>
+          <p class="text-slate-400 leading-relaxed text-sm">Доставка до складов Яндекс Маркета или напрямую покупателю курьером и в пункты выдачи СДЭК[cite: 4].</p>
+        </div>
+
+        <div class="bg-slate-900/80 border border-slate-800 hover:border-[#ff5722]/50 p-8 rounded-2xl transition-all backdrop-blur-sm shadow-lg">
+          <div class="text-[#ff5722] mb-5 text-3xl">💳</div>
+          <h3 class="text-xl font-bold text-white mb-3">B2B тарифы</h3>
+          <p class="text-slate-400 leading-relaxed text-sm">Прямая экономия на логистике до 50% с постоплатой и закрывающими бухгалтерскими документами[cite: 4].</p>
+        </div>
+      </div>
+
+      <!-- КАЛЬКУЛЯТОР ТАРИФОВ -->
+      <div class="mb-16 max-w-5xl mx-auto">
         <!--#include virtual="/src/components/calculator-widget.html" -->
       </div>
     </section>
 
-    <!-- Блог (новости логистики) -->
+    <!-- БЛОК БЛОГА -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <!--#include virtual="/src/components/blog-latest.html" -->
     </section>
 
   </main>
 
-  <!-- Nginx: Подключение подвала -->
   <!--#include virtual="/src/components/footer.html" -->
   <!--#include virtual="/src/components/mobile-cta.html" -->
-
-  <!-- Скрипт прокрутки до формы -->
-  <script>
-    document.addEventListener('click', function(e) {
-      const btn = e.target.closest('.scroll-to-form');
-      if (btn) {
-        e.preventDefault();
-        const formElement = document.getElementById('mainLeadForm');
-        if (formElement) {
-          formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          const firstInput = formElement.querySelector('input');
-          if (firstInput) setTimeout(() => firstInput.focus(), 400);
-        }
-      }
-    });
-  </script>
 
 </body>
 </html>
