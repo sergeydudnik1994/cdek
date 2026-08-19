@@ -4,30 +4,32 @@ import os
 DATA_FILE = "scripts/seo_data.json"
 BASE_SERVICES_DIR = "services"
 
-
 def load_data():
-  with open(DATA_FILE, "r", encoding="utf-8") as f:
-    return json.load(f)
-
+    with open(DATA_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)
 
 def generate_services():
-  data = load_data()
+    data = load_data()
 
-  if not os.path.exists(BASE_SERVICES_DIR):
-    os.makedirs(BASE_SERVICES_DIR, exist_ok=True)
+    if not os.path.exists(BASE_SERVICES_DIR):
+        os.makedirs(BASE_SERVICES_DIR, exist_ok=True)
 
-  count = 0
-  for service in data["services"]:
-    slug = service["slug"]
-    dir_path = os.path.join(BASE_SERVICES_DIR, slug)
-    os.makedirs(dir_path, exist_ok=True)
+    count = 0
+    for service in data["services"]:
+        slug = service["slug"]
+        dir_path = os.path.join(BASE_SERVICES_DIR, slug)
+        os.makedirs(dir_path, exist_ok=True)
 
-    h1_main = service.get("h1_main", "Услуга СДЭК")
-    h1_sub = service.get("h1_sub", "Для селлеров")
-    desc = service.get("desc", "Официальные условия и подключение со скидкой.")
+        h1_main = service.get("h1_main", "Услуга СДЭК")
+        h1_sub = service.get("h1_sub", "Для селлеров")
+        desc = service.get("desc", "Официальные условия и подключение со скидкой.")
+        canonical_url = f"https://cdek-marketplace.ru/services/{slug}/"
 
-    # HTML с исправленной, красивой формой заявки и блоком мессенджеров
-    html_content = f"""<!DOCTYPE html>
+        # SEO: Бренд СДЭК в первых словах Title и расширенный Description
+        seo_title = f"СДЭК {h1_main} — Тарифы для маркетплейсов и e-commerce"
+        seo_desc = f"Официальное B2B-подключение к СДЭК: {h1_main.lower()}. {desc} Скидки на логистику до 50%, отгрузка через 4 000+ ПВЗ без очередей, договор за 15 минут."
+
+        html_content = f"""<!DOCTYPE html>
 <html lang="ru">
 <head>
   <!-- Yandex.Metrika counter -->
@@ -38,7 +40,6 @@ def generate_services():
         for (var j = 0; j < document.scripts.length; j++) {{if (document.scripts[j].src === r) {{ return; }} }}
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
     }})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111090265', 'ym');
-
     ym(111090265, 'init', {{ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true}});
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/111090265" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
@@ -47,39 +48,50 @@ def generate_services():
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>{h1_main} | СДЭК Маркетплейс</title>
-  <meta name="description" content="{desc} Официальное подключение со скидкой до 50%." />
-
+  <title>{seo_title}</title>
+  <meta name="description" content="{seo_desc}" />
   <meta name="theme-color" content="#8DE21A" />
-  <link rel="canonical" href="https://cdek-marketplace.ru/services/{slug}/" />
+  <link rel="canonical" href="{canonical_url}" />
   
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="СДЭК Маркетплейсы" />
   <meta property="og:locale" content="ru_RU" />
-  <meta property="og:title" content="{h1_main}" />
-  <meta property="og:description" content="{desc}" />
+  <meta property="og:title" content="{seo_title}" />
+  <meta property="og:description" content="{seo_desc}" />
   <meta property="og:image" content="https://cdek-marketplace.ru/logo.png" />
-  <meta property="og:url" content="https://cdek-marketplace.ru/services/{slug}/" />
+  <meta property="og:url" content="{canonical_url}" />
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
   <script type="application/ld+json">
   {{
     "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "{h1_main}",
-    "provider": {{
-      "@type": "Organization",
-      "name": "СДЭК для маркетплейсов",
-      "url": "https://cdek-marketplace.ru/"
-    }},
-    "description": "{desc}",
-    "offers": {{
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "RUB",
-      "availability": "https://schema.org/InStock"
-    }}
+    "@graph": [
+      {{
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {{ "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-marketplace.ru/" }},
+          {{ "@type": "ListItem", "position": 2, "name": "Услуги", "item": "https://cdek-marketplace.ru/services/" }},
+          {{ "@type": "ListItem", "position": 3, "name": "{h1_main}", "item": "{canonical_url}" }}
+        ]
+      }},
+      {{
+        "@type": "Service",
+        "name": "СДЭК: {h1_main}",
+        "provider": {{
+          "@type": "Organization",
+          "name": "СДЭК Маркетплейсы",
+          "url": "https://cdek-marketplace.ru/"
+        }},
+        "description": "{desc}",
+        "offers": {{
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "RUB",
+          "availability": "https://schema.org/InStock"
+        }}
+      }}
+    ]
   }}
   </script>
 
@@ -94,15 +106,15 @@ def generate_services():
 
   <!--#include virtual="/src/components/header.html" -->
 
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 text-sm text-slate-500">
-      <a href="/" class="hover:text-cdek">Главная</a> / 
-      <a href="/services/" class="hover:text-cdek">Услуги</a> / 
-      <span class="text-slate-300">{h1_main}</span>
-  </div>
-
   <main class="flex-grow">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20">
       
+      <nav class="text-xs sm:text-sm text-slate-400 mb-6 flex flex-wrap items-center gap-1.5">
+        <a href="/" class="hover:text-cdek transition-colors">Главная</a> <span>/</span>
+        <a href="/services/" class="hover:text-cdek transition-colors">Услуги</a> <span>/</span>
+        <span class="text-white">{h1_main}</span>
+      </nav>
+
       <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-start">
         <section class="max-w-2xl flex flex-col items-start lg:pl-2 lg:py-2 transition-all duration-300">
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase border bg-cdek/10 text-cdek border-cdek/30">
@@ -114,28 +126,27 @@ def generate_services():
             <span class="block text-2xl sm:text-3xl lg:text-[2.35rem] font-extrabold mt-2 lg:mt-3 text-cdek drop-shadow-[0_0_15px_rgba(141,226,26,0.3)]">{h1_sub}</span>
           </h1>
 
-          <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl mb-8">
-            {desc} Официальный договор со СДЭК на выгодных условиях для селлеров маркетплейсов.
+          <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl mb-8">
+            {desc} Официальный B2B договор со СДЭК: прямые оптовые тарифы со скидкой до 50%, отгрузка через 4 000+ ПВЗ без очередей и интеграция со всеми маркетплейсами.
           </p>
 
           <div class="grid grid-cols-3 gap-6 w-full mb-8 pt-4 border-t border-slate-800">
             <div>
               <p class="text-2xl sm:text-3xl font-bold text-cdek drop-shadow-[0_0_8px_rgba(141,226,26,0.3)]">0 ₽</p>
-              <p class="text-xs text-slate-500 font-medium mt-0.5">Договор бесплатно</p>
+              <p class="text-xs text-slate-400 font-medium mt-0.5">Договор бесплатно</p>
             </div>
             <div>
               <p class="text-2xl sm:text-3xl font-bold text-white">до 50%</p>
-              <p class="text-xs text-slate-500 font-medium mt-0.5">Скидка селлерам</p>
+              <p class="text-xs text-slate-400 font-medium mt-0.5">Скидка B2B</p>
             </div>
             <div>
               <p class="text-2xl sm:text-3xl font-bold text-white">15 мин</p>
-              <p class="text-xs text-slate-500 font-medium mt-0.5">На оформление</p>
+              <p class="text-xs text-slate-400 font-medium mt-0.5">Оформление</p>
             </div>
           </div>
         </section>
 
-        <!-- Исправленный контейнер формы заявки без обрезки -->
-        <section class="relative w-full max-w-xl mx-auto lg:ml-auto lg:mr-0" id="leadForm">
+        <section class="relative w-full max-w-xl mx-auto lg:ml-auto lg:mr-0 sticky top-28" id="leadForm">
           <!--#include virtual="/src/components/leadform.html" -->
         </section>
       </div>  
@@ -158,13 +169,12 @@ def generate_services():
 </html>
 """
 
-    file_path = os.path.join(dir_path, "index.html")
-    with open(file_path, "w", encoding="utf-8") as f:
-      f.write(html_content)
-    count += 1
+        file_path = os.path.join(dir_path, "index.html")
+        with open(file_path, "w", encoding="utf-8") as f:
+            f.write(html_content)
+        count += 1
 
-  print(f"🚀 Сгенерировано глобальных страниц услуг: {count}")
-
+    print(f"🚀 Сгенерировано глобальных страниц услуг СДЭК: {count}")
 
 if __name__ == "__main__":
-  generate_services()
+    generate_services()
