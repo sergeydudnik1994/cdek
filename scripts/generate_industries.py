@@ -7,7 +7,6 @@ def generate_industries():
     with open("scripts/industry_data.json", "r", encoding="utf-8") as f:
         data = json.load(f)
 
-    # Расширенный словарь иконок для всех 32 ниш
     icons = {
         "odezhda-i-obuv": '<path d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" stroke-width="2"/>',
         "mebel-i-interer": '<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-width="2"/>',
@@ -22,7 +21,7 @@ def generate_industries():
         "osveshchenie-i-svet": '<path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.543 2.22a1 1 0 01-.97.78H10.44a1 1 0 01-.97-.78l-.543-2.22z" stroke-width="2"/>',
         "kantstovary-i-ofis": '<path d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" stroke-width="2"/>',
         "sad-i-ogorod": '<path d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" stroke-width="2"/>',
-        "tovary-dlya-tvorcheства": '<path d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485" stroke-width="2"/>',
+        "tovary-dlya-tvorchestva": '<path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1" stroke-width="2"/>',
         "bizhuteriya-i-aksessuary": '<path d="M12 8v4l3 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2"/>',
         "instrumenty": '<path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" stroke-width="2"/>',
         "bytovaya-tekhnika": '<path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" stroke-width="2"/>',
@@ -43,55 +42,133 @@ def generate_industries():
         "elektrosamokaty-i-velosipedy": '<path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="2"/>'
     }
 
-    # 2. Шаблоны
-    with open("scripts/generate_global_services.py", "r", encoding="utf-8") as f:
-        content = f.read()
-    
-    html_match = re.search(r'html_content = f"""(.*?)"""', content, re.DOTALL)
-    if not html_match: return
-    page_template = html_match.group(1)
-
-    with open("services/index.html", "r", encoding="utf-8") as f:
-        hub_template = f.read()
-
     os.makedirs("solutions", exist_ok=True)
     
-    # 3. Генерация вложенных страниц
+    # 2. Генерация 32 посадочных страниц ниш с идеальным SEO
     count = 0
     for ind in data["industries"]:
         slug = ind["slug"]
-        current_html = page_template.replace('<a href="/services/" class="hover:text-cdek">Услуги</a>', '<a href="/solutions/" class="hover:text-cdek">Решения</a>')
-        formatted_html = current_html.format(slug=slug, h1_main=ind["h1_main"], h1_sub=ind["h1_sub"], desc=ind["desc"])
-        formatted_html = formatted_html.replace(f'https://cdek-marketplace.ru/services/{slug}/', f'https://cdek-marketplace.ru/solutions/{slug}/' )
+        h1_main = ind["h1_main"]
+        h1_sub = ind.get("h1_sub", "")
+        desc = ind["desc"]
+        canonical_url = f"https://cdek-marketplace.ru/solutions/{slug}/"
+        
+        seo_title = f"СДЭК Доставка — {h1_main} | Тарифы со скидкой до 50%"
+        seo_desc = f"Официальная доставка СДЭК для селлеров и магазинов: {h1_main.lower()}. {desc} Скидки B2B до 50%, интеграция с маркетплейсами, договор за 15 минут."
+
+        sub_block = f'<span class="block text-2xl sm:text-3xl mt-2 text-cdek">{h1_sub}</span>' if h1_sub else ""
+
+        page_html = f"""<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{seo_title}</title>
+  <meta name="description" content="{seo_desc}" />
+  <meta name="theme-color" content="#8DE21A" />
+  <link rel="canonical" href="{canonical_url}" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="СДЭК Маркетплейсы" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:title" content="{seo_title}" />
+  <meta property="og:description" content="{seo_desc}" />
+  <meta property="og:image" content="https://cdek-marketplace.ru/logo.png" />
+  <meta property="og:url" content="{canonical_url}" />
+
+  <script type="application/ld+json">
+  {{
+    "@context": "https://schema.org",
+    "@graph": [
+      {{
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {{ "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-marketplace.ru/" }},
+          {{ "@type": "ListItem", "position": 2, "name": "Решения", "item": "https://cdek-marketplace.ru/solutions/" }},
+          {{ "@type": "ListItem", "position": 3, "name": "{h1_main}", "item": "{canonical_url}" }}
+        ]
+      }},
+      {{
+        "@type": "Service",
+        "name": "СДЭК Доставка: {h1_main}",
+        "provider": {{
+          "@type": "Organization",
+          "name": "СДЭК Маркетплейсы",
+          "url": "https://cdek-marketplace.ru/"
+        }},
+        "description": "{desc}"
+      }}
+    ]
+  }}
+  </script>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config={{theme:{{extend:{{colors:{{cdek:'#8de21a',dark:{{900:'#0b101d'}}}}}}}}}}</script>
+</head>
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased pb-16 md:pb-0">
+  <!--#include virtual="/src/components/header.html" -->
+
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-20 w-full">
+    <nav class="text-xs sm:text-sm text-slate-400 mb-6 flex flex-wrap items-center gap-1.5">
+      <a href="/" class="hover:text-cdek transition-colors">Главная</a> <span>/</span>
+      <a href="/solutions/" class="hover:text-cdek transition-colors">Решения</a> <span>/</span>
+      <span class="text-white">{h1_main}</span>
+    </nav>
+
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-7 flex flex-col items-start pt-2">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold uppercase tracking-wider bg-cdek/10 text-cdek border border-cdek/30">
+          Отраслевое решение • СДЭК
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-4">
+          {h1_main}
+          {sub_block}
+        </h1>
+
+        <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-8">
+          {desc} Оптимизируйте логистику для Wildberries, Ozon, Яндекс Маркета и собственного интернет-магазина. Отгружайте заказы через 4 000+ ПВЗ без очередей по корпоративным тарифам со скидкой до 50%.
+        </p>
+
+        <div class="grid grid-cols-3 gap-4 py-6 border-y border-slate-800 w-full mb-8">
+          <div>
+            <p class="text-2xl sm:text-3xl font-bold text-cdek">до 50%</p>
+            <p class="text-xs text-slate-400">Скидка B2B</p>
+          </div>
+          <div>
+            <p class="text-2xl sm:text-3xl font-bold text-white">15 мин</p>
+            <p class="text-xs text-slate-400">Договор онлайн</p>
+          </div>
+          <div>
+            <p class="text-2xl sm:text-3xl font-bold text-white">4 000+</p>
+            <p class="text-xs text-slate-400">ПВЗ для сдачи</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="lg:col-span-5 sticky top-28" id="leadForm">
+        <!--#include virtual="/src/components/leadform.html" -->
+      </div>
+    </div>
+
+    <div class="mt-14">
+      <!--#include virtual="/src/components/calculator-widget.html" -->
+    </div>
+  </main>
+
+  <!--#include virtual="/src/components/footer.html" -->
+  <!--#include virtual="/src/components/mobile-cta.html" -->
+</body>
+</html>"""
         
         dir_path = os.path.join("solutions", slug)
         os.makedirs(dir_path, exist_ok=True)
-        with open(os.path.join(dir_path, "index.html"), "w", encoding="utf-8") as f: f.write(formatted_html)
+        with open(os.path.join(dir_path, "index.html"), "w", encoding="utf-8") as f:
+            f.write(page_html)
         count += 1
 
-    # 4. Генерация Хаб-страницы (solutions/index.html)
-    hub_html = hub_template
-    hub_html = hub_html.replace("Услуги для селлеров", "Отраслевые решения")
-    hub_html = hub_html.replace("Все услуги СДЭК для селлеров", "Отраслевые решения СДЭК")
-    hub_html = hub_html.replace("Полный спектр логистических решений СДЭК", "Логистика под вашу нишу")
-    hub_html = hub_html.replace("https://cdek-marketplace.ru/services/", "https://cdek-marketplace.ru/solutions/" )
-    
-    # Подготовка JS массива
-    industry_list_js = []
-    for ind in data["industries"]:
-        slug = ind["slug"]
-        industry_list_js.append({
-            "slug": slug,
-            "title": ind["h1_main"],
-            "desc": ind["desc"],
-            "icon": icons.get(slug, '<path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1" stroke-width="2"/>')
-        })
-    
-    hub_html = re.sub(r'const services = \[.*?\];', f'const services = {json.dumps(industry_list_js, ensure_ascii=False)};', hub_html, flags=re.DOTALL)
-    hub_html = hub_html.replace('href="/services/${s.slug}/"', 'href="/solutions/${s.slug}/"')
-    
-    with open("solutions/index.html", "w", encoding="utf-8") as f: f.write(hub_html)
-    print(f"🚀 Сгенерировано: {count} решений + хаб-страница с 32 иконками.")
+    print(f"✅ Успешно сгенерировано {count} отраслевых решений в папке solutions/.")
 
 if __name__ == "__main__":
     generate_industries()
