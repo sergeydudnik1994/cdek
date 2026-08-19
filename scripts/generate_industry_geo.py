@@ -183,7 +183,7 @@ def build_city_solutions_section(city_slug, city_name, prep_v):
             <h2 class="text-2xl sm:text-3xl font-black text-white">Отраслевые решения {prep_v}</h2>
             <p class="text-slate-400 text-sm mt-1">Готовые логистические схемы СДЭК под особенности и регламенты товаров вашей категории</p>
           </div>
-          <a href="/solutions/" class="text-xs text-cdek hover:underline font-semibold shrink-0">Все 30+ решений по России →</a>
+          <a href="/solutions/" class="text-xs text-cdek hover:underline font-semibold shrink-0">Все 32 ниши по России →</a>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {''.join(cards_html)}
@@ -204,15 +204,16 @@ def generate_industry_geo():
         
         nearby = random.sample(TOP_50_CITIES, 5)
         
-        # 1. Генерация 32 отраслевых страниц города
         for ind in INDUSTRIES:
             ind_slug = ind["slug"]
             ind_title = ind["title"]
             ind_desc = ind["desc"]
             
             canonical_url = f"{host}/geo/{c_slug}/solutions/{ind_slug}/"
-            seo_title = f"{ind_title} {prep_v} | СДЭК Маркетплейсы"
-            seo_desc = f"{ind_title} {prep_v}. {ind_desc} Спецтарифы для селлеров Wildberries, Ozon, Яндекс Маркета со скидкой до 50%."
+            
+            # SEO: Бренд СДЭК на 1-м месте в Title и развернутый Description
+            seo_title = f"СДЭК {ind_title} {prep_v} — Тарифы и скидки до 50%"
+            seo_desc = f"Официальная доставка СДЭК {prep_v}: {ind_title.lower()}. {ind_desc} Скидки на логистику до 50%, отгрузка через ПВЗ без очередей, договор онлайн за 15 минут."
             h1 = f"{ind_title} <span class='text-cdek'>{prep_v}</span>"
             
             links_html = " ".join([f"<a href='/geo/{c['slug']}/solutions/{ind_slug}/' class='text-cdek hover:underline mr-3'>{c['name']}</a>" for c in nearby])
@@ -220,6 +221,19 @@ def generate_industry_geo():
             html = f"""<!DOCTYPE html>
 <html lang="ru">
 <head>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){{
+        m[i]=m[i]||function(){{(m[i].a=m[i].a||[]).push(arguments)}};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {{if (document.scripts[j].src === r) {{ return; }}}}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    }})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111090265', 'ym');
+    ym(111090265, 'init', {{ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true}});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/111090265" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{seo_title}</title>
@@ -243,14 +257,14 @@ def generate_industry_geo():
         "@type": "BreadcrumbList",
         "itemListElement": [
           {{ "@type": "ListItem", "position": 1, "name": "Главная", "item": "{host}/" }},
-          {{ "@type": "ListItem", "position": 2, "name": "Отраслевые решения", "item": "{host}/solutions/" }},
+          {{ "@type": "ListItem", "position": 2, "name": "Решения", "item": "{host}/solutions/" }},
           {{ "@type": "ListItem", "position": 3, "name": "{ind_title}", "item": "{host}/solutions/{ind_slug}/" }},
           {{ "@type": "ListItem", "position": 4, "name": "{c_name}", "item": "{canonical_url}" }}
         ]
       }},
       {{
         "@type": "Service",
-        "name": "{ind_title} {prep_v}",
+        "name": "СДЭК {ind_title} {prep_v}",
         "provider": {{ "@type": "Organization", "name": "СДЭК Маркетплейсы", "url": "{host}/" }},
         "areaServed": {{ "@type": "City", "name": "{c_name}" }},
         "description": "{ind_desc}"
@@ -276,7 +290,7 @@ def generate_industry_geo():
       <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
         <section class="flex flex-col items-start">
           <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase border bg-cdek/10 text-cdek border-cdek/30">
-            <span>Отраслевая логистика для маркетплейсов</span>
+            <span>Отраслевая логистика • СДЭК</span>
           </div>
 
           <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
@@ -289,8 +303,8 @@ def generate_industry_geo():
 
           <div class="grid grid-cols-3 gap-4 py-6 border-y border-slate-800 w-full mb-8">
             <div>
-              <p class="text-xl sm:text-2xl font-black text-cdek">от 136.5 ₽</p>
-              <p class="text-xs text-slate-400">Спецтариф DBS</p>
+              <p class="text-xl sm:text-2xl font-black text-cdek">до 50%</p>
+              <p class="text-xs text-slate-400">Скидка B2B</p>
             </div>
             <div>
               <p class="text-xl sm:text-2xl font-black text-white">4 000+</p>
@@ -298,7 +312,7 @@ def generate_industry_geo():
             </div>
             <div>
               <p class="text-xl sm:text-2xl font-black text-white">15 мин</p>
-              <p class="text-xs text-slate-400">Оформление договора</p>
+              <p class="text-xs text-slate-400">Договор онлайн</p>
             </div>
           </div>
 
@@ -318,7 +332,7 @@ def generate_industry_geo():
       </section>
 
       <section class="mt-16 pt-8 border-t border-slate-800">
-        <h3 class="text-base font-semibold text-white mb-3">Эта услуга в других городах:</h3>
+        <h3 class="text-base font-semibold text-white mb-3">Эта ниша в других городах:</h3>
         <div class="flex flex-wrap gap-2 text-sm">
           {links_html}
         </div>
@@ -335,7 +349,7 @@ def generate_industry_geo():
                 f.write(html)
             total_count += 1
 
-        # 2. Внедрение блока отраслевых решений в главный хаб города geo/{c_slug}/index.html
+        # Внедрение блока отраслевых решений в главный хаб города geo/{c_slug}/index.html
         city_hub_path = os.path.join("geo", c_slug, "index.html")
         if os.path.exists(city_hub_path):
             with open(city_hub_path, "r", encoding="utf-8") as f:
@@ -353,7 +367,7 @@ def generate_industry_geo():
                 with open(city_hub_path, "w", encoding="utf-8") as f:
                     f.write(hub_content)
 
-    print(f"✅ Успешно сгенерировано {total_count} отраслевых гео-страниц и обновлены главные страницы городов.")
+    print(f"✅ Успешно сгенерировано {total_count} отраслевых гео-страниц СДЭК.")
 
 if __name__ == "__main__":
     generate_industry_geo()
