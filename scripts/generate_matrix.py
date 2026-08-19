@@ -16,7 +16,7 @@ SPECIAL_CITIES = {
     "Гусь-Хрустальный": ("Гусь-Хрустального", "Гусь-Хрустальном", "в Гусь-Хрустальном"),
     "Ростов-на-Дону": ("Ростова-на-Дону", "Ростове-на-Дону", "в Ростове-на-Дону"),
     "Комсомольск-на-Амуре": ("Комсомольска-на-Амуре", "Комсомольске-на-Амуре", "в Комсомольске-на-Амуре"),
-    "Славянск-на-Кубани": ("Славянска-на-Кубани", "Славянске-на-Кубани", "в Славянск-на-Кубани"),
+    "Славянск-на-Кубани": ("Славянска-на-Кубани", "Славянске-на-Кубани", "в Славянске-на-Кубани"),
     "Горячий Ключ": ("Горячего Ключа", "Горячем Ключе", "в Горячем Ключе"),
     "Сергиев Посад": ("Сергиева Посада", "Сергиевом Посаде", "в Сергиевом Посаде"),
     "Орехово-Зуево": ("Орехово-Зуева", "Орехово-Зуеве", "в Орехово-Зуеве"),
@@ -89,7 +89,7 @@ def generate_pages():
 
     platforms = [{"slug": "wildberries", "name": "Wildberries"}, {"slug": "ozon", "name": "Ozon"}, {"slug": "yandex-market", "name": "Яндекс Маркет"}]
 
-    print(f"🚀 Полная регенерация гео-матрицы...")
+    print(f"🚀 Полная регенерация гео-матрицы СДЭК...")
 
     for city in cities:
         slug, name = city["slug"], city["name"]
@@ -108,17 +108,19 @@ def generate_pages():
         for s in data["services"]:
             canonical_base = f"https://cdek-marketplace.ru/geo/{slug}/{s['slug']}/"
             
-            # Формирование чистого подзаголовка без сырых тегов
             sub_title = s.get("h1_sub", "")
             sub_block = f'<span class="block text-2xl sm:text-3xl mt-2 text-cdek">{sub_title}</span>' if sub_title else ""
 
-            # Исключаем дублирование предлога "в"
             raw_h1 = s['h1_main'].split(' в ')[0].strip()
             h1_main_geo = f"{raw_h1} {prep_v}"
 
+            # SEO: бренд СДЭК на первом месте и емкое описание
+            seo_title = f"СДЭК {raw_h1} {prep_v} — Договор за 15 минут"
+            seo_desc = f"Официальный B2B договор со СДЭК {prep_v}: {raw_h1.lower()}. Скидки на логистику до 50%, отгрузка через ПВЗ без очередей по реестру. Быстрое подключение."
+
             reps = {
-                "{{SEO_TITLE}}": f"{h1_main_geo} | СДЭК",
-                "{{SEO_DESC}}": f"{h1_main_geo}. Скидки до 50% для селлеров на маркетплейсах.",
+                "{{SEO_TITLE}}": seo_title,
+                "{{SEO_DESC}}": seo_desc,
                 "{{H1_MAIN}}": h1_main_geo,
                 "{{H1_SUB_BLOCK}}": sub_block,
                 "{{DESC}}": s.get("desc", ""),
@@ -148,18 +150,20 @@ def generate_pages():
             for p in platforms:
                 p_canonical = f"https://cdek-marketplace.ru/geo/{slug}/{p['slug']}/{s['slug']}/"
                 p_h1 = f"{raw_h1} {p['name']} {prep_v}"
-                p_title = f"{p_h1} | СДЭК"
+                p_title = f"СДЭК для {p['name']} {prep_v} — {raw_h1}"
+                p_desc = f"Официальная логистика СДЭК для селлеров {p['name']} {prep_v}: {raw_h1.lower()}. Скидка B2B до 50%, отгрузка через ПВЗ без очередей. Договор за 15 минут."
                 
                 p_html = html
                 p_html = p_html.replace(reps["{{H1_MAIN}}"], p_h1)
                 p_html = p_html.replace(reps["{{SEO_TITLE}}"], p_title)
+                p_html = p_html.replace(reps["{{SEO_DESC}}"], p_desc)
                 p_html = p_html.replace(canonical_base, p_canonical)
                 
                 p_path = os.path.join("geo", slug, p["slug"], s["slug"], "index.html")
                 os.makedirs(os.path.dirname(p_path), exist_ok=True)
                 with open(p_path, "w", encoding="utf-8") as f: f.write(p_html)
 
-    print(f"✅ Гео-матрица перегенерирована: падежи исправлены, лишние теги удалены.")
+    print(f"✅ Гео-матрица перегенерирована: бренд СДЭК на 1-м месте, CTR-сниппеты настроены.")
 
 if __name__ == "__main__":
     generate_pages()
