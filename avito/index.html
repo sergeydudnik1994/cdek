@@ -4,21 +4,21 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- SEO: Заголовки и описания -->
-  <title>Доставка СДЭК для продавцов на Авито — Договор и тарифы со скидкой 50%</title>
-  <meta name="description" content="Официальное подключение продавцов Авито к СДЭК. Спецтарифы для ИП, ООО и самозанятых. Отгрузка без очередей, интеграция и доставка по всей России." />
+  <!-- SEO: Оптимизированные метатеги под высокий CTR -->
+  <title>СДЭК для Авито (DBS и FBS) — Доставка и наложенный платеж</title>
+  <meta name="description" content="Официальный B2B договор со СДЭК для продавцов Авито. Доставка через 4 000+ ПВЗ по всей России, прием наложенного платежа на расчетный счет и скидки до 50%." />
 
-  <!-- SEO: Мета-теги и Canonical -->
+  <!-- SEO: Canonical и верификация -->
   <meta name="theme-color" content="#00A0FF" />
   <link rel="canonical" href="https://cdek-marketplace.ru/avito/" />
   <link rel="icon" type="image/png" href="/favicon.png" />
 
-  <!-- Open Graph теги (для Telegram, WhatsApp, VK) -->
+  <!-- Open Graph теги -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="СДЭК Маркетплейсы" />
   <meta property="og:locale" content="ru_RU" />
-  <meta property="og:title" content="Доставка СДЭК для продавцов на Авито — Спецтарифы и договор" />
-  <meta property="og:description" content="Корпоративные тарифы СДЭК для бизнеса и самозанятых на Авито. Экономия до 50%, отправка без очередей по всей России." />
+  <meta property="og:title" content="СДЭК для Авито (DBS и FBS) — Доставка и наложенный платеж" />
+  <meta property="og:description" content="Корпоративный договор со СДЭК для бизнеса и самозанятых на Авито. Экономия до 50%, отправка без очередей по всей России." />
   <meta property="og:image" content="https://cdek-marketplace.ru/logo.png" />
   <meta property="og:url" content="https://cdek-marketplace.ru/avito/" />
 
@@ -47,7 +47,7 @@
       {
         "@type": "Organization",
         "@id": "https://cdek-marketplace.ru/#organization",
-        "name": "СДЭК для маркетплейсов",
+        "name": "СДЭК Маркетплейсы",
         "url": "https://cdek-marketplace.ru/",
         "logo": "https://cdek-marketplace.ru/logo.png",
         "contactPoint": {
@@ -66,7 +66,7 @@
           "@id": "https://cdek-marketplace.ru/#organization"
         },
         "areaServed": "RU",
-        "description": "Специальные корпоративные тарифы СДЭК для продавцов Авито с экономией до 50% и приоритетной сдачей заказов без очередей.",
+        "description": "Специальные корпоративные тарифы СДЭК для продавцов Авито с экономией до 50%, приемом оплаты при вручении и сдачей заказов через 4 000+ ПВЗ без очередей.",
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Услуги доставки для Авито",
@@ -75,7 +75,17 @@
               "@type": "Offer",
               "itemOffered": {
                 "@type": "Service",
-                "name": "Корпоративный договор СДЭК для Авито (ИП, ООО, Самозанятые)"
+                "name": "Корпоративный B2B договор СДЭК для Авито"
+              },
+              "price": "0",
+              "priceCurrency": "RUB",
+              "availability": "https://schema.org/InStock"
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@type": "Service",
+                "name": "Наложенный платеж и кассовое обслуживание"
               },
               "price": "0",
               "priceCurrency": "RUB",
@@ -100,7 +110,7 @@
             "name": "Чем корпоративный договор СДЭК отличается от обычных отправок физлица?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "По договору вы получаете скидки до 50% на доставку, приоритетную сдачу посылок в ПВЗ без очередей по реестру и доступ к бизнесу-кабинету."
+              "text": "По договору вы получаете скидки до 50% на доставку, приоритетную сдачу посылок в ПВЗ без очередей по реестру, прием наложенного платежа с выводом на расчетный счет и доступ к бизнес-кабинету."
             }
           },
           {
@@ -108,7 +118,7 @@
             "name": "Как происходит отгрузка заказов Авито в ПВЗ СДЭК?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Вы формируете накладные в Личном Кабинете СДЭК и сдаете готовые посылки в любой удобный ПВЗ по единому реестру без ожидания в очереди."
+              "text": "Вы формируете накладные в личном кабинете СДЭК и сдаете готовые посылки в любой удобный ПВЗ по единому реестру без ожидания в очереди."
             }
           }
         ]
@@ -117,7 +127,7 @@
   }
   </script>
 
-  <!-- Tailwind CSS с конфигурацией цветов СДЭК и Авито -->
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -128,40 +138,53 @@
 </head>
 <body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-avito selection:text-dark-900 pb-16 md:pb-0">
 
-  <!-- Nginx: Подключение шапки -->
   <!--#include virtual="/src/components/header.html" -->
 
   <main class="flex-grow">
     
-    <!-- HERO СЕКЦИЯ С ФОРМОЙ СПРАВА -->
-    <section class="pt-12 sm:pt-20 pb-12 relative overflow-hidden">
+    <!-- HERO СЕКЦИЯ -->
+    <section class="pt-8 sm:pt-14 pb-12 relative overflow-hidden">
+      <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-avito/10 rounded-full blur-[100px] pointer-events-none"></div>
+      <div class="absolute bottom-0 left-0 w-[400px] h-[400px] bg-avito/5 rounded-full blur-[80px] pointer-events-none"></div>
+
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Хлебные крошки -->
+        <nav class="text-xs sm:text-sm text-slate-400 mb-6 flex flex-wrap items-center gap-1.5">
+          <a href="/" class="hover:text-cdek transition-colors">Главная</a> <span>/</span>
+          <span class="text-white">СДЭК для Авито</span>
+        </nav>
+
+        <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
           
-          <!-- Левая колонка: Текст -->
-          <div class="lg:col-span-7 space-y-8">
-            <div class="inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-avito/10 border border-avito/30 backdrop-blur-sm">
-              <div class="w-2.5 h-2.5 rounded-full bg-avito shadow-[0_0_10px_#00a0ff] animate-pulse"></div>
+          <!-- Левая колонка -->
+          <div class="lg:col-span-7 flex flex-col items-start pt-2">
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 mb-6 rounded-full text-xs font-semibold border border-avito/30 bg-avito/10 text-avito">
+              <div class="w-2 h-2 rounded-full bg-avito shadow-[0_0_10px_#00a0ff] animate-pulse"></div>
               <span class="text-xs font-bold text-avito uppercase tracking-wider">Отправка заказов с Авито</span>
             </div>
             
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1]">
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.1] mb-6">
               Доставка СДЭК <br class="hidden sm:block" />
               для продавцов <span class="text-avito drop-shadow-[0_0_20px_rgba(0,160,255,0.35)]">на Авито</span>
             </h1>
             
-            <p class="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl">
-              Специальные тарифы для бизнеса (ИП/ООО) и самозанятых, которые регулярно отправляют товары клиентам с площадки Авито.
+            <p class="text-slate-300 text-lg sm:text-xl leading-relaxed max-w-2xl mb-8">
+              Специальные тарифы для бизнеса (ООО, ИП) и самозанятых. Сдавайте посылки по реестру в 4 000+ ПВЗ, отправляйте товары с наложенным платежом и расширяйте географию продаж на всю Россию[cite: 5].
             </p>
 
-            <div class="grid grid-cols-2 gap-6 pt-6 border-t border-slate-800/80 max-w-2xl">
+            <div class="grid grid-cols-3 gap-4 pt-6 border-y border-slate-800/80 max-w-2xl w-full">
               <div>
-                <div class="text-2xl sm:text-3xl font-bold text-cdek mb-1">Без очередей</div>
-                <div class="text-sm text-slate-400">Сдача по реестру</div>
+                <div class="text-2xl sm:text-3xl font-bold text-avito mb-1">Без очередей</div>
+                <div class="text-xs text-slate-400">Сдача по реестру</div>
               </div>
               <div>
-                <div class="text-2xl sm:text-3xl font-bold text-white mb-1">Кросс-доставка</div>
-                <div class="text-sm text-slate-400">Во все регионы РФ</div>
+                <div class="text-2xl sm:text-3xl font-bold text-white mb-1">15 мин</div>
+                <div class="text-xs text-slate-400">Подключение договора</div>
+              </div>
+              <div>
+                <div class="text-2xl sm:text-3xl font-bold text-cdek mb-1">до 50%</div>
+                <div class="text-xs text-slate-400">Скидка B2B</div>
               </div>
             </div>
           </div>
@@ -180,69 +203,50 @@
     <!-- ПРЕИМУЩЕСТВА СДЭК ДЛЯ АВИТО ПРОДАВЦОВ -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <h2 class="text-3xl sm:text-4xl font-bold text-white mb-10 text-center">
-        СДЭК для профессиональных продавцов <span class="text-avito">Авито</span>
+        СДЭК для профессиональных продавцов <span class="text-avito">Авито</span>[cite: 5]
       </h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
         <div class="bg-slate-900/80 border border-slate-800 hover:border-avito/50 p-6 rounded-2xl transition-all shadow-lg">
           <div class="text-avito mb-4 text-3xl">📦</div>
           <h3 class="text-lg font-bold text-white mb-2">Отгрузка без очередей</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">По договору вы сдаете товары в любой ПВЗ СДЭК приоритетно по реестру.</p>
+          <p class="text-slate-400 text-sm leading-relaxed">По договору вы сдаете товары в любой ПВЗ СДЭК приоритетно по реестру[cite: 5].</p>
         </div>
 
         <div class="bg-slate-900/80 border border-slate-800 hover:border-avito/50 p-6 rounded-2xl transition-all shadow-lg">
           <div class="text-avito mb-4 text-3xl">💸</div>
           <h3 class="text-lg font-bold text-white mb-2">B2B Тарифы</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Экономия до 50% по сравнению с тарифами для физических лиц.</p>
+          <p class="text-slate-400 text-sm leading-relaxed">Экономия до 50% по сравнению с тарифами для физических лиц[cite: 5].</p>
         </div>
 
         <div class="bg-slate-900/80 border border-slate-800 hover:border-avito/50 p-6 rounded-2xl transition-all shadow-lg">
-          <div class="text-avito mb-4 text-3xl">📱</div>
-          <h3 class="text-lg font-bold text-white mb-2">Единый трекинг</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Вся аналитика, статусы и чеки доступны в удобном Личном Кабинете.</p>
+          <div class="text-avito mb-4 text-3xl">💳</div>
+          <h3 class="text-lg font-bold text-white mb-2">Наложенный платеж</h3>
+          <p class="text-slate-400 text-sm leading-relaxed">Прием оплаты наличными и картой при вручении с переводом средств на ваш расчетный счет.</p>
         </div>
 
         <div class="bg-slate-900/80 border border-slate-800 hover:border-avito/50 p-6 rounded-2xl transition-all shadow-lg">
           <div class="text-avito mb-4 text-3xl">🤝</div>
           <h3 class="text-lg font-bold text-white mb-2">Для ИП и Самозанятых</h3>
-          <p class="text-slate-400 text-sm leading-relaxed">Заключаем официальный договор за 15 минут даже с самозанятыми.</p>
+          <p class="text-slate-400 text-sm leading-relaxed">Заключаем официальный договор за 15 минут даже с самозанятыми[cite: 5].</p>
         </div>
       </div>
-    </section>
 
-    <!-- КАЛЬКУЛЯТОР -->
-    <section id="widget-section" class="py-12">
-      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- КАЛЬКУЛЯТОР -->
+      <div class="mb-16 max-w-5xl mx-auto">
         <!--#include virtual="/src/components/calculator-widget.html" -->
       </div>
     </section>
 
-    <!-- Блог (новости логистики) -->
+    <!-- Блог -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       <!--#include virtual="/src/components/blog-latest.html" -->
     </section>
 
   </main>
 
-  <!-- Nginx: Подключение подвала -->
   <!--#include virtual="/src/components/footer.html" -->
   <!--#include virtual="/src/components/mobile-cta.html" -->
-
-  <!-- Скрипт прокрутки до формы -->
-  <script>
-    document.addEventListener('click', function(e) {
-      const btn = e.target.closest('.scroll-to-form');
-      if (btn) {
-        e.preventDefault();
-        const formElement = document.getElementById('mainLeadForm');
-        if (formElement) {
-          formElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-          const firstInput = formElement.querySelector('input');
-          if (firstInput) setTimeout(() => firstInput.focus(), 400);
-        }
-      }
-    });
-  </script>
 
 </body>
 </html>
