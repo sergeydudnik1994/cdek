@@ -160,12 +160,12 @@ def build_city_solutions_section(city_slug, city_name, prep_v):
     cards_html = []
     for ind in INDUSTRIES:
         cards_html.append(f"""
-        <a href="/geo/{city_slug}/solutions/{ind['slug']}/" class="group bg-slate-800/40 border border-slate-700/50 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/{city_slug}/solutions/{ind['slug']}/" class="group bg-[#0e3330]/50 border border-emerald-800/60 hover:border-[#00b341] p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">{ind['title']}</h4>
-            <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">{ind['desc']}</p>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#00b341] transition-colors mb-1">{ind['title']}</h4>
+            <p class="text-slate-300 text-xs line-clamp-2 leading-relaxed">{ind['desc']}</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#00b341] font-bold flex items-center gap-1">
             <span>Тарифы {prep_v}</span>
             <span>→</span>
           </div>
@@ -173,29 +173,28 @@ def build_city_solutions_section(city_slug, city_name, prep_v):
 
     return f"""
     <!-- БЛОК: Отраслевые решения для города -->
-    <section class="mt-16 pt-10 border-t border-slate-800" id="city-industry-solutions">
+    <section class="mt-16 pt-10 border-t border-emerald-950" id="city-industry-solutions">
       <div class="max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-cdek/10 text-cdek border border-cdek/20">
+            <div class="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0e3330] text-[#00b341] border border-emerald-800/60">
               Специализированная доставка
             </div>
             <h2 class="text-2xl sm:text-3xl font-black text-white">Отраслевые решения {prep_v}</h2>
-            <p class="text-slate-400 text-sm mt-1">Готовые логистические схемы СДЭК под особенности и регламенты товаров вашей категории</p>
+            <p class="text-slate-300 text-sm mt-1">Готовые логистические схемы СДЭК под особенности и регламенты товаров вашей категории</p>
           </div>
-          <a href="/solutions/" class="text-xs text-cdek hover:underline font-semibold shrink-0">Все 32 ниши по России →</a>
+          <a href="/solutions/" class="text-xs text-[#00b341] hover:underline font-bold shrink-0">Все 32 ниши по России →</a>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {''.join(cards_html)}
         </div>
       </div>
     </section>
-    <!-- /БЛОК: Отраслевые решения -->
     """
 
 def generate_industry_geo():
     host = "https://cdek-marketplace.ru"
-    print(f"🚀 Генерация отраслевой гео-матрицы (ТОП-50 городов × 32 ниши)...")
+    print(f"🚀 Генерация отраслевой гео-матрицы СДЭК...")
     
     total_count = 0
     for city in TOP_50_CITIES:
@@ -211,12 +210,11 @@ def generate_industry_geo():
             
             canonical_url = f"{host}/geo/{c_slug}/solutions/{ind_slug}/"
             
-            # SEO: Бренд СДЭК на 1-м месте в Title и развернутый Description
             seo_title = f"СДЭК {ind_title} {prep_v} — Тарифы и скидки до 50%"
             seo_desc = f"Официальная доставка СДЭК {prep_v}: {ind_title.lower()}. {ind_desc} Скидки на логистику до 50%, отгрузка через ПВЗ без очередей, договор онлайн за 15 минут."
-            h1 = f"{ind_title} <span class='text-cdek'>{prep_v}</span>"
+            h1 = f"{ind_title} <span class='text-[#00b341]'>{prep_v}</span>"
             
-            links_html = " ".join([f"<a href='/geo/{c['slug']}/solutions/{ind_slug}/' class='text-cdek hover:underline mr-3'>{c['name']}</a>" for c in nearby])
+            links_html = " ".join([f"<a href='/geo/{c['slug']}/solutions/{ind_slug}/' class='text-[#00b341] hover:underline mr-3'>{c['name']}</a>" for c in nearby])
             
             html = f"""<!DOCTYPE html>
 <html lang="ru">
@@ -238,7 +236,7 @@ def generate_industry_geo():
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{seo_title}</title>
   <meta name="description" content="{seo_desc}" />
-  <meta name="theme-color" content="#8DE21A" />
+  <meta name="theme-color" content="#072624" />
   <link rel="canonical" href="{canonical_url}" />
   
   <meta property="og:type" content="website" />
@@ -274,26 +272,26 @@ def generate_industry_geo():
   </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={{theme:{{extend:{{colors:{{cdek:'#8de21a',dark:{{900:'#0b101d'}}}}}}}}}}</script>
+  <script>tailwind.config={{theme:{{extend:{{colors:{{cdek:'#00b341',dark:{{900:'#072624',950:'#041615'}}}}}}}}}}</script>
 </head>
-<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased pb-16 md:pb-0">
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased pb-16 md:pb-0 selection:bg-[#00b341] selection:text-white">
   <!--#include virtual="/src/components/header.html" -->
   <main class="flex-grow">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 sm:pt-10 sm:pb-16">
       <nav class="text-xs sm:text-sm text-slate-400 mb-6 flex flex-wrap items-center gap-1.5">
-        <a href="/" class="hover:text-cdek transition-colors">Главная</a> <span>/</span>
-        <a href="/solutions/" class="hover:text-cdek transition-colors">Решения</a> <span>/</span>
-        <a href="/solutions/{ind_slug}/" class="hover:text-cdek transition-colors">{ind_title}</a> <span>/</span>
+        <a href="/" class="hover:text-[#00b341] transition-colors">Главная</a> <span>/</span>
+        <a href="/solutions/" class="hover:text-[#00b341] transition-colors">Решения</a> <span>/</span>
+        <a href="/solutions/{ind_slug}/" class="hover:text-[#00b341] transition-colors">{ind_title}</a> <span>/</span>
         <span class="text-white">{c_name}</span>
       </nav>
 
       <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
         <section class="flex flex-col items-start">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase border bg-cdek/10 text-cdek border-cdek/30">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-bold tracking-wide uppercase border bg-[#0e3330] text-[#00b341] border-emerald-800/80">
             <span>Отраслевая логистика • СДЭК</span>
           </div>
 
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-5">
             {h1}
           </h1>
 
@@ -301,28 +299,28 @@ def generate_industry_geo():
             {ind_desc} Подключение селлеров из {gen} к логистической сети СДЭК со скидками на B2B-договоры до 50%.
           </p>
 
-          <div class="grid grid-cols-3 gap-4 py-6 border-y border-slate-800 w-full mb-8">
+          <div class="grid grid-cols-3 gap-4 py-6 border-y border-emerald-950 w-full mb-8">
             <div>
-              <p class="text-xl sm:text-2xl font-black text-cdek">до 50%</p>
-              <p class="text-xs text-slate-400">Скидка B2B</p>
+              <p class="text-xl sm:text-2xl font-black text-[#00b341]">от 136.5 ₽</p>
+              <p class="text-xs text-slate-400 font-medium">Спецтариф DBS</p>
             </div>
             <div>
               <p class="text-xl sm:text-2xl font-black text-white">4 000+</p>
-              <p class="text-xs text-slate-400">ПВЗ по России</p>
+              <p class="text-xs text-slate-400 font-medium">ПВЗ по России</p>
             </div>
             <div>
               <p class="text-xl sm:text-2xl font-black text-white">15 мин</p>
-              <p class="text-xs text-slate-400">Договор онлайн</p>
+              <p class="text-xs text-slate-400 font-medium">Договор онлайн</p>
             </div>
           </div>
 
-          <div class="p-6 rounded-2xl bg-slate-800/40 border border-slate-700/50 text-slate-300 text-sm leading-relaxed mb-8 w-full">
+          <div class="p-6 rounded-2xl bg-[#0e3330]/50 border border-emerald-800/60 text-slate-300 text-sm leading-relaxed mb-8 w-full">
             <h3 class="text-white font-bold text-base mb-2">Особенности отгрузки {prep_v}:</h3>
             <p>Сдавайте заказы по реестру без очередей в ближайших пунктах СДЭК {prep_v} или закажите ежедневный забор партий курьером со склада поставщика. Полная интеграция статусов доставки с кабинетами Wildberries, Ozon, Яндекс Маркета и Авито.</p>
           </div>
         </section>
 
-        <section class="relative w-full max-w-xl mx-auto lg:ml-auto" id="leadForm">
+        <section class="relative w-full max-w-xl mx-auto lg:ml-auto sticky top-28" id="leadForm">
           <!--#include virtual="/src/components/leadform.html" -->
         </section>
       </div>
@@ -331,9 +329,9 @@ def generate_industry_geo():
         <!--#include virtual="/src/components/calculator-widget.html" -->
       </section>
 
-      <section class="mt-16 pt-8 border-t border-slate-800">
+      <section class="mt-16 pt-8 border-t border-emerald-950">
         <h3 class="text-base font-semibold text-white mb-3">Эта ниша в других городах:</h3>
-        <div class="flex flex-wrap gap-2 text-sm">
+        <div class="flex flex-wrap gap-2.5 text-sm">
           {links_html}
         </div>
       </section>
@@ -349,7 +347,6 @@ def generate_industry_geo():
                 f.write(html)
             total_count += 1
 
-        # Внедрение блока отраслевых решений в главный хаб города geo/{c_slug}/index.html
         city_hub_path = os.path.join("geo", c_slug, "index.html")
         if os.path.exists(city_hub_path):
             with open(city_hub_path, "r", encoding="utf-8") as f:
