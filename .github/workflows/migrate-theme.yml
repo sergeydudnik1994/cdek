@@ -9,6 +9,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -26,6 +28,18 @@ jobs:
           if git diff-index --quiet HEAD; then
             echo "Нет изменений для коммита"
           else
-            git commit -m "Auto-migrate HTML pages to official emerald theme"
-            git push
+            git commit -m "Auto-migrate all HTML pages to official emerald CDEK style [skip ci]"
+            git pull --rebase origin main
+            git push origin main
           fi
+
+      - name: Deploy to VDS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            cd /var/www/cdek-marketplace.ru
+            git reset --hard
+            git pull origin main
