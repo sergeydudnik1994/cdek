@@ -272,7 +272,7 @@ def generate_industry_geo():
   </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={{theme:{{extend:{{colors:{{cdek:'#00b341',dark:{{900:'#072624',950:'#041615'}}}}}}}}}}</script>
+  <script>tailwind.config={{theme:{{extend:{{colors: { cdek: '#00b341', dark: { 900: '#072624', 950: '#041615' } } }}}}}}}}}}</script>
 </head>
 <body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased pb-16 md:pb-0 selection:bg-[#00b341] selection:text-white">
   <!--#include virtual="/src/components/header.html" -->

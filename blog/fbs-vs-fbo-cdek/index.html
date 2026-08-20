@@ -11,7 +11,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme: { extend: { colors: { cdek: '#8de21a', dark: { 900: '#0b101d' } } } }
+      theme: { extend: { colors: { cdek: '#00b341', dark: { 900: '#072624', 950: '#041615' } } } } } }
     }
   </script>
 
@@ -93,7 +93,7 @@
 
     <link rel="canonical" href="https://cdek-marketplace.ru/blog/fbs-vs-fbo-cdek/" />
 </head>
-<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#00b341] selection:text-white pb-16 md:pb-0">
 
   <!--#include virtual="/src/components/header.html" -->
 
@@ -102,7 +102,7 @@
       
       <!-- Шапка статьи -->
       <header class="mb-10 sm:mb-14 text-center">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase border bg-cdek/10 text-cdek border-cdek/30">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase border bg-[#0e3330] text-[#00b341] border border-emerald-800/80">
           <span>Блог для селлеров</span>
         </div>
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-6 leading-tight tracking-tight">
@@ -111,16 +111,16 @@
       </header>
 
       <!-- Тело статьи -->
-      <div class="glass p-6 sm:p-10 rounded-3xl border border-slate-800 text-slate-300 text-base sm:text-lg leading-relaxed space-y-6">
+      <div class="glass p-6 sm:p-10 rounded-3xl border border-emerald-950 text-slate-300 text-base sm:text-lg leading-relaxed space-y-6">
         
         <p>Работать со склада маркетплейса (схема FBO) кажется удобным: отгрузил огромную партию на склад Wildberries или Ozon и забыл. Но в последнее время правила игры жестко изменились. Платная приемка, растущие тарифы на хранение, штрафы и знаменитые «потеряшки» съедают львиную долю маржи.</p>
         <p>Именно поэтому сейчас набирает популярность схема <strong>FBS (и DBS)</strong> — продажа со своего склада с прямой доставкой до клиента через транспортные компании, такие как СДЭК.</p>
 
-        <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6 pb-2 border-b border-slate-800">Главный минус FBO: Замороженные деньги и остатки</h2>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6 pb-2 border-b border-emerald-950">Главный минус FBO: Замороженные деньги и остатки</h2>
         <p>Представьте ситуацию: вы закупили 1000 курток. Чтобы они хорошо ранжировались и быстро доставлялись, вам нужно раскидать их по складам в Москве, Казани, Краснодаре и Новосибирске. В итоге ваш товар «размазан» по всей стране.</p>
         <p>Если на Ozon эти куртки раскупили за неделю, а на Wildberries они зависли, вы не можете просто по щелчку пальцев перекинуть товар с одной площадки на другую. Ваши деньги заморожены в неликвидных остатках.</p>
 
-        <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6 pb-2 border-b border-slate-800">Преимущества FBS (DBS) в связке со СДЭК</h2>
+        <h2 class="text-2xl sm:text-3xl font-bold text-white pt-6 pb-2 border-b border-emerald-950">Преимущества FBS (DBS) в связке со СДЭК</h2>
         
         <ul class="space-y-4 mt-4">
           <li>
@@ -144,7 +144,7 @@
 <!-- Конверсионный B2B-виджет расчета в теле статьи -->
 <div class="bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900 border border-cdek/30 p-6 sm:p-8 rounded-2xl my-8 text-center relative overflow-hidden shadow-xl">
   <div class="relative z-10 max-w-xl mx-auto">
-    <div class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-cdek/20 text-cdek border border-cdek/40 mb-3 uppercase tracking-wider">
+    <div class="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#0e3330] text-[#00b341] border border-cdek/40 mb-3 uppercase tracking-wider">
       Онлайн-расчет за 1 минуту
     </div>
     <h3 class="text-xl sm:text-2xl font-bold text-white mb-2">Рассчитайте точную стоимость доставки партии</h3>
@@ -153,7 +153,7 @@
       <a href="/calculator/dbs-1kg/" class="w-full sm:w-auto px-6 py-3 bg-cdek hover:bg-cdek/90 text-dark-900 font-extrabold text-sm rounded-xl transition-all shadow-lg shadow-cdek/20">
         Открыть калькулятор DBS
       </a>
-      <a href="#leadForm" class="w-full sm:w-auto px-6 py-3 bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm rounded-xl transition-all border border-slate-700">
+      <a href="#leadForm" class="w-full sm:w-auto px-6 py-3 bg-[#0e3330] hover:bg-slate-700 text-white font-bold text-sm rounded-xl transition-all border border-emerald-900/80">
         Получить скидку 50%
       </a>
     </div>
@@ -161,17 +161,17 @@
 </div>
         
         <!-- Блок FAQ для расширенного сниппета -->
-        <div class="mt-12 pt-8 border-t border-slate-800">
+        <div class="mt-12 pt-8 border-t border-emerald-950">
           <h2 class="text-2xl sm:text-3xl font-bold text-white mb-6">Часто задаваемые вопросы</h2>
           <div class="space-y-4">
-            <details class="group bg-slate-900/50 p-5 rounded-2xl border border-slate-800">
+            <details class="group bg-[#0b3330]/60 p-5 rounded-2xl border border-emerald-950">
               <summary class="font-bold text-white cursor-pointer list-none flex justify-between items-center">
                 <span>Что выгоднее: FBO или FBS?</span>
                 <span class="text-cdek transition-transform group-open:rotate-180">&darr;</span>
               </summary>
               <p class="mt-3 text-slate-400 text-sm sm:text-base">FBO подходит для дешевых товаров с высокой оборачиваемостью. FBS через СДЭК выгоден при среднем чеке от 1500 рублей, для крупногабаритных товаров или при совмещенных продажах на нескольких площадках из одного остатка.</p>
             </details>
-            <details class="group bg-slate-900/50 p-5 rounded-2xl border border-slate-800">
+            <details class="group bg-[#0b3330]/60 p-5 rounded-2xl border border-emerald-950">
               <summary class="font-bold text-white cursor-pointer list-none flex justify-between items-center">
                 <span>Можно ли продавать по FBS на нескольких маркетплейсах одновременно?</span>
                 <span class="text-cdek transition-transform group-open:rotate-180">&darr;</span>

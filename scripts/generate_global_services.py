@@ -97,7 +97,7 @@ def generate_services():
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {{
-      theme: {{ extend: {{ colors: {{ cdek: '#00b341', dark: {{ 900: '#072624', 950: '#041615' }} }} }} }}
+      theme: {{ extend: {{ colors: { cdek: '#00b341', dark: { 900: '#072624', 950: '#041615' } } }} }} }} }}
     }}
   </script>
 </head>

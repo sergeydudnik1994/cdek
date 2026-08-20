@@ -120,7 +120,7 @@ def build_city_html(slug, city_name, pvz_count):
     for s in data["services"][:12]:
         icon = SERVICE_ICONS.get(s["slug"], SERVICE_ICONS["fbs"])
         services_grid += f"""
-          <a href="/geo/{slug}/{s['slug']}/" class="group flex flex-col h-full p-5 rounded-xl bg-slate-900/60 border border-slate-800 hover:border-cdek/50 transition-all">
+          <a href="/geo/{slug}/{s['slug']}/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
             <div class="h-10 w-10 bg-cdek/10 text-cdek rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">{icon}</svg>
             </div>
@@ -167,7 +167,7 @@ def build_city_html(slug, city_name, pvz_count):
   }}
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={{theme:{{extend:{{colors:{{cdek:'#8de21a',dark:{{900:'#0b101d'}}}}}}}}}}</script>
+  <script>tailwind.config={{theme:{{extend:{{colors: { cdek: '#00b341', dark: { 900: '#072624', 950: '#041615' } }}}}}}}}}}</script>
 </head>
 <body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased">
   <!--#include virtual="/src/components/header.html" -->
@@ -181,7 +181,7 @@ def build_city_html(slug, city_name, pvz_count):
       <div class="text-center max-w-3xl mx-auto mb-12">
         <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-5">СДЭК в <span class="text-cdek">{city_prepositional}</span> для селлеров</h1>
         <p class="text-lg text-slate-400">Скидки до 50% на FBS и DBS для бизнеса из {city_genitive}. Бесплатный договор за 15 минут.</p>
-        <div class="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-slate-800">
+        <div class="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-emerald-950">
           <div><p class="text-2xl font-bold text-cdek">0 ₽</p><p class="text-xs text-slate-500">Договор</p></div>
           <div><p class="text-2xl font-bold text-white">до 50%</p><p class="text-xs text-slate-500">Экономия</p></div>
           <div><p class="text-2xl font-bold text-white">{pvz_count}</p><p class="text-xs text-slate-500">ПВЗ</p></div>
@@ -196,7 +196,7 @@ def build_city_html(slug, city_name, pvz_count):
       <!--#include virtual="/src/components/calculator-widget.html" -->
       <section class="mt-16">
         <h2 class="text-2xl font-bold text-white mb-6">Карта ПВЗ {prep_v}</h2>
-        <div class="rounded-xl overflow-hidden border border-slate-800 shadow-lg">
+        <div class="rounded-xl overflow-hidden border border-emerald-950 shadow-lg">
           <iframe src="https://yandex.ru/map-widget/v1/?text=СДЭК+ПВЗ+{city_name}" width="100%" height="400" frameborder="0"></iframe>
         </div>
       </section>

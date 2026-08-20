@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Интеграция СДЭК с 1С-Битрикс — Официальный модуль доставки</title>
   <meta name="description" content="Готовый модуль доставки СДЭК для 1С-Битрикс: «Управление сайтом». Расчет тарифов в корзине онлайн, интерактивная карта ПВЗ, автоматическое создание накладных и печать штрихкодов." />
-  <meta name="theme-color" content="#8DE21A" />
+  <meta name="theme-color" content="#00b341" />
   <link rel="canonical" href="https://cdek-marketplace.ru/integrations/1c-bitrix/" />
   
   <meta property="og:type" content="website" />
@@ -62,7 +62,7 @@
   </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors:{cdek:'#8de21a',dark:{900:'#0b101d'}}}}}</script>
+  <script>tailwind.config={theme:{extend:{colors: { cdek: '#00b341', dark: { 900: '#072624', 950: '#041615' } } }}}}}</script>
 </head>
 <body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased pb-16 md:pb-0">
   <!--#include virtual="/src/components/header.html" -->
@@ -81,7 +81,7 @@
         
         <!-- Левая колонка -->
         <section class="flex flex-col items-start">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase border bg-cdek/10 text-cdek border-cdek/30">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase border bg-[#0e3330] text-[#00b341] border border-emerald-800/80">
             <span>CMS платформы • Готовое решение</span>
           </div>
 
@@ -94,7 +94,7 @@
           </p>
 
           <!-- Метрики -->
-          <div class="grid grid-cols-3 gap-4 py-6 border-y border-slate-800 w-full mb-8">
+          <div class="grid grid-cols-3 gap-4 py-6 border-y border-emerald-950 w-full mb-8">
             <div>
               <p class="text-xl sm:text-2xl font-black text-cdek">до 50%</p>
               <p class="text-xs text-slate-400">Скидка B2B</p>
@@ -112,7 +112,7 @@
           <!-- Возможности -->
           <div class="w-full mb-10">
             <h2 class="text-xl font-bold text-white mb-4">Возможности модуля для 1С-Битрикс</h2>
-            <ul class="space-y-3 bg-slate-800/30 p-6 rounded-2xl border border-slate-700/40">
+            <ul class="space-y-3 bg-[#0e3330]/30 p-6 rounded-2xl border border-emerald-900/80/40">
               <li class="flex items-start gap-3 text-sm text-slate-300">  <span class="text-cdek text-base font-bold shrink-0">✓</span>  <span>Расчет тарифов «Посылка» и DBS в чекауте</span></li><li class="flex items-start gap-3 text-sm text-slate-300">  <span class="text-cdek text-base font-bold shrink-0">✓</span>  <span>Выбор ПВЗ и постаматов на интерактивной карте</span></li><li class="flex items-start gap-3 text-sm text-slate-300">  <span class="text-cdek text-base font-bold shrink-0">✓</span>  <span>Автоматическое создание накладных и вызов курьера</span></li><li class="flex items-start gap-3 text-sm text-slate-300">  <span class="text-cdek text-base font-bold shrink-0">✓</span>  <span>Передача статусов и трек-номеров в заказы Битрикс</span></li>
             </ul>
           </div>
@@ -121,7 +121,7 @@
           <div class="w-full mb-10">
             <h2 class="text-xl font-bold text-white mb-4">Как подключить интеграцию за 3 шага</h2>
             <div class="space-y-3">
-              <div class="flex items-start gap-4 p-4 rounded-xl bg-slate-800/30 border border-slate-700/40">  <div class="w-8 h-8 rounded-lg bg-cdek/10 border border-cdek/30 text-cdek font-black flex items-center justify-center shrink-0 text-sm">1</div>  <div>    <p class="text-sm text-slate-200 leading-relaxed">Установите модуль из каталога Marketplace 1C-Битрикс</p>  </div></div><div class="flex items-start gap-4 p-4 rounded-xl bg-slate-800/30 border border-slate-700/40">  <div class="w-8 h-8 rounded-lg bg-cdek/10 border border-cdek/30 text-cdek font-black flex items-center justify-center shrink-0 text-sm">2</div>  <div>    <p class="text-sm text-slate-200 leading-relaxed">Укажите Account и Secure password из официального договора СДЭК</p>  </div></div><div class="flex items-start gap-4 p-4 rounded-xl bg-slate-800/30 border border-slate-700/40">  <div class="w-8 h-8 rounded-lg bg-cdek/10 border border-cdek/30 text-cdek font-black flex items-center justify-center shrink-0 text-sm">3</div>  <div>    <p class="text-sm text-slate-200 leading-relaxed">Настройте правила отгрузки, габариты по умолчанию и доступные типы доставки</p>  </div></div>
+              <div class="flex items-start gap-4 p-4 rounded-xl bg-[#0e3330]/30 border border-emerald-900/80/40">  <div class="w-8 h-8 rounded-lg bg-cdek/10 border border-cdek/30 text-cdek font-black flex items-center justify-center shrink-0 text-sm">1</div>  <div>    <p class="text-sm text-slate-200 leading-relaxed">Установите модуль из каталога Marketplace 1C-Битрикс</p>  </div></div><div class="flex items-start gap-4 p-4 rounded-xl bg-[#0e3330]/30 border border-emerald-900/80/40">  <div class="w-8 h-8 rounded-lg bg-cdek/10 border border-cdek/30 text-cdek font-black flex items-center justify-center shrink-0 text-sm">2</div>  <div>    <p class="text-sm text-slate-200 leading-relaxed">Укажите Account и Secure password из официального договора СДЭК</p>  </div></div><div class="flex items-start gap-4 p-4 rounded-xl bg-[#0e3330]/30 border border-emerald-900/80/40">  <div class="w-8 h-8 rounded-lg bg-cdek/10 border border-cdek/30 text-cdek font-black flex items-center justify-center shrink-0 text-sm">3</div>  <div>    <p class="text-sm text-slate-200 leading-relaxed">Настройте правила отгрузки, габариты по умолчанию и доступные типы доставки</p>  </div></div>
             </div>
           </div>
 
@@ -129,7 +129,7 @@
           <div class="w-full mb-8">
             <h2 class="text-xl font-bold text-white mb-4">Частые вопросы</h2>
             <div class="space-y-3">
-              <details class="group p-5 bg-slate-800/30 rounded-2xl border border-slate-700/50 open:border-cdek/50 transition-all">  <summary class="flex justify-between items-center font-bold text-sm sm:text-base text-white cursor-pointer list-none select-none">    <span>Как получить ключи доступа к API для интеграции с 1С-Битрикс?</span>    <span class="text-cdek transition-transform duration-300 group-open:rotate-180">▼</span>  </summary>  <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed">Ключи доступа (Account и Secure password) генерируются автоматически после заключения официального B2B-договора со СДЭК в течение 15 минут.</p></details><details class="group p-5 bg-slate-800/30 rounded-2xl border border-slate-700/50 open:border-cdek/50 transition-all">  <summary class="flex justify-between items-center font-bold text-sm sm:text-base text-white cursor-pointer list-none select-none">    <span>Какая скидка предоставляется на доставку при работе через 1С-Битрикс?</span>    <span class="text-cdek transition-transform duration-300 group-open:rotate-180">▼</span>  </summary>  <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed">При работе по официальному договору СДЭК для юридических лиц, ИП и самозанятых действуют сниженные оптовые тарифы со скидкой до 50% по сравнению с отправками физлиц.</p></details><details class="group p-5 bg-slate-800/30 rounded-2xl border border-slate-700/50 open:border-cdek/50 transition-all">  <summary class="flex justify-between items-center font-bold text-sm sm:text-base text-white cursor-pointer list-none select-none">    <span>Поддерживает ли модуль 1С-Битрикс выбор ПВЗ на интерактивной карте?</span>    <span class="text-cdek transition-transform duration-300 group-open:rotate-180">▼</span>  </summary>  <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed">Да, официальный модуль и виджет СДЭК позволяют покупателям выбирать ближайший пункт выдачи или постамат на интерактивной карте прямо в корзине при оформлении заказа.</p></details>
+              <details class="group p-5 bg-[#0e3330]/30 rounded-2xl border border-emerald-900/80 open:border-cdek/50 transition-all">  <summary class="flex justify-between items-center font-bold text-sm sm:text-base text-white cursor-pointer list-none select-none">    <span>Как получить ключи доступа к API для интеграции с 1С-Битрикс?</span>    <span class="text-cdek transition-transform duration-300 group-open:rotate-180">▼</span>  </summary>  <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed">Ключи доступа (Account и Secure password) генерируются автоматически после заключения официального B2B-договора со СДЭК в течение 15 минут.</p></details><details class="group p-5 bg-[#0e3330]/30 rounded-2xl border border-emerald-900/80 open:border-cdek/50 transition-all">  <summary class="flex justify-between items-center font-bold text-sm sm:text-base text-white cursor-pointer list-none select-none">    <span>Какая скидка предоставляется на доставку при работе через 1С-Битрикс?</span>    <span class="text-cdek transition-transform duration-300 group-open:rotate-180">▼</span>  </summary>  <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed">При работе по официальному договору СДЭК для юридических лиц, ИП и самозанятых действуют сниженные оптовые тарифы со скидкой до 50% по сравнению с отправками физлиц.</p></details><details class="group p-5 bg-[#0e3330]/30 rounded-2xl border border-emerald-900/80 open:border-cdek/50 transition-all">  <summary class="flex justify-between items-center font-bold text-sm sm:text-base text-white cursor-pointer list-none select-none">    <span>Поддерживает ли модуль 1С-Битрикс выбор ПВЗ на интерактивной карте?</span>    <span class="text-cdek transition-transform duration-300 group-open:rotate-180">▼</span>  </summary>  <p class="mt-3 text-xs sm:text-sm text-slate-400 leading-relaxed">Да, официальный модуль и виджет СДЭК позволяют покупателям выбирать ближайший пункт выдачи или постамат на интерактивной карте прямо в корзине при оформлении заказа.</p></details>
             </div>
           </div>
         </section>
@@ -146,10 +146,10 @@
       </section>
 
       <!-- Другие интеграции -->
-      <section class="mt-16 pt-10 border-t border-slate-800">
+      <section class="mt-16 pt-10 border-t border-emerald-950">
         <h3 class="text-lg font-bold text-white mb-4">Другие модули и платформы</h3>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          <a href="/integrations/ecwid/" class="p-4 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:border-cdek/50 transition-all flex flex-col justify-between group">  <span class="text-white font-bold text-sm group-hover:text-cdek transition-colors">Ecwid</span>  <span class="text-[11px] text-slate-400 mt-1">Конструкторы сайтов</span></a><a href="/integrations/bitrix24/" class="p-4 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:border-cdek/50 transition-all flex flex-col justify-between group">  <span class="text-white font-bold text-sm group-hover:text-cdek transition-colors">Битрикс24</span>  <span class="text-[11px] text-slate-400 mt-1">CRM системы</span></a><a href="/integrations/opencart/" class="p-4 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:border-cdek/50 transition-all flex flex-col justify-between group">  <span class="text-white font-bold text-sm group-hover:text-cdek transition-colors">OpenCart / ocStore</span>  <span class="text-[11px] text-slate-400 mt-1">CMS платформы</span></a><a href="/integrations/apiship/" class="p-4 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:border-cdek/50 transition-all flex flex-col justify-between group">  <span class="text-white font-bold text-sm group-hover:text-cdek transition-colors">ApiShip</span>  <span class="text-[11px] text-slate-400 mt-1">Логистические агрегаторы</span></a>
+          <a href="/integrations/ecwid/" class="p-4 rounded-xl bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 transition-all flex flex-col justify-between group">  <span class="text-white font-bold text-sm group-hover:text-cdek transition-colors">Ecwid</span>  <span class="text-[11px] text-slate-400 mt-1">Конструкторы сайтов</span></a><a href="/integrations/bitrix24/" class="p-4 rounded-xl bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 transition-all flex flex-col justify-between group">  <span class="text-white font-bold text-sm group-hover:text-cdek transition-colors">Битрикс24</span>  <span class="text-[11px] text-slate-400 mt-1">CRM системы</span></a><a href="/integrations/opencart/" class="p-4 rounded-xl bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 transition-all flex flex-col justify-between group">  <span class="text-white font-bold text-sm group-hover:text-cdek transition-colors">OpenCart / ocStore</span>  <span class="text-[11px] text-slate-400 mt-1">CMS платформы</span></a><a href="/integrations/apiship/" class="p-4 rounded-xl bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 transition-all flex flex-col justify-between group">  <span class="text-white font-bold text-sm group-hover:text-cdek transition-colors">ApiShip</span>  <span class="text-[11px] text-slate-400 mt-1">Логистические агрегаторы</span></a>
         </div>
       </section>
 

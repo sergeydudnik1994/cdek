@@ -297,15 +297,15 @@ def generate_catalog_hub(host="https://cdek-marketplace.ru"):
         cards = []
         for m in cat_modules:
             cards.append(f"""
-            <a href="/integrations/{m['slug']}/" class="group flex flex-col justify-between bg-slate-900/60 border border-slate-800 hover:border-cdek/50 rounded-2xl p-5 sm:p-6 transition-all duration-300 backdrop-blur-sm shadow-md">
+            <a href="/integrations/{m['slug']}/" class="group flex flex-col justify-between bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 rounded-2xl p-5 sm:p-6 transition-all duration-300 backdrop-blur-sm shadow-md">
               <div>
-                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 mb-3 rounded-md text-[10px] font-extrabold uppercase tracking-wider bg-slate-800 text-cdek border border-slate-700">
+                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 mb-3 rounded-md text-[10px] font-extrabold uppercase tracking-wider bg-[#0e3330] text-cdek border border-emerald-900/80">
                   {m['category']}
                 </div>
                 <h3 class="text-lg sm:text-xl font-bold text-white mb-2 group-hover:text-cdek transition-colors">{m['name']}</h3>
                 <p class="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">{m['desc']}</p>
               </div>
-              <div class="flex items-center justify-between pt-4 border-t border-slate-800/80 text-xs">
+              <div class="flex items-center justify-between pt-4 border-t border-emerald-950 text-xs">
                 <span class="text-slate-500 font-medium">Готовый модуль</span>
                 <span class="text-cdek font-bold group-hover:translate-x-1 transition-transform">Подключить →</span>
               </div>
@@ -313,8 +313,8 @@ def generate_catalog_hub(host="https://cdek-marketplace.ru"):
             
         sections_html.append(f"""
         <div class="mb-14">
-          <div class="flex items-center gap-3 mb-6 pb-2 border-b border-slate-800">
-            <span class="w-2.5 h-2.5 rounded-full bg-cdek shadow-[0_0_8px_#8de21a]"></span>
+          <div class="flex items-center gap-3 mb-6 pb-2 border-b border-emerald-950">
+            <span class="w-2.5 h-2.5 rounded-full bg-cdek "></span>
             <h2 class="text-xl sm:text-2xl font-black text-white uppercase tracking-wide">{cat}</h2>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
@@ -343,7 +343,7 @@ def generate_catalog_hub(host="https://cdek-marketplace.ru"):
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Модули интеграции СДЭК — Официальный каталог готовых решений для CMS, CRM и маркетплейсов</title>
   <meta name="description" content="Полный каталог официальных модулей интеграции СДЭК: 1C-Битрикс, Tilda, InSales, WooCommerce, МойСклад, 1С, RetailCRM, Битрикс24, amoCRM, OpenCart и 20+ других систем." />
-  <meta name="theme-color" content="#8DE21A" />
+  <meta name="theme-color" content="#00b341" />
   <link rel="canonical" href="{host}/integrations/" />
   
   <meta property="og:type" content="website" />
@@ -366,14 +366,14 @@ def generate_catalog_hub(host="https://cdek-marketplace.ru"):
   </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={{theme:{{extend:{{colors:{{cdek:'#8de21a',dark:{{900:'#0b101d'}}}}}}}}}}</script>
+  <script>tailwind.config={{theme:{{extend:{{colors: { cdek: '#00b341', dark: { 900: '#072624', 950: '#041615' } } }}}}}}}}}}</script>
 </head>
 <body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased pb-16 md:pb-0">
   <!--#include virtual="/src/components/header.html" -->
 
   <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-10 pb-20 w-full">
     <div class="mb-14 text-center">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-4 rounded-full text-xs font-semibold uppercase tracking-wider bg-cdek/10 text-cdek border border-cdek/20">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-4 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#0e3330] text-[#00b341] border border-emerald-800/80">
         Ready-to-use API & CMS Modules
       </div>
       <h1 class="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-4 tracking-tight">
@@ -409,7 +409,7 @@ def generate_module_page(mod, all_mods, host="https://cdek-marketplace.ru"):
     other_mods = [m for m in all_mods if m["slug"] != slug]
     cross_links = random.sample(other_mods, min(4, len(other_mods)))
     cross_links_html = "".join([
-        f'<a href="/integrations/{m["slug"]}/" class="p-4 rounded-xl bg-slate-800/40 border border-slate-700/50 hover:border-cdek/50 transition-all flex flex-col justify-between group">'
+        f'<a href="/integrations/{m["slug"]}/" class="p-4 rounded-xl bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 transition-all flex flex-col justify-between group">'
         f'  <span class="text-white font-bold text-sm group-hover:text-cdek transition-colors">{m["name"]}</span>'
         f'  <span class="text-[11px] text-slate-400 mt-1">{m["category"]}</span>'
         f'</a>'
@@ -425,7 +425,7 @@ def generate_module_page(mod, all_mods, host="https://cdek-marketplace.ru"):
     ])
 
     steps_html = "".join([
-        f'<div class="flex items-start gap-4 p-4 rounded-xl bg-slate-800/30 border border-slate-700/40">'
+        f'<div class="flex items-start gap-4 p-4 rounded-xl bg-[#0e3330]/30 border border-emerald-900/80/40">'
         f'  <div class="w-8 h-8 rounded-lg bg-cdek/10 border border-cdek/30 text-cdek font-black flex items-center justify-center shrink-0 text-sm">{idx+1}</div>'
         f'  <div>'
         f'    <p class="text-sm text-slate-200 leading-relaxed">{step}</p>'
@@ -455,7 +455,7 @@ def generate_module_page(mod, all_mods, host="https://cdek-marketplace.ru"):
     ])
 
     faq_visual_html = "".join([
-        f'<details class="group p-5 bg-slate-800/30 rounded-2xl border border-slate-700/50 open:border-cdek/50 transition-all">'
+        f'<details class="group p-5 bg-[#0e3330]/30 rounded-2xl border border-emerald-900/80 open:border-cdek/50 transition-all">'
         f'  <summary class="flex justify-between items-center font-bold text-sm sm:text-base text-white cursor-pointer list-none select-none">'
         f'    <span>{item["q"]}</span>'
         f'    <span class="text-cdek transition-transform duration-300 group-open:rotate-180">▼</span>'
@@ -485,7 +485,7 @@ def generate_module_page(mod, all_mods, host="https://cdek-marketplace.ru"):
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}</title>
   <meta name="description" content="{desc}" />
-  <meta name="theme-color" content="#8DE21A" />
+  <meta name="theme-color" content="#00b341" />
   <link rel="canonical" href="{canonical_url}" />
   
   <meta property="og:type" content="website" />
@@ -529,7 +529,7 @@ def generate_module_page(mod, all_mods, host="https://cdek-marketplace.ru"):
   </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={{theme:{{extend:{{colors:{{cdek:'#8de21a',dark:{{900:'#0b101d'}}}}}}}}}}</script>
+  <script>tailwind.config={{theme:{{extend:{{colors: { cdek: '#00b341', dark: { 900: '#072624', 950: '#041615' } } }}}}}}}}}}</script>
 </head>
 <body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased pb-16 md:pb-0">
   <!--#include virtual="/src/components/header.html" -->
@@ -548,7 +548,7 @@ def generate_module_page(mod, all_mods, host="https://cdek-marketplace.ru"):
         
         <!-- Левая колонка -->
         <section class="flex flex-col items-start">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase border bg-cdek/10 text-cdek border-cdek/30">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase border bg-[#0e3330] text-[#00b341] border border-emerald-800/80">
             <span>{category} • Готовое решение</span>
           </div>
 
@@ -561,7 +561,7 @@ def generate_module_page(mod, all_mods, host="https://cdek-marketplace.ru"):
           </p>
 
           <!-- Метрики -->
-          <div class="grid grid-cols-3 gap-4 py-6 border-y border-slate-800 w-full mb-8">
+          <div class="grid grid-cols-3 gap-4 py-6 border-y border-emerald-950 w-full mb-8">
             <div>
               <p class="text-xl sm:text-2xl font-black text-cdek">до 50%</p>
               <p class="text-xs text-slate-400">Скидка B2B</p>
@@ -579,7 +579,7 @@ def generate_module_page(mod, all_mods, host="https://cdek-marketplace.ru"):
           <!-- Возможности -->
           <div class="w-full mb-10">
             <h2 class="text-xl font-bold text-white mb-4">Возможности модуля для {name}</h2>
-            <ul class="space-y-3 bg-slate-800/30 p-6 rounded-2xl border border-slate-700/40">
+            <ul class="space-y-3 bg-[#0e3330]/30 p-6 rounded-2xl border border-emerald-900/80/40">
               {features_html}
             </ul>
           </div>
@@ -613,7 +613,7 @@ def generate_module_page(mod, all_mods, host="https://cdek-marketplace.ru"):
       </section>
 
       <!-- Другие интеграции -->
-      <section class="mt-16 pt-10 border-t border-slate-800">
+      <section class="mt-16 pt-10 border-t border-emerald-950">
         <h3 class="text-lg font-bold text-white mb-4">Другие модули и платформы</h3>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {cross_links_html}

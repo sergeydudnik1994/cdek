@@ -65,7 +65,7 @@ def generate_industries():
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{seo_title}</title>
   <meta name="description" content="{seo_desc}" />
-  <meta name="theme-color" content="#8DE21A" />
+  <meta name="theme-color" content="#00b341" />
   <link rel="canonical" href="{canonical_url}" />
   <link rel="icon" type="image/png" href="/favicon.png" />
 
@@ -104,7 +104,7 @@ def generate_industries():
   </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={{theme:{{extend:{{colors:{{cdek:'#8de21a',dark:{{900:'#0b101d'}}}}}}}}}}</script>
+  <script>tailwind.config={{theme:{{extend:{{colors: { cdek: '#00b341', dark: { 900: '#072624', 950: '#041615' } } }}}}}}}}}}</script>
 </head>
 <body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased pb-16 md:pb-0">
   <!--#include virtual="/src/components/header.html" -->
@@ -131,7 +131,7 @@ def generate_industries():
           {desc} Оптимизируйте логистику для Wildberries, Ozon, Яндекс Маркета и собственного интернет-магазина. Отгружайте заказы через 4 000+ ПВЗ без очередей по корпоративным тарифам со скидкой до 50%.
         </p>
 
-        <div class="grid grid-cols-3 gap-4 py-6 border-y border-slate-800 w-full mb-8">
+        <div class="grid grid-cols-3 gap-4 py-6 border-y border-emerald-950 w-full mb-8">
           <div>
             <p class="text-2xl sm:text-3xl font-bold text-cdek">до 50%</p>
             <p class="text-xs text-slate-400">Скидка B2B</p>
