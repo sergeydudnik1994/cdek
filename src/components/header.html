@@ -13,27 +13,28 @@
 <!-- /Yandex.Metrika counter -->
 
 <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
+  <div class="max-w-7xl mx-auto px-3.5 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-2 sm:gap-4">
     
-    <!-- Левая часть: Только официальный логотип CDEK и Выбор города -->
-    <div class="flex items-center gap-4 sm:gap-6 shrink-0">
+    <!-- Левая часть: Крупный логотип CDEK и Кнопка города (всегда на экране) -->
+    <div class="flex items-center gap-2.5 sm:gap-6 shrink-0">
       <a href="/" class="flex items-center transition-transform hover:opacity-90 shrink-0">
-        <img src="/logo-green.png" alt="CDEK" class="h-6 sm:h-7 w-auto" />
+        <img src="/logo-green.png" alt="CDEK" class="h-7 sm:h-8 w-auto" />
       </a>
 
-      <!-- Кнопка выбора города (Десктоп) -->
-      <button id="openCityModal" type="button" class="hidden sm:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-[#00b341] hover:text-slate-900 transition-all cursor-pointer">
+      <!-- Кнопка выбора города (Десктоп + Мобильный) -->
+      <button id="openCityModal" type="button" class="inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-[#00b341] hover:text-slate-900 transition-all cursor-pointer">
         <svg class="w-3.5 h-3.5 text-[#00b341] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
         </svg>
-        <span class="tracking-wide">Выберите город</span>
-        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        <span class="tracking-wide hidden xs:inline">Выберите город</span>
+        <span class="tracking-wide inline xs:hidden">Город</span>
+        <svg class="w-3 h-3 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
       </button>
     </div>
 
-    <!-- Правая часть: Навигация -->
-    <div class="flex items-center gap-4 lg:gap-6">
+    <!-- Правая часть: Навигация (ПК) + Кнопка и Бургер (Мобильный) -->
+    <div class="flex items-center gap-2 sm:gap-4 lg:gap-6">
       <nav class="hidden md:flex items-center gap-5 lg:gap-6 text-sm font-semibold">
         <a href="/calculator/" class="text-slate-600 hover:text-slate-900 transition-colors">Калькулятор</a>
         <a href="/services/" class="text-slate-600 hover:text-slate-900 transition-colors">Услуги</a>
@@ -42,35 +43,22 @@
         <a href="/blog/" class="text-slate-600 hover:text-slate-900 transition-colors">Блог</a>
       </nav>
 
-      <a href="/#leadForm" class="hidden sm:inline-flex items-center justify-center px-4 py-2 text-xs sm:text-sm font-bold text-white bg-[#072624] hover:bg-black rounded-xl transition-all shadow-sm shrink-0">
-        Заключить договор
+      <!-- Кнопка «Подключиться» -->
+      <a href="/#leadForm" class="inline-flex items-center justify-center px-3 sm:px-4 py-1.5 sm:py-2 text-xs sm:text-sm font-bold text-white bg-[#072624] hover:bg-black rounded-xl transition-all shadow-sm shrink-0">
+        Подключиться
       </a>
 
       <!-- Мобильный бургер -->
       <button id="menuToggle" type="button" class="md:hidden flex items-center justify-center p-2 rounded-lg border border-slate-200 text-slate-700 hover:text-slate-900 hover:border-slate-300 focus:outline-none transition-colors cursor-pointer shrink-0" aria-label="Открыть меню">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
     </div>
   </div>
 
-  <!-- Выпадающее мобильное меню -->
+  <!-- Выпадающее мобильное меню (только навигация) -->
   <div id="mobileMenu" class="hidden md:hidden bg-white/98 backdrop-blur-lg border-b border-slate-200 px-6 pt-4 pb-6 shadow-xl">
-    <!-- Выбор города на мобильных -->
-    <div class="mb-4 pb-4 border-b border-slate-100">
-      <button id="openCityModalMobile" type="button" class="w-full flex items-center justify-between py-2.5 px-4 rounded-xl bg-slate-50 border border-slate-200 text-sm font-semibold text-slate-700 cursor-pointer">
-        <span class="flex items-center gap-2">
-          <svg class="w-4 h-4 text-[#00b341]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-          </svg>
-          <span>Выберите город</span>
-        </span>
-        <span class="text-xs text-[#00b341] font-bold bg-white px-2.5 py-1 rounded-md border border-slate-200">Выбрать</span>
-      </button>
-    </div>
-
     <nav class="space-y-1.5 mb-6 font-semibold">
       <a href="/calculator/" class="mobile-link block py-2.5 px-4 rounded-xl text-base transition-colors text-slate-700 hover:bg-slate-50 hover:text-slate-900">Калькулятор</a>
       <a href="/services/" class="mobile-link block py-2.5 px-4 rounded-xl text-base transition-colors text-slate-700 hover:bg-slate-50 hover:text-slate-900">Услуги</a>
@@ -80,7 +68,7 @@
     </nav>
     
     <div>
-      <a href="/#leadForm" id="mobileLeadBtn" class="flex items-center justify-center w-full py-3.5 bg-[#072624] hover:bg-black text-white font-extrabold text-sm rounded-xl transition-all shadow-md">
+      <a href="/#leadForm" id="mobileLeadBtn" class="flex items-center justify-center w-full py-3.5 bg-[#00b341] hover:bg-[#009c38] text-white font-extrabold text-sm rounded-xl transition-all shadow-md">
         Заключить договор
       </a>
     </div>
@@ -136,7 +124,6 @@
 
   const cityModal = document.getElementById('cityModal');
   const openCityModalBtn = document.getElementById('openCityModal');
-  const openCityModalMobileBtn = document.getElementById('openCityModalMobile');
   const closeCityModalBtn = document.getElementById('closeCityModal');
   const citySearchInput = document.getElementById('citySearchInput');
   const cityGridContainer = document.getElementById('cityGridContainer');
@@ -184,10 +171,6 @@
   }
 
   openCityModalBtn?.addEventListener('click', () => toggleModal(true));
-  openCityModalMobileBtn?.addEventListener('click', () => {
-    mobileMenu.classList.add('hidden');
-    toggleModal(true);
-  });
   closeCityModalBtn?.addEventListener('click', () => toggleModal(false));
   
   cityModal?.addEventListener('click', (e) => {
