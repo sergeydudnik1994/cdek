@@ -21,5 +21,4 @@ jobs:
             cd /var/www/cdek
             git fetch origin main
             git reset --hard origin/main
-            find . -type f -name "*.html" -exec sed -i '/<!--#include virtual="\/src\/components\/mobile-cta\.html" -->/d' {} +
             systemctl reload nginx
