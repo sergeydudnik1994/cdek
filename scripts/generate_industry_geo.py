@@ -1,60 +1,5 @@
 import os
 import json
-import random
-import re
-
-TOP_50_CITIES = [
-    {"slug": "moskva", "name": "Москва"},
-    {"slug": "sankt-peterburg", "name": "Санкт-Петербург"},
-    {"slug": "novosibirsk", "name": "Новосибирск"},
-    {"slug": "ekaterinburg", "name": "Екатеринбург"},
-    {"slug": "kazan", "name": "Казань"},
-    {"slug": "nizhniy-novgorod", "name": "Нижний Новгород"},
-    {"slug": "krasnoyarsk", "name": "Красноярск"},
-    {"slug": "chelyabinsk", "name": "Челябинск"},
-    {"slug": "samara", "name": "Самара"},
-    {"slug": "ufa", "name": "Уфа"},
-    {"slug": "rostov-na-donu", "name": "Ростов-на-Дону"},
-    {"slug": "omsk", "name": "Омск"},
-    {"slug": "krasnodar", "name": "Краснодар"},
-    {"slug": "voronezh", "name": "Воронеж"},
-    {"slug": "perm", "name": "Пермь"},
-    {"slug": "volgograd", "name": "Волгоград"},
-    {"slug": "saratov", "name": "Саратов"},
-    {"slug": "tyumen", "name": "Тюмень"},
-    {"slug": "tolyatti", "name": "Тольятти"},
-    {"slug": "barnaul", "name": "Барнаул"},
-    {"slug": "izhevsk", "name": "Ижевск"},
-    {"slug": "mahachkala", "name": "Махачкала"},
-    {"slug": "habarovsk", "name": "Хабаровск"},
-    {"slug": "ulyanovsk", "name": "Ульяновск"},
-    {"slug": "irkutsk", "name": "Иркутск"},
-    {"slug": "vladivostok", "name": "Владивосток"},
-    {"slug": "yaroslavl", "name": "Ярославль"},
-    {"slug": "kemerovo", "name": "Кемерово"},
-    {"slug": "tomsk", "name": "Томск"},
-    {"slug": "naberezhnye-chelny", "name": "Набережные Челны"},
-    {"slug": "sevastopol", "name": "Севастополь"},
-    {"slug": "stavropol", "name": "Ставрополь"},
-    {"slug": "orenburg", "name": "Оренбург"},
-    {"slug": "novokuznetsk", "name": "Новокузнецк"},
-    {"slug": "ryazan", "name": "Рязань"},
-    {"slug": "balashiha", "name": "Балашиха"},
-    {"slug": "penza", "name": "Пенза"},
-    {"slug": "cheboksary", "name": "Чебоксары"},
-    {"slug": "lipetsk", "name": "Липецк"},
-    {"slug": "kaliningrad", "name": "Калининград"},
-    {"slug": "astrahan", "name": "Астрахань"},
-    {"slug": "tula", "name": "Тула"},
-    {"slug": "kirov", "name": "Киров"},
-    {"slug": "sochi", "name": "Сочи"},
-    {"slug": "kursk", "name": "Курск"},
-    {"slug": "ivanovo", "name": "Иваново"},
-    {"slug": "surgut", "name": "Сургут"},
-    {"slug": "tver", "name": "Тверь"},
-    {"slug": "magnitogorsk", "name": "Магнитогорск"},
-    {"slug": "bryansk", "name": "Брянск"}
-]
 
 SPECIAL_CITIES = {
     "Сочи": ("Сочи", "Сочи", "в Сочи"),
@@ -76,41 +21,6 @@ SPECIAL_CITIES = {
 }
 
 FEMININE_SOFT_CITIES = {"Казань", "Пермь", "Тюмень", "Рязань", "Тверь", "Астрахань", "Керчь", "Сызрань"}
-
-INDUSTRIES = [
-    {"slug": "odezhda-i-obuv", "title": "Логистика для магазинов одежды и обуви", "desc": "Доставка fashion-товаров с примеркой, частичным выкупом и возвратом невыкупленного ассортимента."},
-    {"slug": "mebel-i-interer", "title": "Доставка мебели и товаров для дома", "desc": "Надежная транспортировка крупногабаритных товаров, корпусной мебели и предметов интерьера."},
-    {"slug": "elektronika-i-tehnika", "title": "Логистика электроники и техники", "desc": "Особые регламенты для бытовой техники и электроники: полное страхование и усиленная упаковка."},
-    {"slug": "detskie-tovary", "title": "Доставка детских товаров и игрушек", "desc": "Своевременная доставка товаров для детей по схемам FBS и DBS с соблюдением требований маркетплейсов."},
-    {"slug": "kosmetika-i-parfyumeriya", "title": "Логистика для магазинов косметики", "desc": "Бережная доставка парфюмерии и уходовой косметики с соблюдением стандартов упаковки Wildberries и Ozon."},
-    {"slug": "avtotovary-i-zapchasti", "title": "Доставка автотоваров и запчастей", "desc": "Перевозка автозапчастей, масел и автохимии до сортировочных центров и конечных покупателей."},
-    {"slug": "tovary-dlya-zhivotnyh", "title": "Логистика для зоомагазинов", "desc": "Регулярная доставка кормов, наполнителей и аксессуаров для животных по выгодным B2B-тарифам."},
-    {"slug": "sporttovary", "title": "Доставка спортивных товаров", "desc": "Транспортировка тренажеров, спортинвентаря и экипировки любой массы и габаритов."},
-    {"slug": "stroitelstvo-i-remont", "title": "Логистика товаров для ремонта и DIY", "desc": "Надежное решение для поставщиков стройматериалов: отгрузка КГТ и доставка до двери покупателя."},
-    {"slug": "produkty-pitaniya", "title": "Доставка продуктов питания (Dry Food)", "desc": "Логистика бакалеи, чая, кофе и снеков с длительным сроком хранения без нарушения товарного вида."},
-    {"slug": "osveshchenie-i-svet", "title": "Доставка освещения и светильников", "desc": "Специальная обрешетка и воздушно-пузырьковая упаковка для люстр, бра и хрупких ламп."},
-    {"slug": "kantstovary-i-ofis", "title": "Логистика канцтоваров и товаров для офиса", "desc": "Экономичные тарифы на мелкогабаритные посылки и комплекты канцтоваров для селлеров."},
-    {"slug": "sad-i-ogorod", "title": "Логистика товаров для сада и дачи", "desc": "Сезонные решения по отгрузке садовой техники, грунтов и инструментов на склады маркетплейсов."},
-    {"slug": "tovary-dlya-tvorchestva", "title": "Логистика товаров для творчества и хобби", "desc": "Фулфилмент, сборка и доставка заказов для магазинов рукоделия и товаров для художников."},
-    {"slug": "bizhuteriya-i-aksessuary", "title": "Доставка бижутерии и аксессуаров", "desc": "Специальные условия страхования и выдача малогабаритных отправлений в 4 000+ ПВЗ."},
-    {"slug": "instrumenty", "title": "Логистика ручного и электроинструмента", "desc": "Доставка строительного и профессионального инструмента по всей России по схемам FBS и DBS."},
-    {"slug": "bytovaya-tekhnika", "title": "Доставка крупной бытовой техники", "desc": "Специальные условия перевозки холодильников, стиральных машин и плит с подъемом на этаж."},
-    {"slug": "tovary-dlya-zdorovya", "title": "Доставка товаров для здоровья и ортопедии", "desc": "Соблюдение температурных режимов, быстрая отгрузка и аккуратная доставка покупателям."},
-    {"slug": "avtoelektronika", "title": "Доставка автоэлектроники и видеорегистраторов", "desc": "Безопасная транспортировка высокотехнологичных гаджетов и головных устройств."},
-    {"slug": "turizm-i-otdykh", "title": "Логистика товаров для туризма и кемпинга", "desc": "Отгрузка палаток, рюкзаков и туристической экипировки в сезон пиковых продаж."},
-    {"slug": "podarki-i-suveniry", "title": "Доставка подарков и сувенирной продукции", "desc": "Гарантированные сроки доставки в предпраздничные периоды и высокий сезон продаж."},
-    {"slug": "muzykalnye-instrumenty", "title": "Доставка музыкальных инструментов", "desc": "Индивидуальная защитная упаковка и страхование акустических и электронных инструментов."},
-    {"slug": "santekhnika", "title": "Логистика сантехники и смесителей", "desc": "Перевозка ванн, раковин, душевых систем и инсталляций без сколов и повреждений."},
-    {"slug": "umnyy-dom", "title": "Логистика оборудования для умного дома", "desc": "Срочная курьерская доставка датчиков, умных колонок и контроллеров до двери."},
-    {"slug": "tekstil-dlya-doma", "title": "Доставка домашнего текстиля и постельного белья", "desc": "Оптимизация объемного веса текстильных изделий для снижения тарифа доставки."},
-    {"slug": "klimaticheskaya-tekhnika", "title": "Доставка климатической техники и кондиционеров", "desc": "Транспортировка сплит-систем, обогревателей и увлажнителей по B2B-тарифам."},
-    {"slug": "posuda-i-kuhnya", "title": "Доставка посуды и кухонных принадлежностей", "desc": "Усиленная упаковка стеклянной, керамической и чугунной посуды с гарантией сохранности."},
-    {"slug": "rybalka-i-okhota", "title": "Логистика товаров для рыбалки и охоты", "desc": "Транспортировка удилищ, катушек, спецодежды и охотничьего снаряжения."},
-    {"slug": "igrovye-pristavki", "title": "Доставка игровых консолей и видеоигр", "desc": "Полное страхование объявленной ценности и экспресс-доставка консолей и аксессуаров."},
-    {"slug": "kantstovary", "title": "Доставка полиграфии и бумажной продукции", "desc": "Отгрузка крупных партий полиграфии и бумаги на склады маркетплейсов по паллетам."},
-    {"slug": "aksessuary-dlya-smartfonov", "title": "Доставка чехлов и мобильных аксессуаров", "desc": "Минимальные тарифы на легкие отправления до 1 кг от 136.5 ₽ при интеграции по API."},
-    {"slug": "elektrosamokaty-i-velosipedy", "title": "Доставка электротранспорта и велосипедов", "desc": "Специализированная перевозка электросамокатов и велосипедов с литиевыми аккумуляторами."}
-]
 
 def get_city_cases(city_name):
     city_name = city_name.strip()
@@ -145,7 +55,7 @@ def get_city_cases(city_name):
                 gen_parts.append(part[:-1] + "я"); prep_parts.append(part[:-1] + "е")
             elif part.endswith("ь"):
                 gen_parts.append(part[:-1] + "я"); prep_parts.append(part[:-1] + "е")
-            elif re.search(r"[бвгджзклмнпрстфхцчшщ]$", part, re.I):
+            elif any(part.endswith(c) for c in "бвгджзклмнпрстфхцчшщ"):
                 gen_parts.append(part + "а"); prep_parts.append(part + "е")
             else:
                 gen_parts.append(part); prep_parts.append(part)
@@ -156,215 +66,180 @@ def get_city_cases(city_name):
         gen_words.append(gw); prep_words.append(pw)
     return " ".join(gen_words), " ".join(prep_words), f"{prep} {' '.join(prep_words)}"
 
-def build_city_solutions_section(city_slug, city_name, prep_v):
-    cards_html = []
-    for ind in INDUSTRIES:
-        cards_html.append(f"""
-        <a href="/geo/{city_slug}/solutions/{ind['slug']}/" class="group bg-[#0e3330]/50 border border-emerald-800/60 hover:border-[#00b341] p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
-          <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-[#00b341] transition-colors mb-1">{ind['title']}</h4>
-            <p class="text-slate-300 text-xs line-clamp-2 leading-relaxed">{ind['desc']}</p>
-          </div>
-          <div class="mt-3 text-[11px] text-[#00b341] font-bold flex items-center gap-1">
-            <span>Тарифы {prep_v}</span>
-            <span>→</span>
-          </div>
-        </a>""")
-
-    return f"""
-    <!-- БЛОК: Отраслевые решения для города -->
-    <section class="mt-16 pt-10 border-t border-emerald-950" id="city-industry-solutions">
-      <div class="max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
-          <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0e3330] text-[#00b341] border border-emerald-800/60">
-              Специализированная доставка
-            </div>
-            <h2 class="text-2xl sm:text-3xl font-black text-white">Отраслевые решения {prep_v}</h2>
-            <p class="text-slate-300 text-sm mt-1">Готовые логистические схемы СДЭК под особенности и регламенты товаров вашей категории</p>
-          </div>
-          <a href="/solutions/" class="text-xs text-[#00b341] hover:underline font-bold shrink-0">Все 32 ниши по России →</a>
-        </div>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {''.join(cards_html)}
-        </div>
-      </div>
-    </section>
-    """
-
-def generate_industry_geo():
-    host = "https://cdek-marketplace.ru"
-    print(f"🚀 Генерация отраслевой гео-матрицы СДЭК...")
-    
-    total_count = 0
-    for city in TOP_50_CITIES:
-        c_slug, c_name = city["slug"], city["name"]
-        gen, prep, prep_v = get_city_cases(c_name)
-        
-        nearby = random.sample(TOP_50_CITIES, 5)
-        
-        for ind in INDUSTRIES:
-            ind_slug = ind["slug"]
-            ind_title = ind["title"]
-            ind_desc = ind["desc"]
-            
-            canonical_url = f"{host}/geo/{c_slug}/solutions/{ind_slug}/"
-            
-            seo_title = f"СДЭК {ind_title} {prep_v} — Тарифы и скидки до 50%"
-            seo_desc = f"Официальная доставка СДЭК {prep_v}: {ind_title.lower()}. {ind_desc} Скидки на логистику до 50%, отгрузка через ПВЗ без очередей, договор онлайн за 15 минут."
-            h1 = f"{ind_title} <span class='text-[#00b341]'>{prep_v}</span>"
-            
-            links_html = " ".join([f"<a href='/geo/{c['slug']}/solutions/{ind_slug}/' class='text-[#00b341] hover:underline mr-3'>{c['name']}</a>" for c in nearby])
-            
-            html = f"""<!DOCTYPE html>
+HTML_TEMPLATE = """<!DOCTYPE html>
 <html lang="ru">
 <head>
   <!-- Yandex.Metrika counter -->
   <script type="text/javascript">
-    (function(m,e,t,r,i,k,a){{
-        m[i]=m[i]||function(){{(m[i].a=m[i].a||[]).push(arguments)}};
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
         m[i].l=1*new Date();
-        for (var j = 0; j < document.scripts.length; j++) {{if (document.scripts[j].src === r) {{ return; }}}}
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
-    }})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111090265', 'ym');
-    ym(111090265, 'init', {{ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", accurateTrackBounce:true, trackLinks:true}});
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111090265', 'ym');
+    ym(111090265, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
   </script>
   <noscript><div><img src="https://mc.yandex.ru/watch/111090265" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
   <!-- /Yandex.Metrika counter -->
 
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{seo_title}</title>
-  <meta name="description" content="{seo_desc}" />
+  <title>{{SEO_TITLE}}</title>
+  <meta name="description" content="{{SEO_DESC}}" />
   <meta name="theme-color" content="#072624" />
-  <link rel="canonical" href="{canonical_url}" />
-  
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="СДЭК Маркетплейсы" />
-  <meta property="og:title" content="{seo_title}" />
-  <meta property="og:description" content="{seo_desc}" />
-  <meta property="og:url" content="{canonical_url}" />
-  <meta property="og:image" content="{host}/logo.png" />
+  <link rel="canonical" href="{{CANONICAL_URL}}" />
   <link rel="icon" type="image/png" href="/favicon.png" />
 
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="СДЭК Маркетплейсы" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:title" content="{{SEO_TITLE}}" />
+  <meta property="og:description" content="{{SEO_DESC}}" />
+  <meta property="og:image" content="https://cdek-marketplace.ru/logo.png" />
+  <meta property="og:url" content="{{CANONICAL_URL}}" />
+
   <script type="application/ld+json">
-  {{
+  {
     "@context": "https://schema.org",
     "@graph": [
-      {{
+      {
         "@type": "BreadcrumbList",
         "itemListElement": [
-          {{ "@type": "ListItem", "position": 1, "name": "Главная", "item": "{host}/" }},
-          {{ "@type": "ListItem", "position": 2, "name": "Решения", "item": "{host}/solutions/" }},
-          {{ "@type": "ListItem", "position": 3, "name": "{ind_title}", "item": "{host}/solutions/{ind_slug}/" }},
-          {{ "@type": "ListItem", "position": 4, "name": "{c_name}", "item": "{canonical_url}" }}
+          { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-marketplace.ru/" },
+          { "@type": "ListItem", "position": 2, "name": "Города", "item": "https://cdek-marketplace.ru/geo/" },
+          { "@type": "ListItem", "position": 3, "name": "{{CITY_NAME}}", "item": "https://cdek-marketplace.ru/geo/{{CITY_SLUG}}/" },
+          { "@type": "ListItem", "position": 4, "name": "{{H1_MAIN}}", "item": "{{CANONICAL_URL}}" }
         ]
-      }},
-      {{
+      },
+      {
         "@type": "Service",
-        "name": "СДЭК {ind_title} {prep_v}",
-        "provider": {{ "@type": "Organization", "name": "СДЭК Маркетплейсы", "url": "{host}/" }},
-        "areaServed": {{ "@type": "City", "name": "{c_name}" }},
-        "description": "{ind_desc}"
-      }}
+        "name": "{{H1_MAIN}} {{PREP_V}}",
+        "provider": {
+          "@type": "Organization",
+          "name": "СДЭК Маркетплейсы",
+          "url": "https://cdek-marketplace.ru/"
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": "{{CITY_NAME}}"
+        },
+        "description": "{{SEO_DESC}}"
+      }
     ]
-  }}
+  }
   </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={{theme:{{extend:{{colors: { cdek: '#00b341', dark: { 900: '#072624', 950: '#041615' } } }}}}}}}}}}</script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cdek: '#00b341',
+            dark: { 900: '#072624', 950: '#041615' }
+          }
+        }
+      }
+    }
+  </script>
 </head>
 <body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased pb-16 md:pb-0 selection:bg-[#00b341] selection:text-white">
   <!--#include virtual="/src/components/header.html" -->
-  <main class="flex-grow">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 sm:pt-10 sm:pb-16">
-      <nav class="text-xs sm:text-sm text-slate-400 mb-6 flex flex-wrap items-center gap-1.5">
-        <a href="/" class="hover:text-[#00b341] transition-colors">Главная</a> <span>/</span>
-        <a href="/solutions/" class="hover:text-[#00b341] transition-colors">Решения</a> <span>/</span>
-        <a href="/solutions/{ind_slug}/" class="hover:text-[#00b341] transition-colors">{ind_title}</a> <span>/</span>
-        <span class="text-white">{c_name}</span>
-      </nav>
 
-      <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
-        <section class="flex flex-col items-start">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-bold tracking-wide uppercase border bg-[#0e3330] text-[#00b341] border-emerald-800/80">
-            <span>Отраслевая логистика • СДЭК</span>
+  <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-20 w-full">
+    <nav class="text-xs sm:text-sm text-slate-400 mb-6 flex flex-wrap items-center gap-1.5">
+      <a href="/" class="hover:text-[#00b341] transition-colors">Главная</a> <span>/</span>
+      <a href="/geo/{{CITY_SLUG}}/" class="hover:text-[#00b341] transition-colors">{{CITY_NAME}}</a> <span>/</span>
+      <span class="text-white">{{H1_MAIN}}</span>
+    </nav>
+
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
+      <div class="lg:col-span-7 flex flex-col items-start pt-2">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0e3330] text-[#00b341] border border-emerald-800/80">
+          Логистика {{PREP_V}} • СДЭК
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-4">
+          {{H1_MAIN}} <span class="text-[#00b341]">{{PREP_V}}</span>
+        </h1>
+
+        <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-8">
+          {{DESC}} Оптимизируйте отгрузки на склады маркетплейсов и доставку покупателям из {{GEN_NAME}}. Специальные тарифы B2B со скидкой до 50% и сдача посылок без очередей.
+        </p>
+
+        <div class="grid grid-cols-3 gap-4 py-6 border-y border-emerald-950 w-full mb-8">
+          <div>
+            <p class="text-2xl sm:text-3xl font-black text-[#00b341]">до 50%</p>
+            <p class="text-xs text-slate-400 font-medium">Скидка B2B</p>
           </div>
-
-          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-5">
-            {h1}
-          </h1>
-
-          <p class="text-slate-300 text-base sm:text-lg leading-relaxed mb-6">
-            {ind_desc} Подключение селлеров из {gen} к логистической сети СДЭК со скидками на B2B-договоры до 50%.
-          </p>
-
-          <div class="grid grid-cols-3 gap-4 py-6 border-y border-emerald-950 w-full mb-8">
-            <div>
-              <p class="text-xl sm:text-2xl font-black text-[#00b341]">от 136.5 ₽</p>
-              <p class="text-xs text-slate-400 font-medium">Спецтариф DBS</p>
-            </div>
-            <div>
-              <p class="text-xl sm:text-2xl font-black text-white">4 000+</p>
-              <p class="text-xs text-slate-400 font-medium">ПВЗ по России</p>
-            </div>
-            <div>
-              <p class="text-xl sm:text-2xl font-black text-white">15 мин</p>
-              <p class="text-xs text-slate-400 font-medium">Договор онлайн</p>
-            </div>
+          <div>
+            <p class="text-2xl sm:text-3xl font-black text-white">15 мин</p>
+            <p class="text-xs text-slate-400 font-medium">Договор онлайн</p>
           </div>
-
-          <div class="p-6 rounded-2xl bg-[#0e3330]/50 border border-emerald-800/60 text-slate-300 text-sm leading-relaxed mb-8 w-full">
-            <h3 class="text-white font-bold text-base mb-2">Особенности отгрузки {prep_v}:</h3>
-            <p>Сдавайте заказы по реестру без очередей в ближайших пунктах СДЭК {prep_v} или закажите ежедневный забор партий курьером со склада поставщика. Полная интеграция статусов доставки с кабинетами Wildberries, Ozon, Яндекс Маркета и Авито.</p>
+          <div>
+            <p class="text-2xl sm:text-3xl font-black text-white">4 000+</p>
+            <p class="text-xs text-slate-400 font-medium">ПВЗ для сдачи</p>
           </div>
-        </section>
-
-        <section class="relative w-full max-w-xl mx-auto lg:ml-auto sticky top-28" id="leadForm">
-          <!--#include virtual="/src/components/leadform.html" -->
-        </section>
+        </div>
       </div>
 
-      <section class="mt-12">
-        <!--#include virtual="/src/components/calculator-widget.html" -->
-      </section>
+      <div class="lg:col-span-5 sticky top-28" id="leadForm">
+        <!--#include virtual="/src/components/leadform.html" -->
+      </div>
+    </div>
 
-      <section class="mt-16 pt-8 border-t border-emerald-950">
-        <h3 class="text-base font-semibold text-white mb-3">Эта ниша в других городах:</h3>
-        <div class="flex flex-wrap gap-2.5 text-sm">
-          {links_html}
-        </div>
-      </section>
+    <div class="mt-14">
+      <!--#include virtual="/src/components/calculator-widget.html" -->
     </div>
   </main>
+
   <!--#include virtual="/src/components/footer.html" -->
+  <!--#include virtual="/src/components/mobile-cta.html" -->
 </body>
 </html>"""
-            
-            out_dir = os.path.join("geo", c_slug, "solutions", ind_slug)
-            os.makedirs(out_dir, exist_ok=True)
-            with open(os.path.join(out_dir, "index.html"), "w", encoding="utf-8") as f:
-                f.write(html)
-            total_count += 1
 
-        city_hub_path = os.path.join("geo", c_slug, "index.html")
-        if os.path.exists(city_hub_path):
-            with open(city_hub_path, "r", encoding="utf-8") as f:
-                hub_content = f.read()
+def generate_industry_geo():
+    with open("cities.json", "r", encoding="utf-8") as f:
+        cities = json.load(f)
 
-            if 'id="city-industry-solutions"' not in hub_content:
-                solutions_section = build_city_solutions_section(c_slug, c_name, prep_v)
-                if "</main>" in hub_content:
-                    hub_content = hub_content.replace("</main>", f"{solutions_section}\n  </main>")
-                elif '<!--#include virtual="/src/components/footer.html" -->' in hub_content:
-                    hub_content = hub_content.replace('<!--#include virtual="/src/components/footer.html" -->', f"{solutions_section}\n  <!--#include virtual=\"/src/components/footer.html\" -->")
-                else:
-                    hub_content = hub_content.replace("</body>", f"{solutions_section}\n</body>")
+    with open("scripts/industry_data.json", "r", encoding="utf-8") as f:
+        data = json.load(f)
 
-                with open(city_hub_path, "w", encoding="utf-8") as f:
-                    f.write(hub_content)
+    industries = data.get("industries", [])
+    print(f"🚀 Генерация отраслевой гео-матрицы СДЭК ({len(industries)} ниш x {len(cities)} городов)...")
 
-    print(f"✅ Успешно сгенерировано {total_count} отраслевых гео-страниц СДЭК.")
+    count = 0
+    for city in cities:
+        city_slug = city["slug"]
+        city_name = city["name"]
+        gen_name, prep_name, prep_v = get_city_cases(city_name)
+
+        for ind in industries:
+            ind_slug = ind["slug"]
+            h1_main = ind["h1_main"]
+            desc = ind["desc"]
+
+            canonical_url = f"https://cdek-marketplace.ru/geo/{city_slug}/{ind_slug}/"
+            seo_title = f"СДЭК {h1_main} {prep_v} для селлеров — Доставка со скидкой 50%"
+            seo_desc = f"Официальная логистика СДЭК: {h1_main.lower()} {prep_v}. {desc} Корпоративные тарифы B2B со скидкой до 50%, отгрузка через ПВЗ {prep_v}."
+
+            page_html = HTML_TEMPLATE.replace("{{SEO_TITLE}}", seo_title)\
+                                     .replace("{{SEO_DESC}}", seo_desc)\
+                                     .replace("{{CANONICAL_URL}}", canonical_url)\
+                                     .replace("{{CITY_NAME}}", city_name)\
+                                     .replace("{{CITY_SLUG}}", city_slug)\
+                                     .replace("{{H1_MAIN}}", h1_main)\
+                                     .replace("{{PREP_V}}", prep_v)\
+                                     .replace("{{GEN_NAME}}", gen_name)\
+                                     .replace("{{DESC}}", desc)
+
+            dir_path = os.path.join("geo", city_slug, ind_slug)
+            os.makedirs(dir_path, exist_ok=True)
+            with open(os.path.join(dir_path, "index.html"), "w", encoding="utf-8") as f:
+                f.write(page_html)
+            count += 1
+
+    print(f"✅ Успешно сгенерировано {count} гео-отраслевых страниц в geo/.")
 
 if __name__ == "__main__":
     generate_industry_geo()
