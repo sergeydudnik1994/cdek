@@ -24,7 +24,6 @@ jobs:
         run: |
           test -f index.html || exit 1
           test -f send-lead.php || exit 1
-          test -f src/components/leadform.html || exit 1
 
   deploy:
     needs: validate
@@ -37,5 +36,5 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            cd /var/www/cdek-marketplace.ru
+            cd /var/www/cdek-ecommerce.ru
             git pull origin main
