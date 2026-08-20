@@ -1,28 +1,42 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111090265', 'ym');
+
+    ym(111090265, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/111090265" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <!-- SEO: Заголовки и описания -->
-  <title>Калькулятор СДЭК: тариф DBS до 1 кг от 136.50 ₽ для маркетплейсов</title>
-  <meta name="description" content="Онлайн калькулятор доставки СДЭК по спецтарифу DBS для мелких товаров (до 0.5 и 1 кг). Расчет отправок в ПВЗ и курьером для Ozon, Яндекс Маркета, Авито и WB." />
+  <title>СДЭК Калькулятор тарифа DBS до 1 кг — Расчет от 136.50 ₽</title>
+  <meta name="description" content="Онлайн калькулятор доставки СДЭК по спецтарифу DBS для товаров до 1 кг. Расчет стоимости отправок в ПВЗ и курьером для Ozon, Яндекс Маркета, Авито и WB." />
 
   <!-- SEO: Мета-теги и Canonical -->
-  <meta name="theme-color" content="#8DE21A" />
+  <meta name="theme-color" content="#072624" />
   <link rel="canonical" href="https://cdek-marketplace.ru/calculator/dbs-1kg/" />
   <link rel="icon" type="image/png" href="/favicon.png" />
 
-  <!-- Open Graph теги (для Telegram, WhatsApp, VK) -->
+  <!-- Open Graph теги -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="СДЭК Маркетплейсы" />
   <meta property="og:locale" content="ru_RU" />
-  <meta property="og:title" content="Калькулятор СДЭК: тариф DBS до 1 кг от 136.50 ₽" />
+  <meta property="og:title" content="СДЭК Калькулятор тарифа DBS до 1 кг — Расчет от 136.50 ₽" />
   <meta property="og:description" content="Моментальный расчет спецтарифа СДЭК DBS для мелких отправлений Ozon, WB, Я.Маркет и Авито." />
   <meta property="og:image" content="https://cdek-marketplace.ru/logo.png" />
   <meta property="og:url" content="https://cdek-marketplace.ru/calculator/dbs-1kg/" />
 
-  <!-- ЕДИНАЯ СВЯЗАННАЯ МИКРОРАЗМЕТКА (Breadcrumbs + Service + WebApplication + Organization + FAQPage) -->
+  <!-- ЕДИНАЯ СВЯЗАННАЯ МИКРОРАЗМЕТКА -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -53,7 +67,7 @@
       {
         "@type": "Organization",
         "@id": "https://cdek-marketplace.ru/#organization",
-        "name": "СДЭК для маркетплейсов",
+        "name": "СДЭК Маркетплейсы",
         "url": "https://cdek-marketplace.ru/",
         "logo": "https://cdek-marketplace.ru/logo.png",
         "contactPoint": {
@@ -128,56 +142,65 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
-      theme: { extend: { colors: { cdek: '#8de21a', dark: { 900: '#0b101d' } } } }
+      theme: { extend: { colors: { cdek: '#00b341', dark: { 900: '#072624', 950: '#041615' } } } }
     }
   </script>
   
-  <!-- Подключаем сгенерированную базу тарифов -->
+  <!-- База тарифов -->
   <script src="rates.js"></script>
 </head>
-<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#00b341] selection:text-white pb-16 md:pb-0">
 
-  <!-- Nginx: Подключение шапки -->
   <!--#include virtual="/src/components/header.html" -->
 
   <main class="flex-grow">
     
-    <!-- СЕКЦИЯ 1: ЗАГОЛОВОК И УНИФИЦИРОВАННЫЙ КАЛЬКУЛЯТОР -->
-    <section class="pt-12 sm:pt-20 pb-12 bg-dark-900 relative overflow-hidden" id="calcSection">
+    <!-- СЕКЦИЯ 1: ЗАГОЛОВОК И КАЛЬКУЛЯТОР -->
+    <section class="pt-10 sm:pt-16 pb-12" id="calcSection">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
+        <!-- Хлебные крошки -->
+        <nav class="text-xs sm:text-sm text-slate-400 mb-6 flex flex-wrap items-center gap-1.5">
+          <a href="/" class="hover:text-[#00b341] transition-colors">Главная</a> <span>/</span>
+          <a href="/calculator/" class="hover:text-[#00b341] transition-colors">Калькулятор</a> <span>/</span>
+          <span class="text-white">Расчет DBS до 1 кг</span>
+        </nav>
+
         <div class="text-center mb-10">
-          <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-6">
-            Калькулятор тарифа DBS <br/> для товаров <span class="text-cdek">до 1 кг</span>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 mb-4 rounded-full text-xs font-bold uppercase bg-[#0e3330] text-[#00b341] border border-emerald-800/80">
+            Спецтариф от 136.50 ₽
+          </div>
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">
+            Калькулятор тарифа DBS <br class="hidden sm:block" /> для товаров <span class="text-[#00b341]">до 1 кг</span>
           </h1>
-          <p class="text-lg text-slate-300 max-w-2xl mx-auto">
-            Моментальный расчет стоимости логистики для мелких отправлений. Идеально подходит для селлеров Ozon, WB, Я.Маркет и Авито.
+          <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto">
+            Моментальный расчет стоимости логистики для мелких отправлений Ozon, Wildberries, Яндекс Маркета и Авито.
           </p>
         </div>
 
-        <!-- Оболочка калькулятора в стиле главного виджета -->
-        <div class="max-w-4xl mx-auto bg-[#0f172a]/90 backdrop-blur p-5 sm:p-6 rounded-3xl border border-slate-800 shadow-xl mb-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <!-- Оболочка калькулятора -->
+        <div class="max-w-4xl mx-auto bg-[#0b3330]/60 p-5 sm:p-7 rounded-3xl border border-emerald-800/60 shadow-xl mb-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             <!-- Поля ввода -->
             <div class="space-y-3.5">
               <div class="relative">
-                <label class="block text-[11px] font-semibold text-slate-400 mb-1 uppercase tracking-wider">Откуда отправляем (Склад)</label>
-                <input type="text" id="calc-from" value="" autocomplete="off" placeholder="Введите город..." class="w-full px-3.5 py-2.5 bg-[#1e293b] border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cdek text-sm transition-colors" />
-                <ul id="list-from" class="absolute z-50 w-full bg-[#1e293b] border border-slate-700 rounded-xl mt-1 hidden max-h-48 overflow-y-auto shadow-2xl text-sm overflow-hidden"></ul>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Откуда отправляем (Склад)</label>
+                <input type="text" id="calc-from" value="" autocomplete="off" placeholder="Введите город..." class="w-full px-3.5 py-2.5 bg-[#072624] border border-emerald-800/80 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-[#00b341] text-sm transition-colors" />
+                <ul id="list-from" class="absolute z-50 w-full bg-[#072624] border border-emerald-700 rounded-xl mt-1 hidden max-h-48 overflow-y-auto shadow-2xl text-sm overflow-hidden"></ul>
               </div>
 
               <div class="relative">
-                <label class="block text-[11px] font-semibold text-slate-400 mb-1 uppercase tracking-wider">Куда доставляем (Покупатель)</label>
-                <input type="text" id="calc-to" value="" autocomplete="off" placeholder="Введите город..." class="w-full px-3.5 py-2.5 bg-[#1e293b] border border-slate-700 rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-cdek text-sm transition-colors" />
-                <ul id="list-to" class="absolute z-50 w-full bg-[#1e293b] border border-slate-700 rounded-xl mt-1 hidden max-h-48 overflow-y-auto shadow-2xl text-sm overflow-hidden"></ul>
+                <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Куда доставляем (Покупатель)</label>
+                <input type="text" id="calc-to" value="" autocomplete="off" placeholder="Введите город..." class="w-full px-3.5 py-2.5 bg-[#072624] border border-emerald-800/80 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-[#00b341] text-sm transition-colors" />
+                <ul id="list-to" class="absolute z-50 w-full bg-[#072624] border border-emerald-700 rounded-xl mt-1 hidden max-h-48 overflow-y-auto shadow-2xl text-sm overflow-hidden"></ul>
               </div>
 
               <div class="grid grid-cols-2 gap-3">
                 <div>
-                  <label class="block text-[11px] font-semibold text-slate-400 mb-1 uppercase tracking-wider">Вес отправления</label>
+                  <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Вес отправления</label>
                   <div class="relative flex items-center">
-                    <select id="calc-weight" class="w-full pl-3.5 pr-10 py-2.5 bg-[#1e293b] border border-slate-700 rounded-xl text-white focus:outline-none focus:border-cdek text-sm cursor-pointer appearance-none">
+                    <select id="calc-weight" class="w-full pl-3.5 pr-10 py-2.5 bg-[#072624] border border-emerald-800/80 rounded-xl text-white focus:outline-none focus:border-[#00b341] text-sm cursor-pointer appearance-none">
                       <option value="0.5">До 0.5 кг</option>
                       <option value="1.0">До 1.0 кг</option>
                     </select>
@@ -186,9 +209,9 @@
                 </div>
 
                 <div>
-                  <label class="block text-[11px] font-semibold text-slate-400 mb-1 uppercase tracking-wider">Способ вручения</label>
+                  <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Способ вручения</label>
                   <div class="relative flex items-center">
-                    <select id="calc-mode" class="w-full pl-3.5 pr-10 py-2.5 bg-[#1e293b] border border-slate-700 rounded-xl text-white focus:outline-none focus:border-cdek text-sm cursor-pointer appearance-none">
+                    <select id="calc-mode" class="w-full pl-3.5 pr-10 py-2.5 bg-[#072624] border border-emerald-800/80 rounded-xl text-white focus:outline-none focus:border-[#00b341] text-sm cursor-pointer appearance-none">
                       <option value="склад-склад">В ПВЗ</option>
                       <option value="склад-дверь">Курьером</option>
                     </select>
@@ -197,24 +220,24 @@
                 </div>
               </div>
 
-              <button type="button" id="calc-btn" class="w-full py-3 px-5 bg-cdek hover:bg-cdek/90 text-[#0f172a] font-extrabold rounded-xl transition-all shadow-[0_0_15px_rgba(141,226,26,0.3)] cursor-pointer text-sm uppercase tracking-wider mt-1">
+              <button type="button" id="calc-btn" class="w-full py-3.5 px-5 bg-[#00b341] hover:bg-[#009c38] text-white font-extrabold rounded-xl transition-all shadow-md shadow-[#00b341]/20 cursor-pointer text-sm uppercase tracking-wider mt-1">
                 Рассчитать стоимость
               </button>
             </div>
 
             <!-- Блок результатов -->
-            <div class="bg-[#1e293b]/50 border border-slate-700/50 rounded-2xl p-5 flex flex-col justify-between relative z-0">
+            <div class="bg-[#072624] border border-emerald-800/60 rounded-2xl p-5 flex flex-col justify-between relative z-0">
               <div>
-                <h4 class="text-white font-bold text-sm mb-3 border-b border-slate-700/50 pb-2">Результаты расчета</h4>
-                <div id="calc-results" class="space-y-2.5 text-sm text-slate-300">
-                  <p class="text-slate-500 italic text-xs">Заполните города и нажмите «Рассчитать стоимость»</p>
+                <h4 class="text-white font-bold text-sm mb-3 border-b border-emerald-900/80 pb-2">Результаты расчета</h4>
+                <div id="calc-results" class="space-y-2.5 text-sm text-slate-200">
+                  <p class="text-slate-400 italic text-xs">Заполните города и нажмите «Рассчитать стоимость»</p>
                 </div>
               </div>
 
-              <div class="mt-4 pt-3 border-t border-slate-700/50">
+              <div class="mt-4 pt-3 border-t border-emerald-900/80">
                 <p class="text-[11px] text-slate-400 leading-relaxed">
-                  Нужен <span class="text-white font-semibold">точный расчет</span> с учетом персональной скидки? 
-                  <a href="#leadForm" id="lead-scroll-link" class="text-cdek hover:underline font-medium cursor-pointer">Оставьте заявку на точный расчёт тарифов.</a>
+                  Нужен <span class="text-white font-bold">персональный расчет</span> по договору? 
+                  <a href="#leadForm" id="lead-scroll-link" class="text-[#00b341] hover:underline font-bold cursor-pointer">Оставьте заявку на спецтарифы →</a>
                 </p>
               </div>
             </div>
@@ -224,61 +247,61 @@
     </section>
 
     <!-- СЕКЦИЯ 2: СПЕЦПРЕДЛОЖЕНИЕ И МАРКЕТПЛЕЙСЫ -->
-    <section class="py-12 bg-dark-900 border-t border-slate-800">
+    <section class="py-12 border-t border-emerald-950">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center mb-10">
-          <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Детали спецпредложения</h2>
-          <p class="text-slate-400">Выберите маркетплейс, на котором вы торгуете, чтобы увидеть доступные опции отгрузки.</p>
+          <h2 class="text-3xl md:text-4xl font-black text-white mb-3">Детали спецпредложения</h2>
+          <p class="text-slate-300">Выберите маркетплейс, на котором вы торгуете, чтобы увидеть доступные опции отгрузки.</p>
         </div>
 
-        <div class="bg-[#131b2c]/80 backdrop-blur-sm border border-slate-700/50 p-6 md:p-10 rounded-3xl shadow-xl">
+        <div class="bg-[#0b3330]/60 border border-emerald-800/60 p-6 md:p-10 rounded-3xl shadow-xl">
           
-          <div class="flex flex-wrap gap-4 mb-10 justify-center">
-            <button id="btn-universal" onclick="setMarketplace('universal')" class="mp-btn px-6 py-3 rounded-xl border-2 border-cdek bg-cdek/10 text-cdek font-bold transition-all cursor-pointer">
+          <div class="flex flex-wrap gap-3 mb-8 justify-center">
+            <button id="btn-universal" onclick="setMarketplace('universal')" class="mp-btn px-6 py-3 rounded-xl border-2 border-[#00b341] bg-[#00b341] text-white font-bold transition-all cursor-pointer">
               Ozon / Я.Маркет / Авито
             </button>
-            <button id="btn-wb" onclick="setMarketplace('wb')" class="mp-btn px-6 py-3 rounded-xl border-2 border-slate-700 bg-transparent text-slate-400 hover:border-slate-500 transition-all cursor-pointer">
+            <button id="btn-wb" onclick="setMarketplace('wb')" class="mp-btn px-6 py-3 rounded-xl border-2 border-emerald-800 bg-[#072624] text-slate-300 hover:border-emerald-700 hover:text-white transition-all cursor-pointer">
               Wildberries
             </button>
           </div>
 
           <div class="grid md:grid-cols-2 gap-6">
             <!-- До ПВЗ -->
-            <div id="pvzCard" class="bg-slate-800/60 p-8 rounded-2xl border border-slate-700 transition-all duration-300">
-              <div class="text-sm text-slate-400 mb-2 uppercase tracking-wide font-bold">Выдача в ПВЗ СДЭК</div>
+            <div id="pvzCard" class="bg-[#072624] p-7 rounded-2xl border border-emerald-800/80 transition-all duration-300">
+              <div class="text-xs text-slate-400 mb-2 uppercase tracking-wider font-bold">Выдача в ПВЗ СДЭК</div>
               <div class="flex items-baseline gap-2 mb-6">
                 <span class="text-sm text-slate-400">от</span>
                 <span class="text-4xl font-black text-white">136.50</span>
-                <span class="text-xl text-cdek font-bold">₽</span>
+                <span class="text-xl text-[#00b341] font-bold">₽</span>
               </div>
-              <ul class="text-sm text-slate-300 space-y-3">
-                <li class="flex items-center gap-2"><span class="text-cdek">✓</span> Вес до 0.5 кг (до 1 кг — 157.50 ₽)</li>
-                <li class="flex items-center gap-2"><span class="text-cdek">✓</span> Широкая сеть пунктов выдачи</li>
+              <ul class="text-sm text-slate-200 space-y-3">
+                <li class="flex items-center gap-2"><span class="text-[#00b341] font-bold">✓</span> Вес до 0.5 кг (до 1 кг — 157.50 ₽)</li>
+                <li class="flex items-center gap-2"><span class="text-[#00b341] font-bold">✓</span> Отгрузка через 4 000+ ПВЗ СДЭК</li>
               </ul>
             </div>
 
             <!-- Курьером -->
-            <div class="bg-slate-800/60 p-8 rounded-2xl border border-slate-700">
-              <div class="text-sm text-slate-400 mb-2 uppercase tracking-wide font-bold">Курьером до двери</div>
+            <div class="bg-[#072624] p-7 rounded-2xl border border-emerald-800/80">
+              <div class="text-xs text-slate-400 mb-2 uppercase tracking-wider font-bold">Курьером до двери</div>
               <div class="flex items-baseline gap-2 mb-6">
                 <span class="text-sm text-slate-400">от</span>
                 <span class="text-4xl font-black text-white">309.28</span>
-                <span class="text-xl text-cdek font-bold">₽</span>
+                <span class="text-xl text-[#00b341] font-bold">₽</span>
               </div>
-              <ul class="text-sm text-slate-300 space-y-3">
-                <li class="flex items-center gap-2"><span class="text-cdek">✓</span> Вес до 0.5 кг (до 1 кг — 345.66 ₽)</li>
-                <li class="flex items-center gap-2"><span class="text-cdek">✓</span> Вручение в руки покупателю</li>
+              <ul class="text-sm text-slate-200 space-y-3">
+                <li class="flex items-center gap-2"><span class="text-[#00b341] font-bold">✓</span> Вес до 0.5 кг (до 1 кг — 345.66 ₽)</li>
+                <li class="flex items-center gap-2"><span class="text-[#00b341] font-bold">✓</span> Вручение лично в руки покупателю</li>
               </ul>
             </div>
           </div>
 
-          <div id="wbWarning" class="hidden mt-8 bg-red-900/20 border border-red-500/30 p-5 rounded-xl flex items-start gap-4">
-            <div class="text-red-500 text-xl mt-0.5">⚠️</div>
+          <div id="wbWarning" class="hidden mt-8 bg-rose-950/40 border border-rose-500/40 p-5 rounded-2xl flex items-start gap-4">
+            <div class="text-rose-400 text-xl mt-0.5">⚠️</div>
             <div>
-              <h4 class="text-red-400 font-bold mb-1">Ограничение Wildberries</h4>
-              <p class="text-red-200/70 text-sm leading-relaxed">
-                По правилам Wildberries, отгрузка заказов DBS в ПВЗ запрещена. Доставка возможна только курьером до двери покупателя.
+              <h4 class="text-rose-200 font-bold mb-1">Регламент схемы DBS для Wildberries</h4>
+              <p class="text-rose-200/80 text-sm leading-relaxed">
+                По правилам Wildberries, доставка сторонними службами выполняется только курьером до двери покупателя либо до ПВЗ WB по тарифу «до двери».
               </p>
             </div>
           </div>
@@ -287,30 +310,25 @@
     </section>
 
     <!-- СЕКЦИЯ 3: БЛОГ -->
-    <section class="py-12 bg-dark-900 border-t border-slate-800">
+    <section class="py-12 border-t border-emerald-950">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <!-- Nginx: Подключение актуального компонента Блога -->
         <!--#include virtual="/src/components/blog-latest.html" -->
       </div>
     </section>
 
     <!-- СЕКЦИЯ 4: ФОРМА -->
-    <section class="py-12 bg-[#0b101d]" id="leadForm">
-      <div class="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-2xl md:text-3xl font-bold text-center text-white mb-8">Оставить заявку на подключение</h2>
-        <!-- Nginx: Подключение формы -->
+    <section class="py-12 border-t border-emerald-950" id="leadForm">
+      <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
         <!--#include virtual="/src/components/leadform.html" -->
       </div>
     </section>
 
   </main>
 
-  <!-- Nginx: Подключение подвала -->
   <!--#include virtual="/src/components/footer.html" -->
   <!--#include virtual="/src/components/mobile-cta.html" -->
 
   <script>
-    // Инициализация умного поиска городов
     let topCities = ["Москва", "Санкт-Петербург", "Новосибирск", "Екатеринбург", "Казань"];
 
     fetch('https://raw.githubusercontent.com/pensnarik/russian-cities/master/russian-cities.json')
@@ -336,9 +354,9 @@
 
         limited.forEach(city => {
           const li = document.createElement('li');
-          li.className = 'px-4 py-2.5 cursor-pointer hover:bg-cdek hover:text-[#0f172a] text-white border-b border-slate-700/50 last:border-0 transition-colors';
+          li.className = 'px-4 py-2.5 cursor-pointer hover:bg-[#00b341] hover:text-white text-slate-200 border-b border-emerald-900/60 last:border-0 transition-colors text-sm';
           const regex = new RegExp(`(${val})`, 'gi');
-          li.innerHTML = city.replace(regex, '<span class="font-bold text-cdek group-hover:text-[#0f172a]">$1</span>');
+          li.innerHTML = city.replace(regex, '<span class="font-bold text-[#00b341] group-hover:text-white">$1</span>');
           li.addEventListener('click', () => {
             input.value = city;
             list.classList.add('hidden');
@@ -356,7 +374,6 @@
     setupAutocomplete('calc-from', 'list-from');
     setupAutocomplete('calc-to', 'list-to');
 
-    // Логика маркетплейсов
     function setMarketplace(type) {
       const btnUniversal = document.getElementById('btn-universal');
       const btnWb = document.getElementById('btn-wb');
@@ -365,20 +382,18 @@
       const modeSelect = document.getElementById('calc-mode');
 
       [btnUniversal, btnWb].forEach(btn => {
-        btn.className = 'mp-btn px-6 py-3 rounded-xl border-2 border-slate-700 bg-transparent text-slate-400 hover:border-slate-500 transition-all cursor-pointer';
+        btn.className = 'mp-btn px-6 py-3 rounded-xl border-2 border-emerald-800 bg-[#072624] text-slate-300 hover:border-emerald-700 hover:text-white transition-all cursor-pointer';
       });
 
       if (type === 'wb') {
-        btnWb.className = 'mp-btn px-6 py-3 rounded-xl border-2 border-cdek bg-cdek/10 text-cdek font-bold transition-all cursor-pointer';
-        pvzCard.style.opacity = '0.4';
+        btnWb.className = 'mp-btn px-6 py-3 rounded-xl border-2 border-[#00b341] bg-[#00b341] text-white font-bold transition-all cursor-pointer';
+        pvzCard.style.opacity = '0.35';
         pvzCard.style.pointerEvents = 'none';
         pvzCard.style.filter = 'grayscale(100%)';
         wbWarning.classList.remove('hidden');
-        
-        // Автоматически переключаем дропдаун на "Курьером"
         modeSelect.value = 'склад-дверь';
       } else {
-        btnUniversal.className = 'mp-btn px-6 py-3 rounded-xl border-2 border-cdek bg-cdek/10 text-cdek font-bold transition-all cursor-pointer';
+        btnUniversal.className = 'mp-btn px-6 py-3 rounded-xl border-2 border-[#00b341] bg-[#00b341] text-white font-bold transition-all cursor-pointer';
         pvzCard.style.opacity = '1';
         pvzCard.style.pointerEvents = 'auto';
         pvzCard.style.filter = 'none';
@@ -386,7 +401,6 @@
       }
     }
 
-    // Главная функция расчета
     function calculatePrice() {
       const cityFrom = document.getElementById('calc-from').value.trim();
       const cityTo = document.getElementById('calc-to').value.trim();
@@ -395,7 +409,7 @@
       const resultsContainer = document.getElementById('calc-results');
 
       if (!cityFrom || !cityTo || typeof ratesDB === 'undefined') {
-        resultsContainer.innerHTML = '<p class="text-slate-500 italic text-xs">Заполните города и нажмите «Рассчитать стоимость»</p>';
+        resultsContainer.innerHTML = '<p class="text-slate-400 italic text-xs">Заполните города и нажмите «Рассчитать стоимость»</p>';
         return;
       }
 
@@ -407,33 +421,31 @@
         const time = rate.time;
         
         resultsContainer.innerHTML = `
-          <div class="flex justify-between items-center py-1.5 border-b border-slate-700/50 text-xs sm:text-sm">
+          <div class="flex justify-between items-center py-1.5 border-b border-emerald-900/80 text-xs sm:text-sm">
             <span class="text-slate-400">Направление:</span>
             <span class="text-white font-bold text-right">${cityFrom} → ${cityTo}</span>
           </div>
-          <div class="flex justify-between items-center py-1.5 border-b border-slate-700/50 text-xs sm:text-sm">
+          <div class="flex justify-between items-center py-1.5 border-b border-emerald-900/80 text-xs sm:text-sm">
             <span class="text-slate-400">Срок доставки:</span>
             <span class="text-white font-bold">${time} раб. дней</span>
           </div>
           <div class="flex justify-between items-center py-1.5 text-xs sm:text-sm mt-1">
             <span class="text-slate-400">Стоимость:</span>
-            <span class="text-cdek font-black text-lg sm:text-xl">${finalPrice} ₽</span>
+            <span class="text-[#00b341] font-black text-lg sm:text-xl">${finalPrice} ₽</span>
           </div>
         `;
       } else {
         resultsContainer.innerHTML = `
-          <div class="text-red-400 text-xs space-y-1">
+          <div class="text-rose-400 text-xs space-y-1">
             <p><strong>Уточняйте у менеджера</strong></p>
-            <p class="text-[10px] text-slate-400">Для данного направления тариф не найден в быстрой базе.</p>
+            <p class="text-[10px] text-slate-400">Для данного направления тариф рассчитывается индивидуально.</p>
           </div>
         `;
       }
     }
 
-    // Привязываем кнопку
     document.getElementById('calc-btn').addEventListener('click', calculatePrice);
 
-    // Плавный скролл
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         e.preventDefault();
