@@ -1,70 +1,70 @@
-<section class="py-14 border-t border-slate-800" id="integration-guide">
+<section class="py-14 border-t border-emerald-950" id="integration-guide">
   <div class="max-w-5xl mx-auto">
     
     <!-- Заголовок блока -->
     <div class="text-center mb-10">
-      <div class="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full text-xs font-semibold uppercase bg-cdek/10 text-cdek border border-cdek/30">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 mb-3 rounded-full text-xs font-bold uppercase bg-[#0e3330] text-[#00b341] border border-emerald-800/80">
         Самостоятельное подключение
       </div>
-      <h2 class="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+      <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
         Как настроить DBS-интеграцию за 15 минут
       </h2>
-      <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl mx-auto">
+      <p class="text-slate-300 text-sm sm:text-base mt-2 max-w-2xl mx-auto">
         Пошаговое руководство по связке витрины маркетплейса со службой доставки СДЭК для автоматической передачи заказов и трек-номеров.
       </p>
     </div>
 
     <!-- Вкладки платформ -->
     <div class="flex flex-wrap justify-center gap-2 mb-8" id="platform-tabs">
-      <button type="button" onclick="switchGuide('ozon')" class="guide-tab active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border transition-all bg-cdek text-dark-900 border-cdek" data-target="ozon">Ozon DBS</button>
-      <button type="button" onclick="switchGuide('wb')" class="guide-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border transition-all bg-slate-900/60 text-slate-300 border-slate-800 hover:border-slate-700" data-target="wb">Wildberries</button>
-      <button type="button" onclick="switchGuide('yamarket')" class="guide-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border transition-all bg-slate-900/60 text-slate-300 border-slate-800 hover:border-slate-700" data-target="yamarket">Яндекс Маркет</button>
-      <button type="button" onclick="switchGuide('avito')" class="guide-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border transition-all bg-slate-900/60 text-slate-300 border-slate-800 hover:border-slate-700" data-target="avito">Авито / Сайт</button>
+      <button type="button" onclick="switchGuide('ozon')" class="guide-tab active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all bg-[#00b341] text-white border-[#00b341]" data-target="ozon">Ozon DBS</button>
+      <button type="button" onclick="switchGuide('wb')" class="guide-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all bg-[#0e3330]/60 text-slate-300 border-emerald-900 hover:border-emerald-700 hover:text-white" data-target="wb">Wildberries</button>
+      <button type="button" onclick="switchGuide('yamarket')" class="guide-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all bg-[#0e3330]/60 text-slate-300 border-emerald-900 hover:border-emerald-700 hover:text-white" data-target="yamarket">Яндекс Маркет</button>
+      <button type="button" onclick="switchGuide('avito')" class="guide-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all bg-[#0e3330]/60 text-slate-300 border-emerald-900 hover:border-emerald-700 hover:text-white" data-target="avito">Авито (DBS)</button>
     </div>
 
     <!-- Содержимое: Карточки шагов -->
     <div class="grid md:grid-cols-2 gap-4" id="guide-steps-container">
       
       <!-- Шаг 1 -->
-      <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-5 flex gap-4">
-        <span class="flex-shrink-0 w-8 h-8 rounded-xl bg-cdek/10 border border-cdek/30 text-cdek font-bold text-sm flex items-center justify-center">1</span>
+      <div class="bg-[#0e3330]/50 border border-emerald-800/60 rounded-2xl p-5 flex gap-4 shadow-md">
+        <span class="flex-shrink-0 w-8 h-8 rounded-xl bg-[#00b341]/10 border border-[#00b341]/30 text-[#00b341] font-bold text-sm flex items-center justify-center">1</span>
         <div>
-          <h3 class="text-white font-semibold text-sm sm:text-base mb-1">Получите API-ключи СДЭК</h3>
-          <p class="text-slate-400 text-xs sm:text-sm leading-relaxed" id="step-1-desc">
+          <h3 class="text-white font-bold text-sm sm:text-base mb-1">Получите API-ключи СДЭК</h3>
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed" id="step-1-desc">
             Авторизуйтесь в личном кабинете СДЭК, перейдите в раздел <b>Интеграция → Ключи API</b> и скопируйте связку <i>Account</i> и <i>Secure password</i>.
           </p>
         </div>
       </div>
 
       <!-- Шаг 2 -->
-      <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-5 flex gap-4">
-        <span class="flex-shrink-0 w-8 h-8 rounded-xl bg-cdek/10 border border-cdek/30 text-cdek font-bold text-sm flex items-center justify-center">2</span>
+      <div class="bg-[#0e3330]/50 border border-emerald-800/60 rounded-2xl p-5 flex gap-4 shadow-md">
+        <span class="flex-shrink-0 w-8 h-8 rounded-xl bg-[#00b341]/10 border border-[#00b341]/30 text-[#00b341] font-bold text-sm flex items-center justify-center">2</span>
         <div>
-          <h3 class="text-white font-semibold text-sm sm:text-base mb-1" id="step-2-title">Создайте склад в кабинете селлера</h3>
-          <p class="text-slate-400 text-xs sm:text-sm leading-relaxed" id="step-2-desc">
-            В кабинете продавца Ozon перейдите в <b>Логистика → Добавить склад</b>, выберите схему «Доставка силами продавца (DBS)» и укажите время сборки.
+          <h3 class="text-white font-bold text-sm sm:text-base mb-1" id="step-2-title">Создайте склад в кабинете Ozon</h3>
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed" id="step-2-desc">
+            В кабинете продавца Ozon перейдите в <b>Логистика → Добавить склад</b>, выберите схему «Доставка сторонними службами (DBS)» и укажите время сборки.
           </p>
         </div>
       </div>
 
       <!-- Шаг 3 -->
-      <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-5 flex gap-4">
-        <span class="flex-shrink-0 w-8 h-8 rounded-xl bg-cdek/10 border border-cdek/30 text-cdek font-bold text-sm flex items-center justify-center">3</span>
+      <div class="bg-[#0e3330]/50 border border-emerald-800/60 rounded-2xl p-5 flex gap-4 shadow-md">
+        <span class="flex-shrink-0 w-8 h-8 rounded-xl bg-[#00b341]/10 border border-[#00b341]/30 text-[#00b341] font-bold text-sm flex items-center justify-center">3</span>
         <div>
-          <h3 class="text-white font-semibold text-sm sm:text-base mb-1">Свяжите метод доставки со СДЭК</h3>
-          <p class="text-slate-400 text-xs sm:text-sm leading-relaxed" id="step-3-desc">
-            Выберите службу доставки «СДЭК Интегрированный», укажите тарифы («Посылка» или «Магистральный экспресс») и привяжите ваши API-ключи.
+          <h3 class="text-white font-bold text-sm sm:text-base mb-1">Свяжите метод доставки со СДЭК</h3>
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed" id="step-3-desc">
+            В методах доставки выберите СДЭК (интегрированный партнер), укажите доступные города и настройте географию отгрузок.
           </p>
         </div>
       </div>
 
       <!-- Шаг 4 -->
-      <div class="bg-slate-900/50 border border-slate-800 rounded-2xl p-5 flex gap-4">
-        <span class="flex-shrink-0 w-8 h-8 rounded-xl bg-cdek/10 border border-cdek/30 text-cdek font-bold text-sm flex items-center justify-center">4</span>
+      <div class="bg-[#0e3330]/50 border border-emerald-800/60 rounded-2xl p-5 flex gap-4 shadow-md">
+        <span class="flex-shrink-0 w-8 h-8 rounded-xl bg-[#00b341]/10 border border-[#00b341]/30 text-[#00b341] font-bold text-sm flex items-center justify-center">4</span>
         <div>
-          <h3 class="text-white font-semibold text-sm sm:text-base mb-1">Печать маркировки и передача в ПВЗ</h3>
-          <p class="text-slate-400 text-xs sm:text-sm leading-relaxed" id="step-4-desc">
-            При поступлении заказа трек-номер сформируется автоматически. Распечатайте транспортную накладную СДЭК и передайте заказ в любой удобный ПВЗ.
+          <h3 class="text-white font-bold text-sm sm:text-base mb-1">Печать маркировки и передача в ПВЗ</h3>
+          <p class="text-slate-300 text-xs sm:text-sm leading-relaxed" id="step-4-desc">
+            Статусы заказов и трек-номера синхронизируются автоматически. Передавайте посылки в ближайший ПВЗ СДЭК без очередей по единому реестру.
           </p>
         </div>
       </div>
@@ -72,17 +72,17 @@
     </div>
 
     <!-- Баннер помощи -->
-    <div class="mt-8 bg-gradient-to-r from-slate-900/80 to-slate-900/40 border border-slate-800/80 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <div class="mt-8 bg-[#0b3330]/60 border border-emerald-800/80 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
       <div class="flex items-center gap-3.5">
-        <div class="w-10 h-10 rounded-xl bg-cdek/10 flex items-center justify-center text-cdek flex-shrink-0">
+        <div class="w-10 h-10 rounded-xl bg-[#00b341]/10 border border-[#00b341]/30 flex items-center justify-center text-[#00b341] flex-shrink-0">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
         <div>
-          <p class="text-white text-xs sm:text-sm font-semibold">Нужна помощь с получением API или настройкой?</p>
-          <p class="text-slate-400 text-xs">Менеджер бесплатно подключит договор и предоставит документацию под вашу CMS или маркетплейс.</p>
+          <p class="text-white text-xs sm:text-sm font-bold">Нужна помощь с получением API или настройкой?</p>
+          <p class="text-slate-300 text-xs mt-0.5">Менеджер бесплатно подключит договор и предоставит документацию под ваш маркетплейс.</p>
         </div>
       </div>
-      <a href="#leadForm" class="px-5 py-2.5 bg-cdek hover:bg-opacity-90 text-dark-900 font-bold text-xs sm:text-sm rounded-xl whitespace-nowrap transition-all">
+      <a href="#leadForm" class="px-5 py-2.5 bg-[#00b341] hover:bg-[#009c38] text-white font-bold text-xs sm:text-sm rounded-xl whitespace-nowrap transition-all shadow-md shadow-[#00b341]/20">
         Помощь в настройке
       </a>
     </div>
@@ -108,23 +108,23 @@
     yamarket: {
       step2Title: "Настройте модель DBS в Яндекс Маркете",
       step2Desc: "В кабинете перейдите в <b>Логистика → Настройки доставки</b>, выберите «Доставка магазина» и добавьте свой склад отгрузки.",
-      step3Desc: "Подключите СДЭК через личный кабинет Маркета в разделе способов доставки или свяжите через модуль для вашей CMS (1C, Tilda, InSales).",
+      step3Desc: "Подключите СДЭК через личный кабинет Маркета в разделе способов доставки или свяжите через модуль вашей системы учета.",
       step4Desc: "Маркет автоматически рассчитает покупателю срок доставки СДЭК. При получении заказа сформируйте накладную в 1 клик."
     },
     avito: {
-      step2Title: "Подключите доставку силами продавца",
-      step2Desc: "В профиле Авито для бизнеса перейдите в настройки доставки и включите опцию интеграции со сторонними курьерскими службами.",
-      step3Desc: "Для собственного интернет-магазина установите готовый плагин СДЭК (WordPress/WooCommerce, Tilda, OpenCart, МойСклад) и введите API-ключи.",
-      step4Desc: "Покупатель прямо на сайте выбирает удобный ПВЗ на интерактивной карте, а накладная создается автоматически."
+      step2Title: "Подключите доставку силами продавца (DBS)",
+      step2Desc: "В профиле Авито для бизнеса перейдите в <b>Управление профилем → Доставка</b> и включите опцию «Доставка силами продавца».",
+      step3Desc: "Выберите СДЭК в качестве службы доставки. Настройте географию отправок, сроки передачи и базовые тарифы для покупателей.",
+      step4Desc: "При поступлении заказа оформите накладную СДЭК по корпоративному тарифу и передайте трек-номер покупателю в чат Авито."
     }
   };
 
   function switchGuide(platform) {
     document.querySelectorAll('.guide-tab').forEach(btn => {
       if (btn.dataset.target === platform) {
-        btn.className = 'guide-tab active px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border transition-all bg-cdek text-dark-900 border-cdek';
+        btn.className = 'guide-tab active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all bg-[#00b341] text-white border-[#00b341]';
       } else {
-        btn.className = 'guide-tab px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold border transition-all bg-slate-900/60 text-slate-300 border-slate-800 hover:border-slate-700';
+        btn.className = 'guide-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all bg-[#0e3330]/60 text-slate-300 border-emerald-900 hover:border-emerald-700 hover:text-white';
       }
     });
 
