@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Run Theme Migration
+      - name: Run Theme Fix
         run: python scripts/migrate_theme.py
 
       - name: Commit and Push Changes
@@ -28,18 +28,7 @@ jobs:
           if git diff-index --quiet HEAD; then
             echo "Нет изменений для коммита"
           else
-            git commit -m "Auto-migrate all HTML pages to official emerald CDEK style [skip ci]"
+            git commit -m "Fix Tailwind palette and force dark emerald background"
             git pull --rebase origin main
             git push origin main
           fi
-
-      - name: Deploy to VDS
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.SERVER_IP }}
-          username: ${{ secrets.SERVER_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
-            cd /var/www/cdek-marketplace.ru
-            git reset --hard
-            git pull origin main
