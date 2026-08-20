@@ -44,9 +44,20 @@
   </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors: { cdek: '#00b341', dark: { 900: '#072624', 950: '#041615' } } }}}}}</script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cdek: '#00b341',
+            dark: { 900: '#072624', 950: '#041615' }
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased pb-16 md:pb-0">
+<body class="bg-[#072624] text-slate-100 min-h-screen flex flex-col antialiased pb-16 md:pb-0">
   <!--#include virtual="/src/components/header.html" -->
 
   <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-20 w-full">
@@ -58,7 +69,7 @@
 
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
       <div class="lg:col-span-7 flex flex-col items-start pt-2">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold uppercase tracking-wider bg-cdek/10 text-cdek border border-cdek/30">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#0e3330] text-[#00b341] border border-cdek/30">
           Отраслевое решение • СДЭК
         </div>
 

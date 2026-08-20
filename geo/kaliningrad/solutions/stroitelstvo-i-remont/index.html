@@ -54,9 +54,20 @@
   </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors: { cdek: '#00b341', dark: { 900: '#072624', 950: '#041615' } } }}}}}</script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cdek: '#00b341',
+            dark: { 900: '#072624', 950: '#041615' }
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased pb-16 md:pb-0 selection:bg-[#00b341] selection:text-white">
+<body class="bg-[#072624] text-slate-100 min-h-screen flex flex-col antialiased pb-16 md:pb-0 selection:bg-[#00b341] selection:text-white">
   <!--#include virtual="/src/components/header.html" -->
   <main class="flex-grow">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 sm:pt-10 sm:pb-16">

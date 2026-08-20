@@ -158,7 +158,9 @@
     tailwind.config = {
       theme: {
         extend: {
-          colors: { cdek: '#00b341', dark: { 900: '#072624', 950: '#041615' } }
+          colors: {
+            cdek: '#00b341',
+            dark: { 900: '#072624', 950: '#041615' }
           }
         }
       }
@@ -168,7 +170,7 @@
   <!-- Виджет СДЭК -->
   <script src="https://cdn.jsdelivr.net/npm/@cdek-it/widget@3" async></script>
 </head>
-<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#00b341] selection:text-white pb-16 md:pb-0">
+<body class="bg-[#072624] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#00b341] selection:text-white pb-16 md:pb-0">
 
   <!-- Nginx: Подключение шапки -->
   <!--#include virtual="/src/components/header.html" -->

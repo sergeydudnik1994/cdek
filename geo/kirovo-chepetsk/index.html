@@ -34,9 +34,20 @@
   }
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={theme:{extend:{colors: { cdek: '#00b341', dark: { 900: '#072624', 950: '#041615' } } }}}}}</script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cdek: '#00b341',
+            dark: { 900: '#072624', 950: '#041615' }
+          }
+        }
+      }
+    }
+  </script>
 </head>
-<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased">
+<body class="bg-[#072624] text-slate-100 min-h-screen flex flex-col antialiased">
   <!--#include virtual="/src/components/header.html" -->
   <main class="flex-grow pt-8 pb-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -59,84 +70,84 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           
           <a href="/geo/kirovo-chepetsk/fbs/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-cdek/10 text-cdek rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Доставка по модели FBS для селлеров</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Оптимизация логистики FBS. Надежная служба доставки со скидками до 50%.</p>
           </a>
           <a href="/geo/kirovo-chepetsk/dbs/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-cdek/10 text-cdek rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Спецтариф DBS для интернет-магазинов</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Настройка DBS (Delivery by Seller). Доставка товаров от продавца к покупателю по спецтарифам.</p>
           </a>
           <a href="/geo/kirovo-chepetsk/dogovor-ip/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-cdek/10 text-cdek rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Договор со СДЭК для ИП</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Бесплатное заключение корпоративного договора для селлеров.</p>
           </a>
           <a href="/geo/kirovo-chepetsk/unit-economy/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-cdek/10 text-cdek rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Расчет юнит-экономики и логистики</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Подбор наилучшего тарифа для селлеров. Расчет маржинальности.</p>
           </a>
           <a href="/geo/kirovo-chepetsk/fulfillment/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-cdek/10 text-cdek rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Фулфилмент для маркетплейсов</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Комплексные услуги фулфилмента: от приемки товара до последней мили. Снижение издержек на склад.</p>
           </a>
           <a href="/geo/kirovo-chepetsk/cross-docking/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-cdek/10 text-cdek rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Кросс-докинг для селлеров</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Быстрая перевалка грузов и отправка на склады маркетплейсов. Минимальные сроки и стоимость.</p>
           </a>
           <a href="/geo/kirovo-chepetsk/zabor-gruza/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-cdek/10 text-cdek rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 011 1v1m4-1a1 1 0 011 1v1m-1-4h3a1 1 0 011 1v3M9 20a1 1 0 100-2 1 1 0 000 2zm10 0a1 1 0 100-2 1 1 0 000 2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Забор груза со склада селлера</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Автоматизируйте отгрузку: мы сами приедем и заберем ваши посылки для доставки клиентам.</p>
           </a>
           <a href="/geo/kirovo-chepetsk/ltl-shipping/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-cdek/10 text-cdek rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 011 1v1m4-1a1 1 0 011 1v1m-1-4h3a1 1 0 011 1v3M17 11l-4-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Доставка сборных грузов (LTL)</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Экономичная доставка крупных партий товаров для интернет-магазинов и оптовиков.</p>
           </a>
           <a href="/geo/kirovo-chepetsk/kgt-delivery/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-cdek/10 text-cdek rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Доставка крупногабаритных товаров (КГТ)</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Специальные тарифы на доставку КГТ для селлеров. Честные замеры и бережная транспортировка.</p>
           </a>
           <a href="/geo/kirovo-chepetsk/cis-delivery/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-cdek/10 text-cdek rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Доставка</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Масштабируйте продажи за пределы РФ. Доставка в СНГ по упрощенной схеме для бизнеса.</p>
           </a>
           <a href="/geo/kirovo-chepetsk/express-delivery/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-cdek/10 text-cdek rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Экспресс-доставка для интернет-магазинов</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Повышайте лояльность клиентов за счет рекордных сроков доставки. Приоритетная обработка грузов.</p>
           </a>
           <a href="/geo/kirovo-chepetsk/returns-management/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-cdek/10 text-cdek rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
             <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Управление возвратами (Reverse Logistics)</h3>
