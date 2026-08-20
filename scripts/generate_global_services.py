@@ -25,7 +25,6 @@ def generate_services():
         desc = service.get("desc", "Официальные условия и подключение со скидкой.")
         canonical_url = f"https://cdek-marketplace.ru/services/{slug}/"
 
-        # SEO: Бренд СДЭК в первых словах Title и расширенный Description
         seo_title = f"СДЭК {h1_main} — Тарифы для маркетплейсов и e-commerce"
         seo_desc = f"Официальное B2B-подключение к СДЭК: {h1_main.lower()}. {desc} Скидки на логистику до 50%, отгрузка через 4 000+ ПВЗ без очередей, договор за 15 минут."
 
@@ -50,7 +49,7 @@ def generate_services():
   
   <title>{seo_title}</title>
   <meta name="description" content="{seo_desc}" />
-  <meta name="theme-color" content="#8DE21A" />
+  <meta name="theme-color" content="#072624" />
   <link rel="canonical" href="{canonical_url}" />
   
   <meta property="og:type" content="website" />
@@ -98,11 +97,11 @@ def generate_services():
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {{
-      theme: {{ extend: {{ colors: {{ cdek: '#8de21a', dark: {{ 900: '#0b101d' }} }} }} }}
+      theme: {{ extend: {{ colors: {{ cdek: '#00b341', dark: {{ 900: '#072624', 950: '#041615' }} }} }} }}
     }}
   </script>
 </head>
-<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#00b341] selection:text-white pb-16 md:pb-0">
 
   <!--#include virtual="/src/components/header.html" -->
 
@@ -110,37 +109,37 @@ def generate_services():
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20">
       
       <nav class="text-xs sm:text-sm text-slate-400 mb-6 flex flex-wrap items-center gap-1.5">
-        <a href="/" class="hover:text-cdek transition-colors">Главная</a> <span>/</span>
-        <a href="/services/" class="hover:text-cdek transition-colors">Услуги</a> <span>/</span>
+        <a href="/" class="hover:text-[#00b341] transition-colors">Главная</a> <span>/</span>
+        <a href="/services/" class="hover:text-[#00b341] transition-colors">Услуги</a> <span>/</span>
         <span class="text-white">{h1_main}</span>
       </nav>
 
       <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-start">
         <section class="max-w-2xl flex flex-col items-start lg:pl-2 lg:py-2 transition-all duration-300">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase border bg-cdek/10 text-cdek border-cdek/30">
-            <span>Официальное подключение для бизнеса</span>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-bold tracking-wide uppercase border bg-[#0e3330] text-[#00b341] border-emerald-800/80">
+            <span>Официальная логистика для селлеров</span>
           </div>
 
-          <h1 class="text-3xl sm:text-4xl lg:text-[2.7rem] font-bold text-white leading-[1.2] tracking-normal mb-5">
+          <h1 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-black text-white leading-[1.18] tracking-tight mb-5">
             {h1_main}
-            <span class="block text-2xl sm:text-3xl lg:text-[2.35rem] font-extrabold mt-2 lg:mt-3 text-cdek drop-shadow-[0_0_15px_rgba(141,226,26,0.3)]">{h1_sub}</span>
+            <span class="block text-2xl sm:text-3xl lg:text-[2.35rem] font-extrabold mt-2.5 text-[#00b341]">{h1_sub}</span>
           </h1>
 
           <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl mb-8">
             {desc} Официальный B2B договор со СДЭК: прямые оптовые тарифы со скидкой до 50%, отгрузка через 4 000+ ПВЗ без очередей и интеграция со всеми маркетплейсами.
           </p>
 
-          <div class="grid grid-cols-3 gap-6 w-full mb-8 pt-4 border-t border-slate-800">
+          <div class="grid grid-cols-3 gap-6 w-full mb-8 pt-4 border-t border-emerald-950">
             <div>
-              <p class="text-2xl sm:text-3xl font-bold text-cdek drop-shadow-[0_0_8px_rgba(141,226,26,0.3)]">0 ₽</p>
+              <p class="text-2xl sm:text-3xl font-black text-[#00b341]">0 ₽</p>
               <p class="text-xs text-slate-400 font-medium mt-0.5">Договор бесплатно</p>
             </div>
             <div>
-              <p class="text-2xl sm:text-3xl font-bold text-white">до 50%</p>
+              <p class="text-2xl sm:text-3xl font-black text-white">до -50%</p>
               <p class="text-xs text-slate-400 font-medium mt-0.5">Скидка B2B</p>
             </div>
             <div>
-              <p class="text-2xl sm:text-3xl font-bold text-white">15 мин</p>
+              <p class="text-2xl sm:text-3xl font-black text-white">15 мин</p>
               <p class="text-xs text-slate-400 font-medium mt-0.5">Оформление</p>
             </div>
           </div>
