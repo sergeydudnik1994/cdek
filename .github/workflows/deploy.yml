@@ -21,3 +21,6 @@ jobs:
             cd /var/www/cdek-html
             git fetch origin main
             git reset --hard origin/main
+# Вот эта строчка автоматически вычистит битый include на всех страницах:
+            find . -type f -name "*.html" -exec sed -i '/<!--#include virtual="\/src\/components\/mobile-cta\.html" -->/d' {} +
+            systemctl reload nginx
