@@ -3,7 +3,6 @@ import json
 import re
 
 def generate_industries():
-    # 1. Загрузка данных
     with open("scripts/industry_data.json", "r", encoding="utf-8") as f:
         data = json.load(f)
 
@@ -43,8 +42,6 @@ def generate_industries():
     }
 
     os.makedirs("solutions", exist_ok=True)
-    
-    # 2. Генерация 32 посадочных страниц ниш с идеальным SEO
     count = 0
     for ind in data["industries"]:
         slug = ind["slug"]
@@ -55,17 +52,29 @@ def generate_industries():
         
         seo_title = f"СДЭК Доставка — {h1_main} | Тарифы со скидкой до 50%"
         seo_desc = f"Официальная доставка СДЭК для селлеров и магазинов: {h1_main.lower()}. {desc} Скидки B2B до 50%, интеграция с маркетплейсами, договор за 15 минут."
-
-        sub_block = f'<span class="block text-2xl sm:text-3xl mt-2 text-cdek">{h1_sub}</span>' if h1_sub else ""
+        sub_block = f'<span class="block text-2xl sm:text-3xl mt-2 text-[#00b341]">{h1_sub}</span>' if h1_sub else ""
 
         page_html = f"""<!DOCTYPE html>
 <html lang="ru">
 <head>
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+    (function(m,e,t,r,i,k,a){{
+        m[i]=m[i]||function(){{(m[i].a=m[i].a||[]).push(arguments)}};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {{if (document.scripts[j].src === r) {{ return; }} }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    }})(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111090265', 'ym');
+    ym(111090265, 'init', {{ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/111090265" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{seo_title}</title>
   <meta name="description" content="{seo_desc}" />
-  <meta name="theme-color" content="#00b341" />
+  <meta name="theme-color" content="#072624" />
   <link rel="canonical" href="{canonical_url}" />
   <link rel="icon" type="image/png" href="/favicon.png" />
 
@@ -104,21 +113,32 @@ def generate_industries():
   </script>
 
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config={{theme:{{extend:{{colors: { cdek: '#00b341', dark: { 900: '#072624', 950: '#041615' } } }}}}}}}}}}</script>
+  <script>
+    tailwind.config = {{
+      theme: {{
+        extend: {{
+          colors: {{
+            cdek: '#00b341',
+            dark: {{ 900: '#072624', 950: '#041615' }}
+          }}
+        }}
+      }}
+    }}
+  </script>
 </head>
-<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased pb-16 md:pb-0">
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased pb-16 md:pb-0 selection:bg-[#00b341] selection:text-white">
   <!--#include virtual="/src/components/header.html" -->
 
   <main class="flex-grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-20 w-full">
     <nav class="text-xs sm:text-sm text-slate-400 mb-6 flex flex-wrap items-center gap-1.5">
-      <a href="/" class="hover:text-cdek transition-colors">Главная</a> <span>/</span>
-      <a href="/solutions/" class="hover:text-cdek transition-colors">Решения</a> <span>/</span>
+      <a href="/" class="hover:text-[#00b341] transition-colors">Главная</a> <span>/</span>
+      <a href="/solutions/" class="hover:text-[#00b341] transition-colors">Решения</a> <span>/</span>
       <span class="text-white">{h1_main}</span>
     </nav>
 
     <div class="grid lg:grid-cols-12 gap-10 lg:gap-16 items-start">
       <div class="lg:col-span-7 flex flex-col items-start pt-2">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold uppercase tracking-wider bg-cdek/10 text-cdek border border-cdek/30">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0e3330] text-[#00b341] border border-emerald-800/80">
           Отраслевое решение • СДЭК
         </div>
 
@@ -133,16 +153,16 @@ def generate_industries():
 
         <div class="grid grid-cols-3 gap-4 py-6 border-y border-emerald-950 w-full mb-8">
           <div>
-            <p class="text-2xl sm:text-3xl font-bold text-cdek">до 50%</p>
-            <p class="text-xs text-slate-400">Скидка B2B</p>
+            <p class="text-2xl sm:text-3xl font-black text-[#00b341]">до 50%</p>
+            <p class="text-xs text-slate-400 font-medium">Скидка B2B</p>
           </div>
           <div>
-            <p class="text-2xl sm:text-3xl font-bold text-white">15 мин</p>
-            <p class="text-xs text-slate-400">Договор онлайн</p>
+            <p class="text-2xl sm:text-3xl font-black text-white">15 мин</p>
+            <p class="text-xs text-slate-400 font-medium">Договор онлайн</p>
           </div>
           <div>
-            <p class="text-2xl sm:text-3xl font-bold text-white">4 000+</p>
-            <p class="text-xs text-slate-400">ПВЗ для сдачи</p>
+            <p class="text-2xl sm:text-3xl font-black text-white">4 000+</p>
+            <p class="text-xs text-slate-400 font-medium">ПВЗ для сдачи</p>
           </div>
         </div>
       </div>
@@ -168,7 +188,7 @@ def generate_industries():
             f.write(page_html)
         count += 1
 
-    print(f"✅ Успешно сгенерировано {count} отраслевых решений в папке solutions/.")
+    print(f"✅ Успешно сгенерировано {count} решений в solutions/ с изумрудной палитрой.")
 
 if __name__ == "__main__":
     generate_industries()
