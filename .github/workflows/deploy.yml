@@ -17,10 +17,9 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
           script: |
-            git config --global --add safe.directory /var/www/cdek-html
-            cd /var/www/cdek-html
+            git config --global --add safe.directory /var/www/cdek
+            cd /var/www/cdek
             git fetch origin main
             git reset --hard origin/main
-# Вот эта строчка автоматически вычистит битый include на всех страницах:
             find . -type f -name "*.html" -exec sed -i '/<!--#include virtual="\/src\/components\/mobile-cta\.html" -->/d' {} +
             systemctl reload nginx
