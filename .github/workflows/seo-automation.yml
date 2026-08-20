@@ -62,7 +62,8 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           port: 22
           script: |
-            cd /var/www/cdek
-            git fetch origin main
-            git reset --hard origin/main
-            echo "✅ Сайт успешно обновлен на сервере!"
+              git config --global --add safe.directory /var/www/cdek
+              cd /var/www/cdek
+              git fetch origin main
+              git reset --hard origin/main
+              sudo systemctl reload nginx || true
