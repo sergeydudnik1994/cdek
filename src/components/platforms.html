@@ -1,133 +1,98 @@
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
   
-  <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 pb-6 border-b border-emerald-950">
-    <div>
-      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-[#0e3330] text-[#00b341] border border-emerald-800/80 mb-3">
-        Интеграции и шлюзы
-      </div>
-      <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight">
-        Подключение к <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00b341] via-emerald-300 to-teal-200">маркетплейсам</span>
-      </h2>
-    </div>
-    <p class="text-slate-400 text-sm sm:text-base max-w-md mt-3 md:mt-0">
-      Готовые модули интеграции по API v2.0. Автоматическая выгрузка трек-номеров, генерация этикеток и синхронизация статусов вручения.
+  <div class="text-center max-w-3xl mx-auto mb-12">
+    <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">
+      Выберите ваш <span class="text-[#00b341]">маркетплейс или платформу</span>
+    </h2>
+    <p class="text-slate-400 text-sm sm:text-base mt-2">
+      Перейдите на страницу вашего направления для точного расчета условий и тарифов
     </p>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5">
 
     <!-- 1. Ozon -->
-    <a href="/ozon/" class="group relative overflow-hidden p-6 rounded-3xl bg-[#0b3330]/50 border border-emerald-800/60 hover:border-[#005bff] hover:bg-[#0b3330]/90 transition-all duration-300 flex flex-col justify-between shadow-xl hover:-translate-y-1">
-      <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-[#005bff]/10 rounded-full blur-2xl group-hover:bg-[#005bff]/25 transition-all"></div>
-      <div>
-        <div class="flex items-center justify-between mb-5">
-          <div class="px-3 py-1 rounded-xl bg-[#005bff]/20 border border-[#005bff]/40 text-[#005bff] font-black text-xs tracking-wider">
-            OZON
-          </div>
-          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider bg-[#072624] px-2.5 py-1 rounded-lg border border-emerald-950">DBS • rFBS • FBS</span>
+    <a href="/ozon/" class="group p-5 rounded-2xl bg-[#0b3330]/50 border border-emerald-800/60 hover:border-[#005bff] hover:bg-[#0b3330]/90 transition-all flex items-center justify-between">
+      <div class="flex items-center gap-3.5">
+        <div class="w-10 h-10 rounded-xl bg-[#005bff]/20 text-[#005bff] flex items-center justify-center font-black text-xs shrink-0">
+          OZON
         </div>
-        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-[#005bff] transition-colors">СДЭК для Ozon</h3>
-        <p class="text-sm text-slate-300 leading-relaxed mb-6">Доставка крупногабарита (КГТ), спецтарифы DBS от 136.5 ₽ и отгрузка в ПВЗ без очередей по всей России.</p>
+        <div>
+          <h3 class="text-white font-bold text-base group-hover:text-[#005bff] transition-colors">Ozon</h3>
+          <p class="text-xs text-slate-400">FBS / rFBS / DBS доставка</p>
+        </div>
       </div>
-      <div class="flex items-center justify-between pt-4 border-t border-emerald-950 text-xs font-bold">
-        <span class="text-emerald-400">Интеграция по API</span>
-        <span class="text-white group-hover:text-[#005bff] group-hover:translate-x-1 transition-all">Подключить →</span>
-      </div>
+      <span class="text-slate-500 group-hover:text-white group-hover:translate-x-1 transition-all text-sm">→</span>
     </a>
 
     <!-- 2. Wildberries -->
-    <a href="/wildberries/" class="group relative overflow-hidden p-6 rounded-3xl bg-[#0b3330]/50 border border-emerald-800/60 hover:border-[#cb11ab] hover:bg-[#0b3330]/90 transition-all duration-300 flex flex-col justify-between shadow-xl hover:-translate-y-1">
-      <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-[#cb11ab]/10 rounded-full blur-2xl group-hover:bg-[#cb11ab]/25 transition-all"></div>
-      <div>
-        <div class="flex items-center justify-between mb-5">
-          <div class="px-3 py-1 rounded-xl bg-[#cb11ab]/20 border border-[#cb11ab]/40 text-[#cb11ab] font-black text-xs tracking-wider">
-            WILDBERRIES
-          </div>
-          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider bg-[#072624] px-2.5 py-1 rounded-lg border border-emerald-950">FBS • DBS Курьер</span>
+    <a href="/wildberries/" class="group p-5 rounded-2xl bg-[#0b3330]/50 border border-emerald-800/60 hover:border-[#cb11ab] hover:bg-[#0b3330]/90 transition-all flex items-center justify-between">
+      <div class="flex items-center gap-3.5">
+        <div class="w-10 h-10 rounded-xl bg-[#cb11ab]/20 text-[#cb11ab] flex items-center justify-center font-black text-xs shrink-0">
+          WB
         </div>
-        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-[#cb11ab] transition-colors">СДЭК для Wildberries</h3>
-        <p class="text-sm text-slate-300 leading-relaxed mb-6">Срочная доставка день-в-день, работа со своего склада и страхование грузов с защитой от утерь.</p>
+        <div>
+          <h3 class="text-white font-bold text-base group-hover:text-[#cb11ab] transition-colors">Wildberries</h3>
+          <p class="text-xs text-slate-400">FBS / DBS Курьер</p>
+        </div>
       </div>
-      <div class="flex items-center justify-between pt-4 border-t border-emerald-950 text-xs font-bold">
-        <span class="text-emerald-400">Скидки до 50%</span>
-        <span class="text-white group-hover:text-[#cb11ab] group-hover:translate-x-1 transition-all">Подключить →</span>
-      </div>
+      <span class="text-slate-500 group-hover:text-white group-hover:translate-x-1 transition-all text-sm">→</span>
     </a>
 
     <!-- 3. Яндекс Маркет -->
-    <a href="/yandex-market/" class="group relative overflow-hidden p-6 rounded-3xl bg-[#0b3330]/50 border border-emerald-800/60 hover:border-[#fc3f1d] hover:bg-[#0b3330]/90 transition-all duration-300 flex flex-col justify-between shadow-xl hover:-translate-y-1">
-      <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-[#fc3f1d]/10 rounded-full blur-2xl group-hover:bg-[#fc3f1d]/25 transition-all"></div>
-      <div>
-        <div class="flex items-center justify-between mb-5">
-          <div class="px-3 py-1 rounded-xl bg-[#fc3f1d]/20 border border-[#fc3f1d]/40 text-[#fc3f1d] font-black text-xs tracking-wider">
-            ЯНДЕКС МАРКЕТ
-          </div>
-          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider bg-[#072624] px-2.5 py-1 rounded-lg border border-emerald-950">DBS • Экспресс</span>
+    <a href="/yandex-market/" class="group p-5 rounded-2xl bg-[#0b3330]/50 border border-emerald-800/60 hover:border-[#fc3f1d] hover:bg-[#0b3330]/90 transition-all flex items-center justify-between">
+      <div class="flex items-center gap-3.5">
+        <div class="w-10 h-10 rounded-xl bg-[#fc3f1d]/20 text-[#fc3f1d] flex items-center justify-center font-black text-xs shrink-0">
+          ЯМ
         </div>
-        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-[#fc3f1d] transition-colors">СДЭК для Яндекс Маркета</h3>
-        <p class="text-sm text-slate-300 leading-relaxed mb-6">Бесшовная передача трек-номеров, доставка до двери покупателя за 1-2 дня и минимальные тарифы на логистику.</p>
+        <div>
+          <h3 class="text-white font-bold text-base group-hover:text-[#fc3f1d] transition-colors">Яндекс Маркет</h3>
+          <p class="text-xs text-slate-400">DBS / Экспресс-доставка</p>
+        </div>
       </div>
-      <div class="flex items-center justify-between pt-4 border-t border-emerald-950 text-xs font-bold">
-        <span class="text-emerald-400">Прямой шлюз</span>
-        <span class="text-white group-hover:text-[#fc3f1d] group-hover:translate-x-1 transition-all">Подключить →</span>
-      </div>
+      <span class="text-slate-500 group-hover:text-white group-hover:translate-x-1 transition-all text-sm">→</span>
     </a>
 
-    <!-- 4. Авито Доставка -->
-    <a href="/avito/" class="group relative overflow-hidden p-6 rounded-3xl bg-[#0b3330]/50 border border-emerald-800/60 hover:border-[#00aaff] hover:bg-[#0b3330]/90 transition-all duration-300 flex flex-col justify-between shadow-xl hover:-translate-y-1">
-      <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-[#00aaff]/10 rounded-full blur-2xl group-hover:bg-[#00aaff]/25 transition-all"></div>
-      <div>
-        <div class="flex items-center justify-between mb-5">
-          <div class="px-3 py-1 rounded-xl bg-[#00aaff]/20 border border-[#00aaff]/40 text-[#00aaff] font-black text-xs tracking-wider">
-            АВИТО
-          </div>
-          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider bg-[#072624] px-2.5 py-1 rounded-lg border border-emerald-950">Авито Доставка</span>
+    <!-- 4. Мегамаркет -->
+    <a href="/services/dbs/" class="group p-5 rounded-2xl bg-[#0b3330]/50 border border-emerald-800/60 hover:border-[#8b2cf5] hover:bg-[#0b3330]/90 transition-all flex items-center justify-between">
+      <div class="flex items-center gap-3.5">
+        <div class="w-10 h-10 rounded-xl bg-[#8b2cf5]/20 text-[#8b2cf5] flex items-center justify-center font-black text-xs shrink-0">
+          ММ
         </div>
-        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-[#00aaff] transition-colors">СДЭК для Авито</h3>
-        <p class="text-sm text-slate-300 leading-relaxed mb-6">Отправка заказов покупателям через сеть 4000+ ПВЗ СДЭК с гарантией безопасной сделки и наложенным платежом.</p>
+        <div>
+          <h3 class="text-white font-bold text-base group-hover:text-[#8b2cf5] transition-colors">Мегамаркет</h3>
+          <p class="text-xs text-slate-400">FBS / DBS отправления</p>
+        </div>
       </div>
-      <div class="flex items-center justify-between pt-4 border-t border-emerald-950 text-xs font-bold">
-        <span class="text-emerald-400">4000+ ПВЗ</span>
-        <span class="text-white group-hover:text-[#00aaff] group-hover:translate-x-1 transition-all">Подключить →</span>
-      </div>
+      <span class="text-slate-500 group-hover:text-white group-hover:translate-x-1 transition-all text-sm">→</span>
     </a>
 
-    <!-- 5. Спецтариф DBS до 1 кг -->
-    <a href="/services/dbs/" class="group relative overflow-hidden p-6 rounded-3xl bg-gradient-to-br from-[#0b3330] via-[#072624] to-[#041615] border border-[#00b341]/60 hover:border-[#00b341] transition-all duration-300 flex flex-col justify-between shadow-xl hover:-translate-y-1">
-      <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-[#00b341]/15 rounded-full blur-2xl group-hover:bg-[#00b341]/30 transition-all"></div>
-      <div>
-        <div class="flex items-center justify-between mb-5">
-          <div class="px-3 py-1 rounded-xl bg-[#00b341]/20 border border-[#00b341]/40 text-[#00b341] font-black text-xs tracking-wider">
-            СПЕЦТАРИФ DBS
-          </div>
-          <span class="text-[11px] font-black text-[#00b341] bg-[#00b341]/10 px-2.5 py-1 rounded-lg border border-[#00b341]/30">от 136.50 ₽</span>
+    <!-- 5. Авито -->
+    <a href="/avito/" class="group p-5 rounded-2xl bg-[#0b3330]/50 border border-emerald-800/60 hover:border-[#00aaff] hover:bg-[#0b3330]/90 transition-all flex items-center justify-between">
+      <div class="flex items-center gap-3.5">
+        <div class="w-10 h-10 rounded-xl bg-[#00aaff]/20 text-[#00aaff] flex items-center justify-center font-black text-xs shrink-0">
+          AV
         </div>
-        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-[#00b341] transition-colors">DBS для легких посылок</h3>
-        <p class="text-sm text-slate-300 leading-relaxed mb-6">Эксклюзивные B2B тарифы на отправления до 1 кг при интеграции вашего интернет-магазина или витрины со СДЭК.</p>
+        <div>
+          <h3 class="text-white font-bold text-base group-hover:text-[#00aaff] transition-colors">Авито Доставка</h3>
+          <p class="text-xs text-slate-400">Через 4 000+ пунктов СДЭК</p>
+        </div>
       </div>
-      <div class="flex items-center justify-between pt-4 border-t border-emerald-950 text-xs font-bold">
-        <span class="text-[#00b341]">Хит для e-commerce</span>
-        <span class="text-white group-hover:text-[#00b341] group-hover:translate-x-1 transition-all">Рассчитать выгоду →</span>
-      </div>
+      <span class="text-slate-500 group-hover:text-white group-hover:translate-x-1 transition-all text-sm">→</span>
     </a>
 
-    <!-- 6. 30+ CMS и Интеграций -->
-    <a href="/integrations/" class="group relative overflow-hidden p-6 rounded-3xl bg-[#0b3330]/50 border border-emerald-800/60 hover:border-[#00b341] hover:bg-[#0b3330]/90 transition-all duration-300 flex flex-col justify-between shadow-xl hover:-translate-y-1">
-      <div class="absolute -right-10 -bottom-10 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl group-hover:bg-emerald-500/20 transition-all"></div>
-      <div>
-        <div class="flex items-center justify-between mb-5">
-          <div class="px-3 py-1 rounded-xl bg-slate-800 border border-slate-700 text-slate-200 font-black text-xs tracking-wider">
-            API & CMS
-          </div>
-          <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider bg-[#072624] px-2.5 py-1 rounded-lg border border-emerald-950">30+ модулей</span>
+    <!-- 6. CMS & Интеграции -->
+    <a href="/integrations/" class="group p-5 rounded-2xl bg-[#0b3330]/50 border border-emerald-800/60 hover:border-[#00b341] hover:bg-[#0b3330]/90 transition-all flex items-center justify-between">
+      <div class="flex items-center gap-3.5">
+        <div class="w-10 h-10 rounded-xl bg-[#00b341]/20 text-[#00b341] flex items-center justify-center font-black text-xs shrink-0">
+          API
         </div>
-        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-[#00b341] transition-colors">Готовые модули для сайтов</h3>
-        <p class="text-sm text-slate-300 leading-relaxed mb-6">1С-Битрикс, Tilda, WooCommerce, InSales, МойСклад, amoCRM и RetailCRM. Установка и запуск за 15 минут.</p>
+        <div>
+          <h3 class="text-white font-bold text-base group-hover:text-[#00b341] transition-colors">Интернет-магазины и CMS</h3>
+          <p class="text-xs text-slate-400">30+ готовых модулей интеграции</p>
+        </div>
       </div>
-      <div class="flex items-center justify-between pt-4 border-t border-emerald-950 text-xs font-bold">
-        <span class="text-emerald-400">Все платформы</span>
-        <span class="text-white group-hover:text-[#00b341] group-hover:translate-x-1 transition-all">Каталог модулей →</span>
-      </div>
+      <span class="text-slate-500 group-hover:text-white group-hover:translate-x-1 transition-all text-sm">→</span>
     </a>
 
   </div>
