@@ -204,7 +204,6 @@ CATALOG_HUB_TEMPLATE = """<!DOCTYPE html>
   </main>
 
   <!--#include virtual="/src/components/footer.html" -->
-  <!--#include virtual="/src/components/mobile-cta.html" -->
 </body>
 </html>"""
 
