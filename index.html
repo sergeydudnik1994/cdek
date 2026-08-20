@@ -176,77 +176,101 @@
   <!--#include virtual="/src/components/header.html" -->
 
   <main class="flex-grow">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20">
+    
+    <!-- СЕКЦИЯ HERO: АВРОРА-СВЕЧЕНИЕ И IT-СТИЛЬ -->
+    <section class="relative overflow-hidden pt-6 pb-12 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20 border-b border-emerald-950/60">
       
-      <!-- Hero-блок -->
-      <div class="grid lg:grid-cols-[1.08fr_0.92fr] gap-10 lg:gap-14 items-start">
-        
-        <section class="max-w-2xl flex flex-col items-start lg:pl-2 lg:py-2 transition-all duration-300">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-bold tracking-wide uppercase transition-all border bg-[#0e3330] text-[#00b341] border-emerald-800/80">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00b341] opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-[#00b341]"></span>
-            </span>
-            <span>Официальная логистика для селлеров</span>
+      <!-- Фоновая подсветка (Aurora Lighting) -->
+      <div class="absolute top-12 left-10 w-96 h-96 bg-[#00b341]/10 rounded-full blur-3xl pointer-events-none -z-0"></div>
+      <div class="absolute bottom-10 right-1/3 w-80 h-80 bg-teal-500/10 rounded-full blur-3xl pointer-events-none -z-0"></div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-[1.08fr_0.92fr] gap-10 lg:gap-14 items-start">
+          
+          <div class="max-w-2xl flex flex-col items-start lg:pl-2 lg:py-2">
+            
+            <!-- Живой статус-бейдж -->
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-extrabold tracking-wide uppercase border bg-[#0b3330]/80 text-[#00b341] border-emerald-700/60 backdrop-blur-md shadow-[0_0_12px_rgba(0,179,65,0.12)]">
+              <span class="relative flex h-2 w-2">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00b341] opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-[#00b341]"></span>
+              </span>
+              <span>Официальная логистика для селлеров</span>
+            </div>
+
+            <!-- Главный H1 с градиентной подсветкой -->
+            <h1 class="text-3xl sm:text-4xl lg:text-[2.85rem] font-black text-white leading-[1.14] tracking-tight mb-5">
+              Доставка СДЭК для селлеров <br class="hidden sm:block" />
+              <span class="text-slate-200">и интернет-магазинов</span>
+              <span class="block text-2xl sm:text-3xl lg:text-[2.35rem] font-extrabold mt-3 text-transparent bg-clip-text bg-gradient-to-r from-[#00b341] via-emerald-300 to-teal-200">
+                Wildberries, Ozon, Яндекс Маркет и Авито
+              </span>
+            </h1>
+
+            <p class="text-slate-200 text-base sm:text-lg leading-relaxed max-w-xl mb-4 font-normal">
+              Официальный B2B договор за 15 минут со скидкой на логистику до 50%. Отгрузка заказов по моделям <b class="text-white font-bold">FBS и DBS</b> через 4 000+ ПВЗ по всей России без очередей и штрафов за тайм-слоты.
+            </p>
+
+            <p class="text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl mb-8">
+              Автоматическая передача трек-номеров на маркетплейсы, прием наложенного платежа по 54-ФЗ и доставка заказов до двери покупателя или склада площадки.
+            </p>
+
+            <!-- Стеклянные KPI-карточки -->
+            <div class="grid grid-cols-3 gap-3.5 sm:gap-5 w-full max-w-xl mb-6">
+              <div class="p-3.5 sm:p-4 rounded-2xl bg-[#0b3330]/50 border border-emerald-800/50 backdrop-blur-sm">
+                <p class="text-2xl sm:text-3xl font-black text-[#00b341]">0 ₽</p>
+                <p class="text-xs text-slate-300 font-medium mt-1">Бесплатный договор</p>
+              </div>
+              <div class="p-3.5 sm:p-4 rounded-2xl bg-[#0b3330]/50 border border-emerald-800/50 backdrop-blur-sm">
+                <p class="text-2xl sm:text-3xl font-black text-white">до -50%</p>
+                <p class="text-xs text-slate-300 font-medium mt-1">Скидка на тарифы</p>
+              </div>
+              <div class="p-3.5 sm:p-4 rounded-2xl bg-[#0b3330]/50 border border-emerald-800/50 backdrop-blur-sm">
+                <p class="text-2xl sm:text-3xl font-black text-white">4 000+</p>
+                <p class="text-xs text-slate-300 font-medium mt-1">ПВЗ для сдачи</p>
+              </div>
+            </div>
           </div>
 
-          <h1 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-black text-white leading-[1.18] tracking-tight mb-5">
-            Доставка СДЭК для селлеров <span class="text-slate-300">и интернет-магазинов</span>
-            <span class="block text-2xl sm:text-3xl lg:text-[2.35rem] font-extrabold mt-2.5 text-[#00b341]">Wildberries, Ozon, Яндекс Маркет и Авито</span>
-          </h1>
-
-          <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-xl mb-4">
-            Официальный B2B договор за 15 минут со скидкой на логистику до 50%. Отгрузка заказов по моделям <b class="text-white">FBS и DBS</b> через 4 000+ ПВЗ по всей России без очередей и штрафов за тайм-слоты.
-          </p>
-
-          <p class="text-slate-400 text-sm sm:text-base leading-relaxed max-w-xl mb-8">
-            Автоматическая передача трек-номеров на маркетплейсы, прием наложенного платежа по 54-ФЗ и доставка заказов до двери покупателя или склада площадки.
-          </p>
-
-          <div class="grid grid-cols-3 gap-6 w-full mb-8 pt-5 border-t border-emerald-950">
-            <div>
-              <p class="text-2xl sm:text-3xl font-black text-[#00b341]">0 ₽</p>
-              <p class="text-xs text-slate-400 font-medium mt-0.5">Бесплатный договор</p>
-            </div>
-            <div>
-              <p class="text-2xl sm:text-3xl font-black text-white">до -50%</p>
-              <p class="text-xs text-slate-400 font-medium mt-0.5">Скидка на тарифы</p>
-            </div>
-            <div>
-              <p class="text-2xl sm:text-3xl font-black text-white">4 000+</p>
-              <p class="text-xs text-slate-400 font-medium mt-0.5">ПВЗ для сдачи груза</p>
-            </div>
+          <!-- Форма заявки -->
+          <div class="relative w-full max-w-xl mx-auto lg:ml-auto lg:mr-0 sticky top-24 z-20" id="leadForm">
+            <!-- Nginx: Подключение формы заявки -->
+            <!--#include virtual="/src/components/leadform.html" -->
           </div>
-        </section>
 
-        <section class="relative w-full max-w-xl mx-auto lg:ml-auto lg:mr-0 sticky top-28" id="leadForm">
-          <!-- Nginx: Подключение формы заявки -->
-          <!--#include virtual="/src/components/leadform.html" -->
-        </section>
+        </div>  
+      </div>
+    </section>
 
-      </div>  
-
-      <!-- Nginx: Подключение блока Платформ -->
-      <section class="mt-24 sm:mt-28 mb-16">
+    <!-- СЕКЦИЯ ПЛАТФОРМ -->
+    <section class="py-16 sm:py-20 border-b border-emerald-950/60 bg-[#041615]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Nginx: Подключение блока Платформ -->
         <!--#include virtual="/src/components/platforms.html" -->
-      </section>
+      </div>
+    </section>
 
-      <!-- ЕДИНЫЙ КАЛЬКУЛЯТОР СДЭК -->
-      <section id="widget-section" class="mt-16">
+    <!-- ЕДИНЫЙ КАЛЬКУЛЯТОР СДЭК -->
+    <section id="widget-section" class="py-16 sm:py-20 border-b border-emerald-950/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <!-- Nginx: Подключение калькулятора -->
         <!--#include virtual="/src/components/calculator-widget.html" -->
-      </section>
+      </div>
+    </section>
 
-      <!-- Инструкция по самостоятельной интеграции DBS -->
-      <!--#include virtual="/src/components/integration-guide.html" -->
+    <!-- Инструкция по самостоятельной интеграции DBS -->
+    <section class="py-16 border-b border-emerald-950/60 bg-[#041615]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!--#include virtual="/src/components/integration-guide.html" -->
+      </div>
+    </section>
 
-      <!-- Секция блога на главной -->
-      <section class="py-16 mt-10">
-        <!-- Nginx: Подключение топ-3 последних статей -->
-        <!--#include virtual="/src/components/blog-latest.html" -->
-      </section>
+    <!-- Секция блога на главной -->
+    <section class="py-16 sm:py-20">
+      <!-- Nginx: Подключение топ-3 последних статей -->
+      <!--#include virtual="/src/components/blog-latest.html" -->
+    </section>
 
-    </div>
   </main>
 
   <!-- Nginx: Подключение подвала -->
