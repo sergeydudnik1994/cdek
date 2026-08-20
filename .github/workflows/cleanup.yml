@@ -1,0 +1,35 @@
+name: Cleanup Mobile CTA
+on: [push]
+
+jobs:
+  cleanup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Run Cleanup Script
+        run: |
+          python3 -c '
+          import os
+          target = "mobile-cta.html"
+          for root, dirs, files in os.walk("."):
+              if ".git" in root: continue
+              for file in files:
+                  if file.endswith((".html", ".htm")):
+                      path = os.path.join(root, file)
+                      with open(path, "r", encoding="utf-8", errors="ignore") as f:
+                          lines = f.readlines()
+                      new_lines = [line for line in lines if target not in line]
+                      if len(new_lines) != len(lines):
+                          with open(path, "w", encoding="utf-8") as f:
+                              f.writelines(new_lines)
+                          print(f"Cleaned: {path}")
+          '
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add .
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-remove mobile-cta.html include" && git push)
