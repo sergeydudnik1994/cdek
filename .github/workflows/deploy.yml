@@ -1,24 +1,44 @@
-name: Deploy to VDS
+name: CI/CD Pipeline
 
 on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   deploy:
+    name: Deploy to Production
     runs-on: ubuntu-latest
+
     steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
       - name: Deploy via SSH
         uses: appleboy/ssh-action@v1.0.3
         with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USER }}
-          password: ${{ secrets.SERVER_PASSWORD }}
-          port: 22
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
           script: |
-              git config --global --add safe.directory /var/www/cdek
-              cd /var/www/cdek
-              git fetch origin main
-              git reset --hard origin/main
-              sudo systemctl reload nginx || true
+            set -e
+            echo "🚀 Начало деплоя cdek-marketplace.ru..."
+            
+            # Переход в папку проекта
+            cd /var/www/cdek-marketplace.ru
+            
+            # Сброс локальных изменений и подтягивание свежего main
+            git fetch origin main
+            git reset --hard origin/main
+            
+            # Коррекция прав доступа для веб-сервера Nginx
+            chown -R www-data:www-data /var/www/cdek-marketplace.ru
+            chmod -R 755 /var/www/cdek-marketplace.ru
+            
+            # Проверка и перезагрузка Nginx
+            nginx -t
+            systemctl reload nginx
+            
+            echo "✅ Деплой успешно завершен!"
