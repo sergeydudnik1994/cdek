@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Отслеживание заказа СДЭК по трек-номеру | CDEK Marketplace</title>
+  <meta name="description" content="Онлайн-отслеживание посылок и грузов СДЭК. Узнайте статус доставки, маршрут и ориентировочную дату прибытия заказа." />
+  <link rel="canonical" href="https://cdek-marketplace.ru/tracking/" />
+  
+  <meta name="theme-color" content="#8DE21A" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cdek: '#8de21a',
+            dark: { 900: '#0b101d' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+</head>
+<body class="bg-dark-900 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-dark-900 pb-16 md:pb-0">
+
+  <!-- Nginx: Шапка -->
+  <!--#include virtual="/src/components/header.html" -->
+
+  <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-8">
+    
+    <!-- Заголовок -->
+    <div class="text-center sm:text-left">
+      <div class="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full text-xs font-semibold uppercase bg-cdek/10 text-cdek border border-cdek/30">
+        Сервис трекинга
+      </div>
+      <h1 class="text-3xl sm:text-4xl font-bold text-white tracking-tight">Отслеживание посылки</h1>
+      <p class="text-sm sm:text-base text-slate-400 mt-2">Введите номер накладной или заказа СДЭК для просмотра актуального статуса и маршрута доставки</p>
+    </div>
+
+    <!-- Поисковое поле -->
+    <div class="bg-slate-900/60 rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-slate-800 shadow-xl">
+      <form id="trackingForm" onsubmit="executeTracking(event)" class="flex gap-3">
+        <input 
+          type="text" 
+          id="trackNumber" 
+          required 
+          placeholder="Введите трек-номер (например: 1234567890)" 
+          class="flex-grow px-5 py-3.5 bg-slate-950/70 border border-slate-800 rounded-xl sm:rounded-2xl text-white placeholder-slate-500 text-base outline-none focus:border-cdek focus:ring-1 focus:ring-cdek transition"
+        />
+        <button 
+          type="submit" 
+          id="trackBtn"
+          class="px-6 sm:px-8 py-3.5 bg-cdek hover:bg-opacity-90 text-dark-900 font-bold rounded-xl sm:rounded-2xl transition flex items-center justify-center cursor-pointer active:scale-95 flex-shrink-0"
+        >
+          <svg class="w-5 h-5 text-dark-900" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </button>
+      </form>
+    </div>
+
+    <!-- Лоадер -->
+    <div id="trackLoading" class="hidden text-center py-12">
+      <div class="inline-block w-9 h-9 border-4 border-cdek/20 border-t-cdek rounded-full animate-spin"></div>
+      <p class="text-xs font-semibold uppercase tracking-wider text-slate-400 mt-3">Запрашиваем данные у СДЭК...</p>
+    </div>
+
+    <!-- Ошибка -->
+    <div id="trackError" class="hidden p-5 rounded-2xl bg-rose-950/40 border border-rose-800/80 text-rose-300 text-sm"></div>
+
+    <!-- Карточка результата -->
+    <div id="trackResult" class="hidden bg-slate-900/60 rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-slate-800 shadow-xl space-y-8">
+      
+      <!-- Верхняя плашка -->
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-slate-800">
+        <div class="text-lg font-bold text-white" id="resNumber">№ —</div>
+        <div class="text-base sm:text-lg font-semibold text-slate-300" id="resRoute">—</div>
+        <div id="resBadgeWrapper">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/20" id="resStatusBadge">
+            В пути
+          </span>
+        </div>
+      </div>
+
+      <!-- Маршрутная шкала с грузовиком -->
+      <div class="space-y-3">
+        <div class="flex items-center justify-between text-lg sm:text-xl font-bold text-white">
+          <span id="resCityFrom">—</span>
+          <span id="resCityTo">—</span>
+        </div>
+        <div class="h-2 w-full bg-slate-950 rounded-full relative overflow-visible">
+          <div class="h-full bg-cdek rounded-full transition-all duration-700 shadow-[0_0_10px_rgba(141,226,26,0.5)]" id="resProgressBar" style="width: 50%;"></div>
+          <div class="absolute -top-3 w-8 h-8 bg-dark-900 border-2 border-cdek rounded-full flex items-center justify-center shadow-lg transition-all duration-700" id="resTruckIcon" style="left: calc(50% - 16px);">
+            <svg class="w-4 h-4 text-cdek" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Основная сетка данных -->
+      <div class="grid lg:grid-cols-12 gap-8 pt-4">
+        
+        <!-- Левая колонка: 4 этапа + подстатусы -->
+        <div class="lg:col-span-7 space-y-6" id="resMilestones">
+          <!-- Динамические шаги -->
+        </div>
+
+        <!-- Правая колонка -->
+        <div class="lg:col-span-5 space-y-4">
+          
+          <div class="bg-slate-950/50 rounded-2xl p-6 border border-slate-800 space-y-4">
+            <div class="p-3.5 bg-cdek/10 border border-cdek/20 rounded-xl flex items-start gap-3">
+              <div class="w-5 h-5 rounded-full bg-cdek text-dark-900 font-bold flex items-center justify-center flex-shrink-0 mt-0.5 text-xs">✓</div>
+              <p class="text-xs text-slate-300 leading-relaxed">
+                Уведомление о поступлении заказа поступит в мобильное приложение, мессенджер или по СМС.
+              </p>
+            </div>
+
+            <div>
+              <div class="text-xs text-slate-500 font-medium">Получатель</div>
+              <div class="text-sm font-bold text-white mt-0.5" id="resRecipient">—</div>
+            </div>
+
+            <div>
+              <div class="text-xs text-slate-500 font-medium">Адрес пункта выдачи СДЭК</div>
+              <div class="text-sm font-semibold text-slate-300 mt-0.5" id="resPvzAddress">—</div>
+            </div>
+
+            <div id="resDateBox" class="p-3.5 bg-amber-500/10 border border-amber-500/20 rounded-xl hidden">
+              <div class="text-xs font-bold text-amber-400" id="resDeliveryDateText">Доставка перенесена</div>
+              <div class="text-[11px] text-slate-400 mt-0.5" id="resInitialDateText"></div>
+            </div>
+          </div>
+
+          <div class="bg-slate-950/50 rounded-2xl p-6 border border-slate-800 space-y-3">
+            <h4 class="text-sm font-bold text-white">Вручение по паспорту</h4>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              При получении предъявите оригинал паспорта (для организаций дополнительно требуется доверенность).
+            </p>
+            <div class="pt-3 border-t border-slate-800/80">
+              <div class="text-xs font-bold text-cdek">Как получать без паспорта?</div>
+              <p class="text-xs text-slate-400 mt-0.5">
+                Чтобы забирать заказы по быстрому коду из push-уведомления, подключите CDEK ID.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Nginx: Подвал и мобильная плашка -->
+  <!--#include virtual="/src/components/footer.html" -->
+  <!--#include virtual="/src/components/mobile-cta.html" -->
+
+  <script>
+    async function executeTracking(e) {
+      if (e) e.preventDefault();
+      
+      const numInput = document.getElementById('trackNumber');
+      const trackVal = numInput ? numInput.value.trim() : '';
+      if (!trackVal) return;
+
+      const loading = document.getElementById('trackLoading');
+      const resultBox = document.getElementById('trackResult');
+      const errorBox = document.getElementById('trackError');
+      const btn = document.getElementById('trackBtn');
+
+      loading.classList.remove('hidden');
+      resultBox.classList.add('hidden');
+      errorBox.classList.add('hidden');
+      if (btn) btn.disabled = true;
+
+      try {
+        const response = await fetch(`/track.php?cdek_number=${encodeURIComponent(trackVal)}`);
+        const data = await response.json();
+
+        loading.classList.add('hidden');
+        if (btn) btn.disabled = false;
+
+        if (response.ok && data.success) {
+          document.getElementById('resNumber').innerText = '№ ' + data.cdek_number;
+          document.getElementById('resRoute').innerText = `${data.city_from} — ${data.city_to}`;
+          document.getElementById('resCityFrom').innerText = data.city_from;
+          document.getElementById('resCityTo').innerText = data.city_to;
+          document.getElementById('resRecipient').innerText = data.recipient_name;
+          document.getElementById('resPvzAddress').innerText = data.pvz_address;
+
+          // Бейдж статуса
+          const badge = document.getElementById('resStatusBadge');
+          badge.innerText = data.status_name;
+          if (data.status_code === 'DELIVERED') {
+            badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-cdek/10 text-cdek border border-cdek/30';
+          } else {
+            badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/20';
+          }
+
+          // Прогресс
+          const pct = data.progress_percent || 50;
+          document.getElementById('resProgressBar').style.width = pct + '%';
+          document.getElementById('resTruckIcon').style.left = `calc(${pct}% - 16px)`;
+
+          // Дата
+          const dateBox = document.getElementById('resDateBox');
+          if (data.delivery_date) {
+            dateBox.classList.remove('hidden');
+            document.getElementById('resDeliveryDateText').innerText = `Доставка запланирована на ${data.delivery_date}`;
+            if (data.initial_date) {
+              document.getElementById('resInitialDateText').innerText = `Изначальная дата: ${data.initial_date}`;
+            }
+          } else {
+            dateBox.classList.add('hidden');
+          }
+
+          // Построение этапов
+          renderMilestones(data.groups, data.sub_statuses);
+          resultBox.classList.remove('hidden');
+        } else {
+          throw new Error(data.message || 'Накладная не найдена или еще не поступила в базу СДЭК');
+        }
+      } catch (err) {
+        loading.classList.add('hidden');
+        if (btn) btn.disabled = false;
+        errorBox.classList.remove('hidden');
+        errorBox.innerText = err.message;
+      }
+    }
+
+    function renderMilestones(groups, subStatuses) {
+      const container = document.getElementById('resMilestones');
+      container.innerHTML = '';
+
+      const milestoneIcons = {
+        'CREATED': `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>`,
+        'IN_PROGRESS': `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/></svg>`,
+        'READY_FOR_PICK_UP': `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>`,
+        'DELIVERED': `<svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>`
+      };
+
+      groups.forEach((g) => {
+        const isFuture = g.future;
+        const iconSvg = milestoneIcons[g.code] || milestoneIcons['CREATED'];
+        
+        let circleClass = 'bg-slate-950 text-slate-600 border border-slate-800';
+        let textClass = 'text-slate-500';
+
+        if (!isFuture) {
+          if (g.code === 'CREATED') {
+            circleClass = 'bg-amber-500/20 text-amber-400 border border-amber-500/40';
+            textClass = 'text-white';
+          } else if (g.code === 'IN_PROGRESS' || g.code === 'COURIER_IN_PROGRESS') {
+            circleClass = 'bg-orange-500/20 text-orange-400 border border-orange-500/40';
+            textClass = 'text-white';
+          } else if (g.code === 'READY_FOR_PICK_UP' || g.code === 'DELIVERED') {
+            circleClass = 'bg-cdek/20 text-cdek border border-cdek/40 shadow-[0_0_12px_rgba(141,226,26,0.2)]';
+            textClass = 'text-white';
+          }
+        }
+
+        const stepEl = document.createElement('div');
+        stepEl.className = 'relative flex items-start gap-4';
+
+        let subHtml = '';
+        if (g.code === 'IN_PROGRESS' && !isFuture && subStatuses && subStatuses.length > 0) {
+          subHtml = `
+            <div class="mt-2">
+              <button type="button" onclick="toggleSubStatuses()" class="text-xs font-bold text-cdek hover:underline flex items-center gap-1 cursor-pointer">
+                Подробнее о перемещении <span id="subArrow">▾</span>
+              </button>
+              <div id="subList" class="hidden mt-3 pl-4 border-l border-slate-800 space-y-3">
+                ${subStatuses.map(s => `
+                  <div class="text-xs">
+                    <div class="font-bold text-slate-300">${s.name}</div>
+                    <div class="text-slate-500">${s.date} ${s.city ? '• ' + s.city : ''}</div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          `;
+        }
+
+        stepEl.innerHTML = `
+          <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${circleClass}">
+            ${iconSvg}
+          </div>
+          <div class="flex-grow pt-1">
+            <div class="flex items-center justify-between">
+              <div class="text-sm sm:text-base font-bold ${textClass}">${g.name}</div>
+              <div class="text-xs text-slate-500 font-medium">${g.date || ''}</div>
+            </div>
+            ${subHtml}
+          </div>
+        `;
+
+        container.appendChild(stepEl);
+      });
+    }
+
+    function toggleSubStatuses() {
+      const list = document.getElementById('subList');
+      const arrow = document.getElementById('subArrow');
+      if (list) {
+        list.classList.toggle('hidden');
+        if (arrow) arrow.innerText = list.classList.contains('hidden') ? '▾' : '▴';
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const trackParam = params.get('order_id') || params.get('cdek_number');
+      if (trackParam) {
+        const input = document.getElementById('trackNumber');
+        if (input) input.value = trackParam;
+        executeTracking();
+      }
+    });
+  </script>
+</body>
+</html>
