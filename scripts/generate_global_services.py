@@ -97,7 +97,14 @@ def generate_services():
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {{
-      theme: {{ extend: {{ colors: { cdek: '#00b341', dark: { 900: '#072624', 950: '#041615' } } }} }} }} }}
+      theme: {{
+        extend: {{
+          colors: {{
+            cdek: '#00b341',
+            dark: {{ 900: '#072624', 950: '#041615' }}
+          }}
+        }}
+      }}
     }}
   </script>
 </head>
@@ -116,8 +123,8 @@ def generate_services():
 
       <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-10 lg:gap-14 items-start">
         <section class="max-w-2xl flex flex-col items-start lg:pl-2 lg:py-2 transition-all duration-300">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-bold tracking-wide uppercase border bg-[#0e3330] text-[#00b341] border-emerald-800/80">
-            <span>Официальная логистика для селлеров</span>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-bold uppercase border bg-[#0e3330] text-[#00b341] border-emerald-800/80">
+            <span>Официальное подключение для бизнеса</span>
           </div>
 
           <h1 class="text-3xl sm:text-4xl lg:text-[2.75rem] font-black text-white leading-[1.18] tracking-tight mb-5">
@@ -135,7 +142,7 @@ def generate_services():
               <p class="text-xs text-slate-400 font-medium mt-0.5">Договор бесплатно</p>
             </div>
             <div>
-              <p class="text-2xl sm:text-3xl font-black text-white">до -50%</p>
+              <p class="text-2xl sm:text-3xl font-black text-white">до 50%</p>
               <p class="text-xs text-slate-400 font-medium mt-0.5">Скидка B2B</p>
             </div>
             <div>
