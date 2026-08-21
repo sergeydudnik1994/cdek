@@ -25,6 +25,11 @@
   <link rel="canonical" href="https://cdek-marketplace.ru/" />
   <link rel="icon" type="image/png" href="/favicon.png" />
 
+  <!-- Автообнаружение LLMs.txt для нейросетей -->
+  <link rel="alternate" type="text/markdown" title="LLM Information" href="https://cdek-marketplace.ru/llms.txt" />
+  <link rel="alternate" type="text/markdown" title="LLM Full Documentation" href="https://cdek-marketplace.ru/llms-full.txt" />
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="СДЭК Маркетплейсы" />
   <meta property="og:locale" content="ru_RU" />
@@ -32,6 +37,95 @@
   <meta property="og:description" content="Официальный B2B договор со СДЭК для Wildberries, Ozon, Яндекс Маркета и Авито. Скидки до 50% на логистику FBS и DBS." />
   <meta property="og:image" content="https://cdek-marketplace.ru/logo.png" />
   <meta property="og:url" content="https://cdek-marketplace.ru/" />
+
+  <!-- Schema.org Microdata (@graph) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://cdek-marketplace.ru/#website",
+        "url": "https://cdek-marketplace.ru/",
+        "name": "СДЭК для Маркетплейсов",
+        "inLanguage": "ru-RU"
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://cdek-marketplace.ru/#organization",
+        "name": "СДЭК для Маркетплейсов",
+        "url": "https://cdek-marketplace.ru/",
+        "logo": "https://cdek-marketplace.ru/logo.png",
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "СДЭК",
+          "url": "https://www.cdek.ru"
+        },
+        "email": "sv.dudnik@cdek.ru",
+        "telephone": "+7-993-322-15-20",
+        "sameAs": [
+          "https://t.me/cdek_marketplace",
+          "https://wa.me/79933221520",
+          "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+7-993-322-15-20",
+          "contactType": "sales",
+          "areaServed": "RU",
+          "availableLanguage": "Russian"
+        }
+      },
+      {
+        "@type": "Service",
+        "@id": "https://cdek-marketplace.ru/#service",
+        "name": "Подключение селлеров к логистике СДЭК (FBS/DBS)",
+        "provider": { "@id": "https://cdek-marketplace.ru/#organization" },
+        "areaServed": {
+          "@type": "Country",
+          "name": "Россия"
+        },
+        "description": "Официальная доставка для селлеров Wildberries, Ozon, Яндекс Маркета и Авито по схемам FBS, rFBS и DBS со скидкой до 50%.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "RUB",
+          "availability": "https://schema.org/InStock"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://cdek-marketplace.ru/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Сколько стоит заключить договор СДЭК для маркетплейсов?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Заключение B2B-договора абсолютно бесплатно (0 ₽). Абонентская плата и скрытые комиссии отсутствуют."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "По каким схемам можно работать со СДЭК на маркетплейсах?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Поддерживаются схемы FBS, rFBS и DBS для Wildberries, Ozon, Яндекс Маркета, Мегамаркета и Авито со скидкой на логистику до 50%."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Сколько времени занимает оформление договора?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Договор заключается дистанционно онлайн за 15 минут через СМС или ЭДО без визита в офис."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -79,7 +173,7 @@
               Автоматическая передача трек-номеров, интеграция остатков по API, наложенный платеж по 54-ФЗ и доставка день-в-день.
             </p>
 
-            <!-- Легкие открытые метрики (как в e-commerce) -->
+            <!-- Метрики -->
             <div class="flex items-center gap-8 sm:gap-14 pt-6 border-t border-emerald-900/60 w-full max-w-lg">
               <div>
                 <p class="text-2xl sm:text-3xl font-black text-[#00b341]">4 000+</p>
