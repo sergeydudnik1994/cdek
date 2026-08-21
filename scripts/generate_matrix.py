@@ -1,169 +1,265 @@
-import json, os, random, re
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-SPECIAL_CITIES = {
-    "Сочи": ("Сочи", "Сочи", "в Сочи"),
-    "Тольятти": ("Тольятти", "Тольятти", "в Тольятти"),
-    "Улан-Удэ": ("Улан-Удэ", "Улан-Удэ", "в Улан-Удэ"),
-    "Надым": ("Надыма", "Надыме", "в Надыме"),
-    "Санкт-Петербург": ("Санкт-Петербурга", "Санкт-Петербурге", "в Санкт-Петербурге"),
-    "Москва": ("Москвы", "Москве", "в Москве"),
-    "Нижний Новгород": ("Нижнего Новгорода", "Нижнем Новгороде", "в Нижнем Новгороде"),
-    "Великий Новгород": ("Великого Новгорода", "Великом Новгороде", "в Великом Новгороде"),
-    "Старый Оскол": ("Старого Оскола", "Старом Осколе", "в Старом Осколе"),
-    "Красное Село": ("Красного Села", "Красном Селе", "в Красном Селе"),
-    "Набережные Челны": ("Набережных Челнов", "Набережных Челнах", "в Набережных Челнах"),
-    "Минеральные Воды": ("Минеральных Вод", "Минеральных Водах", "в Минеральных Водах"),
-    "Гусь-Хрустальный": ("Гусь-Хрустального", "Гусь-Хрустальном", "в Гусь-Хрустальном"),
-    "Ростов-на-Дону": ("Ростова-на-Дону", "Ростове-на-Дону", "в Ростове-на-Дону"),
-    "Комсомольск-на-Амуре": ("Комсомольска-на-Амуре", "Комсомольске-на-Амуре", "в Комсомольске-на-Амуре"),
-    "Славянск-на-Кубани": ("Славянска-на-Кубани", "Славянске-на-Кубани", "в Славянске-на-Кубани"),
-    "Горячий Ключ": ("Горячего Ключа", "Горячем Ключе", "в Горячем Ключе"),
-    "Сергиев Посад": ("Сергиева Посада", "Сергиевом Посаде", "в Сергиевом Посаде"),
-    "Орехово-Зуево": ("Орехово-Зуева", "Орехово-Зуеве", "в Орехово-Зуеве"),
-    "Переславль-Залесский": ("Переславля-Залесского", "Переславле-Залесском", "в Переславле-Залесском"),
-    "Каменск-Уральский": ("Каменска-Уральского", "Каменске-Уральском", "в Каменске-Уральском"),
-    "Каменск-Шахтинский": ("Каменска-Шахтинского", "Каменске-Шахтинском", "в Каменске-Шахтинском"),
-    "Камень-на-Оби": ("Камня-на-Оби", "Камне-на-Оби", "в Камне-на-Оби"),
-    "Новый Уренгой": ("Нового Уренгоя", "Новом Уренгое", "в Новом Уренгое"),
-    "Великие Луки": ("Великих Лук", "Великих Луках", "в Великих Луках"),
-    "Анжеро-Судженск": ("Анжеро-Судженска", "Анжеро-Судженске", "в Анжеро-Судженске"),
-    "Аргун": ("Аргуна", "Аргуне", "в Аргуне"),
-    "Химки": ("Химок", "Химках", "в Химках"),
-    "Мытищи": ("Мытищ", "Мытищах", "в Мытищах"),
-    "Чебоксары": ("Чебоксар", "Чебоксарах", "в Чебоксарах"),
-    "Люберцы": ("Люберец", "Люберцах", "в Люберцах"),
-    "Березники": ("Березников", "Березниках", "в Березниках"),
-    "Шахты": ("Шахт", "Шахтах", "в Шахтах"),
-}
+  <!-- Yandex.Metrika counter -->
+  <script type="text/javascript">
+      (function(m,e,t,r,i,k,a){
+          m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+          m[i].l=1*new Date();
+          for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+          k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+      })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111090265', 'ym');
 
-FEMININE_SOFT_CITIES = {"Казань", "Пермь", "Тюмень", "Рязань", "Тверь", "Астрахань", "Керчь", "Сызрань"}
+      ym(111090265, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+  </script>
+  <noscript><div><img src="https://mc.yandex.ru/watch/111090265" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+  <!-- /Yandex.Metrika counter -->
+  
+  <!-- SEO: Заголовки и описания -->
+  <title>{{SEO_TITLE}}</title>
+  <meta name="description" content="{{SEO_DESC}}" />
 
-def get_city_cases(city_name):
-    city_name = city_name.strip()
-    if city_name in SPECIAL_CITIES: return SPECIAL_CITIES[city_name]
-    prep = "во" if city_name.startswith(("Владимир", "Владивосток", "Владикавказ", "Всеволожск")) else "в"
-    words = city_name.split()
-    def process_word(w):
-        parts = w.split("-")
-        gen_parts, prep_parts = [], []
-        for idx, part in enumerate(parts):
-            if len(parts) > 1 and idx == 0 and part.endswith("о"):
-                gen_parts.append(part); prep_parts.append(part); continue
-            if part in FEMININE_SOFT_CITIES:
-                gen_parts.append(part[:-1] + "и"); prep_parts.append(part[:-1] + "и")
-            elif part.endswith("ий"):
-                gen_parts.append(part[:-2] + "его" if part == "Нижний" else part[:-2] + "ого")
-                prep_parts.append(part[:-2] + "ем" if part == "Нижний" else part[:-2] + "ом")
-            elif part.endswith("ый") or part.endswith("ой"):
-                gen_parts.append(part[:-2] + "ого"); prep_parts.append(part[:-2] + "ом")
-            elif part.endswith("ая"):
-                gen_parts.append(part[:-2] + "ой"); prep_parts.append(part[:-2] + "ой")
-            elif part.endswith("ое") or part.endswith("ее"):
-                gen_parts.append(part[:-2] + "ого"); prep_parts.append(part[:-2] + "ом")
-            elif part.endswith("а"):
-                gen_parts.append(part[:-1] + "и" if len(part) > 2 and part[-2] in "гкхжчшщ" else part[:-1] + "ы")
-                prep_parts.append(part[:-1] + "е")
-            elif part.endswith("я"):
-                gen_parts.append(part[:-1] + "и"); prep_parts.append(part[:-1] + "и" if part.endswith("ия") else part[:-1] + "е")
-            elif part.endswith("о"):
-                gen_parts.append(part[:-1] + "а"); prep_parts.append(part[:-1] + "е")
-            elif part.endswith("е"):
-                gen_parts.append(part[:-1] + "я"); prep_parts.append(part[:-1] + "е")
-            elif part.endswith("ь"):
-                gen_parts.append(part[:-1] + "я"); prep_parts.append(part[:-1] + "е")
-            elif re.search(r"[бвгджзклмнпрстфхцчшщ]$", part, re.I):
-                gen_parts.append(part + "а"); prep_parts.append(part + "е")
-            else:
-                gen_parts.append(part); prep_parts.append(part)
-        return "-".join(gen_parts), "-".join(prep_parts)
-    gen_words, prep_words = [], []
-    for word in words:
-        gw, pw = process_word(word)
-        gen_words.append(gw); prep_words.append(pw)
-    return " ".join(gen_words), " ".join(prep_words), f"{prep} {' '.join(prep_words)}"
+  <!-- SEO: Верификация и канонический адрес -->
+  <meta name="yandex-verification" content="f077a22013388718" />
+  <meta name="yandex-verification" content="feb8f4adaa02427e" />
+  <meta name="google-site-verification" content="b4CjmaWn0KRmnHjAm7abquUe5bkx0Colk-B61Fw698Y" />
+  <meta name="theme-color" content="#00b341" />
+  <link rel="canonical" href="{{CANONICAL_URL}}" />
+  
+  <!-- Автообнаружение LLMs.txt для ИИ-агентов -->
+  <link rel="alternate" type="text/markdown" title="LLM Information" href="https://cdek-marketplace.ru/llms.txt" />
+  <link rel="alternate" type="text/markdown" title="LLM Full Documentation" href="https://cdek-marketplace.ru/llms-full.txt" />
 
-def generate_pages():
-    with open("scripts/seo_data.json", "r", encoding="utf-8") as f: data = json.load(f)
-    with open("scripts/template.html", "r", encoding="utf-8") as f: template = f.read()
-    with open("cities.json", "r", encoding="utf-8") as f: cities = json.load(f)
+  <!-- OG теги для соцсетей -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="СДЭК для маркетплейсов" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:title" content="{{SEO_TITLE}}" />
+  <meta property="og:description" content="{{SEO_DESC}}" />
+  <meta property="og:image" content="https://cdek-marketplace.ru/logo.png" />
+  <meta property="og:url" content="{{CANONICAL_URL}}" />
 
-    platforms = [{"slug": "wildberries", "name": "Wildberries"}, {"slug": "ozon", "name": "Ozon"}, {"slug": "yandex-market", "name": "Яндекс Маркет"}]
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
 
-    print(f"🚀 Полная регенерация гео-матрицы СДЭК...")
+  <!-- 1. МИКРОРАЗМЕТКА ОРГАНИЗАЦИИ / LOCAL BUSINESS -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "СДЭК {{CITY_PREP}}",
+    "url": "{{CANONICAL_URL}}",
+    "logo": "https://cdek-marketplace.ru/logo.png",
+    "telephone": "+7-993-322-15-20",
+    "priceRange": "₽₽",
+    "openingHours": "Mo-Su 09:00-18:00",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+7-993-322-15-20",
+      "contactType": "customer service",
+      "email": "sv.dudnik@cdek.ru",
+      "availableLanguage": "Russian"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "{{CITY_NAME}}",
+      "addressCountry": "RU"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "{{REVIEWS}}"
+    },
+    "sameAs": [
+      "https://t.me/cdek_marketplace",
+      "https://wa.me/79933221520",
+      "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
+    ],
+    "makesOffer": {
+      "@type": "Offer",
+      "itemOffered": {
+        "@type": "Service",
+        "name": "{{H1_MAIN}}",
+        "description": "{{SEO_DESC}}"
+      }
+    }
+  }
+  </script>
 
-    for city in cities:
-        slug, name = city["slug"], city["name"]
-        gen, prep, prep_v = get_city_cases(name)
-        rng = random.Random(name)
-        dist = (len(slug) * 150) + (ord(slug[0]) * 5)
+  <!-- 2. МИКРОРАЗМЕТКА ХЛЕБНЫЕ КРОШКИ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Главная",
+        "item": "https://cdek-marketplace.ru/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "{{CITY_NAME}}",
+        "item": "https://cdek-marketplace.ru/geo/{{CITY_SLUG}}/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "{{H1_MAIN}}",
+        "item": "{{CANONICAL_URL}}"
+      }
+    ]
+  }
+  </script>
+
+  <!-- 3. МИКРОРАЗМЕТКА FAQ ДЛЯ ИИ-ПОИСКОВИКОВ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Как подключить {{H1_MAIN}}?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Подайте заявку онлайн через форму на странице. Оформление B2B-договора СДЭК занимает 15 минут дистанционно через СМС или ЭДО."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Сколько стоит заключение договора?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Подключение бесплатно (0 ₽). Скидки на логистику маркетплейсов составляют до 50% от базовых тарифов."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cdek: '#00b341',
+            dark: { 900: '#072624', 950: '#041615' }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Виджет СДЭК -->
+  <script src="https://cdn.jsdelivr.net/npm/@cdek-it/widget@3" async></script>
+</head>
+<body class="bg-[#072624] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#00b341] selection:text-white pb-16 md:pb-0">
+
+  <!-- Шапка сайта -->
+  <!--#include virtual="/src/components/header.html" -->
+
+  <main class="flex-grow pt-8 pb-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      
+      <!-- Хлебные крошки -->
+      <nav class="text-sm text-slate-400 mb-6">
+        <a href="/" class="hover:text-cdek transition-colors">Главная</a>
+        <span class="mx-2">/</span>
+        <a href="/geo/{{CITY_SLUG}}/" class="hover:text-cdek transition-colors">{{CITY_NAME}}</a>
+        <span class="mx-2">/</span>
+        <span class="text-white">{{H1_MAIN}}</span>
+      </nav>
+
+      <!-- Главный заголовок и уникальное гео-описание -->
+      <div class="text-center max-w-3xl mx-auto mt-6 mb-12">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase transition-all border bg-[#0e3330] text-[#00b341] border border-emerald-800/80">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cdek opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-cdek"></span>
+          </span>
+          <span>Официальный B2B сервис {{PREP_V}}</span>
+        </div>
+
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-normal mb-5 leading-tight">
+          {{H1_MAIN}}
+        </h1>
+        {{H1_SUB_BLOCK}}
         
-        unique = f"Город {name} является важным звеном в логистической цепочке. " \
-                 f"Основные перевозки {prep_v} осуществляются через местные развязки. " \
-                 f"Это позволяет нам доставлять заказы до Москвы (около {dist} км) в рекордные сроки."
+        <p class="text-base sm:text-lg text-slate-400 leading-relaxed mt-4">
+          {{DESC}}
+        </p>
 
-        pvz_html = "<li class='flex items-center gap-2'><span class='text-cdek'>•</span> Адреса ПВЗ доступны на карте при оформлении.</li>"
-        nearby = random.sample(cities, min(5, len(cities)))
-        links_html = " ".join([f"<a href='/geo/{c['slug']}/' class='text-cdek hover:underline mr-3'>{c['name']}</a>" for c in nearby])
+        <!-- Динамическая статистика -->
+        <div class="grid grid-cols-3 gap-4 max-w-xl mx-auto mt-8 pt-6 border-t border-emerald-950">
+          <div>
+            <p class="text-2xl sm:text-3xl font-bold text-cdek">0 ₽</p>
+            <p class="text-xs text-slate-500 font-medium mt-0.5">Договор бесплатно</p>
+          </div>
+          <div>
+            <p class="text-2xl sm:text-3xl font-bold text-white">до 50%</p>
+            <p class="text-xs text-slate-500 font-medium mt-0.5">Скидка B2B</p>
+          </div>
+          <div>
+            <p class="text-2xl sm:text-3xl font-bold text-white">15 мин</p>
+            <p class="text-xs text-slate-500 font-medium mt-0.5">Подключение онлайн</p>
+          </div>
+        </div>
+      </div>
 
-        for s in data["services"]:
-            canonical_base = f"https://cdek-marketplace.ru/geo/{slug}/{s['slug']}/"
-            
-            sub_title = s.get("h1_sub", "")
-            sub_block = f'<span class="block text-2xl sm:text-3xl mt-2 text-cdek">{sub_title}</span>' if sub_title else ""
+      <!-- Уникальный блок логистики города -->
+      <div class="max-w-4xl mx-auto my-10 p-6 rounded-2xl bg-[#0a2f2c] border border-emerald-900/60 text-slate-300 text-sm leading-relaxed">
+        <p>{{UNIQUE_CONTENT}}</p>
+        <ul class="mt-4 space-y-2">
+          {{PVZ_LIST}}
+        </ul>
+      </div>
 
-            raw_h1 = s['h1_main'].split(' в ')[0].strip()
-            h1_main_geo = f"{raw_h1} {prep_v}"
+      <!-- Калькулятор тарифов -->
+      <section id="widget-section" class="mt-10">
+        <!--#include virtual="/src/components/calculator-widget.html" -->
+      </section>
 
-            # SEO: бренд СДЭК на первом месте и емкое описание
-            seo_title = f"СДЭК {raw_h1} {prep_v} — Договор за 15 минут"
-            seo_desc = f"Официальный B2B договор со СДЭК {prep_v}: {raw_h1.lower()}. Скидки на логистику до 50%, отгрузка через ПВЗ без очередей по реестру. Быстрое подключение."
+      <!-- Блок платформ и маркетплейсов -->
+      <div class="mt-16">
+        <!--#include virtual="/src/components/platforms.html" -->
+      </div>
 
-            reps = {
-                "{{SEO_TITLE}}": seo_title,
-                "{{SEO_DESC}}": seo_desc,
-                "{{H1_MAIN}}": h1_main_geo,
-                "{{H1_SUB_BLOCK}}": sub_block,
-                "{{DESC}}": s.get("desc", ""),
-                "{{CITY_NAME}}": name,
-                "{{CITY_PREP}}": prep,
-                "{{CITY_GEN}}": gen,
-                "{{PREP_V}}": prep_v,
-                "{{UNIQUE_CONTENT}}": unique,
-                "{{PVZ_LIST}}": pvz_html,
-                "{{NEARBY_CITIES}}": links_html,
-                "{{CITY_SLUG}}": slug,
-                "{{SERVICE_SLUG}}": s["slug"],
-                "{{CANONICAL_URL}}": canonical_base,
-                "{{REVIEWS}}": str(random.randint(120, 350))
-            }
+      <!-- Форма онлайн-заявки -->
+      <section id="contract-form-container" class="mt-16 max-w-xl mx-auto">
+        <div class="text-center mb-6">
+          <h2 class="text-2xl font-bold text-white">Оформить B2B-договор {{PREP_V}}</h2>
+          <p class="text-sm text-slate-400 mt-1">Активация за 15 минут без визита в офис</p>
+        </div>
+        <!--#include virtual="/src/components/leadform.html" -->
+      </section>
 
-            # 1. Базовая страница услуги
-            html = template
-            for tag, val in reps.items():
-                html = html.replace(tag, str(val))
-            
-            path = os.path.join("geo", slug, s["slug"], "index.html")
-            os.makedirs(os.path.dirname(path), exist_ok=True)
-            with open(path, "w", encoding="utf-8") as f: f.write(html)
+      <!-- Ближайшие города для перелинковки -->
+      <div class="max-w-4xl mx-auto mt-16 pt-8 border-t border-emerald-950/80 text-xs text-slate-400">
+        <span class="font-semibold text-slate-300 mr-2">Другие города региона:</span>
+        {{NEARBY_CITIES}}
+      </div>
 
-            # 2. Страницы маркетплейсов
-            for p in platforms:
-                p_canonical = f"https://cdek-marketplace.ru/geo/{slug}/{p['slug']}/{s['slug']}/"
-                p_h1 = f"{raw_h1} {p['name']} {prep_v}"
-                p_title = f"СДЭК для {p['name']} {prep_v} — {raw_h1}"
-                p_desc = f"Официальная логистика СДЭК для селлеров {p['name']} {prep_v}: {raw_h1.lower()}. Скидка B2B до 50%, отгрузка через ПВЗ без очередей. Договор за 15 минут."
-                
-                p_html = html
-                p_html = p_html.replace(reps["{{H1_MAIN}}"], p_h1)
-                p_html = p_html.replace(reps["{{SEO_TITLE}}"], p_title)
-                p_html = p_html.replace(reps["{{SEO_DESC}}"], p_desc)
-                p_html = p_html.replace(canonical_base, p_canonical)
-                
-                p_path = os.path.join("geo", slug, p["slug"], s["slug"], "index.html")
-                os.makedirs(os.path.dirname(p_path), exist_ok=True)
-                with open(p_path, "w", encoding="utf-8") as f: f.write(p_html)
+      <!-- Блог -->
+      <section class="py-16 mt-10">
+        <!--#include virtual="/src/components/blog-latest.html" -->
+      </section>
 
-    print(f"✅ Гео-матрица перегенерирована: бренд СДЭК на 1-м месте, CTR-сниппеты настроены.")
+    </div>
+  </main>
 
-if __name__ == "__main__":
-    generate_pages()
+  <!-- Подвал сайта -->
+  <!--#include virtual="/src/components/footer.html" -->
+
+</body>
+</html>
