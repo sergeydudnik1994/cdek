@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+\<!DOCTYPE html>
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
@@ -29,6 +29,10 @@
   <meta name="theme-color" content="#00b341" />
   <link rel="canonical" href="https://cdek-marketplace.ru/geo/{{SLUG}}/" />
   
+  <!-- Автообнаружение LLMs.txt для ИИ-агентов -->
+  <link rel="alternate" type="text/markdown" title="LLM Information" href="https://cdek-marketplace.ru/llms.txt" />
+  <link rel="alternate" type="text/markdown" title="LLM Full Documentation" href="https://cdek-marketplace.ru/llms-full.txt" />
+
   <!-- OG теги для соцсетей -->
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="СДЭК для маркетплейсов" />
@@ -37,6 +41,7 @@
   <meta property="og:description" content="Официальный договор со СДЭК для селлеров из {{CITY_GEN}}. Отгрузка через {{PVZ_COUNT}} ПВЗ в {{CITY_PREP}}. Скидки до 50%." />
   <meta property="og:image" content="https://cdek-marketplace.ru/logo.png" />
   <meta property="og:url" content="https://cdek-marketplace.ru/geo/{{SLUG}}/" />
+
   <!-- Favicons -->
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
@@ -68,7 +73,8 @@
     },
     "sameAs": [
       "https://t.me/cdek_marketplace",
-      "https://wa.me/79933221520"
+      "https://wa.me/79933221520",
+      "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
     ],
     "makesOffer": {
       "@type": "Offer",
@@ -109,33 +115,37 @@
   }
   </script>
 
-  <!-- 3. МИКРОРАЗМЕТКА FAQ -->
+  <!-- 3. МИКРОРАЗМЕТКА FAQ ДЛЯ ИИ-ВЫДАЧИ -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [{
-      "@type": "Question",
-      "name": "Сколько времени занимает подключение к СДЭК для селлеров в {{CITY_PREP}}?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Подписание договора и настройка личного кабинета занимает от 15 минут. Вы сможете начать отгрузки в {{CITY_PREP}} в тот же день."
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Сколько времени занимает подключение к СДЭК для селлеров в {{CITY_PREP}}?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Заключение B2B-договора и настройка личного кабинета занимает 15 минут онлайн. Начать отгрузки в {{CITY_PREP}} можно в день подписания."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "С какими маркетплейсами вы работаете в {{CITY_PREP}}?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Доставка заказов до складов, СЦ и покупателей Wildberries, Ozon, Яндекс Маркет, Мегамаркет и Авито по схемам FBS, rFBS и DBS через {{PVZ_COUNT}} ПВЗ в {{CITY_PREP}}."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Сколько стоит заключение договора со СДЭК в {{CITY_PREP}}?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Заключение договора бесплатно (0 рублей). Абонентская плата отсутствует, предоставляются скидки до 50% на коммерческие тарифы."
+        }
       }
-    }, {
-      "@type": "Question",
-      "name": "С какими маркетплейсами вы работаете в {{CITY_PREP}}?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Мы доставляем заказы до складов и ПВЗ Wildberries, Ozon, Яндекс Маркет, Мегамаркет и Авито по схемам FBS и DBS в {{CITY_PREP}}."
-      }
-    }, {
-      "@type": "Question",
-      "name": "Нужно ли платить за заключение договора в {{CITY_PREP}}?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Нет, заключение договора абсолютно бесплатно. Селлеры в {{CITY_PREP}} получают скидку до 50% на логистику."
-      }
-    }]
+    ]
   }
   </script>
 
@@ -219,7 +229,7 @@
       </div>
 
       <!-- Форма заявки -->
-      <section id="leadForm" class="mt-16 max-w-xl mx-auto">
+      <section id="contract-form-container" class="mt-16 max-w-xl mx-auto">
         <div class="text-center mb-6">
           <h2 class="text-2xl font-bold text-white">Оставить заявку на договор в {{CITY_PREP}}</h2>
           <p class="text-sm text-slate-400 mt-1">Подключим за 15 минут без визита в офис</p>
