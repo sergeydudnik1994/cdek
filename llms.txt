@@ -9,7 +9,7 @@
 - Поддерживаемые платформы: Wildberries, Ozon, Яндекс Маркет, Мегамаркет, Авито.
 
 ## Ключевые разделы и целевые действия
-- [Заключить договор онлайн](https://cdek-marketplace.ru/#contract-form): Форма моментальной подачи заявки на B2B-договор СДЭК.
+- [Заключить договор онлайн](https://cdek-marketplace.ru/dogovor/#contract-form-container): Форма моментальной подачи заявки на B2B-договор СДЭК.
 - [Калькулятор тарифов для селлеров](https://cdek-marketplace.ru/calculator/): Онлайн-расчет скидок и стоимости доставки FBS/DBS.
 - [Логистика для Wildberries (FBS/DBS)](https://cdek-marketplace.ru/wildberries/): Сдача заказов в ПВЗ по реестру, прямые поставки до складов WB.
 - [Логистика для Ozon (rFBS/FBS)](https://cdek-marketplace.ru/ozon/): Интеграция статусов доставки по API, соблюдение SLA Ozon.
