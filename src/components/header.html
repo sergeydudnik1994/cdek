@@ -12,116 +12,116 @@
 <noscript><div><img src="https://mc.yandex.ru/watch/111090265" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 
-<header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200/80 shadow-xs">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between gap-3 sm:gap-4">
+<header class="sticky top-0 z-50 bg-[#060B11]/85 backdrop-blur-xl border-b border-white/[0.08] shadow-[0_4px_30px_rgba(0,0,0,0.5)]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-4">
     
-    <!-- Левая часть: Логотип СДЭК и Выбор города (ПК) -->
-    <div class="flex items-center gap-3 sm:gap-4 shrink-0">
-      <a href="/" class="flex items-center transition-transform hover:opacity-90 shrink-0">
-        <img src="/logo-green.png" alt="СДЭК Маркетплейсы" class="h-7 sm:h-8 w-auto" />
+    <!-- Логотип и Выбор города -->
+    <div class="flex items-center gap-3 sm:gap-5 shrink-0">
+      <a href="/" class="flex items-center transition-opacity hover:opacity-90 shrink-0">
+        <img src="/logo.png" alt="СДЭК Маркетплейсы" class="h-7 sm:h-8 w-auto" />
       </a>
 
       <!-- Кнопка выбора города -->
-      <button id="openCityModal" type="button" class="hidden md:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 hover:border-[#00b341] hover:text-slate-900 transition-all cursor-pointer">
-        <svg class="w-3.5 h-3.5 text-[#00b341] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <button id="openCityModal" type="button" class="hidden md:inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:border-[#22E58B]/50 text-xs font-semibold text-slate-300 hover:text-white transition-all cursor-pointer">
+        <svg class="w-3.5 h-3.5 text-[#22E58B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
         </svg>
         <span class="tracking-wide">Выберите город</span>
-        <svg class="w-3.5 h-3.5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        <svg class="w-3 h-3 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
       </button>
     </div>
 
     <!-- Навигация (Desktop) -->
-    <nav class="hidden xl:flex items-center gap-5 lg:gap-6 text-xs sm:text-sm font-semibold text-slate-700">
+    <nav class="hidden xl:flex items-center gap-6 text-xs sm:text-sm font-semibold text-slate-300">
       
-      <!-- 1. Калькулятор B2B с зеленой иконкой -->
-      <a href="/calculator/" class="flex items-center gap-1.5 hover:text-[#00b341] transition-colors">
-        <svg class="w-4 h-4 text-[#00b341]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <!-- Калькулятор B2B -->
+      <a href="/calculator/" class="flex items-center gap-1.5 hover:text-[#22E58B] transition-colors">
+        <svg class="w-4 h-4 text-[#22E58B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
         </svg>
-        Калькулятор B2B
+        Калькулятор
       </a>
 
-      <!-- 2. Договор СДЭК (Выпадающий список) -->
+      <!-- Договор СДЭК -->
       <div class="relative group py-2">
-        <a href="/dogovor/" class="hover:text-[#00b341] transition-colors flex items-center gap-1">
+        <a href="/dogovor/" class="hover:text-[#22E58B] transition-colors flex items-center gap-1">
           Договор СДЭК
-          <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </a>
-        <div class="absolute left-0 top-full hidden group-hover:block w-72 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 z-50">
+        <div class="absolute left-0 top-full hidden group-hover:block w-72 bg-[#0B131D]/95 backdrop-blur-2xl rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/[0.1] p-2 z-50">
           <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-3 py-1">По маркетплейсам</div>
-          <a href="/dogovor/ozon/" class="block px-3 py-2 text-xs font-semibold text-slate-800 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">Ozon (rFBS / DBS)</a>
-          <a href="/dogovor/wildberries/" class="block px-3 py-2 text-xs font-semibold text-slate-800 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">Wildberries (FBS / DBS)</a>
-          <a href="/dogovor/yandex-market/" class="block px-3 py-2 text-xs font-semibold text-slate-800 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">Яндекс Маркет (DBS)</a>
-          <a href="/dogovor/megamarket/" class="block px-3 py-2 text-xs font-semibold text-slate-800 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">Мегамаркет (FBS / DBS)</a>
-          <a href="/dogovor/avito/" class="block px-3 py-2 text-xs font-semibold text-slate-800 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">Авито Доставка (DBS)</a>
-          <a href="/dogovor/internet-magazin/" class="block px-3 py-2 text-xs font-semibold text-slate-800 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition mb-1">Для интернет-магазинов</a>
+          <a href="/dogovor/ozon/" class="block px-3 py-2 text-xs font-semibold text-slate-200 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">Ozon (rFBS / DBS)</a>
+          <a href="/dogovor/wildberries/" class="block px-3 py-2 text-xs font-semibold text-slate-200 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">Wildberries (FBS / DBS)</a>
+          <a href="/dogovor/yandex-market/" class="block px-3 py-2 text-xs font-semibold text-slate-200 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">Яндекс Маркет (DBS)</a>
+          <a href="/dogovor/megamarket/" class="block px-3 py-2 text-xs font-semibold text-slate-200 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">Мегамаркет (FBS / DBS)</a>
+          <a href="/dogovor/avito/" class="block px-3 py-2 text-xs font-semibold text-slate-200 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">Авито Доставка (DBS)</a>
+          <a href="/dogovor/internet-magazin/" class="block px-3 py-2 text-xs font-semibold text-slate-200 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition mb-1">Для интернет-магазинов</a>
           
-          <div class="border-t border-slate-100 my-1 pt-1"></div>
+          <div class="border-t border-white/[0.06] my-1 pt-1"></div>
           <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-3 py-1">По форме бизнеса</div>
-          <a href="/dogovor/ip/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">Для ИП (сетка УСН)</a>
-          <a href="/dogovor/yur-lica/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">Для ООО (с НДС 22%)</a>
-          <a href="/dogovor/samozanyatye/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">Для самозанятых (НПД)</a>
+          <a href="/dogovor/ip/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">Для ИП (сетка УСН)</a>
+          <a href="/dogovor/yur-lica/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">Для ООО (с НДС 22%)</a>
+          <a href="/dogovor/samozanyatye/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">Для самозанятых (НПД)</a>
         </div>
       </div>
 
-      <!-- 3. Интеграции и CMS (Выпадающий список) -->
+      <!-- Интеграции -->
       <div class="relative group py-2">
-        <a href="/integrations/" class="hover:text-[#00b341] transition-colors flex items-center gap-1">
+        <a href="/integrations/" class="hover:text-[#22E58B] transition-colors flex items-center gap-1">
           Интеграции и CMS
-          <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </a>
-        <div class="absolute left-0 top-full hidden group-hover:block w-64 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 z-50">
-          <a href="/services/dbs/" class="block px-3 py-2 text-xs font-bold text-emerald-800 bg-emerald-50/80 hover:bg-emerald-100 rounded-xl transition mb-1">Спецтариф DBS от 136.5 ₽</a>
-          <a href="/integrations/1c-bitrix/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">1С-Битрикс (CMS)</a>
-          <a href="/integrations/tilda/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">Tilda Publishing</a>
-          <a href="/integrations/moysklad/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">МойСклад</a>
-          <a href="/integrations/woocommerce-wordpress/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">WooCommerce (WordPress)</a>
-          <a href="/integrations/insales/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">InSales</a>
-          <a href="/integrations/1c-predpriyatie/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">1С:Предприятие</a>
+        <div class="absolute left-0 top-full hidden group-hover:block w-64 bg-[#0B131D]/95 backdrop-blur-2xl rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/[0.1] p-2 z-50">
+          <a href="/services/dbs/" class="block px-3 py-2 text-xs font-bold text-[#22E58B] bg-[#22E58B]/10 hover:bg-[#22E58B]/20 rounded-xl transition mb-1 border border-[#22E58B]/20">Спецтариф DBS от 136.5 ₽</a>
+          <a href="/integrations/1c-bitrix/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">1С-Битрикс</a>
+          <a href="/integrations/tilda/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">Tilda Publishing</a>
+          <a href="/integrations/moysklad/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">МойСклад</a>
+          <a href="/integrations/woocommerce-wordpress/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">WooCommerce</a>
+          <a href="/integrations/insales/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">InSales</a>
+          <a href="/integrations/1c-predpriyatie/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">1С:Предприятие</a>
         </div>
       </div>
 
-      <!-- 4. Отраслевые решения (Выпадающий список) -->
+      <!-- Решения -->
       <div class="relative group py-2">
-        <a href="/solutions/" class="hover:text-[#00b341] transition-colors flex items-center gap-1">
+        <a href="/solutions/" class="hover:text-[#22E58B] transition-colors flex items-center gap-1">
           Решения
-          <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </a>
-        <div class="absolute left-0 top-full hidden group-hover:block w-64 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 z-50">
+        <div class="absolute left-0 top-full hidden group-hover:block w-64 bg-[#0B131D]/95 backdrop-blur-2xl rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/[0.1] p-2 z-50">
           <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-3 py-1">Популярные ниши</div>
-          <a href="/solutions/odezhda-i-obuv/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">Одежда и обувь (с примеркой)</a>
-          <a href="/solutions/elektronika-i-tehnika/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">Электроника и техника</a>
-          <a href="/solutions/mebel-i-interer/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">Мебель и товары для дома</a>
-          <a href="/solutions/avtotovary-i-zapchasti/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">Автотовары и запчасти</a>
+          <a href="/solutions/odezhda-i-obuv/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">Одежда и обувь (с примеркой)</a>
+          <a href="/solutions/elektronika-i-tehnika/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">Электроника и техника</a>
+          <a href="/solutions/mebel-i-interer/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">Мебель и товары для дома</a>
+          <a href="/solutions/avtotovary-i-zapchasti/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">Автотовары и запчасти</a>
           
-          <div class="border-t border-slate-100 my-1 pt-1"></div>
-          <a href="/solutions/" class="block px-3 py-1.5 text-xs font-bold text-[#00b341] hover:bg-emerald-50 rounded-xl transition">
-            Каталог всех 32 ниш →
+          <div class="border-t border-white/[0.06] my-1 pt-1"></div>
+          <a href="/solutions/" class="block px-3 py-1.5 text-xs font-bold text-[#22E58B] hover:underline">
+            Все 32 отраслевых решения →
           </a>
         </div>
       </div>
 
-      <!-- 5. Трекинг с лупой -->
-      <a href="/tracking/" class="flex items-center gap-1.5 hover:text-[#00b341] transition-colors">
-        <svg class="w-4 h-4 text-[#00b341]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <!-- Трекинг -->
+      <a href="/tracking/" class="flex items-center gap-1.5 hover:text-[#22E58B] transition-colors">
+        <svg class="w-4 h-4 text-[#22E58B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
         </svg>
         Трекинг
       </a>
 
-      <!-- 6. Блог вместо О компании -->
-      <a href="/blog/" class="hover:text-[#00b341] transition-colors">
+      <!-- Блог -->
+      <a href="/blog/" class="hover:text-[#22E58B] transition-colors">
         Блог
       </a>
     </nav>
 
-    <!-- Правый блок: кнопка "Подключиться" + бургер меню -->
-    <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
+    <!-- Правая часть: CTA-кнопка в стиле Сбер AI -->
+    <div class="flex items-center gap-3 shrink-0">
       <a 
         href="/dogovor/#contract-form-container" 
-        class="px-4 sm:px-5 py-2 sm:py-2.5 rounded-xl bg-[#00b341] hover:bg-[#009c38] text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md shadow-[#00b341]/20 active:scale-95 whitespace-nowrap"
+        class="px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#22E58B] to-[#00b341] hover:brightness-110 text-slate-950 font-black text-xs uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(34,229,139,0.3)] active:scale-95 whitespace-nowrap"
       >
         Подключиться
       </a>
@@ -130,7 +130,7 @@
       <button 
         id="menuToggle" 
         type="button" 
-        class="xl:hidden p-2 rounded-xl border border-slate-200 text-slate-700 hover:text-slate-900 hover:bg-slate-50 focus:outline-none transition-colors cursor-pointer shrink-0" 
+        class="xl:hidden p-2 rounded-xl bg-white/[0.04] border border-white/[0.08] text-slate-300 hover:text-white hover:bg-white/[0.08] transition-colors cursor-pointer shrink-0" 
         aria-label="Открыть меню"
       >
         <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -142,37 +142,37 @@
   </div>
 
   <!-- Мобильное выпадающее меню -->
-  <div id="mobileMenu" class="hidden xl:hidden bg-white border-b border-slate-200 divide-y divide-slate-100 shadow-2xl">
+  <div id="mobileMenu" class="hidden xl:hidden bg-[#060B11]/95 backdrop-blur-2xl border-b border-white/[0.08] divide-y divide-white/[0.06] shadow-2xl">
     
-    <!-- Выбор города в мобильном меню -->
-    <div class="p-4 bg-slate-50/70">
-      <button id="openCityModalMobile" type="button" class="w-full flex items-center justify-between py-2.5 px-4 rounded-xl bg-white border border-slate-200 text-sm font-semibold text-slate-700 cursor-pointer shadow-xs">
+    <!-- Выбор города -->
+    <div class="p-4 bg-white/[0.02]">
+      <button id="openCityModalMobile" type="button" class="w-full flex items-center justify-between py-2.5 px-4 rounded-xl bg-[#0B131D] border border-white/[0.08] text-sm font-semibold text-slate-200 cursor-pointer">
         <span class="flex items-center gap-2">
-          <svg class="w-4 h-4 text-[#00b341]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg class="w-4 h-4 text-[#22E58B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
           </svg>
           <span>Выберите город</span>
         </span>
-        <span class="text-xs text-[#00b341] font-bold bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">Выбрать</span>
+        <span class="text-xs text-[#22E58B] font-bold bg-[#22E58B]/10 px-2.5 py-1 rounded-md border border-[#22E58B]/30">Выбрать</span>
       </button>
     </div>
 
     <!-- Быстрые действия -->
     <div class="px-4 py-3 space-y-1">
-      <a href="/calculator/" class="mobile-link flex items-center justify-between py-2 text-sm font-bold text-slate-900">
+      <a href="/calculator/" class="mobile-link flex items-center justify-between py-2 text-sm font-bold text-white">
         <span class="flex items-center gap-2">
-          <svg class="w-4 h-4 text-[#00b341]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
+          <svg class="w-4 h-4 text-[#22E58B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
           Калькулятор B2B
         </span>
-        <span class="text-slate-400 text-xs">›</span>
+        <span class="text-slate-500 text-xs">›</span>
       </a>
-      <a href="/tracking/" class="mobile-link flex items-center justify-between py-2 text-sm font-bold text-slate-900">
+      <a href="/tracking/" class="mobile-link flex items-center justify-between py-2 text-sm font-bold text-white">
         <span class="flex items-center gap-2">
-          <svg class="w-4 h-4 text-[#00b341]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          <svg class="w-4 h-4 text-[#22E58B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
           Отследить заказ
         </span>
-        <span class="text-slate-400 text-xs">›</span>
+        <span class="text-slate-500 text-xs">›</span>
       </a>
     </div>
 
@@ -180,59 +180,55 @@
     <div class="px-4 py-3">
       <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Договор для маркетплейсов</div>
       <div class="space-y-1">
-        <a href="/dogovor/ozon/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-700 hover:text-[#00b341]">
+        <a href="/dogovor/ozon/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-300 hover:text-[#22E58B]">
           <span>Ozon (rFBS / DBS)</span>
-          <span class="text-xs text-slate-300">›</span>
+          <span class="text-xs text-slate-600">›</span>
         </a>
-        <a href="/dogovor/wildberries/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-700 hover:text-[#00b341]">
+        <a href="/dogovor/wildberries/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-300 hover:text-[#22E58B]">
           <span>Wildberries (FBS / DBS)</span>
-          <span class="text-xs text-slate-300">›</span>
+          <span class="text-xs text-slate-600">›</span>
         </a>
-        <a href="/dogovor/yandex-market/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-700 hover:text-[#00b341]">
+        <a href="/dogovor/yandex-market/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-300 hover:text-[#22E58B]">
           <span>Яндекс Маркет (DBS)</span>
-          <span class="text-xs text-slate-300">›</span>
+          <span class="text-xs text-slate-600">›</span>
         </a>
-        <a href="/dogovor/megamarket/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-700 hover:text-[#00b341]">
+        <a href="/dogovor/megamarket/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-300 hover:text-[#22E58B]">
           <span>Мегамаркет (FBS / DBS)</span>
-          <span class="text-xs text-slate-300">›</span>
+          <span class="text-xs text-slate-600">›</span>
         </a>
-        <a href="/dogovor/avito/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-700 hover:text-[#00b341]">
+        <a href="/dogovor/avito/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-300 hover:text-[#22E58B]">
           <span>Авито Доставка (DBS)</span>
-          <span class="text-xs text-slate-300">›</span>
-        </a>
-        <a href="/dogovor/internet-magazin/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-700 hover:text-[#00b341]">
-          <span>Интернет-магазины и CMS</span>
-          <span class="text-xs text-slate-300">›</span>
+          <span class="text-xs text-slate-600">›</span>
         </a>
       </div>
     </div>
 
-    <!-- Интеграции, Решения и Блог -->
+    <!-- Разделы -->
     <div class="px-4 py-3">
       <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Разделы сайта</div>
       <div class="space-y-1">
-        <a href="/services/dbs/" class="mobile-link flex items-center justify-between py-1.5 text-xs font-bold text-emerald-700">
+        <a href="/services/dbs/" class="mobile-link flex items-center justify-between py-1.5 text-xs font-bold text-[#22E58B]">
           <span>Спецтариф DBS от 136.5 ₽</span>
           <span class="text-xs">›</span>
         </a>
-        <a href="/integrations/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-700 hover:text-[#00b341]">
+        <a href="/integrations/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-300 hover:text-[#22E58B]">
           <span>Все 30+ интеграций</span>
-          <span class="text-xs text-slate-300">›</span>
+          <span class="text-xs text-slate-600">›</span>
         </a>
-        <a href="/solutions/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-700 hover:text-[#00b341]">
+        <a href="/solutions/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-300 hover:text-[#22E58B]">
           <span>Отраслевые решения</span>
-          <span class="text-xs text-slate-300">›</span>
+          <span class="text-xs text-slate-600">›</span>
         </a>
-        <a href="/blog/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-700 hover:text-[#00b341]">
+        <a href="/blog/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-300 hover:text-[#22E58B]">
           <span>База знаний и блог</span>
-          <span class="text-xs text-slate-300">›</span>
+          <span class="text-xs text-slate-600">›</span>
         </a>
       </div>
     </div>
 
-    <!-- Кнопка заявки в мобильном меню -->
-    <div class="p-4 bg-slate-50">
-      <a href="/dogovor/#contract-form-container" class="mobile-link block w-full py-3 bg-[#00b341] hover:bg-[#009c38] text-white font-black text-center text-xs uppercase tracking-wider rounded-xl shadow-md transition active:scale-95">
+    <!-- Кнопка заявки -->
+    <div class="p-4 bg-white/[0.02]">
+      <a href="/dogovor/#contract-form-container" class="mobile-link block w-full py-3.5 bg-gradient-to-r from-[#22E58B] to-[#00b341] text-slate-950 font-black text-center text-xs uppercase tracking-wider rounded-xl shadow-[0_0_20px_rgba(34,229,139,0.3)] transition active:scale-95">
         Заключить договор онлайн
       </a>
     </div>
@@ -241,18 +237,18 @@
 </header>
 
 <!-- Модальное окно выбора города -->
-<div id="cityModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/70 backdrop-blur-sm hidden p-4">
-  <div class="bg-white border border-slate-200 w-full max-w-2xl rounded-2xl shadow-2xl overflow-hidden flex flex-col max-h-[85vh]">
-    <div class="p-5 border-b border-slate-100 flex items-center justify-between">
-      <h3 class="text-lg font-bold text-slate-900">Выберите ваш город</h3>
-      <button id="closeCityModal" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition-colors">
+<div id="cityModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-md hidden p-4">
+  <div class="bg-[#0B131D] border border-white/[0.1] w-full max-w-2xl rounded-3xl shadow-[0_25px_60px_rgba(0,0,0,0.9)] overflow-hidden flex flex-col max-h-[85vh]">
+    <div class="p-5 border-b border-white/[0.08] flex items-center justify-between">
+      <h3 class="text-lg font-bold text-white">Выберите ваш город</h3>
+      <button id="closeCityModal" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-white/[0.05] transition-colors cursor-pointer">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
       </button>
     </div>
 
-    <div class="p-4 border-b border-slate-100 bg-slate-50 relative">
-      <svg class="w-5 h-5 absolute left-7 top-1/2 -translate-y-1/2 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
-      <input type="text" id="citySearchInput" placeholder="Введите название города..." class="w-full pl-10 pr-4 py-2.5 rounded-xl bg-white border border-slate-200 text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#00b341] transition-colors text-sm">
+    <div class="p-4 border-b border-white/[0.08] bg-white/[0.02] relative">
+      <svg class="w-5 h-5 absolute left-7 top-1/2 -translate-y-1/2 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+      <input type="text" id="citySearchInput" placeholder="Введите название города..." class="w-full pl-10 pr-4 py-3 rounded-xl bg-[#060B11] border border-white/[0.1] text-white placeholder-slate-500 focus:outline-none focus:border-[#22E58B] transition-colors text-sm">
     </div>
 
     <div class="p-6 overflow-y-auto space-y-6">
@@ -299,7 +295,7 @@
       isCitiesLoaded = true;
     } catch (err) {
       if (cityGridContainer) {
-        cityGridContainer.innerHTML = '<div class="col-span-full text-center text-red-500 text-sm">Ошибка загрузки списка городов</div>';
+        cityGridContainer.innerHTML = '<div class="col-span-full text-center text-rose-400 text-sm">Ошибка загрузки списка городов</div>';
       }
     }
   }
@@ -311,7 +307,7 @@
       return;
     }
     cityGridContainer.innerHTML = list.map(c => 
-      `<a href="/geo/${c.slug}/" class="city-item p-2.5 rounded-xl bg-slate-50 border border-slate-200 hover:border-[#00b341] text-sm text-slate-700 hover:text-slate-900 transition-all text-center font-semibold">${c.name}</a>`
+      `<a href="/geo/${c.slug}/" class="city-item p-2.5 rounded-xl bg-white/[0.03] border border-white/[0.08] hover:border-[#22E58B]/50 hover:bg-white/[0.06] text-sm text-slate-200 hover:text-white transition-all text-center font-medium">${c.name}</a>`
     ).join('');
   }
 
