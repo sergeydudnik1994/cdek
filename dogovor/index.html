@@ -47,8 +47,8 @@
       }
     }
   </script>
-
-  <!-- Schema.org Microdata -->
+  
+ <!-- Schema.org Microdata -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -106,6 +106,14 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Договор открывает доступ к отгрузкам по схемам FBS (доставка до сортировочного центра) и DBS (доставка напрямую клиенту до двери или в ПВЗ) со скидкой до 50% от базового калькулятора, а также передает трек-номера и статусы автоматически по API."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Может ли самозанятый или физлицо отправлять заказы на маркетплейсы через СДЭК?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Обычным физлицам торговля на маркетплейсах недоступна по правилам площадок. Однако самозанятые (НПД) могут заключить официальный договор СДЭК по льготной сетке УСН и отправлять товары собственного производства по схемам FBS, rFBS и DBS со скидками до 50%."
             }
           },
           {
@@ -346,6 +354,21 @@
             <p class="text-slate-300 mt-2 leading-relaxed">
               По схеме <b>DBS (доставка силами продавца)</b> вы принимаете заказ на Ozon, WB или Яндекс Маркете, оформляете накладную СДЭК в ЛК или через плагин, и СДЭК доставляет товар до двери покупателя или в свой ПВЗ. Статусы и трек автоматически синхронизируются с маркетплейсом.
             </p>
+          </details>
+
+          <details class="group bg-market-input border border-market-border rounded-2xl p-4 cursor-pointer">
+            <summary class="font-bold text-white flex justify-between items-center list-none select-none">
+              <span>Может ли самозанятый или физлицо отправлять заказы на маркетплейсы через СДЭК?</span>
+              <span class="text-cdek group-open:rotate-180 transition-transform">▾</span>
+            </summary>
+            <div class="text-slate-300 mt-2 leading-relaxed space-y-2">
+              <p>
+                Обычным физическим лицам торговля на маркетплейсах недоступна по правилам площадок. Однако <strong>самозанятые граждане (НПД)</strong> имеют законное право продавать товары собственного производства на Wildberries, Ozon и Яндекс Маркет.
+              </p>
+              <p>
+                Мы оформляем официальный B2B-договор СДЭК с самозанятыми по льготной сетке УСН без наценки НДС. Вы сможете отгружать заказы по схемам <strong>FBS, rFBS и DBS</strong> со скидками до 50% и автоматической передачей трек-номеров по API.
+              </p>
+            </div>
           </details>
 
           <details class="group bg-market-input border border-market-border rounded-2xl p-4 cursor-pointer">
