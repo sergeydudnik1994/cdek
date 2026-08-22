@@ -29,17 +29,29 @@ jobs:
           EXCLUDE_DIRS = {'.git', 'node_modules', '.github', '.astro'}
 
           REPLACEMENTS = {
+              # Мета-теги
               'content="#072624"': 'content="#060B11"',
               'content="#08221F"': 'content="#060B11"',
               'content="#031b14"': 'content="#060B11"',
               'content="#041615"': 'content="#060B11"',
+              'content="#ffffff"': 'content="#060B11"',
               'content="#00b341"': 'content="#060B11"',
+
+              # Базовые классы body и светлых подложек
+              '<body class="bg-white': '<body class="bg-[#060B11] text-slate-100',
+              '<body class="bg-slate-50': '<body class="bg-[#060B11] text-slate-100',
+              'class="bg-white ': 'class="bg-[#060B11] text-slate-100 ',
+              'class="bg-white"': 'class="bg-[#060B11] text-slate-100"',
               'bg-[#072624]': 'bg-[#060B11]',
               'bg-[#041615]': 'bg-[#060B11]',
               'bg-[#08221F]': 'bg-[#060B11]',
               'bg-[#031b14]': 'bg-[#060B11]',
               'bg-market-bg': 'bg-[#060B11]',
               'bg-market-input': 'bg-[#060B11]',
+              'bg-slate-50': 'bg-white/[0.02]',
+              'bg-slate-100': 'bg-white/[0.04]',
+
+              # Карточки и блоки
               'bg-[#0b3330]': 'bg-[#0B131D]',
               'bg-[#07261e]': 'bg-[#0B131D]',
               'bg-[#062A30]': 'bg-[#0B131D]',
@@ -50,6 +62,20 @@ jobs:
               'bg-[#0b3330]/60': 'bg-[#0B131D]/80',
               'bg-[#041615]/90': 'bg-[#0B131D]/90',
               'bg-[#0e3330]': 'bg-white/[0.04]',
+
+              # Исправление цвета текста со светлых тем на темную
+              'text-slate-900': 'text-white',
+              'text-slate-800': 'text-slate-100',
+              'text-slate-700': 'text-slate-300',
+              'text-slate-600': 'text-slate-400',
+              'text-gray-900': 'text-white',
+              'text-gray-800': 'text-slate-100',
+              'text-gray-700': 'text-slate-300',
+
+              # Границы блоков
+              'border-slate-200': 'border-white/[0.08]',
+              'border-slate-100': 'border-white/[0.06]',
+              'border-gray-200': 'border-white/[0.08]',
               'border-emerald-800': 'border-white/[0.08]',
               'border-emerald-900': 'border-white/[0.08]',
               'border-emerald-950': 'border-white/[0.08]',
@@ -63,6 +89,8 @@ jobs:
               'border-emerald-900/80': 'border-white/[0.08]',
               'border-emerald-500/20': 'border-white/[0.08]',
               'border-emerald-500/30': 'border-white/[0.08]',
+
+              # Акценты
               'text-[#00b341]': 'text-[#22E58B]',
               'text-cdek': 'text-[#22E58B]',
               'border-[#00b341]': 'border-[#22E58B]',
@@ -94,6 +122,13 @@ jobs:
                   return re.sub(pattern, sber_config, content)
               return content
 
+          def fix_body_tag(content):
+              # Гарантируем, что у тега body всегда есть правильный темный класс
+              if '<body' in content and 'bg-[#060B11]' not in content:
+                  content = re.sub(r'<body\s+class="([^"]*)"', r'<body class="\1 bg-[#060B11] text-slate-100"', content)
+                  content = re.sub(r'<body>', r'<body class="bg-[#060B11] text-slate-100">', content)
+              return content
+
           updated_count = 0
           for root, dirs, files in os.walk('.'):
               dirs[:] = [d for d in dirs if d not in EXCLUDE_DIRS]
@@ -106,6 +141,7 @@ jobs:
                       for k, v in REPLACEMENTS.items():
                           new_txt = new_txt.replace(k, v)
                       new_txt = update_tailwind_config(new_txt)
+                      new_txt = fix_body_tag(new_txt)
                       if new_txt != txt:
                           with open(path, 'w', encoding='utf-8') as f:
                               f.write(new_txt)
@@ -123,7 +159,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes detected."
           else
-            git commit -m "Style: Автоматическая миграция страниц под экосистемную тему Sber AI / GigaChat"
+            git commit -m "Style: Полный перевод светлых страниц (services, solutions) на темный UI Сбер AI"
             git pull --rebase origin main
             git push origin main
           fi
