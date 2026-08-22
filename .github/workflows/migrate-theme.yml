@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -122,5 +124,6 @@ jobs:
             echo "No changes detected."
           else
             git commit -m "Style: Автоматическая миграция страниц под экосистемную тему Sber AI / GigaChat"
+            git pull --rebase origin main
             git push origin main
           fi
