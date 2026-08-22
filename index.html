@@ -15,7 +15,7 @@
   <!-- /Yandex.Metrika counter -->
 
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
   <title>СДЭК для маркетплейсов: доставка FBS и DBS со скидкой до 50% | Официальный договор</title>
   <meta name="description" content="Официальный B2B договор СДЭК для селлеров Wildberries, Ozon, Яндекс Маркета и Авито. Доставка FBS и DBS через 5 000+ ПВЗ со скидкой до 50% без НДС 22%." />
@@ -69,7 +69,7 @@
   }
   </script>
 
-  <!-- Tailwind CSS & Sber AI Colors (Синтаксис очищен) -->
+  <!-- Tailwind CSS & Sber AI Colors -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -86,95 +86,98 @@
     };
   </script>
 </head>
-<body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 overflow-x-hidden w-full relative">
+<body class="bg-[#060B11] text-slate-100 antialiased selection:bg-[#22E58B] selection:text-slate-950">
 
   <!--#include virtual="/src/components/header.html" -->
 
-  <main class="flex-grow w-full overflow-hidden">
+  <main>
     
-    <!-- 1. HERO СЕКЦИЯ С AMBIENT GLOW -->
-    <section class="relative py-8 sm:py-16 lg:py-24 border-b border-white/[0.08] overflow-hidden">
-      <!-- Световые градиенты заднего плана -->
+    <!-- Hero Section (С точной адаптивной сеткой ecommerce) -->
+    <section class="bg-[#060B11] text-white pt-10 pb-12 sm:pt-14 sm:pb-16 overflow-hidden relative border-b border-white/[0.08]">
+      
+      <!-- Фоновые неоновые световые акценты -->
       <div class="absolute -top-24 -left-24 w-72 sm:w-96 h-72 sm:h-96 bg-[#22E58B]/15 rounded-full blur-3xl pointer-events-none"></div>
       <div class="absolute top-1/2 -right-24 w-80 sm:w-[450px] h-80 sm:h-[450px] bg-[#00b341]/10 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
-          <!-- Левая часть -->
-          <div class="lg:col-span-7 flex flex-col items-start space-y-5 sm:space-y-6 w-full min-w-0">
+          <!-- Левая колонка: Текст и УТП -->
+          <div class="lg:col-span-7 space-y-6 sm:space-y-8">
             
-            <div class="inline-flex items-center gap-2 px-3 py-1 sm:px-3.5 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-[#22E58B]/30 backdrop-blur-md shadow-[0_0_15px_rgba(34,229,139,0.15)] max-w-full">
-              <span class="w-2 h-2 rounded-full bg-[#22E58B] animate-ping shrink-0"></span>
-              <span class="truncate">B2B-логистика нового поколения</span>
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-[#22E58B]/30 text-xs font-bold text-[#22E58B] uppercase tracking-wider mb-2">
+              <span class="w-2 h-2 rounded-full bg-[#22E58B] animate-pulse"></span>
+              Официальное B2B-подключение
             </div>
-
-            <h1 class="text-2xl sm:text-4xl lg:text-[3.25rem] font-black text-white leading-[1.15] tracking-tight w-full break-words">
-              Доставка для маркетплейсов <br />
-              <span class="bg-gradient-to-r from-[#22E58B] via-[#00b341] to-[#00E5FF] bg-clip-text text-transparent inline-block">
-                со&nbsp;скидкой до&nbsp;50%
-              </span>
+            
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]">
+              Доставка для маркетплейсов <br>
+              <span class="bg-gradient-to-r from-[#22E58B] via-[#00b341] to-[#00E5FF] bg-clip-text text-transparent">со скидкой до 50%</span>
             </h1>
 
-            <p class="text-slate-300 text-sm sm:text-base lg:text-lg leading-relaxed max-w-xl font-normal">
-              Официальный корпоративный договор со СДЭК за 15 минут. Отгрузка заказов по схемам <b>FBS и DBS</b> на Wildberries, Ozon, Яндекс Маркет и Авито через 5&nbsp;000+ ПВЗ.
+            <p class="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed font-normal">
+              Официальный B2B-договор со СДЭК для селлеров Wildberries, Ozon, Яндекс Маркета и Авито. Подключение онлайн за 15 минут с доступом к специальным тарифам FBS и DBS.
             </p>
 
-            <!-- Бенто-плашки преимуществ -->
-            <div class="grid grid-cols-3 gap-2 sm:gap-3.5 w-full max-w-xl pt-1">
-              <div class="p-2.5 sm:p-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-xl flex flex-col justify-center text-left">
-                <div class="text-lg sm:text-2xl lg:text-3xl font-black text-[#22E58B] whitespace-nowrap">5&nbsp;000+</div>
-                <div class="text-[10px] sm:text-xs text-slate-400 font-medium mt-0.5 leading-tight">Пунктов ПВЗ</div>
+            <!-- Теги преимуществ -->
+            <div class="flex flex-wrap gap-2.5 pt-1">
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-slate-200">
+                <span class="text-[#22E58B]">✓</span> 5 000+ ПВЗ и постаматов
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-slate-200">
+                <span class="text-[#22E58B]">✓</span> Готовые модули и API 2.0
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-slate-200">
+                <span class="text-[#22E58B]">✓</span> Наложенный платеж 54-ФЗ
+              </span>
+              <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-slate-200">
+                <span class="text-[#22E58B]">✓</span> Доставка FBS и DBS день-в-день
+              </span>
+            </div>
+
+            <!-- 3 ключевые цифры -->
+            <div class="grid grid-cols-3 gap-4 pt-4 border-t border-white/10 max-w-lg">
+              <div>
+                <div class="text-2xl sm:text-3xl font-black text-[#22E58B]">0 ₽</div>
+                <div class="text-xs text-slate-400 mt-0.5">Подключение</div>
               </div>
-              <div class="p-2.5 sm:p-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-xl flex flex-col justify-center text-left">
-                <div class="text-lg sm:text-2xl lg:text-3xl font-black text-white whitespace-nowrap">0&nbsp;₽</div>
-                <div class="text-[10px] sm:text-xs text-slate-400 font-medium mt-0.5 leading-tight">Подключение</div>
+              <div>
+                <div class="text-2xl sm:text-3xl font-black text-white">1 день</div>
+                <div class="text-xs text-slate-400 mt-0.5">Старт отгрузок</div>
               </div>
-              <div class="p-2.5 sm:p-4 rounded-2xl bg-white/[0.03] border border-white/[0.08] backdrop-blur-xl flex flex-col justify-center text-left">
-                <div class="text-lg sm:text-2xl lg:text-3xl font-black bg-gradient-to-r from-[#22E58B] to-[#00E5FF] bg-clip-text text-transparent whitespace-nowrap">−50%</div>
-                <div class="text-[10px] sm:text-xs text-slate-400 font-medium mt-0.5 leading-tight">На тарифы</div>
+              <div>
+                <div class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-[#22E58B] to-[#00E5FF] bg-clip-text text-transparent">−50%</div>
+                <div class="text-xs text-slate-400 mt-0.5">На тариф «Посылка»</div>
               </div>
             </div>
 
-            <!-- Чипы -->
-            <div class="flex flex-wrap gap-1.5 sm:gap-2 pt-1 w-full">
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-xl bg-white/[0.02] border border-white/[0.06] text-[11px] sm:text-xs text-slate-300">
-                <span class="text-[#22E58B] font-bold">✓</span> Сетка УСН без наценки за НДС
-              </span>
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-xl bg-white/[0.02] border border-white/[0.06] text-[11px] sm:text-xs text-slate-300">
-                <span class="text-[#22E58B] font-bold">✓</span> Наложенный платеж 54-ФЗ
-              </span>
-              <span class="inline-flex items-center gap-1.5 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-xl bg-white/[0.02] border border-white/[0.06] text-[11px] sm:text-xs text-slate-300">
-                <span class="text-[#22E58B] font-bold">✓</span> REST API интеграция
-              </span>
-            </div>
           </div>
 
-          <!-- Правая часть: Форма -->
-          <div class="lg:col-span-5 relative w-full min-w-0" id="leadForm">
+          <!-- Правая колонка: Форма заявки -->
+          <div class="lg:col-span-5" id="lead-form">
             <!--#include virtual="/src/components/leadform.html" -->
           </div>
 
-        </div>  
+        </div>
       </div>
     </section>
 
-    <!-- 2. СЕКЦИЯ МАРКЕТПЛЕЙСОВ -->
-    <section class="py-10 sm:py-16 lg:py-20 border-b border-white/[0.08] w-full">
+    <!-- 2. Секция маркетплейсов -->
+    <section class="py-16 sm:py-20 border-b border-white/[0.08]">
       <!--#include virtual="/src/components/platforms.html" -->
     </section>
 
-    <!-- 3. КАЛЬКУЛЯТОР ТАРИФОВ -->
-    <section id="widget-section" class="py-10 sm:py-16 lg:py-20 border-b border-white/[0.08] relative w-full">
+    <!-- 3. Калькулятор тарифов -->
+    <section id="widget-section" class="py-16 sm:py-20 border-b border-white/[0.08]">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+        <div class="text-center max-w-3xl mx-auto mb-10">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-white/[0.08] mb-3">
             Интеллектуальный расчет
           </div>
-          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight">
+          <h2 class="text-2xl sm:text-4xl font-black text-white tracking-tight">
             Рассчитайте стоимость и сроки доставки
           </h2>
-          <p class="text-slate-400 text-xs sm:text-sm lg:text-base mt-2">
+          <p class="text-slate-400 text-xs sm:text-sm mt-2">
             Официальные корпоративные тарифы линейки «Посылка» со скидкой до 50% при заключении B2B-договора.
           </p>
         </div>
@@ -183,8 +186,8 @@
       </div>
     </section>
 
-    <!-- 4. БЛОГ -->
-    <section class="py-10 sm:py-16 lg:py-20 w-full">
+    <!-- 4. Блог -->
+    <section class="py-16 sm:py-20">
       <!--#include virtual="/src/components/blog-latest.html" -->
     </section>
 
