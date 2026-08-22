@@ -1,63 +1,77 @@
 <div id="platforms" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-  <div class="p-6 sm:p-8 rounded-2xl bg-[#0b3330]/50 border border-emerald-800/60 text-center relative scroll-mt-24">
-    <h2 class="text-xl sm:text-2xl lg:text-3xl font-black text-white tracking-tight mb-2">
-      Выберите ваш <span class="text-[#00b341]">маркетплейс или платформу</span>
+  <div class="p-6 sm:p-10 rounded-3xl bg-[#0B131D]/80 border border-white/[0.08] backdrop-blur-2xl text-center relative scroll-mt-24 shadow-[0_20px_50px_rgba(0,0,0,0.6)]">
+    
+    <div class="inline-flex items-center gap-2 px-3.5 py-1 mb-3 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-[#22E58B]/30">
+      Экосистема интеграций
+    </div>
+
+    <h2 class="text-2xl sm:text-3xl lg:text-4xl font-black text-white tracking-tight mb-2">
+      Выберите ваш <span class="bg-gradient-to-r from-[#22E58B] to-[#00E5FF] bg-clip-text text-transparent">маркетплейс или платформу</span>
     </h2>
-    <p class="text-sm sm:text-base text-slate-300 font-medium mb-6">
-      Перейдите на страницу вашего направления для точного расчета условий и тарифов
+    <p class="text-sm sm:text-base text-slate-300 font-normal mb-8 max-w-2xl mx-auto">
+      Прямое подключение к логистике СДЭК со скидкой до 50% и автоматической передачей статусов по API
     </p>
     
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
       
       <!-- 1. Ozon -->
-      <a href="/ozon/" class="group flex items-center gap-3.5 p-4 bg-[#072624] hover:bg-[#0e3330] border border-emerald-800/60 hover:border-[#005bff] rounded-xl transition-all shadow-sm active:scale-95">
-        <img src="https://www.google.com/s2/favicons?domain=ozon.ru&sz=128" alt="Ozon" class="w-7 h-7 shrink-0 group-hover:scale-110 transition-transform rounded-md" />
-        <span class="text-sm font-bold text-white truncate">Ozon (FBS / rFBS)</span>
+      <a href="/ozon/" class="group flex items-center gap-3.5 p-4 bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.08] hover:border-[#005bff] rounded-2xl transition-all shadow-md active:scale-95">
+        <img src="https://www.google.com/s2/favicons?domain=ozon.ru&sz=128" alt="Ozon" class="w-8 h-8 shrink-0 group-hover:scale-110 transition-transform rounded-lg" />
+        <div class="text-left">
+          <span class="text-sm font-bold text-white block group-hover:text-[#005bff] transition-colors">Ozon</span>
+          <span class="text-[11px] text-slate-400">Схемы FBS и RealFBS</span>
+        </div>
       </a>
 
       <!-- 2. Wildberries -->
-      <a href="/wildberries/" class="group flex items-center gap-3.5 p-4 bg-[#072624] hover:bg-[#0e3330] border border-emerald-800/60 hover:border-[#cb11ab] rounded-xl transition-all shadow-sm active:scale-95">
-        <svg class="w-7 h-7 shrink-0 group-hover:scale-110 transition-transform" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-          <defs><linearGradient id="wbGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#E20A86"/><stop offset="100%" stop-color="#481173"/></linearGradient></defs>
-          <rect width="32" height="32" rx="8" fill="url(#wbGrad)"/>
+      <a href="/wildberries/" class="group flex items-center gap-3.5 p-4 bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.08] hover:border-[#cb11ab] rounded-2xl transition-all shadow-md active:scale-95">
+        <svg class="w-8 h-8 shrink-0 group-hover:scale-110 transition-transform" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="wbGradTech" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#E20A86"/><stop offset="100%" stop-color="#481173"/></linearGradient></defs>
+          <rect width="32" height="32" rx="8" fill="url(#wbGradTech)"/>
           <text x="16" y="21" font-family="Arial, sans-serif" font-weight="bold" font-size="15" fill="white" text-anchor="middle" letter-spacing="-0.5">wb</text>
         </svg>
-        <span class="text-sm font-bold text-white truncate">Wildberries (FBS / DBS)</span>
+        <div class="text-left">
+          <span class="text-sm font-bold text-white block group-hover:text-[#cb11ab] transition-colors">Wildberries</span>
+          <span class="text-[11px] text-slate-400">Отгрузки FBS и DBS</span>
+        </div>
       </a>
 
       <!-- 3. Яндекс Маркет -->
-      <a href="/yandex-market/" class="group flex items-center gap-3.5 p-4 bg-[#072624] hover:bg-[#0e3330] border border-emerald-800/60 hover:border-[#FC3F1D] rounded-xl transition-all shadow-sm active:scale-95">
-        <img src="https://www.google.com/s2/favicons?domain=market.yandex.ru&sz=128" alt="Яндекс Маркет" class="w-7 h-7 shrink-0 group-hover:scale-110 transition-transform rounded-full" />
-        <span class="text-sm font-bold text-white truncate">Яндекс Маркет (DBS / FBS)</span>
+      <a href="/yandex-market/" class="group flex items-center gap-3.5 p-4 bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.08] hover:border-[#FC3F1D] rounded-2xl transition-all shadow-md active:scale-95">
+        <img src="https://www.google.com/s2/favicons?domain=market.yandex.ru&sz=128" alt="Яндекс Маркет" class="w-8 h-8 shrink-0 group-hover:scale-110 transition-transform rounded-full" />
+        <div class="text-left">
+          <span class="text-sm font-bold text-white block group-hover:text-[#FC3F1D] transition-colors">Яндекс Маркет</span>
+          <span class="text-[11px] text-slate-400">Модели DBS и FBS</span>
+        </div>
       </a>
 
       <!-- 4. Мегамаркет -->
-      <a href="/services/dbs/" class="group flex items-center gap-3.5 p-4 bg-[#072624] hover:bg-[#0e3330] border border-emerald-800/60 hover:border-[#8b2cf5] rounded-xl transition-all shadow-sm active:scale-95">
-        <img src="https://www.google.com/s2/favicons?domain=megamarket.ru&sz=128" alt="Мегамаркет" class="w-7 h-7 shrink-0 group-hover:scale-110 transition-transform rounded-md" />
-        <span class="text-sm font-bold text-white truncate">Мегамаркет (FBS / DBS)</span>
+      <a href="/services/dbs/" class="group flex items-center gap-3.5 p-4 bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.08] hover:border-[#8b2cf5] rounded-2xl transition-all shadow-md active:scale-95">
+        <img src="https://www.google.com/s2/favicons?domain=megamarket.ru&sz=128" alt="Мегамаркет" class="w-8 h-8 shrink-0 group-hover:scale-110 transition-transform rounded-lg" />
+        <div class="text-left">
+          <span class="text-sm font-bold text-white block group-hover:text-[#8b2cf5] transition-colors">Мегамаркет</span>
+          <span class="text-[11px] text-slate-400">Доставка силами продавца</span>
+        </div>
       </a>
 
       <!-- 5. Авито -->
-      <a href="/avito/" class="group flex items-center gap-3.5 p-4 bg-[#072624] hover:bg-[#0e3330] border border-emerald-800/60 hover:border-[#00AAFF] rounded-xl transition-all shadow-sm active:scale-95">
-        <img src="https://www.google.com/s2/favicons?domain=avito.ru&sz=128" alt="Авито" class="w-7 h-7 shrink-0 group-hover:scale-110 transition-transform rounded-full" />
-        <span class="text-sm font-bold text-white truncate">Авито Доставка</span>
+      <a href="/avito/" class="group flex items-center gap-3.5 p-4 bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.08] hover:border-[#00AAFF] rounded-2xl transition-all shadow-md active:scale-95">
+        <img src="https://www.google.com/s2/favicons?domain=avito.ru&sz=128" alt="Авито" class="w-8 h-8 shrink-0 group-hover:scale-110 transition-transform rounded-full" />
+        <div class="text-left">
+          <span class="text-sm font-bold text-white block group-hover:text-[#00AAFF] transition-colors">Авито Доставка</span>
+          <span class="text-[11px] text-slate-400">Интеграция заказов</span>
+        </div>
       </a>
 
       <!-- 6. Интернет-магазины и CMS -->
-      <a href="/integrations/" class="group flex items-center gap-3.5 p-4 bg-[#072624] hover:bg-[#0e3330] border border-emerald-800/60 hover:border-blue-500 rounded-xl transition-all shadow-sm active:scale-95">
-        <svg class="w-7 h-7 shrink-0 group-hover:scale-110 transition-transform" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="cartGrad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-              <stop stop-color="#4F46E5"/>
-              <stop offset="1" stop-color="#0EA5E9"/>
-            </linearGradient>
-          </defs>
-          <circle cx="16" cy="16" r="16" fill="url(#cartGrad)"/>
-          <path d="M8 9H10L12.2 18.5C12.3 19 12.8 19.5 13.3 19.5H20.7C21.2 19.5 21.7 19.1 21.8 18.6L23.5 12.5H10.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-          <circle cx="13.5" cy="23" r="1.5" fill="white"/>
-          <circle cx="20.5" cy="23" r="1.5" fill="white"/>
-        </svg>
-        <span class="text-sm font-bold text-white truncate">Интернет-магазины и CMS</span>
+      <a href="/integrations/" class="group flex items-center gap-3.5 p-4 bg-white/[0.03] hover:bg-white/[0.06] border border-white/[0.08] hover:border-[#22E58B] rounded-2xl transition-all shadow-md active:scale-95">
+        <div class="w-8 h-8 shrink-0 rounded-lg bg-[#22E58B]/15 border border-[#22E58B]/30 flex items-center justify-center text-[#22E58B] group-hover:scale-110 transition-transform">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+        </div>
+        <div class="text-left">
+          <span class="text-sm font-bold text-white block group-hover:text-[#22E58B] transition-colors">CMS и Сайты</span>
+          <span class="text-[11px] text-slate-400">1С, Tilda, InSales, API</span>
+        </div>
       </a>
 
     </div>
