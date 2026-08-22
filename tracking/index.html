@@ -3,14 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>СДЭК трекинг: отследить посылку и заказ по накладной</title>
-  <meta name="description" content="Онлайн-отслеживание посылок СДЭК по номеру накладной. Проверьте статус доставки заказов маркетплейсов и найдите пункт выдачи ПВЗ." />
+  <title>СДЭК трекинг: отследить посылку и заказ по накладной онлайн</title>
+  <meta name="description" content="Онлайн-отслеживание посылок СДЭК по номеру накладной. Проверьте актуальный статус доставки заказов маркетплейсов и найдите пункт выдачи ПВЗ." />
   <meta name="keywords" content="сдэк трекинг, отследить заказ сдэк, отслеживание посылки сдэк, сдэк проверка накладной, трекинг маркетплейсов" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="СДЭК трекинг: отследить посылку и заказ онлайн" />
   <meta property="og:description" content="Быстрая проверка статуса доставки посылок СДЭК и заказов маркетплейсов по номеру накладной." />
+  <meta property="og:url" content="https://cdek-marketplace.ru/tracking/" />
+  <meta property="og:image" content="https://cdek-marketplace.ru/logo.png" />
+  <meta name="theme-color" content="#060B11" />
+  <link rel="canonical" href="https://cdek-marketplace.ru/tracking/" />
 
   <!-- Полная разметка Schema.org JSON-LD (WebApplication + SearchAction + Breadcrumb + FAQ) -->
   <script type="application/ld+json">
@@ -91,7 +95,7 @@
   }
   </script>
 
-  <!-- Tailwind CSS -->
+  <!-- Tailwind CSS & Sber AI Colors -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -99,11 +103,9 @@
         extend: {
           colors: {
             cdek: '#00b341',
-            'cdek-hover': '#009c38',
-            'market-bg': '#031b14',
-            'market-card': '#07261e',
-            'market-border': '#113f32',
-            'market-input': '#041710'
+            neon: '#22E58B',
+            obsidian: '#060B11',
+            card: '#0B131D'
           }
         }
       }
@@ -115,27 +117,36 @@
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
   <link rel="apple-touch-icon" href="/favicon.png" />
 </head>
-<body class="bg-market-bg text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-white pb-16 md:pb-0">
+<body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 pb-16 md:pb-0 relative overflow-x-hidden">
 
   <!-- Nginx: Шапка сайта -->
   <!--#include virtual="/src/components/header.html" -->
 
-  <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-12">
+  <!-- Световые пятна заднего фона -->
+  <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#22E58B]/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute top-1/3 -right-32 w-[450px] h-[450px] bg-[#00b341]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+  <main class="flex-grow max-w-5xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 space-y-12 relative z-10">
     
     <!-- Заголовок и поисковая строка трекера -->
     <div class="space-y-6">
       <div class="text-center sm:text-left">
-        <div class="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full text-xs font-semibold uppercase bg-cdek/15 text-cdek border border-cdek/30">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 mb-3 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-[#22E58B]/30 backdrop-blur-md shadow-[0_0_15px_rgba(34,229,139,0.15)]">
+          <span class="w-2 h-2 rounded-full bg-[#22E58B] animate-ping"></span>
           Официальный трекинг СДЭК
         </div>
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-tight">Трекинг и отслеживание посылок СДЭК</h1>
-        <p class="text-sm sm:text-base text-slate-300 mt-2 max-w-3xl">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+          Трекинг и отслеживание <br class="sm:hidden" />
+          <span class="bg-gradient-to-r from-[#22E58B] via-[#00b341] to-[#00E5FF] bg-clip-text text-transparent">посылок СДЭК</span>
+        </h1>
+        <p class="text-sm sm:text-base text-slate-300 mt-2 max-w-3xl font-normal">
           Введите номер заказа или накладной для проверки актуального статуса доставки, истории перемещения и адреса пункта выдачи.
         </p>
       </div>
 
       <!-- Поисковое поле -->
-      <div class="bg-market-card rounded-2xl sm:rounded-3xl p-4 sm:p-6 border border-market-border shadow-xl">
+      <div class="bg-[#0B131D]/90 rounded-3xl p-4 sm:p-6 border border-white/[0.1] backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] relative overflow-hidden">
+        <div class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#22E58B]/80 to-transparent"></div>
         <form id="trackingForm" onsubmit="executeTracking(event)">
           <div class="flex gap-3">
             <input 
@@ -143,30 +154,30 @@
               id="trackNumber" 
               required 
               autofocus
-              placeholder="Номер заказа" 
-              class="flex-grow px-5 py-4 bg-market-input border border-market-border rounded-xl sm:rounded-2xl text-white placeholder-slate-400 text-base outline-none focus:border-cdek focus:ring-1 focus:ring-cdek transition font-medium"
+              placeholder="Введите номер накладной или заказа (например: 1234567890)" 
+              class="flex-grow px-5 py-4 bg-[#060B11] border border-white/[0.1] rounded-2xl text-white placeholder-slate-500 text-base outline-none focus:border-[#22E58B] focus:ring-1 focus:ring-[#22E58B] transition font-medium"
             />
             <button 
               type="submit" 
               id="trackBtn"
-              class="px-6 sm:px-8 py-4 bg-cdek hover:bg-cdek-hover text-white font-bold rounded-xl sm:rounded-2xl transition flex items-center justify-center cursor-pointer active:scale-95 flex-shrink-0 shadow-md shadow-cdek/20"
+              class="px-6 sm:px-8 py-4 bg-gradient-to-r from-[#22E58B] to-[#00b341] hover:brightness-110 text-slate-950 font-black rounded-2xl transition flex items-center justify-center cursor-pointer active:scale-95 flex-shrink-0 shadow-[0_0_20px_rgba(34,229,139,0.3)]"
             >
-              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
               </svg>
             </button>
           </div>
-          <div class="mt-2.5 pl-1">
-            <a href="#faq" class="text-xs text-slate-400 hover:text-cdek transition inline-flex items-center gap-1">
-              Где найти номер заказа? <span class="text-[10px]">↓</span>
+          <div class="mt-3 pl-1">
+            <a href="#faq" class="text-xs text-slate-400 hover:text-[#22E58B] transition inline-flex items-center gap-1">
+              Где найти номер накладной? <span class="text-[10px]">↓</span>
             </a>
           </div>
         </form>
       </div>
 
       <!-- Лоадер -->
-      <div id="trackLoading" class="hidden text-center py-10">
-        <div class="inline-block w-9 h-9 border-4 border-cdek/20 border-t-cdek rounded-full animate-spin"></div>
+      <div id="trackLoading" class="hidden text-center py-12">
+        <div class="inline-block w-9 h-9 border-4 border-white/[0.1] border-t-[#22E58B] rounded-full animate-spin"></div>
         <p class="text-xs font-semibold uppercase tracking-wider text-slate-300 mt-3">Запрашиваем данные у логистического шлюза СДЭК...</p>
       </div>
 
@@ -174,13 +185,15 @@
       <div id="trackError" class="hidden p-5 rounded-2xl bg-rose-950/40 border border-rose-800/80 text-rose-300 text-sm"></div>
 
       <!-- Карточка результата трекинга -->
-      <div id="trackResult" class="hidden bg-market-card rounded-2xl sm:rounded-3xl p-6 sm:p-8 border border-market-border shadow-xl space-y-8">
+      <div id="trackResult" class="hidden bg-[#0B131D]/90 rounded-3xl p-6 sm:p-8 border border-white/[0.1] backdrop-blur-2xl shadow-[0_25px_60px_rgba(0,0,0,0.9)] space-y-8 relative overflow-hidden">
         
-        <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-market-border">
+        <div class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#22E58B]/80 to-transparent"></div>
+
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-white/[0.08]">
           <div class="text-lg font-bold text-white" id="resNumber">№ —</div>
           <div class="text-base sm:text-lg font-semibold text-slate-200" id="resRoute">—</div>
           <div id="resBadgeWrapper">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/30" id="resStatusBadge">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500/15 text-amber-400 border border-amber-500/30" id="resStatusBadge">
               В пути
             </span>
           </div>
@@ -191,10 +204,10 @@
             <span id="resCityFrom">—</span>
             <span id="resCityTo">—</span>
           </div>
-          <div class="h-2 w-full bg-market-input rounded-full relative overflow-visible">
-            <div class="h-full bg-cdek rounded-full transition-all duration-700 shadow-[0_0_12px_rgba(0,179,65,0.4)]" id="resProgressBar" style="width: 50%;"></div>
-            <div class="absolute -top-3 w-8 h-8 bg-[#041d15] border-2 border-cdek rounded-full flex items-center justify-center shadow-lg transition-all duration-700" id="resTruckIcon" style="left: calc(50% - 16px);">
-              <svg class="w-4 h-4 text-cdek" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="h-2 w-full bg-[#060B11] rounded-full relative overflow-visible">
+            <div class="h-full bg-gradient-to-r from-[#22E58B] to-[#00b341] rounded-full transition-all duration-700 shadow-[0_0_15px_rgba(34,229,139,0.5)]" id="resProgressBar" style="width: 50%;"></div>
+            <div class="absolute -top-3 w-8 h-8 bg-[#060B11] border-2 border-[#22E58B] rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(34,229,139,0.3)] transition-all duration-700" id="resTruckIcon" style="left: calc(50% - 16px);">
+              <svg class="w-4 h-4 text-[#22E58B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
               </svg>
             </div>
@@ -204,22 +217,22 @@
         <div class="grid lg:grid-cols-12 gap-8 pt-4">
           <div class="lg:col-span-7 space-y-6" id="resMilestones"></div>
           <div class="lg:col-span-5 space-y-4">
-            <div class="bg-market-input rounded-2xl p-6 border border-market-border space-y-4">
-              <div class="p-3.5 bg-cdek/10 border border-cdek/20 rounded-xl flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-cdek text-white font-bold flex items-center justify-center flex-shrink-0 mt-0.5 text-xs">✓</div>
-                <p class="text-xs text-slate-200 leading-relaxed">
-                  Уведомление о прибытии заказа поступит в мобильное приложение СДЭК, мессенджер или по СМС.
+            <div class="bg-[#060B11] rounded-2xl p-6 border border-white/[0.08] space-y-4">
+              <div class="p-3.5 bg-[#22E58B]/10 border border-[#22E58B]/20 rounded-xl flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-[#22E58B] text-slate-950 font-black flex items-center justify-center flex-shrink-0 mt-0.5 text-xs">✓</div>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  Уведомление о прибытии поступит в мобильное приложение СДЭК, мессенджер или по СМС.
                 </p>
               </div>
 
               <div>
-                <div class="text-xs text-slate-400 font-medium">Получатель</div>
+                <div class="text-xs text-slate-500 font-medium">Получатель</div>
                 <div class="text-sm font-bold text-white mt-0.5" id="resRecipient">—</div>
               </div>
 
               <div>
-                <div class="text-xs text-slate-400 font-medium">Адрес пункта выдачи СДЭК</div>
-                <div class="text-sm font-semibold text-slate-200 mt-0.5" id="resPvzAddress">—</div>
+                <div class="text-xs text-slate-500 font-medium">Адрес пункта выдачи СДЭК</div>
+                <div class="text-sm font-semibold text-slate-300 mt-0.5" id="resPvzAddress">—</div>
               </div>
 
               <div id="resDateBox" class="p-3.5 bg-amber-500/10 border border-amber-500/20 rounded-xl hidden">
@@ -228,9 +241,9 @@
               </div>
             </div>
 
-            <div class="bg-market-input rounded-2xl p-6 border border-market-border space-y-3">
+            <div class="bg-[#060B11] rounded-2xl p-6 border border-white/[0.08] space-y-3">
               <h4 class="text-sm font-bold text-white">Получение заказа</h4>
-              <p class="text-xs text-slate-300 leading-relaxed">
+              <p class="text-xs text-slate-400 leading-relaxed">
                 Выдача осуществляется по паспорту либо за 10 секунд по бесплатному цифровому коду через <b>CDEK ID</b> без документов.
               </p>
             </div>
@@ -240,14 +253,14 @@
       </div>
     </div>
 
-    <!-- ВСТРОЕННЫЙ КАЛЬКУЛЯТОР СТОИМОСТИ И СРОКОВ ДОСТАВКИ -->
+    <!-- ВСТРОЕННЫЙ КАЛЬКУЛЯТОР -->
     <section class="pt-6">
       <div class="text-center sm:text-left mb-6">
-        <div class="inline-flex items-center gap-2 px-3 py-1 mb-2 rounded-full text-xs font-semibold uppercase bg-cdek/15 text-cdek border border-cdek/30">
+        <div class="inline-flex items-center gap-2 px-3 py-1 mb-2 rounded-full text-xs font-semibold uppercase bg-white/[0.04] text-[#22E58B] border border-white/[0.08]">
           Онлайн-калькулятор
         </div>
-        <h2 class="text-2xl sm:text-3xl font-bold text-white">Рассчитать стоимость и срок новой отправки</h2>
-        <p class="text-sm text-slate-300 mt-1">Узнайте тарифы курьерской доставки до двери и самовывоза из ПВЗ по всей России</p>
+        <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">Рассчитать стоимость и срок новой отправки</h2>
+        <p class="text-sm text-slate-400 mt-1">Официальные тарифы курьерской доставки до двери и самовывоза из ПВЗ по всей России</p>
       </div>
 
       <!-- Nginx: Подключение калькулятора -->
@@ -255,33 +268,33 @@
     </section>
 
     <!-- SEO БЛОК: РАСШИФРОВКА СТАТУСОВ ДОСТАВКИ -->
-    <section class="bg-market-card rounded-3xl p-6 sm:p-8 border border-market-border space-y-6">
+    <section class="bg-[#0B131D]/80 rounded-3xl p-6 sm:p-8 border border-white/[0.08] backdrop-blur-xl space-y-6">
       <div>
-        <h2 class="text-xl sm:text-2xl font-bold text-white">Что означают статусы отслеживания СДЭК</h2>
-        <p class="text-sm text-slate-300 mt-1">Основные этапы движения посылок от создания накладной до вручения адресату:</p>
+        <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight">Что означают статусы отслеживания СДЭК</h2>
+        <p class="text-sm text-slate-400 mt-1">Основные этапы движения посылок от создания накладной до вручения адресату:</p>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="p-4 rounded-2xl bg-market-input border border-market-border">
+        <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
           <div class="text-xs font-bold text-amber-400 uppercase tracking-wider mb-1">Создан</div>
           <div class="text-sm font-semibold text-white mb-1">Накладная оформлена</div>
           <p class="text-xs text-slate-400">Продавец сформировал трек-номер в системе, но еще не передал товар курьеру или на склад СДЭК.</p>
         </div>
 
-        <div class="p-4 rounded-2xl bg-market-input border border-market-border">
+        <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
           <div class="text-xs font-bold text-orange-400 uppercase tracking-wider mb-1">В пути</div>
           <div class="text-sm font-semibold text-white mb-1">Магистральная доставка</div>
-          <p class="text-xs text-slate-400">Посылка принята в сортировочном центре и перемещается между городами по логистическому маршруту.</p>
+          <p class="text-xs text-slate-400">Посылка принята в сортировочном центре и перемещается между городами по маршруту.</p>
         </div>
 
-        <div class="p-4 rounded-2xl bg-market-input border border-market-border">
-          <div class="text-xs font-bold text-cdek uppercase tracking-wider mb-1">Прибыл в ПВЗ</div>
+        <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
+          <div class="text-xs font-bold text-[#22E58B] uppercase tracking-wider mb-1">Прибыл в ПВЗ</div>
           <div class="text-sm font-semibold text-white mb-1">Готов к выдаче</div>
           <p class="text-xs text-slate-400">Заказ поступил в выбранный пункт выдачи. Получателю отправлено уведомление с кодом.</p>
         </div>
 
-        <div class="p-4 rounded-2xl bg-market-input border border-market-border">
-          <div class="text-xs font-bold text-emerald-400 uppercase tracking-wider mb-1">Вручен</div>
+        <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
+          <div class="text-xs font-bold text-cyan-400 uppercase tracking-wider mb-1">Вручен</div>
           <div class="text-sm font-semibold text-white mb-1">Заказ выдан</div>
           <p class="text-xs text-slate-400">Посылка успешно получена клиентом в ПВЗ или доставлена курьером прямо до двери.</p>
         </div>
@@ -290,56 +303,56 @@
 
     <!-- SEO БЛОК: ОТСЛЕЖИВАНИЕ ДЛЯ СЕЛЛЕРОВ И МАРКЕТПЛЕЙСОВ -->
     <section class="grid md:grid-cols-2 gap-6">
-      <div class="bg-market-card rounded-3xl p-6 sm:p-8 border border-market-border space-y-3">
-        <div class="w-10 h-10 rounded-xl bg-cdek/15 border border-cdek/30 flex items-center justify-center text-cdek font-bold">
+      <div class="bg-[#0B131D]/80 rounded-3xl p-6 sm:p-8 border border-white/[0.08] backdrop-blur-xl space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#22E58B] font-bold">
           DBS
         </div>
         <h3 class="text-lg font-bold text-white">Отслеживание заказов Ozon, WB и Яндекс Маркет</h3>
-        <p class="text-sm text-slate-300 leading-relaxed">
+        <p class="text-sm text-slate-400 leading-relaxed">
           При работе по моделям <b>DBS (Delivery by Seller)</b> и <b>FBS</b> статусы и трек-номера СДЭК передаются в кабинеты селлеров автоматически по API v2. Покупатели видят актуальное местоположение прямо на витрине маркетплейса.
         </p>
       </div>
 
-      <div class="bg-market-card rounded-3xl p-6 sm:p-8 border border-market-border space-y-3">
-        <div class="w-10 h-10 rounded-xl bg-cdek/15 border border-cdek/30 flex items-center justify-center text-cdek font-bold">
+      <div class="bg-[#0B131D]/80 rounded-3xl p-6 sm:p-8 border border-white/[0.08] backdrop-blur-xl space-y-3">
+        <div class="w-10 h-10 rounded-xl bg-white/[0.04] border border-white/[0.08] flex items-center justify-center text-[#22E58B] font-bold">
           B2B
         </div>
         <h3 class="text-lg font-bold text-white">Выгодная логистика для интернет-магазинов</h3>
-        <p class="text-sm text-slate-300 leading-relaxed">
+        <p class="text-sm text-slate-400 leading-relaxed">
           Заключите прямой договор с персональной скидкой до 50% на тарифы «Посылка» и «Магистральный экспресс». Бесплатная интеграция виджета трекинга и пунктов самовывоза в вашу CMS (1С, Tilda, InSales, МойСклад).
         </p>
       </div>
     </section>
 
     <!-- SEO БЛОК: FAQ -->
-    <section id="faq" class="bg-market-card rounded-3xl p-6 sm:p-8 border border-market-border space-y-6">
-      <h2 class="text-xl sm:text-2xl font-bold text-white">Часто задаваемые вопросы по отслеживанию</h2>
+    <section id="faq" class="bg-[#0B131D]/80 rounded-3xl p-6 sm:p-8 border border-white/[0.08] backdrop-blur-xl space-y-6">
+      <h2 class="text-xl sm:text-2xl font-black text-white tracking-tight">Часто задаваемые вопросы по отслеживанию</h2>
       
       <div class="space-y-3">
-        <details class="group bg-market-input rounded-2xl border border-market-border p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+        <details class="group bg-[#060B11] rounded-2xl border border-white/[0.08] p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
           <summary class="flex items-center justify-between font-semibold text-white text-sm sm:text-base">
             <span>Где найти трек-номер накладной СДЭК?</span>
-            <span class="ml-4 flex-shrink-0 text-cdek transition duration-300 group-open:-rotate-180">▾</span>
+            <span class="ml-4 flex-shrink-0 text-[#22E58B] transition duration-300 group-open:-rotate-180">▾</span>
           </summary>
           <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
             Номер отправления состоит из 10–12 цифр и указывается в верхней части печатной накладной, в SMS/push-уведомлении от СДЭК, а также в личном кабинете магазина или маркетплейса, где вы совершали покупку.
           </p>
         </details>
 
-        <details class="group bg-market-input rounded-2xl border border-market-border p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+        <details class="group bg-[#060B11] rounded-2xl border border-white/[0.08] p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
           <summary class="flex items-center justify-between font-semibold text-white text-sm sm:text-base">
             <span>Сколько посылка хранится в пункте выдачи бесплатно?</span>
-            <span class="ml-4 flex-shrink-0 text-cdek transition duration-300 group-open:-rotate-180">▾</span>
+            <span class="ml-4 flex-shrink-0 text-[#22E58B] transition duration-300 group-open:-rotate-180">▾</span>
           </summary>
           <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
             Срок бесплатного хранения в ПВЗ составляет <b>7 календарных дней</b> с момента поступления заказа. Продлить срок хранения можно через мобильное приложение СДЭК или связавшись с отправителем груза.
           </p>
         </details>
 
-        <details class="group bg-market-input rounded-2xl border border-market-border p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
+        <details class="group bg-[#060B11] rounded-2xl border border-white/[0.08] p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
           <summary class="flex items-center justify-between font-semibold text-white text-sm sm:text-base">
             <span>Почему статус посылки не меняется несколько дней?</span>
-            <span class="ml-4 flex-shrink-0 text-cdek transition duration-300 group-open:-rotate-180">▾</span>
+            <span class="ml-4 flex-shrink-0 text-[#22E58B] transition duration-300 group-open:-rotate-180">▾</span>
           </summary>
           <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
             При межрегиональной транспортировке статус «В пути» не меняется во время движения магистрального транспорта между сортировочными хабами. Статус обновится сразу по прибытии посылки на транзитный или городской склад.
@@ -349,14 +362,15 @@
     </section>
 
     <!-- БАННЕР ПЕРЕХОДА К ЗАКЛЮЧЕНИЮ ДОГОВОРА -->
-    <div class="bg-gradient-to-r from-market-card to-[#041d15] border border-market-border rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+    <div class="bg-gradient-to-r from-[#0B131D] via-[#09151e] to-[#060B11] border border-white/[0.1] rounded-3xl p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-[0_20px_50px_rgba(0,0,0,0.7)] relative overflow-hidden">
+      <div class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#22E58B]/80 to-transparent"></div>
       <div class="space-y-2 text-center sm:text-left">
         <h3 class="text-xl font-bold text-white">Отправляете товары регулярно?</h3>
         <p class="text-sm text-slate-300 max-w-xl">
           Подключите корпоративный договор СДЭК и экономьте до 50% на логистике маркетплейсов и интернет-магазинов.
         </p>
       </div>
-      <a href="/#leadForm" class="px-7 py-3.5 bg-cdek hover:bg-cdek-hover text-white font-extrabold text-sm rounded-xl whitespace-nowrap transition-all shadow-md shadow-cdek/20 shrink-0 active:scale-95">
+      <a href="/dogovor/#contract-form-container" class="px-7 py-3.5 bg-gradient-to-r from-[#22E58B] to-[#00b341] text-slate-950 font-black text-sm rounded-xl whitespace-nowrap transition-all shadow-[0_0_20px_rgba(34,229,139,0.3)] hover:brightness-110 shrink-0 active:scale-95">
         Заключить договор со скидкой
       </a>
     </div>
@@ -403,9 +417,9 @@
           const badge = document.getElementById('resStatusBadge');
           badge.innerText = data.status_name;
           if (data.status_code === 'DELIVERED') {
-            badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-cdek/15 text-cdek border border-cdek/30';
+            badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#22E58B]/15 text-[#22E58B] border border-[#22E58B]/30';
           } else {
-            badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500/10 text-amber-400 border border-amber-500/30';
+            badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500/15 text-amber-400 border border-amber-500/30';
           }
 
           const pct = data.progress_percent || 50;
@@ -451,7 +465,7 @@
         const isFuture = g.future;
         const iconSvg = milestoneIcons[g.code] || milestoneIcons['CREATED'];
         
-        let circleClass = 'bg-market-input text-slate-500 border border-market-border';
+        let circleClass = 'bg-[#060B11] text-slate-500 border border-white/[0.08]';
         let textClass = 'text-slate-400';
 
         if (!isFuture) {
@@ -462,7 +476,7 @@
             circleClass = 'bg-orange-500/20 text-orange-400 border border-orange-500/40';
             textClass = 'text-white';
           } else if (g.code === 'READY_FOR_PICK_UP' || g.code === 'DELIVERED') {
-            circleClass = 'bg-cdek/20 text-cdek border border-cdek/40 shadow-[0_0_12px_rgba(0,179,65,0.2)]';
+            circleClass = 'bg-[#22E58B]/20 text-[#22E58B] border border-[#22E58B]/40 shadow-[0_0_15px_rgba(34,229,139,0.3)]';
             textClass = 'text-white';
           }
         }
@@ -474,10 +488,10 @@
         if (g.code === 'IN_PROGRESS' && !isFuture && subStatuses && subStatuses.length > 0) {
           subHtml = `
             <div class="mt-2">
-              <button type="button" onclick="toggleSubStatuses()" class="text-xs font-bold text-cdek hover:underline flex items-center gap-1 cursor-pointer">
+              <button type="button" onclick="toggleSubStatuses()" class="text-xs font-bold text-[#22E58B] hover:underline flex items-center gap-1 cursor-pointer">
                 Подробнее о перемещении <span id="subArrow">▾</span>
               </button>
-              <div id="subList" class="hidden mt-3 pl-4 border-l border-market-border space-y-3">
+              <div id="subList" class="hidden mt-3 pl-4 border-l border-white/[0.08] space-y-3">
                 ${subStatuses.map(s => `
                   <div class="text-xs">
                     <div class="font-bold text-slate-200">${s.name}</div>
