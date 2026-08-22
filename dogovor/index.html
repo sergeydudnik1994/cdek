@@ -48,7 +48,7 @@
     }
   </script>
   
- <!-- Schema.org Microdata -->
+  <!-- Schema.org Microdata -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -148,7 +148,6 @@
 </head>
 <body class="bg-market-bg text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-white pb-16 md:pb-0">
 
-  <!-- Nginx: Шапка сайта -->
   <!--#include virtual="/src/components/header.html" -->
 
   <main class="flex-grow py-8 sm:py-12">
@@ -201,6 +200,89 @@
         </div>
       </div>
 
+      <!-- Хаб-навигация по категориям договора (SEO-перелинковка) -->
+      <div class="space-y-6">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-extrabold text-white">Выберите формат договора под ваш бизнес</h2>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1">Специализированные тарифные сетки, правила маркировки и модули интеграции</p>
+        </div>
+
+        <!-- 1. По маркетплейсам -->
+        <div class="space-y-2.5">
+          <div class="text-[11px] font-black uppercase tracking-wider text-cdek">Договоры для селлеров маркетплейсов</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <a href="/dogovor/ozon/" class="p-4 rounded-2xl bg-market-card border border-market-border hover:border-cdek/50 transition flex items-center justify-between group">
+              <div>
+                <strong class="text-sm font-bold text-white group-hover:text-cdek transition block">Договор для Ozon</strong>
+                <span class="text-xs text-slate-400">rFBS Интеграция и DBS доставка</span>
+              </div>
+              <span class="text-slate-500 group-hover:text-cdek group-hover:translate-x-1 transition-all">→</span>
+            </a>
+
+            <a href="/dogovor/wildberries/" class="p-4 rounded-2xl bg-market-card border border-market-border hover:border-cdek/50 transition flex items-center justify-between group">
+              <div>
+                <strong class="text-sm font-bold text-white group-hover:text-cdek transition block">Договор для Wildberries</strong>
+                <span class="text-xs text-slate-400">WB DBS и этикетки 58x40 мм</span>
+              </div>
+              <span class="text-slate-500 group-hover:text-cdek group-hover:translate-x-1 transition-all">→</span>
+            </a>
+
+            <a href="/dogovor/yandex-market/" class="p-4 rounded-2xl bg-market-card border border-market-border hover:border-cdek/50 transition flex items-center justify-between group">
+              <div>
+                <strong class="text-sm font-bold text-white group-hover:text-cdek transition block">Договор для Яндекс Маркета</strong>
+                <span class="text-xs text-slate-400">DBS интеграция со складом</span>
+              </div>
+              <span class="text-slate-500 group-hover:text-cdek group-hover:translate-x-1 transition-all">→</span>
+            </a>
+
+            <a href="/dogovor/megamarket/" class="p-4 rounded-2xl bg-market-card border border-market-border hover:border-cdek/50 transition flex items-center justify-between group">
+              <div>
+                <strong class="text-sm font-bold text-white group-hover:text-cdek transition block">Договор для Мегамаркета</strong>
+                <span class="text-xs text-slate-400">DBS доставка для продавцов Сбера</span>
+              </div>
+              <span class="text-slate-500 group-hover:text-cdek group-hover:translate-x-1 transition-all">→</span>
+            </a>
+
+            <a href="/dogovor/avito/" class="p-4 rounded-2xl bg-market-card border border-market-border hover:border-cdek/50 transition flex items-center justify-between group">
+              <div>
+                <strong class="text-sm font-bold text-white group-hover:text-cdek transition block">Договор для Авито</strong>
+                <span class="text-xs text-slate-400">Авито DBS и наложенный платеж</span>
+              </div>
+              <span class="text-slate-500 group-hover:text-cdek group-hover:translate-x-1 transition-all">→</span>
+            </a>
+
+            <a href="/dogovor/internet-magazin/" class="p-4 rounded-2xl bg-market-card border border-market-border hover:border-cdek/50 transition flex items-center justify-between group">
+              <div>
+                <strong class="text-sm font-bold text-white group-hover:text-cdek transition block">Для интернет-магазинов</strong>
+                <span class="text-xs text-slate-400">Tilda, 1C, Bitrix, WP и 54-ФЗ</span>
+              </div>
+              <span class="text-slate-500 group-hover:text-cdek group-hover:translate-x-1 transition-all">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- 2. По правовой форме -->
+        <div class="space-y-2.5 pt-2">
+          <div class="text-[11px] font-black uppercase tracking-wider text-slate-400">Договоры по правовой форме</div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <a href="/dogovor/ip/" class="p-4 rounded-2xl bg-market-card border border-market-border hover:border-cdek/50 transition block group">
+              <strong class="text-sm font-bold text-white group-hover:text-cdek transition block mb-0.5">Договор для ИП →</strong>
+              <span class="text-xs text-slate-400">Сетка УСН без переплаты 22% НДС</span>
+            </a>
+
+            <a href="/dogovor/yur-lica/" class="p-4 rounded-2xl bg-market-card border border-market-border hover:border-cdek/50 transition block group">
+              <strong class="text-sm font-bold text-white group-hover:text-cdek transition block mb-0.5">Договор для ООО →</strong>
+              <span class="text-xs text-slate-400">ЭДО (Диадок/СБИС), УПД с НДС 22%</span>
+            </a>
+
+            <a href="/dogovor/samozanyatye/" class="p-4 rounded-2xl bg-market-card border border-market-border hover:border-cdek/50 transition block group">
+              <strong class="text-sm font-bold text-white group-hover:text-cdek transition block mb-0.5">Договор для самозанятых →</strong>
+              <span class="text-xs text-slate-400">Тариф «Посылка» без открытия ИП</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
       <!-- Блок УТП: Тарифная сетка без переплаты НДС 22% -->
       <div class="bg-gradient-to-br from-market-card to-[#041d15] text-white rounded-3xl p-6 sm:p-8 border border-cdek/30 shadow-xl space-y-4">
         <div class="flex items-center gap-2 text-cdek text-xs font-black uppercase tracking-wider">
@@ -232,7 +314,7 @@
         </div>
       </div>
 
-      <!-- Вставка расширенной формы компонентом Nginx -->
+      <!-- Вставка формы заключения договора -->
       <!--#include virtual="/src/components/contract-form.html" -->
 
       <!-- Сравнительная таблица условий -->
@@ -406,7 +488,6 @@
     </div>
   </main>
 
-  <!-- Nginx: Подвал и мобильная плашка -->
   <!--#include virtual="/src/components/footer.html" -->
   <!--#include virtual="/src/components/mobile-cta.html" -->
 
