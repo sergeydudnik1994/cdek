@@ -40,27 +40,32 @@
         extend: {
           colors: {
             cdek: '#00b341',
-            dark: { 900: '#072624', 950: '#041615' }
+            neon: '#22E58B',
+            obsidian: '#060B11',
+            card: '#0B131D'
           }
+        }
+      }
+    }
         }
       }
     }
   </script>
 </head>
-<body class="bg-[#072624] text-slate-100 min-h-screen flex flex-col antialiased">
+<body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased">
   <!--#include virtual="/src/components/header.html" -->
   <main class="flex-grow pt-8 pb-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <nav class="text-sm text-slate-400 mb-6">
-        <a href="/" class="hover:text-cdek transition-colors">Главная</a> <span class="mx-2">/</span>
-        <a href="/geo/" class="hover:text-cdek transition-colors">Логистика</a> <span class="mx-2">/</span>
+        <a href="/" class="hover:text-[#22E58B] transition-colors">Главная</a> <span class="mx-2">/</span>
+        <a href="/geo/" class="hover:text-[#22E58B] transition-colors">Логистика</a> <span class="mx-2">/</span>
         <span class="text-white">Санкт-Петербург</span>
       </nav>
       <div class="text-center max-w-3xl mx-auto mb-12">
-        <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-5">СДЭК в <span class="text-cdek">Санкт-Петербурге</span> для селлеров</h1>
+        <h1 class="text-3xl sm:text-5xl font-extrabold text-white mb-5">СДЭК в <span class="text-[#22E58B]">Санкт-Петербурге</span> для селлеров</h1>
         <p class="text-lg text-slate-400">Скидки до 50% на FBS и DBS для бизнеса из Санкт-Петербурга. Бесплатный договор за 15 минут.</p>
-        <div class="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-emerald-950">
-          <div><p class="text-2xl font-bold text-cdek">0 ₽</p><p class="text-xs text-slate-500">Договор</p></div>
+        <div class="grid grid-cols-3 gap-4 mt-8 pt-6 border-t border-white/[0.08]">
+          <div><p class="text-2xl font-bold text-[#22E58B]">0 ₽</p><p class="text-xs text-slate-500">Договор</p></div>
           <div><p class="text-2xl font-bold text-white">до 50%</p><p class="text-xs text-slate-500">Экономия</p></div>
           <div><p class="text-2xl font-bold text-white">420</p><p class="text-xs text-slate-500">ПВЗ</p></div>
         </div>
@@ -69,88 +74,88 @@
         <h2 class="text-2xl font-bold text-white mb-8">Услуги логистики в Санкт-Петербурге</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
           
-          <a href="/geo/sankt-peterburg/fbs/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <a href="/geo/sankt-peterburg/fbs/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0B131D]/60 border border-white/[0.08] hover:border-[#22E58B]/50 transition-all">
+            <div class="h-10 w-10 bg-white/[0.04] text-[#22E58B] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Доставка по модели FBS для селлеров</h3>
+            <h3 class="text-white font-bold group-hover:text-[#22E58B] transition-colors mb-2">Доставка по модели FBS для селлеров</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Оптимизация логистики FBS. Надежная служба доставки со скидками до 50%.</p>
           </a>
-          <a href="/geo/sankt-peterburg/dbs/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <a href="/geo/sankt-peterburg/dbs/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0B131D]/60 border border-white/[0.08] hover:border-[#22E58B]/50 transition-all">
+            <div class="h-10 w-10 bg-white/[0.04] text-[#22E58B] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Спецтариф DBS для интернет-магазинов</h3>
+            <h3 class="text-white font-bold group-hover:text-[#22E58B] transition-colors mb-2">Спецтариф DBS для интернет-магазинов</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Настройка DBS (Delivery by Seller). Доставка товаров от продавца к покупателю по спецтарифам.</p>
           </a>
-          <a href="/geo/sankt-peterburg/dogovor-ip/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <a href="/geo/sankt-peterburg/dogovor-ip/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0B131D]/60 border border-white/[0.08] hover:border-[#22E58B]/50 transition-all">
+            <div class="h-10 w-10 bg-white/[0.04] text-[#22E58B] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Договор со СДЭК для ИП</h3>
+            <h3 class="text-white font-bold group-hover:text-[#22E58B] transition-colors mb-2">Договор со СДЭК для ИП</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Бесплатное заключение корпоративного договора для селлеров.</p>
           </a>
-          <a href="/geo/sankt-peterburg/unit-economy/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <a href="/geo/sankt-peterburg/unit-economy/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0B131D]/60 border border-white/[0.08] hover:border-[#22E58B]/50 transition-all">
+            <div class="h-10 w-10 bg-white/[0.04] text-[#22E58B] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Расчет юнит-экономики и логистики</h3>
+            <h3 class="text-white font-bold group-hover:text-[#22E58B] transition-colors mb-2">Расчет юнит-экономики и логистики</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Подбор наилучшего тарифа для селлеров. Расчет маржинальности.</p>
           </a>
-          <a href="/geo/sankt-peterburg/fulfillment/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <a href="/geo/sankt-peterburg/fulfillment/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0B131D]/60 border border-white/[0.08] hover:border-[#22E58B]/50 transition-all">
+            <div class="h-10 w-10 bg-white/[0.04] text-[#22E58B] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Фулфилмент для маркетплейсов</h3>
+            <h3 class="text-white font-bold group-hover:text-[#22E58B] transition-colors mb-2">Фулфилмент для маркетплейсов</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Комплексные услуги фулфилмента: от приемки товара до последней мили. Снижение издержек на склад.</p>
           </a>
-          <a href="/geo/sankt-peterburg/cross-docking/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <a href="/geo/sankt-peterburg/cross-docking/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0B131D]/60 border border-white/[0.08] hover:border-[#22E58B]/50 transition-all">
+            <div class="h-10 w-10 bg-white/[0.04] text-[#22E58B] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Кросс-докинг для селлеров</h3>
+            <h3 class="text-white font-bold group-hover:text-[#22E58B] transition-colors mb-2">Кросс-докинг для селлеров</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Быстрая перевалка грузов и отправка на склады маркетплейсов. Минимальные сроки и стоимость.</p>
           </a>
-          <a href="/geo/sankt-peterburg/zabor-gruza/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <a href="/geo/sankt-peterburg/zabor-gruza/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0B131D]/60 border border-white/[0.08] hover:border-[#22E58B]/50 transition-all">
+            <div class="h-10 w-10 bg-white/[0.04] text-[#22E58B] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 011 1v1m4-1a1 1 0 011 1v1m-1-4h3a1 1 0 011 1v3M9 20a1 1 0 100-2 1 1 0 000 2zm10 0a1 1 0 100-2 1 1 0 000 2z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Забор груза со склада селлера</h3>
+            <h3 class="text-white font-bold group-hover:text-[#22E58B] transition-colors mb-2">Забор груза со склада селлера</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Автоматизируйте отгрузку: мы сами приедем и заберем ваши посылки для доставки клиентам.</p>
           </a>
-          <a href="/geo/sankt-peterburg/ltl-shipping/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <a href="/geo/sankt-peterburg/ltl-shipping/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0B131D]/60 border border-white/[0.08] hover:border-[#22E58B]/50 transition-all">
+            <div class="h-10 w-10 bg-white/[0.04] text-[#22E58B] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/><path d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 011 1v1m4-1a1 1 0 011 1v1m-1-4h3a1 1 0 011 1v3M17 11l-4-6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Доставка сборных грузов (LTL)</h3>
+            <h3 class="text-white font-bold group-hover:text-[#22E58B] transition-colors mb-2">Доставка сборных грузов (LTL)</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Экономичная доставка крупных партий товаров для интернет-магазинов и оптовиков.</p>
           </a>
-          <a href="/geo/sankt-peterburg/kgt-delivery/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <a href="/geo/sankt-peterburg/kgt-delivery/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0B131D]/60 border border-white/[0.08] hover:border-[#22E58B]/50 transition-all">
+            <div class="h-10 w-10 bg-white/[0.04] text-[#22E58B] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Доставка крупногабаритных товаров (КГТ)</h3>
+            <h3 class="text-white font-bold group-hover:text-[#22E58B] transition-colors mb-2">Доставка крупногабаритных товаров (КГТ)</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Специальные тарифы на доставку КГТ для селлеров. Честные замеры и бережная транспортировка.</p>
           </a>
-          <a href="/geo/sankt-peterburg/cis-delivery/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <a href="/geo/sankt-peterburg/cis-delivery/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0B131D]/60 border border-white/[0.08] hover:border-[#22E58B]/50 transition-all">
+            <div class="h-10 w-10 bg-white/[0.04] text-[#22E58B] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Доставка</h3>
+            <h3 class="text-white font-bold group-hover:text-[#22E58B] transition-colors mb-2">Доставка</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Масштабируйте продажи за пределы РФ. Доставка в СНГ по упрощенной схеме для бизнеса.</p>
           </a>
-          <a href="/geo/sankt-peterburg/express-delivery/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <a href="/geo/sankt-peterburg/express-delivery/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0B131D]/60 border border-white/[0.08] hover:border-[#22E58B]/50 transition-all">
+            <div class="h-10 w-10 bg-white/[0.04] text-[#22E58B] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Экспресс-доставка для интернет-магазинов</h3>
+            <h3 class="text-white font-bold group-hover:text-[#22E58B] transition-colors mb-2">Экспресс-доставка для интернет-магазинов</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Повышайте лояльность клиентов за счет рекордных сроков доставки. Приоритетная обработка грузов.</p>
           </a>
-          <a href="/geo/sankt-peterburg/returns-management/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0b3330]/60 border border-emerald-950 hover:border-cdek/50 transition-all">
-            <div class="h-10 w-10 bg-[#0e3330] text-[#00b341] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <a href="/geo/sankt-peterburg/returns-management/" class="group flex flex-col h-full p-5 rounded-xl bg-[#0B131D]/60 border border-white/[0.08] hover:border-[#22E58B]/50 transition-all">
+            <div class="h-10 w-10 bg-white/[0.04] text-[#22E58B] rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             </div>
-            <h3 class="text-white font-bold group-hover:text-cdek transition-colors mb-2">Управление возвратами (Reverse Logistics)</h3>
+            <h3 class="text-white font-bold group-hover:text-[#22E58B] transition-colors mb-2">Управление возвратами (Reverse Logistics)</h3>
             <p class="text-xs text-slate-400 leading-relaxed flex-grow">Минимизируйте убытки на возвратах. Быстрый возврат товара селлеру для повторной продажи.</p>
           </a>
         </div>
@@ -158,343 +163,343 @@
       <!--#include virtual="/src/components/calculator-widget.html" -->
       <section class="mt-16">
         <h2 class="text-2xl font-bold text-white mb-6">Карта ПВЗ в Санкт-Петербурге</h2>
-        <div class="rounded-xl overflow-hidden border border-emerald-950 shadow-lg">
+        <div class="rounded-xl overflow-hidden border border-white/[0.08] shadow-lg">
           <iframe src="https://yandex.ru/map-widget/v1/?text=СДЭК+ПВЗ+Санкт-Петербург" width="100%" height="400" frameborder="0"></iframe>
         </div>
       </section>
     </div>
   
     <!-- БЛОК: Отраслевые решения для города -->
-    <section class="mt-16 pt-10 border-t border-emerald-950" id="city-industry-solutions">
+    <section class="mt-16 pt-10 border-t border-white/[0.08]" id="city-industry-solutions">
       <div class="max-w-7xl mx-auto">
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-[#0e3330] text-[#00b341] border border-emerald-800/80">
+            <div class="inline-flex items-center gap-2 px-3 py-1 mb-3 rounded-full text-xs font-semibold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-white/[0.08]/80">
               Специализированная доставка
             </div>
             <h2 class="text-2xl sm:text-3xl font-black text-white">Отраслевые решения в Санкт-Петербурге</h2>
             <p class="text-slate-400 text-sm mt-1">Готовые логистические схемы СДЭК под особенности и регламенты товаров вашей категории</p>
           </div>
-          <a href="/solutions/" class="text-xs text-cdek hover:underline font-semibold shrink-0">Все 30+ решений по России →</a>
+          <a href="/solutions/" class="text-xs text-[#22E58B] hover:underline font-semibold shrink-0">Все 30+ решений по России →</a>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           
-        <a href="/geo/sankt-peterburg/solutions/odezhda-i-obuv/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/odezhda-i-obuv/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Логистика для магазинов одежды и обуви</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Логистика для магазинов одежды и обуви</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Доставка fashion-товаров с примеркой, частичным выкупом и возвратом невыкупленного ассортимента.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/mebel-i-interer/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/mebel-i-interer/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Доставка мебели и товаров для дома</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Доставка мебели и товаров для дома</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Надежная транспортировка крупногабаритных товаров, корпусной мебели и предметов интерьера.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/elektronika-i-tehnika/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/elektronika-i-tehnika/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Логистика электроники и техники</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Логистика электроники и техники</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Особые регламенты для бытовой техники и электроники: полное страхование и усиленная упаковка.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/detskie-tovary/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/detskie-tovary/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Доставка детских товаров и игрушек</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Доставка детских товаров и игрушек</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Своевременная доставка товаров для детей по схемам FBS и DBS с соблюдением требований маркетплейсов.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/kosmetika-i-parfyumeriya/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/kosmetika-i-parfyumeriya/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Логистика для магазинов косметики</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Логистика для магазинов косметики</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Бережная доставка парфюмерии и уходовой косметики с соблюдением стандартов упаковки Wildberries и Ozon.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/avtotovary-i-zapchasti/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/avtotovary-i-zapchasti/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Доставка автотоваров и запчастей</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Доставка автотоваров и запчастей</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Перевозка автозапчастей, масел и автохимии до сортировочных центров и конечных покупателей.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/tovary-dlya-zhivotnyh/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/tovary-dlya-zhivotnyh/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Логистика для зоомагазинов</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Логистика для зоомагазинов</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Регулярная доставка кормов, наполнителей и аксессуаров для животных по выгодным B2B-тарифам.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/sporttovary/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/sporttovary/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Доставка спортивных товаров</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Доставка спортивных товаров</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Транспортировка тренажеров, спортинвентаря и экипировки любой массы и габаритов.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/stroitelstvo-i-remont/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/stroitelstvo-i-remont/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Логистика товаров для ремонта и DIY</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Логистика товаров для ремонта и DIY</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Надежное решение для поставщиков стройматериалов: отгрузка КГТ и доставка до двери покупателя.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/produkty-pitaniya/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/produkty-pitaniya/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Доставка продуктов питания (Dry Food)</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Доставка продуктов питания (Dry Food)</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Логистика бакалеи, чая, кофе и снеков с длительным сроком хранения без нарушения товарного вида.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/osveshchenie-i-svet/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/osveshchenie-i-svet/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Доставка освещения и светильников</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Доставка освещения и светильников</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Специальная обрешетка и воздушно-пузырьковая упаковка для люстр, бра и хрупких ламп.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/kantstovary-i-ofis/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/kantstovary-i-ofis/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Логистика канцтоваров и товаров для офиса</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Логистика канцтоваров и товаров для офиса</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Экономичные тарифы на мелкогабаритные посылки и комплекты канцтоваров для селлеров.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/sad-i-ogorod/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/sad-i-ogorod/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Логистика товаров для сада и дачи</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Логистика товаров для сада и дачи</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Сезонные решения по отгрузке садовой техники, грунтов и инструментов на склады маркетплейсов.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/tovary-dlya-tvorchestva/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/tovary-dlya-tvorchestva/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Логистика товаров для творчества и хобби</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Логистика товаров для творчества и хобби</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Фулфилмент, сборка и доставка заказов для магазинов рукоделия и товаров для художников.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/bizhuteriya-i-aksessuary/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/bizhuteriya-i-aksessuary/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Доставка бижутерии и аксессуаров</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Доставка бижутерии и аксессуаров</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Специальные условия страхования и выдача малогабаритных отправлений в 4 000+ ПВЗ.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/instrumenty/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/instrumenty/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Логистика ручного и электроинструмента</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Логистика ручного и электроинструмента</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Доставка строительного и профессионального инструмента по всей России по схемам FBS и DBS.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/bytovaya-tekhnika/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/bytovaya-tekhnika/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Доставка крупной бытовой техники</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Доставка крупной бытовой техники</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Специальные условия перевозки холодильников, стиральных машин и плит с подъемом на этаж.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/tovary-dlya-zdorovya/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/tovary-dlya-zdorovya/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Доставка товаров для здоровья и ортопедии</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Доставка товаров для здоровья и ортопедии</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Соблюдение температурных режимов, быстрая отгрузка и аккуратная доставка покупателям.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/avtoelektronika/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/avtoelektronika/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Доставка автоэлектроники и видеорегистраторов</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Доставка автоэлектроники и видеорегистраторов</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Безопасная транспортировка высокотехнологичных гаджетов и головных устройств.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/turizm-i-otdykh/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/turizm-i-otdykh/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Логистика товаров для туризма и кемпинга</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Логистика товаров для туризма и кемпинга</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Отгрузка палаток, рюкзаков и туристической экипировки в сезон пиковых продаж.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/podarki-i-suveniry/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/podarki-i-suveniry/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Доставка подарков и сувенирной продукции</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Доставка подарков и сувенирной продукции</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Гарантированные сроки доставки в предпраздничные периоды и высокий сезон продаж.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/muzykalnye-instrumenty/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/muzykalnye-instrumenty/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Доставка музыкальных инструментов</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Доставка музыкальных инструментов</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Индивидуальная защитная упаковка и страхование акустических и электронных инструментов.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/santekhnika/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/santekhnika/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Логистика сантехники и смесителей</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Логистика сантехники и смесителей</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Перевозка ванн, раковин, душевых систем и инсталляций без сколов и повреждений.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/umnyy-dom/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/umnyy-dom/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Логистика оборудования для умного дома</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Логистика оборудования для умного дома</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Срочная курьерская доставка датчиков, умных колонок и контроллеров до двери.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/tekstil-dlya-doma/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/tekstil-dlya-doma/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Доставка домашнего текстиля и постельного белья</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Доставка домашнего текстиля и постельного белья</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Оптимизация объемного веса текстильных изделий для снижения тарифа доставки.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/klimaticheskaya-tekhnika/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/klimaticheskaya-tekhnika/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Доставка климатической техники и кондиционеров</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Доставка климатической техники и кондиционеров</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Транспортировка сплит-систем, обогревателей и увлажнителей по B2B-тарифам.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/posuda-i-kuhnya/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/posuda-i-kuhnya/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Доставка посуды и кухонных принадлежностей</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Доставка посуды и кухонных принадлежностей</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Усиленная упаковка стеклянной, керамической и чугунной посуды с гарантией сохранности.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/rybalka-i-okhota/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/rybalka-i-okhota/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Логистика товаров для рыбалки и охоты</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Логистика товаров для рыбалки и охоты</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Транспортировка удилищ, катушек, спецодежды и охотничьего снаряжения.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/igrovye-pristavki/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/igrovye-pristavki/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Доставка игровых консолей и видеоигр</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Доставка игровых консолей и видеоигр</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Полное страхование объявленной ценности и экспресс-доставка консолей и аксессуаров.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/kantstovary/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/kantstovary/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Доставка полиграфии и бумажной продукции</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Доставка полиграфии и бумажной продукции</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Отгрузка крупных партий полиграфии и бумаги на склады маркетплейсов по паллетам.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/aksessuary-dlya-smartfonov/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/aksessuary-dlya-smartfonov/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Доставка чехлов и мобильных аксессуаров</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Доставка чехлов и мобильных аксессуаров</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Минимальные тарифы на легкие отправления до 1 кг от 136.5 ₽ при интеграции по API.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>
         </a>
-        <a href="/geo/sankt-peterburg/solutions/elektrosamokaty-i-velosipedy/" class="group bg-[#0b3330]/60 border border-emerald-900/80 hover:border-cdek/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
+        <a href="/geo/sankt-peterburg/solutions/elektrosamokaty-i-velosipedy/" class="group bg-[#0B131D]/60 border border-white/[0.08]/80 hover:border-[#22E58B]/50 p-4 rounded-xl transition-all duration-200 flex flex-col justify-between">
           <div>
-            <h4 class="text-white font-bold text-sm group-hover:text-cdek transition-colors mb-1">Доставка электротранспорта и велосипедов</h4>
+            <h4 class="text-white font-bold text-sm group-hover:text-[#22E58B] transition-colors mb-1">Доставка электротранспорта и велосипедов</h4>
             <p class="text-slate-400 text-xs line-clamp-2 leading-relaxed">Специализированная перевозка электросамокатов и велосипедов с литиевыми аккумуляторами.</p>
           </div>
-          <div class="mt-3 text-[11px] text-cdek font-semibold flex items-center gap-1">
+          <div class="mt-3 text-[11px] text-[#22E58B] font-semibold flex items-center gap-1">
             <span>Тарифы в Санкт-Петербурге</span>
             <span>→</span>
           </div>

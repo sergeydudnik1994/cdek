@@ -13,7 +13,7 @@
   <link rel="alternate" type="text/markdown" title="LLM Information" href="https://cdek-marketplace.ru/llms.txt" />
   <link rel="alternate" type="text/markdown" title="LLM Full Documentation" href="https://cdek-marketplace.ru/llms-full.txt" />
 
-  <meta name="theme-color" content="#00b341" />
+  <meta name="theme-color" content="#060B11" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
@@ -37,13 +37,13 @@
         extend: {
           colors: {
             cdek: '#00b341',
-            'cdek-hover': '#009c38',
-            'market-bg': '#031b14',
-            'market-card': '#07261e',
-            'market-border': '#113f32',
-            'market-input': '#041710'
+            neon: '#22E58B',
+            obsidian: '#060B11',
+            card: '#0B131D'
           }
         }
+      }
+    }
       }
     }
   </script>
@@ -146,7 +146,7 @@
   }
   </script>
 </head>
-<body class="bg-market-bg text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-white pb-16 md:pb-0">
+<body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 selection:text-white pb-16 md:pb-0">
 
   <!--#include virtual="/src/components/header.html" -->
 
@@ -155,15 +155,15 @@
       
       <!-- Хлебные крошки -->
       <nav class="flex items-center gap-2 text-xs text-slate-400">
-        <a href="/" class="hover:text-cdek transition">Главная</a>
+        <a href="/" class="hover:text-[#22E58B] transition">Главная</a>
         <span>/</span>
         <span class="text-slate-200 font-semibold">Заключить договор со СДЭК</span>
       </nav>
 
       <!-- Hero Header -->
-      <div class="bg-market-card rounded-3xl p-6 sm:p-10 border border-market-border relative overflow-hidden shadow-2xl space-y-6">
+      <div class="bg-[#0B131D] rounded-3xl p-6 sm:p-10 border border-white/[0.08] relative overflow-hidden shadow-2xl space-y-6">
         <div class="flex flex-wrap items-center gap-2">
-          <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-cdek/15 text-cdek border border-cdek/30">
+          <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-cdek/15 text-[#22E58B] border border-[#22E58B]/30">
             Официальное B2B-подключение
           </span>
           <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/5 text-slate-300 border border-white/10">
@@ -173,7 +173,7 @@
 
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-white">
           Как заключить договор со СДЭК: <br>
-          <span class="text-cdek">онлайн-подключение для маркетплейсов и e-commerce</span>
+          <span class="text-[#22E58B]">онлайн-подключение для маркетплейсов и e-commerce</span>
         </h1>
 
         <p class="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
@@ -181,19 +181,19 @@
         </p>
 
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-          <div class="p-4 rounded-2xl bg-market-input border border-market-border">
-            <div class="text-2xl font-extrabold text-cdek">15 минут</div>
+          <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
+            <div class="text-2xl font-extrabold text-[#22E58B]">15 минут</div>
             <div class="text-xs text-slate-400 mt-0.5">Срок активации</div>
           </div>
-          <div class="p-4 rounded-2xl bg-market-input border border-market-border">
+          <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
             <div class="text-2xl font-extrabold text-white">0 ₽</div>
             <div class="text-xs text-slate-400 mt-0.5">Без абонентской платы</div>
           </div>
-          <div class="p-4 rounded-2xl bg-market-input border border-market-border">
-            <div class="text-2xl font-extrabold text-cdek">до −50%</div>
+          <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
+            <div class="text-2xl font-extrabold text-[#22E58B]">до −50%</div>
             <div class="text-xs text-slate-400 mt-0.5">Скидка на доставку</div>
           </div>
-          <div class="p-4 rounded-2xl bg-market-input border border-market-border">
+          <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
             <div class="text-2xl font-extrabold text-white">УСН / ОСНО</div>
             <div class="text-xs text-slate-400 mt-0.5">Без переплаты за НДС</div>
           </div>
@@ -209,54 +209,54 @@
 
         <!-- 1. По маркетплейсам -->
         <div class="space-y-2.5">
-          <div class="text-[11px] font-black uppercase tracking-wider text-cdek">Договоры для селлеров маркетплейсов</div>
+          <div class="text-[11px] font-black uppercase tracking-wider text-[#22E58B]">Договоры для селлеров маркетплейсов</div>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            <a href="/dogovor/ozon/" class="p-4 rounded-2xl bg-market-card border border-market-border hover:border-cdek/50 transition flex items-center justify-between group">
+            <a href="/dogovor/ozon/" class="p-4 rounded-2xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition flex items-center justify-between group">
               <div>
-                <strong class="text-sm font-bold text-white group-hover:text-cdek transition block">Договор для Ozon</strong>
+                <strong class="text-sm font-bold text-white group-hover:text-[#22E58B] transition block">Договор для Ozon</strong>
                 <span class="text-xs text-slate-400">rFBS Интеграция и DBS доставка</span>
               </div>
-              <span class="text-slate-500 group-hover:text-cdek group-hover:translate-x-1 transition-all">→</span>
+              <span class="text-slate-500 group-hover:text-[#22E58B] group-hover:translate-x-1 transition-all">→</span>
             </a>
 
-            <a href="/dogovor/wildberries/" class="p-4 rounded-2xl bg-market-card border border-market-border hover:border-cdek/50 transition flex items-center justify-between group">
+            <a href="/dogovor/wildberries/" class="p-4 rounded-2xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition flex items-center justify-between group">
               <div>
-                <strong class="text-sm font-bold text-white group-hover:text-cdek transition block">Договор для Wildberries</strong>
+                <strong class="text-sm font-bold text-white group-hover:text-[#22E58B] transition block">Договор для Wildberries</strong>
                 <span class="text-xs text-slate-400">WB DBS и этикетки 58x40 мм</span>
               </div>
-              <span class="text-slate-500 group-hover:text-cdek group-hover:translate-x-1 transition-all">→</span>
+              <span class="text-slate-500 group-hover:text-[#22E58B] group-hover:translate-x-1 transition-all">→</span>
             </a>
 
-            <a href="/dogovor/yandex-market/" class="p-4 rounded-2xl bg-market-card border border-market-border hover:border-cdek/50 transition flex items-center justify-between group">
+            <a href="/dogovor/yandex-market/" class="p-4 rounded-2xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition flex items-center justify-between group">
               <div>
-                <strong class="text-sm font-bold text-white group-hover:text-cdek transition block">Договор для Яндекс Маркета</strong>
+                <strong class="text-sm font-bold text-white group-hover:text-[#22E58B] transition block">Договор для Яндекс Маркета</strong>
                 <span class="text-xs text-slate-400">DBS интеграция со складом</span>
               </div>
-              <span class="text-slate-500 group-hover:text-cdek group-hover:translate-x-1 transition-all">→</span>
+              <span class="text-slate-500 group-hover:text-[#22E58B] group-hover:translate-x-1 transition-all">→</span>
             </a>
 
-            <a href="/dogovor/megamarket/" class="p-4 rounded-2xl bg-market-card border border-market-border hover:border-cdek/50 transition flex items-center justify-between group">
+            <a href="/dogovor/megamarket/" class="p-4 rounded-2xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition flex items-center justify-between group">
               <div>
-                <strong class="text-sm font-bold text-white group-hover:text-cdek transition block">Договор для Мегамаркета</strong>
+                <strong class="text-sm font-bold text-white group-hover:text-[#22E58B] transition block">Договор для Мегамаркета</strong>
                 <span class="text-xs text-slate-400">DBS доставка для продавцов Сбера</span>
               </div>
-              <span class="text-slate-500 group-hover:text-cdek group-hover:translate-x-1 transition-all">→</span>
+              <span class="text-slate-500 group-hover:text-[#22E58B] group-hover:translate-x-1 transition-all">→</span>
             </a>
 
-            <a href="/dogovor/avito/" class="p-4 rounded-2xl bg-market-card border border-market-border hover:border-cdek/50 transition flex items-center justify-between group">
+            <a href="/dogovor/avito/" class="p-4 rounded-2xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition flex items-center justify-between group">
               <div>
-                <strong class="text-sm font-bold text-white group-hover:text-cdek transition block">Договор для Авито</strong>
+                <strong class="text-sm font-bold text-white group-hover:text-[#22E58B] transition block">Договор для Авито</strong>
                 <span class="text-xs text-slate-400">Авито DBS и наложенный платеж</span>
               </div>
-              <span class="text-slate-500 group-hover:text-cdek group-hover:translate-x-1 transition-all">→</span>
+              <span class="text-slate-500 group-hover:text-[#22E58B] group-hover:translate-x-1 transition-all">→</span>
             </a>
 
-            <a href="/dogovor/internet-magazin/" class="p-4 rounded-2xl bg-market-card border border-market-border hover:border-cdek/50 transition flex items-center justify-between group">
+            <a href="/dogovor/internet-magazin/" class="p-4 rounded-2xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition flex items-center justify-between group">
               <div>
-                <strong class="text-sm font-bold text-white group-hover:text-cdek transition block">Для интернет-магазинов</strong>
+                <strong class="text-sm font-bold text-white group-hover:text-[#22E58B] transition block">Для интернет-магазинов</strong>
                 <span class="text-xs text-slate-400">Tilda, 1C, Bitrix, WP и 54-ФЗ</span>
               </div>
-              <span class="text-slate-500 group-hover:text-cdek group-hover:translate-x-1 transition-all">→</span>
+              <span class="text-slate-500 group-hover:text-[#22E58B] group-hover:translate-x-1 transition-all">→</span>
             </a>
           </div>
         </div>
@@ -265,18 +265,18 @@
         <div class="space-y-2.5 pt-2">
           <div class="text-[11px] font-black uppercase tracking-wider text-slate-400">Договоры по правовой форме</div>
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <a href="/dogovor/ip/" class="p-4 rounded-2xl bg-market-card border border-market-border hover:border-cdek/50 transition block group">
-              <strong class="text-sm font-bold text-white group-hover:text-cdek transition block mb-0.5">Договор для ИП →</strong>
+            <a href="/dogovor/ip/" class="p-4 rounded-2xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition block group">
+              <strong class="text-sm font-bold text-white group-hover:text-[#22E58B] transition block mb-0.5">Договор для ИП →</strong>
               <span class="text-xs text-slate-400">Сетка УСН без переплаты 22% НДС</span>
             </a>
 
-            <a href="/dogovor/yur-lica/" class="p-4 rounded-2xl bg-market-card border border-market-border hover:border-cdek/50 transition block group">
-              <strong class="text-sm font-bold text-white group-hover:text-cdek transition block mb-0.5">Договор для ООО →</strong>
+            <a href="/dogovor/yur-lica/" class="p-4 rounded-2xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition block group">
+              <strong class="text-sm font-bold text-white group-hover:text-[#22E58B] transition block mb-0.5">Договор для ООО →</strong>
               <span class="text-xs text-slate-400">ЭДО (Диадок/СБИС), УПД с НДС 22%</span>
             </a>
 
-            <a href="/dogovor/samozanyatye/" class="p-4 rounded-2xl bg-market-card border border-market-border hover:border-cdek/50 transition block group">
-              <strong class="text-sm font-bold text-white group-hover:text-cdek transition block mb-0.5">Договор для самозанятых →</strong>
+            <a href="/dogovor/samozanyatye/" class="p-4 rounded-2xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition block group">
+              <strong class="text-sm font-bold text-white group-hover:text-[#22E58B] transition block mb-0.5">Договор для самозанятых →</strong>
               <span class="text-xs text-slate-400">Тариф «Посылка» без открытия ИП</span>
             </a>
           </div>
@@ -284,8 +284,8 @@
       </div>
 
       <!-- Блок УТП: Тарифная сетка без переплаты НДС 22% -->
-      <div class="bg-gradient-to-br from-market-card to-[#041d15] text-white rounded-3xl p-6 sm:p-8 border border-cdek/30 shadow-xl space-y-4">
-        <div class="flex items-center gap-2 text-cdek text-xs font-black uppercase tracking-wider">
+      <div class="bg-gradient-to-br from-market-card to-[#041d15] text-white rounded-3xl p-6 sm:p-8 border border-[#22E58B]/30 shadow-xl space-y-4">
+        <div class="flex items-center gap-2 text-[#22E58B] text-xs font-black uppercase tracking-wider">
           <span class="w-2 h-2 rounded-full bg-cdek animate-ping"></span>
           Максимальная маржинальность отправок
         </div>
@@ -299,16 +299,16 @@
         </p>
 
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
-          <div class="p-4 rounded-2xl bg-market-input border border-market-border">
-            <strong class="text-sm font-bold text-cdek block mb-1">Селлеры FBS и DBS</strong>
+          <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
+            <strong class="text-sm font-bold text-[#22E58B] block mb-1">Селлеры FBS и DBS</strong>
             <p class="text-xs text-slate-400">Минимальная стоимость отгрузки заказов Ozon, WB, Яндекс Маркета и Авито.</p>
           </div>
-          <div class="p-4 rounded-2xl bg-market-input border border-market-border">
-            <strong class="text-sm font-bold text-cdek block mb-1">ИП на УСН и Патенте</strong>
+          <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
+            <strong class="text-sm font-bold text-[#22E58B] block mb-1">ИП на УСН и Патенте</strong>
             <p class="text-xs text-slate-400">Тариф «Посылка» без невозвратного НДС 22% с сохранением наложенного платежа.</p>
           </div>
-          <div class="p-4 rounded-2xl bg-market-input border border-market-border">
-            <strong class="text-sm font-bold text-cdek block mb-1">Самозанятые (НПД)</strong>
+          <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
+            <strong class="text-sm font-bold text-[#22E58B] block mb-1">Самозанятые (НПД)</strong>
             <p class="text-xs text-slate-400">Официальные отправки по льготной стоимости без необходимости открывать ИП.</p>
           </div>
         </div>
@@ -318,7 +318,7 @@
       <!--#include virtual="/src/components/contract-form.html" -->
 
       <!-- Сравнительная таблица условий -->
-      <div class="bg-market-card rounded-3xl p-6 sm:p-8 border border-market-border shadow-xl space-y-6">
+      <div class="bg-[#0B131D] rounded-3xl p-6 sm:p-8 border border-white/[0.08] shadow-xl space-y-6">
         <div>
           <h2 class="text-xl sm:text-2xl font-extrabold text-white">Условия договора по формам ведения бизнеса</h2>
           <p class="text-xs sm:text-sm text-slate-400 mt-1">Сравнение тарифов, документооборота и схем выплат наложенного платежа</p>
@@ -327,7 +327,7 @@
         <div class="overflow-x-auto">
           <table class="w-full text-left text-xs sm:text-sm">
             <thead>
-              <tr class="border-b border-market-border text-[11px] uppercase tracking-wider text-slate-400">
+              <tr class="border-b border-white/[0.08] text-[11px] uppercase tracking-wider text-slate-400">
                 <th class="py-3 px-4">Параметр</th>
                 <th class="py-3 px-4 text-white font-bold">ИП</th>
                 <th class="py-3 px-4 text-white font-bold">ООО (Юрлица)</th>
@@ -337,20 +337,20 @@
             <tbody class="divide-y divide-market-border text-slate-300">
               <tr>
                 <td class="py-3.5 px-4 font-semibold text-white">Скидка на доставку</td>
-                <td class="py-3.5 px-4 text-cdek font-bold">до 50%</td>
-                <td class="py-3.5 px-4 text-cdek font-bold">до 50%</td>
-                <td class="py-3.5 px-4 text-cdek font-bold">до 50%</td>
+                <td class="py-3.5 px-4 text-[#22E58B] font-bold">до 50%</td>
+                <td class="py-3.5 px-4 text-[#22E58B] font-bold">до 50%</td>
+                <td class="py-3.5 px-4 text-[#22E58B] font-bold">до 50%</td>
               </tr>
               <tr>
                 <td class="py-3.5 px-4 font-semibold text-white">Тарифная сетка</td>
-                <td class="py-3.5 px-4 font-bold text-cdek">УСН / ОСНО</td>
-                <td class="py-3.5 px-4 font-bold text-cdek">УСН / ОСНО</td>
-                <td class="py-3.5 px-4 font-bold text-cdek">УСН (без НДС)</td>
+                <td class="py-3.5 px-4 font-bold text-[#22E58B]">УСН / ОСНО</td>
+                <td class="py-3.5 px-4 font-bold text-[#22E58B]">УСН / ОСНО</td>
+                <td class="py-3.5 px-4 font-bold text-[#22E58B]">УСН (без НДС)</td>
               </tr>
               <tr>
                 <td class="py-3.5 px-4 font-semibold text-white">Наложенный платеж (54-ФЗ)</td>
-                <td class="py-3.5 px-4 text-cdek font-bold">✓ Доступен</td>
-                <td class="py-3.5 px-4 text-cdek font-bold">✓ Доступен</td>
+                <td class="py-3.5 px-4 text-[#22E58B] font-bold">✓ Доступен</td>
+                <td class="py-3.5 px-4 text-[#22E58B] font-bold">✓ Доступен</td>
                 <td class="py-3.5 px-4 text-slate-500">✗ Только предоплата</td>
               </tr>
               <tr>
@@ -367,9 +367,9 @@
               </tr>
               <tr>
                 <td class="py-3.5 px-4 font-semibold text-white">API для маркетплейсов и CMS</td>
-                <td class="py-3.5 px-4 text-cdek font-bold">✓ Полный доступ</td>
-                <td class="py-3.5 px-4 text-cdek font-bold">✓ Полный доступ</td>
-                <td class="py-3.5 px-4 text-cdek font-bold">✓ Полный доступ</td>
+                <td class="py-3.5 px-4 text-[#22E58B] font-bold">✓ Полный доступ</td>
+                <td class="py-3.5 px-4 text-[#22E58B] font-bold">✓ Полный доступ</td>
+                <td class="py-3.5 px-4 text-[#22E58B] font-bold">✓ Полный доступ</td>
               </tr>
             </tbody>
           </table>
@@ -381,7 +381,7 @@
         <h2 class="text-xl sm:text-2xl font-extrabold text-white">4 шага до первой отправки заказов</h2>
         
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div class="p-6 bg-market-card rounded-3xl border border-market-border space-y-2">
+          <div class="p-6 bg-[#0B131D] rounded-3xl border border-white/[0.08] space-y-2">
             <div class="flex items-center gap-3">
               <span class="w-8 h-8 rounded-xl bg-cdek text-white font-black text-xs flex items-center justify-center shrink-0">1</span>
               <h3 class="font-bold text-white text-base">Заполнение заявки</h3>
@@ -391,9 +391,9 @@
             </p>
           </div>
 
-          <div class="p-6 bg-market-card rounded-3xl border border-market-border space-y-2">
+          <div class="p-6 bg-[#0B131D] rounded-3xl border border-white/[0.08] space-y-2">
             <div class="flex items-center gap-3">
-              <span class="w-8 h-8 rounded-xl bg-market-input border border-market-border text-white font-black text-xs flex items-center justify-center shrink-0">2</span>
+              <span class="w-8 h-8 rounded-xl bg-[#060B11] border border-white/[0.08] text-white font-black text-xs flex items-center justify-center shrink-0">2</span>
               <h3 class="font-bold text-white text-base">Электронное подписание</h3>
             </div>
             <p class="text-xs sm:text-sm text-slate-300 leading-relaxed pl-11">
@@ -401,7 +401,7 @@
             </p>
           </div>
 
-          <div class="p-6 bg-market-card rounded-3xl border border-market-border space-y-2">
+          <div class="p-6 bg-[#0B131D] rounded-3xl border border-white/[0.08] space-y-2">
             <div class="flex items-center gap-3">
               <span class="w-8 h-8 rounded-xl bg-amber-500 text-slate-900 font-black text-xs flex items-center justify-center shrink-0">3</span>
               <h3 class="font-bold text-white text-base">Выдача ЛК и ключей API</h3>
@@ -411,7 +411,7 @@
             </p>
           </div>
 
-          <div class="p-6 bg-market-card rounded-3xl border border-market-border space-y-2">
+          <div class="p-6 bg-[#0B131D] rounded-3xl border border-white/[0.08] space-y-2">
             <div class="flex items-center gap-3">
               <span class="w-8 h-8 rounded-xl bg-cdek text-white font-black text-xs flex items-center justify-center shrink-0">4</span>
               <h3 class="font-bold text-white text-base">Старт отгрузок</h3>
@@ -424,24 +424,24 @@
       </div>
 
       <!-- FAQ Блок -->
-      <div class="bg-market-card rounded-3xl p-6 sm:p-8 border border-market-border space-y-4">
+      <div class="bg-[#0B131D] rounded-3xl p-6 sm:p-8 border border-white/[0.08] space-y-4">
         <h2 class="text-xl sm:text-2xl font-extrabold text-white">Часто задаваемые вопросы о договоре СДЭК</h2>
         
         <div class="space-y-3 text-xs sm:text-sm">
-          <details class="group bg-market-input border border-market-border rounded-2xl p-4 cursor-pointer">
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
             <summary class="font-bold text-white flex justify-between items-center list-none select-none">
               <span>Как работает доставка СДЭК по схемам FBS и DBS на маркетплейсах?</span>
-              <span class="text-cdek group-open:rotate-180 transition-transform">▾</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
             </summary>
             <p class="text-slate-300 mt-2 leading-relaxed">
               По схеме <b>DBS (доставка силами продавца)</b> вы принимаете заказ на Ozon, WB или Яндекс Маркете, оформляете накладную СДЭК в ЛК или через плагин, и СДЭК доставляет товар до двери покупателя или в свой ПВЗ. Статусы и трек автоматически синхронизируются с маркетплейсом.
             </p>
           </details>
 
-          <details class="group bg-market-input border border-market-border rounded-2xl p-4 cursor-pointer">
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
             <summary class="font-bold text-white flex justify-between items-center list-none select-none">
               <span>Может ли самозанятый или физлицо отправлять заказы на маркетплейсы через СДЭК?</span>
-              <span class="text-cdek group-open:rotate-180 transition-transform">▾</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
             </summary>
             <div class="text-slate-300 mt-2 leading-relaxed space-y-2">
               <p>
@@ -453,30 +453,30 @@
             </div>
           </details>
 
-          <details class="group bg-market-input border border-market-border rounded-2xl p-4 cursor-pointer">
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
             <summary class="font-bold text-white flex justify-between items-center list-none select-none">
               <span>Есть ли скрытые комиссии или обязательный объем?</span>
-              <span class="text-cdek group-open:rotate-180 transition-transform">▾</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
             </summary>
             <p class="text-slate-300 mt-2 leading-relaxed">
               Никаких скрытых платежей, штрафов или минимальных норм отправок. Договор бессрочный и бесплатный: если в какой-то месяц отправок нет, платить ничего не нужно.
             </p>
           </details>
 
-          <details class="group bg-market-input border border-market-border rounded-2xl p-4 cursor-pointer">
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
             <summary class="font-bold text-white flex justify-between items-center list-none select-none">
               <span>Как быстро перечисляются деньги за наложенный платеж?</span>
-              <span class="text-cdek group-open:rotate-180 transition-transform">▾</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
             </summary>
             <p class="text-slate-300 mt-2 leading-relaxed">
               Выплаты за выкупленные товары переводятся на ваш расчетный счет по удобному графику (от 1 до 4 раз в месяц) с полным реестром врученных отправлений.
             </p>
           </details>
 
-          <details class="group bg-market-input border border-market-border rounded-2xl p-4 cursor-pointer">
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
             <summary class="font-bold text-white flex justify-between items-center list-none select-none">
               <span>Можно ли вызывать курьера СДЭК на склад или производство?</span>
-              <span class="text-cdek group-open:rotate-180 transition-transform">▾</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
             </summary>
             <p class="text-slate-300 mt-2 leading-relaxed">
               Да, по договору можно как самостоятельно передавать заказы в любой ПВЗ СДЭК по пути, так и настроить регулярный забор курьером прямо с вашего склада или офиса.

@@ -13,7 +13,7 @@
   <link rel="alternate" type="text/markdown" title="LLM Information" href="https://cdek-marketplace.ru/llms.txt" />
   <link rel="alternate" type="text/markdown" title="LLM Full Documentation" href="https://cdek-marketplace.ru/llms-full.txt" />
 
-  <meta name="theme-color" content="#00b341" />
+  <meta name="theme-color" content="#060B11" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
@@ -37,13 +37,13 @@
         extend: {
           colors: {
             cdek: '#00b341',
-            'cdek-hover': '#009c38',
-            'market-bg': '#031b14',
-            'market-card': '#07261e',
-            'market-border': '#113f32',
-            'market-input': '#041710'
+            neon: '#22E58B',
+            obsidian: '#060B11',
+            card: '#0B131D'
           }
         }
+      }
+    }
       }
     }
   </script>
@@ -111,7 +111,7 @@
   }
   </script>
 </head>
-<body class="bg-market-bg text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-white pb-16 md:pb-0">
+<body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 selection:text-white pb-16 md:pb-0">
 
   <!--#include virtual="/src/components/header.html" -->
 
@@ -120,17 +120,17 @@
       
       <!-- Хлебные крошки -->
       <nav class="flex items-center gap-2 text-xs text-slate-400">
-        <a href="/" class="hover:text-cdek transition">Главная</a>
+        <a href="/" class="hover:text-[#22E58B] transition">Главная</a>
         <span>/</span>
-        <a href="/dogovor/" class="hover:text-cdek transition">Договор СДЭК</a>
+        <a href="/dogovor/" class="hover:text-[#22E58B] transition">Договор СДЭК</a>
         <span>/</span>
         <span class="text-slate-200 font-semibold">Для интернет-магазинов</span>
       </nav>
 
       <!-- Hero Header -->
-      <div class="bg-market-card rounded-3xl p-6 sm:p-10 border border-market-border relative overflow-hidden shadow-2xl space-y-6">
+      <div class="bg-[#0B131D] rounded-3xl p-6 sm:p-10 border border-white/[0.08] relative overflow-hidden shadow-2xl space-y-6">
         <div class="flex flex-wrap items-center gap-2">
-          <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-cdek/20 text-cdek border border-cdek/40 flex items-center gap-1.5">
+          <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-cdek/20 text-[#22E58B] border border-[#22E58B]/40 flex items-center gap-1.5">
             <span class="w-2 h-2 rounded-full bg-cdek"></span> E-Commerce & CMS
           </span>
           <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/5 text-slate-300 border border-white/10">
@@ -140,7 +140,7 @@
 
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-white">
           Заключить договор СДЭК для интернет-магазина: <br>
-          <span class="text-cdek">готовые CMS-модули, 54-ФЗ и скидки до 50%</span>
+          <span class="text-[#22E58B]">готовые CMS-модули, 54-ФЗ и скидки до 50%</span>
         </h1>
 
         <p class="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
@@ -148,19 +148,19 @@
         </p>
 
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-          <div class="p-4 rounded-2xl bg-market-input border border-market-border">
-            <div class="text-2xl font-extrabold text-cdek">15 минут</div>
+          <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
+            <div class="text-2xl font-extrabold text-[#22E58B]">15 минут</div>
             <div class="text-xs text-slate-400 mt-0.5">Оформление онлайн</div>
           </div>
-          <div class="p-4 rounded-2xl bg-market-input border border-market-border">
+          <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
             <div class="text-2xl font-extrabold text-white">Модули CMS</div>
             <div class="text-xs text-slate-400 mt-0.5">Tilda, Bitrix, WP</div>
           </div>
-          <div class="p-4 rounded-2xl bg-market-input border border-market-border">
-            <div class="text-2xl font-extrabold text-cdek">до −50%</div>
+          <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
+            <div class="text-2xl font-extrabold text-[#22E58B]">до −50%</div>
             <div class="text-xs text-slate-400 mt-0.5">Тариф «Посылка»</div>
           </div>
-          <div class="p-4 rounded-2xl bg-market-input border border-market-border">
+          <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
             <div class="text-2xl font-extrabold text-white">54-ФЗ Чек</div>
             <div class="text-xs text-slate-400 mt-0.5">Наложенный платеж</div>
           </div>
@@ -169,20 +169,20 @@
 
       <!-- Преимущества договора для интернет-магазинов -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="p-5 rounded-2xl bg-market-card border border-market-border space-y-2">
-          <strong class="text-sm font-bold text-cdek block">Интерактивная карта ПВЗ</strong>
+        <div class="p-5 rounded-2xl bg-[#0B131D] border border-white/[0.08] space-y-2">
+          <strong class="text-sm font-bold text-[#22E58B] block">Интерактивная карта ПВЗ</strong>
           <p class="text-xs text-slate-300 leading-relaxed">
             Виджет выбора пунктов выдачи на карте и точный расчет доставки прямо в корзине вашего сайта в реальном времени.
           </p>
         </div>
-        <div class="p-5 rounded-2xl bg-market-card border border-market-border space-y-2">
-          <strong class="text-sm font-bold text-cdek block">Примерка и частичный выкуп</strong>
+        <div class="p-5 rounded-2xl bg-[#0B131D] border border-white/[0.08] space-y-2">
+          <strong class="text-sm font-bold text-[#22E58B] block">Примерка и частичный выкуп</strong>
           <p class="text-xs text-slate-300 leading-relaxed">
             Покупатели примеряют товары в кабинках ПВЗ или дома, а невыкупленные позиции возвращаются по льготному возвратному тарифу.
           </p>
         </div>
-        <div class="p-5 rounded-2xl bg-market-card border border-market-border space-y-2">
-          <strong class="text-sm font-bold text-cdek block">Автоматизация отгрузок</strong>
+        <div class="p-5 rounded-2xl bg-[#0B131D] border border-white/[0.08] space-y-2">
+          <strong class="text-sm font-bold text-[#22E58B] block">Автоматизация отгрузок</strong>
           <p class="text-xs text-slate-300 leading-relaxed">
             Создание накладных и печать этикеток со штрихкодами в 1 клик прямо из панели управления вашим интернет-магазином.
           </p>
@@ -193,7 +193,7 @@
       <!--#include virtual="/src/components/contract-form.html" -->
 
       <!-- Калькулятор доставки -->
-      <div class="bg-market-card rounded-3xl p-6 sm:p-8 border border-market-border space-y-6">
+      <div class="bg-[#0B131D] rounded-3xl p-6 sm:p-8 border border-white/[0.08] space-y-6">
         <div>
           <h2 class="text-xl sm:text-2xl font-extrabold text-white">Калькулятор тарифов СДЭК для интернет-магазинов</h2>
           <p class="text-xs sm:text-sm text-slate-400 mt-1">Расчет себестоимости доставки заказов по корпоративному тарифу «Посылка»</p>
@@ -202,34 +202,34 @@
       </div>
 
       <!-- FAQ Блок -->
-      <div class="bg-market-card rounded-3xl p-6 sm:p-8 border border-market-border space-y-4">
+      <div class="bg-[#0B131D] rounded-3xl p-6 sm:p-8 border border-white/[0.08] space-y-4">
         <h2 class="text-xl sm:text-2xl font-extrabold text-white">Частые вопросы владельцев интернет-магазинов</h2>
         
         <div class="space-y-3 text-xs sm:text-sm">
-          <details class="group bg-market-input border border-market-border rounded-2xl p-4 cursor-pointer">
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
             <summary class="font-bold text-white flex justify-between items-center list-none select-none">
               <span>Какие CMS и платформы поддерживают прямую интеграцию со СДЭК?</span>
-              <span class="text-cdek group-open:rotate-180 transition-transform">▾</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
             </summary>
             <p class="text-slate-300 mt-2 leading-relaxed">
               Доступны готовые модули для Tilda Publishing, 1С-Битрикс, МойСклад, InSales, WooCommerce (WordPress), OpenCart, CS-Cart и 1C:Предприятие, а также открытый REST API v2.0.
             </p>
           </details>
 
-          <details class="group bg-market-input border border-market-border rounded-2xl p-4 cursor-pointer">
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
             <summary class="font-bold text-white flex justify-between items-center list-none select-none">
               <span>Как работает наложенный платеж по 54-ФЗ для магазина?</span>
-              <span class="text-cdek group-open:rotate-180 transition-transform">▾</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
             </summary>
             <p class="text-slate-300 mt-2 leading-relaxed">
               СДЭК принимает оплату картой, наличными или по СБП при вручении, выдает фискальный чек покупателю и перечисляет деньги на ваш расчетный счет с предоставлением реестра.
             </p>
           </details>
 
-          <details class="group bg-market-input border border-market-border rounded-2xl p-4 cursor-pointer">
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
             <summary class="font-bold text-white flex justify-between items-center list-none select-none">
               <span>Есть ли возможность примерки вещей покупателем?</span>
-              <span class="text-cdek group-open:rotate-180 transition-transform">▾</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
             </summary>
             <p class="text-slate-300 mt-2 leading-relaxed">
               Да. Клиенты могут примерить одежду и обувь в оборудованных кабинках в 5 000+ ПВЗ СДЭК или дома с курьером, выкупить только подходящие позиции, а невыкупленные возвращаются по льготному возвратному тарифу.

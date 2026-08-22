@@ -27,14 +27,19 @@
         extend: {
           colors: {
             cdek: '#00b341',
-            dark: { 900: '#072624', 950: '#041615' }
+            neon: '#22E58B',
+            obsidian: '#060B11',
+            card: '#0B131D'
           }
+        }
+      }
+    }
         }
       }
     }
   </script>
 </head>
-<body class="bg-[#072624] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#00b341] selection:text-white pb-16 md:pb-0">
+<body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 selection:text-white pb-16 md:pb-0">
 
   <!-- Nginx: Подключение шапки -->
   <!--#include virtual="/src/components/header.html" -->
@@ -43,28 +48,28 @@
     
     <article class="lg:col-span-7 xl:col-span-8">
       <nav class="flex text-sm text-slate-400 mb-6">
-        <a href="/" class="hover:text-cdek transition-colors">Главная</a><span class="mx-2">/</span>
-        <a href="/services/" class="hover:text-cdek transition-colors">Услуги</a><span class="mx-2">/</span>
+        <a href="/" class="hover:text-[#22E58B] transition-colors">Главная</a><span class="mx-2">/</span>
+        <a href="/services/" class="hover:text-[#22E58B] transition-colors">Услуги</a><span class="mx-2">/</span>
         <span class="text-slate-200">Договор для самозанятых</span>
       </nav>
 
       <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-        Договор со СДЭК для <span class="text-cdek">самозанятых</span>
+        Договор со СДЭК для <span class="text-[#22E58B]">самозанятых</span>
       </h1>
       
       <p class="text-lg sm:text-xl text-slate-300 mb-8 leading-relaxed">
         Производите товары своими руками? СДЭК официально работает с плательщиками Налога на профессиональный доход (НПД), предоставляя бизнесовые тарифы без необходимости открывать ИП.
       </p>
 
-      <div class="w-full h-px bg-[#0e3330] my-8"></div>
+      <div class="w-full h-px bg-white/[0.04] my-8"></div>
       <h2 class="text-2xl font-bold text-white mb-4">Преимущества для НПД</h2>
       <ul class="space-y-3 text-slate-300 mb-8">
         <li class="flex items-start">
-          <svg class="w-6 h-6 text-cdek mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          <svg class="w-6 h-6 text-[#22E58B] mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
           <span><strong>Быстрый старт:</strong> Нужен только паспорт и справка о постановке на учет в качестве самозанятого.</span>
         </li>
         <li class="flex items-start">
-          <svg class="w-6 h-6 text-cdek mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+          <svg class="w-6 h-6 text-[#22E58B] mr-3 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
           <span><strong>Удобный личный кабинет:</strong> Отслеживайте отправления и финансы с компьютера или через мобильное приложение.</span>
         </li>
       </ul>

@@ -135,15 +135,20 @@
         extend: {
           colors: {
             cdek: '#00b341',
-            dark: { 900: '#072624', 950: '#041615' }
+            neon: '#22E58B',
+            obsidian: '#060B11',
+            card: '#0B131D'
           }
+        }
+      }
+    }
         }
       }
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@cdek-it/widget@3" async></script>
 </head>
-<body class="bg-[#072624] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-avito selection:text-dark-900 pb-16 md:pb-0">
+<body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-avito selection:text-dark-900 pb-16 md:pb-0">
 
   <!--#include virtual="/src/components/header.html" -->
 
@@ -158,7 +163,7 @@
         
         <!-- Хлебные крошки -->
         <nav class="text-xs sm:text-sm text-slate-400 mb-6 flex flex-wrap items-center gap-1.5">
-          <a href="/" class="hover:text-cdek transition-colors">Главная</a> <span>/</span>
+          <a href="/" class="hover:text-[#22E58B] transition-colors">Главная</a> <span>/</span>
           <span class="text-white">СДЭК для Авито</span>
         </nav>
 
@@ -180,7 +185,7 @@
               Специальные тарифы для бизнеса (ООО, ИП) и самозанятых. Сдавайте посылки по реестру в 4 000+ ПВЗ, отправляйте товары с наложенным платежом и расширяйте географию продаж на всю Россию[cite: 5].
             </p>
 
-            <div class="grid grid-cols-3 gap-4 pt-6 border-y border-emerald-950 max-w-2xl w-full">
+            <div class="grid grid-cols-3 gap-4 pt-6 border-y border-white/[0.08] max-w-2xl w-full">
               <div>
                 <div class="text-2xl sm:text-3xl font-bold text-avito mb-1">Без очередей</div>
                 <div class="text-xs text-slate-400">Сдача по реестру</div>
@@ -190,7 +195,7 @@
                 <div class="text-xs text-slate-400">Подключение договора</div>
               </div>
               <div>
-                <div class="text-2xl sm:text-3xl font-bold text-cdek mb-1">до 50%</div>
+                <div class="text-2xl sm:text-3xl font-bold text-[#22E58B] mb-1">до 50%</div>
                 <div class="text-xs text-slate-400">Скидка B2B</div>
               </div>
             </div>
@@ -214,25 +219,25 @@
       </h2>
       
       <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
-        <div class="bg-[#072624]/80 border border-emerald-950 hover:border-avito/50 p-6 rounded-2xl transition-all shadow-lg">
+        <div class="bg-[#060B11]/80 border border-white/[0.08] hover:border-avito/50 p-6 rounded-2xl transition-all shadow-lg">
           <div class="text-avito mb-4 text-3xl">📦</div>
           <h3 class="text-lg font-bold text-white mb-2">Отгрузка без очередей</h3>
           <p class="text-slate-400 text-sm leading-relaxed">По договору вы сдаете товары в любой ПВЗ СДЭК приоритетно по реестру[cite: 5].</p>
         </div>
 
-        <div class="bg-[#072624]/80 border border-emerald-950 hover:border-avito/50 p-6 rounded-2xl transition-all shadow-lg">
+        <div class="bg-[#060B11]/80 border border-white/[0.08] hover:border-avito/50 p-6 rounded-2xl transition-all shadow-lg">
           <div class="text-avito mb-4 text-3xl">💸</div>
           <h3 class="text-lg font-bold text-white mb-2">B2B Тарифы</h3>
           <p class="text-slate-400 text-sm leading-relaxed">Экономия до 50% по сравнению с тарифами для физических лиц[cite: 5].</p>
         </div>
 
-        <div class="bg-[#072624]/80 border border-emerald-950 hover:border-avito/50 p-6 rounded-2xl transition-all shadow-lg">
+        <div class="bg-[#060B11]/80 border border-white/[0.08] hover:border-avito/50 p-6 rounded-2xl transition-all shadow-lg">
           <div class="text-avito mb-4 text-3xl">💳</div>
           <h3 class="text-lg font-bold text-white mb-2">Наложенный платеж</h3>
           <p class="text-slate-400 text-sm leading-relaxed">Прием оплаты наличными и картой при вручении с переводом средств на ваш расчетный счет.</p>
         </div>
 
-        <div class="bg-[#072624]/80 border border-emerald-950 hover:border-avito/50 p-6 rounded-2xl transition-all shadow-lg">
+        <div class="bg-[#060B11]/80 border border-white/[0.08] hover:border-avito/50 p-6 rounded-2xl transition-all shadow-lg">
           <div class="text-avito mb-4 text-3xl">🤝</div>
           <h3 class="text-lg font-bold text-white mb-2">Для ИП и Самозанятых</h3>
           <p class="text-slate-400 text-sm leading-relaxed">Заключаем официальный договор за 15 минут даже с самозанятыми[cite: 5].</p>

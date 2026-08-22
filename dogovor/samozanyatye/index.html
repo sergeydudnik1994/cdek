@@ -13,7 +13,7 @@
   <link rel="alternate" type="text/markdown" title="LLM Information" href="https://cdek-marketplace.ru/llms.txt" />
   <link rel="alternate" type="text/markdown" title="LLM Full Documentation" href="https://cdek-marketplace.ru/llms-full.txt" />
 
-  <meta name="theme-color" content="#00b341" />
+  <meta name="theme-color" content="#060B11" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
@@ -37,13 +37,13 @@
         extend: {
           colors: {
             cdek: '#00b341',
-            'cdek-hover': '#009c38',
-            'market-bg': '#031b14',
-            'market-card': '#07261e',
-            'market-border': '#113f32',
-            'market-input': '#041710'
+            neon: '#22E58B',
+            obsidian: '#060B11',
+            card: '#0B131D'
           }
         }
+      }
+    }
       }
     }
   </script>
@@ -134,7 +134,7 @@
   }
   </script>
 </head>
-<body class="bg-market-bg text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-white pb-16 md:pb-0">
+<body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 selection:text-white pb-16 md:pb-0">
 
   <!-- Nginx: Шапка сайта -->
   <!--#include virtual="/src/components/header.html" -->
@@ -144,17 +144,17 @@
       
       <!-- Хлебные крошки -->
       <nav class="flex items-center gap-2 text-xs text-slate-400">
-        <a href="/" class="hover:text-cdek transition">Главная</a>
+        <a href="/" class="hover:text-[#22E58B] transition">Главная</a>
         <span>/</span>
-        <a href="/dogovor/" class="hover:text-cdek transition">Договор СДЭК</a>
+        <a href="/dogovor/" class="hover:text-[#22E58B] transition">Договор СДЭК</a>
         <span>/</span>
         <span class="text-slate-200 font-semibold">Для самозанятых (НПД)</span>
       </nav>
 
       <!-- Hero Header -->
-      <div class="bg-market-card rounded-3xl p-6 sm:p-10 border border-market-border relative overflow-hidden shadow-2xl space-y-6">
+      <div class="bg-[#0B131D] rounded-3xl p-6 sm:p-10 border border-white/[0.08] relative overflow-hidden shadow-2xl space-y-6">
         <div class="flex flex-wrap items-center gap-2">
-          <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-cdek/15 text-cdek border border-cdek/30">
+          <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-cdek/15 text-[#22E58B] border border-[#22E58B]/30">
             СДЭК для самозанятых селлеров (НПД)
           </span>
           <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/5 text-slate-300 border border-white/10">
@@ -164,7 +164,7 @@
 
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-white">
           Договор СДЭК для самозанятых: <br>
-          <span class="text-cdek">доставка товаров на маркетплейсы со скидкой до 50%</span>
+          <span class="text-[#22E58B]">доставка товаров на маркетплейсы со скидкой до 50%</span>
         </h1>
 
         <p class="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
@@ -172,19 +172,19 @@
         </p>
 
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-          <div class="p-4 rounded-2xl bg-market-input border border-market-border">
-            <div class="text-2xl font-extrabold text-cdek">15 минут</div>
+          <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
+            <div class="text-2xl font-extrabold text-[#22E58B]">15 минут</div>
             <div class="text-xs text-slate-400 mt-0.5">Оформление онлайн</div>
           </div>
-          <div class="p-4 rounded-2xl bg-market-input border border-market-border">
+          <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
             <div class="text-2xl font-extrabold text-white">0 ₽</div>
             <div class="text-xs text-slate-400 mt-0.5">Без абонплаты</div>
           </div>
-          <div class="p-4 rounded-2xl bg-market-input border border-market-border">
-            <div class="text-2xl font-extrabold text-cdek">до −50%</div>
+          <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
+            <div class="text-2xl font-extrabold text-[#22E58B]">до −50%</div>
             <div class="text-xs text-slate-400 mt-0.5">Тариф «Посылка»</div>
           </div>
-          <div class="p-4 rounded-2xl bg-market-input border border-market-border">
+          <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
             <div class="text-2xl font-extrabold text-white">На карту</div>
             <div class="text-xs text-slate-400 mt-0.5">Без расчетного счета</div>
           </div>
@@ -193,20 +193,20 @@
 
       <!-- Преимущества для самозанятых на маркетплейсах -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="p-5 rounded-2xl bg-market-card border border-market-border space-y-2">
-          <strong class="text-sm font-bold text-cdek block">Продажи без открытия ИП</strong>
+        <div class="p-5 rounded-2xl bg-[#0B131D] border border-white/[0.08] space-y-2">
+          <strong class="text-sm font-bold text-[#22E58B] block">Продажи без открытия ИП</strong>
           <p class="text-xs text-slate-300 leading-relaxed">
             Отправляйте изделия ручной работы, одежду, сувениры и косметику на маркетплейсы со статусом самозанятого по корпоративным тарифам.
           </p>
         </div>
-        <div class="p-5 rounded-2xl bg-market-card border border-market-border space-y-2">
-          <strong class="text-sm font-bold text-cdek block">Схемы FBS, rFBS и DBS</strong>
+        <div class="p-5 rounded-2xl bg-[#0B131D] border border-white/[0.08] space-y-2">
+          <strong class="text-sm font-bold text-[#22E58B] block">Схемы FBS, rFBS и DBS</strong>
           <p class="text-xs text-slate-300 leading-relaxed">
             Сдавайте посылки в любой удобный ПВЗ рядом с домом для доставки до покупателя или на сортировочный центр маркетплейса.
           </p>
         </div>
-        <div class="p-5 rounded-2xl bg-market-card border border-market-border space-y-2">
-          <strong class="text-sm font-bold text-cdek block">Личный кабинет и штрихкоды</strong>
+        <div class="p-5 rounded-2xl bg-[#0B131D] border border-white/[0.08] space-y-2">
+          <strong class="text-sm font-bold text-[#22E58B] block">Личный кабинет и штрихкоды</strong>
           <p class="text-xs text-slate-300 leading-relaxed">
             Создавайте накладные онлайн, печатайте транспортные этикетки на обычном принтере и отслеживайте перемещение каждого заказа.
           </p>
@@ -217,7 +217,7 @@
       <!--#include virtual="/src/components/contract-form.html" -->
 
       <!-- Сравнительная таблица условий -->
-      <div class="bg-market-card rounded-3xl p-6 sm:p-8 border border-market-border shadow-xl space-y-6">
+      <div class="bg-[#0B131D] rounded-3xl p-6 sm:p-8 border border-white/[0.08] shadow-xl space-y-6">
         <div>
           <h2 class="text-xl sm:text-2xl font-extrabold text-white">Сравнение: Обычная отправка физлица vs Договор самозанятого</h2>
           <p class="text-xs sm:text-sm text-slate-400 mt-1">Почему селлерам выгодно зарегистрировать B2B-договор СДЭК</p>
@@ -226,37 +226,37 @@
         <div class="overflow-x-auto">
           <table class="w-full text-left text-xs sm:text-sm">
             <thead>
-              <tr class="border-b border-market-border text-[11px] uppercase tracking-wider text-slate-400">
+              <tr class="border-b border-white/[0.08] text-[11px] uppercase tracking-wider text-slate-400">
                 <th class="py-3 px-4">Параметр</th>
                 <th class="py-3 px-4 text-slate-400">Без договора (Физлицо)</th>
-                <th class="py-3 px-4 text-cdek font-bold">Договор самозанятого (B2B)</th>
+                <th class="py-3 px-4 text-[#22E58B] font-bold">Договор самозанятого (B2B)</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-market-border text-slate-300">
               <tr>
                 <td class="py-3.5 px-4 font-semibold text-white">Стоимость логистики</td>
                 <td class="py-3.5 px-4 text-slate-400">100% базовый прайс</td>
-                <td class="py-3.5 px-4 text-cdek font-bold">Скидка до 50% (тариф «Посылка»)</td>
+                <td class="py-3.5 px-4 text-[#22E58B] font-bold">Скидка до 50% (тариф «Посылка»)</td>
               </tr>
               <tr>
                 <td class="py-3.5 px-4 font-semibold text-white">Работа по схемам FBS / DBS</td>
                 <td class="py-3.5 px-4 text-slate-400">Не поддерживается площадками</td>
-                <td class="py-3.5 px-4 text-cdek font-bold">Официальная интеграция с Ozon, WB, Маркетом</td>
+                <td class="py-3.5 px-4 text-[#22E58B] font-bold">Официальная интеграция с Ozon, WB, Маркетом</td>
               </tr>
               <tr>
                 <td class="py-3.5 px-4 font-semibold text-white">Оформление накладных</td>
                 <td class="py-3.5 px-4 text-slate-400">Ручной ввод в отделении</td>
-                <td class="py-3.5 px-4 text-cdek font-bold">Личный кабинет и быстрая сдача без очередей</td>
+                <td class="py-3.5 px-4 text-[#22E58B] font-bold">Личный кабинет и быстрая сдача без очередей</td>
               </tr>
               <tr>
                 <td class="py-3.5 px-4 font-semibold text-white">Автоматический трекинг</td>
                 <td class="py-3.5 px-4 text-slate-400">Ручная проверка по номеру</td>
-                <td class="py-3.5 px-4 text-cdek font-bold">Синхронизация статусов по API</td>
+                <td class="py-3.5 px-4 text-[#22E58B] font-bold">Синхронизация статусов по API</td>
               </tr>
               <tr>
                 <td class="py-3.5 px-4 font-semibold text-white">Служба поддержки</td>
                 <td class="py-3.5 px-4 text-slate-400">Общая горячая линия</td>
-                <td class="py-3.5 px-4 text-cdek font-bold">Персональный куратор в мессенджере</td>
+                <td class="py-3.5 px-4 text-[#22E58B] font-bold">Персональный куратор в мессенджере</td>
               </tr>
             </tbody>
           </table>
@@ -264,7 +264,7 @@
       </div>
 
       <!-- Калькулятор доставки -->
-      <div class="bg-market-card rounded-3xl p-6 sm:p-8 border border-market-border space-y-6">
+      <div class="bg-[#0B131D] rounded-3xl p-6 sm:p-8 border border-white/[0.08] space-y-6">
         <div>
           <h2 class="text-xl sm:text-2xl font-extrabold text-white">Рассчитать стоимость доставки для самозанятых</h2>
           <p class="text-xs sm:text-sm text-slate-400 mt-1">Официальные спецтарифы линейки «Посылка» со скидкой до 50%</p>
@@ -273,44 +273,44 @@
       </div>
 
       <!-- FAQ Блок -->
-      <div class="bg-market-card rounded-3xl p-6 sm:p-8 border border-market-border space-y-4">
+      <div class="bg-[#0B131D] rounded-3xl p-6 sm:p-8 border border-white/[0.08] space-y-4">
         <h2 class="text-xl sm:text-2xl font-extrabold text-white">Вопросы самозанятых о договоре СДЭК</h2>
         
         <div class="space-y-3 text-xs sm:text-sm">
-          <details class="group bg-market-input border border-market-border rounded-2xl p-4 cursor-pointer">
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
             <summary class="font-bold text-white flex justify-between items-center list-none select-none">
               <span>Могут ли самозанятые торговать на маркетплейсах через СДЭК?</span>
-              <span class="text-cdek group-open:rotate-180 transition-transform">▾</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
             </summary>
             <p class="text-slate-300 mt-2 leading-relaxed">
               Да. Плательщики НПД имеют официальное право продавать товары собственного производства (хендмейд, одежду, аксессуары, декор, полиграфию) на Wildberries, Ozon и Яндекс Маркет. Договор СДЭК позволяет отгружать такие заказы по схемам FBS и DBS со скидками до 50%.
             </p>
           </details>
 
-          <details class="group bg-market-input border border-market-border rounded-2xl p-4 cursor-pointer">
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
             <summary class="font-bold text-white flex justify-between items-center list-none select-none">
               <span>Нужно ли открывать расчетный счет в банке самозанятому?</span>
-              <span class="text-cdek group-open:rotate-180 transition-transform">▾</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
             </summary>
             <p class="text-slate-300 mt-2 leading-relaxed">
               Нет. Выплаты и оплата логистических услуг осуществляются с использованием обычной дебетовой банковской карты физического лица любого российского банка.
             </p>
           </details>
 
-          <details class="group bg-market-input border border-market-border rounded-2xl p-4 cursor-pointer">
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
             <summary class="font-bold text-white flex justify-between items-center list-none select-none">
               <span>Как формируются чеки для налоговой?</span>
-              <span class="text-cdek group-open:rotate-180 transition-transform">▾</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
             </summary>
             <p class="text-slate-300 mt-2 leading-relaxed">
               Все продажи фиксируются в приложении «Мой налог». При получении средств за заказ вы самостоятельно формируете чек с указанием суммы дохода от покупателя.
             </p>
           </details>
 
-          <details class="group bg-market-input border border-market-border rounded-2xl p-4 cursor-pointer">
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
             <summary class="font-bold text-white flex justify-between items-center list-none select-none">
               <span>Как передаются трек-номера в кабинет селлера Ozon и WB?</span>
-              <span class="text-cdek group-open:rotate-180 transition-transform">▾</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
             </summary>
             <p class="text-slate-300 mt-2 leading-relaxed">
               После создания накладной в личном кабинете СДЭК трек-номер копируется в заказ маркетплейса либо передается автоматически через подключенный API-плагин.

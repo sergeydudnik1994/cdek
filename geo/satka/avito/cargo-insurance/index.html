@@ -20,7 +20,7 @@
   <title>Страхование грузов для селлеров в Сатке | СДЭК Маркетплейс</title>
   <meta name="description" content="Страхование грузов для селлеров в Сатке. Доставка от 136.50 ₽. Скидки до 50% для селлеров." />
   
-  <meta name="theme-color" content="#00b341" />
+  <meta name="theme-color" content="#060B11" />
   <link rel="canonical" href="https://cdek-marketplace.ru/geo/satka/cargo-insurance/" />
   
   <meta property="og:type" content="website" />
@@ -81,14 +81,19 @@
         extend: {
           colors: {
             cdek: '#00b341',
-            dark: { 900: '#072624', 950: '#041615' }
+            neon: '#22E58B',
+            obsidian: '#060B11',
+            card: '#0B131D'
           }
+        }
+      }
+    }
         }
       }
     }
   </script>
 </head>
-<body class="bg-[#072624] text-slate-100 min-h-screen flex flex-col antialiased pb-16 md:pb-0">
+<body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased pb-16 md:pb-0">
 
   <!--#include virtual="/src/components/header.html" -->
 
@@ -97,20 +102,20 @@
       
       <div class="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
         <section class="flex flex-col items-start transition-all duration-300">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase border bg-[#0e3330] text-[#00b341] border border-emerald-800/80">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase border bg-white/[0.04] text-[#22E58B] border border-white/[0.08]/80">
             <span>Официальное подключение для бизнеса</span>
           </div>
 
           <h1 class="text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight mb-5">
             Страхование грузов для селлеров в Сатке
-            <span class="block text-2xl sm:text-3xl mt-2 text-cdek">Полная материальная ответственность за товар</span>
+            <span class="block text-2xl sm:text-3xl mt-2 text-[#22E58B]">Полная материальная ответственность за товар</span>
           </h1>
 
           <p class="text-slate-400 text-base sm:text-lg leading-relaxed max-w-xl mb-8">
             Защитите свой капитал. Страхование посылок от повреждения, утери или подмены на всех этапах. Отгружайте товары через пункты СДЭК в г. Сатка без очередей и жестких тайм-слотов.
           </p>
 
-          <div class="prose prose-invert prose-sm max-w-none text-slate-400 bg-[#0e3330]/30 p-6 rounded-xl border border-emerald-900/80 mb-8 w-full">
+          <div class="prose prose-invert prose-sm max-w-none text-slate-400 bg-white/[0.04]/30 p-6 rounded-xl border border-white/[0.08]/80 mb-8 w-full">
             СДЭК Маркетплейсы в Сатке — это быстрая отгрузка для селлеров. Мы оптимизировали логистику в Сатке, чтобы вы экономили до 50% на доставке. Работаем по FBS и DBS с гарантией сроков.
           </div>
         </section>
@@ -126,18 +131,18 @@
           <h2 class="text-2xl font-bold text-white mb-6">Пункты отгрузки в г. Сатка</h2>
           <p class="text-slate-400 mb-6">Для вашего удобства мы подобрали ключевые точки приема заказов для маркетплейсов в Сатке:</p>
           <ul class="space-y-3 text-slate-300">
-            <li class="flex items-center gap-2"><span class="text-cdek">•</span> Адреса ПВЗ доступны на карте при оформлении накладной.</li>
-            <li class="flex items-center gap-2"><span class="text-cdek">•</span> Выбирайте ближайший пункт для быстрой отгрузки.</li>
+            <li class="flex items-center gap-2"><span class="text-[#22E58B]">•</span> Адреса ПВЗ доступны на карте при оформлении накладной.</li>
+            <li class="flex items-center gap-2"><span class="text-[#22E58B]">•</span> Выбирайте ближайший пункт для быстрой отгрузки.</li>
           </ul>
           <p class="mt-6 text-sm text-slate-500 italic">* Всего в сети СДЭК более 4000 ПВЗ по всей России.</p>
         </div>
-        <div class="rounded-xl overflow-hidden border border-emerald-950 shadow-lg">
+        <div class="rounded-xl overflow-hidden border border-white/[0.08] shadow-lg">
           <iframe src="https://yandex.ru/map-widget/v1/?text=СДЭК+ПВЗ+Сатка" width="100%" height="350" frameborder="0"></iframe>
         </div>
       </section>
 
       <!-- Перелинковка -->
-      <section class="mt-16 pt-8 border-t border-emerald-950">
+      <section class="mt-16 pt-8 border-t border-white/[0.08]">
         <h3 class="text-lg font-semibold text-white mb-4">Другие города обслуживания:</h3>
         <div class="flex flex-wrap gap-4">
           {{NEARBY_CITIES}}

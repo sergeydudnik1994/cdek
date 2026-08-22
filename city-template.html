@@ -26,7 +26,7 @@
   <meta name="yandex-verification" content="f077a22013388718" />
   <meta name="yandex-verification" content="feb8f4adaa02427e" />
   <meta name="google-site-verification" content="b4CjmaWn0KRmnHjAm7abquUe5bkx0Colk-B61Fw698Y" />
-  <meta name="theme-color" content="#00b341" />
+  <meta name="theme-color" content="#060B11" />
   <link rel="canonical" href="https://cdek-marketplace.ru/geo/{{SLUG}}/" />
   
   <!-- Автообнаружение LLMs.txt для ИИ-агентов -->
@@ -157,8 +157,13 @@
         extend: {
           colors: {
             cdek: '#00b341',
-            dark: { 900: '#072624', 950: '#041615' }
+            neon: '#22E58B',
+            obsidian: '#060B11',
+            card: '#0B131D'
           }
+        }
+      }
+    }
         }
       }
     }
@@ -167,7 +172,7 @@
   <!-- Виджет СДЭК -->
   <script src="https://cdn.jsdelivr.net/npm/@cdek-it/widget@3" async></script>
 </head>
-<body class="bg-[#072624] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#00b341] selection:text-white pb-16 md:pb-0">
+<body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 selection:text-white pb-16 md:pb-0">
 
   <!-- Nginx: Подключение шапки -->
   <!--#include virtual="/src/components/header.html" -->
@@ -177,16 +182,16 @@
       
       <!-- ВИЗУАЛЬНЫЕ ХЛЕБНЫЕ КРОШКИ -->
       <nav class="text-sm text-slate-400 mb-6">
-        <a href="/" class="hover:text-cdek transition-colors">Главная</a>
+        <a href="/" class="hover:text-[#22E58B] transition-colors">Главная</a>
         <span class="mx-2">/</span>
-        <a href="/geo/" class="hover:text-cdek transition-colors">Логистика для селлеров</a>
+        <a href="/geo/" class="hover:text-[#22E58B] transition-colors">Логистика для селлеров</a>
         <span class="mx-2">/</span>
         <span class="text-white">{{CITY}}</span>
       </nav>
 
       <!-- УНИКАЛЬНЫЙ ГЕО-ЗАГОЛОВОК И СТАТИСТИКА -->
       <div class="text-center max-w-3xl mx-auto mt-6 mb-12">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase transition-all border bg-[#0e3330] text-[#00b341] border border-emerald-800/80">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase transition-all border bg-white/[0.04] text-[#22E58B] border border-white/[0.08]/80">
           <span class="relative flex h-2 w-2">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cdek opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-cdek "></span>
@@ -195,16 +200,16 @@
         </div>
 
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-normal mb-5 leading-tight">
-          Подключение селлеров к СДЭК в <span class="text-cdek">{{CITY_PREP}}</span>
+          Подключение селлеров к СДЭК в <span class="text-[#22E58B]">{{CITY_PREP}}</span>
         </h1>
         <p class="text-base sm:text-lg text-slate-400 leading-relaxed">
           Специальные условия логистики для бизнеса из {{CITY_GEN}} при отгрузках на маркетплейсы. Бесплатный договор и скидки до 50% на доставку по моделям <b class="text-white">FBS и DBS</b>.
         </p>
 
         <!-- Динамическая статистика -->
-        <div class="grid grid-cols-3 gap-4 max-w-xl mx-auto mt-8 pt-6 border-t border-emerald-950">
+        <div class="grid grid-cols-3 gap-4 max-w-xl mx-auto mt-8 pt-6 border-t border-white/[0.08]">
           <div>
-            <p class="text-2xl sm:text-3xl font-bold text-cdek ">0 ₽</p>
+            <p class="text-2xl sm:text-3xl font-bold text-[#22E58B] ">0 ₽</p>
             <p class="text-xs text-slate-500 font-medium mt-0.5">Договор бесплатно</p>
           </div>
           <div>

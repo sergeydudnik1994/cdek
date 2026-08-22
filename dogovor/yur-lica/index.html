@@ -13,7 +13,7 @@
   <link rel="alternate" type="text/markdown" title="LLM Information" href="https://cdek-marketplace.ru/llms.txt" />
   <link rel="alternate" type="text/markdown" title="LLM Full Documentation" href="https://cdek-marketplace.ru/llms-full.txt" />
 
-  <meta name="theme-color" content="#00b341" />
+  <meta name="theme-color" content="#060B11" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="article" />
@@ -37,13 +37,13 @@
         extend: {
           colors: {
             cdek: '#00b341',
-            'cdek-hover': '#009c38',
-            'market-bg': '#031b14',
-            'market-card': '#07261e',
-            'market-border': '#113f32',
-            'market-input': '#041710'
+            neon: '#22E58B',
+            obsidian: '#060B11',
+            card: '#0B131D'
           }
         }
+      }
+    }
       }
     }
   </script>
@@ -134,7 +134,7 @@
   }
   </script>
 </head>
-<body class="bg-market-bg text-slate-100 min-h-screen flex flex-col antialiased selection:bg-cdek selection:text-white pb-16 md:pb-0">
+<body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 selection:text-white pb-16 md:pb-0">
 
   <!-- Nginx: Шапка сайта -->
   <!--#include virtual="/src/components/header.html" -->
@@ -144,17 +144,17 @@
       
       <!-- Хлебные крошки -->
       <nav class="flex items-center gap-2 text-xs text-slate-400">
-        <a href="/" class="hover:text-cdek transition">Главная</a>
+        <a href="/" class="hover:text-[#22E58B] transition">Главная</a>
         <span>/</span>
-        <a href="/dogovor/" class="hover:text-cdek transition">Договор СДЭК</a>
+        <a href="/dogovor/" class="hover:text-[#22E58B] transition">Договор СДЭК</a>
         <span>/</span>
         <span class="text-slate-200 font-semibold">Для юридических лиц (ООО)</span>
       </nav>
 
       <!-- Hero Header -->
-      <div class="bg-market-card rounded-3xl p-6 sm:p-10 border border-market-border relative overflow-hidden shadow-2xl space-y-6">
+      <div class="bg-[#0B131D] rounded-3xl p-6 sm:p-10 border border-white/[0.08] relative overflow-hidden shadow-2xl space-y-6">
         <div class="flex flex-wrap items-center gap-2">
-          <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-cdek/15 text-cdek border border-cdek/30">
+          <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-cdek/15 text-[#22E58B] border border-[#22E58B]/30">
             Корпоративное B2B-подключение для компаний
           </span>
           <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/5 text-slate-300 border border-white/10">
@@ -164,7 +164,7 @@
 
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-white">
           Договор СДЭК для ООО: <br>
-          <span class="text-cdek">поставки FBO, FBS и DBS на маркетплейсы с НДС 22%</span>
+          <span class="text-[#22E58B]">поставки FBO, FBS и DBS на маркетплейсы с НДС 22%</span>
         </h1>
 
         <p class="text-slate-300 text-sm sm:text-base max-w-3xl leading-relaxed">
@@ -172,19 +172,19 @@
         </p>
 
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-          <div class="p-4 rounded-2xl bg-market-input border border-market-border">
-            <div class="text-2xl font-extrabold text-cdek">Диадок / СБИС</div>
+          <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
+            <div class="text-2xl font-extrabold text-[#22E58B]">Диадок / СБИС</div>
             <div class="text-xs text-slate-400 mt-0.5">ЭДО без бумаг</div>
           </div>
-          <div class="p-4 rounded-2xl bg-market-input border border-market-border">
+          <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
             <div class="text-2xl font-extrabold text-white">НДС 22%</div>
             <div class="text-xs text-slate-400 mt-0.5">УПД к вычету</div>
           </div>
-          <div class="p-4 rounded-2xl bg-market-input border border-market-border">
-            <div class="text-2xl font-extrabold text-cdek">Постоплата</div>
+          <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
+            <div class="text-2xl font-extrabold text-[#22E58B]">Постоплата</div>
             <div class="text-xs text-slate-400 mt-0.5">Кредитный лимит</div>
           </div>
-          <div class="p-4 rounded-2xl bg-market-input border border-market-border">
+          <div class="p-4 rounded-2xl bg-[#060B11] border border-white/[0.08]">
             <div class="text-2xl font-extrabold text-white">FBO & DBS</div>
             <div class="text-xs text-slate-400 mt-0.5">Все маркетплейсы</div>
           </div>
@@ -193,20 +193,20 @@
 
       <!-- Преимущества для организаций и селлеров ООО -->
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        <div class="p-5 rounded-2xl bg-market-card border border-market-border space-y-2">
-          <strong class="text-sm font-bold text-cdek block">Поставки FBO на РЦ</strong>
+        <div class="p-5 rounded-2xl bg-[#0B131D] border border-white/[0.08] space-y-2">
+          <strong class="text-sm font-bold text-[#22E58B] block">Поставки FBO на РЦ</strong>
           <p class="text-xs text-slate-300 leading-relaxed">
             Доставка паллет и коробок на распределительные центры маркетплейсов по всей России точно в тайм-слоты без риска разворота поставки.
           </p>
         </div>
-        <div class="p-5 rounded-2xl bg-market-card border border-market-border space-y-2">
-          <strong class="text-sm font-bold text-cdek block">УПД с НДС 22% через ЭДО</strong>
+        <div class="p-5 rounded-2xl bg-[#0B131D] border border-white/[0.08] space-y-2">
+          <strong class="text-sm font-bold text-[#22E58B] block">УПД с НДС 22% через ЭДО</strong>
           <p class="text-xs text-slate-300 leading-relaxed">
             Ежемесячный автоматический обмен закрывающими документами через Диадок или СБИС. Выделенный НДС 22% для компаний на ОСНО.
           </p>
         </div>
-        <div class="p-5 rounded-2xl bg-market-card border border-market-border space-y-2">
-          <strong class="text-sm font-bold text-cdek block">DBS для тяжелых грузов</strong>
+        <div class="p-5 rounded-2xl bg-[#0B131D] border border-white/[0.08] space-y-2">
+          <strong class="text-sm font-bold text-[#22E58B] block">DBS для тяжелых грузов</strong>
           <p class="text-xs text-slate-300 leading-relaxed">
             Продавайте крупногабарит, мебель, технику и промышленное оборудование со своего склада без комиссий маркетплейсов за логистику.
           </p>
@@ -217,7 +217,7 @@
       <!--#include virtual="/src/components/contract-form.html" -->
 
       <!-- Сравнительная таблица условий -->
-      <div class="bg-market-card rounded-3xl p-6 sm:p-8 border border-market-border shadow-xl space-y-6">
+      <div class="bg-[#0B131D] rounded-3xl p-6 sm:p-8 border border-white/[0.08] shadow-xl space-y-6">
         <div>
           <h2 class="text-xl sm:text-2xl font-extrabold text-white">Условия корпоративного обслуживания для юридических лиц</h2>
           <p class="text-xs sm:text-sm text-slate-400 mt-1">Официальные стандарты B2B-логистики СДЭК для компаний</p>
@@ -226,42 +226,42 @@
         <div class="overflow-x-auto">
           <table class="w-full text-left text-xs sm:text-sm">
             <thead>
-              <tr class="border-b border-market-border text-[11px] uppercase tracking-wider text-slate-400">
+              <tr class="border-b border-white/[0.08] text-[11px] uppercase tracking-wider text-slate-400">
                 <th class="py-3 px-4">Параметр</th>
                 <th class="py-3 px-4 text-slate-400">Без B2B-договора</th>
-                <th class="py-3 px-4 text-cdek font-bold">Официальный договор ООО</th>
+                <th class="py-3 px-4 text-[#22E58B] font-bold">Официальный договор ООО</th>
               </tr>
             </thead>
             <tbody class="divide-y divide-market-border text-slate-300">
               <tr>
                 <td class="py-3.5 px-4 font-semibold text-white">Закрывающие документы</td>
                 <td class="py-3.5 px-4 text-slate-400">Кассовый чек</td>
-                <td class="py-3.5 px-4 text-cdek font-bold">УПД с НДС 22%, счета и акты сверки через ЭДО</td>
+                <td class="py-3.5 px-4 text-[#22E58B] font-bold">УПД с НДС 22%, счета и акты сверки через ЭДО</td>
               </tr>
               <tr>
                 <td class="py-3.5 px-4 font-semibold text-white">Схема расчетов</td>
                 <td class="py-3.5 px-4 text-slate-400">100% предоплата</td>
-                <td class="py-3.5 px-4 text-cdek font-bold">Постоплата раз в месяц по безналичному расчету</td>
+                <td class="py-3.5 px-4 text-[#22E58B] font-bold">Постоплата раз в месяц по безналичному расчету</td>
               </tr>
               <tr>
                 <td class="py-3.5 px-4 font-semibold text-white">Тарифная сетка</td>
                 <td class="py-3.5 px-4 text-slate-400">Базовый розничный прайс</td>
-                <td class="py-3.5 px-4 text-cdek font-bold">Скидки до 50% (тариф «Посылка» и LTL)</td>
+                <td class="py-3.5 px-4 text-[#22E58B] font-bold">Скидки до 50% (тариф «Посылка» и LTL)</td>
               </tr>
               <tr>
                 <td class="py-3.5 px-4 font-semibold text-white">Кредитный лимит</td>
                 <td class="py-3.5 px-4 text-slate-400">Отсутствует</td>
-                <td class="py-3.5 px-4 text-cdek font-bold">Индивидуальный лимит с автопродлением</td>
+                <td class="py-3.5 px-4 text-[#22E58B] font-bold">Индивидуальный лимит с автопродлением</td>
               </tr>
               <tr>
                 <td class="py-3.5 px-4 font-semibold text-white">Интеграция с учетными системами</td>
                 <td class="py-3.5 px-4 text-slate-400">Ручной ввод</td>
-                <td class="py-3.5 px-4 text-cdek font-bold">Модули для 1С:УТ/ERP, МойСклад и API v2.0</td>
+                <td class="py-3.5 px-4 text-[#22E58B] font-bold">Модули для 1С:УТ/ERP, МойСклад и API v2.0</td>
               </tr>
               <tr>
                 <td class="py-3.5 px-4 font-semibold text-white">Персональный куратор</td>
                 <td class="py-3.5 px-4 text-slate-400">Общая горячая линия</td>
-                <td class="py-3.5 px-4 text-cdek font-bold">Выделенный B2B-менеджер в мессенджере</td>
+                <td class="py-3.5 px-4 text-[#22E58B] font-bold">Выделенный B2B-менеджер в мессенджере</td>
               </tr>
             </tbody>
           </table>
@@ -269,7 +269,7 @@
       </div>
 
       <!-- Калькулятор доставки -->
-      <div class="bg-market-card rounded-3xl p-6 sm:p-8 border border-market-border space-y-6">
+      <div class="bg-[#0B131D] rounded-3xl p-6 sm:p-8 border border-white/[0.08] space-y-6">
         <div>
           <h2 class="text-xl sm:text-2xl font-extrabold text-white">Рассчитать стоимость логистики для ООО</h2>
           <p class="text-xs sm:text-sm text-slate-400 mt-1">Официальные спецтарифы «Посылка» и сборных грузов LTL со скидкой до 50%</p>
@@ -278,44 +278,44 @@
       </div>
 
       <!-- FAQ Блок -->
-      <div class="bg-market-card rounded-3xl p-6 sm:p-8 border border-market-border space-y-4">
+      <div class="bg-[#0B131D] rounded-3xl p-6 sm:p-8 border border-white/[0.08] space-y-4">
         <h2 class="text-xl sm:text-2xl font-extrabold text-white">Вопросы юридических лиц о договоре СДЭК</h2>
         
         <div class="space-y-3 text-xs sm:text-sm">
-          <details class="group bg-market-input border border-market-border rounded-2xl p-4 cursor-pointer">
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
             <summary class="font-bold text-white flex justify-between items-center list-none select-none">
               <span>Предоставляются ли закрывающие документы с выделенным НДС 22%?</span>
-              <span class="text-cdek group-open:rotate-180 transition-transform">▾</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
             </summary>
             <p class="text-slate-300 mt-2 leading-relaxed">
               Да. Для организаций на общей системе налогообложения (ОСНО) оформляется договор с выделением НДС 22%. Ежемесячные УПД и акты сверки передаются через системы ЭДО (Диадок, СБИС) для беспрепятственного налогового вычета.
             </p>
           </details>
 
-          <details class="group bg-market-input border border-market-border rounded-2xl p-4 cursor-pointer">
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
             <summary class="font-bold text-white flex justify-between items-center list-none select-none">
               <span>Как организованы поставки FBO на распределительные склады маркетплейсов?</span>
-              <span class="text-cdek group-open:rotate-180 transition-transform">▾</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
             </summary>
             <p class="text-slate-300 mt-2 leading-relaxed">
               СДЭК принимает партии коробок или сформированные европаллеты, маркирует грузовые места в соответствии с регламентами Wildberries, Ozon и Яндекс Маркета и доставляет груз на склад маркетплейса точно в забронированный тайм-слот.
             </p>
           </details>
 
-          <details class="group bg-market-input border border-market-border rounded-2xl p-4 cursor-pointer">
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
             <summary class="font-bold text-white flex justify-between items-center list-none select-none">
               <span>Как работает постоплатная система расчетов для ООО?</span>
-              <span class="text-cdek group-open:rotate-180 transition-transform">▾</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
             </summary>
             <p class="text-slate-300 mt-2 leading-relaxed">
               Организация отправляет грузы и заказы в течение месяца без внесения предоплаты. По итогам расчетного периода формируется сводный счет на оплату логистических услуг с согласованной отсрочкой платежа.
             </p>
           </details>
 
-          <details class="group bg-market-input border border-market-border rounded-2xl p-4 cursor-pointer">
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
             <summary class="font-bold text-white flex justify-between items-center list-none select-none">
               <span>Как быстро подключается API для выгрузки заказов из 1С и МойСклад?</span>
-              <span class="text-cdek group-open:rotate-180 transition-transform">▾</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
             </summary>
             <p class="text-slate-300 mt-2 leading-relaxed">
               Боевые ключи API v2 (Account и Secure Password) генерируются сразу после подписания договора. Готовые модули для 1С:Предприятие и МойСклад настраиваются за 15-30 минут.

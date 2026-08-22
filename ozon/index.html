@@ -134,15 +134,20 @@
         extend: {
           colors: {
             cdek: '#00b341',
-            dark: { 900: '#072624', 950: '#041615' }
+            neon: '#22E58B',
+            obsidian: '#060B11',
+            card: '#0B131D'
           }
+        }
+      }
+    }
         }
       }
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/@cdek-it/widget@3" async></script>
 </head>
-<body class="bg-[#072624] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#3b82f6] selection:text-white pb-16 md:pb-0">
+<body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#3b82f6] selection:text-white pb-16 md:pb-0">
 
   <!--#include virtual="/src/components/header.html" -->
 
@@ -157,7 +162,7 @@
         
         <!-- Хлебные крошки -->
         <nav class="text-xs sm:text-sm text-slate-400 mb-6 flex flex-wrap items-center gap-1.5">
-          <a href="/" class="hover:text-cdek transition-colors">Главная</a> <span>/</span>
+          <a href="/" class="hover:text-[#22E58B] transition-colors">Главная</a> <span>/</span>
           <span class="text-white">СДЭК для Ozon</span>
         </nav>
 
@@ -180,7 +185,7 @@
               Работайте по моделям <b class="text-white">FBS и realFBS</b> со спецтарифом от 136.5 ₽. Без привязки к распределительным центрам Ozon и очередей при сдаче груза в 4 000+ ПВЗ.
             </p>
 
-            <div class="grid grid-cols-3 gap-4 pt-6 border-y border-emerald-950 max-w-2xl w-full">
+            <div class="grid grid-cols-3 gap-4 pt-6 border-y border-white/[0.08] max-w-2xl w-full">
               <div>
                 <div class="text-2xl sm:text-3xl font-bold text-[#3b82f6] mb-1">от 136.5 ₽</div>
                 <div class="text-xs text-slate-400">Тариф DBS до 1 кг</div>
@@ -190,7 +195,7 @@
                 <div class="text-xs text-slate-400">Подключение договора</div>
               </div>
               <div>
-                <div class="text-2xl sm:text-3xl font-bold text-cdek mb-1">до 50%</div>
+                <div class="text-2xl sm:text-3xl font-bold text-[#22E58B] mb-1">до 50%</div>
                 <div class="text-xs text-slate-400">Скидка B2B</div>
               </div>
             </div>
@@ -214,19 +219,19 @@
       </h2>
       
       <div class="grid md:grid-cols-3 gap-6 mb-16">
-        <div class="bg-[#072624]/80 border border-emerald-950 hover:border-[#3b82f6]/50 p-8 rounded-2xl transition-all backdrop-blur-sm shadow-lg">
+        <div class="bg-[#060B11]/80 border border-white/[0.08] hover:border-[#3b82f6]/50 p-8 rounded-2xl transition-all backdrop-blur-sm shadow-lg">
           <div class="text-[#3b82f6] mb-5 text-3xl">🚀</div>
           <h3 class="text-xl font-bold text-white mb-3">Скорость отгрузки</h3>
           <p class="text-slate-400 leading-relaxed text-sm">Сдавайте заказы в ближайший ПВЗ рядом с офисом или складом без тайм-слотов и штрафов за просрочку.</p>
         </div>
 
-        <div class="bg-[#072624]/80 border border-emerald-950 hover:border-[#3b82f6]/50 p-8 rounded-2xl transition-all backdrop-blur-sm shadow-lg">
+        <div class="bg-[#060B11]/80 border border-white/[0.08] hover:border-[#3b82f6]/50 p-8 rounded-2xl transition-all backdrop-blur-sm shadow-lg">
           <div class="text-[#3b82f6] mb-5 text-3xl">⚙️</div>
           <h3 class="text-xl font-bold text-white mb-3">Автоматизация</h3>
           <p class="text-slate-400 leading-relaxed text-sm">Полная интеграция с личным кабинетом Ozon: автоматическая генерация трек-номеров и смена статусов заказов.</p>
         </div>
 
-        <div class="bg-[#072624]/80 border border-emerald-950 hover:border-[#3b82f6]/50 p-8 rounded-2xl transition-all backdrop-blur-sm shadow-lg">
+        <div class="bg-[#060B11]/80 border border-white/[0.08] hover:border-[#3b82f6]/50 p-8 rounded-2xl transition-all backdrop-blur-sm shadow-lg">
           <div class="text-[#3b82f6] mb-5 text-3xl">💰</div>
           <h3 class="text-xl font-bold text-white mb-3">Спецтариф DBS от 136.5 ₽</h3>
           <p class="text-slate-400 leading-relaxed text-sm">Прямой доступ к оптовым тарифам с экономией до 50% на каждой посылке для юридических лиц, ИП и самозанятых.</p>
