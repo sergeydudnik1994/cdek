@@ -33,8 +33,6 @@
 
           <!-- Фирменные иконки мессенджеров -->
           <div class="flex items-center gap-2.5 pt-1">
-            
-            <!-- Telegram -->
             <a 
               href="https://t.me/cdek_marketplace" 
               target="_blank" 
@@ -49,7 +47,6 @@
               </svg>
             </a>
 
-            <!-- WhatsApp -->
             <a 
               href="https://wa.me/79933221520" 
               target="_blank" 
@@ -63,7 +60,6 @@
               </svg>
             </a>
 
-            <!-- MAX -->
             <a 
               href="https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo" 
               target="_blank" 
@@ -74,15 +70,14 @@
             >
               <svg class="w-5 h-5 shrink-0" viewBox="0 0 24 24">
                 <defs>
-                  <linearGradient id="maxRingGradFooterMarketTech" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <linearGradient id="maxRingGradFooterFixed" x1="0%" y1="0%" x2="100%" y2="100%">
                     <stop offset="0%" stop-color="#00D2FF" />
                     <stop offset="100%" stop-color="#9D4EDD" />
                   </linearGradient>
                 </defs>
-                <path fill="url(#maxRingGradFooterMarketTech)" d="M12 2C6.477 2 2 6.477 2 12c0 2.45.82 4.71 2.22 6.53L2.5 21.5l3.22-1.3A9.92 9.92 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 4a6 6 0 1 1 0 12 6 6 0 0 1 0-12z"/>
+                <path fill="url(#maxRingGradFooterFixed)" d="M12 2C6.477 2 2 6.477 2 12c0 2.45.82 4.71 2.22 6.53L2.5 21.5l3.22-1.3A9.92 9.92 0 0 0 12 22c5.523 0 10-4.477 10-10S17.523 2 12 2zm0 4a6 6 0 1 1 0 12 6 6 0 0 1 0-12z"/>
               </svg>
             </a>
-
           </div>
         </div>
       </div>
@@ -143,9 +138,10 @@
           </li>
         </ul>
 
+        <!-- Кнопка отображается ТОЛЬКО на десктопе (hidden md:inline-flex) -->
         <a 
           href="/dogovor/#contract-form-container" 
-          class="inline-flex items-center justify-center w-full py-3.5 bg-gradient-to-r from-[#22E58B] to-[#00b341] text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-[0_0_20px_rgba(34,229,139,0.25)] hover:brightness-110 transition transform active:scale-95 text-center cursor-pointer"
+          class="hidden md:inline-flex items-center justify-center w-full py-3.5 bg-gradient-to-r from-[#22E58B] to-[#00b341] text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-[0_0_20px_rgba(34,229,139,0.25)] hover:brightness-110 transition transform active:scale-95 text-center cursor-pointer"
         >
           Заключить договор онлайн
         </a>
