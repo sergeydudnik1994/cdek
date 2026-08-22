@@ -83,10 +83,25 @@
         </div>
       </div>
 
-      <!-- 4. Отраслевые решения -->
-      <a href="/solutions/" class="hover:text-[#00b341] transition-colors">
-        Решения
-      </a>
+      <!-- 4. Отраслевые решения (Выпадающий список) -->
+      <div class="relative group py-2">
+        <a href="/solutions/" class="hover:text-[#00b341] transition-colors flex items-center gap-1">
+          Решения
+          <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+        </a>
+        <div class="absolute left-0 top-full hidden group-hover:block w-64 bg-white rounded-2xl shadow-xl border border-slate-100 p-2 z-50">
+          <div class="text-[10px] font-bold uppercase tracking-wider text-slate-400 px-3 py-1">Популярные ниши</div>
+          <a href="/solutions/odezhda-i-obuv/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">Одежда и обувь (с примеркой)</a>
+          <a href="/solutions/elektronika-i-tehnika/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">Электроника и техника</a>
+          <a href="/solutions/mebel-i-interer/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">Мебель и товары для дома</a>
+          <a href="/solutions/avtotovary-i-zapchasti/" class="block px-3 py-2 text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#00b341] rounded-xl transition">Автотовары и запчасти</a>
+          
+          <div class="border-t border-slate-100 my-1 pt-1"></div>
+          <a href="/solutions/" class="block px-3 py-1.5 text-xs font-bold text-[#00b341] hover:bg-emerald-50 rounded-xl transition">
+            Каталог всех 32 ниш →
+          </a>
+        </div>
+      </div>
 
       <!-- 5. Трекинг с лупой -->
       <a href="/tracking/" class="flex items-center gap-1.5 hover:text-[#00b341] transition-colors">
