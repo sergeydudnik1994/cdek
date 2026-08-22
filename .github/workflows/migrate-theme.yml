@@ -1,10 +1,10 @@
-name: Migrate Theme to Sber AI / GigaChat
+name: Pure Responsive Adaptation
 
 on:
   workflow_dispatch:
 
 jobs:
-  migrate-theme:
+  adapt-responsive:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -20,7 +20,7 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Run Global Theme Migration
+      - name: Run Clean Mobile Adaptation
         run: |
           python3 - << 'EOF'
           import os
@@ -28,127 +28,44 @@ jobs:
 
           EXCLUDE_DIRS = {'.git', 'node_modules', '.github', '.astro'}
 
-          REPLACEMENTS = {
-              # Мета-теги
-              'content="#072624"': 'content="#060B11"',
-              'content="#08221F"': 'content="#060B11"',
-              'content="#031b14"': 'content="#060B11"',
-              'content="#041615"': 'content="#060B11"',
-              'content="#ffffff"': 'content="#060B11"',
-              'content="#00b341"': 'content="#060B11"',
+          def clean_adapt(content):
+              # 1. Удаляем любые следы mobile-cta.html, если они случайно просочились
+              content = re.sub(r'\s*<!--#include virtual="/src/components/mobile-cta\.html"\s*-->', '', content)
 
-              # Базовые классы body и светлых подложек
-              '<body class="bg-white': '<body class="bg-[#060B11] text-slate-100',
-              '<body class="bg-slate-50': '<body class="bg-[#060B11] text-slate-100',
-              'class="bg-white ': 'class="bg-[#060B11] text-slate-100 ',
-              'class="bg-white"': 'class="bg-[#060B11] text-slate-100"',
-              'bg-[#072624]': 'bg-[#060B11]',
-              'bg-[#041615]': 'bg-[#060B11]',
-              'bg-[#08221F]': 'bg-[#060B11]',
-              'bg-[#031b14]': 'bg-[#060B11]',
-              'bg-market-bg': 'bg-[#060B11]',
-              'bg-market-input': 'bg-[#060B11]',
-              'bg-slate-50': 'bg-white/[0.02]',
-              'bg-slate-100': 'bg-white/[0.04]',
+              # 2. Обеспечиваем чистый body без лишних паддингов снизу и с защитой от вылета по ширине
+              if '<body' in content:
+                  content = re.sub(r'<body class="([^"]*)"', lambda m: '<body class="' + ' '.join(set((m.group(1) + ' overflow-x-hidden break-words').split())) + '"', content)
+                  # Убираем ненужные мобильные отступы под плашку (pb-16, pb-20)
+                  content = content.replace('pb-16 md:pb-0', '').replace('pb-20 md:pb-0', '')
 
-              # Карточки и блоки
-              'bg-[#0b3330]': 'bg-[#0B131D]',
-              'bg-[#07261e]': 'bg-[#0B131D]',
-              'bg-[#062A30]': 'bg-[#0B131D]',
-              'bg-[#0A3D36]': 'bg-[#0B131D]',
-              'bg-market-card': 'bg-[#0B131D]',
-              'bg-[#0b3330]/40': 'bg-[#0B131D]/80',
-              'bg-[#0b3330]/50': 'bg-[#0B131D]/80',
-              'bg-[#0b3330]/60': 'bg-[#0B131D]/80',
-              'bg-[#041615]/90': 'bg-[#0B131D]/90',
-              'bg-[#0e3330]': 'bg-white/[0.04]',
+              # 3. Адаптируем крупные шрифты и отступы под экраны 375-430px
+              content = content.replace('text-3xl sm:text-5xl lg:text-[3.5rem]', 'text-2xl sm:text-4xl lg:text-5xl')
+              content = content.replace('text-4xl sm:text-5xl', 'text-2xl sm:text-4xl')
+              content = content.replace('p-8 sm:p-10', 'p-5 sm:p-8')
+              content = content.replace('py-16 sm:py-20', 'py-10 sm:py-16')
 
-              # Исправление цвета текста со светлых тем на темную
-              'text-slate-900': 'text-white',
-              'text-slate-800': 'text-slate-100',
-              'text-slate-700': 'text-slate-300',
-              'text-slate-600': 'text-slate-400',
-              'text-gray-900': 'text-white',
-              'text-gray-800': 'text-slate-100',
-              'text-gray-700': 'text-slate-300',
+              # 4. Проверяем сетки: переводим жесткие grid-cols-2 в адаптивные grid-cols-1 sm:grid-cols-2
+              content = content.replace('grid grid-cols-2 gap-4', 'grid grid-cols-1 sm:grid-cols-2 gap-4')
+              content = content.replace('grid grid-cols-2 gap-6', 'grid grid-cols-1 sm:grid-cols-2 gap-6')
 
-              # Границы блоков
-              'border-slate-200': 'border-white/[0.08]',
-              'border-slate-100': 'border-white/[0.06]',
-              'border-gray-200': 'border-white/[0.08]',
-              'border-emerald-800': 'border-white/[0.08]',
-              'border-emerald-900': 'border-white/[0.08]',
-              'border-emerald-950': 'border-white/[0.08]',
-              'border-[#133E38]': 'border-white/[0.08]',
-              'border-market-border': 'border-white/[0.08]',
-              'border-emerald-800/60': 'border-white/[0.08]',
-              'border-emerald-800/80': 'border-white/[0.08]',
-              'border-emerald-800/50': 'border-white/[0.08]',
-              'border-emerald-950/80': 'border-white/[0.06]',
-              'border-emerald-900/60': 'border-white/[0.08]',
-              'border-emerald-900/80': 'border-white/[0.08]',
-              'border-emerald-500/20': 'border-white/[0.08]',
-              'border-emerald-500/30': 'border-white/[0.08]',
-
-              # Акценты
-              'text-[#00b341]': 'text-[#22E58B]',
-              'text-cdek': 'text-[#22E58B]',
-              'border-[#00b341]': 'border-[#22E58B]',
-              'border-cdek': 'border-[#22E58B]',
-              'bg-[#00b341]/15': 'bg-[#22E58B]/15',
-              'bg-[#00b341]/20': 'bg-[#22E58B]/15',
-              'border-[#00b341]/30': 'border-[#22E58B]/30',
-              'border-cdek/30': 'border-[#22E58B]/30',
-              'selection:bg-[#00b341]': 'selection:bg-[#22E58B] selection:text-slate-950',
-              'selection:bg-[#1AB248]': 'selection:bg-[#22E58B] selection:text-slate-950',
-              'selection:bg-cdek': 'selection:bg-[#22E58B] selection:text-slate-950',
-          }
-
-          def update_tailwind_config(content):
-              sber_config = """tailwind.config = {
-                theme: {
-                  extend: {
-                    colors: {
-                      cdek: '#00b341',
-                      neon: '#22E58B',
-                      obsidian: '#060B11',
-                      card: '#0B131D'
-                    }
-                  }
-                }
-              }"""
-              pattern = r'tailwind\.config\s*=\s*\{[\s\S]*?theme[\s\S]*?\}\s*\}'
-              if re.search(pattern, content):
-                  return re.sub(pattern, sber_config, content)
-              return content
-
-          def fix_body_tag(content):
-              # Гарантируем, что у тега body всегда есть правильный темный класс
-              if '<body' in content and 'bg-[#060B11]' not in content:
-                  content = re.sub(r'<body\s+class="([^"]*)"', r'<body class="\1 bg-[#060B11] text-slate-100"', content)
-                  content = re.sub(r'<body>', r'<body class="bg-[#060B11] text-slate-100">', content)
               return content
 
           updated_count = 0
           for root, dirs, files in os.walk('.'):
               dirs[:] = [d for d in dirs if d not in EXCLUDE_DIRS]
               for file in files:
-                  if file.endswith('.html') or file.endswith('.php') or file.endswith('.astro'):
+                  if file.endswith('.html'):
                       path = os.path.join(root, file)
                       with open(path, 'r', encoding='utf-8') as f:
                           txt = f.read()
-                      new_txt = txt
-                      for k, v in REPLACEMENTS.items():
-                          new_txt = new_txt.replace(k, v)
-                      new_txt = update_tailwind_config(new_txt)
-                      new_txt = fix_body_tag(new_txt)
+                      new_txt = clean_adapt(txt)
                       if new_txt != txt:
                           with open(path, 'w', encoding='utf-8') as f:
                               f.write(new_txt)
                           updated_count += 1
-                          print(f"Updated: {path}")
+                          print(f"Clean Adapted: {path}")
 
-          print(f"Total files updated: {updated_count}")
+          print(f"Total pages updated: {updated_count}")
           EOF
 
       - name: Commit and Push Changes
@@ -159,7 +76,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "No changes detected."
           else
-            git commit -m "Style: Полный перевод светлых страниц (services, solutions) на темный UI Сбер AI"
+            git commit -m "Responsive: Чистая мобильная адаптация сеток и отступов без плавающих плашек"
             git pull --rebase origin main
             git push origin main
           fi
