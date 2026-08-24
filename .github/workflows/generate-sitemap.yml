@@ -1,0 +1,113 @@
+name: Generate Clean Sitemap
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  generate-sitemap:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Clean Old Sitemaps & Generate New One
+        run: |
+          python3 - << 'EOF'
+          import os
+          import glob
+          from datetime import datetime
+
+          BASE_URL = 'https://cdek-marketplace.ru'
+          
+          # Папки, которые не должны попасть в карту сайта
+          EXCLUDE_DIRS = {'.git', '.github', 'node_modules', 'components', 'src', 'templates'}
+
+          # 1. Удаляем весь старый мусор (старые карты сайта)
+          for old_sitemap in glob.glob('sitemap*.xml'):
+              try:
+                  os.remove(old_sitemap)
+                  print(f"Удален старый файл: {old_sitemap}")
+              except Exception as e:
+                  print(f"Не удалось удалить {old_sitemap}: {e}")
+
+          # 2. Сканируем актуальную структуру сайта
+          urls = []
+          for root, dirs, files in os.walk('.'):
+              # Исключаем системные и скрытые папки
+              dirs[:] = [d for d in dirs if d not in EXCLUDE_DIRS and not d.startswith('.')]
+              
+              for file in files:
+                  if file == 'index.html':
+                      # Получаем относительный путь
+                      path = os.path.relpath(root, '.')
+                      
+                      if path == '.':
+                          url_path = ''
+                      else:
+                          # Приводим слэши к веб-формату и добавляем закрывающий слэш
+                          url_path = path.replace('\\', '/') + '/'
+                          
+                      full_url = f"{BASE_URL}/{url_path}"
+                      urls.append(full_url)
+
+          # Сортируем для красоты и порядка
+          urls = sorted(list(set(urls)))
+
+          # 3. Формируем XML
+          xml = ['<?xml version="1.0" encoding="UTF-8"?>']
+          xml.append('<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">')
+          
+          date_str = datetime.now().strftime('%Y-%m-%d')
+          
+          for url in urls:
+              xml.append('  <url>')
+              xml.append(f'    <loc>{url}</loc>')
+              xml.append(f'    <lastmod>{date_str}</lastmod>')
+              
+              # Расставляем приоритеты
+              if url == f"{BASE_URL}/":
+                  xml.append('    <priority>1.0</priority>')
+              elif '/geo/' in url:
+                  xml.append('    <priority>0.6</priority>') # Городам даем средний приоритет
+              else:
+                  xml.append('    <priority>0.8</priority>') # Разделам, услугам и блогу высокий
+                  
+              xml.append('  </url>')
+              
+          xml.append('</urlset>')
+
+          # 4. Сохраняем единый чистый sitemap.xml
+          with open('sitemap.xml', 'w', encoding='utf-8') as f:
+              f.write('\n'.join(xml))
+              
+          print(f"Новый sitemap.xml успешно сгенерирован! Найдено страниц: {len(urls)}")
+          EOF
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Добавляем все изменения (включая удаления старых xml и добавление нового)
+          git add -A
+          
+          if git diff --staged --quiet; then
+            echo "Изменений в sitemap.xml нет."
+          else
+            git commit -m "SEO: Очистка старых карт сайта и генерация единого чистого sitemap.xml"
+            git pull --rebase origin main
+            git push origin main
+          fi
