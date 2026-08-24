@@ -1,0 +1,72 @@
+name: Cleanup Geo Service Folders
+
+on:
+  workflow_dispatch:
+
+jobs:
+  cleanup-geo:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Run Cleanup Script
+        run: |
+          python3 - << 'EOF'
+          import os
+          import shutil
+
+          geo_dir = './geo'
+          
+          if not os.path.exists(geo_dir):
+              print("Папка ./geo не найдена!")
+              exit(0)
+
+          deleted_folders_count = 0
+
+          # Проходим по всем папкам городов внутри /geo/
+          for city_name in os.listdir(geo_dir):
+              city_path = os.path.join(geo_dir, city_name)
+              
+              # Проверяем, что это действительно папка города (например, /geo/abakan)
+              if os.path.isdir(city_path):
+                  
+                  # Проходим по содержимому папки города
+                  for item_name in os.listdir(city_path):
+                      item_path = os.path.join(city_path, item_name)
+                      
+                      # Если внутри лежит ПАПКА (например, /geo/abakan/avito) - удаляем её со всем содержимым
+                      # Файлы (например, index.html) этот скрипт проигнорирует
+                      if os.path.isdir(item_path):
+                          shutil.rmtree(item_path)
+                          deleted_folders_count += 1
+                          print(f"Удалена мусорная папка: {item_path}")
+
+          print(f"\n✨ Очистка завершена! Всего удалено папок услуг: {deleted_folders_count}")
+          EOF
+
+      - name: Commit and Push Changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Индексируем удаления
+          git add -A ./geo/
+          
+          if git diff --staged --quiet; then
+            echo "Нет изменений. Папки уже были удалены."
+          else
+            git commit -m "SEO: Удаление мусорных дорвейных папок услуг из раздела geo"
+            git pull --rebase origin main
+            git push origin main
+          fi
