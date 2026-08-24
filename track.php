@@ -1,5 +1,8 @@
 <?php
 header('Content-Type: application/json; charset=utf-8');
+header('Cache-Control: no-store, no-cache, must-revalidate, max-age=0');
+header('Pragma: no-cache');
+header('Expires: 0');
 
 $user_login = 'apiuser-cdek-ecommerce';
 $raw_pass   = '60910f5286789ba520baad4a8137f6d3';
@@ -8,6 +11,7 @@ $auth_url    = 'https://auth.api.cdek.ru/web/simpleauth/authorize';
 $tracing_url = 'https://tracing.api.cdek.ru/web/v2/order/find';
 
 $track_number = isset($_GET['cdek_number']) ? trim($_GET['cdek_number']) : '';
+$is_debug     = isset($_GET['debug']) && $_GET['debug'] == '1';
 
 if (empty($track_number)) {
     echo json_encode(['success' => false, 'message' => 'Введите номер накладной или заказа'], JSON_UNESCAPED_UNICODE);
@@ -98,7 +102,12 @@ if ($http_code === 401 || $http_code === 403) {
     }
 }
 
-// 3. Извлечение и форматирование данных
+if ($is_debug) {
+    echo json_encode(['http_code' => $http_code, 'raw_response' => $response], JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT);
+    exit;
+}
+
+// 3. Функции точного извлечения
 function extractCity($obj) {
     if (empty($obj)) return null;
     if (is_string($obj)) return trim($obj);
@@ -137,81 +146,119 @@ function extractCity($obj) {
     return null;
 }
 
-function extractPvzAddress($resData) {
-    if (!empty($resData['warehouse']) && is_array($resData['warehouse'])) {
-        foreach (['address', 'formatted', 'location', 'name'] as $k) {
-            if (!empty($resData['warehouse'][$k]) && is_string($resData['warehouse'][$k])) {
-                return trim($resData['warehouse'][$k]);
-            }
+function searchAddressDeep($data) {
+    if (empty($data)) return null;
+
+    $pattern = '/(?:\b(?:ул|улица|просп|проспект|проезд|пер|переулок|шоссе|ш|наб|набережная|тракт|бульвар|б-р|пл|площадь|кв-л|мкр|микрорайон)\b[\.\s]|(?:д\.|дом)\s*\d+)/ui';
+
+    if (is_string($data)) {
+        $val = trim($data);
+        if (mb_strlen($val) > 6 && preg_match($pattern, $val)) {
+            return $val;
         }
+        return null;
     }
-    if (!empty($resData['deliveryDetail']) && is_array($resData['deliveryDetail'])) {
-        $dd = $resData['deliveryDetail'];
-        if (!empty($dd['deliveryPoint']) && is_array($dd['deliveryPoint'])) {
-            foreach (['address', 'formatted', 'name'] as $k) {
-                if (!empty($dd['deliveryPoint'][$k]) && is_string($dd['deliveryPoint'][$k])) {
-                    return trim($dd['deliveryPoint'][$k]);
-                }
+
+    if (is_array($data)) {
+        if (!empty($data['street']) || (!empty($data['city']) && !empty($data['house']))) {
+            $parts = [];
+            if (!empty($data['city']) && is_string($data['city'])) $parts[] = 'г. ' . trim($data['city']);
+            if (!empty($data['street']) && is_string($data['street'])) $parts[] = 'ул. ' . trim($data['street']);
+            if (!empty($data['house']) && is_string($data['house'])) $parts[] = 'д. ' . trim($data['house']);
+            if (!empty($data['flat']) && is_string($data['flat'])) $parts[] = 'оф./кв. ' . trim($data['flat']);
+            if (count($parts) >= 2) return implode(', ', $parts);
+        }
+
+        foreach (['fullAddress', 'formattedAddress', 'address', 'rawAddress', 'name', 'title', 'warehouse', 'office'] as $key) {
+            if (!empty($data[$key])) {
+                $res = searchAddressDeep($data[$key]);
+                if ($res) return $res;
             }
         }
-        if (!empty($dd['address'])) {
-            if (is_string($dd['address'])) return trim($dd['address']);
-            if (is_array($dd['address'])) {
-                foreach (['formatted', 'line', 'address'] as $k) {
-                    if (!empty($dd['address'][$k]) && is_string($dd['address'][$k])) {
-                        return trim($dd['address'][$k]);
-                    }
-                }
+
+        foreach ($data as $k => $v) {
+            $lower = strtolower((string)$k);
+            if (in_array($lower, ['sender', 'fromlocation', 'from_location', 'senderlocation'], true)) {
+                continue;
             }
-        }
-    }
-    if (!empty($resData['order']) && is_array($resData['order'])) {
-        $ord = $resData['order'];
-        if (!empty($ord['deliveryPoint']) && is_array($ord['deliveryPoint'])) {
-            foreach (['address', 'formatted', 'name'] as $k) {
-                if (!empty($ord['deliveryPoint'][$k]) && is_string($ord['deliveryPoint'][$k])) {
-                    return trim($ord['deliveryPoint'][$k]);
-                }
-            }
-        }
-        if (!empty($ord['recipient']['address'])) {
-            $addr = $ord['recipient']['address'];
-            if (is_string($addr)) return trim($addr);
-            if (is_array($addr)) {
-                foreach (['formatted', 'line', 'address'] as $k) {
-                    if (!empty($addr[$k]) && is_string($addr[$k])) {
-                        return trim($addr[$k]);
-                    }
-                }
+            if (is_array($v)) {
+                $res = searchAddressDeep($v);
+                if ($res) return $res;
             }
         }
     }
     return null;
 }
 
-function extractRecipientName($resData) {
-    $raw = null;
-    if (!empty($resData['order']['recipient'])) {
-        $rec = $resData['order']['recipient'];
-        if (is_string($rec)) $raw = $rec;
-        elseif (is_array($rec)) {
-            foreach (['name', 'fio', 'receiver'] as $k) {
-                if (!empty($rec[$k]) && is_string($rec[$k])) { $raw = $rec[$k]; break; }
-            }
+function extractPvzAddressUniversal($resData, $cityTo = '') {
+    if (empty($resData) || !is_array($resData)) return null;
+
+    if (!empty($resData['deliveryDetail'])) {
+        $addr = searchAddressDeep($resData['deliveryDetail']);
+        if ($addr) return $addr;
+    }
+
+    if (!empty($resData['statuses']) && is_array($resData['statuses'])) {
+        for ($i = count($resData['statuses']) - 1; $i >= 0; $i--) {
+            $st = $resData['statuses'][$i];
+            $addr = searchAddressDeep($st);
+            if ($addr) return $addr;
         }
     }
-    if (!$raw && !empty($resData['deliveryDetail'])) {
-        $dd = $resData['deliveryDetail'];
-        foreach (['recipientName', 'fio', 'recipient'] as $k) {
-            if (!empty($dd[$k])) {
-                if (is_string($dd[$k])) { $raw = $dd[$k]; break; }
-                if (is_array($dd[$k]) && !empty($dd[$k]['name']) && is_string($dd[$k]['name'])) { $raw = $dd[$k]['name']; break; }
-            }
+
+    foreach (['warehouse', 'toWarehouse', 'order', 'toLocation'] as $sec) {
+        if (!empty($resData[$sec])) {
+            $addr = searchAddressDeep($resData[$sec]);
+            if ($addr) return $addr;
         }
     }
-    return $raw ? trim($raw) : null;
+
+    $pvzCode = null;
+    if (!empty($resData['deliveryDetail']['deliveryPoint'])) {
+        $dp = $resData['deliveryDetail']['deliveryPoint'];
+        $pvzCode = is_string($dp) ? $dp : ($dp['code'] ?? null);
+    }
+    if (!$pvzCode && !empty($resData['order']['deliveryPoint'])) {
+        $dp = $resData['order']['deliveryPoint'];
+        $pvzCode = is_string($dp) ? $dp : ($dp['code'] ?? null);
+    }
+
+    if ($pvzCode && is_string($pvzCode) && preg_match('/^[A-Za-z0-9_-]{3,15}$/', trim($pvzCode))) {
+        return "Пункт выдачи " . trim($pvzCode) . ($cityTo ? " ({$cityTo})" : "");
+    }
+
+    return null;
 }
 
+function extractRecipientName($resData) {
+    if (empty($resData) || !is_array($resData)) return null;
+
+    $candidates = [
+        $resData['order']['recipient'] ?? null,
+        $resData['deliveryDetail']['recipientName'] ?? null,
+        $resData['deliveryDetail']['recipient'] ?? null,
+        $resData['recipient'] ?? null,
+        $resData['client'] ?? null
+    ];
+
+    foreach ($candidates as $cand) {
+        if (empty($cand)) continue;
+        if (is_string($cand) && mb_strlen(trim($cand)) > 2) {
+            return trim($cand);
+        }
+        if (is_array($cand)) {
+            foreach (['name', 'fio', 'receiver', 'recipientName', 'clientName'] as $k) {
+                if (!empty($cand[$k]) && is_string($cand[$k]) && mb_strlen(trim($cand[$k])) > 2) {
+                    return trim($cand[$k]);
+                }
+            }
+        }
+    }
+
+    return null;
+}
+
+// 4. Формирование ответа
 if ($http_code === 200 && !empty($response['result'])) {
     $resData = $response['result'];
     $order   = $resData['order'] ?? [];
@@ -236,26 +283,24 @@ if ($http_code === 200 && !empty($response['result'])) {
     }
     $city_to = $city_to ?: 'Пункт назначения';
 
-    $pvz_address = extractPvzAddress($resData) ?: 'Пункт выдачи СДЭК';
+    // Точный адрес ПВЗ
+    $pvz_address = extractPvzAddressUniversal($resData, $city_to) ?: 'Пункт выдачи СДЭК';
 
+    // Получатель (152-ФЗ)
     $raw_recipient = extractRecipientName($resData);
     $recipient_name = 'Данные защищены 152-ФЗ';
 
     if (!empty($raw_recipient)) {
-        if (preg_match('/^[А-ЯЁA-Z]\.[А-ЯЁA-Z]\.[А-ЯЁA-Z]\.?$/u', str_replace(' ', '', $raw_recipient))) {
-            $recipient_name = $raw_recipient;
+        $parts = preg_split('/\s+/u', trim($raw_recipient));
+        if (count($parts) >= 3) {
+            $recipient_name = $parts[0] . ' ' . 
+                              mb_substr($parts[1], 0, 1, 'UTF-8') . '.' . 
+                              mb_substr($parts[2], 0, 1, 'UTF-8') . '.';
+        } elseif (count($parts) === 2) {
+            $recipient_name = $parts[0] . ' ' . 
+                              mb_substr($parts[1], 0, 1, 'UTF-8') . '.';
         } else {
-            $parts = preg_split('/\s+/u', trim($raw_recipient));
-            if (count($parts) >= 3) {
-                $recipient_name = $parts[0] . ' ' . 
-                                  mb_substr($parts[1], 0, 1, 'UTF-8') . '.' . 
-                                  mb_substr($parts[2], 0, 1, 'UTF-8') . '.';
-            } elseif (count($parts) === 2) {
-                $recipient_name = $parts[0] . ' ' . 
-                                  mb_substr($parts[1], 0, 1, 'UTF-8') . '.';
-            } else {
-                $recipient_name = $raw_recipient;
-            }
+            $recipient_name = $raw_recipient;
         }
     }
 
