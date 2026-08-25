@@ -29,63 +29,8 @@
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="apple-touch-icon" href="/favicon.png" />
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="СДЭК Маркетплейсы" />
-  <meta property="og:locale" content="ru_RU" />
-  <meta property="og:title" content="СДЭК DBS для маркетплейсов: спецтариф на доставку от 136.5 ₽" />
-  <meta property="og:description" content="Официальная доставка силами продавца по схеме DBS со СДЭК. Спецтариф от 136.5 ₽." />
-  <meta property="og:url" content="https://cdek-marketplace.ru/services/dbs/" />
-
   <!-- Schema.org Microdata -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-marketplace.ru/" },
-          { "@type": "ListItem", "position": 2, "name": "Услуги", "item": "https://cdek-marketplace.ru/services/" },
-          { "@type": "ListItem", "position": 3, "name": "Доставка DBS", "item": "https://cdek-marketplace.ru/services/dbs/" }
-        ]
-      },
-      {
-        "@type": "Service",
-        "@id": "https://cdek-marketplace.ru/services/dbs/#service",
-        "name": "Доставка по схеме DBS (Delivery by Seller) СДЭК",
-        "provider": {
-          "@type": "Organization",
-          "name": "СДЭК для Маркетплейсов",
-          "url": "https://cdek-marketplace.ru/"
-        },
-        "description": "Специальный B2B тариф доставки товаров напрямую покупателям маркетплейсов от 136.5 ₽."
-      },
-      {
-        "@type": "FAQPage",
-        "@id": "https://cdek-marketplace.ru/services/dbs/#faq",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Что такое схема DBS (Delivery by Seller)?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "DBS (Delivery by Seller, «Витрина» или RealFBS) — схема торговли, при которой маркетплейс выступает только интернет-витриной для приема заказов, а хранение, упаковку и непосредственную доставку покупателю осуществляет продавец через партнерскую службу СДЭК."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Какова стоимость спецтарифа СДЭК DBS?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Для селлеров маркетплейсов действует специальная фиксированная тарификация DBS — от 136.5 ₽ за доставку отправления в пункт выдачи заказов."
-            }
-          }
-        ]
-      }
-    ]
-  }
-  </script>
+  
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -97,6 +42,151 @@
       }
     };
   </script>
+  <!-- Open Graph & Social Cards -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="СДЭК Маркетплейсы" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:title" content="СДЭК DBS для маркетплейсов: спецтариф на доставку от 136.5 ₽" />
+  <meta property="og:description" content="Официальная доставка по схеме DBS (RealFBS / Витрина) со СДЭК для Wildberries, Ozon, Яндекс Маркета и Авито. Спецтариф от 136.5 ₽, наложенный платеж 54-ФЗ и доставка КГТ." />
+  <meta property="og:url" content="https://cdek-marketplace.ru/services/dbs/" />
+  <meta property="og:image" content="https://cdek-marketplace.ru/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="СДЭК DBS для маркетплейсов: спецтариф на доставку от 136.5 ₽" />
+  <meta name="twitter:description" content="Официальная доставка по схеме DBS (RealFBS / Витрина) со СДЭК для Wildberries, Ozon, Яндекс Маркета и Авито. Спецтариф от 136.5 ₽, наложенный платеж 54-ФЗ и доставка КГТ." />
+  <meta name="twitter:image" content="https://cdek-marketplace.ru/logo.png" />
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://cdek-marketplace.ru/#website",
+      "url": "https://cdek-marketplace.ru/",
+      "name": "СДЭК Маркетплейсы",
+      "inLanguage": "ru-RU",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cdek-marketplace.ru/tracking/?cdek_number={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://cdek-marketplace.ru/#organization",
+      "name": "СДЭК для Маркетплейсов",
+      "url": "https://cdek-marketplace.ru/",
+      "logo": "https://cdek-marketplace.ru/logo.png",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "СДЭК",
+        "url": "https://www.cdek.ru"
+      },
+      "email": "sv.dudik@cdek.ru",
+      "telephone": "+7-993-322-15-20",
+      "sameAs": [
+        "https://t.me/cdek_marketplace",
+        "https://wa.me/79933221520",
+        "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+7-993-322-15-20",
+          "contactType": "sales",
+          "areaServed": "RU",
+          "availableLanguage": [
+            "Russian"
+          ],
+          "contactOption": "TollFree"
+        },
+        {
+          "@type": "ContactPoint",
+          "url": "https://t.me/cdek_marketplace",
+          "contactType": "customer support",
+          "availableLanguage": [
+            "Russian"
+          ]
+        },
+        {
+          "@type": "ContactPoint",
+          "url": "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo",
+          "contactType": "customer support",
+          "availableLanguage": [
+            "Russian"
+          ]
+        }
+      ],
+      "potentialAction": [
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в Telegram",
+          "target": "https://t.me/cdek_marketplace"
+        },
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в WhatsApp",
+          "target": "https://wa.me/79933221520"
+        },
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в MAX",
+          "target": "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
+        },
+        {
+          "@type": "OrderAction",
+          "name": "Подключить доставку на маркетплейсы",
+          "target": "https://cdek-marketplace.ru/services/dbs/#leadForm"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://cdek-marketplace.ru/services/dbs/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://cdek-marketplace.ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Services",
+          "item": "https://cdek-marketplace.ru/services/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "СДЭК DBS для маркетплейсов",
+          "item": "https://cdek-marketplace.ru/services/dbs/"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://cdek-marketplace.ru/services/dbs/#service",
+      "name": "СДЭК DBS для маркетплейсов: спецтариф на доставку от 136.5 ₽",
+      "provider": {
+        "@id": "https://cdek-marketplace.ru/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      "description": "Официальная доставка по схеме DBS (RealFBS / Витрина) со СДЭК для Wildberries, Ozon, Яндекс Маркета и Авито. Спецтариф от 136.5 ₽, наложенный платеж 54-ФЗ и доставка КГТ.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock",
+        "url": "https://cdek-marketplace.ru/services/dbs/"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 pb-20 md:pb-0 overflow-x-hidden">
 

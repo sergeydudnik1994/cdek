@@ -15,14 +15,6 @@
 
   <meta name="theme-color" content="#060B11" />
 
-  <!-- Open Graph -->
-  <meta property="og:type" content="article" />
-  <meta property="og:site_name" content="CDEK Marketplace" />
-  <meta property="og:title" content="Заключить договор СДЭК для Ozon: rFBS и DBS со скидкой до 50%" />
-  <meta property="og:description" content="Официальное онлайн-подключение продавцов Ozon к логистике СДЭК за 15 минут. Синхронизация статусов по API и тарифная сетка УСН." />
-  <meta property="og:url" content="https://cdek-marketplace.ru/dogovor/ozon/" />
-  <meta property="og:image" content="https://cdek-marketplace.ru/favicon.png" />
-
   <!-- Favicons -->
   <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
@@ -51,67 +43,152 @@
   </script>
   
   <!-- Schema.org Microdata (@graph) -->
+  
+  <!-- Open Graph & Social Cards -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="СДЭК Маркетплейсы" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:title" content="Заключить договор СДЭК для Ozon (rFBS, FBS, DBS) | Подключение со скидкой до 50%" />
+  <meta property="og:description" content="Официальное заключение B2B-договора СДЭК для селлеров Ozon. Подключение схем rFBS, FBS и DBS за 15 минут, автоматическая передача треков по API, тарифы УСН без наценки 22% НДС." />
+  <meta property="og:url" content="https://cdek-marketplace.ru/dogovor/ozon/" />
+  <meta property="og:image" content="https://cdek-marketplace.ru/logo.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Заключить договор СДЭК для Ozon (rFBS, FBS, DBS) | Подключение со скидкой до 50%" />
+  <meta name="twitter:description" content="Официальное заключение B2B-договора СДЭК для селлеров Ozon. Подключение схем rFBS, FBS и DBS за 15 минут, автоматическая передача треков по API, тарифы УСН без наценки 22% НДС." />
+  <meta name="twitter:image" content="https://cdek-marketplace.ru/logo.png" />
+
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "Главная", "item": "https://cdek-marketplace.ru/"},
-          {"@type": "ListItem", "position": 2, "name": "Договор СДЭК", "item": "https://cdek-marketplace.ru/dogovor/"},
-          {"@type": "ListItem", "position": 3, "name": "Для Ozon (rFBS / DBS)", "item": "https://cdek-marketplace.ru/dogovor/ozon/"}
-        ]
-      },
-      {
-        "@type": "Service",
-        "name": "Заключение B2B-договора СДЭК для селлеров Ozon",
-        "serviceType": "Логистическое обслуживание продавцов Ozon Seller",
-        "provider": {
-          "@type": "Organization",
-          "name": "СДЭК Маркетплейсы",
-          "url": "https://cdek-marketplace.ru/"
-        },
-        "description": "Онлайн-заключение официального договора со СДЭК для работы на Ozon по схемам rFBS Интегрированная, rFBS Выборочная и DBS. Скидки до 50%, API-интеграция и тарифы без НДС.",
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "RUB",
-          "availability": "https://schema.org/InStock"
-        }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Зачем селлеру Ozon заключать отдельный договор со СДЭК?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Прямой B2B-договор открывает доступ к льготным тарифам линейки «Посылка» со скидкой до 50%, позволяет работать по схеме DBS для крупногабаритных товаров и дает возможность подключить тарифную сетку УСН без переплаты 22% НДС."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Как связать личный кабинет Ozon Seller и договор СДЭК?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "После оформления договора вы получаете боевые API-ключи (Client ID и Secret), которые вставляются в настройки метода доставки rFBS в кабинете Ozon Seller. Адреса 5 000+ ПВЗ и статусы заказов подтягиваются автоматически."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Сколько стоит заключение договора для Озон?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Подключение договора, генерация API-ключей и обслуживание кабинета полностью бесплатны (0 ₽). Вы платите только по факту выполненных доставок."
-            }
-          }
-        ]
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://cdek-marketplace.ru/#website",
+      "url": "https://cdek-marketplace.ru/",
+      "name": "СДЭК Маркетплейсы",
+      "inLanguage": "ru-RU",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://cdek-marketplace.ru/tracking/?cdek_number={search_term_string}",
+        "query-input": "required name=search_term_string"
       }
-    ]
-  }
-  </script>
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://cdek-marketplace.ru/#organization",
+      "name": "СДЭК для Маркетплейсов",
+      "url": "https://cdek-marketplace.ru/",
+      "logo": "https://cdek-marketplace.ru/logo.png",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "СДЭК",
+        "url": "https://www.cdek.ru"
+      },
+      "email": "sv.dudik@cdek.ru",
+      "telephone": "+7-993-322-15-20",
+      "sameAs": [
+        "https://t.me/cdek_marketplace",
+        "https://wa.me/79933221520",
+        "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
+      ],
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+7-993-322-15-20",
+          "contactType": "sales",
+          "areaServed": "RU",
+          "availableLanguage": [
+            "Russian"
+          ],
+          "contactOption": "TollFree"
+        },
+        {
+          "@type": "ContactPoint",
+          "url": "https://t.me/cdek_marketplace",
+          "contactType": "customer support",
+          "availableLanguage": [
+            "Russian"
+          ]
+        },
+        {
+          "@type": "ContactPoint",
+          "url": "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo",
+          "contactType": "customer support",
+          "availableLanguage": [
+            "Russian"
+          ]
+        }
+      ],
+      "potentialAction": [
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в Telegram",
+          "target": "https://t.me/cdek_marketplace"
+        },
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в WhatsApp",
+          "target": "https://wa.me/79933221520"
+        },
+        {
+          "@type": "CommunicateAction",
+          "name": "Написать в MAX",
+          "target": "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
+        },
+        {
+          "@type": "OrderAction",
+          "name": "Подключить доставку на маркетплейсы",
+          "target": "https://cdek-marketplace.ru/dogovor/ozon/#leadForm"
+        }
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://cdek-marketplace.ru/dogovor/ozon/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Главная",
+          "item": "https://cdek-marketplace.ru/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Dogovor",
+          "item": "https://cdek-marketplace.ru/dogovor/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Заключить договор СДЭК для Ozon (rFBS, FBS, DBS)",
+          "item": "https://cdek-marketplace.ru/dogovor/ozon/"
+        }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://cdek-marketplace.ru/dogovor/ozon/#service",
+      "name": "Заключить договор СДЭК для Ozon (rFBS, FBS, DBS) | Подключение со скидкой до 50%",
+      "provider": {
+        "@id": "https://cdek-marketplace.ru/#organization"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Россия"
+      },
+      "description": "Официальное заключение B2B-договора СДЭК для селлеров Ozon. Подключение схем rFBS, FBS и DBS за 15 минут, автоматическая передача треков по API, тарифы УСН без наценки 22% НДС.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock",
+        "url": "https://cdek-marketplace.ru/dogovor/ozon/"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 selection:text-white pb-16 md:pb-0">
 
