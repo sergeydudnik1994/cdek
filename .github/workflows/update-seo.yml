@@ -34,7 +34,7 @@ jobs:
           TELEGRAM = "https://t.me/cdek_marketplace"
           WHATSAPP = "https://wa.me/79933221520"
           MAX_APP = "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
-          DEFAULT_IMAGE = f"{BASE_URL}/logo.png"
+          DEFAULT_IMAGE = f"{BASE_URL}/og-image.png"
 
           updated_count = 0
 
@@ -54,7 +54,7 @@ jobs:
                       desc_m = re.search(r'<meta\s+name=["\']description["\']\s+content=["\'](.*?)["\']', content, re.IGNORECASE)
                       desc = desc_m.group(1).strip() if desc_m else title
 
-                      # 2. Формирование каноничного URL
+                      # 2. Формирование URL
                       rel_path = os.path.relpath(filepath, BASE_DIR).replace("\\", "/")
                       if rel_path == "index.html":
                           page_url = f"{BASE_URL}/"
@@ -80,7 +80,7 @@ jobs:
                       elif page_url != f"{BASE_URL}/":
                           breadcrumbs.append({"@type": "ListItem", "position": 2, "name": page_name, "item": page_url})
 
-                      # 4. Сборка графа Schema.org
+                      # 4. Schema.org граф
                       schema_graph = {
                           "@context": "https://schema.org",
                           "@graph": [
@@ -101,12 +101,7 @@ jobs:
                                   "@id": f"{BASE_URL}/#organization",
                                   "name": "СДЭК для Маркетплейсов",
                                   "url": f"{BASE_URL}/",
-                                  "logo": f"{BASE_URL}/logo.png",
-                                  "parentOrganization": {
-                                      "@type": "Organization",
-                                      "name": "СДЭК",
-                                      "url": "https://www.cdek.ru"
-                                  },
+                                  "logo": f"{BASE_URL}/favicon.png",
                                   "email": EMAIL,
                                   "telephone": PHONE,
                                   "sameAs": [TELEGRAM, WHATSAPP, MAX_APP],
@@ -181,7 +176,7 @@ jobs:
                       schema_json_str = json.dumps(schema_graph, ensure_ascii=False, indent=2)
                       schema_block = f'<script type="application/ld+json">\n{schema_json_str}\n</script>'
 
-                      # 5. Open Graph & Twitter Cards
+                      # 5. Open Graph & Social Cards
                       og_block = (
                           '<!-- Open Graph & Social Cards -->\n'
                           '  <meta property="og:type" content="website" />\n'
@@ -191,19 +186,21 @@ jobs:
                           f'  <meta property="og:description" content="{desc}" />\n'
                           f'  <meta property="og:url" content="{page_url}" />\n'
                           f'  <meta property="og:image" content="{DEFAULT_IMAGE}" />\n'
+                          '  <meta property="og:image:width" content="1200" />\n'
+                          '  <meta property="og:image:height" content="630" />\n'
+                          '  <meta property="og:image:type" content="image/png" />\n'
                           '  <meta name="twitter:card" content="summary_large_image" />\n'
                           f'  <meta name="twitter:title" content="{title}" />\n'
                           f'  <meta name="twitter:description" content="{desc}" />\n'
                           f'  <meta name="twitter:image" content="{DEFAULT_IMAGE}" />'
                       )
 
-                      # Очистка старых тегов Open Graph, Twitter и JSON-LD
+                      # Очистка старых тегов
                       content = re.sub(r'<!--\s*(?:Open Graph|Twitter).*?-->', '', content, flags=re.DOTALL)
                       content = re.sub(r'\n\s*<meta\s+property=["\']og:[^>]*>', '', content)
                       content = re.sub(r'\n\s*<meta\s+name=["\']twitter:[^>]*>', '', content)
                       content = re.sub(r'<script\s+type=["\']application/ld\+json["\']>.*?</script>', '', content, flags=re.DOTALL)
 
-                      # Вставка перед закрывающим тегом </head>
                       if "</head>" in content:
                           combined_block = f"  {og_block}\n\n  {schema_block}\n</head>"
                           content = content.replace("</head>", combined_block)
@@ -212,7 +209,7 @@ jobs:
                           updated_count += 1
                           print(f"Обновлен: {filepath}")
 
-          print(f"Всего файлов обработано: {updated_count}")
+          print(f"Всего файлов обновлено: {updated_count}")
 
       - name: Commit and push changes
         run: |
@@ -220,9 +217,9 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           if ! git diff --cached --quiet; then
-            git commit -m "feat(seo): batch update Open Graph and Schema.org rich snippets with action buttons [skip ci]"
+            git commit -m "feat(seo): update Open Graph (og-image) and rich schema on all pages [skip ci]"
             git pull --rebase origin main
             git push origin main
           else
-            echo "Все теги актуальны, коммит не требуется."
+            echo "Изменений нет, все теги актуальны."
           fi
