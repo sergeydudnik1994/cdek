@@ -50,20 +50,36 @@
         Калькулятор
       </a>
 
-      <!-- Интеграции -->
+      <!-- Интеграции и CMS -->
       <div class="relative group py-2">
         <a href="/integrations/" class="hover:text-[#22E58B] transition-colors flex items-center gap-1">
           Интеграции и CMS
           <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </a>
-        <div class="absolute left-0 top-full hidden group-hover:block w-64 bg-[#0B131D]/95 backdrop-blur-2xl rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/[0.1] p-2 z-50">
-          <a href="/services/dbs/" class="block px-3 py-2 text-xs font-bold text-[#22E58B] bg-[#22E58B]/10 hover:bg-[#22E58B]/20 rounded-xl transition mb-1 border border-[#22E58B]/20">Спецтариф DBS от 136.5 ₽</a>
-          <a href="/integrations/1c-bitrix/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">1С-Битрикс</a>
-          <a href="/integrations/tilda/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">Tilda Publishing</a>
-          <a href="/integrations/moysklad/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">МойСклад</a>
-          <a href="/integrations/woocommerce-wordpress/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">WooCommerce</a>
-          <a href="/integrations/insales/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">InSales</a>
-          <a href="/integrations/1c-predpriyatie/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">1С:Предприятие</a>
+        <div class="absolute left-0 top-full hidden group-hover:block w-72 bg-[#0B131D]/95 backdrop-blur-2xl rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/[0.1] p-2 z-50">
+          <!-- 1. Спецтариф DBS -->
+          <a href="/services/dbs/" class="block px-3 py-2 text-xs font-bold text-[#22E58B] bg-[#22E58B]/10 hover:bg-[#22E58B]/20 rounded-xl transition mb-1 border border-[#22E58B]/20">
+            Спецтариф DBS от 136.5 ₽
+          </a>
+          
+          <!-- 2. Вторая строчка: Создание сайта / SEO-лендинга под DBS -->
+          <a href="/store/" class="flex items-center justify-between px-3 py-2 text-xs font-bold text-white bg-white/[0.04] hover:bg-[#22E58B]/15 hover:text-[#22E58B] rounded-xl transition mb-2 border border-white/[0.08] hover:border-[#22E58B]/30 group/store">
+            <span class="flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-[#22E58B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
+              </svg>
+              Создание SEO-сайта под DBS
+            </span>
+            <span class="text-[9px] font-black uppercase text-[#22E58B] bg-[#22E58B]/20 px-1.5 py-0.5 rounded border border-[#22E58B]/30">NEW</span>
+          </a>
+
+          <!-- Список CMS -->
+          <a href="/integrations/1c-bitrix/" class="block px-3 py-1.5 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">1С-Битрикс</a>
+          <a href="/integrations/tilda/" class="block px-3 py-1.5 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">Tilda Publishing</a>
+          <a href="/integrations/moysklad/" class="block px-3 py-1.5 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">МойСклад</a>
+          <a href="/integrations/woocommerce-wordpress/" class="block px-3 py-1.5 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">WooCommerce</a>
+          <a href="/integrations/insales/" class="block px-3 py-1.5 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">InSales</a>
+          <a href="/integrations/1c-predpriyatie/" class="block px-3 py-1.5 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">1С:Предприятие</a>
         </div>
       </div>
 
@@ -101,7 +117,7 @@
       </a>
     </nav>
 
-    <!-- Правая группа: Кнопка "Подключиться" (только для планшетов и ПК) + Бургер -->
+    <!-- Правая группа: Кнопка "Подключиться" + Бургер -->
     <div class="flex items-center gap-2.5 sm:gap-3 shrink-0">
       <a 
         href="/dogovor/#contract-form-container" 
@@ -160,6 +176,36 @@
       </a>
     </div>
 
+    <!-- Разделы сайта -->
+    <div class="px-4 py-3">
+      <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Разделы сайта</div>
+      <div class="space-y-1.5">
+        <a href="/services/dbs/" class="mobile-link flex items-center justify-between py-1 text-xs font-bold text-[#22E58B]">
+          <span>Спецтариф DBS от 136.5 ₽</span>
+          <span class="text-xs">›</span>
+        </a>
+        <a href="/store/" class="mobile-link flex items-center justify-between py-1 text-xs font-bold text-white hover:text-[#22E58B]">
+          <span class="flex items-center gap-1.5">
+            <span>Создание SEO-сайта под DBS</span>
+            <span class="text-[9px] font-black uppercase text-[#22E58B] bg-[#22E58B]/20 px-1 py-0.5 rounded border border-[#22E58B]/30">NEW</span>
+          </span>
+          <span class="text-xs text-slate-600">›</span>
+        </a>
+        <a href="/integrations/" class="mobile-link flex items-center justify-between py-1 text-xs text-slate-300 hover:text-[#22E58B]">
+          <span>Все 30+ интеграций</span>
+          <span class="text-xs text-slate-600">›</span>
+        </a>
+        <a href="/solutions/" class="mobile-link flex items-center justify-between py-1 text-xs text-slate-300 hover:text-[#22E58B]">
+          <span>Отраслевые ниши</span>
+          <span class="text-xs text-slate-600">›</span>
+        </a>
+        <a href="/blog/" class="mobile-link flex items-center justify-between py-1 text-xs text-slate-300 hover:text-[#22E58B]">
+          <span>База знаний и блог</span>
+          <span class="text-xs text-slate-600">›</span>
+        </a>
+      </div>
+    </div>
+
     <!-- Договоры для маркетплейсов -->
     <div class="px-4 py-3">
       <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Договор для маркетплейсов</div>
@@ -182,29 +228,6 @@
         </a>
         <a href="/dogovor/avito/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-300 hover:text-[#22E58B]">
           <span>Авито Доставка (DBS)</span>
-          <span class="text-xs text-slate-600">›</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- Разделы -->
-    <div class="px-4 py-3">
-      <div class="text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Разделы сайта</div>
-      <div class="space-y-1">
-        <a href="/services/dbs/" class="mobile-link flex items-center justify-between py-1.5 text-xs font-bold text-[#22E58B]">
-          <span>Спецтариф DBS от 136.5 ₽</span>
-          <span class="text-xs">›</span>
-        </a>
-        <a href="/integrations/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-300 hover:text-[#22E58B]">
-          <span>Все 30+ интеграций</span>
-          <span class="text-xs text-slate-600">›</span>
-        </a>
-        <a href="/solutions/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-300 hover:text-[#22E58B]">
-          <span>Отраслевые ниши</span>
-          <span class="text-xs text-slate-600">›</span>
-        </a>
-        <a href="/blog/" class="mobile-link flex items-center justify-between py-1.5 text-xs text-slate-300 hover:text-[#22E58B]">
-          <span>База знаний и блог</span>
           <span class="text-xs text-slate-600">›</span>
         </a>
       </div>
