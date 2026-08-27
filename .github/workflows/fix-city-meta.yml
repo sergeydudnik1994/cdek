@@ -1,10 +1,10 @@
-name: Fix City Pages Layout
+name: Transform Geo Pages to Full Hero Layout
 
 on:
   workflow_dispatch:
 
 jobs:
-  fix-layout:
+  transform-geo:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -18,16 +18,16 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Repair HTML and CSS in all geo pages
+      - name: Rebuild all 500 Geo Pages with Full LeadForm Hero
         run: |
           python - << 'EOF'
           import os
           import re
 
-          fixed_count = 0
+          count_fixed = 0
 
-          # Правильный блок Tailwind config
-          clean_tailwind_config = """  <script src="https://cdn.tailwindcss.com"></script>
+          # Чистая конфигурация Tailwind
+          clean_tailwind = """  <script src="https://cdn.tailwindcss.com"></script>
             <script>
               tailwind.config = {
                 theme: {
@@ -53,29 +53,122 @@ jobs:
                           with open(file_path, 'r', encoding='utf-8') as f:
                               content = f.read()
 
-                          # 1. Исправляем сломанный tailwind.config в head
+                          # 1. Извлекаем название города и количество ПВЗ
+                          city_name = "Вашем городе"
+                          city_match = re.search(r'<span class="text-white">([^<]+)</span>', content)
+                          if city_match:
+                              city_name = city_match.group(1).strip()
+
+                          city_prep = f"в {city_name}"
+                          prep_match = re.search(r'СДЭК в\s+([^<:|–—]+)', content, re.IGNORECASE)
+                          if prep_match:
+                              city_prep = f"в {prep_match.group(1).strip()}"
+
+                          pvz_count = "5+"
+                          pvz_match = re.search(r'([0-9]+)\s*</p>\s*<p[^>]*>ПВЗ', content)
+                          if pvz_match:
+                              pvz_count = pvz_match.group(1).strip()
+
+                          # 2. Восстанавливаем Tailwind и стили в <head>
                           content = re.sub(
-                              r'<script src="https://cdn\.tailwindcss\.com"></script>\s*<script>.*?</script>',
-                              clean_tailwind_config,
+                              r'<script src="https://cdn\.tailwindcss\.com"></script>.*?</script>',
+                              clean_tailwind,
                               content,
                               flags=re.DOTALL
                           )
 
-                          # 2. Исправляем h1: возвращаем правильные классы шрифта и отступов
+                          # 3. Полный Hero-блок (2 колонки: Текст + Лид-форма) точно как на главной
+                          hero_html = f"""  <!--#include virtual="/src/components/header.html" -->
+            <main class="flex-grow pb-16">
+              <!-- HERO СЕКЦИЯ С ФОРМОЙ ЗАЯВКИ -->
+              <section class="bg-[#060B11] text-white pt-6 pb-12 sm:pt-8 sm:pb-16 overflow-hidden relative border-b border-white/[0.08]">
+                <div class="absolute -top-24 -left-24 w-72 sm:w-96 h-72 sm:h-96 bg-[#22E58B]/15 rounded-full blur-3xl pointer-events-none"></div>
+                <div class="absolute top-1/2 -right-24 w-80 sm:w-[450px] h-80 sm:h-[450px] bg-[#00b341]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                  <nav class="text-xs sm:text-sm text-slate-400 mb-6 sm:mb-8">
+                    <a href="/" class="hover:text-[#22E58B] transition-colors">Главная</a> <span class="mx-2 text-slate-600">/</span>
+                    <a href="/geo/" class="hover:text-[#22E58B] transition-colors">Логистика</a> <span class="mx-2 text-slate-600">/</span>
+                    <span class="text-white font-medium">{city_name}</span>
+                  </nav>
+
+                  <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+                    <!-- Левая колонка: Оффер и УТП -->
+                    <div class="lg:col-span-7 space-y-6 sm:space-y-8">
+                      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-[#22E58B]/30 text-xs font-bold text-[#22E58B] uppercase tracking-wider mb-2">
+                        <span class="w-2 h-2 rounded-full bg-[#22E58B] animate-pulse"></span>
+                        Официальное B2B-подключение
+                      </div>
+                      
+                      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]">
+                        Заключение договора СДЭК <br>
+                        <span class="bg-gradient-to-r from-[#22E58B] via-[#00b341] to-[#00E5FF] bg-clip-text text-transparent">{city_prep} со скидкой до 50%</span>
+                      </h1>
+
+                      <p class="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed font-normal">
+                        Официальный B2B-договор со СДЭК {city_prep} для интернет-магазинов, юридических лиц, ИП и селлеров Wildberries, Ozon, Яндекс Маркета и Авито. Доставка и отгрузка по схемам <b>FBS, FBO и DBS</b> онлайн за 15 минут.
+                      </p>
+
+                      <div class="flex flex-wrap gap-2.5 pt-1">
+                        <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-slate-200">
+                          <span class="text-[#22E58B]">✓</span> {pvz_count}+ ПВЗ {city_prep}
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-slate-200">
+                          <span class="text-[#22E58B]">✓</span> Отгрузки FBS, FBO и DBS
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-slate-200">
+                          <span class="text-[#22E58B]">✓</span> Готовые модули и API 2.0
+                        </span>
+                        <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-slate-200">
+                          <span class="text-[#22E58B]">✓</span> Наложенный платеж 54-ФЗ
+                        </span>
+                      </div>
+
+                      <div class="grid grid-cols-3 gap-4 pt-4 border-t border-white/10 max-w-lg">
+                        <div>
+                          <div class="text-2xl sm:text-3xl font-black text-[#22E58B]">0 ₽</div>
+                          <div class="text-xs text-slate-400 mt-0.5">Договор</div>
+                        </div>
+                        <div>
+                          <div class="text-2xl sm:text-3xl font-black text-white">15 мин</div>
+                          <div class="text-xs text-slate-400 mt-0.5">Оформление</div>
+                        </div>
+                        <div>
+                          <div class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-[#22E58B] to-[#00E5FF] bg-clip-text text-transparent">до 50%</div>
+                          <div class="text-xs text-slate-400 mt-0.5">Экономия</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- Правая колонка: Форма заявки (leadform.html) -->
+                    <div class="lg:col-span-5" id="leadForm">
+                      <!--#include virtual="/src/components/leadform.html" -->
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">"""
+
+                          # 4. Заменяем старую верхушку main до секции услуг
                           content = re.sub(
-                              r'<h1[^>]*>(.*?)</h1>',
-                              r'<h1 class="text-2xl sm:text-4xl font-black text-white tracking-tight mb-4">\1</h1>',
+                              r'<!--#include virtual="/src/components/header\.html"\s*-->\s*<main[^>]*>.*?<div class="max-w-7xl mx-auto px-4[^>]*>.*?<section class="mb-16">',
+                              f'{hero_html}\n        <section class="mb-16">',
                               content,
                               flags=re.DOTALL
                           )
+
+                          # 5. Добавляем мобильную кнопку действия внизу, если её не было
+                          if 'mobile-cta.html' not in content:
+                              content = content.replace('</body>', '  <!--#include virtual="/src/components/mobile-cta.html" -->\n</body>')
 
                           with open(file_path, 'w', encoding='utf-8') as f:
                               f.write(content)
-                          fixed_count += 1
+                          count_fixed += 1
                       except Exception as e:
                           print(f"Ошибка в файле {file_path}: {e}")
 
-          print(f"Успешно восстановлено файлов городов: {fixed_count}")
+          print(f"Успешно пересобрано страниц городов: {count_fixed}")
           EOF
 
       - name: Commit and Push changes
@@ -83,5 +176,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Fix: восстановление шрифтов, Tailwind и стилей H1 во всех городах" || exit 0
+          git commit -m "Design: внедрение полноценного 2-колоночного Hero с формой заявки во все 500 городов" || exit 0
           git push origin main
