@@ -1,0 +1,75 @@
+name: Update City Meta Tags
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-meta:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run regex replacement script
+        run: |
+          python - << 'EOF'
+          import os
+          import re
+
+          # Ищем все HTML-страницы городов
+          geo_dirs = ['geo', 'public/geo', 'dist/geo', '.']
+          updated_count = 0
+
+          for root, dirs, files in os.walk('.'):
+              if '.git' in root or '.github' in root:
+                  continue
+              for file in files:
+                  if file.endswith('.html') and ('geo' in root or 'index.html' in file):
+                      file_path = os.path.join(root, file)
+                      try:
+                          with open(file_path, 'r', encoding='utf-8') as f:
+                              content = f.read()
+
+                          # Извлекаем название города из текущего title
+                          city_match = re.search(r'СДЭК для селлеров в\s+([^:|–—]+)', content, re.IGNORECASE)
+                          if city_match:
+                              city_prep = city_match.group(1).strip()
+                              
+                              # Новые шаблоны тегов
+                              new_title = f"<title>Заключить договор СДЭК в {city_prep} для ИП, ООО и селлеров — Скидки до 50%</title>"
+                              new_h1 = f"Заключение договора СДЭК в {city_prep} для бизнеса и интернет-магазинов"
+                              
+                              # Замена Title
+                              content = re.sub(r'<title>.*?</title>', new_title, content, flags=re.DOTALL)
+                              
+                              # Замена Description
+                              new_desc = f'<meta name="description" content="Официальное заключение договора со СДЭК в {city_prep} за 15 минут. Выгодные тарифы для интернет-магазинов, юрлиц, ИП и селлеров маркетплейсов.">'
+                              content = re.sub(r'<meta\s+name=["\']description["\']\s+content=["\'].*?["\']\s*/?>', new_desc, content, flags=re.IGNORECASE)
+                              
+                              # Замена H1
+                              content = re.sub(r'<h1[^>]*>.*?</h1>', f'<h1>{new_h1}</h1>', content, flags=re.DOTALL)
+
+                              with open(file_path, 'w', encoding='utf-8') as f:
+                                  f.write(content)
+                              updated_count += 1
+                      except Exception as e:
+                          print(f"Ошибка при обработке {file_path}: {e}")
+
+          print(f"Успешно обновлено файлов: {updated_count}")
+          EOF
+
+      - name: Commit and Push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "SEO: расширение Title/H1/Description под запросы 'договор СДЭК' для всех городов" || exit 0
+          git push origin main
