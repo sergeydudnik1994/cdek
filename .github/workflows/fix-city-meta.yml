@@ -1,10 +1,10 @@
-name: Transform Geo Pages to Full Hero Layout
+name: Fix Typography and City Layout
 
 on:
   workflow_dispatch:
 
 jobs:
-  transform-geo:
+  fix-layout:
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -18,30 +18,13 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Rebuild all 500 Geo Pages with Full LeadForm Hero
+      - name: Clean up and Re-render Hero Section in All Geo Pages
         run: |
           python - << 'EOF'
           import os
           import re
 
-          count_fixed = 0
-
-          # Чистая конфигурация Tailwind
-          clean_tailwind = """  <script src="https://cdn.tailwindcss.com"></script>
-            <script>
-              tailwind.config = {
-                theme: {
-                  extend: {
-                    colors: {
-                      cdek: '#00b341',
-                      neon: '#22E58B',
-                      obsidian: '#060B11',
-                      card: '#0B131D'
-                    }
-                  }
-                }
-              };
-            </script>"""
+          fixed_count = 0
 
           for root, dirs, files in os.walk('.'):
               if '.git' in root or '.github' in root:
@@ -53,31 +36,26 @@ jobs:
                           with open(file_path, 'r', encoding='utf-8') as f:
                               content = f.read()
 
-                          # 1. Извлекаем название города и количество ПВЗ
-                          city_name = "Вашем городе"
-                          city_match = re.search(r'<span class="text-white">([^<]+)</span>', content)
-                          if city_match:
-                              city_name = city_match.group(1).strip()
+                          # 1. Извлекаем ЧИСТЫЙ город в предложном падеже из og:title или schema
+                          city_prep = "в вашем городе"
+                          og_match = re.search(r'property=["\']og:title["\']\s+content=["\'](?:СДЭК для селлеров\s+)?(?:в|во)\s+([^:|–—<]+)', content, re.IGNORECASE)
+                          if og_match:
+                              clean_city = og_match.group(1).strip()
+                              city_prep = f"в {clean_city}"
 
-                          city_prep = f"в {city_name}"
-                          prep_match = re.search(r'СДЭК в\s+([^<:|–—]+)', content, re.IGNORECASE)
-                          if prep_match:
-                              city_prep = f"в {prep_match.group(1).strip()}"
+                          # 2. Извлекаем именительный падеж для крошек
+                          city_nom = clean_city if og_match else "Город"
+                          nav_match = re.search(r'<nav.*?>.*?<span class="text-white[^>]*>([^<]+)</span>', content, re.DOTALL)
+                          if nav_match and "для" not in nav_match.group(1):
+                              city_nom = nav_match.group(1).strip()
 
+                          # 3. Извлекаем количество ПВЗ
                           pvz_count = "5+"
-                          pvz_match = re.search(r'([0-9]+)\s*</p>\s*<p[^>]*>ПВЗ', content)
+                          pvz_match = re.search(r'([0-9]+)\+?\s*ПВЗ', content)
                           if pvz_match:
                               pvz_count = pvz_match.group(1).strip()
 
-                          # 2. Восстанавливаем Tailwind и стили в <head>
-                          content = re.sub(
-                              r'<script src="https://cdn\.tailwindcss\.com"></script>.*?</script>',
-                              clean_tailwind,
-                              content,
-                              flags=re.DOTALL
-                          )
-
-                          # 3. Полный Hero-блок (2 колонки: Текст + Лид-форма) точно как на главной
+                          # 4. Формируем идеальный 2-колоночный Hero с чистой типографикой
                           hero_html = f"""  <!--#include virtual="/src/components/header.html" -->
             <main class="flex-grow pb-16">
               <!-- HERO СЕКЦИЯ С ФОРМОЙ ЗАЯВКИ -->
@@ -89,7 +67,7 @@ jobs:
                   <nav class="text-xs sm:text-sm text-slate-400 mb-6 sm:mb-8">
                     <a href="/" class="hover:text-[#22E58B] transition-colors">Главная</a> <span class="mx-2 text-slate-600">/</span>
                     <a href="/geo/" class="hover:text-[#22E58B] transition-colors">Логистика</a> <span class="mx-2 text-slate-600">/</span>
-                    <span class="text-white font-medium">{city_name}</span>
+                    <span class="text-white font-medium">{city_nom}</span>
                   </nav>
 
                   <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
@@ -100,13 +78,13 @@ jobs:
                         Официальное B2B-подключение
                       </div>
                       
-                      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]">
+                      <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.15]">
                         Заключение договора СДЭК <br>
                         <span class="bg-gradient-to-r from-[#22E58B] via-[#00b341] to-[#00E5FF] bg-clip-text text-transparent">{city_prep} со скидкой до 50%</span>
                       </h1>
 
                       <p class="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed font-normal">
-                        Официальный B2B-договор со СДЭК {city_prep} для интернет-магазинов, юридических лиц, ИП и селлеров Wildberries, Ozon, Яндекс Маркета и Авито. Доставка и отгрузка по схемам <b>FBS, FBO и DBS</b> онлайн за 15 минут.
+                        Официальный B2B-договор со СДЭК {city_prep} для интернет-магазинов, юридических лиц, ИП и селлеров маркетплейсов. Доставка FBS, FBO и DBS со скидкой до 50%.
                       </p>
 
                       <div class="flex flex-wrap gap-2.5 pt-1">
@@ -150,25 +128,21 @@ jobs:
 
               <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">"""
 
-                          # 4. Заменяем старую верхушку main до секции услуг
+                          # 5. Чистая замена шапки до блока списка услуг
                           content = re.sub(
-                              r'<!--#include virtual="/src/components/header\.html"\s*-->\s*<main[^>]*>.*?<div class="max-w-7xl mx-auto px-4[^>]*>.*?<section class="mb-16">',
+                              r'<!--#include virtual="/src/components/header\.html"\s*-->.*?<section class="mb-16">',
                               f'{hero_html}\n        <section class="mb-16">',
                               content,
                               flags=re.DOTALL
                           )
 
-                          # 5. Добавляем мобильную кнопку действия внизу, если её не было
-                          if 'mobile-cta.html' not in content:
-                              content = content.replace('</body>', '  <!--#include virtual="/src/components/mobile-cta.html" -->\n</body>')
-
                           with open(file_path, 'w', encoding='utf-8') as f:
                               f.write(content)
-                          count_fixed += 1
+                          fixed_count += 1
                       except Exception as e:
                           print(f"Ошибка в файле {file_path}: {e}")
 
-          print(f"Успешно пересобрано страниц городов: {count_fixed}")
+          print(f"Успешно выровнена верстка в файлах: {fixed_count}")
           EOF
 
       - name: Commit and Push changes
@@ -176,5 +150,5 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Design: внедрение полноценного 2-колоночного Hero с формой заявки во все 500 городов" || exit 0
+          git commit -m "UI: идеальное выравнивание H1 и текста во всех 500 городах" || exit 0
           git push origin main
