@@ -17,12 +17,12 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <!-- SEO: Title (62 символа — идеальный лимит Яндекса и Google) -->
-  <title>Доставка на маркетплейсы СДЭК: FBS, FBO и DBS со скидкой 50%</title>
-  <meta name="description" content="Официальная доставка на маркетплейсы со СДЭК: Wildberries, Ozon, Яндекс Маркет и Авито. Логистика FBS, FBO и DBS через 5 000+ ПВЗ со скидкой до 50% для селлеров." />
-  <meta name="keywords" content="доставка на маркетплейсы, доставка на маркетплейсы сдэк, сдэк fbs, сдэк fbo, сдэк dbs, сдэк wildberries, сдэк ozon, сдэк яндекс маркет" />
+  <!-- SEO: Title (61 символ) & Description под выдачу Яндекса -->
+  <title>СДЭК Маркетплейс: логистика селлеров DBS, FBO и FBS от 136.5 ₽</title>
+  <meta name="description" content="Единый логистический хаб СДЭК для селлеров Wildberries, Ozon, Яндекс Маркета и Авито. Спецтариф DBS от 136.5 ₽, сдача FBO в тайм-слоты и отгрузка FBS через 5 000+ ПВЗ без очередей." />
+  <meta name="keywords" content="сдэк маркетплейс, сдэк dbs, сдэк fbo, сдэк fbs, спецтариф dbs сдэк, доставка на склады маркетплейсов, realfbs ozon сдэк, витрина wildberries сдэк" />
 
-  <!-- Автообнаружение LLMs.txt для нейросетей (Яндекс Нейро, GigaChat, ChatGPT) -->
+  <!-- LLMs.txt -->
   <link rel="alternate" type="text/markdown" title="LLM Information" href="https://cdek-marketplace.ru/llms.txt" />
   <link rel="alternate" type="text/markdown" title="LLM Full Documentation" href="https://cdek-marketplace.ru/llms-full.txt" />
 
@@ -33,10 +33,115 @@
   <link rel="icon" type="image/png" href="/favicon.png" />
   <link rel="apple-touch-icon" href="/favicon.png" />
 
-  <!-- Единая связанная микроразметка Schema.org (@graph) с FAQPage под сниппеты Яндекса -->
-  
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="СДЭК Маркетплейсы" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:title" content="СДЭК Маркетплейс: логистика селлеров DBS, FBO и FBS от 136.5 ₽" />
+  <meta property="og:description" content="Единый логистический хаб СДЭК для селлеров Wildberries, Ozon, Яндекс Маркета и Авито. Спецтариф DBS от 136.5 ₽, FBO и FBS со скидкой до 50%." />
+  <meta property="og:url" content="https://cdek-marketplace.ru/" />
+  <meta property="og:image" content="https://cdek-marketplace.ru/og-image.png" />
 
-  <!-- Tailwind CSS & Sber AI Colors -->
+  <!-- Schema.org Microdata (@graph) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://cdek-marketplace.ru/#website",
+        "url": "https://cdek-marketplace.ru/",
+        "name": "СДЭК Маркетплейсы",
+        "inLanguage": "ru-RU",
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://cdek-marketplace.ru/tracking/?cdek_number={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+      },
+      {
+        "@type": "Organization",
+        "@id": "https://cdek-marketplace.ru/#organization",
+        "name": "СДЭК для Маркетплейсов",
+        "url": "https://cdek-marketplace.ru/",
+        "logo": "https://cdek-marketplace.ru/favicon.png",
+        "email": "sv.dudnik@cdek.ru",
+        "telephone": "+7-993-322-15-20",
+        "contactPoint": [
+          {
+            "@type": "ContactPoint",
+            "telephone": "+7-993-322-15-20",
+            "contactType": "sales",
+            "areaServed": "RU",
+            "availableLanguage": ["Russian"],
+            "contactOption": "TollFree"
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://cdek-marketplace.ru/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Главная",
+            "item": "https://cdek-marketplace.ru/"
+          }
+        ]
+      },
+      {
+        "@type": "Service",
+        "@id": "https://cdek-marketplace.ru/#service",
+        "name": "Логистический хаб СДЭК для маркетплейсов",
+        "provider": {
+          "@id": "https://cdek-marketplace.ru/#organization"
+        },
+        "areaServed": ["RU", "BY", "KZ", "AM"],
+        "description": "Официальные логистические услуги СДЭК для продавцов маркетплейсов: доставка DBS/RealFBS напрямую покупателю от 136.5 ₽, отгрузка FBO в распределительные центры и прием FBS в 5 000+ ПВЗ по единому реестру.",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "RUB",
+          "availability": "https://schema.org/InStock",
+          "url": "https://cdek-marketplace.ru/"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://cdek-marketplace.ru/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Что такое спецтариф СДЭК DBS и сколько он стоит?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "DBS (Delivery by Seller / RealFBS / Витрина) — схема, при которой маркетплейс служит только витриной, а доставку покупателю выполняет СДЭК по спецтарифу от 136.5 ₽. Это позволяет не платить комиссию маркетплейса за логистику и доставлять крупногабаритные товары."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Как работает доставка партий на склады маркетплейсов (FBO)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "СДЭК забирает паллеты или короба с вашего склада или производства и доставляет их строго к назначенному тайм-слоту приемки на РЦ Wildberries, Ozon, Яндекс Маркета, Золотого Яблока и других хабов по России и странам СНГ."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Как сдавать товары по FBS в пункты выдачи СДЭК без очередей?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "В личном кабинете селлера СДЭК формируется единый реестр (манифест). Сотрудник любого из 5 000+ ПВЗ сканирует один штрихкод и принимает всю партию за 1 минуту."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -54,142 +159,9 @@
   </script>
   <style>
     .dynamic-city-prep:empty::before {
-      content: "в вашем городе";
+      content: "по всей России и СНГ";
     }
   </style>
-
-  
-  <!-- Open Graph & Social Cards -->
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="СДЭК Маркетплейсы" />
-  <meta property="og:locale" content="ru_RU" />
-  <meta property="og:title" content="Доставка на маркетплейсы СДЭК: FBS, FBO и DBS со скидкой 50%" />
-  <meta property="og:description" content="Официальная доставка на маркетплейсы со СДЭК: Wildberries, Ozon, Яндекс Маркет и Авито. Логистика FBS, FBO и DBS через 5 000+ ПВЗ со скидкой до 50% для селлеров." />
-  <meta property="og:url" content="https://cdek-marketplace.ru/" />
-  <meta property="og:image" content="https://cdek-marketplace.ru/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:type" content="image/png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Доставка на маркетплейсы СДЭК: FBS, FBO и DBS со скидкой 50%" />
-  <meta name="twitter:description" content="Официальная доставка на маркетплейсы со СДЭК: Wildberries, Ozon, Яндекс Маркет и Авито. Логистика FBS, FBO и DBS через 5 000+ ПВЗ со скидкой до 50% для селлеров." />
-  <meta name="twitter:image" content="https://cdek-marketplace.ru/og-image.png" />
-
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "@id": "https://cdek-marketplace.ru/#website",
-      "url": "https://cdek-marketplace.ru/",
-      "name": "СДЭК Маркетплейсы",
-      "inLanguage": "ru-RU",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "https://cdek-marketplace.ru/tracking/?cdek_number={search_term_string}",
-        "query-input": "required name=search_term_string"
-      }
-    },
-    {
-      "@type": "Organization",
-      "@id": "https://cdek-marketplace.ru/#organization",
-      "name": "СДЭК для Маркетплейсов",
-      "url": "https://cdek-marketplace.ru/",
-      "logo": "https://cdek-marketplace.ru/favicon.png",
-      "email": "sv.dudik@cdek.ru",
-      "telephone": "+7-993-322-15-20",
-      "sameAs": [
-        "https://t.me/cdek_marketplace",
-        "https://wa.me/79933221520",
-        "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
-      ],
-      "contactPoint": [
-        {
-          "@type": "ContactPoint",
-          "telephone": "+7-993-322-15-20",
-          "contactType": "sales",
-          "areaServed": "RU",
-          "availableLanguage": [
-            "Russian"
-          ],
-          "contactOption": "TollFree"
-        },
-        {
-          "@type": "ContactPoint",
-          "url": "https://t.me/cdek_marketplace",
-          "contactType": "customer support",
-          "availableLanguage": [
-            "Russian"
-          ]
-        },
-        {
-          "@type": "ContactPoint",
-          "url": "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo",
-          "contactType": "customer support",
-          "availableLanguage": [
-            "Russian"
-          ]
-        }
-      ],
-      "potentialAction": [
-        {
-          "@type": "CommunicateAction",
-          "name": "Написать в Telegram",
-          "target": "https://t.me/cdek_marketplace"
-        },
-        {
-          "@type": "CommunicateAction",
-          "name": "Написать в WhatsApp",
-          "target": "https://wa.me/79933221520"
-        },
-        {
-          "@type": "CommunicateAction",
-          "name": "Написать в MAX",
-          "target": "https://max.ru/u/f9LHodD0cOIzaS1qORDXcJzrkKFof3ACzehNo6cFxOcrfwa6KtVgohy-Pxo"
-        },
-        {
-          "@type": "OrderAction",
-          "name": "Подключить доставку на маркетплейсы",
-          "target": "https://cdek-marketplace.ru/#leadForm"
-        }
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://cdek-marketplace.ru/#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Главная",
-          "item": "https://cdek-marketplace.ru/"
-        }
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://cdek-marketplace.ru/#service",
-      "name": "Доставка на маркетплейсы СДЭК: FBS, FBO и DBS со скидкой 50%",
-      "provider": {
-        "@id": "https://cdek-marketplace.ru/#organization"
-      },
-      "areaServed": {
-        "@type": "Country",
-        "name": "Россия"
-      },
-      "description": "Официальная доставка на маркетплейсы со СДЭК: Wildberries, Ozon, Яндекс Маркет и Авито. Логистика FBS, FBO и DBS через 5 000+ ПВЗ со скидкой до 50% для селлеров.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "RUB",
-        "availability": "https://schema.org/InStock",
-        "url": "https://cdek-marketplace.ru/"
-      }
-    }
-  ]
-}
-</script>
 </head>
 <body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 pb-20 md:pb-0 overflow-x-hidden">
 
@@ -197,68 +169,64 @@
 
   <main class="flex-grow">
     
-    <!-- 1. HERO СЕКЦИЯ -->
-    <section class="bg-[#060B11] text-white pt-10 pb-12 sm:pt-14 sm:pb-16 overflow-hidden relative border-b border-white/[0.08]">
-      
-      <!-- Фоновые неоновые световые акценты -->
+    <!-- 1. HERO ХАБ СЕЛЛЕРА -->
+    <section class="bg-[#060B11] text-white pt-8 pb-12 sm:pt-14 sm:pb-16 overflow-hidden relative border-b border-white/[0.08]">
       <div class="absolute -top-24 -left-24 w-72 sm:w-96 h-72 sm:h-96 bg-[#22E58B]/15 rounded-full blur-3xl pointer-events-none"></div>
       <div class="absolute top-1/2 -right-24 w-80 sm:w-[450px] h-80 sm:h-[450px] bg-[#00b341]/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
-          <!-- Левая колонка: Текст и УТП -->
-          <div class="lg:col-span-7 space-y-6 sm:space-y-8">
-            
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-[#22E58B]/30 text-xs font-bold text-[#22E58B] uppercase tracking-wider mb-2">
+          <div class="lg:col-span-7 space-y-6 sm:space-y-7">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/[0.04] border border-[#22E58B]/30 text-xs font-bold text-[#22E58B] uppercase tracking-wider">
               <span class="w-2 h-2 rounded-full bg-[#22E58B] animate-pulse"></span>
-              Официальное B2B-подключение
+              Логистический хаб СДЭК для селлеров
             </div>
             
-            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.1]">
-              Доставка на маркетплейсы <br>
-              <span class="bg-gradient-to-r from-[#22E58B] via-[#00b341] to-[#00E5FF] bg-clip-text text-transparent">со скидкой до 50%</span>
+            <h1 class="text-3xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.12]">
+              Единая доставка <br class="hidden sm:block" />
+              для маркетплейсов <br />
+              <span class="bg-gradient-to-r from-[#22E58B] via-[#00b341] to-[#00E5FF] bg-clip-text text-transparent">DBS, FBO и FBS</span>
             </h1>
 
-            <p class="text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed font-normal">
-              Официальный B2B-договор со СДЭК для селлеров Wildberries, Ozon, Яндекс Маркета и Авито. Доставка и отгрузка по схемам <b>FBS, FBO и DBS</b> онлайн за 15 минут <span class="dynamic-city-prep"></span>.
+            <p class="text-slate-300 text-sm sm:text-base max-w-xl leading-relaxed">
+              Официальная логистика СДЭК для продавцов Wildberries, Ozon, Яндекс Маркета и Авито. Спецтариф DBS от 136.5 ₽, паллетные поставки FBO в тайм-слоты и сдача FBS через 5 000+ ПВЗ по единому реестру <span class="dynamic-city-prep"></span>.
             </p>
 
+            <!-- Быстрые метрики моделей -->
+            <div class="grid grid-cols-3 gap-3 pt-2">
+              <a href="/services/dbs/" class="p-3.5 rounded-2xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition block group">
+                <div class="text-lg sm:text-2xl font-black text-[#22E58B]">от 136.5 ₽</div>
+                <div class="text-[11px] text-slate-400 mt-0.5 group-hover:text-white transition">Спецтариф DBS →</div>
+              </a>
+              <a href="/services/fbo/" class="p-3.5 rounded-2xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition block group">
+                <div class="text-lg sm:text-2xl font-black text-white">В тайм-слот</div>
+                <div class="text-[11px] text-slate-400 mt-0.5 group-hover:text-[#22E58B] transition">Поставки FBO в РЦ →</div>
+              </a>
+              <a href="/services/fbs/" class="p-3.5 rounded-2xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition block group">
+                <div class="text-lg sm:text-2xl font-black bg-gradient-to-r from-[#22E58B] to-[#00E5FF] bg-clip-text text-transparent">5 000+ ПВЗ</div>
+                <div class="text-[11px] text-slate-400 mt-0.5 group-hover:text-white transition">Сдача FBS по реестру →</div>
+              </a>
+            </div>
+
             <!-- Теги преимуществ -->
-            <div class="flex flex-wrap gap-2.5 pt-1">
-              <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-slate-200">
-                <span class="text-[#22E58B]">✓</span> 5 000+ ПВЗ и постаматов
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs text-slate-300">
+                <span class="text-[#22E58B]">✓</span> Доставка крупногабарита (КГТ)
               </span>
-              <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-slate-200">
-                <span class="text-[#22E58B]">✓</span> Отгрузки FBS, FBO и DBS
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs text-slate-300">
+                <span class="text-[#22E58B]">✓</span> Примерка в ПВЗ и частичный выкуп
               </span>
-              <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-slate-200">
-                <span class="text-[#22E58B]">✓</span> Готовые модули и API 2.0
-              </span>
-              <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-slate-200">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs text-slate-300">
                 <span class="text-[#22E58B]">✓</span> Наложенный платеж 54-ФЗ
               </span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs text-slate-300">
+                <span class="text-[#22E58B]">✓</span> Синхронизация статусов по API 2.0
+              </span>
             </div>
-
-            <!-- 3 ключевые цифры -->
-            <div class="grid grid-cols-3 gap-4 pt-4 border-t border-white/10 max-w-lg">
-              <div>
-                <div class="text-2xl sm:text-3xl font-black text-[#22E58B]">0 ₽</div>
-                <div class="text-xs text-slate-400 mt-0.5">Подключение</div>
-              </div>
-              <div>
-                <div class="text-2xl sm:text-3xl font-black text-white">1 день</div>
-                <div class="text-xs text-slate-400 mt-0.5">Старт отгрузок</div>
-              </div>
-              <div>
-                <div class="text-2xl sm:text-3xl font-black bg-gradient-to-r from-[#22E58B] to-[#00E5FF] bg-clip-text text-transparent">−50%</div>
-                <div class="text-xs text-slate-400 mt-0.5">На тариф «Посылка»</div>
-              </div>
-            </div>
-
           </div>
 
-          <!-- Правая колонка: Форма заявки -->
+          <!-- Форма подключения -->
           <div class="lg:col-span-5" id="leadForm">
             <!--#include virtual="/src/components/leadform.html" -->
           </div>
@@ -267,23 +235,170 @@
       </div>
     </section>
 
-    <!-- 2. СЕКЦИЯ МАРКЕТПЛЕЙСОВ -->
-    <section class="py-16 sm:py-20 border-b border-white/[0.08]">
-      <!--#include virtual="/src/components/platforms.html" -->
+    <!-- 2. СХЕМЫ ДОСТАВКИ ДЛЯ СЕЛЛЕРОВ (DBS / FBO / FBS) -->
+    <section class="py-14 sm:py-18 border-b border-white/[0.08]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-white/[0.08] mb-2">
+            Модели работы
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black text-white">3 схемы отгрузки под любые задачи селлера</h2>
+          <p class="text-slate-400 text-xs sm:text-sm mt-1">Комбинируйте каналы продаж без заморозки остатков и переплат за логистику площадок</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          
+          <!-- Карточка DBS -->
+          <div class="p-6 sm:p-7 rounded-3xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition flex flex-col justify-between space-y-6 group">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-md text-[11px] font-black uppercase tracking-wider bg-[#22E58B]/15 text-[#22E58B] border border-[#22E58B]/30">
+                  Спецтариф от 136.5 ₽
+                </span>
+                <span class="text-xs text-slate-500">RealFBS / Витрина</span>
+              </div>
+              <h3 class="text-xl font-bold text-white group-hover:text-[#22E58B] transition">СДЭК DBS (Delivery by Seller)</h3>
+              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                Маркетплейс работает как витрина заказов, а доставку покупателю выполняет СДЭК курьером или до ПВЗ. Подходит для мебели, КГТ, автозапчастей и товаров под заказ.
+              </p>
+              <ul class="space-y-2 text-xs text-slate-300">
+                <li class="flex items-center gap-2"><span class="text-[#22E58B]">✓</span> Примерка одежды и обуви в 5 000+ ПВЗ</li>
+                <li class="flex items-center gap-2"><span class="text-[#22E58B]">✓</span> Частичный выкуп и возврат неподошедшего</li>
+                <li class="flex items-center gap-2"><span class="text-[#22E58B]">✓</span> Наложенный платеж 54-ФЗ с выплатой на р/с</li>
+              </ul>
+            </div>
+            <a href="/services/dbs/" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#22E58B] hover:underline pt-2">
+              Подробнее о спецтарифе DBS →
+            </a>
+          </div>
+
+          <!-- Карточка FBO -->
+          <div class="p-6 sm:p-7 rounded-3xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition flex flex-col justify-between space-y-6 group">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-md text-[11px] font-black uppercase tracking-wider bg-white/[0.05] text-white border border-white/[0.1]">
+                  РФ + Беларусь + Казахстан
+                </span>
+                <span class="text-xs text-slate-500">FBW / FBY</span>
+              </div>
+              <h3 class="text-xl font-bold text-white group-hover:text-[#22E58B] transition">СДЭК FBO (Поставки в РЦ)</h3>
+              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                Транспортная паллетная и коробочная доставка оптовых партий товаров на склады Wildberries, Ozon, Яндекс Маркета, Золотого Яблока и Lamoda.
+              </p>
+              <ul class="space-y-2 text-xs text-slate-300">
+                <li class="flex items-center gap-2"><span class="text-[#22E58B]">✓</span> 100% сдача партии точно в назначенный тайм-слот</li>
+                <li class="flex items-center gap-2"><span class="text-[#22E58B]">✓</span> Подача транспорта под пропуска WB Drive и Ozon</li>
+                <li class="flex items-center gap-2"><span class="text-[#22E58B]">✓</span> Моно-, микс-короба, паллеты и негабарит (СГТ)</li>
+              </ul>
+            </div>
+            <a href="/services/fbo/" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#22E58B] hover:underline pt-2">
+              График рейсов и склады FBO →
+            </a>
+          </div>
+
+          <!-- Карточка FBS -->
+          <div class="p-6 sm:p-7 rounded-3xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition flex flex-col justify-between space-y-6 group">
+            <div class="space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="px-2.5 py-1 rounded-md text-[11px] font-black uppercase tracking-wider bg-[#00E5FF]/15 text-[#00E5FF] border border-[#00E5FF]/30">
+                  Без очередей
+                </span>
+                <span class="text-xs text-slate-500">Склад продавца</span>
+              </div>
+              <h3 class="text-xl font-bold text-white group-hover:text-[#22E58B] transition">СДЭК FBS (Сдача по реестру)</h3>
+              <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
+                Храните товары на собственном складе, собирайте заказы по факту покупки и сдавайте партии в любой ПВЗ СДЭК по единому акту приема-передачи.
+              </p>
+              <ul class="space-y-2 text-xs text-slate-300">
+                <li class="flex items-center gap-2"><span class="text-[#22E58B]">✓</span> 0 ₽ за хранение несезонных остатков на складах МП</li>
+                <li class="flex items-center gap-2"><span class="text-[#22E58B]">✓</span> Единый складской сток сразу для всех площадок</li>
+                <li class="flex items-center gap-2"><span class="text-[#22E58B]">✓</span> Сдача за 1 минуту по единому штрихкоду манифеста</li>
+              </ul>
+            </div>
+            <a href="/services/fbs/" class="inline-flex items-center gap-1.5 text-xs font-bold text-[#22E58B] hover:underline pt-2">
+              Регламент сдачи заказов FBS →
+            </a>
+          </div>
+
+        </div>
+      </div>
     </section>
 
-    <!-- 3. ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР ТАРИФОВ -->
-    <section id="widget-section" class="py-16 sm:py-20 border-b border-white/[0.08] relative">
+    <!-- 3. ИНТЕРАКТИВНЫЙ РЕЕСТР СКЛАДОВ FBO (Из cdek.ru/ru/marketplace/list/) -->
+    <section class="py-14 sm:py-18 border-b border-white/[0.08]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-white/[0.08] mb-2">
+              Склады маркетплейсов
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-black text-white">Регулярные рейсы на распределительные центры</h2>
+            <p class="text-slate-400 text-xs sm:text-sm mt-1">Доставка грузов FBO со строгим соблюдением графиков и тайм-слотов приемки</p>
+          </div>
+          <a href="/services/fbo/" class="text-xs font-bold text-[#22E58B] hover:underline whitespace-nowrap">
+            Все направления поставок →
+          </a>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table class="w-full text-left text-sm bg-[#0B131D] rounded-3xl border border-white/[0.08] overflow-hidden">
+            <thead>
+              <tr class="border-b border-white/[0.08] text-xs uppercase tracking-wider text-slate-400 bg-white/[0.02]">
+                <th class="py-3.5 px-4">Маркетплейс</th>
+                <th class="py-3.5 px-4">Распределительный центр</th>
+                <th class="py-3.5 px-4">Тип поставки</th>
+                <th class="py-3.5 px-4">График доставки СДЭК</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-white/[0.06] text-slate-300 text-xs sm:text-sm">
+              <tr>
+                <td class="py-3.5 px-4 font-bold text-[#CB11AB]">Wildberries</td>
+                <td class="py-3.5 px-4 text-white">Коледино, Электросталь, Тула, Подольск</td>
+                <td class="py-3.5 px-4">Моно / Микс / Европаллеты / СГТ</td>
+                <td class="py-3.5 px-4 text-[#22E58B]">Ежедневно под тайм-слот</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 px-4 font-bold text-[#005BFF]">Ozon</td>
+                <td class="py-3.5 px-4 text-white">Хоругвино, Софьино, Шушары, Гривно, Астана</td>
+                <td class="py-3.5 px-4">Паллеты, Fresh, Негабарит (РФЦ)</td>
+                <td class="py-3.5 px-4 text-[#22E58B]">Ежедневно (сдача по УПД-2)</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 px-4 font-bold text-[#FC3F1D]">Яндекс Маркет</td>
+                <td class="py-3.5 px-4 text-white">Софьино 1-2, Томилино, Ростов Логопарк</td>
+                <td class="py-3.5 px-4">FBY паллеты, КГТ отправления</td>
+                <td class="py-3.5 px-4 text-[#22E58B]">Пн - Сб (экспедирование)</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 px-4 font-bold text-[#E5A800]">Золотое Яблоко</td>
+                <td class="py-3.5 px-4 text-white">Истра Ориентир, Краснодар, Екатеринбург, Минск</td>
+                <td class="py-3.5 px-4">Косметика, парфюмерия, штучный товар</td>
+                <td class="py-3.5 px-4 text-[#22E58B]">По согласованным окнам</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 px-4 font-bold text-[#00E5FF]">Lamoda & Лемана ПРО</td>
+                <td class="py-3.5 px-4 text-white">Троицкий логопарк СПб, СЦ Белая Дача</td>
+                <td class="py-3.5 px-4">Fashion-партия, инструмент, DIY</td>
+                <td class="py-3.5 px-4 text-[#22E58B]">Регулярные рейсы</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. КАЛЬКУЛЯТОР ТАРИФОВ -->
+    <section id="widget-section" class="py-14 sm:py-18 border-b border-white/[0.08] relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-10">
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-white/[0.08] mb-3">
             Интеллектуальный расчет
           </div>
           <h2 class="text-2xl sm:text-4xl font-black text-white tracking-tight">
-            Рассчитайте стоимость и сроки доставки
+            Рассчитайте стоимость доставки посылки
           </h2>
           <p class="text-slate-400 text-xs sm:text-sm mt-2">
-            Официальные корпоративные тарифы линейки «Посылка» со скидкой до 50% при заключении B2B-договора.
+            Корпоративные B2B-тарифы линейки «Посылка» со скидкой до 50% и спецтариф DBS от 136.5 ₽.
           </p>
         </div>
 
@@ -291,172 +406,84 @@
       </div>
     </section>
 
-    <!-- 4. СРАВНЕНИЕ УСЛОВИЙ (С договором и Без договора) -->
-    <section class="py-16 sm:py-20 border-b border-white/[0.08]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-[#0B131D] rounded-3xl p-6 sm:p-10 border border-white/[0.08] shadow-[0_20px_50px_rgba(0,0,0,0.6)] space-y-6">
-          <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-white/[0.08] mb-2">
-              Экономика селлера
-            </div>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white">Сравнение условий: С договором и Без договора</h2>
-            <p class="text-sm text-slate-400 mt-1">Почему селлерам маркетплейсов невыгодно отправлять заказы по базовым тарифам физлиц</p>
-          </div>
-
-          <div class="overflow-x-auto">
-            <table class="w-full text-left text-sm">
-              <thead>
-                <tr class="border-b border-white/[0.08] text-xs uppercase tracking-wider text-slate-400">
-                  <th class="py-3 px-4">Параметр услуги</th>
-                  <th class="py-3 px-4 text-slate-500">Без договора (Физлицо)</th>
-                  <th class="py-3 px-4 text-[#22E58B] font-bold">С договором СДЭК (B2B)</th>
-                </tr>
-              </thead>
-              <tbody class="divide-y divide-white/[0.06] text-slate-300">
-                <tr>
-                  <td class="py-3.5 px-4 font-semibold text-white">Стоимость отправки</td>
-                  <td class="py-3.5 px-4 text-slate-500">100% базовый тариф</td>
-                  <td class="py-3.5 px-4 font-bold text-[#22E58B]">Скидка до 50% (тариф «Посылка»)</td>
-                </tr>
-                <tr>
-                  <td class="py-3.5 px-4 font-semibold text-white">Сдача заказов FBS и FBO</td>
-                  <td class="py-3.5 px-4 text-slate-500">В общей очереди с паспортом</td>
-                  <td class="py-3.5 px-4 font-bold text-[#22E58B]">Без очередей по единому реестру и штрихкоду</td>
-                </tr>
-                <tr>
-                  <td class="py-3.5 px-4 font-semibold text-white">Доставка до складов (FBO)</td>
-                  <td class="py-3.5 px-4 text-slate-500">По тарифам грузоперевозок без тайм-слотов</td>
-                  <td class="py-3.5 px-4 font-bold text-[#22E58B]">Точно в тайм-слот складов WB, Ozon, Яндекса</td>
-                </tr>
-                <tr>
-                  <td class="py-3.5 px-4 font-semibold text-white">Порядок расчетов</td>
-                  <td class="py-3.5 px-4 text-slate-500">Предоплата за каждую посылку</td>
-                  <td class="py-3.5 px-4 font-bold text-[#22E58B]">Постоплата по единому акту раз в месяц (ЭДО)</td>
-                </tr>
-                <tr>
-                  <td class="py-3.5 px-4 font-semibold text-white">Интеграция с кабинетом МП</td>
-                  <td class="py-3.5 px-4 text-slate-500">Только ручной ввод треков</td>
-                  <td class="py-3.5 px-4 font-bold text-[#22E58B]">Автоматическая передача статусов по REST API</td>
-                </tr>
-                <tr>
-                  <td class="py-3.5 px-4 font-semibold text-white">Стоимость возвратов</td>
-                  <td class="py-3.5 px-4 text-slate-500">100% от базового тарифа</td>
-                  <td class="py-3.5 px-4 font-bold text-[#22E58B]">Льготная ставка (скидка 50%)</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 5. ШАГИ ЗАПУСКА -->
-    <section id="steps" class="py-16 sm:py-20 border-b border-white/[0.08]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
-        <div class="text-center max-w-2xl mx-auto">
+    <!-- 5. ПЛАТФОРМА И API 2.0 (Из lk.cdek.ru) -->
+    <section class="py-14 sm:py-18 border-b border-white/[0.08]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div>
           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-white/[0.08] mb-2">
-            Быстрый старт
+            Личный кабинет и интеграции
           </div>
-          <h2 class="text-2xl sm:text-4xl font-black text-white tracking-tight">3 шага к подключению со скидкой</h2>
-          <p class="text-slate-400 text-xs sm:text-sm mt-2">Регистрация договора онлайн без визита в офис и бумажной волокиты</p>
+          <h2 class="text-2xl sm:text-3xl font-black text-white">Автоматизация отгрузок селлера</h2>
+          <p class="text-slate-400 text-xs sm:text-sm mt-1">Готовые модули для синхронизации остатков, автопечати термоэтикеток 58×40 мм и передачи трек-номеров</p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-8 text-center max-w-4xl mx-auto">
-          
-          <div class="p-6 rounded-3xl bg-[#0B131D] border border-white/[0.08] space-y-3">
-            <div class="w-12 h-12 rounded-2xl bg-[#22E58B]/15 border border-[#22E58B]/30 text-[#22E58B] font-black text-lg flex items-center justify-center mx-auto">
-              1
-            </div>
-            <h3 class="text-base sm:text-lg font-bold text-white">Онлайн-заявка</h3>
-            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
-              Заполните форму, менеджер проверит реквизиты вашей компании или ИП за 5 минут.
-            </p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="p-5 rounded-2xl bg-[#0B131D] border border-white/[0.08] space-y-2">
+            <div class="text-[#22E58B] font-black text-base">REST API 2.0</div>
+            <p class="text-xs text-slate-300">Мгновенная передача статусов и трек-номеров в Wildberries и Ozon для защиты от штрафов за просрочку SLA.</p>
           </div>
-
-          <div class="p-6 rounded-3xl bg-[#0B131D] border border-white/[0.08] space-y-3">
-            <div class="w-12 h-12 rounded-2xl bg-white/[0.05] border border-white/[0.1] text-white font-black text-lg flex items-center justify-center mx-auto">
-              2
-            </div>
-            <h3 class="text-base sm:text-lg font-bold text-white">Электронный договор</h3>
-            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
-              Подписание договора онлайн без поездок в пункты выдачи или офисы СДЭК.
-            </p>
+          <div class="p-5 rounded-2xl bg-[#0B131D] border border-white/[0.08] space-y-2">
+            <div class="text-[#22E58B] font-black text-base">Этикетки 58×40 мм</div>
+            <p class="text-xs text-slate-300">Пакетная генерация и печать накладных СДЭК и штрихкодов маркетплейсов в один клик из кабинета.</p>
           </div>
-
-          <div class="p-6 rounded-3xl bg-[#0B131D] border border-white/[0.08] space-y-3">
-            <div class="w-12 h-12 rounded-2xl bg-[#00E5FF]/15 border border-[#00E5FF]/30 text-[#00E5FF] font-black text-lg flex items-center justify-center mx-auto">
-              3
-            </div>
-            <h3 class="text-base sm:text-lg font-bold text-white">Старт отгрузок</h3>
-            <p class="text-slate-400 text-xs sm:text-sm leading-relaxed">
-              Получите доступы в кабинет селлера, ключи API и отгружайте заказы по FBS, FBO и DBS.
-            </p>
+          <div class="p-5 rounded-2xl bg-[#0B131D] border border-white/[0.08] space-y-2">
+            <div class="text-[#22E58B] font-black text-base">МойСклад & 1С</div>
+            <p class="text-xs text-slate-300">Готовые синхронизаторы складских остатков и автоматическое создание заказов на доставку при покупке.</p>
           </div>
-
+          <div class="p-5 rounded-2xl bg-[#0B131D] border border-white/[0.08] space-y-2">
+            <div class="text-[#22E58B] font-black text-base">ЭДО без бумаг</div>
+            <p class="text-xs text-slate-300">Закрывающие документы через Диадок и СБИС раз в месяц по постоплатной системе расчетов.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- 6. SEO БЛОК: FAQ (Вопросы и ответы) -->
-    <section class="py-16 sm:py-20 border-b border-white/[0.08]">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-[#0B131D] rounded-3xl p-6 sm:p-10 border border-white/[0.08] space-y-6">
-          <div class="text-left">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-white/[0.08] mb-2">
-              База знаний
-            </div>
-            <h2 class="text-2xl sm:text-3xl font-bold text-white">Часто задаваемые вопросы о логистике СДЭК</h2>
+    <!-- 6. FAQ (База знаний) -->
+    <section class="py-14 sm:py-18 border-b border-white/[0.08]">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-white/[0.08] mb-2">
+            База знаний
           </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-white">Вопросы и ответы по логистике маркетплейсов</h2>
+        </div>
 
-          <div class="space-y-3 text-sm">
-            
-            <details class="group border border-white/[0.08] rounded-2xl p-5 open:bg-white/[0.02] transition">
-              <summary class="font-bold text-white cursor-pointer flex justify-between items-center list-none">
-                <span>Как работает доставка СДЭК по схемам FBS, FBO и DBS?</span>
-                <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
-              </summary>
-              <p class="text-slate-300 mt-3 text-xs sm:text-sm leading-relaxed">
-                По схеме FBS селлер сдает готовые заказы в любой из 5 000+ ПВЗ СДЭК без очередей. По схеме FBO осуществляется паллетная и коробочная доставка партий товаров на склады маркетплейсов. По схеме DBS СДЭК доставляет заказы напрямую покупателям со скидкой до 50%.
-              </p>
-            </details>
+        <div class="space-y-3 text-sm">
+          <details class="group border border-white/[0.08] rounded-2xl p-5 bg-[#0B131D] open:bg-white/[0.02] transition">
+            <summary class="font-bold text-white cursor-pointer flex justify-between items-center list-none">
+              <span>Что такое спецтариф СДЭК DBS и сколько он стоит?</span>
+              <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
+            </summary>
+            <p class="text-slate-300 mt-3 text-xs sm:text-sm leading-relaxed">
+              DBS (Delivery by Seller / RealFBS / Витрина) — схема, при которой маркетплейс служит только витриной, а доставку покупателю выполняет СДЭК по спецтарифу от 136.5 ₽. Это позволяет избежать штрафов площадок, доставлять негабарит и не замораживать товар.
+            </p>
+          </details>
 
-            <details class="group border border-white/[0.08] rounded-2xl p-5 open:bg-white/[0.02] transition">
-              <summary class="font-bold text-white cursor-pointer flex justify-between items-center list-none">
-                <span>Сколько стоит заключение официального B2B-договора?</span>
-                <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
-              </summary>
-              <p class="text-slate-300 mt-3 text-xs sm:text-sm leading-relaxed">
-                Заключение договора, регистрация в личном кабинете СДЭК и выдача боевых API-ключей полностью бесплатны (0 ₽). Никаких обязательных абонентских платежей или скрытых комиссий нет.
-              </p>
-            </details>
+          <details class="group border border-white/[0.08] rounded-2xl p-5 bg-[#0B131D] open:bg-white/[0.02] transition">
+            <summary class="font-bold text-white cursor-pointer flex justify-between items-center list-none">
+              <span>Как работает доставка партий на склады маркетплейсов (FBO)?</span>
+              <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
+            </summary>
+            <p class="text-slate-300 mt-3 text-xs sm:text-sm leading-relaxed">
+              СДЭК забирает европаллеты или короба и привозит их строго к назначенному тайм-слоту приемки на РЦ Wildberries, Ozon, Яндекс Маркета, Золотого Яблока и других хабов по России и странам СНГ.
+            </p>
+          </details>
 
-            <details class="group border border-white/[0.08] rounded-2xl p-5 open:bg-white/[0.02] transition">
-              <summary class="font-bold text-white cursor-pointer flex justify-between items-center list-none">
-                <span>Кто может заключить договор со СДЭК для маркетплейсов?</span>
-                <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
-              </summary>
-              <p class="text-slate-300 mt-3 text-xs sm:text-sm leading-relaxed">
-                Договор могут оформить юридические лица (ООО, АО), индивидуальные предприниматели (ИП) на любых системах налогообложения, а также самозанятые граждане (плательщики НПД).
-              </p>
-            </details>
-
-            <details class="group border border-white/[0.08] rounded-2xl p-5 open:bg-white/[0.02] transition">
-              <summary class="font-bold text-white cursor-pointer flex justify-between items-center list-none">
-                <span>Как передаются трек-номера и статусы заказов в маркетплейс?</span>
-                <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
-              </summary>
-              <p class="text-slate-300 mt-3 text-xs sm:text-sm leading-relaxed">
-                Интеграция работает автоматически через REST API 2.0 или готовые плагины. Трек-номер СДЭК и статусы движения посылки синхронизируются с личным кабинетом Ozon, Wildberries, Яндекс Маркета или вашей CMS.
-              </p>
-            </details>
-
-          </div>
+          <details class="group border border-white/[0.08] rounded-2xl p-5 bg-[#0B131D] open:bg-white/[0.02] transition">
+            <summary class="font-bold text-white cursor-pointer flex justify-between items-center list-none">
+              <span>Как сдавать товары по FBS в пункты выдачи СДЭК без очередей?</span>
+              <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
+            </summary>
+            <p class="text-slate-300 mt-3 text-xs sm:text-sm leading-relaxed">
+              В личном кабинете селлера СДЭК формируется единый реестр (манифест). Сотрудник любого из 5 000+ ПВЗ сканирует один штрихкод и принимает всю партию за 1 минуту.
+            </p>
+          </details>
         </div>
       </div>
     </section>
 
     <!-- 7. БЛОГ -->
-    <section class="py-16 sm:py-20">
+    <section class="py-14 sm:py-18">
       <!--#include virtual="/src/components/blog-latest.html" -->
     </section>
 
@@ -465,7 +492,7 @@
   <!--#include virtual="/src/components/footer.html" -->
   <!--#include virtual="/src/components/mobile-cta.html" -->
 
-  <!-- Скрипт быстрой гео-подстановки города -->
+  <!-- Скрипт корректной гео-подстановки города (с защитой от зарубежных VPN) -->
   <script>
     (async function() {
       const declensions = {
@@ -474,7 +501,10 @@
         "краснодар": "в Краснодаре",
         "екатеринбург": "в Екатеринбурге",
         "новосибирск": "в Новосибирске",
-        "казань": "в Казани"
+        "казань": "в Казани",
+        "ростов-на-дону": "в Ростове-на-Дону",
+        "самара": "в Самаре",
+        "нижний новгород": "в Нижнем Новгороде"
       };
 
       function applyCity(text) {
@@ -494,13 +524,21 @@
         if (!res.ok) return;
         let data = await res.json();
         
+        // Защита от зарубежных VPN (Хельсинки, Франкфурт и т.д.)
+        if (data.country_code !== 'RU' && data.country_code !== 'BY' && data.country_code !== 'KZ') {
+          applyCity("по всей России и СНГ");
+          return;
+        }
+
         let rawCity = (data.city || "").trim();
         let cityName = rawCity ? rawCity.charAt(0).toUpperCase() + rawCity.slice(1) : "";
-        let targetPrep = declensions[cityName.toLowerCase()] || (cityName ? `в г. ${cityName}` : "в вашем городе");
+        let targetPrep = declensions[cityName.toLowerCase()] || (cityName ? `в г. ${cityName}` : "по всей России и СНГ");
 
         localStorage.setItem('user_city_prep', targetPrep);
         applyCity(targetPrep);
-      } catch (e) {}
+      } catch (e) {
+        applyCity("по всей России и СНГ");
+      }
     })();
   </script>
 
