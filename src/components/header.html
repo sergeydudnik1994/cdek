@@ -40,8 +40,15 @@
     </div>
 
     <!-- Навигация (Desktop) -->
-    <nav class="hidden xl:flex items-center gap-6 text-xs sm:text-sm font-semibold text-slate-300">
+    <nav class="hidden xl:flex items-center gap-5 sm:gap-6 text-xs sm:text-sm font-semibold text-slate-300">
       
+      <!-- НОВАЯ ССЫЛКА: Трафик и Яндекс Директ -->
+      <a href="/traffic/" class="flex items-center gap-1.5 text-white hover:text-[#22E58B] transition-all px-2.5 py-1.5 rounded-xl bg-white/[0.04] border border-[#22E58B]/30 hover:border-[#22E58B] shadow-[0_0_15px_rgba(34,229,139,0.15)] group">
+        <span class="w-1.5 h-1.5 rounded-full bg-[#22E58B] animate-pulse"></span>
+        <span>Директ для селлеров</span>
+        <span class="text-[9px] font-black uppercase text-[#22E58B] bg-[#22E58B]/20 px-1.5 py-0.5 rounded border border-[#22E58B]/30 group-hover:bg-[#22E58B] group-hover:text-slate-950 transition-colors">NEW</span>
+      </a>
+
       <!-- Калькулятор B2B -->
       <a href="/calculator/" class="flex items-center gap-1.5 hover:text-[#22E58B] transition-colors">
         <svg class="w-4 h-4 text-[#22E58B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -57,23 +64,13 @@
           <svg class="w-3.5 h-3.5 transition-transform group-hover:rotate-180 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </a>
         <div class="absolute left-0 top-full hidden group-hover:block w-72 bg-[#0B131D]/95 backdrop-blur-2xl rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] border border-white/[0.1] p-2 z-50">
-          <!-- 1. Спецтариф DBS -->
           <a href="/services/dbs/" class="block px-3 py-2 text-xs font-bold text-[#22E58B] bg-[#22E58B]/10 hover:bg-[#22E58B]/20 rounded-xl transition mb-1 border border-[#22E58B]/20">
             Спецтариф DBS от 136.5 ₽
           </a>
-          
-          <!-- 2. Вторая строчка: Создание сайта / SEO-лендинга под DBS -->
-          <a href="/store/" class="flex items-center justify-between px-3 py-2 text-xs font-bold text-white bg-white/[0.04] hover:bg-[#22E58B]/15 hover:text-[#22E58B] rounded-xl transition mb-2 border border-white/[0.08] hover:border-[#22E58B]/30 group/store">
-            <span class="flex items-center gap-1.5">
-              <svg class="w-3.5 h-3.5 text-[#22E58B] shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/>
-              </svg>
-              Создание SEO-сайта
-            </span>
-            <span class="text-[9px] font-black uppercase text-[#22E58B] bg-[#22E58B]/20 px-1.5 py-0.5 rounded border border-[#22E58B]/30">NEW</span>
+          <a href="/traffic/" class="flex items-center justify-between px-3 py-2 text-xs font-bold text-white bg-white/[0.04] hover:bg-[#22E58B]/15 hover:text-[#22E58B] rounded-xl transition mb-2 border border-white/[0.08] hover:border-[#22E58B]/30">
+            <span>Реклама в Директе</span>
+            <span class="text-[9px] font-black uppercase text-[#22E58B] bg-[#22E58B]/20 px-1.5 py-0.5 rounded border border-[#22E58B]/30">HOT</span>
           </a>
-
-          <!-- Список CMS -->
           <a href="/integrations/1c-bitrix/" class="block px-3 py-1.5 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">1С-Битрикс</a>
           <a href="/integrations/tilda/" class="block px-3 py-1.5 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">Tilda Publishing</a>
           <a href="/integrations/moysklad/" class="block px-3 py-1.5 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">МойСклад</a>
@@ -95,7 +92,6 @@
           <a href="/solutions/elektronika-i-tehnika/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">Электроника и техника</a>
           <a href="/solutions/mebel-i-interer/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">Мебель и товары для дома</a>
           <a href="/solutions/avtotovary-i-zapchasti/" class="block px-3 py-2 text-xs font-medium text-slate-300 hover:bg-white/[0.05] hover:text-[#22E58B] rounded-xl transition">Автотовары и запчасти</a>
-          
           <div class="border-t border-white/[0.06] my-1 pt-1"></div>
           <a href="/solutions/" class="block px-3 py-1.5 text-xs font-bold text-[#22E58B] hover:underline">
             Все 32 отраслевых решения →
@@ -112,9 +108,7 @@
       </a>
 
       <!-- Блог -->
-      <a href="/blog/" class="hover:text-[#22E58B] transition-colors">
-        Блог
-      </a>
+      <a href="/blog/" class="hover:text-[#22E58B] transition-colors">Блог</a>
     </nav>
 
     <!-- Правая группа: Кнопка "Подключиться" + Бургер -->
@@ -158,8 +152,16 @@
       </button>
     </div>
 
-    <!-- Быстрые действия -->
-    <div class="px-4 py-3 space-y-1">
+    <!-- Быстрые действия: Промо Директа -->
+    <div class="px-4 py-3 space-y-1.5">
+      <a href="/traffic/" class="mobile-link flex items-center justify-between py-2.5 px-3 rounded-xl bg-[#22E58B]/10 border border-[#22E58B]/25 text-sm font-bold text-white">
+        <span class="flex items-center gap-2">
+          <span class="w-2 h-2 rounded-full bg-[#22E58B] animate-pulse"></span>
+          <span>Директ для маркетплейсов</span>
+        </span>
+        <span class="text-[10px] font-black uppercase bg-[#22E58B] text-slate-950 px-1.5 py-0.5 rounded">NEW</span>
+      </a>
+
       <a href="/calculator/" class="mobile-link flex items-center justify-between py-2 text-sm font-bold text-white">
         <span class="flex items-center gap-2">
           <svg class="w-4 h-4 text-[#22E58B]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/></svg>
@@ -184,11 +186,8 @@
           <span>Спецтариф DBS от 136.5 ₽</span>
           <span class="text-xs">›</span>
         </a>
-        <a href="/store/" class="mobile-link flex items-center justify-between py-1 text-xs font-bold text-white hover:text-[#22E58B]">
-          <span class="flex items-center gap-1.5">
-            <span>Создание SEO-сайта под DBS</span>
-            <span class="text-[9px] font-black uppercase text-[#22E58B] bg-[#22E58B]/20 px-1 py-0.5 rounded border border-[#22E58B]/30">NEW</span>
-          </span>
+        <a href="/traffic/" class="mobile-link flex items-center justify-between py-1 text-xs font-bold text-white hover:text-[#22E58B]">
+          <span>Реклама в Яндекс Директе</span>
           <span class="text-xs text-slate-600">›</span>
         </a>
         <a href="/integrations/" class="mobile-link flex items-center justify-between py-1 text-xs text-slate-300 hover:text-[#22E58B]">
