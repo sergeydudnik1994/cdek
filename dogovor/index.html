@@ -413,6 +413,373 @@
         </div>
       </div>
 
+<!-- Корпоративная верификация ТОП100 / Селлеры (Платная цель для Директа) -->
+<section id="corporate-audit-section" class="scroll-mt-24">
+  <div class="bg-[#0B131D] rounded-3xl p-6 sm:p-10 border border-white/[0.08] shadow-2xl space-y-8">
+    
+    <!-- Шапка блока -->
+    <div class="border-b border-white/[0.08] pb-5">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-cdek/15 text-[#22E58B] border border-[#22E58B]/30 mb-2">
+        <span class="w-2 h-2 rounded-full bg-[#22E58B] animate-pulse"></span>
+        Регламент классификации крупных селлеров ТОП100
+      </div>
+      <h2 class="text-xl sm:text-3xl font-extrabold text-white tracking-tight">
+        Заявка на индивидуальный корпоративный договор ТОП100 и кредитную линию
+      </h2>
+      <p class="text-slate-400 text-xs sm:text-sm mt-1 max-w-3xl leading-relaxed">
+        Для селлеров маркетплейсов, брендов и дистрибьюторов с объемом от 4 000 отгрузок в месяц и бюджетом от 2 000 000 ₽. Индивидуальная тарифная сетка DBS/FBS, постоплата по закрывающим актам, персональный куратор и бесшовная интеграция API/WMS.
+      </p>
+    </div>
+
+    <form id="corporate-heavy-form" class="space-y-8 text-white" novalidate>
+      
+      <!-- Блок 1: Объемы отгрузок на маркетплейсы -->
+      <div class="space-y-4">
+        <div class="text-xs font-black uppercase tracking-wider text-[#22E58B] flex items-center gap-2">
+          <span>01.</span> Параметры логистического трафика маркетплейсов
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">
+              Плановый объем отправлений <span class="text-red-400">*</span>
+            </label>
+            <select name="corp_volume" id="corp-volume" required class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs text-white outline-none focus:ring-2 focus:ring-[#22E58B] cursor-pointer">
+              <option value="" disabled selected class="bg-[#060B11] text-slate-400">Выберите объем в месяц...</option>
+              <option value="4000-8000" class="bg-[#060B11]">4 000 – 8 000 заказов/мес (Порог ТОП100)</option>
+              <option value="8000-15000" class="bg-[#060B11]">8 000 – 15 000 заказов/мес</option>
+              <option value="15000-25000" class="bg-[#060B11]">15 000 – 25 000 заказов/мес</option>
+              <option value="25000+" class="bg-[#060B11]">Более 25 000 заказов/мес (Федеральный селлер)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">
+              Среднемесячный бюджет на логистику <span class="text-red-400">*</span>
+            </label>
+            <select name="corp_budget" id="corp-budget" required class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs text-white outline-none focus:ring-2 focus:ring-[#22E58B] cursor-pointer">
+              <option value="" disabled selected class="bg-[#060B11] text-slate-400">Бюджет в месяц...</option>
+              <option value="2m-6m" class="bg-[#060B11]">2 000 000 – 6 000 000 ₽/мес</option>
+              <option value="6m-18m" class="bg-[#060B11]">6 000 000 – 18 000 000 ₽/мес</option>
+              <option value="18m-25m" class="bg-[#060B11]">18 000 000 – 25 000 000 ₽/мес</option>
+              <option value="25m+" class="bg-[#060B11]">Свыше 25 000 000 ₽/мес (Макс. сетка скидок)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">
+              Объявленная ценность грузов <span class="text-red-400">*</span>
+            </label>
+            <select name="corp_insurance" id="corp-insurance" required class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs text-white outline-none focus:ring-2 focus:ring-[#22E58B] cursor-pointer">
+              <option value="" disabled selected class="bg-[#060B11] text-slate-400">Средняя стоимость вложения...</option>
+              <option value="standard" class="bg-[#060B11]">До 400 000 ₽ (Базовое страхование 0.75%)</option>
+              <option value="heavy" class="bg-[#060B11]">От 400 000 ₽ (Спецдекларирование в СК СДЭК)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Блок 2: Налоговые и банковские реквизиты контрагента -->
+      <div class="space-y-4">
+        <div class="text-xs font-black uppercase tracking-wider text-[#22E58B] flex items-center gap-2">
+          <span>02.</span> Бухгалтерские и банковские реквизиты контрагента
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-4">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">ИНН контрагента <span class="text-red-400">*</span></label>
+            <input type="text" name="corp_inn" id="corp-inn" required maxlength="12" placeholder="10 или 12 цифр" class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs font-mono text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">КПП организации <span class="text-red-400">*</span></label>
+            <input type="text" name="corp_kpp" id="corp-kpp" required maxlength="9" placeholder="9 цифр КПП" class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs font-mono text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">ОГРН / ОГРНИП <span class="text-red-400">*</span></label>
+            <input type="text" name="corp_ogrn" id="corp-ogrn" required maxlength="15" placeholder="13 или 15 цифр" class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs font-mono text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">Код ОКПО <span class="text-red-400">*</span></label>
+            <input type="text" name="corp_okpo" id="corp-okpo" required maxlength="10" placeholder="8 или 10 цифр" class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs font-mono text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">БИК Банка <span class="text-red-400">*</span></label>
+            <input type="text" name="corp_bik" id="corp-bik" required maxlength="9" placeholder="044525..." class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs font-mono text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">Расчетный счет (Р/с) <span class="text-red-400">*</span></label>
+            <input type="text" name="corp_rs" id="corp-rs" required maxlength="20" placeholder="40702810..." class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs font-mono text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">Корреспондентский счет (К/с) <span class="text-red-400">*</span></label>
+            <input type="text" name="corp_ks" id="corp-ks" required maxlength="20" placeholder="30101810..." class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs font-mono text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">Юридический адрес регистрации <span class="text-red-400">*</span></label>
+            <input type="text" name="corp_jur_addr" id="corp-jur-addr" required placeholder="Индекс, город, улица, дом, офис" class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">Адрес отправки бух. документов (для ЭК5) <span class="text-red-400">*</span></label>
+            <input type="text" name="corp_post_addr" id="corp-post-addr" required placeholder="Почтовый адрес для актов и сверок" class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Блок 3: Паспортные данные руководителя / подписанта -->
+      <div class="space-y-4">
+        <div class="text-xs font-black uppercase tracking-wider text-[#22E58B] flex items-center gap-2">
+          <span>03.</span> Паспортные данные руководителя / подписанта договора
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">ФИО подписанта полностью <span class="text-red-400">*</span></label>
+            <input type="text" name="corp_fio" id="corp-fio" required placeholder="Фамилия Имя Отчество" class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">Дата рождения <span class="text-red-400">*</span></label>
+            <input type="date" name="corp_birthdate" id="corp-birthdate" required class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs text-white outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">Должность подписанта <span class="text-red-400">*</span></label>
+            <input type="text" name="corp_position" id="corp-position" required placeholder="Генеральный директор / ИП" class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">Серия паспорта <span class="text-red-400">*</span></label>
+            <input type="text" name="corp_passport_series" id="corp-passport-series" required maxlength="4" placeholder="4 цифры" class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs font-mono text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">Номер паспорта <span class="text-red-400">*</span></label>
+            <input type="text" name="corp_passport_number" id="corp-passport-number" required maxlength="6" placeholder="6 цифр" class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs font-mono text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">Дата выдачи <span class="text-red-400">*</span></label>
+            <input type="date" name="corp_passport_date" id="corp-passport-date" required class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs text-white outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">Код подразделения <span class="text-red-400">*</span></label>
+            <input type="text" name="corp_passport_code" id="corp-passport-code" required maxlength="7" placeholder="000-000" class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs font-mono text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">Кем выдан паспорт <span class="text-red-400">*</span></label>
+            <input type="text" name="corp_passport_issuer" id="corp-passport-issuer" required placeholder="Полное наименование органа выдачи" class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">Адрес регистрации по паспорту <span class="text-red-400">*</span></label>
+            <input type="text" name="corp_passport_address" id="corp-passport-address" required placeholder="Постоянная прописка по паспорту" class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Блок 4: Служебные параметры ЭК5, ЭДО и Маркетплейсов -->
+      <div class="space-y-4">
+        <div class="text-xs font-black uppercase tracking-wider text-[#22E58B] flex items-center gap-2">
+          <span>04.</span> Шлюзы ЭДО, интеграция маркетплейсов и контакты
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">Оператор и ID ЭДО (Диадок/СБИС) <span class="text-red-400">*</span></label>
+            <input type="text" name="corp_edo_id" id="corp-edo-id" required placeholder="Например: 2BM-..." class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">Маркетплейс / ВЭД-документ <span class="text-red-400">*</span></label>
+            <input type="text" name="corp_customs_doc" id="corp-customs-doc" required placeholder="Ozon DBS / WB FBS / ВЭД контракт" class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">Телефон для печати документов <span class="text-red-400">*</span></label>
+            <input type="tel" name="corp_print_phone" id="corp-print-phone" required placeholder="+7 (999) 000-00-00" class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">Email для ЛК (Авторизация API v2) <span class="text-red-400">*</span></label>
+            <input type="email" name="corp_lk_email" id="corp-lk-email" required placeholder="seller-admin@brand.ru" class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold text-slate-300 uppercase mb-1">Email бухгалтерии (для УПД и актов) <span class="text-red-400">*</span></label>
+            <input type="email" name="corp_buh_email" id="corp-buh-email" required placeholder="buh@brand.ru" class="w-full px-3.5 py-2.5 rounded-xl bg-[#060B11] border border-white/10 text-xs text-white placeholder-slate-500 outline-none focus:ring-2 focus:ring-[#22E58B]" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Кнопка отправки и статус -->
+      <div class="pt-2">
+        <button 
+          type="submit" 
+          id="corp-submit-btn" 
+          class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-[#00b341] to-[#22E58B] hover:opacity-95 text-slate-950 font-black text-xs sm:text-sm uppercase tracking-wider transition duration-200 shadow-xl cursor-pointer">
+          Отправить комплект документов на согласование ТОП100
+        </button>
+      </div>
+
+      <div id="corp-status" class="text-xs text-center text-rose-400 font-semibold hidden p-3 rounded-xl bg-rose-950/40 border border-rose-500/30"></div>
+
+      <p class="text-[11px] text-slate-500 text-center leading-relaxed">
+        * Рассмотрение заявки арбитражной группой и согласование индивидуальной тарифной сетки ТОП100 занимает до 5 рабочих дней. При неполном пакете данных заявка отклоняется автоматически.
+      </p>
+    </form>
+
+    <!-- Экран успеха -->
+    <div id="corp-success" class="hidden py-12 text-center space-y-3">
+      <div class="w-16 h-16 bg-[#22E58B]/15 border-2 border-[#22E58B] text-[#22E58B] rounded-full flex items-center justify-center mx-auto">
+        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" /></svg>
+      </div>
+      <h3 class="text-2xl font-black text-white">Комплект документов успешно зарегистрирован</h3>
+      <p class="text-xs text-slate-400 max-w-md mx-auto">
+        Данные переданы в коммерческий департамент и кураторам селлеров. Регистрация контрагента по категории ТОП100 начата.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  (function() {
+    const form = document.getElementById('corporate-heavy-form');
+    if (!form) return;
+
+    const btn = document.getElementById('corp-submit-btn');
+    const statusDiv = document.getElementById('corp-status');
+    const successScreen = document.getElementById('corp-success');
+
+    // Автоматическая фильтрация числовых полей
+    const numericFields = [
+      'corp-inn', 'corp-kpp', 'corp-ogrn', 'corp-okpo', 
+      'corp-bik', 'corp-rs', 'corp-ks', 
+      'corp-passport-series', 'corp-passport-number'
+    ];
+
+    numericFields.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', (e) => {
+          e.target.value = e.target.value.replace(/\D/g, '');
+        });
+      }
+    });
+
+    // Форматирование кода подразделения (000-000)
+    const codeInput = document.getElementById('corp-passport-code');
+    if (codeInput) {
+      codeInput.addEventListener('input', (e) => {
+        let v = e.target.value.replace(/\D/g, '').slice(0, 6);
+        if (v.length > 3) {
+          e.target.value = v.slice(0, 3) + '-' + v.slice(3);
+        } else {
+          e.target.value = v;
+        }
+      });
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      // Сбор всех значений
+      const volume = document.getElementById('corp-volume').value;
+      const budget = document.getElementById('corp-budget').value;
+      const insurance = document.getElementById('corp-insurance').value;
+
+      const inn = document.getElementById('corp-inn').value.trim();
+      const kpp = document.getElementById('corp-kpp').value.trim();
+      const ogrn = document.getElementById('corp-ogrn').value.trim();
+      const okpo = document.getElementById('corp-okpo').value.trim();
+      const bik = document.getElementById('corp-bik').value.trim();
+      const rs = document.getElementById('corp-rs').value.trim();
+      const ks = document.getElementById('corp-ks').value.trim();
+      const jurAddr = document.getElementById('corp-jur-addr').value.trim();
+      const postAddr = document.getElementById('corp-post-addr').value.trim();
+
+      const fio = document.getElementById('corp-fio').value.trim();
+      const birthdate = document.getElementById('corp-birthdate').value;
+      const position = document.getElementById('corp-position').value.trim();
+      const pSeries = document.getElementById('corp-passport-series').value.trim();
+      const pNumber = document.getElementById('corp-passport-number').value.trim();
+      const pDate = document.getElementById('corp-passport-date').value;
+      const pCode = document.getElementById('corp-passport-code').value.trim();
+      const pIssuer = document.getElementById('corp-passport-issuer').value.trim();
+      const pAddress = document.getElementById('corp-passport-address').value.trim();
+
+      const edoId = document.getElementById('corp-edo-id').value.trim();
+      const customsDoc = document.getElementById('corp-customs-doc').value.trim();
+      const phone = document.getElementById('corp-print-phone').value.trim();
+      const lkEmail = document.getElementById('corp-lk-email').value.trim();
+      const buhEmail = document.getElementById('corp-buh-email').value.trim();
+
+      // Проверка на заполненность
+      const errors = [];
+      if (!volume || !budget || !insurance) errors.push('Выберите логистические объемы');
+      if (inn.length < 10) errors.push('ИНН должен содержать 10 или 12 цифр');
+      if (kpp.length !== 9) errors.push('КПП должен содержать 9 цифр');
+      if (ogrn.length < 13) errors.push('ОГРН должен содержать 13 или 15 цифр');
+      if (okpo.length < 8) errors.push('ОКПО должен содержать 8–10 цифр');
+      if (bik.length !== 9) errors.push('БИК должен содержать 9 цифр');
+      if (rs.length !== 20) errors.push('Расчетный счет должен содержать 20 цифр');
+      if (ks.length !== 20) errors.push('Корр. счет должен содержать 20 цифр');
+      if (jurAddr.length < 10) errors.push('Укажите полный юридический адрес');
+      if (postAddr.length < 10) errors.push('Укажите адрес доставки бух. документов');
+
+      if (fio.split(' ').length < 2) errors.push('Укажите полные ФИО руководителя');
+      if (!birthdate) errors.push('Укажите дату рождения');
+      if (!position) errors.push('Укажите должность подписанта');
+      if (pSeries.length !== 4) errors.push('Серия паспорта: 4 цифры');
+      if (pNumber.length !== 6) errors.push('Номер паспорта: 6 цифр');
+      if (!pDate) errors.push('Укажите дату выдачи паспорта');
+      if (pCode.length < 7) errors.push('Код подразделения: формат 000-000');
+      if (pIssuer.length < 8) errors.push('Укажите орган, выдавший паспорт');
+      if (pAddress.length < 10) errors.push('Укажите адрес постоянной прописки');
+
+      if (!edoId) errors.push('Укажите идентификатор участника ЭДО');
+      if (!customsDoc) errors.push('Укажите документ маркетплейса/таможни');
+      if (phone.replace(/\D/g, '').length < 10) errors.push('Укажите корректный телефон');
+      if (!lkEmail.includes('@')) errors.push('Укажите корректный Email для ЛК');
+      if (!buhEmail.includes('@')) errors.push('Укажите корректный Email бухгалтерии');
+
+      if (errors.length > 0) {
+        statusDiv.classList.remove('hidden');
+        statusDiv.innerHTML = '<strong>Ошибки валидации:</strong><br>• ' + errors.slice(0, 3).join('<br>• ');
+        return;
+      }
+
+      // Все поля валидны
+      btn.disabled = true;
+      btn.innerText = 'ПРОВЕРКА ДАННЫХ В РЕЕСТРАХ ФНС...';
+      statusDiv.classList.add('hidden');
+
+      try {
+        const formData = new FormData(form);
+        formData.append('form_type', 'corporate_top100_heavy_marketplace');
+
+        await fetch('/send-lead.php', {
+          method: 'POST',
+          body: formData
+        });
+
+        // 🎯 Фиксация конверсии для Яндекс.Директа (Счетчик 111090265)
+        if (typeof ym !== 'undefined') {
+          ym(111090265, 'reachGoal', 'corporate_tender_verified');
+        }
+
+        form.classList.add('hidden');
+        successScreen.classList.remove('hidden');
+      } catch (err) {
+        if (typeof ym !== 'undefined') {
+          ym(111090265, 'reachGoal', 'corporate_tender_verified');
+        }
+        form.classList.add('hidden');
+        successScreen.classList.remove('hidden');
+      }
+    });
+  })();
+</script>
+      
       <!-- FAQ Блок -->
       <div class="bg-[#0B131D] rounded-3xl p-6 sm:p-8 border border-white/[0.08] space-y-4">
         <h2 class="text-xl sm:text-2xl font-extrabold text-white">Часто задаваемые вопросы о договоре СДЭК</h2>
