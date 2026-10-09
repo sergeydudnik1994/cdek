@@ -6,7 +6,7 @@
   <title>СДЭК трекинг для селлеров и покупателей: отследить посылку онлайн</title>
   <meta name="description" content="Онлайн-отслеживание заказов СДЭК для селлеров Wildberries, Ozon, Яндекс Маркет и интернет-магазинов. Проверка статуса накладной, интеграция DBS и B2B-тарифы со скидкой." />
   <meta name="keywords" content="сдэк трекинг, отследить заказ сдэк, сдэк трекинг маркетплейсов, сдэк dbs отслеживание, сдэк для селлеров, сдэк проверить накладную" />
-  <meta name="theme-color" content="#060B11" />
+  <meta name="theme-color" content="#F5F8FE" />
   <link rel="canonical" href="https://cdek-marketplace.ru/tracking/" />
 
   <!-- Tailwind CSS -->
@@ -17,9 +17,7 @@
         extend: {
           colors: {
             cdek: '#00b341',
-            neon: '#22E58B',
-            obsidian: '#060B11',
-            card: '#0B131D'
+            obsidian: '#060B11'
           }
         }
       }
@@ -42,9 +40,6 @@
   <meta property="og:description" content="Онлайн-отслеживание посылок СДЭК для селлеров маркетплейсов. Проверьте актуальный статус доставки и подключите корпоративный договор." />
   <meta property="og:url" content="https://cdek-marketplace.ru/tracking/" />
   <meta property="og:image" content="https://cdek-marketplace.ru/og-image.png" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -69,7 +64,7 @@
       "name": "СДЭК для Маркетплейсов",
       "url": "https://cdek-marketplace.ru/",
       "logo": "https://cdek-marketplace.ru/favicon.png",
-      "email": "sv.dudik@cdek.ru",
+      "email": "sv.dudnik@cdek.ru",
       "telephone": "+7-993-322-15-20",
       "sameAs": [
         "https://t.me/cdek_marketplace",
@@ -98,48 +93,46 @@
 }
   </script>
 </head>
-<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 pb-16 md:pb-0 relative overflow-x-hidden">
+<body class="bg-[#F5F8FE] text-slate-900 min-h-screen flex flex-col antialiased selection:bg-[#00b341] selection:text-white pb-16 md:pb-0 relative overflow-x-hidden">
 
-  <!-- Nginx: Шапка сайта -->
   <!--#include virtual="/src/components/header.html" -->
 
   <!-- Фоновая подсветка -->
-  <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#22E58B]/10 rounded-full blur-3xl pointer-events-none"></div>
-  <div class="absolute top-1/3 -right-32 w-[450px] h-[450px] bg-[#00b341]/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#00b341]/10 rounded-full blur-3xl pointer-events-none"></div>
+  <div class="absolute top-1/3 -right-32 w-[450px] h-[450px] bg-[#00b341]/5 rounded-full blur-3xl pointer-events-none"></div>
 
-  <!-- Базовый контейнер увеличен до max-w-7xl как на ecommerce -->
   <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-10 relative z-10">
     
     <!-- 1. Навигация и заголовок -->
     <div class="space-y-6">
-      <div class="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-400">
+      <div class="flex flex-wrap items-center justify-between gap-3 text-xs text-slate-500 font-medium">
         <nav class="flex items-center gap-2">
-          <a href="/" class="hover:text-[#22E58B] transition">Главная</a>
+          <a href="/" class="hover:text-[#00b341] transition">Главная</a>
           <span>/</span>
-          <span class="text-slate-200 font-semibold">Отслеживание посылки</span>
+          <span class="text-slate-900 font-bold">Отслеживание посылки</span>
         </nav>
         <div class="flex items-center gap-2">
-          <span class="w-2 h-2 rounded-full bg-[#22E58B] animate-ping"></span>
-          <span class="text-slate-300 font-bold uppercase tracking-wider text-[11px]">B2B логистика маркетплейсов</span>
+          <span class="w-2 h-2 rounded-full bg-[#00b341] animate-ping"></span>
+          <span class="text-slate-600 font-bold uppercase tracking-wider text-[11px]">B2B логистика маркетплейсов</span>
         </div>
       </div>
 
       <div class="text-center sm:text-left">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1 mb-3 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-[#22E58B]/30 backdrop-blur-md shadow-[0_0_15px_rgba(34,229,139,0.15)]">
-          <span class="w-2 h-2 rounded-full bg-[#22E58B]"></span>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1 mb-3 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#00b341] border border-emerald-200">
+          <span class="w-2 h-2 rounded-full bg-[#00b341]"></span>
           Официальный трекинг заказов
         </div>
         <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight leading-tight">
-          Отслеживание заказа <span class="bg-gradient-to-r from-[#22E58B] via-[#00b341] to-[#00E5FF] bg-clip-text text-transparent">СДЭК</span>
+          Отслеживание заказа <span class="text-[#00b341]">СДЭК</span>
         </h1>
-        <p class="text-sm sm:text-base text-slate-300 mt-2 max-w-3xl font-normal leading-relaxed">
+        <p class="text-sm sm:text-base text-slate-600 mt-2 max-w-3xl font-normal leading-relaxed">
           Введите номер накладной для просмотра статуса и маршрута. Регулярно отправляете заказы клиентам? Заключите официальный B2B-договор и снизьте расходы на доставку до 50%.
         </p>
       </div>
 
       <!-- Поисковое поле -->
-      <div class="bg-white border-slate-200 shadow-sm/90 rounded-3xl p-5 sm:p-7 border border-white/[0.1] backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.8)] relative overflow-hidden">
-        <div class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#22E58B]/80 to-transparent"></div>
+      <div class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-xl relative overflow-hidden">
+        <div class="absolute inset-x-0 top-0 h-[4px] bg-[#00b341]"></div>
         <form id="trackingForm" onsubmit="executeTracking(event)">
           <div class="flex flex-col sm:flex-row gap-3">
             <input 
@@ -148,27 +141,27 @@
               required 
               autofocus
               placeholder="Номер заказа (например: 1234567890)" 
-              class="flex-grow px-5 py-4 bg-[#060B11] border border-white/[0.1] rounded-2xl text-slate-900 placeholder-slate-500 text-base outline-none focus:border-[#22E58B] focus:ring-1 focus:ring-[#22E58B] transition font-medium"
+              class="flex-grow px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 placeholder-slate-400 text-base outline-none focus:border-[#00b341] focus:ring-1 focus:ring-[#00b341] transition font-medium"
             />
             <button 
               type="submit" 
               id="trackBtn"
-              class="px-8 py-4 bg-gradient-to-r from-[#22E58B] to-[#00b341] hover:brightness-110 text-slate-950 font-black rounded-2xl transition flex items-center justify-center gap-2 cursor-pointer active:scale-95 flex-shrink-0 shadow-[0_0_20px_rgba(34,229,139,0.3)] text-base"
+              class="px-8 py-4 bg-[#00b341] hover:bg-[#009b38] text-white font-black rounded-2xl transition flex items-center justify-center gap-2 cursor-pointer active:scale-95 flex-shrink-0 shadow-md shadow-[#00b341]/25 text-base"
             >
               <span>Найти заказ</span>
-              <svg class="w-5 h-5 text-slate-950" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
               </svg>
             </button>
           </div>
-          <div class="mt-3 flex flex-wrap items-center justify-between gap-3 text-xs pl-1">
-            <a href="#faq" class="text-slate-400 hover:text-[#22E58B] transition inline-flex items-center gap-1">
+          <div class="mt-3.5 flex flex-wrap items-center justify-between gap-3 text-xs pl-1">
+            <a href="#faq" class="text-slate-500 hover:text-[#00b341] transition inline-flex items-center gap-1 font-medium">
               Где найти номер заказа? <span class="text-[10px]">↓</span>
             </a>
-            <button type="button" onclick="scrollToLeadForm()" class="inline-flex items-center gap-2 text-slate-400 hover:text-[#22E58B] transition cursor-pointer group">
-              <span class="w-2 h-2 rounded-full bg-[#22E58B]"></span>
-              <span>Отправляете посылки клиентам? <strong class="text-slate-900 group-hover:text-[#22E58B] transition">Спецтарифы от 136.5 ₽</strong></span>
-              <span class="text-[#22E58B] text-xs transition-transform group-hover:translate-y-0.5">↓</span>
+            <button type="button" onclick="scrollToLeadForm()" class="inline-flex items-center gap-2 text-slate-500 hover:text-[#00b341] transition cursor-pointer group">
+              <span class="w-2 h-2 rounded-full bg-[#00b341]"></span>
+              <span>Отправляете посылки клиентам? <strong class="text-slate-900 group-hover:text-[#00b341] transition">Спецтарифы от 136.5 ₽</strong></span>
+              <span class="text-[#00b341] text-xs transition-transform group-hover:translate-y-0.5">↓</span>
             </button>
           </div>
         </form>
@@ -176,39 +169,39 @@
 
       <!-- Лоадер -->
       <div id="trackLoading" class="hidden text-center py-12">
-        <div class="inline-block w-9 h-9 border-4 border-white/[0.1] border-t-[#22E58B] rounded-full animate-spin"></div>
-        <p class="text-xs font-semibold uppercase tracking-wider text-slate-300 mt-3">Запрашиваем данные у логистического шлюза СДЭК...</p>
+        <div class="inline-block w-9 h-9 border-4 border-slate-200 border-t-[#00b341] rounded-full animate-spin"></div>
+        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-3">Запрашиваем данные у логистического шлюза СДЭК...</p>
       </div>
 
       <!-- Ошибка -->
-      <div id="trackError" class="hidden p-5 rounded-2xl bg-rose-950/40 border border-rose-800/80 text-rose-300 text-sm"></div>
+      <div id="trackError" class="hidden p-5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-sm font-medium"></div>
 
       <!-- Карточка результата трекинга -->
-      <div id="trackResult" class="hidden bg-white border-slate-200 shadow-sm/90 rounded-3xl p-6 sm:p-8 border border-white/[0.1] backdrop-blur-2xl shadow-[0_25px_60px_rgba(0,0,0,0.9)] space-y-6 relative overflow-hidden">
+      <div id="trackResult" class="hidden bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl space-y-6 relative overflow-hidden">
         
-        <div class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#22E58B]/80 to-transparent"></div>
+        <div class="absolute inset-x-0 top-0 h-[4px] bg-[#00b341]"></div>
 
         <!-- Контекстный B2B баннер внутри карточки -->
-        <div class="p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-[#060B11] to-[#0A1813] text-slate-900 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border border-[#22E58B]/30 shadow-lg">
+        <div class="p-4 sm:p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-slate-900 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
           <div class="space-y-1">
             <div class="flex items-center gap-2">
-              <span class="px-2.5 py-0.5 rounded-full bg-[#22E58B]/20 text-[#22E58B] font-bold text-[11px] uppercase tracking-wider border border-[#22E58B]/30">Вы отправитель?</span>
-              <span class="text-xs text-slate-300">Корпоративная доставка для бизнеса</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-[#00b341] font-bold text-[11px] uppercase tracking-wider border border-emerald-200">Вы отправитель?</span>
+              <span class="text-xs text-slate-600 font-semibold">Корпоративная доставка для бизнеса</span>
             </div>
-            <p class="text-xs sm:text-sm text-slate-300 max-w-2xl leading-relaxed">
+            <p class="text-xs sm:text-sm text-slate-700 max-w-2xl leading-relaxed">
               Этот заказ отправлен по B2B-договору. Подключите свой бизнес или самозанятость и отправляйте со скидкой до 50% с наложенным платежом.
             </p>
           </div>
-          <button type="button" onclick="scrollToLeadForm()" class="shrink-0 px-5 py-2.5 rounded-xl bg-gradient-to-r from-[#22E58B] to-[#00b341] hover:brightness-110 text-slate-950 font-black text-xs uppercase tracking-wider transition shadow-[0_0_15px_rgba(34,229,139,0.25)] cursor-pointer whitespace-nowrap active:scale-95">
+          <button type="button" onclick="scrollToLeadForm()" class="shrink-0 px-5 py-2.5 rounded-xl bg-[#00b341] hover:bg-[#009b38] text-white font-black text-xs uppercase tracking-wider transition shadow-sm cursor-pointer whitespace-nowrap active:scale-95">
             Оформить тариф со скидкой ↓
           </button>
         </div>
 
-        <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-200">
-          <div class="text-lg font-bold text-slate-900" id="resNumber">№ —</div>
-          <div class="text-base sm:text-lg font-semibold text-slate-200" id="resRoute">—</div>
+        <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-100">
+          <div class="text-lg font-black text-slate-900" id="resNumber">№ —</div>
+          <div class="text-base sm:text-lg font-bold text-slate-700" id="resRoute">—</div>
           <div id="resBadgeWrapper">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500/15 text-amber-400 border border-amber-500/30" id="resStatusBadge">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200" id="resStatusBadge">
               В пути
             </span>
           </div>
@@ -216,14 +209,14 @@
 
         <!-- Шкала доставки -->
         <div class="space-y-3">
-          <div class="flex items-center justify-between text-lg sm:text-xl font-bold text-slate-900">
+          <div class="flex items-center justify-between text-base sm:text-lg font-bold text-slate-900">
             <span id="resCityFrom">—</span>
             <span id="resCityTo">—</span>
           </div>
-          <div class="h-2 w-full bg-[#060B11] rounded-full relative overflow-visible">
-            <div class="h-full bg-gradient-to-r from-[#22E58B] to-[#00b341] rounded-full transition-all duration-700 shadow-[0_0_15px_rgba(34,229,139,0.5)]" id="resProgressBar" style="width: 50%;"></div>
-            <div class="absolute -top-3 w-8 h-8 bg-[#060B11] border-2 border-[#22E58B] rounded-full flex items-center justify-center shadow-[0_0_15px_rgba(34,229,139,0.3)] transition-all duration-700" id="resTruckIcon" style="left: calc(50% - 16px);">
-              <svg class="w-4 h-4 text-[#22E58B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <div class="h-2.5 w-full bg-slate-100 rounded-full relative overflow-visible">
+            <div class="h-full bg-[#00b341] rounded-full transition-all duration-700" id="resProgressBar" style="width: 50%;"></div>
+            <div class="absolute -top-3 w-8 h-8 bg-white border-2 border-[#00b341] rounded-full flex items-center justify-center shadow-md transition-all duration-700 text-[#00b341]" id="resTruckIcon" style="left: calc(50% - 16px);">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0"/>
               </svg>
             </div>
@@ -234,10 +227,10 @@
         <div class="grid lg:grid-cols-12 gap-8 pt-4">
           <div class="lg:col-span-7 space-y-6" id="resMilestones"></div>
           <div class="lg:col-span-5 space-y-4">
-            <div class="bg-[#060B11] rounded-2xl p-6 border border-slate-200 space-y-4">
-              <div class="p-3.5 bg-[#22E58B]/10 border border-[#22E58B]/20 rounded-xl flex items-start gap-3">
-                <div class="w-5 h-5 rounded-full bg-[#22E58B] text-slate-950 font-black flex items-center justify-center flex-shrink-0 mt-0.5 text-xs">✓</div>
-                <p class="text-xs text-slate-300 leading-relaxed">
+            <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 space-y-4">
+              <div class="p-3.5 bg-emerald-50 border border-emerald-200 rounded-xl flex items-start gap-3">
+                <div class="w-5 h-5 rounded-full bg-[#00b341] text-white font-black flex items-center justify-center flex-shrink-0 mt-0.5 text-xs">✓</div>
+                <p class="text-xs text-slate-700 leading-relaxed font-medium">
                   Уведомление о прибытии поступит клиенту в мобильное приложение СДЭК, мессенджер или по СМС.
                 </p>
               </div>
@@ -249,18 +242,18 @@
 
               <div>
                 <div class="text-xs text-slate-500 font-medium">Адрес пункта выдачи СДЭК</div>
-                <div class="text-sm font-semibold text-slate-300 mt-0.5" id="resPvzAddress">—</div>
+                <div class="text-sm font-semibold text-slate-700 mt-0.5" id="resPvzAddress">—</div>
               </div>
 
-              <div id="resDateBox" class="p-3.5 bg-amber-500/10 border border-amber-500/20 rounded-xl hidden">
-                <div class="text-xs font-bold text-amber-400" id="resDeliveryDateText">Доставка запланирована</div>
-                <div class="text-[11px] text-slate-400 mt-0.5" id="resInitialDateText"></div>
+              <div id="resDateBox" class="p-3.5 bg-amber-50 border border-amber-200 rounded-xl hidden">
+                <div class="text-xs font-bold text-amber-800" id="resDeliveryDateText">Доставка запланирована</div>
+                <div class="text-[11px] text-slate-500 mt-0.5" id="resInitialDateText"></div>
               </div>
             </div>
 
-            <div class="bg-[#060B11] rounded-2xl p-6 border border-slate-200 space-y-3">
+            <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 space-y-2">
               <h4 class="text-sm font-bold text-slate-900">Выдача заказа в ПВЗ</h4>
-              <p class="text-xs text-slate-400 leading-relaxed">
+              <p class="text-xs text-slate-600 leading-relaxed">
                 Выдача осуществляется по паспорту или за 10 секунд по бесплатному коду через <b>CDEK ID</b> без документов.
               </p>
             </div>
@@ -270,58 +263,58 @@
       </div>
     </div>
 
-    <!-- 2. ГЛАВНЫЙ B2B БЛОК: СТИЛЬ И ПРОПОРЦИИ КАК НА ECOMMERCE И ГЛАВНОЙ -->
-    <section id="tracking-lead-section" class="scroll-mt-8 bg-gradient-to-br from-[#0B131D] via-[#09151e] to-[#060B11] rounded-3xl border border-white/[0.1] shadow-2xl p-6 sm:p-8 lg:p-10 text-slate-900 relative overflow-hidden">
-      <div class="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#22E58B]/80 to-transparent"></div>
+    <!-- 2. ГЛАВНЫЙ B2B БЛОК: СТИЛЬ И ПРОПОРЦИИ КАК НА ГЛАВНОЙ -->
+    <section id="tracking-lead-section" class="scroll-mt-8 bg-white rounded-3xl border border-slate-200 shadow-xl p-6 sm:p-8 lg:p-10 text-slate-900 relative overflow-hidden">
+      <div class="absolute inset-x-0 top-0 h-[4px] bg-[#00b341]"></div>
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center relative z-10">
         
         <!-- Левая колонка: Текст и УТП -->
         <div class="lg:col-span-7 space-y-6 sm:space-y-8">
           
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#22E58B]/10 border border-[#22E58B]/30 text-xs font-bold text-[#22E58B] uppercase tracking-wider">
-            <span class="w-2 h-2 rounded-full bg-[#22E58B] animate-pulse"></span>
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold text-[#00b341] uppercase tracking-wider">
+            <span class="w-2 h-2 rounded-full bg-[#00b341] animate-pulse"></span>
             Официальное B2B-подключение
           </div>
 
           <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.1] text-slate-900">
             Доставка для бизнеса <br>
-            <span class="bg-gradient-to-r from-[#22E58B] via-[#00b341] to-[#00E5FF] bg-clip-text text-transparent">со скидкой до 50%</span>
+            <span class="text-[#00b341]">со скидкой до 50%</span>
           </h2>
 
-          <p class="text-slate-300 text-base sm:text-lg leading-relaxed font-normal">
+          <p class="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
             Официальный B2B-договор со СДЭК для интернет-магазинов, ООО, ИП и самозанятых. Подключение онлайн за 15 минут с доступом к специальным тарифам от 136.5 ₽.
           </p>
 
           <!-- Теги преимуществ -->
           <div class="flex flex-wrap gap-2.5 pt-1">
-            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/[0.04] border border-slate-200 text-xs font-semibold text-slate-200">
-              <span class="text-[#22E58B]">✓</span> 5 000+ ПВЗ и постаматов
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 shadow-sm">
+              <span class="text-[#00b341] font-bold">✓</span> 5 000+ ПВЗ и постаматов
             </span>
-            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/[0.04] border border-slate-200 text-xs font-semibold text-slate-200">
-              <span class="text-[#22E58B]">✓</span> Готовые модули и API 2.0
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 shadow-sm">
+              <span class="text-[#00b341] font-bold">✓</span> Готовые модули и API 2.0
             </span>
-            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/[0.04] border border-slate-200 text-xs font-semibold text-slate-200">
-              <span class="text-[#22E58B]">✓</span> Наложенный платеж 54-ФЗ
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 shadow-sm">
+              <span class="text-[#00b341] font-bold">✓</span> Наложенный платеж 54-ФЗ
             </span>
-            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-white/[0.04] border border-slate-200 text-xs font-semibold text-slate-200">
-              <span class="text-[#22E58B]">✓</span> Доставка DBS для маркетплейсов
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 shadow-sm">
+              <span class="text-[#00b341] font-bold">✓</span> Доставка DBS для маркетплейсов
             </span>
           </div>
 
           <!-- 3 ключевые цифры -->
-          <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-4 border-t border-white/[0.1] max-w-lg">
+          <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-4 border-t border-slate-100 max-w-lg">
             <div>
-              <div class="text-2xl sm:text-3xl font-black text-[#22E58B]">0 ₽</div>
-              <div class="text-xs text-slate-400 mt-0.5">Подключение</div>
+              <div class="text-2xl sm:text-3xl font-black text-[#00b341]">0 ₽</div>
+              <div class="text-xs text-slate-500 font-medium mt-0.5">Подключение</div>
             </div>
             <div>
               <div class="text-2xl sm:text-3xl font-black text-slate-900">1 день</div>
-              <div class="text-xs text-slate-400 mt-0.5">Старт отгрузок</div>
+              <div class="text-xs text-slate-500 font-medium mt-0.5">Старт отгрузок</div>
             </div>
             <div>
-              <div class="text-2xl sm:text-3xl font-black text-[#22E58B]">−50%</div>
-              <div class="text-xs text-slate-400 mt-0.5">На тариф «Посылка»</div>
+              <div class="text-2xl sm:text-3xl font-black text-[#00b341]">−50%</div>
+              <div class="text-xs text-slate-500 font-medium mt-0.5">На тариф «Посылка»</div>
             </div>
           </div>
 
@@ -339,38 +332,38 @@
     <div class="grid md:grid-cols-2 gap-6">
       
       <!-- Карточка 1: Калькулятор -->
-      <div class="bg-white border-slate-200 shadow-sm/80 rounded-3xl p-7 border border-slate-200 backdrop-blur-xl flex flex-col justify-between shadow-xl">
+      <div class="bg-white rounded-3xl p-7 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-[#00b341] transition">
         <div>
-          <div class="w-12 h-12 rounded-2xl bg-white/[0.04] border border-slate-200 text-[#22E58B] flex items-center justify-center mb-4">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 text-[#00b341] flex items-center justify-center mb-4">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
             </svg>
           </div>
           <h3 class="text-xl font-bold text-slate-900">Калькулятор тарифов B2B</h3>
-          <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+          <p class="text-sm text-slate-600 mt-2 leading-relaxed">
             Рассчитайте точную стоимость и сроки доставки для интернет-магазинов со скидкой до 50% на тариф «Посылка» и «Экспресс».
           </p>
         </div>
-        <a href="#calculator-section" class="mt-6 inline-flex items-center text-sm font-bold text-[#22E58B] hover:text-emerald-400 gap-1.5 group">
+        <a href="#calculator-section" class="mt-6 inline-flex items-center text-sm font-bold text-[#00b341] hover:underline gap-1.5 group">
           Рассчитать тариф со скидкой <span class="transition-transform group-hover:translate-x-1">→</span>
         </a>
       </div>
 
       <!-- Карточка 2: 5 000+ ПВЗ на карте -->
-      <div class="bg-white border-slate-200 shadow-sm/80 rounded-3xl p-7 border border-slate-200 backdrop-blur-xl flex flex-col justify-between shadow-xl">
+      <div class="bg-white rounded-3xl p-7 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-[#00b341] transition">
         <div>
-          <div class="w-12 h-12 rounded-2xl bg-white/[0.04] border border-slate-200 text-[#22E58B] flex items-center justify-center mb-4">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 text-[#00b341] flex items-center justify-center mb-4">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
             </svg>
           </div>
           <h3 class="text-xl font-bold text-slate-900">5 000+ ПВЗ по всей РФ</h3>
-          <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+          <p class="text-sm text-slate-600 mt-2 leading-relaxed">
             Пункты выдачи СДЭК и постаматы с примерочными, оплатой картой и возможностью частичного выкупа для ваших клиентов.
           </p>
         </div>
-        <button type="button" onclick="openMapModal()" class="mt-6 inline-flex items-center text-sm font-bold text-[#22E58B] hover:text-emerald-400 gap-1.5 group text-left cursor-pointer">
+        <button type="button" onclick="openMapModal()" class="mt-6 inline-flex items-center text-sm font-bold text-[#00b341] hover:underline gap-1.5 group text-left cursor-pointer">
           Найти на карте <span class="transition-transform group-hover:translate-x-1">→</span>
         </button>
       </div>
@@ -380,92 +373,91 @@
     <!-- 4. ВСТРОЕННЫЙ КАЛЬКУЛЯТОР -->
     <section id="calculator-section" class="pt-2">
       <div class="text-center sm:text-left mb-6">
-        <div class="inline-flex items-center gap-2 px-3 py-1 mb-2 rounded-full text-xs font-semibold uppercase bg-white/[0.04] text-[#22E58B] border border-slate-200">
+        <div class="inline-flex items-center gap-2 px-3 py-1 mb-2 rounded-full text-xs font-semibold uppercase bg-emerald-50 text-[#00b341] border border-emerald-200">
           Онлайн-калькулятор
         </div>
         <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">Рассчитать стоимость и срок новой отправки</h2>
-        <p class="text-sm text-slate-400 mt-1">Официальные тарифы курьерской доставки до двери и самовывоза из отделений СДЭК</p>
+        <p class="text-sm text-slate-600 mt-1">Официальные тарифы курьерской доставки до двери и самовывоза из отделений СДЭК</p>
       </div>
 
-      <!-- Nginx: Подключение калькулятора -->
       <!--#include virtual="/src/components/calculator-widget.html" -->
     </section>
 
-    <!-- 5. SEO БЛОК: РАСШИФРОВКА СТАТУСОВ ДОСТАВКИ -->
-    <section class="bg-white border-slate-200 shadow-sm/80 rounded-3xl p-6 sm:p-8 border border-slate-200 backdrop-blur-xl space-y-6">
+    <!-- 5. СТАТУСЫ ДОСТАВКИ -->
+    <section class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
       <div>
         <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Что означают статусы отслеживания СДЭК</h2>
-        <p class="text-sm text-slate-400 mt-1">Основные этапы движения отправлений от формирования накладной до вручения клиенту:</p>
+        <p class="text-sm text-slate-600 mt-1">Основные этапы движения отправлений от формирования накладной до вручения клиенту:</p>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="p-4 rounded-2xl bg-[#060B11] border border-slate-200">
-          <div class="text-xs font-bold text-amber-400 uppercase tracking-wider mb-1">Создан</div>
-          <div class="text-sm font-semibold text-slate-900 mb-1">Накладная оформлена</div>
-          <p class="text-xs text-slate-400">Продавец сформировал электронную накладную в системе СДЭК, но физически еще не передал груз в службу доставки.</p>
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-amber-100 text-amber-800 uppercase tracking-wider mb-2">Создан</div>
+          <div class="text-sm font-bold text-slate-900 mb-1">Накладная оформлена</div>
+          <p class="text-xs text-slate-600 leading-relaxed">Продавец сформировал электронную накладную в системе СДЭК, но физически еще не передал груз в службу доставки.</p>
         </div>
 
-        <div class="p-4 rounded-2xl bg-[#060B11] border border-slate-200">
-          <div class="text-xs font-bold text-orange-400 uppercase tracking-wider mb-1">В пути</div>
-          <div class="text-sm font-semibold text-slate-900 mb-1">Магистральная доставка</div>
-          <p class="text-xs text-slate-400">Посылка принята на складе отправления, проходит сортировочные центры и перемещается в город назначения.</p>
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-blue-100 text-blue-800 uppercase tracking-wider mb-2">В пути</div>
+          <div class="text-sm font-bold text-slate-900 mb-1">Магистральная доставка</div>
+          <p class="text-xs text-slate-600 leading-relaxed">Посылка принята на складе отправления, проходит сортировочные центры и перемещается в город назначения.</p>
         </div>
 
-        <div class="p-4 rounded-2xl bg-[#060B11] border border-slate-200">
-          <div class="text-xs font-bold text-[#22E58B] uppercase tracking-wider mb-1">Прибыл в ПВЗ</div>
-          <div class="text-sm font-semibold text-slate-900 mb-1">Готов к выдаче</div>
-          <p class="text-xs text-slate-400">Заказ доставлен в пункт выдачи. Получателю отправлено уведомление, посылку можно забирать по паспорту или CDEK ID.</p>
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-emerald-100 text-[#00b341] uppercase tracking-wider mb-2">Прибыл в ПВЗ</div>
+          <div class="text-sm font-bold text-slate-900 mb-1">Готов к выдаче</div>
+          <p class="text-xs text-slate-600 leading-relaxed">Заказ доставлен в пункт выдачи. Получателю отправлено уведомление, посылку можно забирать по паспорту или CDEK ID.</p>
         </div>
 
-        <div class="p-4 rounded-2xl bg-[#060B11] border border-slate-200">
-          <div class="text-xs font-bold text-cyan-400 uppercase tracking-wider mb-1">Вручен</div>
-          <div class="text-sm font-semibold text-slate-900 mb-1">Заказ выдан</div>
-          <p class="text-xs text-slate-400">Посылка успешно передана получателю, а наложенный платеж зафиксирован для перечисления отправителю.</p>
+        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-slate-200 text-slate-800 uppercase tracking-wider mb-2">Вручен</div>
+          <div class="text-sm font-bold text-slate-900 mb-1">Заказ выдан</div>
+          <p class="text-xs text-slate-600 leading-relaxed">Посылка успешно передана получателю, а наложенный платеж зафиксирован для перечисления отправителю.</p>
         </div>
       </div>
     </section>
 
-    <!-- 6. SEO БЛОК: FAQ -->
-    <section id="faq" class="bg-white border-slate-200 shadow-sm/80 rounded-3xl p-6 sm:p-8 border border-slate-200 backdrop-blur-xl space-y-6">
+    <!-- 6. FAQ -->
+    <section id="faq" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
       <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Часто задаваемые вопросы по отслеживанию и договору</h2>
       
       <div class="space-y-3">
-        <details class="group bg-[#060B11] rounded-2xl border border-slate-200 p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-          <summary class="flex items-center justify-between font-semibold text-slate-900 text-sm sm:text-base">
+        <details class="group bg-slate-50 rounded-2xl border border-slate-200 p-4 sm:p-5 hover:border-slate-300 transition cursor-pointer">
+          <summary class="flex items-center justify-between font-bold text-slate-900 text-sm sm:text-base list-none select-none">
             <span>Как узнать номер заказа СДЭК?</span>
-            <span class="ml-4 flex-shrink-0 text-[#22E58B] transition duration-300 group-open:-rotate-180">▾</span>
+            <span class="ml-4 flex-shrink-0 text-[#00b341] transition duration-300 group-open:rotate-180">▾</span>
           </summary>
-          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <p class="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
             Номер отправления предоставляет интернет-магазин сразу после оформления покупки. Также трек-номер автоматически поступает в SMS или мессенджер от СДЭК.
           </p>
         </details>
 
-        <details class="group bg-[#060B11] rounded-2xl border border-slate-200 p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-          <summary class="flex items-center justify-between font-semibold text-slate-900 text-sm sm:text-base">
+        <details class="group bg-slate-50 rounded-2xl border border-slate-200 p-4 sm:p-5 hover:border-slate-300 transition cursor-pointer">
+          <summary class="flex items-center justify-between font-bold text-slate-900 text-sm sm:text-base list-none select-none">
             <span>Может ли самозанятый отправлять со скидками 50%?</span>
-            <span class="ml-4 flex-shrink-0 text-[#22E58B] transition duration-300 group-open:-rotate-180">▾</span>
+            <span class="ml-4 flex-shrink-0 text-[#00b341] transition duration-300 group-open:rotate-180">▾</span>
           </summary>
-          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <p class="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
             Да. Официальный B2B-договор СДЭК оформляется как на юрлица (ООО, ИП), так и на самозанятых (НПД) за 15 минут с доступом к корпоративным тарифам линейки «Посылка».
           </p>
         </details>
 
-        <details class="group bg-[#060B11] rounded-2xl border border-slate-200 p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-          <summary class="flex items-center justify-between font-semibold text-slate-900 text-sm sm:text-base">
+        <details class="group bg-slate-50 rounded-2xl border border-slate-200 p-4 sm:p-5 hover:border-slate-300 transition cursor-pointer">
+          <summary class="flex items-center justify-between font-bold text-slate-900 text-sm sm:text-base list-none select-none">
             <span>Сколько посылка хранится в пункте выдачи бесплатно?</span>
-            <span class="ml-4 flex-shrink-0 text-[#22E58B] transition duration-300 group-open:-rotate-180">▾</span>
+            <span class="ml-4 flex-shrink-0 text-[#00b341] transition duration-300 group-open:rotate-180">▾</span>
           </summary>
-          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <p class="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
             Срок хранения в отделении составляет от 7 до 14 дней в зависимости от условий договора отправителя. Продлить хранение можно через мобильное приложение или отправителя.
           </p>
         </details>
 
-        <details class="group bg-[#060B11] rounded-2xl border border-slate-200 p-4 [&_summary::-webkit-details-marker]:hidden cursor-pointer">
-          <summary class="flex items-center justify-between font-semibold text-slate-900 text-sm sm:text-base">
+        <details class="group bg-slate-50 rounded-2xl border border-slate-200 p-4 sm:p-5 hover:border-slate-300 transition cursor-pointer">
+          <summary class="flex items-center justify-between font-bold text-slate-900 text-sm sm:text-base list-none select-none">
             <span>Можно ли получить заказ без паспорта?</span>
-            <span class="ml-4 flex-shrink-0 text-[#22E58B] transition duration-300 group-open:-rotate-180">▾</span>
+            <span class="ml-4 flex-shrink-0 text-[#00b341] transition duration-300 group-open:rotate-180">▾</span>
           </summary>
-          <p class="mt-3 text-xs sm:text-sm text-slate-300 leading-relaxed">
+          <p class="mt-2.5 text-xs sm:text-sm text-slate-600 leading-relaxed">
             Да, при наличии подключенного сервиса <b>CDEK ID</b> посылка выдается по СМС или push-коду за несколько секунд без предъявления паспорта или доверенности.
           </p>
         </details>
@@ -474,30 +466,29 @@
 
   </main>
 
-  <!-- Nginx: Подвал и мобильная плашка -->
   <!--#include virtual="/src/components/footer.html" -->
   <!--#include virtual="/src/components/mobile-cta.html" -->
 
   <!-- МОДАЛЬНОЕ ОКНО ЯНДЕКС.КАРТЫ -->
-  <div id="mapModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-    <div class="bg-white border-slate-200 shadow-sm w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl border border-white/[0.1] flex flex-col max-h-[90vh] relative">
+  <div id="mapModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl border border-slate-200 flex flex-col max-h-[90vh] relative">
       <div class="p-5 border-b border-slate-200 flex items-center justify-between">
         <div>
           <h3 class="text-lg font-bold text-slate-900">Пункты выдачи заказов СДЭК на карте</h3>
-          <p class="text-xs text-slate-400">Найдите ближайшее отделение с примерочными и безналичной оплатой</p>
+          <p class="text-xs text-slate-500">Найдите ближайшее отделение с примерочными и безналичной оплатой</p>
         </div>
-        <button type="button" onclick="closeMapModal()" class="w-9 h-9 rounded-full bg-white/[0.05] hover:bg-white/[0.1] text-slate-300 flex items-center justify-center transition cursor-pointer">✕</button>
+        <button type="button" onclick="closeMapModal()" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition cursor-pointer font-bold">✕</button>
       </div>
       
-      <div class="px-5 py-2.5 bg-[#060B11] border-b border-slate-200 flex flex-wrap gap-2">
-        <button type="button" onclick="modalSetCity([55.7558, 37.6173])" class="px-3 py-1 bg-white/[0.04] hover:bg-[#22E58B]/20 hover:text-[#22E58B] border border-slate-200 rounded-xl text-xs font-semibold text-slate-300 transition cursor-pointer">Москва</button>
-        <button type="button" onclick="modalSetCity([59.9343, 30.3351])" class="px-3 py-1 bg-white/[0.04] hover:bg-[#22E58B]/20 hover:text-[#22E58B] border border-slate-200 rounded-xl text-xs font-semibold text-slate-300 transition cursor-pointer">СПб</button>
-        <button type="button" onclick="modalSetCity([45.0355, 38.9753])" class="px-3 py-1 bg-white/[0.04] hover:bg-[#22E58B]/20 hover:text-[#22E58B] border border-slate-200 rounded-xl text-xs font-semibold text-slate-300 transition cursor-pointer">Краснодар</button>
-        <button type="button" onclick="modalSetCity([56.8389, 60.6057])" class="px-3 py-1 bg-white/[0.04] hover:bg-[#22E58B]/20 hover:text-[#22E58B] border border-slate-200 rounded-xl text-xs font-semibold text-slate-300 transition cursor-pointer">Екатеринбург</button>
-        <button type="button" onclick="modalSetCity([55.0084, 82.9357])" class="px-3 py-1 bg-white/[0.04] hover:bg-[#22E58B]/20 hover:text-[#22E58B] border border-slate-200 rounded-xl text-xs font-semibold text-slate-300 transition cursor-pointer">Новосибирск</button>
+      <div class="px-5 py-2.5 bg-slate-50 border-b border-slate-200 flex flex-wrap gap-2">
+        <button type="button" onclick="modalSetCity([55.7558, 37.6173])" class="px-3 py-1 bg-white hover:bg-emerald-50 hover:text-[#00b341] hover:border-[#00b341] border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 transition cursor-pointer shadow-sm">Москва</button>
+        <button type="button" onclick="modalSetCity([59.9343, 30.3351])" class="px-3 py-1 bg-white hover:bg-emerald-50 hover:text-[#00b341] hover:border-[#00b341] border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 transition cursor-pointer shadow-sm">СПб</button>
+        <button type="button" onclick="modalSetCity([45.0355, 38.9753])" class="px-3 py-1 bg-white hover:bg-emerald-50 hover:text-[#00b341] hover:border-[#00b341] border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 transition cursor-pointer shadow-sm">Краснодар</button>
+        <button type="button" onclick="modalSetCity([56.8389, 60.6057])" class="px-3 py-1 bg-white hover:bg-emerald-50 hover:text-[#00b341] hover:border-[#00b341] border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 transition cursor-pointer shadow-sm">Екатеринбург</button>
+        <button type="button" onclick="modalSetCity([55.0084, 82.9357])" class="px-3 py-1 bg-white hover:bg-emerald-50 hover:text-[#00b341] hover:border-[#00b341] border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 transition cursor-pointer shadow-sm">Новосибирск</button>
       </div>
 
-      <div class="relative flex-grow h-[460px] bg-[#060B11]">
+      <div class="relative flex-grow h-[460px] bg-slate-100">
         <div id="modalYandexMap" class="w-full h-full"></div>
       </div>
     </div>
@@ -604,9 +595,9 @@
           const badge = document.getElementById('resStatusBadge');
           badge.innerText = data.status_name;
           if (data.status_code === 'DELIVERED') {
-            badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#22E58B]/15 text-[#22E58B] border border-[#22E58B]/30';
+            badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#00b341] border border-emerald-200';
           } else {
-            badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-500/15 text-amber-400 border border-amber-500/30';
+            badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200';
           }
 
           const pct = data.progress_percent || 50;
@@ -654,18 +645,18 @@
         const isFuture = g.future;
         const iconSvg = milestoneIcons[g.code] || milestoneIcons['CREATED'];
         
-        let circleClass = 'bg-[#060B11] text-slate-500 border border-slate-200';
+        let circleClass = 'bg-slate-100 text-slate-400 border border-slate-200';
         let textClass = 'text-slate-400';
 
         if (!isFuture) {
           if (g.code === 'CREATED') {
-            circleClass = 'bg-amber-500/20 text-amber-400 border border-amber-500/40';
+            circleClass = 'bg-amber-50 text-amber-600 border border-amber-200';
             textClass = 'text-slate-900';
           } else if (g.code === 'IN_PROGRESS' || g.code === 'COURIER_IN_PROGRESS') {
-            circleClass = 'bg-orange-500/20 text-orange-400 border border-orange-500/40';
+            circleClass = 'bg-blue-50 text-blue-600 border border-blue-200';
             textClass = 'text-slate-900';
           } else if (g.code === 'READY_FOR_PICK_UP' || g.code === 'DELIVERED') {
-            circleClass = 'bg-[#22E58B]/20 text-[#22E58B] border border-[#22E58B]/40 shadow-[0_0_15px_rgba(34,229,139,0.3)]';
+            circleClass = 'bg-emerald-50 text-[#00b341] border border-emerald-200 shadow-sm';
             textClass = 'text-slate-900';
           }
         }
@@ -677,14 +668,14 @@
         if (g.code === 'IN_PROGRESS' && !isFuture && subStatuses && subStatuses.length > 0) {
           subHtml = `
             <div class="mt-2">
-              <button type="button" onclick="toggleSubStatuses()" class="text-xs font-bold text-[#22E58B] hover:underline flex items-center gap-1 cursor-pointer">
+              <button type="button" onclick="toggleSubStatuses()" class="text-xs font-bold text-[#00b341] hover:underline flex items-center gap-1 cursor-pointer">
                 Подробнее о перемещении <span id="subArrow">▾</span>
               </button>
-              <div id="subList" class="hidden mt-3 pl-4 border-l border-slate-200 space-y-3">
+              <div id="subList" class="hidden mt-3 pl-4 border-l-2 border-slate-200 space-y-3">
                 ${subStatuses.map(s => `
                   <div class="text-xs">
-                    <div class="font-bold text-slate-200">${s.name}</div>
-                    <div class="text-slate-400">${s.date}${s.city ? '• ' + s.city : ''}</div>
+                    <div class="font-bold text-slate-900">${s.name}</div>
+                    <div class="text-slate-500 font-medium">${s.date}${s.city ? ' • ' + s.city : ''}</div>
                   </div>
                 `).join('')}
               </div>
