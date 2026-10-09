@@ -7,7 +7,6 @@ Disallow: /src/components/
 Disallow: /scripts/
 Disallow: /city-template.html
 Disallow: /*%7B%7B*
-Disallow: /generate_geo_pages.py
 Disallow: /README.md
 
 # OpenAI (ChatGPT & Search)
