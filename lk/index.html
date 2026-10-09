@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Личный кабинет СДЭК: вход по договору и API | СДЭК Маркетплейсы</title>
+  <meta name="description" content="Вход в личный кабинет (ЛК) СДЭК для селлеров. Управление доставкой FBS/DBS, генерация ключей интеграции API 2.0, печать этикеток 58х40 и акты ЭДО." />
+  <meta name="keywords" content="личный кабинет сдэк, вход сдэк по договору, сдэк кабинет селлера, сдэк api 2.0 ключи, кабинет сдэк маркетплейс, сдэк накладные" />
+  <link rel="canonical" href="https://cdek-marketplace.ru/lk/" />
+  
+  <!-- Автообнаружение LLMs.txt для нейросетей -->
+  <link rel="alternate" type="text/markdown" title="LLM Information" href="https://cdek-marketplace.ru/llms.txt" />
+  <link rel="alternate" type="text/markdown" title="LLM Full Documentation" href="https://cdek-marketplace.ru/llms-full.txt" />
+
+  <meta name="theme-color" content="#060B11" />
+
+  <!-- Favicons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/favicon.png" />
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cdek: '#00b341',
+            neon: '#22E58B',
+            obsidian: '#060B11',
+            card: '#0B131D'
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Open Graph & Social Cards -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="СДЭК Маркетплейсы" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:title" content="Личный кабинет СДЭК: вход по договору и управление API" />
+  <meta property="og:description" content="Вход в личный кабинет (ЛК) СДЭК для селлеров. Управление доставкой FBS/DBS, генерация ключей интеграции API 2.0 и печать этикеток." />
+  <meta property="og:url" content="https://cdek-marketplace.ru/lk/" />
+  <meta property="og:image" content="https://cdek-marketplace.ru/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:type" content="image/png" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://cdek-marketplace.ru/#website",
+        "url": "https://cdek-marketplace.ru/",
+        "name": "СДЭК Маркетплейсы",
+        "inLanguage": "ru-RU"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://cdek-marketplace.ru/lk/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Главная",
+            "item": "https://cdek-marketplace.ru/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Личный кабинет СДЭК",
+            "item": "https://cdek-marketplace.ru/lk/"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 pb-16 md:pb-0">
+
+  <!--#include virtual="/src/components/header.html" -->
+
+  <main class="flex-grow py-8 sm:py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+      
+      <!-- Хлебные крошки -->
+      <nav class="flex items-center gap-2 text-xs text-slate-400">
+        <a href="/" class="hover:text-[#22E58B] transition">Главная</a>
+        <span>/</span>
+        <span class="text-slate-200 font-semibold">Личный кабинет СДЭК</span>
+      </nav>
+
+      <!-- Hero Header (Вход в ЛК) -->
+      <div class="bg-gradient-to-br from-[#0B131D] to-[#041d15] rounded-3xl p-6 sm:p-10 border border-[#22E58B]/20 relative overflow-hidden shadow-2xl space-y-8">
+        
+        <!-- Декоративные элементы -->
+        <div class="absolute -top-24 -right-24 w-64 h-64 bg-[#22E58B]/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="relative z-10 grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          
+          <div class="lg:col-span-7 space-y-6">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-cdek/15 text-[#22E58B] border border-[#22E58B]/30">
+                Шлюз lk.cdek.ru
+              </span>
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/5 text-slate-300 border border-white/10">
+                B2B Селлеры
+              </span>
+            </div>
+
+            <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-white">
+              Личный кабинет СДЭК: <br>
+              <span class="text-[#22E58B]">управление доставкой и API</span>
+            </h1>
+
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl">
+              Авторизуйтесь по номеру договора или email, чтобы формировать заказы FBS и DBS, массово печатать термоэтикетки, генерировать ключи API 2.0 и выгружать акты ЭДО.
+            </p>
+
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <a 
+                href="https://lk.cdek.ru/user/login" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-[#22E58B] to-[#00b341] hover:brightness-110 text-slate-950 font-black text-sm uppercase tracking-wider transition-all shadow-[0_0_20px_rgba(34,229,139,0.3)] active:scale-95 whitespace-nowrap"
+              >
+                Войти в личный кабинет ↗
+              </a>
+              <a 
+                href="/dogovor/" 
+                class="px-6 py-3.5 rounded-xl bg-white/[0.05] hover:bg-white/[0.1] border border-white/10 text-white font-bold text-sm transition-colors whitespace-nowrap"
+              >
+                Нет договора? Подключиться
+              </a>
+            </div>
+          </div>
+
+          <!-- Quick Info Cards -->
+          <div class="lg:col-span-5 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-3">
+            <div class="bg-[#060B11] p-5 rounded-2xl border border-white/[0.08] flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-[#22E58B]/10 text-[#22E58B] flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"></path></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-sm">Ключи REST API 2.0</h3>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">Раздел «Интеграция». Генерация <code>Account</code> и <code>Secure password</code> для CMS плагинов.</p>
+              </div>
+            </div>
+
+            <div class="bg-[#060B11] p-5 rounded-2xl border border-white/[0.08] flex items-start gap-4">
+              <div class="w-10 h-10 rounded-xl bg-white/[0.05] text-white flex items-center justify-center shrink-0 mt-0.5">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+              </div>
+              <div>
+                <h3 class="font-bold text-white text-sm">Этикетки маркетплейсов</h3>
+                <p class="text-xs text-slate-400 mt-1 leading-relaxed">Массовая печать термоэтикеток формата 58×40 мм и А4 со штрихкодами заказов.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Возможности ЛК (Сетка 2x2) -->
+      <div class="space-y-6">
+        <div>
+          <h2 class="text-xl sm:text-3xl font-extrabold text-white">Возможности платформы</h2>
+          <p class="text-xs sm:text-sm text-slate-400 mt-1">Инструменты для автоматизации B2B-логистики селлера</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <!-- Card 1 -->
+          <div class="p-5 sm:p-6 rounded-3xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition group space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-[#22E58B]/10 text-[#22E58B] flex items-center justify-center transition-transform group-hover:scale-110">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+            </div>
+            <h3 class="font-bold text-white text-base">Создание заказов</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Ручное создание накладных или массовая загрузка через Excel/CSV для партий DBS и FBS. Выбор тарифов и расчет стоимости в реальном времени.
+            </p>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="p-5 sm:p-6 rounded-3xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition group space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-white/[0.05] text-white flex items-center justify-center transition-transform group-hover:scale-110">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+            </div>
+            <h3 class="font-bold text-white text-base">Управление финансами</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Детализация поступлений наложенного платежа 54-ФЗ, скачивание закрывающих актов УПД и счетов на оплату логистических услуг за месяц.
+            </p>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="p-5 sm:p-6 rounded-3xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition group space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-[#22E58B]/10 text-[#22E58B] flex items-center justify-center transition-transform group-hover:scale-110">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+            </div>
+            <h3 class="font-bold text-white text-base">Единый реестр (Манифест)</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Формирование ШК ШП (штрихкода партии). Позволяет сдать 50+ заказов FBS в пункт выдачи одним кликом сканера без задержек в очереди.
+            </p>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="p-5 sm:p-6 rounded-3xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition group space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-white/[0.05] text-white flex items-center justify-center transition-transform group-hover:scale-110">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path></svg>
+            </div>
+            <h3 class="font-bold text-white text-base">Трекинг и возвраты</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Мониторинг статусов доставки онлайн, управление сроками бесплатного хранения в ПВЗ и оформление возвратов невыкупленных товаров.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- FAQ Блок -->
+      <div class="bg-[#0B131D] rounded-3xl p-6 sm:p-8 border border-white/[0.08] shadow-xl space-y-4">
+        <h2 class="text-xl sm:text-2xl font-extrabold text-white">Частые вопросы по личному кабинету</h2>
+        
+        <div class="space-y-3 text-xs sm:text-sm">
+          
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
+            <summary class="font-bold text-white flex justify-between items-center list-none select-none">
+              <span>Где взять логин и пароль от личного кабинета?</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
+            </summary>
+            <p class="text-slate-300 mt-2 leading-relaxed">
+              Логин (email или номер договора) и пароль автоматически отправляются на вашу электронную почту сразу после успешного подписания <a href="/dogovor/" class="text-[#22E58B] hover:underline">онлайн-договора со СДЭК</a>. Если вы еще не заключали договор, кабинет вам недоступен.
+            </p>
+          </details>
+
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
+            <summary class="font-bold text-white flex justify-between items-center list-none select-none">
+              <span>Как сгенерировать ключи для интеграции по API 2.0?</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
+            </summary>
+            <div class="text-slate-300 mt-2 leading-relaxed space-y-2">
+              <p>Для настройки плагинов CMS (InSales, Битрикс, Tilda) или кастомной интеграции выполните 3 шага:</p>
+              <ol class="list-decimal pl-5 space-y-1">
+                <li>Войдите в личный кабинет на <code>lk.cdek.ru</code></li>
+                <li>Перейдите в левом меню в раздел <strong>«Интеграция»</strong> → <strong>«Ключи доступа»</strong></li>
+                <li>Нажмите «Сгенерировать». Система выдаст вам Идентификатор (<code>Account</code>) и Секретный ключ (<code>Secure password</code>). Скопируйте их в настройки вашего плагина.</li>
+              </ol>
+            </div>
+          </details>
+
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
+            <summary class="font-bold text-white flex justify-between items-center list-none select-none">
+              <span>Как восстановить забытый пароль?</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
+            </summary>
+            <p class="text-slate-300 mt-2 leading-relaxed">
+              На странице авторизации <code>lk.cdek.ru/user/login</code> нажмите кнопку «Забыли пароль?». Введите email, указанный при регистрации договора, и следуйте инструкциям в письме для установки нового пароля.
+            </p>
+          </details>
+
+          <details class="group bg-[#060B11] border border-white/[0.08] rounded-2xl p-4 cursor-pointer">
+            <summary class="font-bold text-white flex justify-between items-center list-none select-none">
+              <span>Чем ЛК отличается от обычного сайта СДЭК для физлиц?</span>
+              <span class="text-[#22E58B] group-open:rotate-180 transition-transform">▾</span>
+            </summary>
+            <p class="text-slate-300 mt-2 leading-relaxed">
+              В B2B-кабинете применяются специальные договорные тарифы со скидкой до 50% (например, тариф «Посылка»), доступна постоплата раз в месяц по счету, подключен наложенный платеж, массовая загрузка заказов списком и печать термоэтикеток 58х40 для маркетплейсов. Обычным физлицам этот функционал закрыт.
+            </p>
+          </details>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!--#include virtual="/src/components/footer.html" -->
+  <!--#include virtual="/src/components/mobile-cta.html" -->
+
+</body>
+</html>
