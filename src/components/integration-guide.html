@@ -1,12 +1,12 @@
-<section class="py-14 border-t border-white/[0.08]" id="integration-guide">
+<section class="py-14 border-t border-slate-200" id="integration-guide">
   <div class="max-w-5xl mx-auto">
     
     <!-- Заголовок блока -->
     <div class="text-center mb-10">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1 mb-3 rounded-full text-xs font-bold uppercase bg-white/[0.04] text-[#22E58B] border border-white/[0.08]/80">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1 mb-3 rounded-full text-xs font-bold uppercase bg-white/[0.04] text-[#22E58B] border border-slate-200/80">
         Самостоятельное подключение
       </div>
-      <h2 class="text-2xl sm:text-3xl font-black text-white tracking-tight">
+      <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
         Как настроить DBS-интеграцию за 15 минут
       </h2>
       <p class="text-slate-300 text-sm sm:text-base mt-2 max-w-2xl mx-auto">
@@ -16,20 +16,20 @@
 
     <!-- Вкладки платформ -->
     <div class="flex flex-wrap justify-center gap-2 mb-8" id="platform-tabs">
-      <button type="button" onclick="switchGuide('ozon')" class="guide-tab active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all bg-[#00b341] text-white border-[#22E58B]" data-target="ozon">Ozon DBS</button>
-      <button type="button" onclick="switchGuide('wb')" class="guide-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all bg-white/[0.04]/60 text-slate-300 border-white/[0.08] hover:border-emerald-700 hover:text-white" data-target="wb">Wildberries</button>
-      <button type="button" onclick="switchGuide('yamarket')" class="guide-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all bg-white/[0.04]/60 text-slate-300 border-white/[0.08] hover:border-emerald-700 hover:text-white" data-target="yamarket">Яндекс Маркет</button>
-      <button type="button" onclick="switchGuide('avito')" class="guide-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all bg-white/[0.04]/60 text-slate-300 border-white/[0.08] hover:border-emerald-700 hover:text-white" data-target="avito">Авито (DBS)</button>
+      <button type="button" onclick="switchGuide('ozon')" class="guide-tab active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all bg-[#00b341] text-slate-900 border-[#22E58B]" data-target="ozon">Ozon DBS</button>
+      <button type="button" onclick="switchGuide('wb')" class="guide-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all bg-white/[0.04]/60 text-slate-300 border-slate-200 hover:border-emerald-700 hover:text-slate-900" data-target="wb">Wildberries</button>
+      <button type="button" onclick="switchGuide('yamarket')" class="guide-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all bg-white/[0.04]/60 text-slate-300 border-slate-200 hover:border-emerald-700 hover:text-slate-900" data-target="yamarket">Яндекс Маркет</button>
+      <button type="button" onclick="switchGuide('avito')" class="guide-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all bg-white/[0.04]/60 text-slate-300 border-slate-200 hover:border-emerald-700 hover:text-slate-900" data-target="avito">Авито (DBS)</button>
     </div>
 
     <!-- Содержимое: Карточки шагов -->
     <div class="grid md:grid-cols-2 gap-4" id="guide-steps-container">
       
       <!-- Шаг 1 -->
-      <div class="bg-white/[0.04]/50 border border-white/[0.08]/60 rounded-2xl p-5 flex gap-4 shadow-md">
+      <div class="bg-white/[0.04]/50 border border-slate-200/60 rounded-2xl p-5 flex gap-4 shadow-md">
         <span class="flex-shrink-0 w-8 h-8 rounded-xl bg-[#00b341]/10 border border-[#22E58B]/30 text-[#22E58B] font-bold text-sm flex items-center justify-center">1</span>
         <div>
-          <h3 class="text-white font-bold text-sm sm:text-base mb-1">Получите API-ключи СДЭК</h3>
+          <h3 class="text-slate-900 font-bold text-sm sm:text-base mb-1">Получите API-ключи СДЭК</h3>
           <p class="text-slate-300 text-xs sm:text-sm leading-relaxed" id="step-1-desc">
             Авторизуйтесь в личном кабинете СДЭК, перейдите в раздел <b>Интеграция → Ключи API</b> и скопируйте связку <i>Account</i> и <i>Secure password</i>.
           </p>
@@ -37,10 +37,10 @@
       </div>
 
       <!-- Шаг 2 -->
-      <div class="bg-white/[0.04]/50 border border-white/[0.08]/60 rounded-2xl p-5 flex gap-4 shadow-md">
+      <div class="bg-white/[0.04]/50 border border-slate-200/60 rounded-2xl p-5 flex gap-4 shadow-md">
         <span class="flex-shrink-0 w-8 h-8 rounded-xl bg-[#00b341]/10 border border-[#22E58B]/30 text-[#22E58B] font-bold text-sm flex items-center justify-center">2</span>
         <div>
-          <h3 class="text-white font-bold text-sm sm:text-base mb-1" id="step-2-title">Создайте склад в кабинете Ozon</h3>
+          <h3 class="text-slate-900 font-bold text-sm sm:text-base mb-1" id="step-2-title">Создайте склад в кабинете Ozon</h3>
           <p class="text-slate-300 text-xs sm:text-sm leading-relaxed" id="step-2-desc">
             В кабинете продавца Ozon перейдите в <b>Логистика → Добавить склад</b>, выберите схему «Доставка сторонними службами (DBS)» и укажите время сборки.
           </p>
@@ -48,10 +48,10 @@
       </div>
 
       <!-- Шаг 3 -->
-      <div class="bg-white/[0.04]/50 border border-white/[0.08]/60 rounded-2xl p-5 flex gap-4 shadow-md">
+      <div class="bg-white/[0.04]/50 border border-slate-200/60 rounded-2xl p-5 flex gap-4 shadow-md">
         <span class="flex-shrink-0 w-8 h-8 rounded-xl bg-[#00b341]/10 border border-[#22E58B]/30 text-[#22E58B] font-bold text-sm flex items-center justify-center">3</span>
         <div>
-          <h3 class="text-white font-bold text-sm sm:text-base mb-1">Свяжите метод доставки со СДЭК</h3>
+          <h3 class="text-slate-900 font-bold text-sm sm:text-base mb-1">Свяжите метод доставки со СДЭК</h3>
           <p class="text-slate-300 text-xs sm:text-sm leading-relaxed" id="step-3-desc">
             В методах доставки выберите СДЭК (интегрированный партнер), укажите доступные города и настройте географию отгрузок.
           </p>
@@ -59,10 +59,10 @@
       </div>
 
       <!-- Шаг 4 -->
-      <div class="bg-white/[0.04]/50 border border-white/[0.08]/60 rounded-2xl p-5 flex gap-4 shadow-md">
+      <div class="bg-white/[0.04]/50 border border-slate-200/60 rounded-2xl p-5 flex gap-4 shadow-md">
         <span class="flex-shrink-0 w-8 h-8 rounded-xl bg-[#00b341]/10 border border-[#22E58B]/30 text-[#22E58B] font-bold text-sm flex items-center justify-center">4</span>
         <div>
-          <h3 class="text-white font-bold text-sm sm:text-base mb-1">Печать маркировки и передача в ПВЗ</h3>
+          <h3 class="text-slate-900 font-bold text-sm sm:text-base mb-1">Печать маркировки и передача в ПВЗ</h3>
           <p class="text-slate-300 text-xs sm:text-sm leading-relaxed" id="step-4-desc">
             Статусы заказов и трек-номера синхронизируются автоматически. Передавайте посылки в ближайший ПВЗ СДЭК без очередей по единому реестру.
           </p>
@@ -72,17 +72,17 @@
     </div>
 
     <!-- Баннер помощи -->
-    <div class="mt-8 bg-[#0B131D]/60 border border-white/[0.08]/80 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
+    <div class="mt-8 bg-white border-slate-200 shadow-sm/60 border border-slate-200/80 rounded-2xl p-5 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-xl">
       <div class="flex items-center gap-3.5">
         <div class="w-10 h-10 rounded-xl bg-[#00b341]/10 border border-[#22E58B]/30 flex items-center justify-center text-[#22E58B] flex-shrink-0">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
         </div>
         <div>
-          <p class="text-white text-xs sm:text-sm font-bold">Нужна помощь с получением API или настройкой?</p>
+          <p class="text-slate-900 text-xs sm:text-sm font-bold">Нужна помощь с получением API или настройкой?</p>
           <p class="text-slate-300 text-xs mt-0.5">Менеджер бесплатно подключит договор и предоставит документацию под ваш маркетплейс.</p>
         </div>
       </div>
-      <a href="#leadForm" class="px-5 py-2.5 bg-[#00b341] hover:bg-[#009c38] text-white font-bold text-xs sm:text-sm rounded-xl whitespace-nowrap transition-all shadow-md shadow-[#00b341]/20">
+      <a href="#leadForm" class="px-5 py-2.5 bg-[#00b341] hover:bg-[#009c38] text-slate-900 font-bold text-xs sm:text-sm rounded-xl whitespace-nowrap transition-all shadow-md shadow-[#00b341]/20">
         Помощь в настройке
       </a>
     </div>
@@ -122,9 +122,9 @@
   function switchGuide(platform) {
     document.querySelectorAll('.guide-tab').forEach(btn => {
       if (btn.dataset.target === platform) {
-        btn.className = 'guide-tab active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all bg-[#00b341] text-white border-[#22E58B]';
+        btn.className = 'guide-tab active px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all bg-[#00b341] text-slate-900 border-[#22E58B]';
       } else {
-        btn.className = 'guide-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all bg-white/[0.04]/60 text-slate-300 border-white/[0.08] hover:border-emerald-700 hover:text-white';
+        btn.className = 'guide-tab px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold border transition-all bg-white/[0.04]/60 text-slate-300 border-slate-200 hover:border-emerald-700 hover:text-slate-900';
       }
     });
 

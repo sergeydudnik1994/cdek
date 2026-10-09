@@ -172,7 +172,7 @@
 }
 </script>
 </head>
-<body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 pb-20 md:pb-0">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 pb-20 md:pb-0">
 
   <!--#include virtual="/src/components/header.html" -->
 
@@ -181,14 +181,14 @@
     <!-- Хлебные крошки -->
     <nav class="text-xs sm:text-sm text-slate-400 mb-6 flex flex-wrap items-center gap-1.5">
       <a href="/" class="hover:text-[#22E58B] transition-colors">Главная</a> <span>/</span>
-      <span class="text-white">Решения</span>
+      <span class="text-slate-900">Решения</span>
     </nav>
 
     <div class="mb-10 text-center">
-      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-4 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-white/[0.08]">
+      <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-4 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-slate-200">
         32 готовые ниши для e-commerce
       </div>
-      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4 tracking-tight">
+      <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 mb-4 tracking-tight">
         Отраслевые решения <span class="bg-gradient-to-r from-[#22E58B] via-[#00b341] to-[#00E5FF] bg-clip-text text-transparent">СДЭК</span>
       </h1>
       <p class="text-slate-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
@@ -198,7 +198,7 @@
 
     <!-- Поисковая строка -->
     <div class="mb-12 max-w-xl mx-auto">
-      <div class="relative bg-[#0B131D] p-1.5 rounded-2xl border border-white/[0.1] shadow-[0_10px_30px_rgba(0,0,0,0.6)]">
+      <div class="relative bg-white border-slate-200 shadow-sm p-1.5 rounded-2xl border border-white/[0.1] shadow-[0_10px_30px_rgba(0,0,0,0.6)]">
         <svg class="w-5 h-5 absolute left-4 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
         </svg>
@@ -206,7 +206,7 @@
           type="text" 
           id="searchInput" 
           placeholder="Поиск по нише или категории товара..." 
-          class="w-full bg-[#060B11] border border-white/[0.08] rounded-xl pl-11 pr-4 py-3.5 text-white placeholder-slate-500 focus:outline-none focus:border-[#22E58B] focus:ring-1 focus:ring-[#22E58B] transition-all text-sm font-medium" 
+          class="w-full bg-[#060B11] border border-slate-200 rounded-xl pl-11 pr-4 py-3.5 text-slate-900 placeholder-slate-500 focus:outline-none focus:border-[#22E58B] focus:ring-1 focus:ring-[#22E58B] transition-all text-sm font-medium" 
         />
       </div>
     </div>
@@ -225,11 +225,11 @@
       grid.innerHTML = services
         .filter(s => s.title.toLowerCase().includes(filter.toLowerCase()) || s.desc.toLowerCase().includes(filter.toLowerCase()))
         .map(s => `
-          <a href="/solutions/${s.slug}/" class="group flex flex-col h-full bg-[#0B131D] border border-white/[0.08] rounded-2xl p-6 hover:border-[#22E58B]/50 transition-all duration-300 shadow-md">
-            <div class="h-12 w-12 bg-[#060B11] text-[#22E58B] border border-white/[0.08] rounded-xl flex items-center justify-center mb-5 group-hover:scale-105 group-hover:border-[#22E58B]/40 transition-all">
+          <a href="/solutions/${s.slug}/" class="group flex flex-col h-full bg-white border-slate-200 shadow-sm border border-slate-200 rounded-2xl p-6 hover:border-[#22E58B]/50 transition-all duration-300 shadow-md">
+            <div class="h-12 w-12 bg-[#060B11] text-[#22E58B] border border-slate-200 rounded-xl flex items-center justify-center mb-5 group-hover:scale-105 group-hover:border-[#22E58B]/40 transition-all">
               <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">${s.icon}</svg>
             </div>
-            <h3 class="text-xl font-bold text-white mb-3 group-hover:text-[#22E58B] transition-colors">${s.title}</h3>
+            <h3 class="text-xl font-bold text-slate-900 mb-3 group-hover:text-[#22E58B] transition-colors">${s.title}</h3>
             <p class="text-slate-400 text-sm leading-relaxed flex-grow">${s.desc}</p>
           </a>
         `).join('');

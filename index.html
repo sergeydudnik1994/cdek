@@ -163,14 +163,14 @@
     }
   </style>
 </head>
-<body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 pb-20 md:pb-0 overflow-x-hidden">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 pb-20 md:pb-0 overflow-x-hidden">
 
   <!--#include virtual="/src/components/header.html" -->
 
   <main class="flex-grow">
     
     <!-- 1. HERO ХАБ СЕЛЛЕРА -->
-    <section class="bg-[#060B11] text-white pt-8 pb-12 sm:pt-14 sm:pb-16 overflow-hidden relative border-b border-white/[0.08]">
+    <section class="bg-[#060B11] text-slate-900 pt-8 pb-12 sm:pt-14 sm:pb-16 overflow-hidden relative border-b border-slate-200">
       <div class="absolute -top-24 -left-24 w-72 sm:w-96 h-72 sm:h-96 bg-[#22E58B]/15 rounded-full blur-3xl pointer-events-none"></div>
       <div class="absolute top-1/2 -right-24 w-80 sm:w-[450px] h-80 sm:h-[450px] bg-[#00b341]/10 rounded-full blur-3xl pointer-events-none"></div>
 
@@ -194,32 +194,32 @@
 
             <!-- Быстрые метрики моделей -->
             <div class="grid grid-cols-3 gap-3 pt-2">
-              <a href="/services/dbs/" class="p-3.5 rounded-2xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition block group">
+              <a href="/services/dbs/" class="p-3.5 rounded-2xl bg-white border-slate-200 shadow-sm border border-slate-200 hover:border-[#22E58B]/50 transition block group">
                 <div class="text-lg sm:text-2xl font-black text-[#22E58B]">от 136.5 ₽</div>
-                <div class="text-[11px] text-slate-400 mt-0.5 group-hover:text-white transition">Спецтариф DBS →</div>
+                <div class="text-[11px] text-slate-400 mt-0.5 group-hover:text-slate-900 transition">Спецтариф DBS →</div>
               </a>
-              <a href="/services/fbo/" class="p-3.5 rounded-2xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition block group">
-                <div class="text-lg sm:text-2xl font-black text-white">В тайм-слот</div>
+              <a href="/services/fbo/" class="p-3.5 rounded-2xl bg-white border-slate-200 shadow-sm border border-slate-200 hover:border-[#22E58B]/50 transition block group">
+                <div class="text-lg sm:text-2xl font-black text-slate-900">В тайм-слот</div>
                 <div class="text-[11px] text-slate-400 mt-0.5 group-hover:text-[#22E58B] transition">Поставки FBO в РЦ →</div>
               </a>
-              <a href="/services/fbs/" class="p-3.5 rounded-2xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition block group">
+              <a href="/services/fbs/" class="p-3.5 rounded-2xl bg-white border-slate-200 shadow-sm border border-slate-200 hover:border-[#22E58B]/50 transition block group">
                 <div class="text-lg sm:text-2xl font-black bg-gradient-to-r from-[#22E58B] to-[#00E5FF] bg-clip-text text-transparent">5 000+ ПВЗ</div>
-                <div class="text-[11px] text-slate-400 mt-0.5 group-hover:text-white transition">Сдача FBS по реестру →</div>
+                <div class="text-[11px] text-slate-400 mt-0.5 group-hover:text-slate-900 transition">Сдача FBS по реестру →</div>
               </a>
             </div>
 
             <!-- Теги преимуществ -->
             <div class="flex flex-wrap gap-2 pt-1">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs text-slate-300">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white/[0.03] border border-slate-200 text-xs text-slate-300">
                 <span class="text-[#22E58B]">✓</span> Доставка крупногабарита (КГТ)
               </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs text-slate-300">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white/[0.03] border border-slate-200 text-xs text-slate-300">
                 <span class="text-[#22E58B]">✓</span> Примерка в ПВЗ и частичный выкуп
               </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs text-slate-300">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white/[0.03] border border-slate-200 text-xs text-slate-300">
                 <span class="text-[#22E58B]">✓</span> Наложенный платеж 54-ФЗ
               </span>
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white/[0.03] border border-white/[0.08] text-xs text-slate-300">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-xl bg-white/[0.03] border border-slate-200 text-xs text-slate-300">
                 <span class="text-[#22E58B]">✓</span> Синхронизация статусов по API 2.0
               </span>
             </div>
@@ -235,20 +235,20 @@
     </section>
 
     <!-- 2. СХЕМЫ ДОСТАВКИ ДЛЯ СЕЛЛЕРОВ (DBS / FBO / FBS) -->
-    <section class="py-14 sm:py-18 border-b border-white/[0.08]">
+    <section class="py-14 sm:py-18 border-b border-slate-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-white/[0.08] mb-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-slate-200 mb-2">
             Модели работы
           </div>
-          <h2 class="text-2xl sm:text-4xl font-black text-white">3 схемы отгрузки под любые задачи селлера</h2>
+          <h2 class="text-2xl sm:text-4xl font-black text-slate-900">3 схемы отгрузки под любые задачи селлера</h2>
           <p class="text-slate-400 text-xs sm:text-sm mt-1">Комбинируйте каналы продаж без заморозки остатков и переплат за логистику площадок</p>
         </div>
 
         <div class="grid md:grid-cols-3 gap-6">
           
           <!-- Карточка DBS -->
-          <div class="p-6 sm:p-7 rounded-3xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition flex flex-col justify-between space-y-6 group">
+          <div class="p-6 sm:p-7 rounded-3xl bg-white border-slate-200 shadow-sm border border-slate-200 hover:border-[#22E58B]/50 transition flex flex-col justify-between space-y-6 group">
             <div class="space-y-4">
               <div class="flex items-center justify-between">
                 <span class="px-2.5 py-1 rounded-md text-[11px] font-black uppercase tracking-wider bg-[#22E58B]/15 text-[#22E58B] border border-[#22E58B]/30">
@@ -256,7 +256,7 @@
                 </span>
                 <span class="text-xs text-slate-500">RealFBS / Витрина</span>
               </div>
-              <h3 class="text-xl font-bold text-white group-hover:text-[#22E58B] transition">СДЭК DBS (Delivery by Seller)</h3>
+              <h3 class="text-xl font-bold text-slate-900 group-hover:text-[#22E58B] transition">СДЭК DBS (Delivery by Seller)</h3>
               <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Маркетплейс работает как витрина заказов, а доставку покупателю выполняет СДЭК курьером или до ПВЗ. Подходит для мебели, КГТ, автозапчастей и товаров под заказ.
               </p>
@@ -272,15 +272,15 @@
           </div>
 
           <!-- Карточка FBO -->
-          <div class="p-6 sm:p-7 rounded-3xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition flex flex-col justify-between space-y-6 group">
+          <div class="p-6 sm:p-7 rounded-3xl bg-white border-slate-200 shadow-sm border border-slate-200 hover:border-[#22E58B]/50 transition flex flex-col justify-between space-y-6 group">
             <div class="space-y-4">
               <div class="flex items-center justify-between">
-                <span class="px-2.5 py-1 rounded-md text-[11px] font-black uppercase tracking-wider bg-white/[0.05] text-white border border-white/[0.1]">
+                <span class="px-2.5 py-1 rounded-md text-[11px] font-black uppercase tracking-wider bg-white/[0.05] text-slate-900 border border-white/[0.1]">
                   РФ + Беларусь + Казахстан
                 </span>
                 <span class="text-xs text-slate-500">FBW / FBY</span>
               </div>
-              <h3 class="text-xl font-bold text-white group-hover:text-[#22E58B] transition">СДЭК FBO (Поставки в РЦ)</h3>
+              <h3 class="text-xl font-bold text-slate-900 group-hover:text-[#22E58B] transition">СДЭК FBO (Поставки в РЦ)</h3>
               <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Доставка товаров на склады маркетплейсов: транспортная паллетная и коробочная доставка оптовых партий на Wildberries, Ozon, Яндекс Маркет.
               </p>
@@ -296,7 +296,7 @@
           </div>
 
           <!-- Карточка FBS -->
-          <div class="p-6 sm:p-7 rounded-3xl bg-[#0B131D] border border-white/[0.08] hover:border-[#22E58B]/50 transition flex flex-col justify-between space-y-6 group">
+          <div class="p-6 sm:p-7 rounded-3xl bg-white border-slate-200 shadow-sm border border-slate-200 hover:border-[#22E58B]/50 transition flex flex-col justify-between space-y-6 group">
             <div class="space-y-4">
               <div class="flex items-center justify-between">
                 <span class="px-2.5 py-1 rounded-md text-[11px] font-black uppercase tracking-wider bg-[#00E5FF]/15 text-[#00E5FF] border border-[#00E5FF]/30">
@@ -304,7 +304,7 @@
                 </span>
                 <span class="text-xs text-slate-500">Склад продавца</span>
               </div>
-              <h3 class="text-xl font-bold text-white group-hover:text-[#22E58B] transition">СДЭК FBS (Сдача по реестру)</h3>
+              <h3 class="text-xl font-bold text-slate-900 group-hover:text-[#22E58B] transition">СДЭК FBS (Сдача по реестру)</h3>
               <p class="text-xs sm:text-sm text-slate-400 leading-relaxed">
                 Храните товары на собственном складе, собирайте заказы по факту покупки и сдавайте партии в любой ПВЗ СДЭК по единому акту приема-передачи.
               </p>
@@ -325,14 +325,14 @@
 
     <!-- Остальные секции 3-7 остаются без изменений -->
     <!-- 3. ИНТЕРАКТИВНЫЙ РЕЕСТР СКЛАДОВ FBO -->
-    <section class="py-14 sm:py-18 border-b border-white/[0.08]">
+    <section class="py-14 sm:py-18 border-b border-slate-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
           <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-white/[0.08] mb-2">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-slate-200 mb-2">
               Склады маркетплейсов
             </div>
-            <h2 class="text-2xl sm:text-3xl font-black text-white">Регулярные рейсы на распределительные центры</h2>
+            <h2 class="text-2xl sm:text-3xl font-black text-slate-900">Регулярные рейсы на распределительные центры</h2>
             <p class="text-slate-400 text-xs sm:text-sm mt-1">Доставка грузов FBO со строгим соблюдением графиков и тайм-слотов приемки</p>
           </div>
           <a href="/services/fbo/" class="text-xs font-bold text-[#22E58B] hover:underline whitespace-nowrap">
@@ -341,9 +341,9 @@
         </div>
 
         <div class="overflow-x-auto">
-          <table class="w-full text-left text-sm bg-[#0B131D] rounded-3xl border border-white/[0.08] overflow-hidden">
+          <table class="w-full text-left text-sm bg-white border-slate-200 shadow-sm rounded-3xl border border-slate-200 overflow-hidden">
             <thead>
-              <tr class="border-b border-white/[0.08] text-xs uppercase tracking-wider text-slate-400 bg-white/[0.02]">
+              <tr class="border-b border-slate-200 text-xs uppercase tracking-wider text-slate-400 bg-white/[0.02]">
                 <th class="py-3.5 px-4">Маркетплейс</th>
                 <th class="py-3.5 px-4">Распределительный центр</th>
                 <th class="py-3.5 px-4">Тип поставки</th>
@@ -353,31 +353,31 @@
             <tbody class="divide-y divide-white/[0.06] text-slate-300 text-xs sm:text-sm">
               <tr>
                 <td class="py-3.5 px-4 font-bold text-[#CB11AB]">Wildberries</td>
-                <td class="py-3.5 px-4 text-white">Коледино, Электросталь, Тула, Подольск</td>
+                <td class="py-3.5 px-4 text-slate-900">Коледино, Электросталь, Тула, Подольск</td>
                 <td class="py-3.5 px-4">Моно / Микс / Европаллеты / СГТ</td>
                 <td class="py-3.5 px-4 text-[#22E58B]">Ежедневно под тайм-слот</td>
               </tr>
               <tr>
                 <td class="py-3.5 px-4 font-bold text-[#005BFF]">Ozon</td>
-                <td class="py-3.5 px-4 text-white">Хоругвино, Софьино, Шушары, Гривно, Астана</td>
+                <td class="py-3.5 px-4 text-slate-900">Хоругвино, Софьино, Шушары, Гривно, Астана</td>
                 <td class="py-3.5 px-4">Паллеты, Fresh, Негабарит (РФЦ)</td>
                 <td class="py-3.5 px-4 text-[#22E58B]">Ежедневно (сдача по УПД-2)</td>
               </tr>
               <tr>
                 <td class="py-3.5 px-4 font-bold text-[#FC3F1D]">Яндекс Маркет</td>
-                <td class="py-3.5 px-4 text-white">Софьино 1-2, Томилино, Ростов Логопарк</td>
+                <td class="py-3.5 px-4 text-slate-900">Софьино 1-2, Томилино, Ростов Логопарк</td>
                 <td class="py-3.5 px-4">FBY паллеты, КГТ отправления</td>
                 <td class="py-3.5 px-4 text-[#22E58B]">Пн - Сб (экспедирование)</td>
               </tr>
               <tr>
                 <td class="py-3.5 px-4 font-bold text-[#E5A800]">Золотое Яблоко</td>
-                <td class="py-3.5 px-4 text-white">Истра Ориентир, Краснодар, Екатеринбург, Минск</td>
+                <td class="py-3.5 px-4 text-slate-900">Истра Ориентир, Краснодар, Екатеринбург, Минск</td>
                 <td class="py-3.5 px-4">Косметика, парфюмерия, штучный товар</td>
                 <td class="py-3.5 px-4 text-[#22E58B]">По согласованным окнам</td>
               </tr>
               <tr>
                 <td class="py-3.5 px-4 font-bold text-[#00E5FF]">Lamoda & Лемана ПРО</td>
-                <td class="py-3.5 px-4 text-white">Троицкий логопарк СПб, СЦ Белая Дача</td>
+                <td class="py-3.5 px-4 text-slate-900">Троицкий логопарк СПб, СЦ Белая Дача</td>
                 <td class="py-3.5 px-4">Fashion-партия, инструмент, DIY</td>
                 <td class="py-3.5 px-4 text-[#22E58B]">Регулярные рейсы</td>
               </tr>
@@ -388,13 +388,13 @@
     </section>
 
     <!-- 4. КАЛЬКУЛЯТОР ТАРИФОВ -->
-    <section id="widget-section" class="py-14 sm:py-18 border-b border-white/[0.08] relative">
+    <section id="widget-section" class="py-14 sm:py-18 border-b border-slate-200 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="text-center max-w-3xl mx-auto mb-10">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-white/[0.08] mb-3">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-slate-200 mb-3">
             Интеллектуальный расчет
           </div>
-          <h2 class="text-2xl sm:text-4xl font-black text-white tracking-tight">
+          <h2 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
             Рассчитайте стоимость доставки посылки
           </h2>
           <p class="text-slate-400 text-xs sm:text-sm mt-2">
@@ -407,30 +407,30 @@
     </section>
 
     <!-- 5. ПЛАТФОРМА И API 2.0 -->
-    <section class="py-14 sm:py-18 border-b border-white/[0.08]">
+    <section class="py-14 sm:py-18 border-b border-slate-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-white/[0.08] mb-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-slate-200 mb-2">
             Личный кабинет и интеграции
           </div>
-          <h2 class="text-2xl sm:text-3xl font-black text-white">Автоматизация отгрузок селлера</h2>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900">Автоматизация отгрузок селлера</h2>
           <p class="text-slate-400 text-xs sm:text-sm mt-1">Готовые модули для синхронизации остатков, автопечати термоэтикеток 58×40 мм и передачи трек-номеров</p>
         </div>
 
         <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          <div class="p-5 rounded-2xl bg-[#0B131D] border border-white/[0.08] space-y-2">
+          <div class="p-5 rounded-2xl bg-white border-slate-200 shadow-sm border border-slate-200 space-y-2">
             <div class="text-[#22E58B] font-black text-base">REST API 2.0</div>
             <p class="text-xs text-slate-300">Мгновенная передача статусов и трек-номеров в Wildberries и Ozon для защиты от штрафов за просрочку SLA.</p>
           </div>
-          <div class="p-5 rounded-2xl bg-[#0B131D] border border-white/[0.08] space-y-2">
+          <div class="p-5 rounded-2xl bg-white border-slate-200 shadow-sm border border-slate-200 space-y-2">
             <div class="text-[#22E58B] font-black text-base">Этикетки 58×40 мм</div>
             <p class="text-xs text-slate-300">Пакетная генерация и печать накладных СДЭК и штрихкодов маркетплейсов в один клик из кабинета.</p>
           </div>
-          <div class="p-5 rounded-2xl bg-[#0B131D] border border-white/[0.08] space-y-2">
+          <div class="p-5 rounded-2xl bg-white border-slate-200 shadow-sm border border-slate-200 space-y-2">
             <div class="text-[#22E58B] font-black text-base">МойСклад & 1С</div>
             <p class="text-xs text-slate-300">Готовые синхронизаторы складских остатков и автоматическое создание заказов на доставку при покупке.</p>
           </div>
-          <div class="p-5 rounded-2xl bg-[#0B131D] border border-white/[0.08] space-y-2">
+          <div class="p-5 rounded-2xl bg-white border-slate-200 shadow-sm border border-slate-200 space-y-2">
             <div class="text-[#22E58B] font-black text-base">ЭДО без бумаг</div>
             <p class="text-xs text-slate-300">Закрывающие документы через Диадок и СБИС раз в месяц по постоплатной системе расчетов.</p>
           </div>
@@ -439,18 +439,18 @@
     </section>
 
     <!-- 6. FAQ (База знаний) -->
-    <section class="py-14 sm:py-18 border-b border-white/[0.08]">
+    <section class="py-14 sm:py-18 border-b border-slate-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
         <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-white/[0.08] mb-2">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-slate-200 mb-2">
             База знаний
           </div>
-          <h2 class="text-2xl sm:text-3xl font-black text-white">Вопросы и ответы по логистике маркетплейсов</h2>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900">Вопросы и ответы по логистике маркетплейсов</h2>
         </div>
 
         <div class="space-y-3 text-sm">
-          <details class="group border border-white/[0.08] rounded-2xl p-5 bg-[#0B131D] open:bg-white/[0.02] transition">
-            <summary class="font-bold text-white cursor-pointer flex justify-between items-center list-none">
+          <details class="group border border-slate-200 rounded-2xl p-5 bg-white border-slate-200 shadow-sm open:bg-white/[0.02] transition">
+            <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
               <span>Как заключить договор со СДЭК?</span>
               <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
             </summary>
@@ -459,8 +459,8 @@
             </p>
           </details>
 
-          <details class="group border border-white/[0.08] rounded-2xl p-5 bg-[#0B131D] open:bg-white/[0.02] transition">
-            <summary class="font-bold text-white cursor-pointer flex justify-between items-center list-none">
+          <details class="group border border-slate-200 rounded-2xl p-5 bg-white border-slate-200 shadow-sm open:bg-white/[0.02] transition">
+            <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
               <span>Что такое спецтариф СДЭК DBS и сколько он стоит?</span>
               <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
             </summary>
@@ -469,8 +469,8 @@
             </p>
           </details>
 
-          <details class="group border border-white/[0.08] rounded-2xl p-5 bg-[#0B131D] open:bg-white/[0.02] transition">
-            <summary class="font-bold text-white cursor-pointer flex justify-between items-center list-none">
+          <details class="group border border-slate-200 rounded-2xl p-5 bg-white border-slate-200 shadow-sm open:bg-white/[0.02] transition">
+            <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
               <span>Как работает доставка на склады маркетплейсов (FBO)?</span>
               <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
             </summary>

@@ -198,7 +198,7 @@
 }
 </script>
 </head>
-<body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 selection:text-white pb-16 md:pb-0">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 selection:text-slate-900 pb-16 md:pb-0">
 
   <!--#include virtual="/src/components/header.html" -->
 
@@ -212,14 +212,14 @@
         <nav class="text-xs sm:text-sm text-slate-400 mb-6 flex flex-wrap items-center gap-1.5">
           <a href="/" class="hover:text-[#22E58B] transition-colors">Главная</a> <span>/</span>
           <a href="/calculator/" class="hover:text-[#22E58B] transition-colors">Калькулятор</a> <span>/</span>
-          <span class="text-white">Расчет DBS до 1 кг</span>
+          <span class="text-slate-900">Расчет DBS до 1 кг</span>
         </nav>
 
         <div class="text-center mb-10">
-          <div class="inline-flex items-center gap-2 px-3.5 py-1 mb-4 rounded-full text-xs font-bold uppercase bg-white/[0.04] text-[#22E58B] border border-white/[0.08]/80">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 mb-4 rounded-full text-xs font-bold uppercase bg-white/[0.04] text-[#22E58B] border border-slate-200/80">
             Спецтариф от 136.50 ₽
           </div>
-          <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-4">
+          <h1 class="text-3xl sm:text-4xl md:text-5xl font-black text-slate-900 mb-4">
             Калькулятор тарифа DBS <br class="hidden sm:block" /> для товаров <span class="text-[#22E58B]">до 1 кг</span>
           </h1>
           <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto">
@@ -228,20 +228,20 @@
         </div>
 
         <!-- Оболочка калькулятора -->
-        <div class="max-w-4xl mx-auto bg-[#0B131D]/60 p-5 sm:p-7 rounded-3xl border border-white/[0.08]/60 shadow-xl mb-6">
+        <div class="max-w-4xl mx-auto bg-white border-slate-200 shadow-sm/60 p-5 sm:p-7 rounded-3xl border border-slate-200/60 shadow-xl mb-6">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
             
             <!-- Поля ввода -->
             <div class="space-y-3.5">
               <div class="relative">
                 <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Откуда отправляем (Склад)</label>
-                <input type="text" id="calc-from" value="" autocomplete="off" placeholder="Введите город..." class="w-full px-3.5 py-2.5 bg-[#060B11] border border-white/[0.08]/80 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-[#22E58B] text-sm transition-colors" />
+                <input type="text" id="calc-from" value="" autocomplete="off" placeholder="Введите город..." class="w-full px-3.5 py-2.5 bg-[#060B11] border border-slate-200/80 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#22E58B] text-sm transition-colors" />
                 <ul id="list-from" class="absolute z-50 w-full bg-[#060B11] border border-emerald-700 rounded-xl mt-1 hidden max-h-48 overflow-y-auto shadow-2xl text-sm overflow-hidden"></ul>
               </div>
 
               <div class="relative">
                 <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Куда доставляем (Покупатель)</label>
-                <input type="text" id="calc-to" value="" autocomplete="off" placeholder="Введите город..." class="w-full px-3.5 py-2.5 bg-[#060B11] border border-white/[0.08]/80 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:border-[#22E58B] text-sm transition-colors" />
+                <input type="text" id="calc-to" value="" autocomplete="off" placeholder="Введите город..." class="w-full px-3.5 py-2.5 bg-[#060B11] border border-slate-200/80 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-[#22E58B] text-sm transition-colors" />
                 <ul id="list-to" class="absolute z-50 w-full bg-[#060B11] border border-emerald-700 rounded-xl mt-1 hidden max-h-48 overflow-y-auto shadow-2xl text-sm overflow-hidden"></ul>
               </div>
 
@@ -249,7 +249,7 @@
                 <div>
                   <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Вес отправления</label>
                   <div class="relative flex items-center">
-                    <select id="calc-weight" class="w-full pl-3.5 pr-10 py-2.5 bg-[#060B11] border border-white/[0.08]/80 rounded-xl text-white focus:outline-none focus:border-[#22E58B] text-sm cursor-pointer appearance-none">
+                    <select id="calc-weight" class="w-full pl-3.5 pr-10 py-2.5 bg-[#060B11] border border-slate-200/80 rounded-xl text-slate-900 focus:outline-none focus:border-[#22E58B] text-sm cursor-pointer appearance-none">
                       <option value="0.5">До 0.5 кг</option>
                       <option value="1.0">До 1.0 кг</option>
                     </select>
@@ -260,7 +260,7 @@
                 <div>
                   <label class="block text-[11px] font-bold text-slate-300 mb-1 uppercase tracking-wider">Способ вручения</label>
                   <div class="relative flex items-center">
-                    <select id="calc-mode" class="w-full pl-3.5 pr-10 py-2.5 bg-[#060B11] border border-white/[0.08]/80 rounded-xl text-white focus:outline-none focus:border-[#22E58B] text-sm cursor-pointer appearance-none">
+                    <select id="calc-mode" class="w-full pl-3.5 pr-10 py-2.5 bg-[#060B11] border border-slate-200/80 rounded-xl text-slate-900 focus:outline-none focus:border-[#22E58B] text-sm cursor-pointer appearance-none">
                       <option value="склад-склад">В ПВЗ</option>
                       <option value="склад-дверь">Курьером</option>
                     </select>
@@ -269,23 +269,23 @@
                 </div>
               </div>
 
-              <button type="button" id="calc-btn" class="w-full py-3.5 px-5 bg-[#00b341] hover:bg-[#009c38] text-white font-extrabold rounded-xl transition-all shadow-md shadow-[#00b341]/20 cursor-pointer text-sm uppercase tracking-wider mt-1">
+              <button type="button" id="calc-btn" class="w-full py-3.5 px-5 bg-[#00b341] hover:bg-[#009c38] text-slate-900 font-extrabold rounded-xl transition-all shadow-md shadow-[#00b341]/20 cursor-pointer text-sm uppercase tracking-wider mt-1">
                 Рассчитать стоимость
               </button>
             </div>
 
             <!-- Блок результатов -->
-            <div class="bg-[#060B11] border border-white/[0.08]/60 rounded-2xl p-5 flex flex-col justify-between relative z-0">
+            <div class="bg-[#060B11] border border-slate-200/60 rounded-2xl p-5 flex flex-col justify-between relative z-0">
               <div>
-                <h4 class="text-white font-bold text-sm mb-3 border-b border-white/[0.08]/80 pb-2">Результаты расчета</h4>
+                <h4 class="text-slate-900 font-bold text-sm mb-3 border-b border-slate-200/80 pb-2">Результаты расчета</h4>
                 <div id="calc-results" class="space-y-2.5 text-sm text-slate-200">
                   <p class="text-slate-400 italic text-xs">Заполните города и нажмите «Рассчитать стоимость»</p>
                 </div>
               </div>
 
-              <div class="mt-4 pt-3 border-t border-white/[0.08]/80">
+              <div class="mt-4 pt-3 border-t border-slate-200/80">
                 <p class="text-[11px] text-slate-400 leading-relaxed">
-                  Нужен <span class="text-white font-bold">персональный расчет</span> по договору? 
+                  Нужен <span class="text-slate-900 font-bold">персональный расчет</span> по договору? 
                   <a href="#leadForm" id="lead-scroll-link" class="text-[#22E58B] hover:underline font-bold cursor-pointer">Оставьте заявку на спецтарифы →</a>
                 </p>
               </div>
@@ -296,32 +296,32 @@
     </section>
 
     <!-- СЕКЦИЯ 2: СПЕЦПРЕДЛОЖЕНИЕ И МАРКЕТПЛЕЙСЫ -->
-    <section class="py-12 border-t border-white/[0.08]">
+    <section class="py-12 border-t border-slate-200">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div class="text-center mb-10">
-          <h2 class="text-3xl md:text-4xl font-black text-white mb-3">Детали спецпредложения</h2>
+          <h2 class="text-3xl md:text-4xl font-black text-slate-900 mb-3">Детали спецпредложения</h2>
           <p class="text-slate-300">Выберите маркетплейс, на котором вы торгуете, чтобы увидеть доступные опции отгрузки.</p>
         </div>
 
-        <div class="bg-[#0B131D]/60 border border-white/[0.08]/60 p-6 md:p-10 rounded-3xl shadow-xl">
+        <div class="bg-white border-slate-200 shadow-sm/60 border border-slate-200/60 p-6 md:p-10 rounded-3xl shadow-xl">
           
           <div class="flex flex-wrap gap-3 mb-8 justify-center">
-            <button id="btn-universal" onclick="setMarketplace('universal')" class="mp-btn px-6 py-3 rounded-xl border-2 border-[#22E58B] bg-[#00b341] text-white font-bold transition-all cursor-pointer">
+            <button id="btn-universal" onclick="setMarketplace('universal')" class="mp-btn px-6 py-3 rounded-xl border-2 border-[#22E58B] bg-[#00b341] text-slate-900 font-bold transition-all cursor-pointer">
               Ozon / Я.Маркет / Авито
             </button>
-            <button id="btn-wb" onclick="setMarketplace('wb')" class="mp-btn px-6 py-3 rounded-xl border-2 border-white/[0.08] bg-[#060B11] text-slate-300 hover:border-emerald-700 hover:text-white transition-all cursor-pointer">
+            <button id="btn-wb" onclick="setMarketplace('wb')" class="mp-btn px-6 py-3 rounded-xl border-2 border-slate-200 bg-[#060B11] text-slate-300 hover:border-emerald-700 hover:text-slate-900 transition-all cursor-pointer">
               Wildberries
             </button>
           </div>
 
           <div class="grid md:grid-cols-2 gap-6">
             <!-- До ПВЗ -->
-            <div id="pvzCard" class="bg-[#060B11] p-7 rounded-2xl border border-white/[0.08]/80 transition-all duration-300">
+            <div id="pvzCard" class="bg-[#060B11] p-7 rounded-2xl border border-slate-200/80 transition-all duration-300">
               <div class="text-xs text-slate-400 mb-2 uppercase tracking-wider font-bold">Выдача в ПВЗ СДЭК</div>
               <div class="flex items-baseline gap-2 mb-6">
                 <span class="text-sm text-slate-400">от</span>
-                <span class="text-4xl font-black text-white">136.50</span>
+                <span class="text-4xl font-black text-slate-900">136.50</span>
                 <span class="text-xl text-[#22E58B] font-bold">₽</span>
               </div>
               <ul class="text-sm text-slate-200 space-y-3">
@@ -331,11 +331,11 @@
             </div>
 
             <!-- Курьером -->
-            <div class="bg-[#060B11] p-7 rounded-2xl border border-white/[0.08]/80">
+            <div class="bg-[#060B11] p-7 rounded-2xl border border-slate-200/80">
               <div class="text-xs text-slate-400 mb-2 uppercase tracking-wider font-bold">Курьером до двери</div>
               <div class="flex items-baseline gap-2 mb-6">
                 <span class="text-sm text-slate-400">от</span>
-                <span class="text-4xl font-black text-white">309.28</span>
+                <span class="text-4xl font-black text-slate-900">309.28</span>
                 <span class="text-xl text-[#22E58B] font-bold">₽</span>
               </div>
               <ul class="text-sm text-slate-200 space-y-3">
@@ -359,14 +359,14 @@
     </section>
 
     <!-- СЕКЦИЯ 3: БЛОГ -->
-    <section class="py-12 border-t border-white/[0.08]">
+    <section class="py-12 border-t border-slate-200">
       <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <!--#include virtual="/src/components/blog-latest.html" -->
       </div>
     </section>
 
     <!-- СЕКЦИЯ 4: ФОРМА -->
-    <section class="py-12 border-t border-white/[0.08]" id="leadForm">
+    <section class="py-12 border-t border-slate-200" id="leadForm">
       <div class="max-w-xl mx-auto px-4 sm:px-6 lg:px-8">
         <!--#include virtual="/src/components/leadform.html" -->
       </div>
@@ -402,9 +402,9 @@
 
         limited.forEach(city => {
           const li = document.createElement('li');
-          li.className = 'px-4 py-2.5 cursor-pointer hover:bg-[#00b341] hover:text-white text-slate-200 border-b border-white/[0.08]/60 last:border-0 transition-colors text-sm';
+          li.className = 'px-4 py-2.5 cursor-pointer hover:bg-[#00b341] hover:text-slate-900 text-slate-200 border-b border-slate-200/60 last:border-0 transition-colors text-sm';
           const regex = new RegExp(`(${val})`, 'gi');
-          li.innerHTML = city.replace(regex, '<span class="font-bold text-[#22E58B] group-hover:text-white">$1</span>');
+          li.innerHTML = city.replace(regex, '<span class="font-bold text-[#22E58B] group-hover:text-slate-900">$1</span>');
           li.addEventListener('click', () => {
             input.value = city;
             list.classList.add('hidden');
@@ -430,18 +430,18 @@
       const modeSelect = document.getElementById('calc-mode');
 
       [btnUniversal, btnWb].forEach(btn => {
-        btn.className = 'mp-btn px-6 py-3 rounded-xl border-2 border-white/[0.08] bg-[#060B11] text-slate-300 hover:border-emerald-700 hover:text-white transition-all cursor-pointer';
+        btn.className = 'mp-btn px-6 py-3 rounded-xl border-2 border-slate-200 bg-[#060B11] text-slate-300 hover:border-emerald-700 hover:text-slate-900 transition-all cursor-pointer';
       });
 
       if (type === 'wb') {
-        btnWb.className = 'mp-btn px-6 py-3 rounded-xl border-2 border-[#22E58B] bg-[#00b341] text-white font-bold transition-all cursor-pointer';
+        btnWb.className = 'mp-btn px-6 py-3 rounded-xl border-2 border-[#22E58B] bg-[#00b341] text-slate-900 font-bold transition-all cursor-pointer';
         pvzCard.style.opacity = '0.35';
         pvzCard.style.pointerEvents = 'none';
         pvzCard.style.filter = 'grayscale(100%)';
         wbWarning.classList.remove('hidden');
         modeSelect.value = 'склад-дверь';
       } else {
-        btnUniversal.className = 'mp-btn px-6 py-3 rounded-xl border-2 border-[#22E58B] bg-[#00b341] text-white font-bold transition-all cursor-pointer';
+        btnUniversal.className = 'mp-btn px-6 py-3 rounded-xl border-2 border-[#22E58B] bg-[#00b341] text-slate-900 font-bold transition-all cursor-pointer';
         pvzCard.style.opacity = '1';
         pvzCard.style.pointerEvents = 'auto';
         pvzCard.style.filter = 'none';
@@ -469,13 +469,13 @@
         const time = rate.time;
         
         resultsContainer.innerHTML = `
-          <div class="flex justify-between items-center py-1.5 border-b border-white/[0.08]/80 text-xs sm:text-sm">
+          <div class="flex justify-between items-center py-1.5 border-b border-slate-200/80 text-xs sm:text-sm">
             <span class="text-slate-400">Направление:</span>
-            <span class="text-white font-bold text-right">${cityFrom} → ${cityTo}</span>
+            <span class="text-slate-900 font-bold text-right">${cityFrom} → ${cityTo}</span>
           </div>
-          <div class="flex justify-between items-center py-1.5 border-b border-white/[0.08]/80 text-xs sm:text-sm">
+          <div class="flex justify-between items-center py-1.5 border-b border-slate-200/80 text-xs sm:text-sm">
             <span class="text-slate-400">Срок доставки:</span>
-            <span class="text-white font-bold">${time} раб. дней</span>
+            <span class="text-slate-900 font-bold">${time} раб. дней</span>
           </div>
           <div class="flex justify-between items-center py-1.5 text-xs sm:text-sm mt-1">
             <span class="text-slate-400">Стоимость:</span>

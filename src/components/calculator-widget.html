@@ -1,11 +1,11 @@
 <!-- ВИДЖЕТ: Спецтариф DBS до 1 кг -->
 <a href="/calculator/dbs-1kg/" class="block mb-6 max-w-4xl mx-auto group cursor-pointer">
-  <div class="relative overflow-hidden bg-[#0B131D]/90 border border-white/[0.1] backdrop-blur-2xl rounded-3xl p-5 sm:p-6 transition-all duration-300 hover:border-[#22E58B]/50 shadow-[0_15px_40px_rgba(0,0,0,0.6)] flex flex-col sm:flex-row sm:items-center justify-between gap-5">
+  <div class="relative overflow-hidden bg-white border-slate-200 shadow-sm/90 border border-white/[0.1] backdrop-blur-2xl rounded-3xl p-5 sm:p-6 transition-all duration-300 hover:border-[#22E58B]/50 shadow-[0_15px_40px_rgba(0,0,0,0.6)] flex flex-col sm:flex-row sm:items-center justify-between gap-5">
     
     <div class="flex items-start sm:items-center gap-4 relative z-10">
       
       <!-- Иконка молнии/интеграции -->
-      <div class="hidden sm:flex shrink-0 items-center justify-center w-12 h-12 rounded-2xl bg-white/[0.04] border border-white/[0.08] text-[#22E58B] group-hover:bg-[#22E58B]/15 group-hover:border-[#22E58B]/40 transition-colors shadow-[0_0_15px_rgba(34,229,139,0.15)]">
+      <div class="hidden sm:flex shrink-0 items-center justify-center w-12 h-12 rounded-2xl bg-white/[0.04] border border-slate-200 text-[#22E58B] group-hover:bg-[#22E58B]/15 group-hover:border-[#22E58B]/40 transition-colors shadow-[0_0_15px_rgba(34,229,139,0.15)]">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
       </div>
       
@@ -16,9 +16,9 @@
           <span class="text-[11px] font-medium text-slate-400 bg-white/[0.03] border border-white/[0.06] px-2 py-0.5 rounded-md">WB</span>
           <span class="text-[11px] font-medium text-slate-400 bg-white/[0.03] border border-white/[0.06] px-2 py-0.5 rounded-md">Я.Маркет</span>
         </div>
-        <h4 class="text-white font-bold text-lg sm:text-xl group-hover:text-[#22E58B] transition-colors mb-1">Спецтариф DBS для легких посылок (до 1 кг)</h4>
+        <h4 class="text-slate-900 font-bold text-lg sm:text-xl group-hover:text-[#22E58B] transition-colors mb-1">Спецтариф DBS для легких посылок (до 1 кг)</h4>
         <p class="text-slate-300 text-xs sm:text-sm leading-relaxed max-w-md">
-          Минимальные ставки от <strong class="text-white">136.50 ₽</strong> при автоматической передаче заказов по API.
+          Минимальные ставки от <strong class="text-slate-900">136.50 ₽</strong> при автоматической передаче заказов по API.
         </p>
       </div>
     </div>
@@ -34,9 +34,9 @@
 </a>
 
 <!-- ОСНОВНОЙ КАЛЬКУЛЯТОР -->
-<div class="max-w-4xl mx-auto bg-[#0B131D]/90 p-6 sm:p-8 rounded-3xl border border-white/[0.1] backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.7)] mb-6">
+<div class="max-w-4xl mx-auto bg-white border-slate-200 shadow-sm/90 p-6 sm:p-8 rounded-3xl border border-white/[0.1] backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.7)] mb-6">
   <div class="mb-6">
-    <h3 class="text-xl sm:text-2xl font-black text-white tracking-tight">Калькулятор тарифа «Посылка»</h3>
+    <h3 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Калькулятор тарифа «Посылка»</h3>
     <p class="text-xs sm:text-sm text-slate-300 mt-1">
       Для интернет-магазинов (FBS) и отправлений DBS весом от 1 до 50 кг
     </p>
@@ -48,27 +48,27 @@
       <!-- Поле: Город отправления -->
       <div class="relative">
         <label class="block text-[11px] font-bold text-slate-300 mb-1.5 uppercase tracking-wider">Город отправления</label>
-        <input type="text" id="cdek-from" value="Москва" autocomplete="off" placeholder="Введите город..." class="w-full px-4 py-3 bg-[#060B11] border border-white/[0.1] rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#22E58B] text-sm transition-colors" />
+        <input type="text" id="cdek-from" value="Москва" autocomplete="off" placeholder="Введите город..." class="w-full px-4 py-3 bg-[#060B11] border border-white/[0.1] rounded-xl text-slate-900 placeholder-slate-500 focus:outline-none focus:border-[#22E58B] text-sm transition-colors" />
         <p id="error-from" class="text-rose-400 text-[11px] mt-1 hidden">Выберите город из подсказок</p>
-        <ul id="list-from" class="absolute z-50 w-full bg-[#0B131D] border border-white/[0.15] rounded-xl mt-1 hidden max-h-56 overflow-y-auto shadow-[0_15px_30px_rgba(0,0,0,0.9)] text-sm"></ul>
+        <ul id="list-from" class="absolute z-50 w-full bg-white border-slate-200 shadow-sm border border-white/[0.15] rounded-xl mt-1 hidden max-h-56 overflow-y-auto shadow-[0_15px_30px_rgba(0,0,0,0.9)] text-sm"></ul>
       </div>
 
       <!-- Поле: Город назначения -->
       <div class="relative">
         <label class="block text-[11px] font-bold text-slate-300 mb-1.5 uppercase tracking-wider">Город назначения</label>
-        <input type="text" id="cdek-to" placeholder="Ростов-на-Дону" autocomplete="off" class="w-full px-4 py-3 bg-[#060B11] border border-white/[0.1] rounded-xl text-white placeholder-slate-500 focus:outline-none focus:border-[#22E58B] text-sm transition-colors" />
+        <input type="text" id="cdek-to" placeholder="Ростов-на-Дону" autocomplete="off" class="w-full px-4 py-3 bg-[#060B11] border border-white/[0.1] rounded-xl text-slate-900 placeholder-slate-500 focus:outline-none focus:border-[#22E58B] text-sm transition-colors" />
         <p id="error-to" class="text-rose-400 text-[11px] mt-1 hidden">Выберите город из подсказок</p>
-        <ul id="list-to" class="absolute z-50 w-full bg-[#0B131D] border border-white/[0.15] rounded-xl mt-1 hidden max-h-56 overflow-y-auto shadow-[0_15px_30px_rgba(0,0,0,0.9)] text-sm"></ul>
+        <ul id="list-to" class="absolute z-50 w-full bg-white border-slate-200 shadow-sm border border-white/[0.15] rounded-xl mt-1 hidden max-h-56 overflow-y-auto shadow-[0_15px_30px_rgba(0,0,0,0.9)] text-sm"></ul>
       </div>
 
       <div class="grid grid-cols-2 gap-3">
         <div>
           <label class="block text-[11px] font-bold text-slate-300 mb-1.5 uppercase tracking-wider">Вес (до 50 кг)</label>
           <div class="relative flex items-center">
-            <input type="number" id="cdek-weight" value="1" min="1" max="50" step="1" class="w-full pl-4 pr-12 py-3 bg-[#060B11] border border-white/[0.1] rounded-xl text-white focus:outline-none focus:border-[#22E58B] text-sm [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" />
+            <input type="number" id="cdek-weight" value="1" min="1" max="50" step="1" class="w-full pl-4 pr-12 py-3 bg-[#060B11] border border-white/[0.1] rounded-xl text-slate-900 focus:outline-none focus:border-[#22E58B] text-sm [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" />
             <div class="absolute right-1.5 flex flex-col items-center justify-center gap-0.5">
-              <button type="button" id="weight-inc" class="w-6 h-4 bg-white/[0.05] hover:bg-white/[0.1] text-slate-300 hover:text-white rounded flex items-center justify-center text-[10px] transition-colors cursor-pointer">▲</button>
-              <button type="button" id="weight-dec" class="w-6 h-4 bg-white/[0.05] hover:bg-white/[0.1] text-slate-300 hover:text-white rounded flex items-center justify-center text-[10px] transition-colors cursor-pointer">▼</button>
+              <button type="button" id="weight-inc" class="w-6 h-4 bg-white/[0.05] hover:bg-white/[0.1] text-slate-300 hover:text-slate-900 rounded flex items-center justify-center text-[10px] transition-colors cursor-pointer">▲</button>
+              <button type="button" id="weight-dec" class="w-6 h-4 bg-white/[0.05] hover:bg-white/[0.1] text-slate-300 hover:text-slate-900 rounded flex items-center justify-center text-[10px] transition-colors cursor-pointer">▼</button>
             </div>
           </div>
         </div>
@@ -76,11 +76,11 @@
         <div>
           <label class="block text-[11px] font-bold text-slate-300 mb-1.5 uppercase tracking-wider">Режим доставки</label>
           <div class="relative flex items-center">
-            <select id="cdek-mode" class="w-full pl-3.5 pr-10 py-3 bg-[#060B11] border border-white/[0.1] rounded-xl text-white focus:outline-none focus:border-[#22E58B] text-sm cursor-pointer appearance-none">
-              <option value="136" class="bg-[#0B131D]">ПВЗ — ПВЗ</option>
-              <option value="137" class="bg-[#0B131D]">ПВЗ — Дверь</option>
-              <option value="138" class="bg-[#0B131D]">Дверь — ПВЗ</option>
-              <option value="139" class="bg-[#0B131D]">Дверь — Дверь</option>
+            <select id="cdek-mode" class="w-full pl-3.5 pr-10 py-3 bg-[#060B11] border border-white/[0.1] rounded-xl text-slate-900 focus:outline-none focus:border-[#22E58B] text-sm cursor-pointer appearance-none">
+              <option value="136" class="bg-white border-slate-200 shadow-sm">ПВЗ — ПВЗ</option>
+              <option value="137" class="bg-white border-slate-200 shadow-sm">ПВЗ — Дверь</option>
+              <option value="138" class="bg-white border-slate-200 shadow-sm">Дверь — ПВЗ</option>
+              <option value="139" class="bg-white border-slate-200 shadow-sm">Дверь — Дверь</option>
             </select>
             <div class="absolute right-3.5 flex items-center justify-center pointer-events-none text-slate-500 text-xs">▼</div>
           </div>
@@ -93,9 +93,9 @@
     </div>
 
     <!-- Блок результатов -->
-    <div class="bg-[#060B11] border border-white/[0.08] rounded-2xl p-5 flex flex-col justify-between relative">
+    <div class="bg-[#060B11] border border-slate-200 rounded-2xl p-5 flex flex-col justify-between relative">
       <div>
-        <h4 class="text-white font-bold text-sm mb-3 border-b border-white/[0.08] pb-2.5">Результаты расчета</h4>
+        <h4 class="text-slate-900 font-bold text-sm mb-3 border-b border-slate-200 pb-2.5">Результаты расчета</h4>
         <div id="calc-results" class="space-y-3 text-sm text-slate-200">
           <p class="text-slate-500 italic text-xs">Укажите направление и нажмите «Рассчитать стоимость»</p>
         </div>
@@ -306,13 +306,13 @@
             const finalPrice = Math.round(res.price);
             
             resultsContainer.innerHTML = `
-              <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 border-b border-white/[0.08] text-xs sm:text-sm gap-1">
+              <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 border-b border-slate-200 text-xs sm:text-sm gap-1">
                 <span class="text-slate-400 shrink-0">Направление:</span>
-                <span class="text-white font-bold sm:text-right break-words">${cityFrom} → ${cityTo}</span>
+                <span class="text-slate-900 font-bold sm:text-right break-words">${cityFrom} → ${cityTo}</span>
               </div>
-              <div class="flex justify-between items-center py-2 border-b border-white/[0.08] text-xs sm:text-sm">
+              <div class="flex justify-between items-center py-2 border-b border-slate-200 text-xs sm:text-sm">
                 <span class="text-slate-400">Срок доставки:</span>
-                <span class="text-white font-bold">${res.deliveryPeriodMin}–${res.deliveryPeriodMax} раб. дней</span>
+                <span class="text-slate-900 font-bold">${res.deliveryPeriodMin}–${res.deliveryPeriodMax} раб. дней</span>
               </div>
               <div class="flex justify-between items-center py-2 text-xs sm:text-sm">
                 <span class="text-slate-400">Стоимость:</span>

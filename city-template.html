@@ -214,7 +214,7 @@
 }
 </script>
 </head>
-<body class="bg-[#060B11] text-slate-100 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 selection:text-white pb-16 md:pb-0">
+<body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased selection:bg-[#22E58B] selection:text-slate-950 selection:text-slate-900 pb-16 md:pb-0">
 
   <!-- Nginx: Подключение шапки -->
   <!--#include virtual="/src/components/header.html" -->
@@ -228,12 +228,12 @@
         <span class="mx-2">/</span>
         <a href="/geo/" class="hover:text-[#22E58B] transition-colors">Логистика для селлеров</a>
         <span class="mx-2">/</span>
-        <span class="text-white">{{CITY}}</span>
+        <span class="text-slate-900">{{CITY}}</span>
       </nav>
 
       <!-- УНИКАЛЬНЫЙ ГЕО-ЗАГОЛОВОК И СТАТИСТИКА -->
       <div class="text-center max-w-3xl mx-auto mt-6 mb-12">
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase transition-all border bg-white/[0.04] text-[#22E58B] border border-white/[0.08]/80">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 mb-6 rounded-full text-xs font-semibold tracking-wide uppercase transition-all border bg-white/[0.04] text-[#22E58B] border border-slate-200/80">
           <span class="relative flex h-2 w-2">
             <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-cdek opacity-75"></span>
             <span class="relative inline-flex rounded-full h-2 w-2 bg-cdek "></span>
@@ -241,25 +241,25 @@
           <span>Официальное подключение для бизнеса в {{CITY_PREP}}</span>
         </div>
 
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white tracking-normal mb-5 leading-tight">
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-normal mb-5 leading-tight">
           Подключение селлеров к СДЭК в <span class="text-[#22E58B]">{{CITY_PREP}}</span>
         </h1>
         <p class="text-base sm:text-lg text-slate-400 leading-relaxed">
-          Специальные условия логистики для бизнеса из {{CITY_GEN}} при отгрузках на маркетплейсы. Бесплатный договор и скидки до 50% на доставку по моделям <b class="text-white">FBS и DBS</b>.
+          Специальные условия логистики для бизнеса из {{CITY_GEN}} при отгрузках на маркетплейсы. Бесплатный договор и скидки до 50% на доставку по моделям <b class="text-slate-900">FBS и DBS</b>.
         </p>
 
         <!-- Динамическая статистика -->
-        <div class="grid grid-cols-3 gap-4 max-w-xl mx-auto mt-8 pt-6 border-t border-white/[0.08]">
+        <div class="grid grid-cols-3 gap-4 max-w-xl mx-auto mt-8 pt-6 border-t border-slate-200">
           <div>
             <p class="text-2xl sm:text-3xl font-bold text-[#22E58B] ">0 ₽</p>
             <p class="text-xs text-slate-500 font-medium mt-0.5">Договор бесплатно</p>
           </div>
           <div>
-            <p class="text-2xl sm:text-3xl font-bold text-white">до 50%</p>
+            <p class="text-2xl sm:text-3xl font-bold text-slate-900">до 50%</p>
             <p class="text-xs text-slate-500 font-medium mt-0.5">Экономия на тарифах</p>
           </div>
           <div>
-            <p class="text-2xl sm:text-3xl font-bold text-white">{{PVZ_COUNT}}</p>
+            <p class="text-2xl sm:text-3xl font-bold text-slate-900">{{PVZ_COUNT}}</p>
             <p class="text-xs text-slate-500 font-medium mt-0.5">ПВЗ для отгрузки</p>
           </div>
         </div>
@@ -278,7 +278,7 @@
       <!-- Форма заявки -->
       <section id="contract-form-container" class="mt-16 max-w-xl mx-auto">
         <div class="text-center mb-6">
-          <h2 class="text-2xl font-bold text-white">Оставить заявку на договор в {{CITY_PREP}}</h2>
+          <h2 class="text-2xl font-bold text-slate-900">Оставить заявку на договор в {{CITY_PREP}}</h2>
           <p class="text-sm text-slate-400 mt-1">Подключим за 15 минут без визита в офис</p>
         </div>
         <!--#include virtual="/src/components/leadform.html" -->
