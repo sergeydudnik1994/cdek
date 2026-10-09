@@ -132,6 +132,44 @@
       .then(data => {
         const allCities = data.map(city => city.name);
         topCities = [...new Set(allCities)];
+
+        const pathParts = window.location.pathname.split('/').filter(Boolean);
+        if (pathParts[0] === 'geo' && pathParts[1]) {
+            const currentSlug = pathParts[1];
+            
+            const exactRuNames = {
+              "rostov-na-donu": "Ростов-на-Дону",
+              "sankt-peterburg": "Санкт-Петербург",
+              "nizhniy-novgorod": "Нижний Новгород",
+              "nizhniy-tagil": "Нижний Тагил",
+              "staryy-oskol": "Старый Оскол",
+              "velikiy-novgorod": "Великий Новгород",
+              "kamen-na-obi": "Камень-на-Оби",
+              "goryachiy-klyuch": "Горячий Ключ",
+              "gus-hrustalnyy": "Гусь-Хрустальный",
+              "velikie-luki": "Великие Луки",
+              "mineralnye-vody": "Минеральные Воды"
+            };
+
+            let cityName = exactRuNames[currentSlug];
+
+            if (!cityName) {
+                const slugify = (text) => {
+                    const letters = {"а":"a","б":"b","в":"v","г":"g","д":"d","е":"e","ё":"e","ж":"zh","з":"z","и":"i","й":"y","к":"k","л":"l","м":"m","н":"n","о":"o","п":"p","р":"r","с":"s","т":"t","у":"u","ф":"f","х":"h","ц":"ts","ч":"ch","ш":"sh","щ":"sch","ъ":"","ы":"y","ь":"","э":"e","ю":"yu","я":"ya"};
+                    return text.toLowerCase().split('').map(c => letters[c]||c).join('').replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+                };
+                
+                const matchedCity = data.find(c => slugify(c.name) === currentSlug);
+                if (matchedCity) cityName = matchedCity.name;
+            }
+
+            if (cityName) {
+                const fromInput = document.getElementById('cdek-from');
+                const toInput = document.getElementById('cdek-to');
+                if (fromInput) fromInput.value = cityName;
+                if (toInput) toInput.value = '';
+            }
+        }
       })
       .catch(error => {
         console.error('Ошибка загрузки городов, используем резервный список', error);
@@ -280,15 +318,41 @@
             `;
             attachScrollEvent();
           } else {
-            const errorMsg = data.error || 'Ошибка бэкенда';
+            const isPvzMode = tariffCode === 136;
             resultsContainer.innerHTML = `
-              <div class="text-rose-600 text-xs space-y-1">
-                <p><strong>${errorMsg}</strong></p>
+              <div class="p-3.5 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-900 space-y-2 text-left">
+                <div class="font-bold flex items-center gap-1.5 text-amber-800">
+                  <span>📍</span>
+                  <span>Ограничение направления</span>
+                </div>
+                <p class="leading-relaxed text-slate-700">
+                  ${isPvzMode 
+                    ? `В г. <strong>${cityTo}</strong> режим «ПВЗ — ПВЗ» может быть временно недоступен. Попробуйте выбрать режим <strong>«ПВЗ — Дверь»</strong> (курьером) или запросите расчет у менеджера.` 
+                    : `Для направления <strong>${cityFrom} →${cityTo}</strong> требуется индивидуальный расчет через закрепленного куратора.`}
+                </p>
+                <a href="#leadForm" id="lead-scroll-link-action" class="inline-flex items-center gap-1 font-bold text-[#00b341] hover:text-[#009b38] hover:underline pt-1">
+                  Рассчитать со скидкой 50% →
+                </a>
               </div>
             `;
+            attachScrollEvent();
           }
         } catch (error) {
-          resultsContainer.innerHTML = `<p class="text-rose-600 text-xs">Не удалось подключиться к серверу расчета</p>`;
+          resultsContainer.innerHTML = `
+            <div class="p-3.5 rounded-2xl bg-amber-50 border border-amber-200 text-xs text-amber-900 space-y-2 text-left">
+              <div class="font-bold flex items-center gap-1.5 text-amber-800">
+                <span>ℹ️</span>
+                <span>Уточните тариф у менеджера</span>
+              </div>
+              <p class="leading-relaxed text-slate-700">
+                Для направления <strong>${cityTo}</strong> расчет выполняется индивидуально с учетом специальных корпоративных скидок.
+              </p>
+              <a href="#leadForm" id="lead-scroll-link-action" class="inline-flex items-center gap-1 font-bold text-[#00b341] hover:text-[#009b38] hover:underline pt-1">
+                Оставить заявку на расчет →
+              </a>
+            </div>
+          `;
+          attachScrollEvent();
         } finally {
           btn.disabled = false;
           btn.innerText = 'Рассчитать стоимость';
