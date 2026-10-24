@@ -95,6 +95,11 @@
   ]
 }
 </script>
+
+  <!-- Yandex.RTB -->
+<script>window.yaContextCb=window.yaContextCb||[]</script>
+<script src="https://yandex.ru/ads/system/context.js" async></script>
+  
 </head>
 <body class="bg-slate-50 text-slate-900 min-h-screen flex flex-col antialiased selection:bg-[#00b341] selection:text-white pb-16 md:pb-0">
 
@@ -112,6 +117,17 @@
       <!-- 1. Калькулятор СДЭК -->
       <!--#include virtual="/src/components/calculator-widget.html" -->
 
+<!-- Yandex.RTB R-A-20273935-2 -->
+<div id="yandex_rtb_R-A-20273935-2"></div>
+<script>
+window.yaContextCb.push(() => {
+    Ya.Context.AdvManager.render({
+        "blockId": "R-A-20273935-2",
+        "renderTo": "yandex_rtb_R-A-20273935-2"
+    })
+})
+</script>
+      
       <!-- 2. Модуль платформ -->
       <section class="mt-16 mb-16">
         <!--#include virtual="/src/components/platforms.html" -->
