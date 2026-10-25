@@ -177,7 +177,7 @@
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
       
-      <div class="lg:col-span-7 space-y-5 sm:space-y-6">
+     <div class="lg:col-span-7 space-y-6 sm:space-y-7">
         <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-[11px] font-bold text-[#00b341] uppercase tracking-wider">
           <span class="w-2 h-2 rounded-full bg-[#00b341] animate-pulse"></span>
           Для e-commerce и маркетплейсов
@@ -188,23 +188,40 @@
           <span class="text-[#00b341] block mt-1">магазины и маркетплейсы</span>
         </h1>
 
-        <p class="text-slate-600 text-sm max-w-xl leading-relaxed">
+        <p class="text-slate-600 text-sm sm:text-base max-w-xl leading-relaxed">
           Официальное подключение онлайн за 15 минут для ИП, ООО и самозанятых. Скидки до 50% на тариф «Посылка» и интеграция с DBS, FBO, FBS <span class="dynamic-city-prep font-medium text-slate-800"></span>.
         </p>
 
-        <div class="grid grid-cols-3 gap-2 pt-1">
-          <a href="/services/dbs/" class="p-3 rounded-2xl bg-white border border-slate-200 hover:border-[#00b341] transition block group shadow-sm">
-            <div class="text-lg sm:text-xl font-black text-[#00b341]">0 ₽</div>
-            <div class="text-[11px] text-slate-500 font-semibold mt-0.5 group-hover:text-slate-900">Подключение →</div>
-          </a>
-          <a href="/services/fbo/" class="p-3 rounded-2xl bg-white border border-slate-200 hover:border-[#00b341] transition block group shadow-sm">
-            <div class="text-lg sm:text-xl font-black text-slate-900">до -50%</div>
-            <div class="text-[11px] text-slate-500 font-semibold mt-0.5 group-hover:text-[#00b341]">На доставку →</div>
-          </a>
-          <a href="/services/fbs/" class="p-3 rounded-2xl bg-white border border-slate-200 hover:border-[#00b341] transition block group shadow-sm">
-            <div class="text-lg sm:text-xl font-black text-[#00b341]">5 000+</div>
-            <div class="text-[11px] text-slate-500 font-semibold mt-0.5 group-hover:text-slate-900">ПВЗ выдачи →</div>
-          </a>
+        <!-- Компактные теги преимуществ -->
+        <div class="flex flex-wrap gap-2 pt-1">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-xs font-semibold text-slate-700 shadow-sm">
+            <span class="text-[#00b341] font-bold">✓</span> 5 000+ ПВЗ и постаматов
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-xs font-semibold text-slate-700 shadow-sm">
+            <span class="text-[#00b341] font-bold">✓</span> Готовые модули и API 2.0
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-xs font-semibold text-slate-700 shadow-sm">
+            <span class="text-[#00b341] font-bold">✓</span> Наложенный платеж 54-ФЗ
+          </span>
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-slate-200 text-xs font-semibold text-slate-700 shadow-sm">
+            <span class="text-[#00b341] font-bold">✓</span> DBS для маркетплейсов
+          </span>
+        </div>
+
+        <!-- 3 ключевые цифры с разделителем -->
+        <div class="grid grid-cols-3 gap-4 pt-5 border-t border-slate-200/80 max-w-lg mt-4">
+          <div>
+            <div class="text-2xl sm:text-3xl font-black text-[#00b341]">0 ₽</div>
+            <div class="text-xs text-slate-500 mt-0.5 font-medium">Подключение</div>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-black text-slate-900">1 день</div>
+            <div class="text-xs text-slate-500 mt-0.5 font-medium">Старт отгрузок</div>
+          </div>
+          <div>
+            <div class="text-2xl sm:text-3xl font-black text-[#00b341]">−50%</div>
+            <div class="text-xs text-slate-500 mt-0.5 font-medium">На тариф «Посылка»</div>
+          </div>
         </div>
       </div>
 
