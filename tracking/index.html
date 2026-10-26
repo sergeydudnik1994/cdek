@@ -2,7 +2,7 @@
 <html lang="ru" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>Отслеживание заказа СДЭК: проверить статус посылки по трек-номеру</title>
   <meta name="description" content="Онлайн-отслеживание посылок и заказов СДЭК по номеру накладной. Узнайте, где находится ваша посылка, актуальный статус и маршрут доставки." />
   <meta name="keywords" content="сдэк отследить заказ, сдэк отслеживание, отслеживание посылки сдэк, где посылка сдэк, проверить статус сдэк, трекинг сдэк" />
@@ -57,57 +57,6 @@
         "target": "https://cdek-marketplace.ru/tracking/?cdek_number={search_term_string}",
         "query-input": "required name=search_term_string"
       }
-    },
-    {
-      "@type": "Organization",
-      "@id": "https://cdek-marketplace.ru/#organization",
-      "name": "СДЭК для Маркетплейсов",
-      "url": "https://cdek-marketplace.ru/",
-      "logo": "https://cdek-marketplace.ru/favicon.png",
-      "email": "sv.dudnik@cdek.ru",
-      "telephone": "+7-993-322-15-20",
-      "sameAs": [
-        "https://t.me/cdek_marketplace",
-        "https://wa.me/79933221520"
-      ]
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://cdek-marketplace.ru/tracking/#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Главная",
-          "item": "https://cdek-marketplace.ru/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Отслеживание заказа СДЭК",
-          "item": "https://cdek-marketplace.ru/tracking/"
-        }
-      ]
-    },
-    {
-      "@type": "Service",
-      "@id": "https://cdek-marketplace.ru/tracking/#service",
-      "name": "Отслеживание посылок СДЭК и B2B доставка",
-      "provider": {
-        "@id": "https://cdek-marketplace.ru/#organization"
-      },
-      "areaServed": {
-        "@type": "Country",
-        "name": "Россия"
-      },
-      "description": "Онлайн-отслеживание посылок СДЭК по номеру накладной и подключение официального договора со скидкой до 50% для селлеров маркетплейсов.",
-      "offers": {
-        "@type": "Offer",
-        "price": "136",
-        "priceCurrency": "RUB",
-        "availability": "https://schema.org/InStock",
-        "url": "https://cdek-marketplace.ru/tracking/"
-      }
     }
   ]
 }
@@ -118,15 +67,17 @@
   <script src="https://yandex.ru/ads/system/context.js" async></script>
   
 </head>
-<body class="bg-[#F5F8FE] text-slate-900 min-h-screen flex flex-col antialiased selection:bg-[#00b341] selection:text-white pb-16 md:pb-0 relative overflow-x-hidden">
+<body class="bg-[#F5F8FE] text-slate-900 min-h-screen flex flex-col antialiased selection:bg-[#00b341] selection:text-white pb-16 md:pb-0 relative overflow-x-hidden w-full">
 
   <!--#include virtual="/src/components/header.html" -->
 
-  <!-- Фоновая подсветка -->
-  <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#00b341]/10 rounded-full blur-3xl pointer-events-none"></div>
-  <div class="absolute top-1/3 -right-32 w-[450px] h-[450px] bg-[#00b341]/5 rounded-full blur-3xl pointer-events-none"></div>
+  <!-- ИСПРАВЛЕНИЕ 1: Безопасный контейнер для фоновых декораций (предотвращает разрыв ширины экрана на iOS) -->
+  <div class="absolute inset-0 overflow-hidden pointer-events-none z-0">
+    <div class="absolute -top-32 -left-32 w-96 h-96 bg-[#00b341]/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/3 -right-32 w-[450px] h-[450px] bg-[#00b341]/5 rounded-full blur-3xl"></div>
+  </div>
 
-  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-10 relative z-10">
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-8 sm:space-y-10 relative z-10">
     
     <!-- 1. Навигация и заголовок -->
     <div class="space-y-6">
@@ -156,22 +107,23 @@
       </div>
 
       <!-- Поисковое поле -->
-      <div class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-xl relative overflow-hidden">
+      <div class="bg-white rounded-3xl p-5 sm:p-7 border border-slate-200 shadow-xl relative overflow-hidden w-full">
         <div class="absolute inset-x-0 top-0 h-[4px] bg-[#00b341]"></div>
         <form id="trackingForm" onsubmit="executeTracking(event)">
+          <!-- ИСПРАВЛЕНИЕ 2: Кнопка и инпут занимают 100% ширины на мобильных -->
           <div class="flex flex-col sm:flex-row gap-3">
             <input 
               type="text" 
               id="trackNumber" 
               required 
               autofocus
-              placeholder="Номер заказа (например: 1234567890)" 
-              class="flex-grow px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 placeholder-slate-400 text-base outline-none focus:border-[#00b341] focus:ring-1 focus:ring-[#00b341] transition font-medium"
+              placeholder="Номер заказа (напр: 1234567890)" 
+              class="w-full sm:flex-grow px-5 py-4 bg-slate-50 border border-slate-200 rounded-2xl text-slate-900 placeholder-slate-400 text-base outline-none focus:border-[#00b341] focus:ring-1 focus:ring-[#00b341] transition font-medium"
             />
             <button 
               type="submit" 
               id="trackBtn"
-              class="px-8 py-4 bg-[#00b341] hover:bg-[#009b38] text-white font-black rounded-2xl transition flex items-center justify-center gap-2 cursor-pointer active:scale-95 flex-shrink-0 shadow-md shadow-[#00b341]/25 text-base"
+              class="w-full sm:w-auto px-8 py-4 bg-[#00b341] hover:bg-[#009b38] text-white font-black rounded-2xl transition flex items-center justify-center gap-2 cursor-pointer active:scale-95 flex-shrink-0 shadow-md shadow-[#00b341]/25 text-base"
             >
               <span>Найти заказ</span>
               <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -179,66 +131,66 @@
               </svg>
             </button>
           </div>
-          <div class="mt-3.5 flex flex-wrap items-center justify-between gap-3 text-xs pl-1">
+          <div class="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs pl-1">
             <a href="#faq" class="text-slate-500 hover:text-[#00b341] transition inline-flex items-center gap-1 font-medium">
               Где найти номер заказа? <span class="text-[10px]">↓</span>
             </a>
-            <button type="button" onclick="scrollToLeadForm()" class="inline-flex items-center gap-2 text-slate-500 hover:text-[#00b341] transition cursor-pointer group">
-              <span class="w-2 h-2 rounded-full bg-[#00b341]"></span>
-              <span>Отправляете посылки клиентам? <strong class="text-slate-900 group-hover:text-[#00b341] transition">Спецтарифы от 136.5 ₽</strong></span>
-              <span class="text-[#00b341] text-xs transition-transform group-hover:translate-y-0.5">↓</span>
+            <button type="button" onclick="scrollToLeadForm()" class="inline-flex items-center gap-2 text-slate-500 hover:text-[#00b341] transition cursor-pointer group text-left">
+              <span class="w-2 h-2 rounded-full bg-[#00b341] shrink-0"></span>
+              <span>Отправляете посылки клиентам? <strong class="text-slate-900 group-hover:text-[#00b341] transition">Спецтарифы</strong></span>
+              <span class="text-[#00b341] text-xs transition-transform group-hover:translate-y-0.5 hidden sm:inline">↓</span>
             </button>
           </div>
         </form>
       </div>
 
       <!-- Лоадер -->
-      <div id="trackLoading" class="hidden text-center py-12">
+      <div id="trackLoading" class="hidden text-center py-12 w-full">
         <div class="inline-block w-9 h-9 border-4 border-slate-200 border-t-[#00b341] rounded-full animate-spin"></div>
-        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500 mt-3">Запрашиваем данные у логистического шлюза СДЭК...</p>
+        <p class="text-[11px] sm:text-xs font-semibold uppercase tracking-wider text-slate-500 mt-3 px-4">Запрашиваем данные у шлюза СДЭК...</p>
       </div>
 
       <!-- Ошибка -->
-      <div id="trackError" class="hidden p-5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-sm font-medium"></div>
+      <div id="trackError" class="hidden p-5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-sm font-medium w-full break-words"></div>
 
       <!-- Карточка результата трекинга -->
-      <div id="trackResult" class="hidden bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl space-y-6 relative overflow-hidden">
+      <div id="trackResult" class="hidden bg-white rounded-3xl p-5 sm:p-8 border border-slate-200 shadow-xl space-y-6 relative overflow-hidden w-full">
         
         <div class="absolute inset-x-0 top-0 h-[4px] bg-[#00b341]"></div>
 
-        <!-- Контекстный B2B баннер внутри карточки -->
-        <div class="p-4 sm:p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-slate-900 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-sm">
+        <!-- ИСПРАВЛЕНИЕ 3: Адаптивный B2B баннер (без whitespace-nowrap) -->
+        <div class="p-4 sm:p-5 rounded-2xl bg-emerald-50 border border-emerald-200 text-slate-900 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 shadow-sm w-full">
           <div class="space-y-1">
             <div class="flex items-center gap-2">
-              <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-[#00b341] font-bold text-[11px] uppercase tracking-wider border border-emerald-200">Вы отправитель?</span>
-              <span class="text-xs text-slate-600 font-semibold">Корпоративная доставка для бизнеса</span>
+              <span class="px-2.5 py-0.5 rounded-full bg-emerald-100 text-[#00b341] font-bold text-[10px] sm:text-[11px] uppercase tracking-wider border border-emerald-200">Вы отправитель?</span>
+              <span class="text-[11px] sm:text-xs text-slate-600 font-semibold">B2B Доставка</span>
             </div>
             <p class="text-xs sm:text-sm text-slate-700 max-w-2xl leading-relaxed">
               Этот заказ отправлен по B2B-договору. Подключите свой бизнес или самозанятость и отправляйте со скидкой до 50% с наложенным платежом.
             </p>
           </div>
-          <button type="button" onclick="scrollToLeadForm()" class="shrink-0 px-5 py-2.5 rounded-xl bg-[#00b341] hover:bg-[#009b38] text-white font-black text-xs uppercase tracking-wider transition shadow-sm cursor-pointer whitespace-nowrap active:scale-95">
+          <button type="button" onclick="scrollToLeadForm()" class="w-full md:w-auto px-5 py-3 md:py-2.5 rounded-xl bg-[#00b341] hover:bg-[#009b38] text-white font-black text-xs uppercase tracking-wider transition shadow-sm cursor-pointer active:scale-95 text-center">
             Оформить тариф со скидкой ↓
           </button>
         </div>
 
-        <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-slate-100">
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100">
           <div class="text-lg font-black text-slate-900" id="resNumber">№ —</div>
-          <div class="text-base sm:text-lg font-bold text-slate-700" id="resRoute">—</div>
+          <div class="text-sm sm:text-lg font-bold text-slate-700 break-words" id="resRoute">—</div>
           <div id="resBadgeWrapper">
-            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200" id="resStatusBadge">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200" id="resStatusBadge">
               В пути
             </span>
           </div>
         </div>
 
-        <!-- Шкала доставки -->
+        <!-- ИСПРАВЛЕНИЕ 4: Шкала доставки (города обрезаются или переносятся) -->
         <div class="space-y-3">
-          <div class="flex items-center justify-between text-base sm:text-lg font-bold text-slate-900">
-            <span id="resCityFrom">—</span>
-            <span id="resCityTo">—</span>
+          <div class="flex items-start justify-between text-sm sm:text-lg font-bold text-slate-900 gap-4">
+            <span id="resCityFrom" class="w-1/2 text-left break-words">—</span>
+            <span id="resCityTo" class="w-1/2 text-right break-words">—</span>
           </div>
-          <div class="h-2.5 w-full bg-slate-100 rounded-full relative overflow-visible">
+          <div class="h-2 w-full bg-slate-100 rounded-full relative overflow-visible mt-2">
             <div class="h-full bg-[#00b341] rounded-full transition-all duration-700" id="resProgressBar" style="width: 50%;"></div>
             <div class="absolute -top-3 w-8 h-8 bg-white border-2 border-[#00b341] rounded-full flex items-center justify-center shadow-md transition-all duration-700 text-[#00b341]" id="resTruckIcon" style="left: calc(50% - 16px);">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -252,7 +204,7 @@
         <div class="grid lg:grid-cols-12 gap-8 pt-4">
           <div class="lg:col-span-7 space-y-6" id="resMilestones"></div>
           <div class="lg:col-span-5 space-y-4">
-            <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 space-y-4">
+            <div class="bg-slate-50 rounded-2xl p-5 sm:p-6 border border-slate-200 space-y-4 w-full">
               <div class="p-3.5 bg-emerald-50 border border-emerald-200 rounded-xl flex items-start gap-3">
                 <div class="w-5 h-5 rounded-full bg-[#00b341] text-white font-black flex items-center justify-center flex-shrink-0 mt-0.5 text-xs">✓</div>
                 <p class="text-xs text-slate-700 leading-relaxed font-medium">
@@ -262,12 +214,12 @@
 
               <div>
                 <div class="text-xs text-slate-500 font-medium">Получатель</div>
-                <div class="text-sm font-bold text-slate-900 mt-0.5" id="resRecipient">—</div>
+                <div class="text-sm font-bold text-slate-900 mt-0.5 break-words" id="resRecipient">—</div>
               </div>
 
               <div>
                 <div class="text-xs text-slate-500 font-medium">Адрес пункта выдачи СДЭК</div>
-                <div class="text-sm font-semibold text-slate-700 mt-0.5" id="resPvzAddress">—</div>
+                <div class="text-sm font-semibold text-slate-700 mt-0.5 break-words" id="resPvzAddress">—</div>
               </div>
 
               <div id="resDateBox" class="p-3.5 bg-amber-50 border border-amber-200 rounded-xl hidden">
@@ -276,7 +228,7 @@
               </div>
             </div>
 
-            <div class="bg-slate-50 rounded-2xl p-6 border border-slate-200 space-y-2">
+            <div class="bg-slate-50 rounded-2xl p-5 sm:p-6 border border-slate-200 space-y-2">
               <h4 class="text-sm font-bold text-slate-900">Выдача заказа в ПВЗ</h4>
               <p class="text-xs text-slate-600 leading-relaxed">
                 Выдача осуществляется по паспорту или за 10 секунд по бесплатному коду через <b>CDEK ID</b> без документов.
@@ -288,27 +240,27 @@
       </div>
     </div>
     
-<!-- Yandex.RTB R-A-20273935-1 -->
-<div id="yandex_rtb_R-A-20273935-1"></div>
-<script>
-window.yaContextCb.push(() => {
-    Ya.Context.AdvManager.render({
-        "blockId": "R-A-20273935-1",
-        "renderTo": "yandex_rtb_R-A-20273935-1"
+    <!-- ИСПРАВЛЕНИЕ 5: Блоки RTB обернуты, чтобы не ломать ширину -->
+    <div class="w-full max-w-full overflow-hidden flex justify-center">
+      <div id="yandex_rtb_R-A-20273935-1"></div>
+    </div>
+    <script>
+    window.yaContextCb.push(() => {
+        Ya.Context.AdvManager.render({
+            "blockId": "R-A-20273935-1",
+            "renderTo": "yandex_rtb_R-A-20273935-1"
+        })
     })
-})
-  
-</script>
-    <!-- 2. ГЛАВНЫЙ B2B БЛОК: СТИЛЬ И ПРОПОРЦИИ КАК НА ГЛАВНОЙ -->
-    <section id="tracking-lead-section" class="scroll-mt-8 bg-white rounded-3xl border border-slate-200 shadow-xl p-6 sm:p-8 lg:p-10 text-slate-900 relative overflow-hidden">
+    </script>
+
+    <!-- 2. ГЛАВНЫЙ B2B БЛОК -->
+    <section id="tracking-lead-section" class="scroll-mt-8 bg-white rounded-3xl border border-slate-200 shadow-xl p-5 sm:p-8 lg:p-10 text-slate-900 relative overflow-hidden w-full">
       <div class="absolute inset-x-0 top-0 h-[4px] bg-[#00b341]"></div>
       
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center relative z-10">
-        
-        <!-- Левая колонка: Текст и УТП -->
         <div class="lg:col-span-7 space-y-6 sm:space-y-8">
           
-          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-xs font-bold text-[#00b341] uppercase tracking-wider">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-[11px] sm:text-xs font-bold text-[#00b341] uppercase tracking-wider">
             <span class="w-2 h-2 rounded-full bg-[#00b341] animate-pulse"></span>
             Официальное B2B-подключение
           </div>
@@ -318,65 +270,56 @@ window.yaContextCb.push(() => {
             <span class="text-[#00b341]">со скидкой до 50%</span>
           </h2>
 
-          <p class="text-slate-600 text-base sm:text-lg leading-relaxed font-normal">
-            Официальный B2B-договор со СДЭК для интернет-магазинов, ООО, ИП и самозанятых. Подключение онлайн за 15 минут с доступом к специальным тарифам от 136.5 ₽.
+          <p class="text-slate-600 text-sm sm:text-lg leading-relaxed font-normal">
+            Официальный B2B-договор со СДЭК для интернет-магазинов, ООО, ИП и самозанятых. Подключение онлайн за 15 минут с доступом к специальным тарифам.
           </p>
 
-          <!-- Теги преимуществ -->
-          <div class="flex flex-wrap gap-2.5 pt-1">
-            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 shadow-sm">
+          <div class="flex flex-wrap gap-2 pt-1">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-[11px] sm:text-xs font-semibold text-slate-700 shadow-sm">
               <span class="text-[#00b341] font-bold">✓</span> 5 000+ ПВЗ и постаматов
             </span>
-            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 shadow-sm">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-[11px] sm:text-xs font-semibold text-slate-700 shadow-sm">
               <span class="text-[#00b341] font-bold">✓</span> Готовые модули и API 2.0
             </span>
-            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 shadow-sm">
+            <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-[11px] sm:text-xs font-semibold text-slate-700 shadow-sm">
               <span class="text-[#00b341] font-bold">✓</span> Наложенный платеж 54-ФЗ
             </span>
-            <span class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-semibold text-slate-700 shadow-sm">
-              <span class="text-[#00b341] font-bold">✓</span> Доставка DBS для маркетплейсов
-            </span>
           </div>
 
-          <!-- 3 ключевые цифры -->
-          <div class="grid grid-cols-3 gap-3 sm:gap-4 pt-4 border-t border-slate-100 max-w-lg">
+          <!-- ИСПРАВЛЕНИЕ 6: Сетка цифр оптимизирована для мобильных (от 320px) -->
+          <div class="grid grid-cols-3 gap-2 sm:gap-4 pt-4 border-t border-slate-100 max-w-lg">
             <div>
-              <div class="text-2xl sm:text-3xl font-black text-[#00b341]">0 ₽</div>
-              <div class="text-xs text-slate-500 font-medium mt-0.5">Подключение</div>
+              <div class="text-xl sm:text-3xl font-black text-[#00b341]">0 ₽</div>
+              <div class="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5 leading-tight">Подключение</div>
             </div>
             <div>
-              <div class="text-2xl sm:text-3xl font-black text-slate-900">1 день</div>
-              <div class="text-xs text-slate-500 font-medium mt-0.5">Старт отгрузок</div>
+              <div class="text-xl sm:text-3xl font-black text-slate-900">1 день</div>
+              <div class="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5 leading-tight">Старт отгрузок</div>
             </div>
             <div>
-              <div class="text-2xl sm:text-3xl font-black text-[#00b341]">−50%</div>
-              <div class="text-xs text-slate-500 font-medium mt-0.5">На тариф «Посылка»</div>
+              <div class="text-xl sm:text-3xl font-black text-[#00b341]">−50%</div>
+              <div class="text-[10px] sm:text-xs text-slate-500 font-medium mt-0.5 leading-tight">На тариф «Посылка»</div>
             </div>
           </div>
-
         </div>
 
-        <!-- Правая колонка: Форма заявки -->
         <div class="lg:col-span-5 w-full">
           <!--#include virtual="/src/components/leadform.html" -->
         </div>
-
       </div>
     </section>
 
-    <!-- 3. СЕТКА ИЗ 2 КАРТОЧЕК (Калькулятор + Интерактивная карта) -->
-    <div class="grid md:grid-cols-2 gap-6">
-      
-      <!-- Карточка 1: Калькулятор -->
-      <div class="bg-white rounded-3xl p-7 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-[#00b341] transition">
+    <!-- 3. СЕТКА ИЗ 2 КАРТОЧЕК -->
+    <div class="grid md:grid-cols-2 gap-5 sm:gap-6 w-full">
+      <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-[#00b341] transition">
         <div>
           <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 text-[#00b341] flex items-center justify-center mb-4">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 7h6m0 10v-3m-3 3h.01M9 17h.01M9 14h.01M12 14h.01M15 11h.01M12 11h.01M9 11h.01M7 21h10a2 2 0 002-2V5a2 2 0 00-2-2H7a2 2 0 00-2 2v14a2 2 0 002 2z"/>
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-slate-900">Калькулятор тарифов B2B</h3>
-          <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+          <h3 class="text-lg sm:text-xl font-bold text-slate-900">Калькулятор тарифов B2B</h3>
+          <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
             Рассчитайте точную стоимость и сроки доставки для интернет-магазинов со скидкой до 50% на тариф «Посылка» и «Экспресс».
           </p>
         </div>
@@ -385,8 +328,7 @@ window.yaContextCb.push(() => {
         </a>
       </div>
 
-      <!-- Карточка 2: 5 000+ ПВЗ на карте -->
-      <div class="bg-white rounded-3xl p-7 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-[#00b341] transition">
+      <div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200 shadow-sm flex flex-col justify-between hover:border-[#00b341] transition">
         <div>
           <div class="w-12 h-12 rounded-2xl bg-emerald-50 border border-emerald-200 text-[#00b341] flex items-center justify-center mb-4">
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -394,8 +336,8 @@ window.yaContextCb.push(() => {
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
             </svg>
           </div>
-          <h3 class="text-xl font-bold text-slate-900">5 000+ ПВЗ по всей РФ</h3>
-          <p class="text-sm text-slate-600 mt-2 leading-relaxed">
+          <h3 class="text-lg sm:text-xl font-bold text-slate-900">5 000+ ПВЗ по всей РФ</h3>
+          <p class="text-xs sm:text-sm text-slate-600 mt-2 leading-relaxed">
             Пункты выдачи СДЭК и постаматы с примерочными, оплатой картой и возможностью частичного выкупа для ваших клиентов.
           </p>
         </div>
@@ -403,11 +345,10 @@ window.yaContextCb.push(() => {
           Найти на карте <span class="transition-transform group-hover:translate-x-1">→</span>
         </button>
       </div>
-
     </div>
 
     <!-- 4. ВСТРОЕННЫЙ КАЛЬКУЛЯТОР -->
-    <section id="calculator-section" class="pt-2">
+    <section id="calculator-section" class="pt-2 w-full">
       <div class="text-center sm:text-left mb-6">
         <div class="inline-flex items-center gap-2 px-3 py-1 mb-2 rounded-full text-xs font-semibold uppercase bg-emerald-50 text-[#00b341] border border-emerald-200">
           Онлайн-калькулятор
@@ -415,38 +356,34 @@ window.yaContextCb.push(() => {
         <h2 class="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">Рассчитать стоимость и срок новой отправки</h2>
         <p class="text-sm text-slate-600 mt-1">Официальные тарифы курьерской доставки до двери и самовывоза из отделений СДЭК</p>
       </div>
-
       <!--#include virtual="/src/components/calculator-widget.html" -->
     </section>
 
     <!-- 5. СТАТУСЫ ДОСТАВКИ -->
-    <section class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+    <section class="bg-white rounded-3xl p-5 sm:p-8 border border-slate-200 shadow-sm space-y-6 w-full">
       <div>
         <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Что означают статусы отслеживания СДЭК</h2>
-        <p class="text-sm text-slate-600 mt-1">Основные этапы движения отправлений от формирования накладной до вручения клиенту:</p>
+        <p class="text-xs sm:text-sm text-slate-600 mt-1">Основные этапы движения отправлений от формирования накладной до вручения клиенту:</p>
       </div>
 
       <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
-          <div class="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-amber-100 text-amber-800 uppercase tracking-wider mb-2">Создан</div>
+        <div class="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="inline-block px-2.5 py-0.5 rounded-md text-[10px] sm:text-[11px] font-bold bg-amber-100 text-amber-800 uppercase tracking-wider mb-2">Создан</div>
           <div class="text-sm font-bold text-slate-900 mb-1">Накладная оформлена</div>
           <p class="text-xs text-slate-600 leading-relaxed">Продавец сформировал электронную накладную в системе СДЭК, но физически еще не передал груз в службу доставки.</p>
         </div>
-
-        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
-          <div class="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-blue-100 text-blue-800 uppercase tracking-wider mb-2">В пути</div>
+        <div class="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="inline-block px-2.5 py-0.5 rounded-md text-[10px] sm:text-[11px] font-bold bg-blue-100 text-blue-800 uppercase tracking-wider mb-2">В пути</div>
           <div class="text-sm font-bold text-slate-900 mb-1">Магистральная доставка</div>
           <p class="text-xs text-slate-600 leading-relaxed">Посылка принята на складе отправления, проходит сортировочные центры и перемещается в город назначения.</p>
         </div>
-
-        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
-          <div class="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-emerald-100 text-[#00b341] uppercase tracking-wider mb-2">Прибыл в ПВЗ</div>
+        <div class="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="inline-block px-2.5 py-0.5 rounded-md text-[10px] sm:text-[11px] font-bold bg-emerald-100 text-[#00b341] uppercase tracking-wider mb-2">Прибыл в ПВЗ</div>
           <div class="text-sm font-bold text-slate-900 mb-1">Готов к выдаче</div>
           <p class="text-xs text-slate-600 leading-relaxed">Заказ доставлен в пункт выдачи. Получателю отправлено уведомление, посылку можно забирать по паспорту или CDEK ID.</p>
         </div>
-
-        <div class="p-5 rounded-2xl bg-slate-50 border border-slate-200">
-          <div class="inline-block px-2.5 py-0.5 rounded-md text-[11px] font-bold bg-slate-200 text-slate-800 uppercase tracking-wider mb-2">Вручен</div>
+        <div class="p-4 sm:p-5 rounded-2xl bg-slate-50 border border-slate-200">
+          <div class="inline-block px-2.5 py-0.5 rounded-md text-[10px] sm:text-[11px] font-bold bg-slate-200 text-slate-800 uppercase tracking-wider mb-2">Вручен</div>
           <div class="text-sm font-bold text-slate-900 mb-1">Заказ выдан</div>
           <p class="text-xs text-slate-600 leading-relaxed">Посылка успешно передана получателю, а наложенный платеж зафиксирован для перечисления отправителю.</p>
         </div>
@@ -454,7 +391,7 @@ window.yaContextCb.push(() => {
     </section>
 
     <!-- 6. FAQ -->
-    <section id="faq" class="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-sm space-y-6">
+    <section id="faq" class="bg-white rounded-3xl p-5 sm:p-8 border border-slate-200 shadow-sm space-y-5 sm:space-y-6 w-full">
       <h2 class="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">Часто задаваемые вопросы по отслеживанию и договору</h2>
       
       <div class="space-y-3">
@@ -505,26 +442,26 @@ window.yaContextCb.push(() => {
   <!--#include virtual="/src/components/footer.html" -->
   <!--#include virtual="/src/components/mobile-cta.html" -->
 
-  <!-- МОДАЛЬНОЕ ОКНО ЯНДЕКС.КАРТЫ -->
-  <div id="mapModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-4">
-    <div class="bg-white w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl border border-slate-200 flex flex-col max-h-[90vh] relative">
-      <div class="p-5 border-b border-slate-200 flex items-center justify-between">
+  <!-- МОДАЛЬНОЕ ОКНО ЯНДЕКС.КАРТЫ (ИСПРАВЛЕНИЕ 7: Адаптивная высота карты) -->
+  <div id="mapModal" class="fixed inset-0 z-50 hidden bg-slate-900/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4">
+    <div class="bg-white w-full max-w-4xl rounded-3xl overflow-hidden shadow-2xl border border-slate-200 flex flex-col max-h-[95vh] sm:max-h-[90vh] relative">
+      <div class="p-4 sm:p-5 border-b border-slate-200 flex items-center justify-between shrink-0">
         <div>
-          <h3 class="text-lg font-bold text-slate-900">Пункты выдачи заказов СДЭК на карте</h3>
-          <p class="text-xs text-slate-500">Найдите ближайшее отделение с примерочными и безналичной оплатой</p>
+          <h3 class="text-base sm:text-lg font-bold text-slate-900 leading-tight">Пункты выдачи СДЭК</h3>
+          <p class="text-[10px] sm:text-xs text-slate-500 mt-0.5">Найдите ближайшее отделение с примерочными и безналичной оплатой</p>
         </div>
-        <button type="button" onclick="closeMapModal()" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition cursor-pointer font-bold">✕</button>
+        <button type="button" onclick="closeMapModal()" class="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-600 flex items-center justify-center transition cursor-pointer font-bold shrink-0 ml-3">✕</button>
       </div>
       
-      <div class="px-5 py-2.5 bg-slate-50 border-b border-slate-200 flex flex-wrap gap-2">
-        <button type="button" onclick="modalSetCity([55.7558, 37.6173])" class="px-3 py-1 bg-white hover:bg-emerald-50 hover:text-[#00b341] hover:border-[#00b341] border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 transition cursor-pointer shadow-sm">Москва</button>
-        <button type="button" onclick="modalSetCity([59.9343, 30.3351])" class="px-3 py-1 bg-white hover:bg-emerald-50 hover:text-[#00b341] hover:border-[#00b341] border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 transition cursor-pointer shadow-sm">СПб</button>
-        <button type="button" onclick="modalSetCity([45.0355, 38.9753])" class="px-3 py-1 bg-white hover:bg-emerald-50 hover:text-[#00b341] hover:border-[#00b341] border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 transition cursor-pointer shadow-sm">Краснодар</button>
-        <button type="button" onclick="modalSetCity([56.8389, 60.6057])" class="px-3 py-1 bg-white hover:bg-emerald-50 hover:text-[#00b341] hover:border-[#00b341] border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 transition cursor-pointer shadow-sm">Екатеринбург</button>
-        <button type="button" onclick="modalSetCity([55.0084, 82.9357])" class="px-3 py-1 bg-white hover:bg-emerald-50 hover:text-[#00b341] hover:border-[#00b341] border border-slate-200 rounded-xl text-xs font-semibold text-slate-700 transition cursor-pointer shadow-sm">Новосибирск</button>
+      <div class="px-4 py-2 sm:px-5 sm:py-2.5 bg-slate-50 border-b border-slate-200 flex flex-nowrap overflow-x-auto gap-2 shrink-0 scrollbar-hide">
+        <button type="button" onclick="modalSetCity([55.7558, 37.6173])" class="px-3 py-1 bg-white hover:bg-emerald-50 hover:text-[#00b341] hover:border-[#00b341] border border-slate-200 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 transition cursor-pointer shadow-sm whitespace-nowrap">Москва</button>
+        <button type="button" onclick="modalSetCity([59.9343, 30.3351])" class="px-3 py-1 bg-white hover:bg-emerald-50 hover:text-[#00b341] hover:border-[#00b341] border border-slate-200 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 transition cursor-pointer shadow-sm whitespace-nowrap">СПб</button>
+        <button type="button" onclick="modalSetCity([45.0355, 38.9753])" class="px-3 py-1 bg-white hover:bg-emerald-50 hover:text-[#00b341] hover:border-[#00b341] border border-slate-200 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 transition cursor-pointer shadow-sm whitespace-nowrap">Краснодар</button>
+        <button type="button" onclick="modalSetCity([56.8389, 60.6057])" class="px-3 py-1 bg-white hover:bg-emerald-50 hover:text-[#00b341] hover:border-[#00b341] border border-slate-200 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 transition cursor-pointer shadow-sm whitespace-nowrap">Екатеринбург</button>
+        <button type="button" onclick="modalSetCity([55.0084, 82.9357])" class="px-3 py-1 bg-white hover:bg-emerald-50 hover:text-[#00b341] hover:border-[#00b341] border border-slate-200 rounded-xl text-[11px] sm:text-xs font-semibold text-slate-700 transition cursor-pointer shadow-sm whitespace-nowrap">Новосибирск</button>
       </div>
 
-      <div class="relative flex-grow h-[460px] bg-slate-100">
+      <div class="relative w-full h-[50vh] min-h-[300px] sm:h-[460px] bg-slate-100">
         <div id="modalYandexMap" class="w-full h-full"></div>
       </div>
     </div>
@@ -631,9 +568,9 @@ window.yaContextCb.push(() => {
           const badge = document.getElementById('resStatusBadge');
           badge.innerText = data.status_name;
           if (data.status_code === 'DELIVERED') {
-            badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#00b341] border border-emerald-200';
+            badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-emerald-50 text-[#00b341] border border-emerald-200';
           } else {
-            badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200';
+            badge.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] sm:text-xs font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200';
           }
 
           const pct = data.progress_percent || 50;
@@ -723,10 +660,10 @@ window.yaContextCb.push(() => {
           <div class="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${circleClass}">
             ${iconSvg}
           </div>
-          <div class="flex-grow pt-1">
-            <div class="flex items-center justify-between">
-              <div class="text-sm sm:text-base font-bold ${textClass}">${g.name}</div>
-              <div class="text-xs text-slate-400 font-medium">${g.date || ''}</div>
+          <div class="flex-grow pt-1 overflow-hidden">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between">
+              <div class="text-sm sm:text-base font-bold ${textClass} break-words pr-2">${g.name}</div>
+              <div class="text-xs text-slate-400 font-medium whitespace-nowrap mt-1 sm:mt-0">${g.date || ''}</div>
             </div>
             ${subHtml}
           </div>
@@ -756,27 +693,30 @@ window.yaContextCb.push(() => {
     });
   </script>
 
-  <!-- Yandex.RTB R-A-20273935-3 -->
-<script>
-window.yaContextCb.push(() => {
-    Ya.Context.AdvManager.render({
-        "blockId": "R-A-20273935-3",
-        "type": "floorAd",
-        "platform": "desktop"
+  <!-- ВАЖНО: Контейнеры RTB блоков защищены от растягивания ширины -->
+  <div class="w-full max-w-full overflow-hidden flex justify-center">
+    <!-- Yandex.RTB R-A-20273935-3 -->
+    <script>
+    window.yaContextCb.push(() => {
+        Ya.Context.AdvManager.render({
+            "blockId": "R-A-20273935-3",
+            "type": "floorAd",
+            "platform": "desktop"
+        })
     })
-})
-</script>
+    </script>
 
-  <!-- Yandex.RTB R-A-20273935-4 -->
-<script>
-window.yaContextCb.push(() => {
-    Ya.Context.AdvManager.render({
-        "blockId": "R-A-20273935-4",
-        "type": "floorAd",
-        "platform": "touch"
+    <!-- Yandex.RTB R-A-20273935-4 -->
+    <script>
+    window.yaContextCb.push(() => {
+        Ya.Context.AdvManager.render({
+            "blockId": "R-A-20273935-4",
+            "type": "floorAd",
+            "platform": "touch"
+        })
     })
-})
-</script>
+    </script>
+  </div>
   
 </body>
 </html>
