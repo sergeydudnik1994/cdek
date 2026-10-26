@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   
-  <title>Личный кабинет СДЭК: вход по договору и API | СДЭК Маркетплейсы</title>
+  <title>Личный кабинет СДЭК: вход по договору и API</title>
   <meta name="description" content="Вход в личный кабинет (ЛК) СДЭК для селлеров. Управление доставкой FBS/DBS, генерация ключей интеграции API 2.0, печать этикеток 58х40 и акты ЭДО." />
   <meta name="keywords" content="личный кабинет сдэк, вход сдэк по договору, сдэк кабинет селлера, сдэк api 2.0 ключи, кабинет сдэк маркетплейс, сдэк накладные" />
   <link rel="canonical" href="https://cdek-marketplace.ru/lk/" />
@@ -100,19 +100,21 @@
             </p>
 
             <div class="flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center gap-3 sm:gap-4 pt-2 w-full">
+              <!-- Второстепенная кнопка: Вход в ЛК -->
               <a 
                 href="https://lk.cdek.ru/user/login" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                class="px-6 py-4 sm:py-3.5 rounded-xl bg-[#00b341] hover:bg-[#009b38] text-white font-black text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md shadow-[#00b341]/20 active:scale-95 flex items-center justify-center gap-2 w-full sm:w-auto"
+                class="px-6 py-4 sm:py-3.5 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-sm active:scale-95 flex items-center justify-center gap-2 w-full sm:w-auto"
               >
                 <span>Войти в личный кабинет</span>
-                <!-- ИСПРАВЛЕНИЕ: Удален эмодзи, вставлена аккуратная SVG-иконка -->
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
               </a>
+              
+              <!-- Главная целевая кнопка: Заключить договор -->
               <a 
                 href="/dogovor/" 
-                class="px-6 py-4 sm:py-3.5 rounded-xl bg-slate-50 hover:bg-slate-100 border border-slate-200 text-slate-700 font-bold text-xs sm:text-sm transition-colors text-center w-full sm:w-auto"
+                class="px-6 py-4 sm:py-3.5 rounded-xl bg-[#00b341] hover:bg-[#009b38] text-white font-black text-xs sm:text-sm uppercase tracking-wider transition-all shadow-md shadow-[#00b341]/20 active:scale-95 text-center flex items-center justify-center w-full sm:w-auto"
               >
                 Нет договора? Подключиться
               </a>
