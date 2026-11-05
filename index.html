@@ -261,8 +261,71 @@
     </div>
   </div>
 </section>
+    
+    <!-- 4. КАЛЬКУЛЯТОР ТАРИФОВ -->
+    <section id="widget-section" class="py-14 sm:py-18 border-b border-slate-200 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-10">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-slate-200 mb-3">
+            Интеллектуальный расчет
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
+            Рассчитайте стоимость доставки посылки
+          </h2>
+          <p class="text-slate-400 text-xs sm:text-sm mt-2">
+            Корпоративные B2B-тарифы линейки «Посылка» со скидкой до 50% и спецтариф DBS.
+          </p>
+        </div>
 
-    <!-- 2. СХЕМЫ ДОСТАВКИ ДЛЯ СЕЛЛЕРОВ (DBS / FBO / FBS) -->
+        <!--#include virtual="/src/components/calculator-widget.html" -->
+      </div>
+    </section>
+
+    <!-- 6. FAQ (База знаний) -->
+    <section class="py-14 sm:py-18 border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-slate-200 mb-2">
+            База знаний
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-slate-900">Вопросы и ответы по логистике маркетплейсов</h2>
+        </div>
+
+        <div class="space-y-3 text-sm">
+          <details class="group border border-slate-200 rounded-2xl p-5 bg-white border-slate-200 shadow-sm open:bg-white/[0.02] transition">
+            <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
+              <span>Как заключить договор со СДЭК?</span>
+              <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
+            </summary>
+            <p class="text-slate-300 mt-3 text-xs sm:text-sm leading-relaxed">
+              Оформить договор со СДЭК можно онлайн, заполнив форму ИНН на сайте. Процесс занимает до 15 минут, абсолютно бесплатен для ИП, ООО и самозанятых. Сразу после этого вам выдадут доступы в личный кабинет.
+            </p>
+          </details>
+
+          <details class="group border border-slate-200 rounded-2xl p-5 bg-white border-slate-200 shadow-sm open:bg-white/[0.02] transition">
+            <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
+              <span>Что такое спецтариф СДЭК DBS и сколько он стоит?</span>
+              <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
+            </summary>
+            <p class="text-slate-300 mt-3 text-xs sm:text-sm leading-relaxed">
+              DBS (Delivery by Seller / RealFBS / Витрина) — схема, при которой маркетплейс служит только витриной, а доставку покупателю выполняет СДЭК по спецтарифу от 136.5 ₽. Это позволяет избежать штрафов площадок, доставлять негабарит и не замораживать товар.
+            </p>
+          </details>
+
+          <details class="group border border-slate-200 rounded-2xl p-5 bg-white border-slate-200 shadow-sm open:bg-white/[0.02] transition">
+            <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
+              <span>Как работает доставка на склады маркетплейсов (FBO)?</span>
+              <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
+            </summary>
+            <p class="text-slate-300 mt-3 text-xs sm:text-sm leading-relaxed">
+              СДЭК забирает европаллеты или короба и привозит их строго к назначенному тайм-слоту приемки на РЦ Wildberries, Ozon, Яндекс Маркета, Золотого Яблока и других хабов по России и странам СНГ.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+      <!-- 2. СХЕМЫ ДОСТАВКИ ДЛЯ СЕЛЛЕРОВ (DBS / FBO / FBS) -->
     <section class="py-14 sm:py-18 bg-white border-b border-slate-200">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         <div>
@@ -340,69 +403,6 @@
             </div>
           </div>
 
-        </div>
-      </div>
-    </section>
-    
-    <!-- 4. КАЛЬКУЛЯТОР ТАРИФОВ -->
-    <section id="widget-section" class="py-14 sm:py-18 border-b border-slate-200 relative">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-3xl mx-auto mb-10">
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-slate-200 mb-3">
-            Интеллектуальный расчет
-          </div>
-          <h2 class="text-2xl sm:text-4xl font-black text-slate-900 tracking-tight">
-            Рассчитайте стоимость доставки посылки
-          </h2>
-          <p class="text-slate-400 text-xs sm:text-sm mt-2">
-            Корпоративные B2B-тарифы линейки «Посылка» со скидкой до 50% и спецтариф DBS.
-          </p>
-        </div>
-
-        <!--#include virtual="/src/components/calculator-widget.html" -->
-      </div>
-    </section>
-
-    <!-- 6. FAQ (База знаний) -->
-    <section class="py-14 sm:py-18 border-b border-slate-200">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div>
-          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-white/[0.04] text-[#22E58B] border border-slate-200 mb-2">
-            База знаний
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-black text-slate-900">Вопросы и ответы по логистике маркетплейсов</h2>
-        </div>
-
-        <div class="space-y-3 text-sm">
-          <details class="group border border-slate-200 rounded-2xl p-5 bg-white border-slate-200 shadow-sm open:bg-white/[0.02] transition">
-            <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
-              <span>Как заключить договор со СДЭК?</span>
-              <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
-            </summary>
-            <p class="text-slate-300 mt-3 text-xs sm:text-sm leading-relaxed">
-              Оформить договор со СДЭК можно онлайн, заполнив форму ИНН на сайте. Процесс занимает до 15 минут, абсолютно бесплатен для ИП, ООО и самозанятых. Сразу после этого вам выдадут доступы в личный кабинет.
-            </p>
-          </details>
-
-          <details class="group border border-slate-200 rounded-2xl p-5 bg-white border-slate-200 shadow-sm open:bg-white/[0.02] transition">
-            <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
-              <span>Что такое спецтариф СДЭК DBS и сколько он стоит?</span>
-              <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
-            </summary>
-            <p class="text-slate-300 mt-3 text-xs sm:text-sm leading-relaxed">
-              DBS (Delivery by Seller / RealFBS / Витрина) — схема, при которой маркетплейс служит только витриной, а доставку покупателю выполняет СДЭК по спецтарифу от 136.5 ₽. Это позволяет избежать штрафов площадок, доставлять негабарит и не замораживать товар.
-            </p>
-          </details>
-
-          <details class="group border border-slate-200 rounded-2xl p-5 bg-white border-slate-200 shadow-sm open:bg-white/[0.02] transition">
-            <summary class="font-bold text-slate-900 cursor-pointer flex justify-between items-center list-none">
-              <span>Как работает доставка на склады маркетплейсов (FBO)?</span>
-              <span class="text-slate-400 group-open:rotate-180 transition-transform">▾</span>
-            </summary>
-            <p class="text-slate-300 mt-3 text-xs sm:text-sm leading-relaxed">
-              СДЭК забирает европаллеты или короба и привозит их строго к назначенному тайм-слоту приемки на РЦ Wildberries, Ozon, Яндекс Маркета, Золотого Яблока и других хабов по России и странам СНГ.
-            </p>
-          </details>
         </div>
       </div>
     </section>
