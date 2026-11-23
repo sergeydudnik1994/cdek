@@ -296,9 +296,13 @@
           const resData = await response.json();
           
           if (response.ok && resData.success) {
-            if (typeof ym !== 'undefined') {
-              ym(111090265,'reachGoal','lead_sent');
-            }
+  if (typeof ym === 'function') {
+    ym(111090265, 'reachGoal', 'lead_sent');
+  } else {
+    console.warn('Яндекс Метрика (ym) не загружена на странице');
+  }
+  // ...дальнейший код показа экрана успеха
+}
 
             form.classList.add('hidden');
             if (headerBlock) headerBlock.classList.add('hidden');
