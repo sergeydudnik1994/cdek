@@ -528,7 +528,7 @@
       });
     }
 
-    if (dogovorForm) {
+if (dogovorForm) {
       dogovorForm.addEventListener('submit', async (e) => {
         e.preventDefault();
 
@@ -588,18 +588,20 @@
 
           const resData = await response.json();
 
-         if (response.ok && resData.success) {
-  if (typeof window.ym === 'function') {
-    window.ym(111090265, 'reachGoal', 'contract_full_sent');
-  } else {
-    console.warn('Yandex Metrika (ym) не найдена в момент отправки формы');
-  }
+          if (response.ok && resData.success) {
+            if (typeof window.ym === 'function') {
+              window.ym(111090265, 'reachGoal', 'contract_full_sent');
+            } else {
+              console.warn('Yandex Metrika (ym) не найдена в момент отправки формы');
+            }
 
-  dogovorForm.classList.add('hidden');
-  if (headerBlock) headerBlock.classList.add('hidden');
-  if (successScreen) successScreen.classList.remove('hidden');
-  dogovorForm.reset();
-}
+            dogovorForm.classList.add('hidden');
+            if (headerBlock) headerBlock.classList.add('hidden');
+            if (successScreen) successScreen.classList.remove('hidden');
+            dogovorForm.reset();
+          } else {
+            throw new Error(resData.message || 'Ошибка при отправке анкеты');
+          }
         } catch (err) {
           submitBtn.disabled = false;
           submitBtn.innerText = originalText;
